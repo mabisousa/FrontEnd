@@ -9,28 +9,28 @@ export const Filters = styled.div`
     justify-content: space-between;
     margin: 4rem 0 0 4rem;
     div{
-    width: 90%;
-    height: 60px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+      width: 90%;
+      height: 60px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
     }
     #filter{
-    width: 90%;
-    height: 60px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-        p{
+      width: 90%;
+      height: 60px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+      p{
         color: #7E7E7E;
         font-size: 20px;
         text-align: center;
-        }
-        div{
+      }
+      div{
         width: 150px;
         height: 20px;
         border: solid 1px  #7E7E7E;
@@ -40,10 +40,10 @@ export const Filters = styled.div`
         cursor: pointer;
         vertical-align: middle;
         display: table-cell;
-        }
+      }
     }
     img{
-    cursor: pointer;
+      cursor: pointer;
     }
 `;
 
@@ -83,43 +83,43 @@ export const Table = styled.table`
     }
 
     tr{
-        font-size: 0.875rem;
-        letter-spacing: 0.01071em;
+      font-size: 0.875rem;
+      letter-spacing: 0.01071em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border: 1px solid #7E7E7E;
+      border-top: 0;
+      height: 56px;
+      color: rgba(0, 0, 0, 0.87);
+      text-transform: uppercase;
+    
+      td:nth-child(1){
+        width: 150px;
+      }
+      td:nth-child(2){
+        width: 450px;
+        text-align: start;
+      }
+      td:nth-child(3){
+        width: 150px;
+      }
+      td:nth-child(4){
+        width: 150px;
+      }
+      td:nth-child(5){
+        width: 150px;
+      }
+
+      button{
+        background: #fff;
+        border: 0;
         display: flex;
         justify-content: center;
         align-items: center;
-        text-align: center;
-        border: 1px solid #7E7E7E;
-        border-top: 0;
-        height: 56px;
-        color: rgba(0, 0, 0, 0.87);
-        text-transform: uppercase;
-      
-        td:nth-child(1){
-            width: 150px;
-        }
-        td:nth-child(2){
-            width: 450px;
-            text-align: start;
-        }
-        td:nth-child(3){
-            width: 150px;
-        }
-        td:nth-child(4){
-            width: 150px;
-        }
-        td:nth-child(5){
-            width: 150px;
-        }
-
-        button{
-            background: #fff;
-            border: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-        }
+        font-size: 20px;
+      }
         
     }
 `;
@@ -141,21 +141,21 @@ export const PopUp = styled.div`
   }
   
   #overlay {
-  position: fixed;
-  opacity: 0;
-  transition: 200ms ease-in-out;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, .5);
-  pointer-events: none;
-}
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+  }
 
-#overlay.active {
-  opacity: 1;
-  pointer-events: all;
-}
+  #overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
   width: 900px;
   height: 570px;
   color: black;

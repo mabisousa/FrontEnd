@@ -5,7 +5,6 @@ type NotificationProps = HTMLAttributes<HTMLDivElement>;
 
 const Notification: React.FC<NotificationProps> = (props) => (
     <Container {...props}>
-
     </Container>
 )
 

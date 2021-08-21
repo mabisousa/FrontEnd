@@ -6,7 +6,6 @@ import Consultores from '../pages/Consultores';
 import Projeto from '../pages/Home/index';
 import Projeto2 from '../pages/display';
 import popUp from '../pages/projectPopUp/index';
-import popUpConsultores from '../pages/ConsultoresPopUp';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -16,7 +15,6 @@ const Routes: React.FC = () => (
     <Route path="/projetos" exact component={Projeto}/>
     <Route path="/display2" exact component={Projeto2}/>
     <Route path="/projetos/popUp" exact component={popUp}/>
-    <Route path="/popUp" exact component={popUpConsultores} />
   </Switch>
   );
 

@@ -132,13 +132,13 @@ export const Count = styled.div`
         }
 
         &::after {
-          content: "";
-          position: absolute;
-          right: 0;
-          top: 7.5px;
-        border-top: 15px solid transparent;
-        border-bottom: 15px solid transparent;
-        border-right: 15px solid #28B9DA;
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 7.5px;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-right: 15px solid #28B9DA;
         }
     }
 `;
@@ -190,7 +190,6 @@ export const Apontamentos = styled.div`
             background-color: #e2e2e280;
         }
     }
-    
 `;
 
 export const Filters = styled.div`
@@ -282,7 +281,6 @@ export const ProgressBar = styled.div`
     }
 `;
 export const Popup = styled.div`
-
         width: 70vw;
         height: 50vh;
         position: absolute;
@@ -294,8 +292,6 @@ export const Popup = styled.div`
 
 `;
 export const Table = styled.div`
-
-
     .MuiDataGrid-menuIcon {
         display: none;
     }

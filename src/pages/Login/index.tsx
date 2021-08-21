@@ -64,12 +64,12 @@ const Login: React.FC = () => {
         <Main>
             <Inputs>
                 <Form ref={ formRef } onSubmit={ handleSubmit }>
-                        <ImgLogo src={logo} alt="WEG" />
+                    <ImgLogo src={logo} alt="WEG" />
 
-                        <Input name="email" type="text">Usuário</Input>
-                        <Input name="senha" type="password">Senha</Input>
+                    <Input name="email" type="text">Usuário</Input>
+                    <Input name="senha" type="password">Senha</Input>
 
-                        <FormButton type="submit" value="Entrar"/>
+                    <FormButton type="submit" value="Entrar"/>
                 </Form>
             </Inputs>
         </Main>

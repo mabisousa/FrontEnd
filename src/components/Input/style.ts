@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 interface ContainerProps {
   hasError: boolean;
 }
+
 export const FormInput = styled.input<ContainerProps>`
   position: absolute;
   top: 0;
@@ -27,9 +28,10 @@ export const FormInput = styled.input<ContainerProps>`
     font-weight: 500;
     z-index: 10;
 }
-${(props) => props.hasError && css`
-        border-color: #c53030;
-    `}
+
+  ${(props) => props.hasError && css`
+    border-color: #c53030;
+  `}
 `;
 
 export const FormLabel = styled.label<ContainerProps>`
@@ -41,10 +43,12 @@ export const FormLabel = styled.label<ContainerProps>`
   color: #80868B;
   font-size: 1rem;
   transition: .3s;
+
   ${(props) => props.hasError && css`
-        color: #c53030;
-    `}
+    color: #c53030;
+  `}
 `;
+
 export const FormDiv = styled.div`
   position: relative;
   height: 48px;

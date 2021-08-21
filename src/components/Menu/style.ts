@@ -13,7 +13,6 @@ export const Container = styled.div`
 
     a:nth-child(1) {
         top:0px;
-        
         div {
             background: #00579D;
         }

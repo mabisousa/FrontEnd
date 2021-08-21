@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from './styles';
-import Chart from "react-google-charts";
+import { Chart } from "react-google-charts";
 import { BsX } from 'react-icons/bs';
 import { ContainerFunc } from './popup.js';
 
@@ -46,34 +46,34 @@ const popUp: React.FC = () => {
         </div>
       </div> 
       <div id= "sideB">
-      <BsX id="x"/>
+        <BsX id="x"/>
         <div id="titles">
           <p>HORAS:</p>
         </div>
         <div id="hoursAppointment">
-        <div id="graphic">
-          <Chart
-            width={'160px'}
-            height={'160px'}
-            rootProps
-            chartType="PieChart"
-            data={[
-              ['Task', 'Hours per Day'],  
-              ['Total', 10],
-              ['Apontadas', 10]
-            ]}
-            options={{
-              pieHole: 0.7,
-              legend: 'none',
-              backgroundColor: '',
-              pieSliceText: 'none',
-              slices: {
-                0: { color: '57b7dc' },
-                1: { color: 'B4DDFB' },
-              },  
-            }}
-          />
-        </div>
+          <div id="graphic">
+            <Chart
+              width={'160px'}
+              height={'160px'}
+              rootProps
+              chartType="PieChart"
+              data={[
+                ['Task', 'Hours per Day'],  
+                ['Total', 10],
+                ['Apontadas', 10]
+              ]}
+              options={{
+                pieHole: 0.7,
+                legend: 'none',
+                backgroundColor: '',
+                pieSliceText: 'none',
+                slices: {
+                  0: { color: '57b7dc' },
+                  1: { color: 'B4DDFB' },
+                },  
+              }}
+            />
+          </div>
           <div id="hours">
             <p id="title">TOTAL:
             <span id="info">1600h</span> 
@@ -84,91 +84,90 @@ const popUp: React.FC = () => {
           </div>
         </div>
         <div id="table">
-        <table>
-          <thead>
-            <tr>
-              <td id="header1">SKILL</td>
-              <td id="header2">HORAS APONTADAS</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Desenvolvimento PHP</td>
-              <td>40H</td>
-            </tr>
-            <tr>
-              <td>Desenvolvimento JAVA</td>
-              <td>15H</td>
-            </tr>
-            <tr>
-              <td>Desenvolvimento React</td>
-              <td>20H</td>
-            </tr>
-          </tbody>
-        </table>
+          <table>
+            <thead>
+              <tr>
+                <td id="header1">SKILL</td>
+                <td id="header2">HORAS APONTADAS</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Desenvolvimento PHP</td>
+                <td>40H</td>
+              </tr>
+              <tr>
+                <td>Desenvolvimento JAVA</td>
+                <td>15H</td>
+              </tr>
+              <tr>
+                <td>Desenvolvimento React</td>
+                <td>20H</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="status">
+          <button id="btn" onClick={ContainerFunc}>
+            CONSULTORES ALOCADOS
+          </button>
+          <span >
+            EM ANDAMENTO
+          </span>
+        </div>     
       </div>
-      <div id="status">
-        <button id="btn" onClick={ContainerFunc}>
-          CONSULTORES ALOCADOS
-        </button>
-        <span >
-          EM ANDAMENTO
-        </span>
-      </div>     
+      <div id="sideC">
+        <div id="tabela">
+          <table id="table2">
+            <thead id="thead">
+              <tr id="Ttr" >
+                <td id="header1.2">CADASTRO</td>
+                <td id="header2.2">NOME</td>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+              <tr id="tr">
+                <td id="td">67270</td>
+                <td id="td">Isac Freire Bezerra</td>
+              </tr>
+              <tr id="tr">
+                <td id="td">67271</td>
+                <td id="td">Jean Henrique Reiguel</td>
+              </tr>
+              <tr id="tr">
+                <td id="td"> 67272</td>
+                <td id="td">Kethlin Katia Nardelli</td>
+              </tr>
+              <tr id="tr">
+                <td id="td">67270</td>
+                <td id="td">Isac Freire Bezerra</td>
+              </tr>
+              <tr id="tr">
+                <td id="td">Jean Henrique Reiguel</td>
+                <td id="td">67271</td>
+              </tr>
+              <tr id="tr">
+                <td id="td"> 67272</td>
+                <td id="td">Kethlin Katia Nardelli</td>
+              </tr>
+              <tr id="tr">
+                <td id="td">67270</td>
+                <td id="td">Isac Freire Bezerra</td>
+              </tr>
+              <tr id="tr">
+                <td id="td">Jean Henrique Reiguel</td>
+                <td id="td">67271</td>
+              </tr>
+              <tr id="tr">
+                <td id="td"> 67272</td>
+                <td id="td">Kethlin Katia Nardelli</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-  <div id="sideC">
-    <div id="tabela">
-      <table id="table2">
-        <thead id="thead">
-          <tr id="Ttr" >
-            <td id="header1.2">CADASTRO</td>
-            <td id="header2.2">NOME</td>
-          </tr>
-        </thead>
-          <tbody id="tbody">
-            <tr id="tr">
-              <td id="td">67270</td>
-              <td id="td">Isac Freire Bezerra</td>
-            </tr>
-            <tr id="tr">
-              <td id="td">67271</td>
-              <td id="td">Jean Henrique Reiguel</td>
-            </tr>
-            <tr id="tr">
-              <td id="td"> 67272</td>
-              <td id="td">Kethlin Katia Nardelli</td>
-            </tr>
-            <tr id="tr">
-              <td id="td">67270</td>
-              <td id="td">Isac Freire Bezerra</td>
-            </tr>
-            <tr id="tr">
-              <td id="td">Jean Henrique Reiguel</td>
-              <td id="td">67271</td>
-            </tr>
-            <tr id="tr">
-              <td id="td"> 67272</td>
-              <td id="td">Kethlin Katia Nardelli</td>
-            </tr>
-            <tr id="tr">
-              <td id="td">67270</td>
-              <td id="td">Isac Freire Bezerra</td>
-            </tr>
-            <tr id="tr">
-              <td id="td">Jean Henrique Reiguel</td>
-              <td id="td">67271</td>
-            </tr>
-            <tr id="tr">
-              <td id="td"> 67272</td>
-              <td id="td">Kethlin Katia Nardelli</td>
-            </tr>
-          </tbody>
-      </table>
-    </div>
-  </div>
-</div>
     </Container>
-    
     </>
   )
 };

@@ -51,10 +51,10 @@ export const Container = styled.div`
 
         }
         #perfil {
-                display: flex;
-                flex-direction: column;
-                justify-content: start;
-                align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
 
             #txt {
                 display: flex;
@@ -122,10 +122,10 @@ export const Container = styled.div`
                 justify-content: start;
 
                 img {
-                height: 130px;
-                width: 130px;
-                margin: 5% 17%;
-                transition: 1s;
+                    height: 130px;
+                    width: 130px;
+                    margin: 5% 17%;
+                    transition: 1s;
                 }
                 #txt {
                     width: 100%;
