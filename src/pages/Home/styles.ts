@@ -6,6 +6,7 @@ export const Title = styled.h1`
     text-decoration: underline #0075B1;
     margin-left: 50px;
     width: 300px;
+    margin: 6rem 0rem 0rem 4rem;
 `;
 
 export const Form = styled.form`

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Title, Form, Cards } from './styles';
+import { Cards } from './styles';
 import Header from "../../components/Header";
 import Profile from "../../components/Profile";
 import Menu from "../../components/Menu";
