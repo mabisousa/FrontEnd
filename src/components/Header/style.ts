@@ -3,12 +3,17 @@ import styled from "styled-components";
 export const Container = styled.div`
     width: 100%;
     height: 12vh;
+    background: #fff;
     border-bottom: 2px solid #90C0E3;  
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     
-    #aprovacao{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    #name{
         width:220px;
         display: flex;
         align-items: center;
@@ -40,7 +45,6 @@ export const Container = styled.div`
             width: 30px;
             cursor: pointer;
         }
-        
         p {
                 font-size: 14px;
                 width: 40px;

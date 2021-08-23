@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Header: React.FC = ({children,...props}) => (
     <Container {...props}> 
-        <div id="aprovacao">
+        <div id="name">
             <Link to="/projetos"><img src={logo} /></Link>
             {children}
         </div>   
