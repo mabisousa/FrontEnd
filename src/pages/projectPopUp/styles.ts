@@ -70,7 +70,7 @@ export const Container = styled.div`
                 p:nth-child(2){
                     font-size: 14px;
                     max-width: 600px;
-                    max-height: 122px;
+                    max-height: 138px;
                     color: #000000;
                     margin-top: 18px;
                     overflow-y: auto;
@@ -82,7 +82,7 @@ export const Container = styled.div`
                 display: flex;
                 flex-direction: row;
                 margin-left: 52px;
-                margin-top: 18px;
+                margin-top: 5px;
             }
 
             .box{
@@ -240,13 +240,14 @@ export const Container = styled.div`
                     width: 68%;
                     margin-top: -5px;
                     background-color: #28B9DA;
-                    font-size: 16px;
+                    font-size: 16px; 
                     color: #FFFFFF;
                     border: none;
                 }
                 span{
                     margin-top: 48px;
                     font-size: 22px;
+                    margin-right: 15px;
                     font-weight: bold;
                     color: #EBB93A;
                     text-align: center;

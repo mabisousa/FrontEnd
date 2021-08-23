@@ -111,7 +111,7 @@ const popUp: React.FC = () => {
           <button id="btn" onClick={ContainerFunc}>
             CONSULTORES ALOCADOS
           </button>
-          <span >
+          <span id='estado'>
             EM ANDAMENTO
           </span>
         </div>     
@@ -128,39 +128,39 @@ const popUp: React.FC = () => {
             <tbody id="tbody">
               <tr id="tr">
                 <td id="td">67270</td>
-                <td id="td">Isac Freire Bezerra</td>
+                <td id="td2">Isac Freire Bezerra</td>
               </tr>
-              <tr id="tr">
-                <td id="td">67271</td>
-                <td id="td">Jean Henrique Reiguel</td>
+              <tr id="tr2">
+                <td id="td3">67271</td>
+                <td id="td4">Jean Henrique Reiguel</td>
               </tr>
-              <tr id="tr">
-                <td id="td"> 67272</td>
-                <td id="td">Kethlin Katia Nardelli</td>
+              <tr id="tr3">
+                <td id="td5"> 67272</td>
+                <td id="td6">Kethlin Katia Nardelli</td>
               </tr>
-              <tr id="tr">
-                <td id="td">67270</td>
-                <td id="td">Isac Freire Bezerra</td>
+              <tr id="tr4">
+                <td id="td7">67270</td>
+                <td id="td8">Isac Freire Bezerra</td>
               </tr>
-              <tr id="tr">
-                <td id="td">Jean Henrique Reiguel</td>
-                <td id="td">67271</td>
+              <tr id="tr5">
+                <td id="td9">67271</td>
+                <td id="td10">Jean Henrique Reiguel</td>
               </tr>
-              <tr id="tr">
-                <td id="td"> 67272</td>
-                <td id="td">Kethlin Katia Nardelli</td>
+              <tr id="tr6">
+                <td id="td11"> 67272</td>
+                <td id="td12">Kethlin Katia Nardelli</td>
               </tr>
-              <tr id="tr">
-                <td id="td">67270</td>
-                <td id="td">Isac Freire Bezerra</td>
+              <tr id="tr7">
+                <td id="td13">67270</td>
+                <td id="td14">Isac Freire Bezerra</td>
               </tr>
-              <tr id="tr">
-                <td id="td">Jean Henrique Reiguel</td>
-                <td id="td">67271</td>
+              <tr id="tr8">
+                <td id="td15">67271</td>
+                <td id="td16">Jean Henrique Reiguel</td>
               </tr>
-              <tr id="tr">
-                <td id="td"> 67272</td>
-                <td id="td">Kethlin Katia Nardelli</td>
+              <tr id="tr9">
+                <td id="td17"> 67272</td>
+                <td id="td18">Kethlin Katia Nardelli</td>
               </tr>
             </tbody>
           </table>
