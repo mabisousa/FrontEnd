@@ -1,11 +1,11 @@
 import React, {useCallback, useContext, useRef} from 'react';
 
 import { Main, Inputs,  FormButton, ImgLogo } from './style';
-import logo from '../../imgs/logo.svg';
+import logo from "../../imgs/logo.svg"
 
-import { FormHandles } from '@unform/core'
+import { FormHandles } from "@unform/core"
 import { Form } from '@unform/web'
-import * as Yup from 'yup'
+import * as Yup from "yup"
 
 import { AuthContext } from '../../hooks/Auth';
 import getValidationErrors from '../../utils/getValidationErrors';
