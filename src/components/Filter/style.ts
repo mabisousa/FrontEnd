@@ -7,7 +7,7 @@ export const Filters = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: 4rem 0 0 4rem;
+    margin: 6rem 0rem 0rem 4rem;
 
     div{
         width: 90%;
