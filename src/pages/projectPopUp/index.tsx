@@ -118,49 +118,79 @@ const popUp: React.FC = () => {
       </div>
       <div id="sideC">
         <div id="tabela">
-          <table id="table2">
-            <thead id="thead">
-              <tr id="Ttr" >
-                <td id="header1.2">CADASTRO</td>
-                <td id="header2.2">NOME</td>
+          <table>
+            <thead>
+              <tr>
+                <td>CADASTRO</td>
+                <td>NOME</td>
               </tr>
             </thead>
-            <tbody id="tbody">
-              <tr id="tr">
-                <td id="td">67270</td>
-                <td id="td2">Isac Freire Bezerra</td>
+            <tbody>
+              <tr>
+                <td>67270</td>
+                <td >Isac Freire Bezerra</td>
               </tr>
-              <tr id="tr2">
-                <td id="td3">67271</td>
-                <td id="td4">Jean Henrique Reiguel</td>
+              <tr>
+                <td>67271</td>
+                <td>Jean Henrique Reiguel</td>
               </tr>
-              <tr id="tr3">
-                <td id="td5"> 67272</td>
-                <td id="td6">Kethlin Katia Nardelli</td>
+              <tr>
+                <td>67270</td>
+                <td >Isac Freire Bezerra</td>
               </tr>
-              <tr id="tr4">
-                <td id="td7">67270</td>
-                <td id="td8">Isac Freire Bezerra</td>
+              <tr>
+                <td>67271</td>
+                <td>Jean Henrique Reiguel</td>
               </tr>
-              <tr id="tr5">
-                <td id="td9">67271</td>
-                <td id="td10">Jean Henrique Reiguel</td>
+              <tr>
+                <td>67270</td>
+                <td >Isac Freire Bezerra</td>
               </tr>
-              <tr id="tr6">
-                <td id="td11"> 67272</td>
-                <td id="td12">Kethlin Katia Nardelli</td>
+              <tr>
+                <td>67271</td>
+                <td>Jean Henrique Reiguel</td>
               </tr>
-              <tr id="tr7">
-                <td id="td13">67270</td>
-                <td id="td14">Isac Freire Bezerra</td>
+              <tr>
+                <td>67270</td>
+                <td >Isac Freire Bezerra</td>
               </tr>
-              <tr id="tr8">
-                <td id="td15">67271</td>
-                <td id="td16">Jean Henrique Reiguel</td>
+              <tr>
+                <td>67271</td>
+                <td>Jean Henrique Reiguel</td>
               </tr>
-              <tr id="tr9">
-                <td id="td17"> 67272</td>
-                <td id="td18">Kethlin Katia Nardelli</td>
+              <tr>
+                <td>67271</td>
+                <td>Jean Henrique Reiguel</td>
+              </tr>
+              <tr>
+                <td>67270</td>
+                <td >Isac Freire Bezerra</td>
+              </tr>
+              <tr>
+                <td>67271</td>
+                <td>Jean Henrique Reiguel</td>
+              </tr><tr>
+                <td>67271</td>
+                <td>Jean Henrique Reiguel</td>
+              </tr>
+              <tr>
+                <td>67270</td>
+                <td >Isac Freire Bezerra</td>
+              </tr>
+              <tr>
+                <td>67271</td>
+                <td>Jean Henrique Reiguel</td>
+              </tr><tr>
+                <td>67271</td>
+                <td>Jean Henrique Reiguel</td>
+              </tr>
+              <tr>
+                <td>67270</td>
+                <td >Isac Freire Bezerra</td>
+              </tr>
+              <tr>
+                <td>67271</td>
+                <td>Jean Henrique Reiguel</td>
               </tr>
             </tbody>
           </table>

@@ -190,45 +190,45 @@ export const Container = styled.div`
                 border-collapse: collapse;
                 width: 100%;
                 text-align: center;
-            }
 
-            thead {
-                background: #0075B1;
-                color: #fff;
-                height: 40px;
-                display: inline-flex;
-                width:100%;
-                text-transform: uppercase;
-                font-size: 14px;
-                margin-bottom: 15px;
-            }
+                thead {
+                    background: #0075B1;
+                    color: #fff;
+                    height: 40px;
+                    display: inline-flex;
+                    width:100%;
+                    text-transform: uppercase;
+                    font-size: 14px;
+                    margin-bottom: 15px;
 
-            thead tr{
-                margin-top: 5px;
-                border: none;
-                color: #fff;
-            }
+                    tr{
+                        margin-top: 5px;
+                        border: none;
+                        color: #fff;
+                    }
+                }
 
-            tbody {
-                height: 65px;
-                overflow-y: scroll;
-                overflow-x: hidden;
-                display: block;
-                border: 1px solid #e2e2e280;
-            }
+                tbody {
+                    height: 65px;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                    display: block;
+                    border: 1px solid #e2e2e280;
 
-            tr {
-                font-size: 14px;
-                letter-spacing: 0.01071em;
-                height: 40px;
-                margin:15px;
-                color: rgba(0, 0, 0, 0.87);
-                border: 1px solid #e2e2e280;
-            }
-
-            td {
-                width: 570px;
-                border-right: 1px solid #e2e2e280;
+                    tr {
+                        font-size: 14px;
+                        letter-spacing: 0.01071em;
+                        height: 40px;
+                        margin:15px;
+                        color: rgba(0, 0, 0, 0.87);
+                        border: 1px solid #e2e2e280;
+                    }
+        
+                    td {
+                        width: 570px;
+                        border-right: 1px solid #e2e2e280;
+                    }
+                }
             }
 
             #status{
@@ -256,9 +256,69 @@ export const Container = styled.div`
 
             
         } 
-        #sideC{
+        #sideC {
             display: none;
+
+            #tabela {
+                width:100%;
+                height:100%;
+
+                table {
+                    border-collapse: collapse;
+                    text-align: center;
+                    width: 90%;
+                
+                    thead {
+                        background: #0075B1;
+                        height: 40px;
+                        display: inline-flex;
+                        width: 100%;
+                        text-transform: uppercase;
+                        font-size: 14px;
+                        margin-bottom: 15px;
+
+                        tr {
+                            font-size: 14px;
+                            letter-spacing: 0.01071em;
+                            height: 40px;
+                            width:100%;
+                            padding:12px;
+                            color: rgba(0, 0, 0, 0.87);
+
+                        }
+                        td {
+                        color:#fff;
+                        border: none;
+                        width:20%;
+                        }
+                    }
+                    
+                    tbody {
+                        height: 300px;
+                        overflow-y: scroll;
+                        overflow-x: hidden;
+                        display: block;
+                        border: 1px solid #e2e2e280;
+
+                        tr {
+                            font-size: 14px;
+                            letter-spacing: 0.01071em;
+                            width: 100%;
+                            color: rgba(0, 0, 0, 0.87);
+                            border: 1px solid #e2e2e280;
+                        }
+                        td:nth-child(1) {
+                            padding: 15px;
+                            width: 20%;
+                            border-right: 1px solid #e2e2e280;
+                        }
+                        td:nth-child(2) {
+                            max-width: 70%;
+                            border-right: 1px solid #e2e2e280;
+                        }
+                    }
+                }
+            }
         }
-    }
 `;
 
