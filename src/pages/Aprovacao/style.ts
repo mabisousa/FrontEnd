@@ -1,12 +1,13 @@
 import styled from "styled-components";
+import Input from "../../components/Input";
 
 export const Container = styled.div`
     display: flex;
     justify-content:space-between;
     flex-wrap: wrap;
     width:100%;
-    height:88vh;
-    padding: 0% 8% 5% 8%;
+    height:85vh;
+    padding: 1% 8% 1% 8%;
 `;
 
 export const Infos = styled.div`
@@ -17,35 +18,27 @@ export const Infos = styled.div`
     justify-content: space-evenly;
     padding: 0 2%;
 
-    div {
+    form {
         margin:2px 0;
+        
+        .inputs {
+            display: flex;
+            justify-content: space-evenly;
 
+            div:nth-child(1) {
+                width:30%;
+            }
+            div:nth-child(2) {
+                width:70%;
+                margin-left:2%;
+            }
+        }
         h1 {
             font-size:16px;
             font-weight:500;
             margin:10px 0;
         }
-        input {
-            border: 1px solid #7E7E7E70;
-            border-radius:5px;
-            height:50px;
-            padding:12px;
-            font-size:14px;
-        }
-        .inputs {
-            display:flex;
-            justify-content: space-evenly;
-    
-            input:nth-child(1) {
-                width:30%;
-            }
-            input:nth-child(2) {
-                width:75%;
-                margin-left:5%;
-            }
-        }
-    }
-    
+    }  
 `;
 export const Count = styled.div`
     height: 40vh;
@@ -177,19 +170,6 @@ export const Apontamentos = styled.div`
     .MuiSvgIcon-fontSizeSmall {
         display: none;
     }
-    .MuiDataGrid-window{
-        &::-webkit-scrollbar {
-            width: 1em;
-          }
-           
-        &::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-        }
-           
-        &::-webkit-scrollbar-thumb {
-            background-color: #e2e2e280;
-        }
-    }
 `;
 
 export const Filters = styled.div`
@@ -199,7 +179,7 @@ export const Filters = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: 4rem 0 0 4rem;
+    margin: 6rem 0rem 0rem 4rem;
 `;
 
 export const Title = styled.h1`
@@ -277,57 +257,6 @@ export const ProgressBar = styled.div`
                 transition: 1s;
 
             }
-        }
-    }
-`;
-export const Popup = styled.div`
-        width: 70vw;
-        height: 50vh;
-        position: absolute;
-        top: 15vh;
-        left: 15vw;
-        background: #fff;
-        box-shadow: 0px 0px 100px 500px #7f7f7f90;
-        display: none;
-
-`;
-export const Table = styled.div`
-    .MuiDataGrid-menuIcon {
-        display: none;
-    }
-
-    .MuiDataGrid-root {
-        border: 1px solid #7E7E7E;
-        border-radius:0px;
-    }
-
-    .MuiButtonBase-root  {
-        display: none;
-    }
-
-    .MuiDataGrid-footerContainer{
-        display: none;
-    }
-
-    .MuiDataGrid-columnHeaderWrapper{
-        background: #0075B1;
-        color: #fff;
-    }
-
-    .MuiDataGrid-columnSeparator{
-        display: none;
-    }
-
-    .MuiDataGrid-cell{
-        border-bottom: 1px solid #7E7E7E;
-    }
-
-    .MuiDataGrid-cell:nth-child(5){
-        font-size:20px;
-    }
-    .MuiDataGrid-window{
-        &::-webkit-scrollbar {
-            display: none;
         }
     }
 `;
