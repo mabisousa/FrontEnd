@@ -6,8 +6,9 @@ import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
 
-import { HiUserCircle, HiX } from 'react-icons/hi';
+import { HiUserCircle } from 'react-icons/hi';
 import { BsX } from 'react-icons/bs'
+
 import { Container, PopUp, PopUpInfo, Content, Skills, HoldContent, PopUpTable } from "./style";
 import Grid from "../../components/Grid"
 
