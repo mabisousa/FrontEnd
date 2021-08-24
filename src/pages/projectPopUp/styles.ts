@@ -70,7 +70,7 @@ export const Container = styled.div`
                 p:nth-child(2){
                     font-size: 14px;
                     max-width: 600px;
-                    max-height: 138px;
+                    max-height: 140px;
                     color: #000000;
                     margin-top: 18px;
                     overflow-y: auto;
@@ -236,7 +236,7 @@ export const Container = styled.div`
                 flex-direction: column;
 
                 #btn{
-                    height: 35px;
+                    height: 37px;
                     width: 68%;
                     margin-top: -5px;
                     background-color: #28B9DA;
@@ -294,7 +294,7 @@ export const Container = styled.div`
                     }
                     
                     tbody {
-                        height: 300px;
+                        height: 287px;
                         overflow-y: scroll;
                         overflow-x: hidden;
                         display: block;
@@ -320,5 +320,6 @@ export const Container = styled.div`
                 }
             }
         }
+    }
 `;
 
