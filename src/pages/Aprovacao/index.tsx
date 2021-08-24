@@ -1,5 +1,4 @@
 import React, { useCallback, useRef } from "react";
-import { makeStyles } from '@material-ui/styles'
 import { GridColDef, GridRowsProp, DataGrid} from '@material-ui/data-grid'
 import { Infos, Container, Count, Apontamentos, ProgressBar, Filters, Title } from "./style"
 import { FiCheck } from 'react-icons/fi' 
@@ -12,25 +11,12 @@ import Input from "../../components/Input"
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web"
 
-
-  const useStyles = makeStyles({
-    root: {
-      '& .super-app.negative': {
-        color: '#AC341A',
-      }},
-      'header':{
-        backgroundColor: '#0075B1',
-      }
-    },
-  );
-
 const Aprovacao: React.FC = () => {
     
     const formRef = useRef<FormHandles>(null);
     
     const handleSubmit = useCallback(async () => {
     },[]);
-    const classes = useStyles();
     const rowsap: GridRowsProp = [
         { id: 1, col1: '08/07', col2: '8H', col3: 'icon'},
         { id: 2, col1: '08/07', col2: '8H', col3: 'icon'},

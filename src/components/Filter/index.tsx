@@ -25,8 +25,8 @@ const Filter: React.FC = () => (
                         <IoIosArrowDown id="img" size={17}/>
                     </div>
                 </div>
-                <a href="/projetos"> <img src={display1} /></a>
-                <a href="/display2"><img src={display2} /></a>
+                <a href="/projetos"> <img src={display1} alt=""/></a>
+                <a href="/display2"><img src={display2} alt=""/></a>
             </div> 
         </div>
     </Filters>
