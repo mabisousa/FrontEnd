@@ -7,11 +7,11 @@ import { Link } from "react-router-dom";
 const Header: React.FC = ({children,...props}) => (
     <Container {...props}> 
         <div id="name">
-            <Link to="/projetos"><img src={logo} /></Link>
+            <Link to="/projetos"><img src={logo} alt=""/></Link>
             {children}
         </div>   
         <div id="flagExit">
-            <img src={bandeiraBrasil} /> 
+            <img src={bandeiraBrasil} alt=""/> 
             <Link to="/"><p>Sair</p></Link>
         </div>
     </Container>

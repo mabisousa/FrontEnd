@@ -78,9 +78,14 @@ export const Table = styled.table`
     width: 80%;
     height: 400px;
 
-    tr:nth-child(1){
-        background: #0075B1;
-        color: #fff;
+    thead{
+      background: #0075B1;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    thead tr{
+      color: #fff;
     }
 
     tr{
@@ -96,21 +101,13 @@ export const Table = styled.table`
       color: rgba(0, 0, 0, 0.87);
       text-transform: uppercase;
     
-      td:nth-child(1){
+      td{
         width: 150px;
       }
+      
       td:nth-child(2){
         width: 450px;
         text-align: start;
-      }
-      td:nth-child(3){
-        width: 150px;
-      }
-      td:nth-child(4){
-        width: 150px;
-      }
-      td:nth-child(5){
-        width: 150px;
       }
 
       button{
@@ -121,59 +118,57 @@ export const Table = styled.table`
         align-items: center;
         font-size: 20px;
       }
+      tbody {
+        height: 230px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: block;
+        border: 1px solid #e2e2e280;
+      }
         
     }
 `;
 
 export const Container = styled.div`
-
-`;
-
-export const PopUp = styled.div`
+  transition: 200ms ease-in-out;
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  visibility: hidden;
   background-color: #fff;
+  display: none;
+`;
 
-  .container .show {
-    visibility: visible;
-  }
-  
-  #overlay {
-    position: fixed;
-    opacity: 0;
-    transition: 200ms ease-in-out;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, .5);
-    pointer-events: none;
-  }
-
-  #overlay.active {
-    opacity: 1;
-    pointer-events: all;
-  }
+export const PopUp = styled.div`
   width: 900px;
   height: 570px;
-  color: black;
+  
   padding: 10px;
-  box-shadow: 5px 10px 35px #7e7e7e;
+  box-shadow: 5px 10px 35px #7e7e7e;  
 
-  button {
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background: none;
-    font-size: 1.25rem;
-    font-weight: bold;
+  button{
     float: right;
+    color: black;
     margin-right: 10px;
     font-size: 30px;
+    margin-top: 50px;
+    background-color: transparent;
+    border: 0;
+
+    svg{
+      color: black;
+    }
   }
+`;
+
+export const Overlay = styled.div`
+ /* position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;*/
 `;
 
 export const PopUpInfo = styled.div`
@@ -255,7 +250,6 @@ export const PopUpTable = styled.div`
 
   thead{
     background: #0075B1;
-    color: #fff;
     height: 40px;
     display: inline-flex;
     width:100%;
@@ -266,8 +260,8 @@ export const PopUpTable = styled.div`
 
   thead tr{
     margin-top: 5px;
+    color: #fff;  
     border: none;
-    color: #fff;
   }
               
   tbody {

@@ -3,9 +3,10 @@ import styled from "styled-components";
 export const Popup = styled.div`
         width: 70vw;
         height: 50vh;
-        position: absolute;
-        top: 15vh;
-        left: 15vw;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
         background: #fff;
         box-shadow: 0px 0px 100px 500px #7f7f7f60;
 
