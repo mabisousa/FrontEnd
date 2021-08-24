@@ -20,5 +20,9 @@ export function ContainerFunc(){
 
     let btn = document.getElementById('btn');
     btn.style.width = '310px';
+
+    let estado = document.getElementById('estado');
+    estado.style.marginLeft = '450px';
+    estado.style.width = '190px';
 }
 
