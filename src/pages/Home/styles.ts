@@ -30,6 +30,7 @@ export const Cards = styled.div`
     margin-top: 3rem;
     margin-bottom: 3rem;
     margin-left: 5.6rem;
+    
     #cards{
     width: 100%;
     height: 100%;
