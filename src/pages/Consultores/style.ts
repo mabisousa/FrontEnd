@@ -63,20 +63,25 @@ export const Form = styled.form`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
     label {
-    color: #7E7E7E;
-    font-size: 20px;
-    text-align: center;
-    }
-    
+      color: #7E7E7E;
+      font-size: 20px;
+      text-align: center;
+    }  
 `;
 
-export const Table = styled.table`
+export const Consultores = styled.div`
     margin-left: 130px;
     margin-top: 50px;
     margin-bottom: 40px;
-    width: 80%;
-    height: 400px;
+    height: 350px;
+
+    table{
+      border-collapse: collapse;
+      width: 100%;
+      text-align: center;
+    }
 
     thead{
       background: #0075B1;
@@ -89,18 +94,17 @@ export const Table = styled.table`
     }
 
     tr{
-      font-size: 0.875rem;
-      letter-spacing: 0.01071em;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      border: 1px solid #7E7E7E;
+      border-bottom: 1px solid #7E7E7E;
       border-top: 0;
       height: 56px;
       color: rgba(0, 0, 0, 0.87);
       text-transform: uppercase;
-    
+      font-size: 14px;
+      
       td{
         width: 150px;
       }
@@ -118,20 +122,21 @@ export const Table = styled.table`
         align-items: center;
         font-size: 20px;
       }
-      tbody {
-        height: 230px;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        display: block;
-        border: 1px solid #e2e2e280;
-      }
-        
+    }
+
+    tbody {
+      height: 350px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      display: block;
+      border: 1px solid #7E7E7E;
     }
 `;
 
 export const Container = styled.div`
   transition: 200ms ease-in-out;
   position: fixed;
+  z-index: 9999;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -144,7 +149,7 @@ export const PopUp = styled.div`
   height: 570px;
   
   padding: 10px;
-  box-shadow: 5px 10px 35px #7e7e7e;  
+  box-shadow: 0px 0px 100px 500px #7f7f7f60;
 
   button{
     float: right;
@@ -159,16 +164,6 @@ export const PopUp = styled.div`
       color: black;
     }
   }
-`;
-
-export const Overlay = styled.div`
- /* position: fixed;
-  opacity: 0;
-  transition: 200ms ease-in-out;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  pointer-events: none;*/
 `;
 
 export const PopUpInfo = styled.div`
