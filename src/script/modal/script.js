@@ -1,9 +1,9 @@
 export function openModal() {
   var popup = document.getElementById("popup");
-  popup.style.display = "block";
+  popup.style.visibility = "visible";
 }
 
 export function closeModal(){
   var popup = document.getElementById("popup");
-  popup.style.display = "none";
+  popup.style.visibility = "hidden";
 }
