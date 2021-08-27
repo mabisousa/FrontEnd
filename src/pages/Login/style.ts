@@ -11,7 +11,8 @@ export const ImgLogo = styled.img`
   width: 150px;
   background-color: white;
   margin-top: -50px;
-  margin-bottom: 100px;`;
+  margin-bottom: 60px;
+`;
 
 export const Inputs = styled.div`
   width: 450px;
@@ -63,7 +64,7 @@ export const FormInput = styled.input`
     font-size: .75rem;
     font-weight: 500;
     z-index: 10;
-}
+  }
 `;
 
 export const FormLabel = styled.label`
@@ -90,9 +91,22 @@ export const FormButton = styled.input`
   transition: .3s;
   margin: auto;
 
-    &:hover {
-      box-shadow: 0 10px 36px rgba(0,0,0,.15);
-    }
+  &:hover {
+    box-shadow: 0 10px 36px rgba(0,0,0,.15);
+  }  
+`;
 
-  
+export const Button = styled.div`
+width: 100%;
+height: 40px;
+  button{
+    background: transparent;
+    border: none;
+    color: #448DCA;
+    font-size: 12px;
+    text-decoration: underline;
+    
+    float: left ;
+    /*margin-right: 235px;*/
+  }
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Filters, Title, Form, Table, Overlay } from './style';
+import { Filters, Title, Form, Consultores } from './style';
 
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
@@ -38,16 +38,17 @@ const Login: React.FC = () => {
 
         <Menu/>
         
-        <Table>
-          <thead>
-            <tr>
-              <td>CADASTRO</td>
-              <td>NOME</td>
-              <td>STATUS</td>
-              <td>PROJETOS</td>
-              <td>DETALHES</td>
-            </tr>
-          </thead>
+        <Consultores>
+        <table>
+        <thead>
+          <tr>
+            <td>CADASTRO</td>
+            <td>NOME</td>
+            <td>STATUS</td>
+            <td>PROJETOS</td>
+            <td>DETALHES</td>
+          </tr>
+        </thead>
           <tbody>
           <tr>
             <td>67270</td>
@@ -91,10 +92,39 @@ const Login: React.FC = () => {
             <td>2</td>
             <button onClick={openModal} id="button"><td> + </td></button>
           </tr>
+          <tr>            
+            <td>67275</td>
+            <td>MILENE APARECIDA LIMA</td>
+            <td>ATIVO</td> 
+            <td>2</td>
+            <button onClick={openModal} id="button"><td> + </td></button>
+          </tr>
+          <tr>            
+            <td>67275</td>
+            <td>MILENE APARECIDA LIMA</td>
+            <td>ATIVO</td> 
+            <td>2</td>
+            <button onClick={openModal} id="button"><td> + </td></button>
+          </tr>
+          <tr>            
+            <td>67275</td>
+            <td>MILENE APARECIDA LIMA</td>
+            <td>ATIVO</td> 
+            <td>2</td>
+            <button onClick={openModal} id="button"><td> + </td></button>
+          </tr>
+          <tr>            
+            <td>67275</td>
+            <td>MILENE APARECIDA LIMA</td>
+            <td>ATIVO</td> 
+            <td>2</td>
+            <button onClick={openModal} id="button"><td> + </td></button>
+          </tr>
           </tbody>
-        </Table>
+        </table>
+        </Consultores>
       </main>
-      <Container id="container">
+    <Container id="popup">
         <PopUp>
           <button onClick={closeModal}><BsX/></button>
           <PopUpInfo>
@@ -185,7 +215,6 @@ const Login: React.FC = () => {
           </Content>
         <Grid/>
         </PopUp>
-        <Overlay id="overlay"/>
       </Container>
     </>
 )};

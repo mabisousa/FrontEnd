@@ -2,11 +2,17 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     flex-wrap: wrap;
     width:100%;
     height:85vh;
     padding: 1% 8% 1% 8%;
+
+    h1 {
+        font-size:16px;
+        font-weight:500;
+        margin:10px 0;
+    }
 `;
 
 export const Infos = styled.div`
@@ -32,11 +38,6 @@ export const Infos = styled.div`
                 margin-left:2%;
             }
         }
-        h1 {
-            font-size:16px;
-            font-weight:500;
-            margin:10px 0;
-        }
     }  
 `;
 export const Count = styled.div`
@@ -45,12 +46,9 @@ export const Count = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    position: relative;
-    h1 {
-        font-size: 18px;
-    }
+    margin-left: -70px;
+
     div {
-        margin: 5% 0 0 0;
 
         .hold {
             display: flex;
@@ -98,8 +96,9 @@ export const Count = styled.div`
     }
     button {
         border: 0;
-        width: 100%;
+        width: 80%;
         height: 50px;
+        font-size: 14px;
         color: #fff;
         background: #28B9DA;
     }
@@ -134,40 +133,52 @@ export const Count = styled.div`
         }
     }
 `;
+
 export const Apontamentos = styled.div`
+    width: 22vw;
+    height: 300px;
 
-    max-height: 350px;
+    table{
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 14px;       
+        
+        button{
+            background: transparent;
+            border: 0;
+            font-size: 20px;
+        }
+        
+        thead tr{
+            background: #0075B1;
+            color: #fff;
+        }
+                
+        tbody {
+            height: 300px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            display: block;
+            border: 1px solid #CBCBCB;
+        }
 
-    .MuiDataGrid-root {
-        border: 1px solid #e2e2e2;
-        border-radius:0px;
-    }
+        tr{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            border-bottom: 1px solid #B5B5B5;
+            height: 56px;
+        }
 
-    .MuiButtonBase-root  {
-        color: #e2e2e2;
-        display: block;
-    }
-    .MuiDataGrid-footerContainer{
-        display: none;
-    }
-    .MuiDataGrid-menuIcon {
-        display: none;
-    }
-    .MuiDataGrid-sortIcon {
-        display: none;
-    }
-    .MuiDataGrid-columnHeaderWrapper{
-        background: #0075B1;
-        color: #fff;
-    }
-    .MuiDataGrid-columnSeparator{
-        display: none;
-    }
-    .MuiDataGrid-cell{
-        border-bottom: 1px solid #7E7E7E;
-    }
-    .MuiSvgIcon-fontSizeSmall {
-        display: none;
+        td{
+            display: flex;
+            justify-content: space-evenly;
+            width: 60px;
+        }
+        
+        td:nth-child(1){
+            width: 40px;
+        }
     }
 `;
 
@@ -244,7 +255,7 @@ export const ProgressBar = styled.div`
         .active {
             background: #448DCA;
             transition: 1s;
-
+            
             &::before {
                 z-index: -2;
                 content: ' ';
@@ -254,8 +265,73 @@ export const ProgressBar = styled.div`
                 height: 5px;
                 background: #448DCA;
                 transition: 1s;
-
             }
         }
     }
+`;
+
+export const Consultores = styled.div`
+    position: fixed;
+    z-index: 999999999999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    box-shadow: 0px 0px 100px 500px #7f7f7f60;
+    display: none;
+    height: 350px;
+
+    table{
+      border-collapse: collapse;
+      width: 100%;
+      text-align: center;
+    }
+
+    thead tr{
+        text-transform: uppercase;
+      font-size: 14px;
+      background: #0075B1;
+      color: #fff;
+    }
+
+    tr{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-bottom: 1px solid #7E7E7E;
+      border-top: 0;
+      height: 56px;
+      color: rgba(0, 0, 0, 0.87);
+      text-transform: uppercase;
+      font-size: 14px;
+      background: #fff;
+      
+      td{
+        width: 150px;
+      }
+      
+      td:nth-child(2){
+        width: 450px;
+        text-align: start;
+      }
+
+      button{
+        background: #fff;
+        border: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+      }
+    }
+
+    tbody {
+      height: 350px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      display: block;
+      border: 1px solid #7E7E7E;
+    }
+    
 `;

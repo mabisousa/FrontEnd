@@ -1,8 +1,8 @@
 import React, { useCallback, useRef } from "react";
-import { GridColDef, GridRowsProp, DataGrid} from '@material-ui/data-grid'
-import { Infos, Container, Count, Apontamentos, ProgressBar, Filters, Title } from "./style"
+import { Infos, Container, Count, Apontamentos, ProgressBar, Filters, Title, Consultores, } from "./style"
 import { FiCheck } from 'react-icons/fi' 
 import { VscChromeClose } from 'react-icons/vsc'
+import { GoChevronDown } from 'react-icons/go'
 import FinishButton from "../../components/FinishButton";
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
@@ -10,29 +10,13 @@ import Menu from "../../components/Menu";
 import Input from "../../components/Input"
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web"
+import { openModal } from "../../script/modal/script.js"
 
 const Aprovacao: React.FC = () => {
-    
     const formRef = useRef<FormHandles>(null);
     
     const handleSubmit = useCallback(async () => {
     },[]);
-    const rowsap: GridRowsProp = [
-        { id: 1, col1: '08/07', col2: '8H', col3: 'icon'},
-        { id: 2, col1: '08/07', col2: '8H', col3: 'icon'},
-        { id: 3, col1: '08/07', col2: '8H', col3: 'icon'},
-        { id: 4, col1: '08/07', col2: '8H', col3: 'icon'},
-        { id: 5, col1: '08/07', col2: '8H', col3: 'icon'},
-        { id: 6, col1: '08/07', col2: '8H', col3: 'icon'},
-        { id: 7, col1: '08/07', col2: '8H', col3: 'icon'},
-        { id: 8, col1: '08/07', col2: '8H', col3: 'icon'},
-      ];
-      
-      const columnsap: GridColDef[] = [
-        { field: 'col1', headerName: "DATA", width: 100,type: "date", align:'center', headerAlign: 'center'},
-        { field: 'col2', headerName: 'HORA', width: 100, type: "hour", align:'center', headerAlign: 'center'},
-        { field: 'col3', headerName: 'DESCRIÇÃO',headerAlign: 'center', align: 'center', width: 100 },
-      ];
       
     return (
         <>
@@ -82,6 +66,7 @@ const Aprovacao: React.FC = () => {
                             <p> REPROVADOS</p>
                         </div>
                     </div>
+                    <button onClick={openModal}>VISUALIZAR CONSULTORES</button>
                     <button>VISUALIZAR CONSULTORES</button>
                     <div id="description">
                         <h1>Descrição</h1>
@@ -95,8 +80,79 @@ const Aprovacao: React.FC = () => {
                         </p>
                     </div>
                 </Count>
-                <Apontamentos style={{ margin: '0',height: '350px', width: '27vw'}}>
-                    <DataGrid checkboxSelection={ true } hideFooter={ true } rows={rowsap} columns={columnsap} />
+                <Apontamentos>
+                    <table>
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td>DATA</td>
+                            <td>HORA</td>
+                            <td>INFO</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>11/08</td>
+                            <td>4h</td> 
+                            <td><button><GoChevronDown/></button></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>11/08</td>
+                            <td>4h</td> 
+                            <td><button><GoChevronDown/></button></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>11/08</td>
+                            <td>4h</td> 
+                            <td><button><GoChevronDown/></button></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>11/08</td>
+                            <td>4h</td> 
+                            <td><button><GoChevronDown/></button></td>
+                        </tr> 
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>11/08</td>
+                            <td>4h</td> 
+                            <td><button><GoChevronDown/></button></td>
+                        </tr>
+                        <tr>            
+                            <td><input type="checkbox" /></td>
+                            <td>11/08</td>
+                            <td>4h</td> 
+                            <td><button><GoChevronDown/></button></td>
+                        </tr>
+                        <tr>            
+                            <td><input type="checkbox" /></td>
+                            <td>11/08</td>
+                            <td>4h</td> 
+                            <td><button><GoChevronDown/></button></td>
+                        </tr>
+                        <tr>            
+                            <td><input type="checkbox" /></td>
+                            <td>11/08</td>
+                            <td>4h</td> 
+                            <td><button><GoChevronDown/></button></td>
+                        </tr>
+                        <tr>            
+                            <td><input type="checkbox" /></td>
+                            <td>11/08</td>
+                            <td>4h</td> 
+                            <td><button><GoChevronDown/></button></td>
+                        </tr>
+                        <tr>            
+                            <td><input type="checkbox" /></td>
+                            <td>11/08</td>
+                            <td>4h</td> 
+                            <td><button><GoChevronDown/></button></td>
+                        </tr>
+                    </tbody>
+                    </table>
                 </Apontamentos>
                 <ProgressBar>
                     <div className="headers">
@@ -122,6 +178,70 @@ const Aprovacao: React.FC = () => {
                 </ProgressBar>
                 <FinishButton>FINALIZAR</FinishButton>
             </Container>
+
+            <Consultores id="popup">
+                <table>
+                <thead>
+                <tr>
+                    <td>CADASTRO</td>
+                    <td>NOME</td>
+                    <td>STATUS</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>67270</td>
+                    <td>ISAC FREIRE BEZERRA</td>
+                    <td>ATIVO</td> 
+                </tr>
+                <tr>
+                    <td>67271</td>
+                    <td>JEAN HENRIQUE REIGUEL</td>
+                    <td>ATIVO</td> 
+                </tr>
+                <tr>
+                    <td>67272</td>
+                    <td>KETLHIN KATIA NARDELLI</td>
+                    <td>INATIVO</td> 
+                </tr>
+                <tr>
+                    <td>67273</td>
+                    <td>MARCOS ANTÔNIO BOLIGON VARGAS</td>
+                    <td>INATIVO</td> 
+                </tr> 
+                <tr>
+                    <td>67274</td>
+                    <td>MARIA GABRIELA DE SOUSA CRUZ</td>
+                    <td>ATIVO</td> 
+                </tr>
+                <tr>            
+                    <td>67275</td>
+                    <td>MILENE APARECIDA LIMA</td>
+                    <td>ATIVO</td> 
+                </tr>
+                <tr>            
+                    <td>67275</td>
+                    <td>MILENE APARECIDA LIMA</td>
+                    <td>ATIVO</td> 
+                </tr>
+                <tr>            
+                    <td>67275</td>
+                    <td>MILENE APARECIDA LIMA</td>
+                    <td>ATIVO</td> 
+                </tr>
+                <tr>            
+                    <td>67275</td>
+                    <td>MILENE APARECIDA LIMA</td>
+                    <td>ATIVO</td> 
+                </tr>
+                <tr>            
+                    <td>67275</td>
+                    <td>MILENE APARECIDA LIMA</td>
+                    <td>ATIVO</td> 
+                </tr>
+                </tbody>
+                </table>
+            </Consultores>
         </>
     )
 }
