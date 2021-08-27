@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Cards } from './styles';
-import Header from "../../components/Header";
+import { Cards, Card, BarStatus, TitleSection, TitleProject, HoldHours, Hours, Status, Date} from './styles';
 import Profile from "../../components/Profile";
+import Header from "../../components/Header";
 import Menu from "../../components/Menu";
-import Filters from "../../components/Filter";
+import Filters from '../../components/Filter';
 
 const Home: React.FC = () => {
   return (
@@ -12,162 +12,149 @@ const Home: React.FC = () => {
       <Header>
         <p>PROJETOS</p>
       </Header>
+
       <Profile/>
       <Menu/>
       <Filters/>
       <Cards> 
-        <div id="cards">
-          <a href="popUp" id="card">
-              <div id="barStatus"/> 
-                <p id="secao"> 0000 - SEÇÃO XYZ</p>
-                <p id="title">0000000 - RESTAURAÇÃO DE ALTERADORES </p>
-                <div id="hold_hours">
-                  <div id="hours">
-                    <p id="info">TOTAL:</p>
-                    <p id="info">1600h</p>
-                  </div>
-                  <div id="hours">
-                    <p id="info">APONTADAS:</p>
-                    <p id="info">800h</p>
-                  </div>
-                </div>
-                <div id="situation">
-                  <div id="status">
-                    <p>Situação: </p>
-                    <p>Em Andamento</p>
-                  </div>
-                </div>
-                <div id="dates">
-                  <p>De:20/20/2020</p>
-                  <p>Até:20/20/2020</p>
-                </div>
-          </a>
-          <a href="popUp" id="card">
-            <div id="barStatus"/> 
-              <p id="secao"> 0000 - SEÇÃO XYZ</p>
-              <p id="title">0000000 - RESTAURAÇÃO DE ALTERADORES </p>
-              <div id="hold_hours">
-                <div id="hours">
-                  <p id="info">TOTAL:</p>
-                  <p id="info">1600h</p>
-                </div>
-                <div id="hours">
-                  <p id="info">APONTADAS:</p>
-                  <p id="info">800h</p>
-                </div>
-              </div>
-              <div id="situation">
-                <div id="status">
-                  <p>Situação: </p>
-                  <p>Em Andamento</p>
-                </div>
-              </div>
-              <div id="dates">
-                <p>De:20/20/2020</p>
-                <p>Até:20/20/2020</p>
-              </div>
-          </a>
-          <a href="popUp" id="card">
-            <div id="barStatus"/> 
-              <p id="secao"> 0000 - SEÇÃO XYZ</p>
-              <p id="title">0000000 - RESTAURAÇÃO DE ALTERADORES </p>
-              <div id="hold_hours">
-                <div id="hours">
-                  <p id="info">TOTAL:</p>
-                  <p id="info">1600h</p>
-                </div>
-                <div id="hours">
-                  <p id="info">APONTADAS:</p>
-                  <p id="info">800h</p>
-                </div>
-              </div>
-              <div id="situation">
-                <div id="status">
-                  <p>Situação: </p>
-                  <p>Em Andamento</p>
-                </div>
-              </div>
-              <div id="dates">
-                <p>De:20/20/2020</p>
-                <p>Até:20/20/2020</p>
-              </div>    
-          </a>
-          <a href="popUp" id="card">
-            <div id="barStatus"/> 
-              <p id="secao"> 0000 - SEÇÃO XYZ</p>
-              <p id="title">0000000 - RESTAURAÇÃO DE ALTERADORES </p>
-              <div id="hold_hours">
-                <div id="hours">
-                  <p id="info">TOTAL:</p>
-                  <p id="info">1600h</p>
-                </div>
-                <div id="hours">
-                  <p id="info">APONTADAS:</p>
-                  <p id="info">800h</p>
-                </div>
-              </div>
-              <div id="situation">
-                <div id="status">
-                  <p>Situação: </p>
-                  <p>Em Andamento</p>
-                </div>
-              </div>
-              <div id="dates">
-                <p>De:20/20/2020</p>
-                <p>Até:20/20/2020</p>
-              </div>    
-          </a>
-          <a href="popUp" id="card">
-            <div id="barStatus"/>
-              <p id="secao"> 0000 - SEÇÃO XYZ</p>
-              <p id="title">0000000 - RESTAURAÇÃO DE ALTERADORES </p>
-              <div id="hold_hours">
-                <div id="hours">
-                  <p id="info">TOTAL:</p>
-                  <p id="info">1600h</p>
-                </div>
-                <div id="hours">
-                  <p id="info">APONTADAS:</p>
-                  <p id="info">800h</p>
-                </div>
-              </div>
-              <div id="situation">
-                <div id="status">
-                  <p>Situação: </p>
-                  <p>Em Andamento</p>
-                </div>
-              </div>
-              <div id="dates">
-                <p>De:20/20/2020</p>
-                <p>Até:20/20/2020</p>
-              </div>    
-          </a>
-          <a href="popUp" id="card">
-            <div id="barStatus"></div>
-            <p id="secao"> 0000 - SEÇÃO XYZ</p>
-            <p id="title">0000000 - RESTAURAÇÃO DE ALTERADORES </p>
-            <div id="hold_hours">
-              <div id="hours">
-                <p id="info">TOTAL:</p>
-                <p id="info">1600h</p>
-              </div>
-              <div id="hours">
-                <p id="info">APONTADAS:</p>
-                <p id="info">800h</p>
-              </div>
-            </div>
-            <div id="situation">
-              <div id="status">
-                <p>Situação: </p>
-                <p>Em Andamento</p>
-              </div>
-            </div>
-            <div id="dates">
+        <Card  href="projetos/popUp">
+          <BarStatus/>
+          <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
+          <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
+          <HoldHours>
+            <Hours>
+              <p>TOTAL:</p>
+              <p>1600h</p>
+            </Hours>
+              <Hours>
+                <p>APONTADAS:</p>
+                <p>800h</p>
+              </Hours>
+            </HoldHours>
+            <Status>
+              <p>Situação: </p>
+              <p>Em Andamento</p>
+            </Status>
+            <Date>
               <p>De:20/20/2020</p>
               <p>Até:20/20/2020</p>
-            </div>    
-          </a>
-        </div>
+            </Date>
+        </Card>
+        <Card  href="projetos/popUp">
+          <BarStatus/>
+          <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
+          <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
+          <HoldHours>
+            <Hours>
+              <p>TOTAL:</p>
+              <p>1600h</p>
+            </Hours>
+              <Hours>
+                <p>APONTADAS:</p>
+                <p>800h</p>
+              </Hours>
+            </HoldHours>
+            <Status>
+              <p>Situação: </p>
+              <p>Em Andamento</p>
+            </Status>
+            <Date>
+              <p>De:20/20/2020</p>
+              <p>Até:20/20/2020</p>
+            </Date>
+        </Card>
+        <Card  href="projetos/popUp">
+          <BarStatus/>
+          <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
+          <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
+          <HoldHours>
+            <Hours>
+              <p>TOTAL:</p>
+              <p>1600h</p>
+            </Hours>
+              <Hours>
+                <p>APONTADAS:</p>
+                <p>800h</p>
+              </Hours>
+            </HoldHours>
+            <Status>
+              <p>Situação: </p>
+              <p>Em Andamento</p>
+            </Status>
+            <Date>
+              <p>De:20/20/2020</p>
+              <p>Até:20/20/2020</p>
+            </Date>
+        </Card>
+        <Card  href="projetos/popUp">
+          <BarStatus/>
+          <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
+          <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
+          <HoldHours>
+            <Hours>
+              <p>TOTAL:</p>
+              <p>1600h</p>
+            </Hours>
+              <Hours>
+                <p>APONTADAS:</p>
+                <p>800h</p>
+              </Hours>
+            </HoldHours>
+            <Status>
+              <p>Situação: </p>
+              <p>Em Andamento</p>
+            </Status>
+            <Date>
+              <p>De:20/20/2020</p>
+              <p>Até:20/20/2020</p>
+            </Date>
+        </Card>
+        <Card  href="projetos/popUp">
+          <BarStatus/>
+          <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
+          <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
+          <HoldHours>
+            <Hours>
+              <p>TOTAL:</p>
+              <p>1600h</p>
+            </Hours>
+              <Hours>
+                <p>APONTADAS:</p>
+                <p>800h</p>
+              </Hours>
+            </HoldHours>
+            <Status>
+              <p>Situação: </p>
+              <p>Em Andamento</p>
+            </Status>
+            <Date>
+              <p>De:20/20/2020</p>
+              <p>Até:20/20/2020</p>
+            </Date>
+        </Card>
+        <Card  href="projetos/popUp">
+          <BarStatus/>
+          <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
+          <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
+          <HoldHours>
+            <Hours>
+              <p>TOTAL:</p>
+              <p>1600h</p>
+            </Hours>
+              <Hours>
+                <p>APONTADAS:</p>
+                <p>800h</p>
+              </Hours>
+            </HoldHours>
+            <Status>
+              <p>Situação: </p>
+              <p>Em Andamento</p>
+            </Status>
+            <Date>
+              <p>De:20/20/2020</p>
+              <p>Até:20/20/2020</p>
+            </Date>
+        </Card>
       </Cards>
     </>
   )
