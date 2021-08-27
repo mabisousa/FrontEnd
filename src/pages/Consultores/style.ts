@@ -79,7 +79,7 @@ export const Consultores = styled.div`
 
     table{
       border-collapse: collapse;
-      width: 100%;
+      width: 90%;
       text-align: center;
     }
 
@@ -141,22 +141,18 @@ export const Container = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
-  display: none;
-`;
-
-export const PopUp = styled.div`
+  visibility: hidden;
   width: 900px;
   height: 570px;
-  
   padding: 10px;
   box-shadow: 0px 0px 100px 500px #7f7f7f60;
 
   button{
     float: right;
     color: black;
-    margin-right: 10px;
+    margin-right: 20px;
     font-size: 30px;
-    margin-top: 50px;
+    margin-top: 20px;
     background-color: transparent;
     border: 0;
 
@@ -277,6 +273,7 @@ export const PopUpTable = styled.div`
   }
 
   td {
+    padding: 5px;
       width: 484px;
 }
 `;
