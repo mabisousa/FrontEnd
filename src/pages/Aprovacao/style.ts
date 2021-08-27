@@ -276,19 +276,31 @@ export const Consultores = styled.div`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background: #fff;
     box-shadow: 0px 0px 100px 500px #7f7f7f60;
-    display: none;
-    height: 350px;
+    visibility: hidden; 
+    height: 600px;
+    width: 75%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button{
+        color: black;
+        font-size: 30px;
+        background-color: transparent;
+        border: 0;
+        margin-bottom: 500px;
+    }
 
     table{
       border-collapse: collapse;
-      width: 100%;
+      width: 85%;
       text-align: center;
     }
 
     thead tr{
-        text-transform: uppercase;
+      text-transform: uppercase;
       font-size: 14px;
       background: #0075B1;
       color: #fff;

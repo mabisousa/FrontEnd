@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from "react";
-import { Infos, Container, Count, Apontamentos, ProgressBar, Filters, Title, Consultores, } from "./style"
+import { Infos, Container, Count, Apontamentos, ProgressBar, Filters, Title, Consultores } from "./style"
 import { FiCheck } from 'react-icons/fi' 
 import { VscChromeClose } from 'react-icons/vsc'
 import { GoChevronDown } from 'react-icons/go'
@@ -10,7 +10,9 @@ import Menu from "../../components/Menu";
 import Input from "../../components/Input"
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web"
-import { openModal } from "../../script/modal/script.js"
+import { openModal, closeModal } from "../../script/modal/script.js"
+import { BsX } from "react-icons/bs";
+import Grid from "../../components/Grid";
 
 const Aprovacao: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
@@ -67,7 +69,6 @@ const Aprovacao: React.FC = () => {
                         </div>
                     </div>
                     <button onClick={openModal}>VISUALIZAR CONSULTORES</button>
-                    <button>VISUALIZAR CONSULTORES</button>
                     <div id="description">
                         <h1>Descrição</h1>
                         <p>
@@ -178,8 +179,8 @@ const Aprovacao: React.FC = () => {
                 </ProgressBar>
                 <FinishButton>FINALIZAR</FinishButton>
             </Container>
-
             <Consultores id="popup">
+            
                 <table>
                 <thead>
                 <tr>
@@ -241,6 +242,7 @@ const Aprovacao: React.FC = () => {
                 </tr>
                 </tbody>
                 </table>
+                <button onClick={closeModal}><BsX/></button>
             </Consultores>
         </>
     )
