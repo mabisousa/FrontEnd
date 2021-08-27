@@ -9,12 +9,12 @@ const PopUpAprovacoes: React.FC = () => {
     return (
     <>
         <Container>
-            <div id="container">
-                <div id="header">
+            <div className="container">
+                <div>
                     <RiArrowLeftSLine />
                     <p>Insira sua Solicitação:</p>
                 </div>
-                <input id="text"></input>      
+                <textarea ></textarea>      
                 <button>Enviar</button>
             </div>
         </Container>

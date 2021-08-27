@@ -59,7 +59,7 @@ export const Container = styled.main`
     top: 50%;
     transform: translate(-50%, -50%);
 
-        #container{
+        .container{
             
             height: 260px;
             width: 415px;
@@ -67,8 +67,6 @@ export const Container = styled.main`
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-
-               
 
                 div{
 
@@ -88,7 +86,7 @@ export const Container = styled.main`
 
                 }
 
-                #text{
+                textarea{
                 font-size: 14px;
                 width: 100%;
                 height: 65%;
@@ -97,7 +95,8 @@ export const Container = styled.main`
                 overflow-y: auto;
                 border: 1px solid #7e7e7e;
                 background: #F5F5F5;
-
+                padding: 10px;
+                resize: none;
                 }
 
 
