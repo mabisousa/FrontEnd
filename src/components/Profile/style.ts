@@ -19,7 +19,7 @@ export const Container = styled.div`
     align-items: flex-end;
 
     transition: 1s;
-    z-index: 99999;
+    z-index: 999;
 
     div {
         width: 50px;

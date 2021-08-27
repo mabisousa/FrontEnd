@@ -9,7 +9,7 @@ export const Container = styled.div`
     height: 190px;
     width: 150px;
     margin: 0px;
-    z-index:99999;
+    z-index:999;
 
     a:nth-child(1) {
         top:0px;
