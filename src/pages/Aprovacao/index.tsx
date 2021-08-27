@@ -67,6 +67,7 @@ const Aprovacao: React.FC = () => {
                         </div>
                     </div>
                     <button onClick={openModal}>VISUALIZAR CONSULTORES</button>
+                    <button>VISUALIZAR CONSULTORES</button>
                     <div id="description">
                         <h1>Descrição</h1>
                         <p>
