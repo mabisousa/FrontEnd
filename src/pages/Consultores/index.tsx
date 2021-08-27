@@ -21,10 +21,8 @@ const Login: React.FC = () => {
       <Header>
         <p>CONSULTORES</p>
       </Header>
-
       <Profile/>
       <Menu/>
-
       <main>
         <Filters>
           <div>
@@ -41,15 +39,15 @@ const Login: React.FC = () => {
         <Menu/>
         
         <Table>
-        <thead>
-          <tr>
-            <td>CADASTRO</td>
-            <td>NOME</td>
-            <td>STATUS</td>
-            <td>PROJETOS</td>
-            <td>DETALHES</td>
-          </tr>
-        </thead>
+          <thead>
+            <tr>
+              <td>CADASTRO</td>
+              <td>NOME</td>
+              <td>STATUS</td>
+              <td>PROJETOS</td>
+              <td>DETALHES</td>
+            </tr>
+          </thead>
           <tbody>
           <tr>
             <td>67270</td>
@@ -96,9 +94,9 @@ const Login: React.FC = () => {
           </tbody>
         </Table>
       </main>
-    <Container id="container">
+      <Container id="container">
         <PopUp>
-        <button onClick={closeModal}><BsX/></button>
+          <button onClick={closeModal}><BsX/></button>
           <PopUpInfo>
             <header>
               <HiUserCircle/>
@@ -107,7 +105,7 @@ const Login: React.FC = () => {
                   <p>Desenvolvedor WEB</p>
                   <p>E-mail: isac_bezerra@empresa.com</p>
               </div>
-              </header>
+            </header>
           </PopUpInfo>
           <Content>
             <Skills>
@@ -182,7 +180,7 @@ const Login: React.FC = () => {
                     <td>Restauração de alteradores</td> 
                   </tr>
                 </tbody>
-            </table>
+              </table>
             </PopUpTable>
           </Content>
         <Grid/>
