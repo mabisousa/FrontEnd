@@ -1,7 +1,7 @@
 import React from 'react';
 import { Cards, Card, BarStatus, TitleSection, TitleProject, HoldHours, Hours, Status, Date, Container,  
        SideA, SideB, SideC, TitlePopUp, Responsible, Objective, TitleHours, HoursAppointment, Graphic,
-       Table, TableConsultor, StatusPopUp} from './styles';
+       Table, TableConsultor, StatusPopUp, TitleSectionPopUp, TitleProjectPopUp, HoursPopUp} from './styles';
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
@@ -165,8 +165,8 @@ const Home: React.FC = () => {
 
       <Container id="popup">
         <SideA id="sideA">
-            <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
-            <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES</TitleProject>
+            <TitleSectionPopUp> 0000 - SEÇÃO XYZ</TitleSectionPopUp>
+            <TitleProjectPopUp>0000000 - RESTAURAÇÃO DE ALTERADORES</TitleProjectPopUp>
           <TitlePopUp>
             <p > INFORMAÇÕES GERAIS:</p>
           </TitlePopUp> 
@@ -189,7 +189,9 @@ const Home: React.FC = () => {
             rutrum tortor, semper fames scelerisque facilisis conubia scelerisque bia.nulla vel ultrices vestibulum
             rutrum tortor, semper fames scelerisque facilisis conubia scelerisque bia.</p>           
           </Objective>
-          <Grid/>
+          <div id="grid">
+            <Grid/>
+          </div>
         </SideA> 
         <SideB id="sideB">
           <button onClick={closeModal}><BsX id="x"/></button>
@@ -220,14 +222,14 @@ const Home: React.FC = () => {
                 }}
               />
             </Graphic>
-            <Hours>
+            <HoursPopUp>
               <p>TOTAL:
               <span>1600h</span> 
               </p> 
               <p>APONTADAS:
               <span>800h</span>
               </p>
-            </Hours>
+            </HoursPopUp>
           </HoursAppointment>
           <Table id="table">
             <table>

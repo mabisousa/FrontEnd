@@ -130,6 +130,11 @@ export const Container = styled.div`
  
 export const SideA = styled.div`
     width: 52%; 
+
+        #grid{
+            margin-top: -40px;
+            margin-left: 32px; 
+        }
 `;
  
 export const TitleSectionPopUp = styled.p`
