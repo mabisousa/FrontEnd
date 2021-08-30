@@ -28,7 +28,6 @@ export const Infos = styled.div`
         
         .inputs {
             display: flex;
-            justify-content: space-evenly;
 
             div:nth-child(1) {
                 width:30%;
@@ -182,22 +181,14 @@ export const Apontamentos = styled.div`
     }
 `;
 
-export const Filters = styled.div`
-    width: 95%;
-    height: 60px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin: 6rem 0rem 0rem 4rem;
-`;
-
 export const Title = styled.h1`
     font-weight:normal;
     font-size: 20px;
     text-decoration: underline #0075B1;
-    margin-left: 50px;
-    width: 300px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    margin: 6rem 0rem 0rem 7rem;
 `;
 
 export const ProgressBar = styled.div`
@@ -208,7 +199,6 @@ export const ProgressBar = styled.div`
     .headers {
         height: 50px;
         display: flex;
-        align-items: center;
         justify-content: space-between;
         text-align: center; 
         padding: 0px 11%;
@@ -224,7 +214,6 @@ export const ProgressBar = styled.div`
 
         position: relative;
         display:flex;
-        align-items: center;
         justify-content: space-evenly;
         margin-top: 2px;
         color: #fff;
@@ -310,7 +299,6 @@ export const Consultores = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center;
       border-bottom: 1px solid #7E7E7E;
       border-top: 0;
       height: 56px;
@@ -331,9 +319,6 @@ export const Consultores = styled.div`
       button{
         background: #fff;
         border: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         font-size: 20px;
       }
     }

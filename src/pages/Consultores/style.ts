@@ -5,46 +5,25 @@ export const Filters = styled.div`
     height: 60px;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
     margin: 6rem 0rem 0rem 4rem;
     
     div{
       width: 90%;
       height: 60px;
       display: flex;
-      flex-direction: row;
       align-items: center;
-      justify-content: space-between;
     }
     #filter{
       width: 90%;
       height: 60px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
       margin-top: 3rem;
       margin-bottom: 3rem;
-      p{
-        color: #7E7E7E;
-        font-size: 20px;
-        text-align: center;
-      }
-      div{
-        width: 150px;
-        height: 20px;
-        border: solid 1px  #7E7E7E;
-        color:#7E7E7E;
-        font-size: 14px;
-        text-align: center;
-        cursor: pointer;
-        vertical-align: middle;
-        display: table-cell;
-      }
-    }
-    img{
-      cursor: pointer;
+
+        p{
+          color: #7E7E7E;
+          font-size: 20px;
+        }
+      
     }
 `;
 
@@ -60,14 +39,12 @@ export const Form = styled.form`
     width: 280px;
     height: 60px;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
 
     label {
       color: #7E7E7E;
       font-size: 20px;
-      text-align: center;
     }  
 `;
 
@@ -80,7 +57,6 @@ export const Consultores = styled.div`
     table{
       border-collapse: collapse;
       width: 90%;
-      text-align: center;
     }
 
     thead{
@@ -117,9 +93,6 @@ export const Consultores = styled.div`
       button{
         background: #fff;
         border: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         font-size: 20px;
       }
     }
@@ -216,7 +189,6 @@ export const Skills = styled.div`
 
 export const HoldContent = styled.div`
   border: 1px solid #e2e2e280;
-  margin-top: 5%;
   height: 88%;
   overflow-y: scroll;
   overflow-x: hidden;

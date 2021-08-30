@@ -17,9 +17,11 @@ export const FormInput = styled.input<ContainerProps>`
   padding: 1rem;
   background: none;
   z-index: 10;
+  
   &:focus{
     border: 1.5px solid rgb(0, 87, 157);
   }
+
   #form__input&:focus + #form__label{
     top: -.5rem;
     left: .8rem;
@@ -27,7 +29,15 @@ export const FormInput = styled.input<ContainerProps>`
     font-size: .75rem;
     font-weight: 500;
     z-index: 10;
-}
+  }
+
+  #form__input&:not(:placeholder-shown)#form__input&:not(:focus) + #form__label{
+      top: -.5rem;
+      left: .8rem;
+      font-size: .75rem;
+      font-weight: 500;
+      z-index: 10;
+  }
 
   ${(props) => props.hasError && css`
     border-color: #c53030;

@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from "react";
-import { Infos, Container, Count, Apontamentos, ProgressBar, Filters, Title, Consultores } from "./style"
+import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores } from "./style"
 import { FiCheck } from 'react-icons/fi' 
 import { VscChromeClose } from 'react-icons/vsc'
 import { GoChevronDown } from 'react-icons/go'
@@ -27,9 +27,7 @@ const Aprovacao: React.FC = () => {
             <Header>
                 <p>APROVAÇÃO</p>
             </Header>
-            <Filters>
-                <Title>APROVAÇÃO</Title>
-            </Filters>
+            <Title>APROVAÇÃO</Title>
             <Container>
                 <Infos>
                     <Form ref={ formRef} onSubmit={ handleSubmit }>
