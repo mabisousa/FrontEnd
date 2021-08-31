@@ -7,7 +7,7 @@ import Consultores from '../pages/Consultores';
 import Projeto from '../pages/Home/index';
 import Projeto2 from '../pages/display';
 import Home from '../pages/Home/index';
-import PopUpAprovacoes from '../components/Request/index2';
+import PopUpAprovacoes from '../components/Request/index';
 
 const Routes: React.FC = () => (
   <Switch>
