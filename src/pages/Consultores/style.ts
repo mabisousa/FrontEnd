@@ -108,17 +108,23 @@ export const Consultores = styled.div`
 
 export const Container = styled.div`
   transition: 200ms ease-in-out;
-  position: fixed;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
   z-index: 9999;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
   visibility: hidden;
-  width: 900px;
-  height: 570px;
-  padding: 10px;
-  box-shadow: 0px 0px 100px 500px #7f7f7f60;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  
+  #hold{
+    background-color: #fff;
+    width: 900px;
+    height: 570px;
+    padding: 10px;
+  }
 
   button{
     float: right;
