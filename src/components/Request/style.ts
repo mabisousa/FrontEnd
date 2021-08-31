@@ -16,7 +16,7 @@ export const Main = styled.main<RequestProps>`
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 99999;
-
+    visibility: hidden;
     box-shadow: 0px 5px 27px 10px #e2e2e2;    
 
     button {

@@ -2,19 +2,25 @@ import React from 'react';
 import { useCallback } from 'react';
 import { useState } from 'react';
 import {RiArrowLeftSLine} from 'react-icons/ri';
-import { closeRequest } from "./script.js"
+import { closeRequest } from "../../pages/Aprovacao/script"
 import { Main } from './style';
 
 
 const Request: React.FC = () => {
 
     const [isConfirm, setConfirm] = useState(false);
+    const [content, newContent] = useState('');
 
     const backRequest = useCallback(() => {
         setConfirm(false);
     }, []);
     const handleRequest = useCallback(() => {
         setConfirm(true);
+    }, []);
+    const handleSubmit = useCallback(() => {
+        if(isConfirm) {
+            console.log(content)
+        }
     }, []);
 
     return (
@@ -26,8 +32,12 @@ const Request: React.FC = () => {
                         <RiArrowLeftSLine onClick={backRequest}/>
                         <p>Insira sua Solicitação:</p>
                     </div>
-                    <textarea ></textarea>      
-                    <button>Enviar</button>
+                    <textarea id="text"
+                        value={content}
+                        onChange={e => newContent(e.target.value)}
+                    >
+                    </textarea>      
+                    <button onClick={handleSubmit}>Enviar</button>
                 </>
                 :
                 <>
