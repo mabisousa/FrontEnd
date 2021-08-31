@@ -181,7 +181,7 @@ const Aprovacao: React.FC = () => {
                 <FinishButton onClick={handleActive}>FINALIZAR</FinishButton>
             </Container>
             <Consultores id="popup">
-            
+            <div id="hold">
                 <table>
                 <thead>
                 <tr>
@@ -244,6 +244,7 @@ const Aprovacao: React.FC = () => {
                 </tbody>
                 </table>
                 <button onClick={closeModal}><BsX/></button>
+            </div>
             </Consultores>
         </>
     )
