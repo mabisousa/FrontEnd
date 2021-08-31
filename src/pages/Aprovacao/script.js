@@ -1,18 +1,40 @@
-export function checkbox() {
+export function checkbox(isSelected) {
 
   const hold = document.getElementById("count");
   const button = document.getElementById("visualizar");
   const buttons = document.getElementById("buttons");
   
-  hold.style.width = "26vw";
-  button.style.width = "92%";
-  buttons.style.visibility = "visible";
+  if(!isSelected) { 
+    hold.style.width = "26vw";
+    button.style.width = "92%";
+    buttons.style.visibility = "visible";
+  } else {
+    hold.style.width = "22vw";
+    button.style.width = "92%";
+    buttons.style.visibility = "hidden";
+  }
+}
+export function closeRequest() {
+  const request = document.getElementById("request");
+  request.style.visibility = "hidden";
+}
+export function openRequest(choice) {
+
+  const request = document.getElementById("request");
+  request.style.visibility = "visible"; 
 }
 
-export function confirmar(choice) {
-  if(choice = "reprovar") {
+export function openDescription(isOpened) {
+  const description = document.getElementById("descricao");
+  console.log(!!isOpened);
 
-  } else if(choice = "aprovar") {
+  if(!!isOpened) {
+    description.style.width = "0px";
+    description.style.visibility = "hidden";
+    description.style.transitionDuration = "0"
+  } else {
+    description.style.visibility = "visible";
+    description.style.width = "330px";
 
-  }
+  } 
 }

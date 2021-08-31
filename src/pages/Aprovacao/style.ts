@@ -140,6 +140,7 @@ export const Count = styled.div`
 export const Apontamentos = styled.div`
     width: 22vw;
     height: 300px;
+    position: relative;
 
     table{
         border-collapse: collapse;
@@ -235,6 +236,7 @@ export const Step = styled.div<StepActive>`
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 1.5s;
 
     &::before {
         z-index: -2;
@@ -379,4 +381,66 @@ export const Button = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+`;
+
+interface Description {
+    Opened: boolean;
+}
+export const Description = styled.div<Description>`
+    width:0;
+    right: 100%;
+    height: 270px;
+    background: #fff;
+    position: absolute;
+
+    ${(props) => !props.Opened && 
+    css`
+    
+    header p, span{
+        display: none;
+    }
+    div {
+        display: none;
+    }
+    
+    `}
+    background: #fff;
+    border-left: 1px solid #9A9A9A;
+    border-top: 1px solid #9A9A9A;
+    border-bottom: 1px solid #9A9A9A;
+    visibility: hidden;
+    transition: 1.5s;
+
+    
+    header {
+        width: 100%;
+        height: 55px;
+        border-bottom: 1px solid #9A9A9A;
+        padding:15px 0px 15px 15px;
+        align-items: center;
+        font-size: 16px;
+        display: flex;
+        justify-content: space-between;
+
+        p {
+            transition: 0.5s;
+            transition-delay: 1.5s;
+        }
+        span {
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-right: 20px solid #0075B1;
+        }
+    }
+
+    div {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+
+        p {
+            transition: 0.5s;
+            transition-delay: 1.5s;
+        }
+    }
 `;

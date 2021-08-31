@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from "react";
-import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores, Buttons, Button, Step } from "./style"
+import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores, Buttons, Button, Step, Description } from "./style"
 import { FiCheck } from 'react-icons/fi' 
 import { VscChromeClose } from 'react-icons/vsc'
 import { GoChevronDown } from 'react-icons/go'
@@ -13,25 +13,48 @@ import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web"
 import { openModal, closeModal } from "../../script/modal/script.js"
 import { BsX } from "react-icons/bs";
-import { checkbox, confirmar } from "./script";
+import { checkbox, openDescription, openRequest } from "./script";
 import { useState } from "react";
 
 const Aprovacao: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
     
+        const [isConfirmed, setConfirm] = useState(false);
+        const [isOpened, setOpen] = useState(false);
+        const [isSelected, setSelected] = useState(false);
+
     const handleSubmit = useCallback(async () => {
     },[]);
-    
+    const handleSelected = useCallback(async () => {
+        console.log(isSelected)
+        if(!!isSelected === false) {
+            setSelected(true);    
+            } else {
+                setSelected(false);    
+            }
+            checkbox(isSelected);
+    },[isSelected, setSelected]);
+
     const handleActive = useCallback(() => {
         setConfirm(true);
-    }, []);
-    const [isConfirmed, setConfirm] = useState(false);
+    }, [isConfirmed, setConfirm]);
+    const handleOpen = useCallback(() => {
+        if(!!isOpened === false) {
+        setOpen(true);    
+        } else {
+            setOpen(false);    
+        }
+
+        openDescription(!!isOpened);
+
+    }, [isOpened, setOpen]);
 
     return (
         <>
             <Profile/>
             <Menu />
             <Request/>
+            
             <Header>
                 <p>APROVAÇÃO</p>
             </Header>
@@ -77,12 +100,24 @@ const Aprovacao: React.FC = () => {
                     
                     <button id="visualizar" onClick={openModal}>VISUALIZAR CONSULTORES</button>
                     <Buttons id="buttons">
-                        <Button onClick={() => {confirmar("reprovar")}}>REPROVAR</Button>
-                        <Button onClick={() => {confirmar("aprovar")}}>APROVAR</Button>
+                        <Button onClick={() => {openRequest("reprovar")}}>REPROVAR</Button>
+                        <Button onClick={() => {openRequest("aprovar")}}>APROVAR</Button>
                     </Buttons>
                 </Count>
-                
                 <Apontamentos>
+                <Description Opened={!!isOpened} id="descricao">
+                    <header><p>Descrição</p><span/></header>
+                    <div>
+                        <p>
+                            *******************************
+                            *******************************
+                            *******************************
+                            *******************************
+                            *******************************
+                            *******************************
+                        </p>
+                    </div>
+                </Description>
                     <table>
                     <thead>
                         <tr>
@@ -94,64 +129,64 @@ const Aprovacao: React.FC = () => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input type="checkbox" onClick={checkbox}/></td>
+                            <td><input type="checkbox" id="carlos" onClick={handleSelected}/></td>
                             <td>11/08</td>
                             <td>4h</td> 
-                            <td><button><GoChevronDown/></button></td>
+                            <td><button onClick={handleOpen}><GoChevronDown/></button></td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" /></td>
                             <td>11/08</td>
                             <td>4h</td> 
-                            <td><button><GoChevronDown/></button></td>
+                            <td><button onClick={() => {openDescription(2)}}><GoChevronDown/></button></td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" /></td>
                             <td>11/08</td>
                             <td>4h</td> 
-                            <td><button><GoChevronDown/></button></td>
+                            <td><button onClick={() => {openDescription(3)}}><GoChevronDown/></button></td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" /></td>
                             <td>11/08</td>
                             <td>4h</td> 
-                            <td><button><GoChevronDown/></button></td>
+                            <td><button onClick={() => {openDescription(4)}}><GoChevronDown/></button></td>
                         </tr> 
                         <tr>
                             <td><input type="checkbox" /></td>
                             <td>11/08</td>
                             <td>4h</td> 
-                            <td><button><GoChevronDown/></button></td>
+                            <td><button onClick={() => {openDescription(5)}}><GoChevronDown/></button></td>
                         </tr>
                         <tr>            
                             <td><input type="checkbox" /></td>
                             <td>11/08</td>
                             <td>4h</td> 
-                            <td><button><GoChevronDown/></button></td>
+                            <td><button onClick={() => {openDescription(6)}}><GoChevronDown/></button></td>
                         </tr>
                         <tr>            
                             <td><input type="checkbox" /></td>
                             <td>11/08</td>
                             <td>4h</td> 
-                            <td><button><GoChevronDown/></button></td>
+                            <td><button onClick={() => {openDescription(7)}}><GoChevronDown/></button></td>
                         </tr>
                         <tr>            
                             <td><input type="checkbox" /></td>
                             <td>11/08</td>
                             <td>4h</td> 
-                            <td><button><GoChevronDown/></button></td>
+                            <td><button onClick={() => {openDescription(8)}}><GoChevronDown/></button></td>
                         </tr>
                         <tr>            
                             <td><input type="checkbox" /></td>
                             <td>11/08</td>
                             <td>4h</td> 
-                            <td><button><GoChevronDown/></button></td>
+                            <td><button onClick={() => {openDescription(9)}}><GoChevronDown/></button></td>
                         </tr>
                         <tr>            
                             <td><input type="checkbox" /></td>
                             <td>11/08</td>
                             <td>4h</td> 
-                            <td><button><GoChevronDown/></button></td>
+                            <td><button onClick={() => {openDescription(10)}}><GoChevronDown/></button></td>
                         </tr>
                     </tbody>
                     </table>
@@ -173,7 +208,7 @@ const Aprovacao: React.FC = () => {
                         <Step isActive={isConfirmed} >
                             { !!isConfirmed ? <FiCheck/> : <VscChromeClose/> }
                         </Step>
-                        <Step isActive={isConfirmed}>
+                        <Step isActive={false}>
                            <VscChromeClose/>
                         </Step>
                     </div>
