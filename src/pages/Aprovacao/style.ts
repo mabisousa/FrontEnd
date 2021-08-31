@@ -42,6 +42,7 @@ export const Infos = styled.div`
 export const Count = styled.div`
     height: 40vh;
     width: 20vw;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -331,4 +332,24 @@ export const Consultores = styled.div`
       border: 1px solid #7E7E7E;
     }
     
+`;
+export const Buttons = styled.div`
+    width: 10vw;
+    height: 20vh;
+    position: absolute;
+    right: 0vw;
+    top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    visibility: hidden;
+`;
+export const Button = styled.button`
+    width: 100%;
+    height: 50px;
+    background-color: #28B9DA;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;

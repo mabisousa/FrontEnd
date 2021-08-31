@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from "react";
-import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores } from "./style"
+import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores, Buttons, Button } from "./style"
 import { FiCheck } from 'react-icons/fi' 
 import { VscChromeClose } from 'react-icons/vsc'
 import { GoChevronDown } from 'react-icons/go'
@@ -13,6 +13,7 @@ import { Form } from "@unform/web"
 import { openModal, closeModal } from "../../script/modal/script.js"
 import { BsX } from "react-icons/bs";
 import Grid from "../../components/Grid";
+import { checkbox } from "./script";
 
 const Aprovacao: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
@@ -50,7 +51,7 @@ const Aprovacao: React.FC = () => {
                         </div>
                     </Form>
                 </Infos>
-                <Count>
+                <Count id="count">
                     <h1>APROVAÇÕES</h1>
                     <div>
                         <div className="hold">
@@ -66,19 +67,14 @@ const Aprovacao: React.FC = () => {
                             <p> REPROVADOS</p>
                         </div>
                     </div>
-                    <button onClick={openModal}>VISUALIZAR CONSULTORES</button>
-                    <div id="description">
-                        <h1>Descrição</h1>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                            ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in vo
-                            luptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cu
-                            pidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                    </div>
+                    
+                    <button id="visualizar" onClick={openModal}>VISUALIZAR CONSULTORES</button>
+                    <Buttons id="buttons">
+                        <Button>REPROVAR</Button>
+                        <Button>APROVAR</Button>
+                    </Buttons>
                 </Count>
+                
                 <Apontamentos>
                     <table>
                     <thead>
@@ -91,7 +87,7 @@ const Aprovacao: React.FC = () => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input type="checkbox" /></td>
+                            <td><input type="checkbox" onClick={checkbox}/></td>
                             <td>11/08</td>
                             <td>4h</td> 
                             <td><button><GoChevronDown/></button></td>
