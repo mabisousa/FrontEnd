@@ -92,17 +92,24 @@ export const Date = styled.div`
 `;
 
 export const Container = styled.div`
-    height: 560px;
-    width: 960px; 
-    display: flex;
-    box-shadow: 5px 10px 35px #7e7e7e;
-    background: #fff;
-    z-index: 99999;
-    position: fixed; 
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%); 
+    transition: 200ms ease-in-out;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
     visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0px;
+
+    #hold{
+        height: 560px;
+        width: 960px; 
+        background: #fff;
+        display: flex;
+    }
 `;
  
 export const SideA = styled.div`
@@ -170,8 +177,8 @@ export const SideB = styled.div`
  
     #x{
         position: absolute;
-        right: 35px;
-        top: 35px;
+        right: 230px;
+        top: 70px;
         font-size: 30px;
     }
     

@@ -18,6 +18,7 @@ const Login: React.FC = () => {
 
   return (
     <>
+    
       <Header>
         <p>CONSULTORES</p>
       </Header>
@@ -125,6 +126,7 @@ const Login: React.FC = () => {
         </Consultores>
       </main>
       <Container id="popup">
+        <div id="hold">
         <button onClick={closeModal}><BsX/></button>
         <PopUpInfo>
           <header>
@@ -213,6 +215,7 @@ const Login: React.FC = () => {
           </PopUpTable>
         </Content>
         <Grid/>
+        </div>
       </Container>
     </>
 )};

@@ -283,26 +283,36 @@ export const Step = styled.div<StepActive>`
 
 `;
 export const Consultores = styled.div`
-    position: fixed;
-    z-index: 999999999999;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0px 0px 100px 500px #7f7f7f60;
-    visibility: hidden; 
-    height: 600px;
-    width: 75%;
-    background: #fff;
+    transition: 200ms ease-in-out;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    top: 0px;
+    
+    #hold{
+        background-color: #fff;
+        height: 600px;
+        width: 75%;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
     button{
         color: black;
         font-size: 30px;
         background-color: transparent;
         border: 0;
-        margin-bottom: 500px;
+        position: absolute;
+        right: 200px;
+        bottom: 567px;
     }
 
     table{

@@ -164,6 +164,7 @@ const Home: React.FC = () => {
       </Cards>
 
       <Container id="popup">
+        <div id="hold">
         <SideA id="sideA">
             <TitleSectionPopUp> 0000 - SEÇÃO XYZ</TitleSectionPopUp>
             <TitleProjectPopUp>0000000 - RESTAURAÇÃO DE ALTERADORES</TitleProjectPopUp>
@@ -212,6 +213,7 @@ const Home: React.FC = () => {
                 ]}
                 options={{
                   pieHole: 0.7,
+                  tooltip: { trigger: 'none'},
                   legend: 'none',
                   backgroundColor: '',
                   pieSliceText: 'none',
@@ -344,6 +346,7 @@ const Home: React.FC = () => {
             </table>
           </TableConsultor>
         </SideC>
+        </div>
       </Container>
     </>
   )

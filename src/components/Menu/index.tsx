@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 const Menu: React.FC = () => (
     <Container>
-        <Link to="projetos">
+        <Link to="home">
             <div>
                 <img src={ folder }/>
                 <h1>Projetos</h1>

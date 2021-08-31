@@ -3,8 +3,12 @@ import styled from 'styled-components';
 export const Cards = styled.div`
     width: 90%;
     height: 90%;
-    margin-top: 3rem;
-    margin-left: 5.6rem;
+    margin-left: 89.6px;
+    margin-top: 48px;
+
+    @media (max-width: 425px){
+        width: 100%;
+    }
 `;
 
 export const Card = styled.a`
@@ -15,6 +19,10 @@ export const Card = styled.a`
     height: 150px;
     margin: 1rem;
     float: left;
+
+    @media (max-width: 425px){
+        width: 100%;
+    }
 `;
 
 export const BarStatus = styled.div`
@@ -31,6 +39,14 @@ export const TitleSection = styled.p`
     color: #0075B1;
     margin-top: 1rem;
     margin-left: 2rem;
+
+    @media (max-width: 1024px) and (min-width: 426px) {
+        font-size: 13px;
+    }
+    
+    @media (max-width: 425px){
+        font-size: 80%;
+    }
 `;
 
 export const TitleProject = styled.p`
@@ -38,6 +54,18 @@ export const TitleProject = styled.p`
     color: #000000;
     font-size: 18px;
     margin-left: 2rem;
+
+    @media (max-width: 1024px) and (min-width: 769px) {
+        font-size: 15px;
+    }
+    
+    @media (max-width: 768px) and (min-width: 426px) {
+        font-size: 12px;
+    }
+
+    @media (max-width: 425px){
+        font-size: 100%;
+    }
 `;
 
 export const HoldHours = styled.div`
@@ -46,6 +74,11 @@ export const HoldHours = styled.div`
     float: left;
     margin-top: 7px;
     margin-left: 2rem;
+
+    @media (max-width: 425px){
+        margin-left: 2rem;
+        width: 150px;
+    }
 `;
 
 export const Hours = styled.div`
@@ -55,7 +88,7 @@ export const Hours = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 2px;
-    font-size: 12px; 
+    font-size: 12px;   
 `;
 
 export const Status = styled.div`
@@ -75,6 +108,46 @@ export const Status = styled.div`
         font-weight: bold;
         font-size: 17px;
     }
+
+    @media (max-width: 1024px) and (min-width: 769px) {
+        margin-right: 5px;
+        p:nth-child(1){
+            font-weight: regular;
+            font-size: 13px;
+        }
+
+        p:nth-child(2){
+            font-weight: bold;
+            font-size: 15px;
+        }
+    }
+
+    @media (max-width: 768px) and (min-width: 426px) {
+        margin-right: 15px;
+        p:nth-child(1){
+            font-weight: regular;
+            font-size: 13px;
+        }
+
+        p:nth-child(2){
+            font-weight: bold;
+            font-size: 15px;
+        }
+    }
+
+    @media (max-width: 425px){
+        margin-right: 5px;
+        p:nth-child(1){
+            font-weight: regular;
+            font-size: 70%;
+        }
+
+        p:nth-child(2){
+            font-weight: bold;
+            font-size: 75%;
+        }
+    }
+   
 `;
 
 export const Date = styled.div`
@@ -90,20 +163,41 @@ export const Date = styled.div`
         float: left;
         font-size: 12px;
     }
+
+    @media (max-width: 768px) and (min-width: 426px) {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+        p {
+            margin-top: -75px;
+        }
+
+        p:nth-child(2) {
+            margin-top: -150px;
+        }
+    }
 `;
 
 export const Container = styled.div`
-    height: 560px;
-    width: 960px; 
-    display: flex;
-    box-shadow: 5px 10px 35px #7e7e7e;
-    background: #fff;
-    z-index: 99999;
-    position: fixed; 
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%); 
+    transition: 200ms ease-in-out;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
     visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0px;
+
+    #hold{
+        height: 560px;
+        width: 960px; 
+        background: #fff;
+        display: flex;
+    }
 `;
  
 export const SideA = styled.div`
@@ -171,8 +265,8 @@ export const SideB = styled.div`
  
     #x{
         position: absolute;
-        right: 35px;
-        top: 35px;
+        right: 230px;
+        top: 70px;
         font-size: 30px;
     }
     
