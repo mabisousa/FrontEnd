@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from "react";
-import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores, Buttons, Button } from "./style"
+import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores, Buttons, Button, Step } from "./style"
 import { FiCheck } from 'react-icons/fi' 
 import { VscChromeClose } from 'react-icons/vsc'
 import { GoChevronDown } from 'react-icons/go'
@@ -8,23 +8,30 @@ import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
 import Input from "../../components/Input"
+import Request from "../../components/Request";
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web"
 import { openModal, closeModal } from "../../script/modal/script.js"
 import { BsX } from "react-icons/bs";
-import Grid from "../../components/Grid";
-import { checkbox } from "./script";
+import { checkbox, confirmar } from "./script";
+import { useState } from "react";
 
 const Aprovacao: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
     
     const handleSubmit = useCallback(async () => {
     },[]);
-      
+    
+    const handleActive = useCallback(() => {
+        setConfirm(true);
+    }, []);
+    const [isConfirmed, setConfirm] = useState(false);
+
     return (
         <>
             <Profile/>
             <Menu />
+            <Request/>
             <Header>
                 <p>APROVAÇÃO</p>
             </Header>
@@ -70,8 +77,8 @@ const Aprovacao: React.FC = () => {
                     
                     <button id="visualizar" onClick={openModal}>VISUALIZAR CONSULTORES</button>
                     <Buttons id="buttons">
-                        <Button>REPROVAR</Button>
-                        <Button>APROVAR</Button>
+                        <Button onClick={() => {confirmar("reprovar")}}>REPROVAR</Button>
+                        <Button onClick={() => {confirmar("aprovar")}}>APROVAR</Button>
                     </Buttons>
                 </Count>
                 
@@ -157,21 +164,21 @@ const Aprovacao: React.FC = () => {
                         <p>Requisição de compra</p>
                     </div>
                     <div className="steps">
-                        <div id="1" className="step active">
+                        <Step isActive={true}>
                             <FiCheck/>
-                        </div>
-                        <div id="2" className="step active">
+                        </Step>
+                        <Step isActive={true}>
                             <FiCheck/>
-                        </div>
-                        <div id="3" className="step">
-                            <FiCheck/>
-                        </div>
-                        <div id="4" className="step">
-                            <VscChromeClose/>
-                        </div>
+                        </Step>
+                        <Step isActive={isConfirmed} >
+                            { !!isConfirmed ? <FiCheck/> : <VscChromeClose/> }
+                        </Step>
+                        <Step isActive={isConfirmed}>
+                           <VscChromeClose/>
+                        </Step>
                     </div>
                 </ProgressBar>
-                <FinishButton>FINALIZAR</FinishButton>
+                <FinishButton onClick={handleActive}>FINALIZAR</FinishButton>
             </Container>
             <Consultores id="popup">
             

@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import { IconBaseProps } from "react-icons";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
     display: flex;
@@ -46,7 +47,8 @@ export const Count = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin-left: -70px;
+    margin-left: -70px;   
+    transition: 1s;
 
     div {
 
@@ -101,6 +103,7 @@ export const Count = styled.div`
         font-size: 14px;
         color: #fff;
         background: #28B9DA;
+        transition: 1s;
     }
     #description {
         width: 115%;
@@ -217,49 +220,66 @@ export const ProgressBar = styled.div`
         display:flex;
         justify-content: space-evenly;
         margin-top: 2px;
-        color: #fff;
-
-        .step {
-            width: 60px;
-            height: 60px;
-            background: #8B8787;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            &::before {
-                z-index: -2;
-                content: ' ';
-                position: absolute;
-                top: 45%;
-                width:25%;
-                height: 5px;
-                background: #8B8787;
-            }
-            img {
-                height: 20px;
-                width: 20px;
-            }
-        }
-        .active {
-            background: #448DCA;
-            transition: 1s;
-            
-            &::before {
-                z-index: -2;
-                content: ' ';
-                position: absolute;
-                top: 45%;
-                width:25%;
-                height: 5px;
-                background: #448DCA;
-                transition: 1s;
-            }
-        }
+        color: #fff; 
     }
 `;
 
+interface StepActive {
+    isActive: boolean;
+}
+export const Step = styled.div<StepActive>`
+
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+        z-index: -2;
+        content: ' ';
+        position: absolute;
+        top: 45%;
+        width:25%;
+        height: 5px;
+        background: #8B8787;
+    }
+    img {
+        height: 20px;
+        width: 20px;
+    }
+    ${(props) => props.isActive ?
+    css`
+        background: #448DCA;
+        transition: 1s;
+
+        &::before {
+            z-index: -2;
+            content: ' ';
+            position: absolute;
+            top: 45%;
+            width:25%;
+            height: 5px;
+            background: #448DCA;
+            transition: 1s;
+        }
+    `:
+    css`
+        background: #8B8787;
+    
+        &::before {
+            z-index: -2;
+            content: ' ';
+            position: absolute;
+            top: 45%;
+            width:25%;
+            height: 5px;
+            background: #8B8787;
+        }
+    `}
+
+`;
 export const Consultores = styled.div`
     position: fixed;
     z-index: 999999999999;
@@ -343,11 +363,18 @@ export const Buttons = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     visibility: hidden;
+    transition-delay: 0.5s;
+
+    Button:nth-child(1) {
+        background-color: #DEDEDE;
+    }
+    Button:nth-child(2) {
+        background-color: #28B9DA;
+    }
 `;
 export const Button = styled.button`
     width: 100%;
     height: 50px;
-    background-color: #28B9DA;
     color: #fff;
     display: flex;
     align-items: center;
