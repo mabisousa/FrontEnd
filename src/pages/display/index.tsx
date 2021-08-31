@@ -212,6 +212,7 @@ const Home: React.FC = () => {
                 ]}
                 options={{
                   pieHole: 0.7,
+                  tooltip: { trigger: 'none'},
                   legend: 'none',
                   backgroundColor: '',
                   pieSliceText: 'none',
