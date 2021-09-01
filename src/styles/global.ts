@@ -8,13 +8,6 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html,
-  body,
-  #app{
-      height: 88%;
-      margin: 0;
-  }
-
   *,::before,::after{
     box-sizing: border-box;
   }
@@ -23,6 +16,9 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
   
+  h1, h2, h3, h4, h5, h6, p {
+    font: 16px Roboto, sans-serif;
+  }
   body, input, button {
     font: 16px Roboto, sans-serif;
   }
