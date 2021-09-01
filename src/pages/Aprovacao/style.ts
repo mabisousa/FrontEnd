@@ -17,7 +17,7 @@ export const Container = styled.div`
 `;
 
 export const Infos = styled.div`
-    height: 45vh;
+    height: 53vh;
     width: 30vw;
     display:flex;
     flex-direction: column;
@@ -57,7 +57,7 @@ export const Count = styled.div`
             flex-direction: row;
             align-items:center;
             margin:10px 0;
-
+            background: #fff;
             .numbers {
                 margin: 0 20px 0px 0px;
                 width: 40px;
@@ -375,7 +375,6 @@ export const Buttons = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     visibility: hidden;
-    transition-delay: 0.5s;
 
     Button:nth-child(1) {
         background-color: #DEDEDE;

@@ -8,7 +8,9 @@ export function checkbox(isSelected) {
     hold.style.width = "26vw";
     button.style.width = "92%";
     buttons.style.visibility = "visible";
+    buttons.style.transitionDelay = "1s";
   } else {
+    buttons.style.transitionDelay = "0s";
     hold.style.width = "22vw";
     button.style.width = "92%";
     buttons.style.visibility = "hidden";
