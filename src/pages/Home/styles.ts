@@ -180,8 +180,7 @@ export const Date = styled.div`
 `;
 
 export const Container = styled.div`
-    transition: 200ms ease-in-out;
-    position: absolute;
+    position: fixed;
     background-color: rgba(0, 0, 0, 0.7);
     width: 100%;
     height: 100%;
@@ -190,212 +189,167 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 0px;
+    top: 0;
+    
+    button {
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        font-size: 30px;
+        height: 30px;
+        width: 30px;
+        border: 0;
+        background: none;
+    }
 
     #hold{
+        position: relative;
         height: 560px;
         width: 960px; 
         background: #fff;
         display: flex;
+        flex-direction: column;
+        padding: 35px;
     }
-`;
- 
-export const SideA = styled.div`
-    width: 52%; 
-
-    #grid{
-        margin-top: -40px;
-        margin-left: 32px;
-    }
-`;
- 
-export const TitleSectionPopUp = styled.p`
-    width: 230px;
-    font-size: 18px;
-    color: #0075B1;    
-    padding: 32px 0 5px 52px; 
-`;
- 
-export const TitleProjectPopUp = styled.p`
-    width: 500px;
-    color: #000000;
-    font-size: 22px;
-    padding-left: 52px;
-    font-weight: bold;
-    height: 20px;
 `;
  
 export const TitlePopUp = styled.div`
-    width: 500px;
-    margin-left: 50px;
-    margin-top: 40px;
+    width: 80%;
+    height: 17%;
     font-weight: 500;
     color: #023A67;
-`;
- 
-export const Responsible = styled.div`
-    width: 565px;
-    padding-left: 50px;
-    margin: 25px 0 0 20px;
-    font-size: 11px;
-    margin-bottom: 10px;
-    font-weight: 500;
-`;
- 
-export const Objective = styled.div`
-    padding:75px 0 40px 50px;
- 
-    p:nth-child(1){
-        font-size: 14px;
-    }
 
-    p:nth-child(2){
-        font-size: 14px;
-        max-width: 600px;
-        max-height: 135px;
-        color: #000000;
-        margin-top: 18px;
+    h2 {
+        color: #0075B1;
+        font-size: 18px;
+    }
+    h1 {
+        color: #000;
+        font-size: 22px;
+        font-weight: bold;
+    }
+`;
+export const InfosPopup = styled.div`
+    width: 100%;
+    height: 73%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+`;
+export const DetailsPopup = styled.div`
+    height: 10%;
+    border: 1px solid black;
+    width: 100%;
+`;
+export const InfosGerais = styled.div`
+    width: 50%;
+    height: 40%;
+
+    h1 {
+        color: #023A67;
+    }
+    p {
+      font-size: 12px;
+      margin: 5px;
+    }
+    div:nth-child(2) {
+        padding: 20px;
+    }
+`;
+export const Objetivo = styled.div`
+    width: 50%;
+    height: 50%;
+
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+        margin-bottom: 17px;
+    }
+    p {
+        width: 90%;
+        height: 70%;
+        align-self: center;
         overflow-y: scroll;
     }
 `;
- 
-export const SideB = styled.div`
-    width: 48%;
-    margin: 105px 0 0 75px;
- 
-    #x{
-        position: absolute;
-        right: 230px;
-        top: 70px;
-        font-size: 30px;
-    }
-    
-`;
- 
-export const TitleHours = styled.div`
-    width: 450px;
-    margin-top: 10px;
-    font-weight: 500;
-    color: #023A67;    
-`;
- 
-export const HoursAppointment = styled.div`
-    line-height:100px;
-    height: 135px;
-    width: 455px;
-    margin-top: -10px;
-`;
- 
-export const Graphic = styled.div`
-    width:130px;
-    height:130px;
-    display: inline-block;
-    margin-left: -32px;
-`;
- 
-export const HoursPopUp = styled.div`
-    width:270px;
-    height: 150px;
-    font-size:12px;
-    float:right;
-    margin-top: 7px;
- 
-    p{
-        width: 125px;
-        display: flex;
-        justify-content: space-between;
-        height:50px;
-    }
+ export const Horas = styled.div`
+    width:50%;
+    height: 50%;
 
-    span {
-        font-size: 12px;
-        color: #7E7E7E;
-    }
-`;
- 
-export const Table = styled.div`
-    width: 68%;
-    height: 35%;
- 
-    table {
-        border-collapse: collapse;
-        width: 100%;
-        text-align: center;
-
-        thead {
-            background: #0075B1;
-            color: #fff;
-            height: 40px;
-            display: inline-flex;
-            width:100%;
-            font-size: 14px;
-            margin-bottom: 15px;
-
-            tr{
-                margin-top: 5px;
-                color: #fff;
-
-                td:nth-child(1){
-                    width: 500px;
-                }
-
-                td:nth-child(2){
-                    width: 200px;
-                }
-            }
-        }
-
-        tbody {
-            height: 65px;
-            overflow-y: scroll;
-            display: block;
-            border: 1px solid #e2e2e280;
-
-            tr {
-                font-size: 14px;
-                height: 40px;
-                margin:15px;
-                color: rgba(0, 0, 0, 0.87);
-                border: 1px solid #e2e2e280;  
-            }
-
-            td {
-                width: 570px;
-            }
-        }
-    }
-`;
- 
- 
-export const StatusPopUp = styled.div`
     display: flex;
     flex-direction: column;
- 
-    #btn{
-        height: 37px;
-        width: 68%;
-        margin-top: -5px;
-        background-color: #28B9DA;
-        font-size: 16px; 
-        color: #FFFFFF;
-        border: none;
+
+ `;
+ export const HorasApontadas = styled.div`
+    width: 80%;
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+    div:nth-child(2) {
+        height: 50%;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        p {
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+
+            span {
+                color: #7e7e7e;
+            }
+        }
     }
-    
-    span{
-        margin-top: 48px;
-        font-size: 22px;
-        margin-right: 15px;
-        font-weight: bold;
-        color: #EBB93A;
-        text-align: center;
+ `;
+export const Skills = styled.div`
+  width: 50%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+export const Table = styled.div`
+  width: 85%;
+  height: 65%;
+  
+  table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+
+      thead {
+          display: inline-flex;
+          background: #0075B1;
+          color: #fff;
+          width: 100%;
+          height: 40px;
+          font-size: 14px;
+          align-items: center;
+      }
+      tbody {
+          margin-top: 10px;
+        display: block;
+        height: 60px;
+        overflow-y: scroll;
+        border:1px solid #7e7e7e;
+
+        tr {
+            border-bottom:1px solid #7e7e7e;
+        }
     }
+    td {
+        width: 250px;
+        padding: 10px;
+    }
+  }
 `;
- 
- 
-export const SideC = styled.div`
-    display: none;
-`;
- 
+
 export const TableConsultor = styled.div`
     width:100%;
     height:100%;
