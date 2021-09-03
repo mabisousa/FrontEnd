@@ -179,6 +179,7 @@ export const Content = styled.div`
   display: flex;
   margin-top: 25px;
   margin-left: 15px;
+  margin-bottom: 60px;
   width: 100%;
   height: 260px;
   justify-content: space-between;
