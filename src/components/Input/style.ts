@@ -17,26 +17,26 @@ export const FormInput = styled.input<ContainerProps>`
   padding: 1rem;
   background: none;
   z-index: 10;
-  
+
   &:focus{
     border: 1.5px solid rgb(0, 87, 157);
   }
 
-  #form__input&:focus + #form__label{
-    top: -.5rem;
+  &:focus + #form__label{
+    top: -.4rem;
     left: .8rem;
     color: rgb(0, 87, 157);
-    font-size: .75rem;
+    font-size: 0.75rem;
     font-weight: 500;
     z-index: 10;
   }
 
-  #form__input&:not(:placeholder-shown)#form__input&:not(:focus) + #form__label{
-      top: -.5rem;
-      left: .8rem;
-      font-size: .75rem;
-      font-weight: 500;
-      z-index: 10;
+  &:not(:placeholder-shown) + #form__label{
+    top: -.4rem;
+    left: .8rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    z-index: 10;
   }
 
   ${(props) => props.hasError && css`
@@ -48,7 +48,6 @@ export const FormLabel = styled.label<ContainerProps>`
   position: absolute;
   left: 1rem;
   top: 1rem;
-  padding: 0 .25rem;
   background-color: #fff;
   color: #80868B;
   font-size: 1rem;

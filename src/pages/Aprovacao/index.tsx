@@ -65,20 +65,20 @@ const Aprovacao: React.FC = () => {
                     <Form ref={ formRef} onSubmit={ handleSubmit }>
                         <h1>INFORMAÇÕES DO CONSULTOR</h1>
                         <div className="inputs">
-                            <Input name="cadastro" type="text">Cadastro</Input>
-                            <Input name="nome" type="text">Nome</Input>
+                            <Input name="cadastro" type="text" placeholder=" ">Cadastro</Input>
+                            <Input name="nome" type="text" placeholder=" ">Nome</Input>
                         </div>
                         <div>
                             <h1>INFORMAÇÕES DA APROVAÇÃO</h1>
                             <div className="inputs">
-                                <Input name="data" type="text">00/00/00</Input>
-                                <Input name="responsavel" type="text">Responsável</Input>
+                                <Input name="data" type="text" placeholder=" ">00/00/00</Input>
+                                <Input name="responsavel" type="text" placeholder=" ">Responsável</Input>
                             </div>
                         </div>
                         <h1>VALORES APROVADOS</h1>
                         <div className="inputs">
-                            <Input name="valorhora" type="text">R$ 00,00</Input>
-                            <Input name="horas" type="text">00h</Input>
+                            <Input name="valorhora" type="text" placeholder=" ">R$ 00,00</Input>
+                            <Input name="horas" type="text" placeholder=" ">00h</Input>
                         </div>
                     </Form>
                 </Infos>
@@ -196,19 +196,19 @@ const Aprovacao: React.FC = () => {
                 <ProgressBar>
                     <div className="headers">
                         <p>Registro Efetuado</p>
-                        <p>Aprovação Gestor</p>
                         <p>Aprovação Fornecedor</p>
+                        <p>Aprovação Gestor</p>
                         <p>Requisição de compra</p>
                     </div>
                     <div className="steps">
                         <Step isActive={true}>
                             <FiCheck/>
                         </Step>
-                        <Step isActive={true}>
-                            <FiCheck/>
-                        </Step>
                         <Step isActive={isConfirmed} >
                             { !!isConfirmed ? <FiCheck/> : <VscChromeClose/> }
+                        </Step>
+                        <Step isActive={false}>
+                            <VscChromeClose/>
                         </Step>
                         <Step isActive={false}>
                            <VscChromeClose/>

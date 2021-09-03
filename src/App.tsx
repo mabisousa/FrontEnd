@@ -3,18 +3,17 @@ import { BrowserRouter } from 'react-router-dom';
 
 import GlobalStyle from './styles/global';
 import Routes from './routes';
-import RouteProvider from './hooks'
+import AuthProvider from './hooks';
 
 const App: React.FC = () => (
-  /*<> Fragment*/
   <>
     <BrowserRouter>
-      <RouteProvider>
+      <AuthProvider>
         <Routes />
-      </RouteProvider>
+      </AuthProvider>
+
+      <GlobalStyle/>
     </BrowserRouter>
-    
-    <GlobalStyle/>
   </>
 );
 

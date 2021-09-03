@@ -62,7 +62,7 @@ export const Count = styled.div`
                 margin: 0 20px 0px 0px;
                 width: 40px;
                 height: 40px;
-                border: 1px solid black;
+                border: 1px solid #8B8787;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -109,7 +109,7 @@ export const Count = styled.div`
         width: 115%;
         height: 100%;
         padding: 15px;
-        border: 1px solid #e2e2e2;  
+        border: 1px solid #8B8787;  
         background: #fff;
         position: absolute;
         display: none;
@@ -118,7 +118,7 @@ export const Count = styled.div`
             font-size: 16px;
             width: 100%;
             height: 30px;
-            border-bottom: 2px solid #28B9DA;
+            border-bottom: 2px solid #8B8787;
         }
         p {
             padding: 5px;
@@ -132,7 +132,7 @@ export const Count = styled.div`
             top: 7.5px;
             border-top: 15px solid transparent;
             border-bottom: 15px solid transparent;
-            border-right: 15px solid #28B9DA;
+            border-right: 15px solid #8B8787;
         }
     }
 `;
@@ -163,14 +163,14 @@ export const Apontamentos = styled.div`
             overflow-y: scroll;
             overflow-x: hidden;
             display: block;
-            border: 1px solid #CBCBCB;
+            border: 1px solid #8B8787;
         }
 
         tr{
             display: flex;
             justify-content: space-evenly;
             align-items: center;
-            border-bottom: 1px solid #B5B5B5;
+            border-bottom: 1px solid #8B8787;
             height: 56px;
         }
 
@@ -332,7 +332,7 @@ export const Consultores = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      border-bottom: 1px solid #7E7E7E;
+      border-bottom: 1px solid #8B8787;
       border-top: 0;
       height: 56px;
       color: rgba(0, 0, 0, 0.87);
@@ -361,7 +361,7 @@ export const Consultores = styled.div`
       overflow-y: scroll;
       overflow-x: hidden;
       display: block;
-      border: 1px solid #7E7E7E;
+      border: 1px solid #8B8787;
     }
     
 `;
@@ -377,7 +377,7 @@ export const Buttons = styled.div`
     visibility: hidden;
 
     Button:nth-child(1) {
-        background-color: #DEDEDE;
+        background-color: #8B8787;
     }
     Button:nth-child(2) {
         background-color: #28B9DA;
@@ -414,9 +414,9 @@ export const Description = styled.div<Description>`
     
     `}
     background: #fff;
-    border-left: 1px solid #9A9A9A;
-    border-top: 1px solid #9A9A9A;
-    border-bottom: 1px solid #9A9A9A;
+    border-left: 1px solid #8B8787;
+    border-top: 1px solid #8B8787;
+    border-bottom: 1px solid #8B8787;
     visibility: hidden;
     transition: 1.5s;
 
@@ -424,7 +424,7 @@ export const Description = styled.div<Description>`
     header {
         width: 100%;
         height: 55px;
-        border-bottom: 1px solid #9A9A9A;
+        border-bottom: 1px solid #8B8787;
         padding:15px 0px 15px 15px;
         align-items: center;
         font-size: 16px;
@@ -438,7 +438,7 @@ export const Description = styled.div<Description>`
         span {
             border-top: 20px solid transparent;
             border-bottom: 20px solid transparent;
-            border-right: 20px solid #0075B1;
+            border-right: 20px solid #8B8787;
         }
     }
 
