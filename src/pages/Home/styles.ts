@@ -267,9 +267,11 @@ export const InfosGerais = styled.div<ContainerProps>`
     ${(props) => props.Open ? 
         css`
         width: 35%;
+        transition: 1s;
 
         `: css`
         width: 50%;
+        transition: 0s;
         `}
 
     height: 40%;
@@ -290,8 +292,10 @@ export const Objetivo = styled.div<ContainerProps>`
     ${(props) => props.Open ? 
         css`
         width: 35%;
+        transition: 1s;
         `: css`
         width: 50%;
+        transition: 0s;
         `}
     height: 50%;
 
@@ -313,8 +317,10 @@ export const Objetivo = styled.div<ContainerProps>`
     ${(props) => props.Open ? 
         css`
         width: 40%;
+        transition: 1s;
         `: css`
         width: 50%;
+        transition: 0s;
         `}
     height: 50%;
 
@@ -352,8 +358,10 @@ export const Skills = styled.div<ContainerProps>`
   ${(props) => props.Open ? 
         css`
         width: 40%;
+        transition: 1s;
         `: css`
         width: 50%;
+        transition: 0s;
         `}
 
     height: 50%;
@@ -412,12 +420,14 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
         css`
         table {
         visibility: visible;
+        transition-delay: 1s;
         }
         width: 25%;
 
         `: css`
         table {
         visibility: hidden;
+        transition-delay: 0s;
         }
         width: 0%;
         `}
