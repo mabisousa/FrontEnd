@@ -3,8 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
     display: flex;
     flex-direction: row;
-    margin-left: 15px;
-    margin-top: 50px;
 
     .box{
         width: 50px;
