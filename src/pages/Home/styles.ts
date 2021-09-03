@@ -12,7 +12,11 @@ export const Cards = styled.div`
     }
 `;
 
-export const Card = styled.a`
+interface cardProps {
+    color: string,
+}
+
+export const Card = styled.a<cardProps>`
     background-color: #FFFFFF;
     cursor: pointer;
     width: 45%;
@@ -21,17 +25,13 @@ export const Card = styled.a`
     margin: 1rem;
     float: left;
 
+    ${(props) => props.color && css`
+        border-left: 15px solid ${props.color};
+    `}
+    
     @media (max-width: 425px){
         width: 100%;
     }
-`;
-
-export const BarStatus = styled.div`
-    background-color: #EBB93A;
-    height: 150px;
-    width: 13px;
-    box-shadow: 0 5px 5px rgb(0 0 0 / 0.2);
-    position: absolute;
 `;
 
 export const TitleSection = styled.p`

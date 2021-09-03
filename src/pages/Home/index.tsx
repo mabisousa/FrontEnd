@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Cards, Card, BarStatus, TitleSection, TitleProject, HoldHours, Hours, Status, Date, Container,  
+import { Cards, Card, TitleSection, TitleProject, HoldHours, Hours, Status, Date, Container,  
         TitlePopUp,
         InfosPopup,
         DetailsPopup,
@@ -52,8 +52,7 @@ const Home: React.FC = () => {
       <Menu/>
       <Filters/>
       <Cards> 
-        <Card onClick={openModal}>
-          <BarStatus/>
+        <Card color="#EBB93A" onClick={openModal}>
           <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
           <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
           <HoldHours>
@@ -75,8 +74,7 @@ const Home: React.FC = () => {
               <p>Até:20/20/2020</p>
             </Date>
         </Card>
-        <Card onClick={openModal}>
-          <BarStatus/>
+        <Card color="#AC341A" onClick={openModal}>
           <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
           <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
           <HoldHours>
@@ -91,15 +89,14 @@ const Home: React.FC = () => {
             </HoldHours>
             <Status>
               <p>Situação: </p>
-              <p>Em Andamento</p>
+              <p>Atrasado</p>
             </Status>
             <Date>
               <p>De:20/20/2020</p>
               <p>Até:20/20/2020</p>
             </Date>
         </Card>
-        <Card onClick={openModal}>
-          <BarStatus/>
+        <Card color="#6AACDA" onClick={openModal}>
           <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
           <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
           <HoldHours>
@@ -114,15 +111,14 @@ const Home: React.FC = () => {
             </HoldHours>
             <Status>
               <p>Situação: </p>
-              <p>Em Andamento</p>
+              <p>Concluído</p>
             </Status>
             <Date>
               <p>De:20/20/2020</p>
               <p>Até:20/20/2020</p>
             </Date>
         </Card>
-        <Card onClick={openModal}>
-          <BarStatus/>
+        <Card color="#6AACDA" onClick={openModal}>
           <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
           <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
           <HoldHours>
@@ -137,15 +133,14 @@ const Home: React.FC = () => {
             </HoldHours>
             <Status>
               <p>Situação: </p>
-              <p>Em Andamento</p>
+              <p>Concluído</p>
             </Status>
             <Date>
               <p>De:20/20/2020</p>
               <p>Até:20/20/2020</p>
             </Date>
         </Card>
-        <Card onClick={openModal}>
-          <BarStatus/>
+        <Card color="#6AACDA" onClick={openModal}>
           <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
           <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
           <HoldHours>
@@ -160,15 +155,14 @@ const Home: React.FC = () => {
             </HoldHours>
             <Status>
               <p>Situação: </p>
-              <p>Em Andamento</p>
+              <p>Concluído</p>
             </Status>
             <Date>
               <p>De:20/20/2020</p>
               <p>Até:20/20/2020</p>
             </Date>
         </Card>
-        <Card onClick={openModal}>
-          <BarStatus/>
+        <Card color="#6AACDA" onClick={openModal}>
           <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
           <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
           <HoldHours>
@@ -183,7 +177,7 @@ const Home: React.FC = () => {
             </HoldHours>
             <Status>
               <p>Situação: </p>
-              <p>Em Andamento</p>
+              <p>Concluído</p>
             </Status>
             <Date>
               <p>De:20/20/2020</p>

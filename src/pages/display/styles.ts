@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const Cards = styled.div`
     width: 90%;
@@ -7,7 +7,11 @@ export const Cards = styled.div`
     margin-left: 5.6rem;
 `;
 
-export const Card = styled.a`
+interface cardProps {
+    color: string,
+}
+
+export const Card = styled.a<cardProps>`
     background-color: #FFFFFF;
     width: 30%;
     box-shadow: 5px 5px 5px rgb(0 0 0 / 0.2);
@@ -15,6 +19,14 @@ export const Card = styled.a`
     margin: 1rem;
     float: left;
     cursor: pointer;
+
+    ${(props) => props.color && css`
+        border-left: 15px solid ${props.color};
+    `}
+    
+    @media (max-width: 425px){
+        width: 100%;
+    }
 `;
 
 export const BarStatus = styled.div`
