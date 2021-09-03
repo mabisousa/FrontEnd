@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Cards, Card, BarStatus, TitleSection, TitleProject, HoldHours, Hours, Status, Date, Container,  
         TitlePopUp,
-        TableConsultor,
         InfosPopup,
         DetailsPopup,
         Objetivo,
@@ -9,18 +8,40 @@ import { Cards, Card, BarStatus, TitleSection, TitleProject, HoldHours, Hours, S
         Skills,
         Horas,
         Table,
-        HorasApontadas} from './styles';
+        HorasApontadas,
+        ConsultoresAlocados} from './styles';
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
 import Filters from '../../components/Filter';
 import { Chart } from "react-google-charts";
 import { BsX } from 'react-icons/bs';
-import { ContainerFunc } from './popup.js';
-import { openModal, closeModal } from '../../script/modal/script';
+import { openModal } from '../../script/modal/script';
 import Grid from '../../components/Grid';
+import { useState } from 'react';
 
 const Home: React.FC = () => {
+
+  const [isOpen, setOpen] = useState(false);
+
+  const handleOpen = useCallback(() => {
+    if(!!isOpen === false) {
+    setOpen(true);    
+    } else {
+        setOpen(false);    
+    }
+    
+}, [isOpen, setOpen]);
+
+  const closeModal = useCallback(() => {
+    var popup = document.getElementById("popup");
+    if(popup) {
+      popup.style.visibility = "hidden";
+    }
+    if(isOpen) {
+      setOpen(false);
+    }
+  },[isOpen, setOpen]);
   return (
     <>
       <Header>
@@ -171,7 +192,7 @@ const Home: React.FC = () => {
         </Card>
       </Cards>
 
-      <Container id="popup">
+      <Container Open={!!isOpen} id="popup">
         <div id="hold">
           <button onClick={closeModal}><BsX/></button>
           <TitlePopUp>
@@ -179,14 +200,14 @@ const Home: React.FC = () => {
             <h1>0000000 - RESTAURAÇÃO DE ALTERADORES</h1>
           </TitlePopUp>
           <InfosPopup>
-            <InfosGerais>
+            <InfosGerais Open={!!isOpen}  className="cont">
               <h1>INFORMAÇÕES GERAIS:</h1>
               <div>
                 <p>GESTOR RESPONSÁVEL: </p>
                 <p>FORNECEDOR: </p>
               </div>
             </InfosGerais>
-            <Objetivo>
+            <Objetivo Open={!!isOpen} className="cont">
               <h1>OBJETIVO: </h1>
               <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -203,7 +224,7 @@ const Home: React.FC = () => {
                   itaque aperiam quae assumenda praesentium, maxime consequatur.
               </p>
             </Objetivo>
-            <Horas>
+            <Horas Open={!!isOpen}  className="cont">
               <h1>HORAS: </h1>
               <HorasApontadas>
                 <Chart
@@ -238,7 +259,7 @@ const Home: React.FC = () => {
                 </div>
               </HorasApontadas>
             </Horas>
-            <Skills>
+            <Skills Open={!!isOpen}  className="cont">
               <Table id="table">
                 <table>
                   <thead>
@@ -263,10 +284,91 @@ const Home: React.FC = () => {
                   </tbody>
                 </table>
               </Table>
+              <button id="visualizar" onClick={handleOpen}>VISUALIZAR CONSULTORES</button>
             </Skills>
-
+            <ConsultoresAlocados Open={!!isOpen}>
+              <table>
+                <thead>
+                  <tr>
+                    <td>CADASTRO</td>
+                    <td>NOME</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>67270</td>
+                    <td >Isac Freire Bezerra</td>
+                  </tr>
+                  <tr>
+                    <td>67271</td>
+                    <td>Jean Henrique Reiguel</td>
+                  </tr>
+                  <tr>
+                    <td>67270</td>
+                    <td >Isac Freire Bezerra</td>
+                  </tr>
+                  <tr>
+                    <td>67271</td>
+                    <td>Jean Henrique Reiguel</td>
+                  </tr>
+                  <tr>
+                    <td>67270</td>
+                    <td >Isac Freire Bezerra</td>
+                  </tr>
+                  <tr>
+                    <td>67271</td>
+                    <td>Jean Henrique Reiguel</td>
+                  </tr>
+                  <tr>
+                    <td>67270</td>
+                    <td >Isac Freire Bezerra</td>
+                  </tr>
+                  <tr>
+                    <td>67271</td>
+                    <td>Jean Henrique Reiguel</td>
+                  </tr>
+                  <tr>
+                    <td>67271</td>
+                    <td>Jean Henrique Reiguel</td>
+                  </tr>
+                  <tr>
+                    <td>67270</td>
+                    <td >Isac Freire Bezerra</td>
+                  </tr>
+                  <tr>
+                    <td>67271</td>
+                    <td>Jean Henrique Reiguel</td>
+                  </tr><tr>
+                    <td>67271</td>
+                    <td>Jean Henrique Reiguel</td>
+                  </tr>
+                  <tr>
+                    <td>67270</td>
+                    <td >Isac Freire Bezerra</td>
+                  </tr>
+                  <tr>
+                    <td>67271</td>
+                    <td>Jean Henrique Reiguel</td>
+                  </tr><tr>
+                    <td>67271</td>
+                    <td>Jean Henrique Reiguel</td>
+                  </tr>
+                  <tr>
+                    <td>67270</td>
+                    <td >Isac Freire Bezerra</td>
+                  </tr>
+                  <tr>
+                    <td>67271</td>
+                    <td>Jean Henrique Reiguel</td>
+                  </tr>
+                </tbody>
+              </table>
+            </ConsultoresAlocados>
           </InfosPopup>
-          <DetailsPopup/>
+          <DetailsPopup>
+            <Grid/>
+            <h1>EM ANDAMENTO</h1>
+          </DetailsPopup>
         </div>
       </Container>
     </>
