@@ -261,14 +261,14 @@ export const Table = styled.div`
             height: 65px;
             overflow-y: scroll;
             display: block;
-            border: 1px solid #e2e2e280;
+            border: 1px solid #8B8787;
 
             tr {
                 font-size: 14px;
                 height: 40px;
                 margin:15px;
                 color: rgba(0, 0, 0, 0.87);
-                border: 1px solid #e2e2e280;  
+                border: 1px solid #8B8787;  
             }
 
             td {
@@ -346,22 +346,22 @@ export const TableConsultor = styled.div`
             height: 277px;
             overflow-y: auto;
             display: block;
-            border: 1px solid #e2e2e280;
+            border: 1px solid #8B8787;
 
             tr {
                 font-size: 14px;
                 width: 100%;
                 color: rgba(0, 0, 0, 0.87);
-                border: 1px solid #e2e2e280;
+                border: 1px solid #8B8787;
             }
             td:nth-child(1) {
                 padding: 15px;
                 width: 20%;
-                border-right: 1px solid #e2e2e280;
+                border-right: 1px solid #8B8787;
             }
             td:nth-child(2) {
                 max-width: 70%;
-                border-right: 1px solid #e2e2e280;
+                border-right: 1px solid #8B8787;
             }
         }
     }

@@ -74,7 +74,7 @@ export const Consultores = styled.div`
       justify-content: center;
       align-items: center;
       text-align: center;
-      border-bottom: 1px solid #7E7E7E;
+      border-bottom: 1px solid #8B8787;
       border-top: 0;
       height: 56px;
       color: rgba(0, 0, 0, 0.87);
@@ -102,7 +102,7 @@ export const Consultores = styled.div`
       overflow-y: scroll;
       overflow-x: hidden;
       display: block;
-      border: 1px solid #7E7E7E;
+      border: 1px solid #8B8787;
     }
 `;
 
@@ -194,7 +194,7 @@ export const Skills = styled.div`
 `;
 
 export const HoldContent = styled.div`
-  border: 1px solid #e2e2e280;
+  border: 1px solid #8B8787;
   height: 88%;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -238,7 +238,7 @@ export const PopUpTable = styled.div`
       overflow-y: scroll;
       overflow-x: hidden;
       display: block;
-      border: 1px solid #e2e2e280;
+      border: 1px solid #8B8787;
   }
 
   tr {
@@ -247,7 +247,7 @@ export const PopUpTable = styled.div`
       height: 17px;
       margin:15px;
       color: rgba(0, 0, 0, 0.87);
-      border: 1px solid #e2e2e280;
+      border-bottom: 1px solid #8B8787;
   }
 
   td {
