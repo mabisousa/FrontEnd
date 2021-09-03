@@ -10,6 +10,7 @@ import * as Yup from "yup"
 import { AuthContext } from '../../hooks/Auth';
 import getValidationErrors from '../../utils/getValidationErrors';
 import Input from '../../components/Input';
+import { useToast } from '../../hooks/toast';
 
 import { useHistory } from 'react-router-dom'
 
@@ -23,6 +24,7 @@ const Login: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
 
     const { signIn } = useContext(AuthContext);
+    const { addToast } = useToast();
     const history = useHistory();
 
     const handleSubmit = useCallback(async (data: SignInData) => {
@@ -57,8 +59,13 @@ const Login: React.FC = () => {
 
                 return
             }
-        }
-    }, [ signIn, history ]);
+            addToast({
+                type: 'error',
+                title: 'Erro de autenticação',
+                description: 'Ocorreu um erro ao fazer login, verifique suas credenciais.',
+            })
+        }      
+    },[ signIn, addToast, history ]);
     return (
     <>
         <Main>
