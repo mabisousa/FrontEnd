@@ -284,7 +284,7 @@ export const Step = styled.div<StepActive>`
 `;
 export const Consultores = styled.div`
     transition: 200ms ease-in-out;
-    position: absolute;
+    position: fixed;
     background-color: rgba(0, 0, 0, 0.7);
     width: 100%;
     height: 100%;
