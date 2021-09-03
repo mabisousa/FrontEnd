@@ -194,19 +194,19 @@ const Aprovacao: React.FC = () => {
                 <ProgressBar>
                     <div className="headers">
                         <p>Registro Efetuado</p>
-                        <p>Aprovação Gestor</p>
                         <p>Aprovação Fornecedor</p>
+                        <p>Aprovação Gestor</p>
                         <p>Requisição de compra</p>
                     </div>
                     <div className="steps">
                         <Step isActive={true}>
                             <FiCheck/>
                         </Step>
-                        <Step isActive={true}>
-                            <FiCheck/>
-                        </Step>
                         <Step isActive={isConfirmed} >
                             { !!isConfirmed ? <FiCheck/> : <VscChromeClose/> }
+                        </Step>
+                        <Step isActive={false}>
+                            <VscChromeClose/>
                         </Step>
                         <Step isActive={false}>
                            <VscChromeClose/>
