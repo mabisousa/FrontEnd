@@ -393,7 +393,7 @@ export const Button = styled.button`
 `;
 
 interface Description {
-    Opened: boolean;
+    Open: boolean;
 }
 export const Description = styled.div<Description>`
     width:0;
@@ -402,7 +402,7 @@ export const Description = styled.div<Description>`
     background: #fff;
     position: absolute;
 
-    ${(props) => !props.Opened && 
+    ${(props) => !props.Open && 
     css`
     
     header p, span{

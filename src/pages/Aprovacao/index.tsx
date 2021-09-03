@@ -20,7 +20,7 @@ const Aprovacao: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
     
         const [isConfirmed, setConfirm] = useState(false);
-        const [isOpened, setOpen] = useState(false);
+        const [isOpen, setOpen] = useState(false);
         const [isSelected, setSelected] = useState(false);
 
     const handleSubmit = useCallback(async () => {
@@ -38,16 +38,17 @@ const Aprovacao: React.FC = () => {
     const handleActive = useCallback(() => {
         setConfirm(true);
     }, [isConfirmed, setConfirm]);
+    
     const handleOpen = useCallback(() => {
-        if(!!isOpened === false) {
+        if(!!isOpen === false) {
         setOpen(true);    
         } else {
             setOpen(false);    
         }
 
-        openDescription(!!isOpened);
+        openDescription(!!isOpen);
 
-    }, [isOpened, setOpen]);
+    }, [isOpen, setOpen]);
 
     return (
         <>
@@ -105,7 +106,8 @@ const Aprovacao: React.FC = () => {
                     </Buttons>
                 </Count>
                 <Apontamentos>
-                <Description Opened={!!isOpened} id="descricao">
+                <Description Open={!!isOpen} id="descricao">
+                
                     <header><p>Descrição</p><span/></header>
                     <div>
                         <p>

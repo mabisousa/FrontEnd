@@ -28,8 +28,7 @@ export function openRequest(choice) {
 
 export function openDescription(isOpened) {
   const description = document.getElementById("descricao");
-  console.log(!!isOpened);
-
+  
   if(!!isOpened) {
     description.style.width = "0px";
     description.style.visibility = "hidden";
@@ -37,6 +36,5 @@ export function openDescription(isOpened) {
   } else {
     description.style.visibility = "visible";
     description.style.width = "330px";
-
   } 
 }
