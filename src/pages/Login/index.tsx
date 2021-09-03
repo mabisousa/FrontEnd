@@ -66,8 +66,8 @@ const Login: React.FC = () => {
                 <Form ref={ formRef } onSubmit={ handleSubmit }>
                     <ImgLogo src={logo} alt="WEG" />
 
-                    <Input name="email" type="text">Usuário</Input>
-                    <Input name="senha" type="password">Senha</Input>
+                    <Input name="email" type="text" placeholder=" ">Usuário</Input>
+                    <Input name="senha" type="password" placeholder=" ">Senha</Input>
 
                     <Button><button>Esqueceu a senha?</button></Button>
 
