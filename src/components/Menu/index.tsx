@@ -9,19 +9,19 @@ const Menu: React.FC = () => (
     <Container>
         <Link to="home">
             <div>
-                <img src={ folder }/>
+                <img src={ folder } alt=""/>
                 <h1>Projetos</h1>
             </div>
         </Link>
         <Link to="aprovacao">
             <div>
-                <img src={ clock }/>
+                <img src={ clock } alt=""/>
                 <h1>Aprovação</h1>
             </div>
         </Link>
         <Link to="consultores">
             <div>
-                <img src={ group }/>
+                <img src={ group } alt=""/>
                 <h1>Consultores</h1>
             </div>
         </Link>

@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from "react";
-import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores, Buttons, Button, Step, Description } from "./style"
+import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores, Buttons, Button, Step, Descriptions } from "./style"
 import { FiCheck } from 'react-icons/fi' 
 import { VscChromeClose } from 'react-icons/vsc'
 import { GoChevronDown } from 'react-icons/go'
@@ -37,7 +37,7 @@ const Aprovacao: React.FC = () => {
 
     const handleActive = useCallback(() => {
         setConfirm(true);
-    }, [isConfirmed, setConfirm]);
+    }, [setConfirm]);
     
     const handleOpen = useCallback(() => {
         if(!!isOpen === false) {
@@ -106,7 +106,7 @@ const Aprovacao: React.FC = () => {
                     </Buttons>
                 </Count>
                 <Apontamentos>
-                <Description Open={!!isOpen} id="descricao">
+                <Descriptions Open={!!isOpen} id="descricao">
                 
                     <header><p>Descrição</p><span/></header>
                     <div>
@@ -119,7 +119,7 @@ const Aprovacao: React.FC = () => {
                             *******************************
                         </p>
                     </div>
-                </Description>
+                </Descriptions>
                     <table>
                     <thead>
                         <tr>

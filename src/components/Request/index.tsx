@@ -21,7 +21,7 @@ const Request: React.FC = () => {
         if(isConfirm) {
             console.log(content)
         }
-    }, []);
+    }, [isConfirm, content]);
 
     return (
     <>

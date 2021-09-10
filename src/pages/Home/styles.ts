@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { boolean } from 'yup/lib/locale';
 
 export const Cards = styled.div`
     width: 90%;

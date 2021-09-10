@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cards, Card, BarStatus, TitleSection, TitleProject, HoldHours, Hours, Status, Date, Container,
+import { Cards, Card, TitleSection, TitleProject, HoldHours, Hours, Status, Date, Container,
        SideA, SideB, SideC, TitlePopUp, Responsible, Objective, TitleHours, HoursAppointment, Graphic,
        Table, TableConsultor, StatusPopUp, TitleSectionPopUp, TitleProjectPopUp, HoursPopUp} from './styles';
 import Profile from "../../components/Profile";
