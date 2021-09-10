@@ -1,5 +1,5 @@
-import React, { useCallback, useRef } from "react";
-import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores, Buttons, Button, Step, Description } from "./style"
+import React, { useCallback, useRef, useState, useEffect } from "react";
+import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores, Buttons, Button, Step, Descriptions } from "./style"
 import { FiCheck } from 'react-icons/fi' 
 import { VscChromeClose } from 'react-icons/vsc'
 import { GoChevronDown } from 'react-icons/go'
@@ -14,7 +14,14 @@ import { Form } from "@unform/web"
 import { openModal, closeModal } from "../../script/modal/script.js"
 import { BsX } from "react-icons/bs";
 import { checkbox, openDescription, openRequest } from "./script";
-import { useState } from "react";
+import api from "../../services/api";
+
+interface Consultor{
+    id: number;
+    nome: string;
+    status: string
+    skill: string;
+  }
 
 interface Apontamento {
     data: Date,
@@ -25,14 +32,13 @@ interface Apontamento {
     }
 }
 const Aprovacao: React.FC = () => {
+    const [consultores, setConsultor] = useState<Consultor[]>([]);
     const formRef = useRef<FormHandles>(null);
-    
-        const [isConfirmed, setConfirm] = useState(false);
-        const [isOpen, setOpen] = useState(false);
-        const [isSelected, setSelected] = useState(false);
+    const [isConfirmed, setConfirm] = useState(false);
+    const [isOpen, setOpen] = useState(false);
+    const [isSelected, setSelected] = useState(false);
 
-    const handleSubmit = useCallback(async () => {
-    },[]);
+    const handleSubmit = useCallback(async () => {},[]);
     const handleSelected = useCallback(async () => {
         console.log(isSelected)
         if(!!isSelected === false) {
@@ -45,7 +51,7 @@ const Aprovacao: React.FC = () => {
 
     const handleActive = useCallback(() => {
         setConfirm(true);
-    }, [isConfirmed, setConfirm]);
+    }, [setConfirm]);
     
     const handleOpen = useCallback(() => {
         if(!!isOpen === false) {
@@ -57,6 +63,12 @@ const Aprovacao: React.FC = () => {
         openDescription(!!isOpen);
 
     }, [isOpen, setOpen]);
+
+    useEffect(() => {
+        api.get("/consultores").then((response) => {
+        setConsultor(response.data)
+        })
+    }, []);
 
     return (
         <>
@@ -114,7 +126,7 @@ const Aprovacao: React.FC = () => {
                     </Buttons>
                 </Count>
                 <Apontamentos>
-                <Description Open={!!isOpen} id="descricao">
+                <Descriptions Open={!!isOpen} id="descricao">
                 
                     <header><p>Descrição</p><span/></header>
                     <div>
@@ -127,7 +139,7 @@ const Aprovacao: React.FC = () => {
                             *******************************
                         </p>
                     </div>
-                </Description>
+                </Descriptions>
                     <table>
                     <thead>
                         <tr>
@@ -139,7 +151,7 @@ const Aprovacao: React.FC = () => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input type="checkbox" id="carlos" onClick={handleSelected}/></td>
+                            <td><input type="checkbox" onClick={handleSelected}/></td>
                             <td>11/08</td>
                             <td>4h</td> 
                             <td><button onClick={handleOpen}><GoChevronDown/></button></td>
@@ -236,56 +248,13 @@ const Aprovacao: React.FC = () => {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>67270</td>
-                    <td>ISAC FREIRE BEZERRA</td>
-                    <td>ATIVO</td> 
-                </tr>
-                <tr>
-                    <td>67271</td>
-                    <td>JEAN HENRIQUE REIGUEL</td>
-                    <td>ATIVO</td> 
-                </tr>
-                <tr>
-                    <td>67272</td>
-                    <td>KETLHIN KATIA NARDELLI</td>
-                    <td>INATIVO</td> 
-                </tr>
-                <tr>
-                    <td>67273</td>
-                    <td>MARCOS ANTÔNIO BOLIGON VARGAS</td>
-                    <td>INATIVO</td> 
-                </tr> 
-                <tr>
-                    <td>67274</td>
-                    <td>MARIA GABRIELA DE SOUSA CRUZ</td>
-                    <td>ATIVO</td> 
-                </tr>
-                <tr>            
-                    <td>67275</td>
-                    <td>MILENE APARECIDA LIMA</td>
-                    <td>ATIVO</td> 
-                </tr>
-                <tr>            
-                    <td>67275</td>
-                    <td>MILENE APARECIDA LIMA</td>
-                    <td>ATIVO</td> 
-                </tr>
-                <tr>            
-                    <td>67275</td>
-                    <td>MILENE APARECIDA LIMA</td>
-                    <td>ATIVO</td> 
-                </tr>
-                <tr>            
-                    <td>67275</td>
-                    <td>MILENE APARECIDA LIMA</td>
-                    <td>ATIVO</td> 
-                </tr>
-                <tr>            
-                    <td>67275</td>
-                    <td>MILENE APARECIDA LIMA</td>
-                    <td>ATIVO</td> 
-                </tr>
+                {consultores.map((consultor) => (
+                    <tr>
+                        <td>{consultor.id}</td>
+                        <td>{consultor.nome}</td>
+                        <td>{consultor.status}</td> 
+                    </tr>
+                    ))}
                 </tbody>
                 </table>
                 <button onClick={closeModal}><BsX/></button>
