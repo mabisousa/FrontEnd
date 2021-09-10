@@ -1,24 +1,33 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 import { Filters, Title, Form, Consultores } from './style';
-
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
-
 import { HiUserCircle } from 'react-icons/hi';
 import { BsX } from 'react-icons/bs'
-
 import { Container, PopUpInfo, Content, Skills, HoldContent, PopUpTable } from "./style";
 import Grid from "../../components/Grid"
-
 import { openModal, closeModal } from '../../script/modal/script.js';
+import api from "../../services/api";
+
+interface Consultor{
+  id: number;
+  nome: string;
+  status: string
+  skill: string;
+}
 
 const Login: React.FC = () => {
+  const [consultores, setConsultor] = useState<Consultor[]>([]);
 
+  useEffect(() => {
+    api.get("/consultores").then((response) => {
+      setConsultor(response.data)
+    })
+  }, []);
+  
   return (
-    <>
-    
+    <>  
       <Header>
         <p>CONSULTORES</p>
       </Header>
@@ -51,76 +60,15 @@ const Login: React.FC = () => {
           </tr>
         </thead>
           <tbody>
-          <tr>
-            <td>67270</td>
-            <td>ISAC FREIRE BEZERRA</td>
-            <td>ATIVO</td> 
-            <td>2</td>
-            <button onClick={openModal} id="button"><td> + </td></button>
-          </tr>
-          <tr>
-            <td>67271</td>
-            <td>JEAN HENRIQUE REIGUEL</td>
-            <td>ATIVO</td> 
-            <td>2</td>
-            <button onClick={openModal} id="button"><td> + </td></button>
-          </tr>
-          <tr>
-            <td>67272</td>
-            <td>KETLHIN KATIA NARDELLI</td>
-            <td>INATIVO</td> 
-            <td>2</td>
-            <button onClick={openModal} id="button"><td> + </td></button>
-          </tr>
-          <tr>
-            <td>67273</td>
-            <td>MARCOS ANTÔNIO BOLIGON VARGAS</td>
-            <td>INATIVO</td> 
-            <td>2</td>
-            <button onClick={openModal} id="button"><td> + </td></button>
-          </tr> 
-          <tr>
-            <td>67274</td>
-            <td>MARIA GABRIELA DE SOUSA CRUZ</td>
-            <td>ATIVO</td> 
-            <td>2</td>
-            <button onClick={openModal} id="button"><td> + </td></button>
-          </tr>
-          <tr>            
-            <td>67275</td>
-            <td>MILENE APARECIDA LIMA</td>
-            <td>ATIVO</td> 
-            <td>2</td>
-            <button onClick={openModal} id="button"><td> + </td></button>
-          </tr>
-          <tr>            
-            <td>67275</td>
-            <td>MILENE APARECIDA LIMA</td>
-            <td>ATIVO</td> 
-            <td>2</td>
-            <button onClick={openModal} id="button"><td> + </td></button>
-          </tr>
-          <tr>            
-            <td>67275</td>
-            <td>MILENE APARECIDA LIMA</td>
-            <td>ATIVO</td> 
-            <td>2</td>
-            <button onClick={openModal} id="button"><td> + </td></button>
-          </tr>
-          <tr>            
-            <td>67275</td>
-            <td>MILENE APARECIDA LIMA</td>
-            <td>ATIVO</td> 
-            <td>2</td>
-            <button onClick={openModal} id="button"><td> + </td></button>
-          </tr>
-          <tr>            
-            <td>67275</td>
-            <td>MILENE APARECIDA LIMA</td>
-            <td>ATIVO</td> 
-            <td>2</td>
-            <button onClick={openModal} id="button"><td> + </td></button>
-          </tr>
+            {consultores.map((consultor) => (
+              <tr>
+                <td>{consultor.id}</td>
+                <td>{consultor.nome}</td>
+                <td>{consultor.status}</td> 
+                <td>2</td>
+                <button onClick={openModal} id="button"><td> + </td></button>
+              </tr>
+            ))}
           </tbody>
         </table>
         </Consultores>
