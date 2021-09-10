@@ -16,6 +16,14 @@ import { BsX } from "react-icons/bs";
 import { checkbox, openDescription, openRequest } from "./script";
 import { useState } from "react";
 
+interface Apontamento {
+    data: Date,
+    hora: number,
+    descricao: string,
+    projeto: {
+        id: number,
+    }
+}
 const Aprovacao: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
     
