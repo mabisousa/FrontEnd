@@ -9,22 +9,27 @@ import { Cards, Card, TitleSection, TitleProject, HoldHours, Hours, Status, Date
         Horas,
         Table,
         HorasApontadas,
-        ConsultoresAlocados} from './styles';
+        ConsultoresAlocados,
+        Title,
+        Form,
+        Filters} from './styles';
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
-import Filters from '../../components/Filter';
 import { Chart } from "react-google-charts";
 import { BsX } from 'react-icons/bs';
 import { openModal } from '../../script/modal/script';
 import Grid from '../../components/Grid';
 import { useState } from 'react';
+import { IoIosArrowDown } from 'react-icons/io';
+import display1 from '../../imgs/display1.svg';
+import display2 from '../../imgs/display2.svg';
 
 const Home: React.FC = () => {
 
   const [isOpen, setOpen] = useState(false);
 
-  const handleOpen = useCallback(() => {
+   const handleOpen = useCallback(() => {
     if(!!isOpen === false) {
     setOpen(true);    
     } else {
@@ -42,6 +47,23 @@ const Home: React.FC = () => {
       setOpen(false);
     }
   },[isOpen, setOpen]);
+
+  const [show, setShow] = useState(false);
+
+   const handleShow = useCallback(() => {
+    if(!!show === false) {
+      setShow(true);    
+    }
+}, [show, setShow]);
+
+const handleNotShow = useCallback(() => {
+  if(!!show != false) {
+    setShow(false);    
+  }
+}, [show, setShow]);
+
+
+
   return (
     <>
       <Header>
@@ -50,139 +72,163 @@ const Home: React.FC = () => {
 
       <Profile/>
       <Menu/>
-      <Filters/>
-      <Cards> 
-        <Card color="#EBB93A" onClick={openModal}>
-          <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
-          <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
-          <HoldHours>
-            <Hours>
-              <p>TOTAL:</p>
+      <Filters>
+        <div>
+            <Title>PROJETOS ALOCADOS</Title>
+            <div>
+                <div id="filter">
+                    <Form >
+                        <label>Projeto:</label>
+                        <input type="text" placeholder="Digite aqui... "/>
+                    </Form>
+                    <p>Seção:</p>
+                    <div>
+                        <span>Todos</span>
+                        <IoIosArrowDown id="img" size={17}/>
+                    </div>
+                    <p>Status:</p>
+                    <div>
+                        <span>Todos</span>
+                        <IoIosArrowDown id="img" size={17}/>
+                    </div>
+                </div>
+                <button onClick={handleShow}><img src={display1} alt=""/></button>
+                <button onClick={handleNotShow}><img src={display2} alt=""/></button>
+            </div> 
+        </div>
+    </Filters>
+      <Cards > 
+        <Card Show={!!show} color="#EBB93A" onClick={openModal}>
+          <TitleSection Show={!!show}> 0000 - SEÇÃO XYZ</TitleSection>
+          <TitleProject Show={!!show}>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
+          <HoldHours Show={!!show}>
+            <Hours Show={!!show}>
+              <p>Total:</p>
               <p>1600h</p>
             </Hours>
-              <Hours>
-                <p>APONTADAS:</p>
+            <Hours Show={!!show}>
+              <p>Apontadas:</p>
+              <p>800h</p>
+            </Hours>
+          </HoldHours>
+          <Status Show={!!show}>
+            <p>Situação: </p>
+            <p>Em Andamento</p>
+          </Status>
+          <Date Show={!!show}>
+            <p>De:20/20/2020</p>
+            <p>Até:20/20/2020</p>
+          </Date>
+        </Card>
+        <Card Show={!!show} color="#AC341A" onClick={openModal}>
+          <TitleSection Show={!!show}> 0000 - SEÇÃO XYZ</TitleSection>
+          <TitleProject Show={!!show}>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
+          <HoldHours Show={!!show}>
+            <Hours Show={!!show}>
+              <p>Total:</p>
+              <p>1600h</p>
+            </Hours>
+            <Hours Show={!!show}>
+              <p>Apontadas:</p>
+              <p>800h</p>
+            </Hours>
+          </HoldHours>
+          <Status Show={!!show}>
+            <p>Situação: </p>
+            <p>Em Andamento</p>
+          </Status>
+          <Date Show={!!show}>
+            <p>De:20/20/2020</p>
+            <p>Até:20/20/2020</p>
+          </Date>
+        </Card>
+        <Card Show={!!show} color="#6AACDA" onClick={openModal}>
+          <TitleSection Show={!!show}> 0000 - SEÇÃO XYZ</TitleSection>
+          <TitleProject Show={!!show}>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
+          <HoldHours Show={!!show}>
+            <Hours Show={!!show}>
+              <p>Total:</p>
+              <p>1600h</p>
+            </Hours>
+            <Hours Show={!!show}>
+              <p>Apontadas:</p>
+              <p>800h</p>
+            </Hours>
+          </HoldHours>
+          <Status Show={!!show}>
+            <p>Situação: </p>
+            <p>Em Andamento</p>
+          </Status>
+          <Date Show={!!show}>
+            <p>De:20/20/2020</p>
+            <p>Até:20/20/2020</p>
+          </Date>
+        </Card>
+        <Card Show={!!show} color="#6AACDA" onClick={openModal}>
+          <TitleSection Show={!!show}> 0000 - SEÇÃO XYZ</TitleSection>
+          <TitleProject Show={!!show}>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
+          <HoldHours Show={!!show}>
+            <Hours Show={!!show}>
+              <p>Total:</p>
+              <p>1600h</p>
+            </Hours>
+            <Hours Show={!!show}>
+              <p>Apontadas:</p>
+              <p>800h</p>
+            </Hours>
+          </HoldHours>
+          <Status Show={!!show}>
+            <p>Situação: </p>
+            <p>Em Andamento</p>
+          </Status>
+          <Date Show={!!show}>
+            <p>De:20/20/2020</p>
+            <p>Até:20/20/2020</p>
+          </Date>
+        </Card>
+        <Card  Show={!!show} color="#6AACDA" onClick={openModal}>
+        <TitleSection Show={!!show}> 0000 - SEÇÃO XYZ</TitleSection>
+          <TitleProject Show={!!show}>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
+          <HoldHours Show={!!show}>
+            <Hours Show={!!show}>
+              <p>Total:</p>
+              <p>1600h</p>
+            </Hours>
+              <Hours Show={!!show}>
+                <p>Apontadas:</p>
                 <p>800h</p>
               </Hours>
             </HoldHours>
-            <Status>
+            <Status Show={!!show}>
               <p>Situação: </p>
               <p>Em Andamento</p>
             </Status>
-            <Date>
+            <Date Show={!!show}>
               <p>De:20/20/2020</p>
               <p>Até:20/20/2020</p>
             </Date>
         </Card>
-        <Card color="#AC341A" onClick={openModal}>
-          <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
-          <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
-          <HoldHours>
-            <Hours>
-              <p>TOTAL:</p>
+        <Card Show={!!show} color="#6AACDA" onClick={openModal}>
+          <TitleSection Show={!!show}> 0000 - SEÇÃO XYZ</TitleSection>
+          <TitleProject Show={!!show}>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
+          <HoldHours Show={!!show}>
+            <Hours Show={!!show}>
+              <p>Total:</p>
               <p>1600h</p>
             </Hours>
-              <Hours>
-                <p>APONTADAS:</p>
-                <p>800h</p>
-              </Hours>
-            </HoldHours>
-            <Status>
-              <p>Situação: </p>
-              <p>Atrasado</p>
-            </Status>
-            <Date>
-              <p>De:20/20/2020</p>
-              <p>Até:20/20/2020</p>
-            </Date>
-        </Card>
-        <Card color="#6AACDA" onClick={openModal}>
-          <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
-          <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
-          <HoldHours>
-            <Hours>
-              <p>TOTAL:</p>
-              <p>1600h</p>
+            <Hours Show={!!show}>
+              <p>Apontadas:</p>
+              <p>800h</p>
             </Hours>
-              <Hours>
-                <p>APONTADAS:</p>
-                <p>800h</p>
-              </Hours>
-            </HoldHours>
-            <Status>
-              <p>Situação: </p>
-              <p>Concluído</p>
-            </Status>
-            <Date>
-              <p>De:20/20/2020</p>
-              <p>Até:20/20/2020</p>
-            </Date>
-        </Card>
-        <Card color="#6AACDA" onClick={openModal}>
-          <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
-          <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
-          <HoldHours>
-            <Hours>
-              <p>TOTAL:</p>
-              <p>1600h</p>
-            </Hours>
-              <Hours>
-                <p>APONTADAS:</p>
-                <p>800h</p>
-              </Hours>
-            </HoldHours>
-            <Status>
-              <p>Situação: </p>
-              <p>Concluído</p>
-            </Status>
-            <Date>
-              <p>De:20/20/2020</p>
-              <p>Até:20/20/2020</p>
-            </Date>
-        </Card>
-        <Card color="#6AACDA" onClick={openModal}>
-          <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
-          <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
-          <HoldHours>
-            <Hours>
-              <p>TOTAL:</p>
-              <p>1600h</p>
-            </Hours>
-              <Hours>
-                <p>APONTADAS:</p>
-                <p>800h</p>
-              </Hours>
-            </HoldHours>
-            <Status>
-              <p>Situação: </p>
-              <p>Concluído</p>
-            </Status>
-            <Date>
-              <p>De:20/20/2020</p>
-              <p>Até:20/20/2020</p>
-            </Date>
-        </Card>
-        <Card color="#6AACDA" onClick={openModal}>
-          <TitleSection> 0000 - SEÇÃO XYZ</TitleSection>
-          <TitleProject>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
-          <HoldHours>
-            <Hours>
-              <p>TOTAL:</p>
-              <p>1600h</p>
-            </Hours>
-              <Hours>
-                <p>APONTADAS:</p>
-                <p>800h</p>
-              </Hours>
-            </HoldHours>
-            <Status>
-              <p>Situação: </p>
-              <p>Concluído</p>
-            </Status>
-            <Date>
-              <p>De:20/20/2020</p>
-              <p>Até:20/20/2020</p>
-            </Date>
+          </HoldHours>
+          <Status Show={!!show}>
+            <p>Situação: </p>
+            <p>Em Andamento</p>
+          </Status>
+          <Date Show={!!show}>
+            <p>De:20/20/2020</p>
+            <p>Até:20/20/2020</p>
+          </Date>
         </Card>
       </Cards>
 

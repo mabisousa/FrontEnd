@@ -1,5 +1,87 @@
 import styled, { css } from 'styled-components';
 
+export const Filters = styled.div`
+    width: 95%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 7rem 0rem 0rem 4rem;
+
+    div{
+        width: 90%;
+        height: 60px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #filter{
+        width: 90%;
+        height: 60px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+
+        p{
+            color: #7E7E7E;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        div{
+            width: 150px;
+            height: 20px;
+            border: solid 1px  #7E7E7E;
+            color:#7E7E7E;
+            font-size: 14px;
+            text-align: center;
+            cursor: pointer;
+            display: block;
+
+            span{
+                font-size: 14px;
+            }
+        }
+    }
+    #img{
+        float: right;
+    }
+
+    button{
+        border: none;
+        background: transparent;
+    }
+`;
+
+export const Title = styled.h1`
+    font-weight:normal;
+    font-size: 20px;
+    text-decoration: underline #0075B1;
+    margin-left: 50px;
+    width: 300px;
+`;
+
+export const Form = styled.form`
+    width: 280px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    label {
+        color: #7E7E7E;
+        font-size: 20px;
+        text-align: center;
+    }
+    
+`;
+
 export const Cards = styled.div`
     width: 90%;
     height: 90%;
@@ -12,15 +94,15 @@ export const Cards = styled.div`
 `;
 
 interface cardProps {
-    color: string,
+    color?: string,
+    Show: boolean;
 }
 
 export const Card = styled.a<cardProps>`
     background-color: #FFFFFF;
     cursor: pointer;
-    width: 45%;
+
     box-shadow: 5px 5px 5px rgb(0 0 0 / 0.2);
-    height: 150px;
     margin: 1rem;
     float: left;
 
@@ -28,14 +110,37 @@ export const Card = styled.a<cardProps>`
         border-left: 15px solid ${props.color};
     `}
     
+    ${(props) => props.Show ? 
+        css` 
+            width:45%; 
+            height: 150px;
+
+        `: css`
+            width: 30%;
+            height : 200px;
+
+            @media (max-width: 1024px) {
+                margin: .6rem;
+            }
+            
+            @media (max-width: 768px){
+                width: 40%;
+                margin: 1rem 1.3rem 1rem 1.6rem;
+            }
+    `}
+
     @media (max-width: 425px){
-        width: 100%;
+        width: 90%;
+    }
+
+    @media (max-width: 768px){
+        width: 43%;
+        margin: 1rem 1.6rem 1rem 1rem;
     }
 `;
 
-export const TitleSection = styled.p`
+export const TitleSection = styled.p<cardProps>`
     width: 200px;
-    font-size: 14px;
     color: #0075B1;
     margin-top: 1rem;
     margin-left: 2rem;
@@ -47,56 +152,123 @@ export const TitleSection = styled.p`
     @media (max-width: 425px){
         font-size: 80%;
     }
+
+    ${(props) => props.Show ? 
+        css` 
+            font-size: 14px;
+        `: css`
+            font-size: 12px;
+
+          
+    `}
 `;
 
-export const TitleProject = styled.p`
-    width: 500px;
+export const TitleProject = styled.p<cardProps>`
     color: #000000;
-    font-size: 18px;
     margin-left: 2rem;
 
     @media (max-width: 1024px) and (min-width: 769px) {
         font-size: 15px;
+        width: 200px;
     }
     
     @media (max-width: 768px) and (min-width: 426px) {
         font-size: 12px;
+        width: 245px; 
     }
 
     @media (max-width: 425px){
         font-size: 100%;
     }
+
+    ${(props) => props.Show ? 
+        css` 
+            width: 500px;
+            font-size: 18px;
+            margin-top: 0;
+        `: css`
+            width: 315px;
+            font-size: 16px;
+            margin-top: 1rem;   
+
+            @media (max-width: 768px){
+                width: 200px;
+                margin-top: 5px;
+            }
+    `}
+    
 `;
 
-export const HoldHours = styled.div`
+export const HoldHours = styled.div<cardProps>`
     width:200px;
     height:40px;
     float: left;
-    margin-top: 7px;
-    margin-left: 2rem;
 
     @media (max-width: 425px){
         margin-left: 2rem;
         width: 150px;
     }
+
+    @media (max-width: 768px){
+        margin-left: 1rem;
+        width: 130px;
+    }
+
+    ${(props) => props.Show ? 
+        css` 
+            margin-left: 2rem;
+            margin-top: 7px;
+
+        `: css`
+            margin-left: 7px;
+            margin-top: 1rem; 
+            
+            @media (max-width: 1024px){
+            margin-left: 1rem;
+            width: 100px;
+            }
+
+            @media (max-width: 768px){
+            width: 140px;
+            }
+    `}
 `;
 
-export const Hours = styled.div`
-    width:200px;
+export const Hours = styled.div<cardProps>`
     height:20px;
     margin-left: 15%;
     display: flex;
     justify-content: space-between;
     margin-top: 2px;
-    font-size: 12px;   
+    
+    ${(props) => props.Show ? 
+        css` 
+            width:200px;
+            font-size: 12px;
+        `: css`
+            width:150px;
+            font-size:11px;   
+
+            @media (max-width: 1024px){
+                width: 100px;
+                    p{
+                        font-size: 12px;
+                    } 
+            }
+    `}
+
+    @media (max-width: 768px){
+        margin-left: 1rem;
+        width: 100px;
+            p{
+                font-size: 12px;
+            } 
+    }
 `;
 
-export const Status = styled.div`
-    width:130px;
-    height:80px;
+export const Status = styled.div<cardProps>`
+    width:120px;
     float:right;
-    margin-right: 32px;
-    margin-top: 7px;
     text-align: center;
 
     p:nth-child(1){
@@ -108,6 +280,40 @@ export const Status = styled.div`
         font-weight: bold;
         font-size: 17px;
     }
+
+    ${(props) => props.Show ? 
+        css` 
+            margin-top: 7px;
+            margin-right: 32px;
+            height:80px;
+
+            p:nth-child(1){
+                font-size: 15px;
+            }
+
+            p:nth-child(2){
+                font-size: 17px;
+            }
+
+        `: css`
+            margin-top: 17px;
+            margin-right: 16px;
+            height:60px;
+            
+            p:nth-child(1){
+                font-size: 14px;
+            }
+
+            p:nth-child(2){
+                font-size: 16px;
+            }
+
+
+            @media (max-width: 768px) {
+                margin: 5px 0 5px 0;
+            }
+
+    `}
 
     @media (max-width: 1024px) and (min-width: 769px) {
         margin-right: 5px;
@@ -124,6 +330,8 @@ export const Status = styled.div`
 
     @media (max-width: 768px) and (min-width: 426px) {
         margin-right: 15px;
+        height: 40px;
+
         p:nth-child(1){
             font-weight: regular;
             font-size: 13px;
@@ -148,14 +356,14 @@ export const Status = styled.div`
         }
     }
    
+    
 `;
 
-export const Date = styled.div`
+export const Date = styled.div<cardProps>`
     width:300px;
     height:15px;
     display: flex;
     justify-content: space-between;
-    margin-top: 4rem;
     margin-left: 2rem;
 
     p {
@@ -164,18 +372,21 @@ export const Date = styled.div`
         font-size: 12px;
     }
 
+    ${(props) => props.Show ? 
+        css` 
+            margin-top: 4rem;
+        `: css`
+            margin-top: 10px;
+
+            @media (max-width: 1024px){
+            width: 220px;
+            }
+
+    `}
+
     @media (max-width: 768px) and (min-width: 426px) {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-
-        p {
-            margin-top: -75px;
-        }
-
-        p:nth-child(2) {
-            margin-top: -150px;
-        }
+        width: 230px;
+        
     }
 `;
 interface ContainerProps {
