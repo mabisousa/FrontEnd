@@ -1,19 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Cards, Card, TitleSection, TitleProject, HoldHours, Hours, Status, Date, Container,  
-        TitlePopUp,
-        InfosPopup,
-        DetailsPopup,
-        Objetivo,
-        InfosGerais,
-        Skills,
-        Horas,
-        Table,
-        HorasApontadas,
-        ConsultoresAlocados,
-        Title,
-        Form,
-        Filters,
-        Filter} from './styles';
+        TitlePopUp, InfosPopup, DetailsPopup, Objetivo, InfosGerais, Skills, Horas, Table, HorasApontadas, 
+        ConsultoresAlocados, Title, Form, Filters, Filter} from './styles';
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
@@ -21,23 +9,40 @@ import { Chart } from "react-google-charts";
 import { BsX } from 'react-icons/bs';
 import { openModal } from '../../script/modal/script';
 import Grid from '../../components/Grid';
-import { useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 import display1 from '../../imgs/display1.svg';
 import display2 from '../../imgs/display2.svg';
+import api from "../../services/api"
+
+interface Projetos{
+  id: number,
+  secao: string,
+  nome: string,
+  descricao: string,
+  consultores: [{
+    id: number,
+    nome: string,
+    skill: string
+  }],
+  status: string,
+  data_inicio: string,
+  data_fim: string,
+  horas_apontadas: number,
+  horas_total: number,
+}
 
 const Home: React.FC = () => {
 
   const [isOpen, setOpen] = useState(false);
+  const [projetos, setProjeto] = useState<Projetos[]>([]);
 
-   const handleOpen = useCallback(() => {
+  const handleOpen = useCallback(() => {
     if(!!isOpen === false) {
-    setOpen(true);    
+      setOpen(true);    
     } else {
-        setOpen(false);    
+      setOpen(false);    
     }
-    
-}, [isOpen, setOpen]);
+  }, [isOpen, setOpen]);
 
   const closeModal = useCallback(() => {
     var popup = document.getElementById("popup");
@@ -51,19 +56,23 @@ const Home: React.FC = () => {
 
   const [show, setShow] = useState(false);
 
-   const handleShow = useCallback(() => {
+  const handleShow = useCallback(() => {
     if(!!show === false) {
       setShow(true);    
     }
-}, [show, setShow]);
+  }, [show, setShow]);
 
-const handleNotShow = useCallback(() => {
-  if(!!show != false) {
-    setShow(false);    
-  }
-}, [show, setShow]);
+  const handleNotShow = useCallback(() => {
+    if(!!show !== false) {
+      setShow(false);    
+    }
+  }, [show, setShow]);
 
-
+  useEffect(() => {
+    api.get("/projetos").then((response) => {
+      setProjeto(response.data)
+    })
+  }, []);
 
   return (
     <>
@@ -101,138 +110,30 @@ const handleNotShow = useCallback(() => {
         </div>
     </Filters>
       <Cards > 
-        <Card Show={!!show} color="#EBB93A" onClick={openModal}>
-          <TitleSection Show={!!show}> 0000 - SEÇÃO XYZ</TitleSection>
-          <TitleProject Show={!!show}>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
+      {projetos.map((projeto) => (
+        <Card Show={!!show} color="#EBB93A" onClick={openModal} key={projeto.id}>
+          <TitleSection Show={!!show}>000 - {projeto.secao}</TitleSection>
+          <TitleProject Show={!!show}>{projeto.id} - {projeto.nome} </TitleProject>
           <HoldHours Show={!!show}>
             <Hours Show={!!show}>
               <p>Total:</p>
-              <p>1600h</p>
+              <p>{projeto.horas_total}</p>
             </Hours>
             <Hours Show={!!show}>
               <p>Apontadas:</p>
-              <p>800h</p>
+              <p>{projeto.horas_apontadas}</p>
             </Hours>
           </HoldHours>
           <Status Show={!!show}>
             <p>Situação: </p>
-            <p>Em Andamento</p>
+            <p>{projeto.status}</p>
           </Status>
           <Date Show={!!show}>
-            <p>De:20/20/2020</p>
-            <p>Até:20/20/2020</p>
+            <p>De: {projeto.data_inicio}</p>
+            <p>Até: {projeto.data_fim}</p>
           </Date>
         </Card>
-        <Card Show={!!show} color="#AC341A" onClick={openModal}>
-          <TitleSection Show={!!show}> 0000 - SEÇÃO XYZ</TitleSection>
-          <TitleProject Show={!!show}>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
-          <HoldHours Show={!!show}>
-            <Hours Show={!!show}>
-              <p>Total:</p>
-              <p>1600h</p>
-            </Hours>
-            <Hours Show={!!show}>
-              <p>Apontadas:</p>
-              <p>800h</p>
-            </Hours>
-          </HoldHours>
-          <Status Show={!!show}>
-            <p>Situação: </p>
-            <p>Em Atraso</p>
-          </Status>
-          <Date Show={!!show}>
-            <p>De:20/20/2020</p>
-            <p>Até:20/20/2020</p>
-          </Date>
-        </Card>
-        <Card Show={!!show} color="#6AACDA" onClick={openModal}>
-          <TitleSection Show={!!show}> 0000 - SEÇÃO XYZ</TitleSection>
-          <TitleProject Show={!!show}>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
-          <HoldHours Show={!!show}>
-            <Hours Show={!!show}>
-              <p>Total:</p>
-              <p>1600h</p>
-            </Hours>
-            <Hours Show={!!show}>
-              <p>Apontadas:</p>
-              <p>800h</p>
-            </Hours>
-          </HoldHours>
-          <Status Show={!!show}>
-            <p>Situação: </p>
-            <p>Concluído</p>
-          </Status>
-          <Date Show={!!show}>
-            <p>De:20/20/2020</p>
-            <p>Até:20/20/2020</p>
-          </Date>
-        </Card>
-        <Card Show={!!show} color="#6AACDA" onClick={openModal}>
-          <TitleSection Show={!!show}> 0000 - SEÇÃO XYZ</TitleSection>
-          <TitleProject Show={!!show}>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
-          <HoldHours Show={!!show}>
-            <Hours Show={!!show}>
-              <p>Total:</p>
-              <p>1600h</p>
-            </Hours>
-            <Hours Show={!!show}>
-              <p>Apontadas:</p>
-              <p>800h</p>
-            </Hours>
-          </HoldHours>
-          <Status Show={!!show}>
-            <p>Situação: </p>
-            <p>Concluído</p>
-          </Status>
-          <Date Show={!!show}>
-            <p>De:20/20/2020</p>
-            <p>Até:20/20/2020</p>
-          </Date>
-        </Card>
-        <Card  Show={!!show} color="#6AACDA" onClick={openModal}>
-        <TitleSection Show={!!show}> 0000 - SEÇÃO XYZ</TitleSection>
-          <TitleProject Show={!!show}>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
-          <HoldHours Show={!!show}>
-            <Hours Show={!!show}>
-              <p>Total:</p>
-              <p>1600h</p>
-            </Hours>
-              <Hours Show={!!show}>
-                <p>Apontadas:</p>
-                <p>800h</p>
-              </Hours>
-            </HoldHours>
-            <Status Show={!!show}>
-              <p>Situação: </p>
-              <p>Concluído</p>
-            </Status>
-            <Date Show={!!show}>
-              <p>De:20/20/2020</p>
-              <p>Até:20/20/2020</p>
-            </Date>
-        </Card>
-        <Card Show={!!show} color="#6AACDA" onClick={openModal}>
-          <TitleSection Show={!!show}> 0000 - SEÇÃO XYZ</TitleSection>
-          <TitleProject Show={!!show}>0000000 - RESTAURAÇÃO DE ALTERADORES </TitleProject>
-          <HoldHours Show={!!show}>
-            <Hours Show={!!show}>
-              <p>Total:</p>
-              <p>1600h</p>
-            </Hours>
-            <Hours Show={!!show}>
-              <p>Apontadas:</p>
-              <p>800h</p>
-            </Hours>
-          </HoldHours>
-          <Status Show={!!show}>
-            <p>Situação: </p>
-            <p>Concluído</p>
-          </Status>
-          <Date Show={!!show}>
-            <p>De:20/20/2020</p>
-            <p>Até:20/20/2020</p>
-          </Date>
-        </Card>
+      ))}
       </Cards>
 
       <Container Open={!!isOpen} id="popup">
