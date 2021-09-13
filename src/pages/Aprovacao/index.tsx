@@ -11,7 +11,6 @@ import Input from "../../components/Input"
 import Request from "../../components/Request";
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web"
-import { openModal, closeModal } from "../../script/modal/script.js"
 import { BsX } from "react-icons/bs";
 import { checkbox, openRequest } from "./script";
 import api from "../../services/api";
@@ -21,7 +20,7 @@ interface Consultor{
     nome: string;
     status: string
     skill: string;
-  }
+}
 
 interface Apontamento {
     id:number,
@@ -33,12 +32,14 @@ interface Apontamento {
         id: number,
     }
 }
+
 const Aprovacao: React.FC = () => {
     const [consultores, setConsultor] = useState<Consultor[]>([]);
     const formRef = useRef<FormHandles>(null);
     const [isConfirmed, setConfirm] = useState(false);
     const [isOpen, setOpen] = useState(false);
     const [isSelected, setSelected] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
 
     const handleSubmit = useCallback(async () => {},[]);
 
@@ -131,7 +132,7 @@ const Aprovacao: React.FC = () => {
                         </div>
                     </div>
                     
-                    <button id="visualizar" onClick={openModal}>VISUALIZAR CONSULTORES</button>
+                    <button id="visualizar" onClick={() => setShowPopup(!showPopup)}>VISUALIZAR CONSULTORES</button>
                     <Buttons id="buttons">
                         <Button onClick={() => {openRequest("reprovar")}}>REPROVAR</Button>
                         <Button onClick={() => {openRequest("aprovar")}}>APROVAR</Button>
@@ -150,7 +151,6 @@ const Aprovacao: React.FC = () => {
                     </thead>
                     <tbody>
                         {apontamentos.map((apontamento) => {
-                        
                         return (
                             <tr key={apontamento.id}>
                                 <td><input type="checkbox" value={apontamento.id} onClick={handleSelected}/></td>
@@ -195,29 +195,31 @@ const Aprovacao: React.FC = () => {
                 </ProgressBar>
                 <FinishButton onClick={handleActive}>FINALIZAR</FinishButton>
             </Container>
-            <Consultores id="popup">
-            <div id="hold">
-                <table>
-                <thead>
-                <tr>
-                    <td>CADASTRO</td>
-                    <td>NOME</td>
-                    <td>STATUS</td>
-                </tr>
-                </thead>
-                <tbody>
-                {consultores.map((consultor) => (
+            {showPopup && 
+                <Consultores show={!!showPopup}>
+                <div id="hold">
+                    <table>
+                    <thead>
                     <tr>
-                        <td>{consultor.id}</td>
-                        <td>{consultor.nome}</td>
-                        <td>{consultor.status}</td> 
+                        <td>CADASTRO</td>
+                        <td>NOME</td>
+                        <td>STATUS</td>
                     </tr>
-                    ))}
-                </tbody>
-                </table>
-                <button onClick={closeModal}><BsX/></button>
-            </div>
-            </Consultores>
+                    </thead>
+                    <tbody>
+                    {consultores.map((consultor) => (
+                        <tr>
+                            <td>{consultor.id}</td>
+                            <td>{consultor.nome}</td>
+                            <td>{consultor.status}</td> 
+                        </tr>
+                        ))}
+                    </tbody>
+                    </table>
+                    <button onClick={() => setShowPopup(!showPopup)}><BsX/></button>
+                </div>
+                </Consultores>
+            }
         </>
     )
 }

@@ -281,14 +281,26 @@ export const Step = styled.div<StepActive>`
     `}
 
 `;
-export const Consultores = styled.div`
+
+interface PopUp {
+    show: boolean;
+}
+    
+export const Consultores = styled.div<PopUp>`
+    
+    ${(props) => !props.show && 
+    css`
+      div {
+          visibility: hidden;
+      }
+    `}
+    
     transition: 200ms ease-in-out;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.7);
     width: 100%;
     height: 100%;
     z-index: 9999;
-    visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
