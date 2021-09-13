@@ -11,10 +11,10 @@ import Home from '../pages/Home/index';
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={Login}/>
-    <Route path="/home" exact component={Home}/>
-    <Route path="/aprovacao" exact component={Aprovacao}/>
-    <Route path="/consultores" component={Consultores}/>
-    <Route path="/display2" exact component={Projeto2}/>
+    <Route path="/home" exact component={Home} isPrivate/>
+    <Route path="/aprovacao" exact component={Aprovacao} isPrivate/>
+    <Route path="/consultores" component={Consultores} isPrivate/>
+    <Route path="/display2" exact component={Projeto2} isPrivate/>
   </Switch>
   );
 
