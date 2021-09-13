@@ -1,13 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Cards, Card, TitleSection, TitleProject, HoldHours, Hours, Status, Date, Container,  
         TitlePopUp, InfosPopup, DetailsPopup, Objetivo, InfosGerais, Skills, Horas, Table, HorasApontadas, 
-        ConsultoresAlocados, Title, Form, Filters, Filter} from './styles';
+        ConsultoresAlocados, Title, Form, Filters, Filter} from './style';
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
 import { Chart } from "react-google-charts";
 import { BsX } from 'react-icons/bs';
-import { openModal } from '../../script/modal/script';
 import Grid from '../../components/Grid';
 import { IoIosArrowDown } from 'react-icons/io';
 import display1 from '../../imgs/display1.svg';
@@ -35,6 +34,7 @@ const Home: React.FC = () => {
 
   const [isOpen, setOpen] = useState(false);
   const [projetos, setProjeto] = useState<Projetos[]>([]);
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleOpen = useCallback(() => {
     if(!!isOpen === false) {
@@ -43,16 +43,6 @@ const Home: React.FC = () => {
       setOpen(false);    
     }
   }, [isOpen, setOpen]);
-
-  const closeModal = useCallback(() => {
-    var popup = document.getElementById("popup");
-    if(popup) {
-      popup.style.visibility = "hidden";
-    }
-    if(isOpen) {
-      setOpen(false);
-    }
-  },[isOpen, setOpen]);
 
   const [show, setShow] = useState(false);
 
@@ -111,7 +101,7 @@ const Home: React.FC = () => {
     </Filters>
       <Cards > 
       {projetos.map((projeto) => (
-        <Card Show={!!show} color="#EBB93A" onClick={openModal} key={projeto.id}>
+        <Card Show={!!show} color="#EBB93A" onClick={() => setShowPopup(!showPopup)} key={projeto.id}>
           <TitleSection Show={!!show}>000 - {projeto.secao}</TitleSection>
           <TitleProject Show={!!show}>{projeto.id} - {projeto.nome} </TitleProject>
           <HoldHours Show={!!show}>
@@ -135,10 +125,10 @@ const Home: React.FC = () => {
         </Card>
       ))}
       </Cards>
-
-      <Container Open={!!isOpen} id="popup">
+      {showPopup && 
+      <Container Open={!!isOpen}  show={!!showPopup}>
         <div id="hold">
-          <button onClick={closeModal}><BsX/></button>
+          <button onClick={() => setShowPopup(!showPopup)}><BsX/></button>
           <TitlePopUp>
             <h2> 0000 - SEÇÃO XYZ</h2>
             <h1>0000000 - RESTAURAÇÃO DE ALTERADORES</h1>
@@ -315,6 +305,7 @@ const Home: React.FC = () => {
           </DetailsPopup>
         </div>
       </Container>
+      }
     </>
   )
 };

@@ -400,16 +400,36 @@ export const Date = styled.div<cardProps>`
         
     }
 `;
-interface ContainerProps {
+
+interface PopUp{
     Open: boolean;
+    show: boolean;
 }
-export const Container = styled.div<ContainerProps>`
+
+export const Container = styled.div<PopUp>`
+    ${(props) => props.Open ? 
+        css`
+            #hold{
+                width:1160px; 
+            }
+        `: css`
+            #hold{
+                width: 960px; 
+            }
+    `}
+
+    ${(props) => !props.show && 
+    css`
+      div {
+          visibility: hidden;
+      }
+    `}
+
     position: fixed;
     background-color: rgba(0, 0, 0, 0.7);
     width: 100%;
     height: 100%;
     z-index: 9999;
-    visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -433,17 +453,6 @@ export const Container = styled.div<ContainerProps>`
         flex-direction: column;
         padding: 35px;
     }
-    ${(props) => props.Open ? 
-        css`
-            #hold{
-                width:1160px; 
-            }
-        `: css`
-            #hold{
-                width: 960px; 
-            }
-    `}
-    
 `;
 
 export const TitlePopUp = styled.div`
@@ -483,6 +492,11 @@ export const DetailsPopup = styled.div`
         font-weight: 700;
     }
 `;
+
+interface ContainerProps {
+    Open: boolean;
+}
+
 export const InfosGerais = styled.div<ContainerProps>`
 
     ${(props) => props.Open ? 
