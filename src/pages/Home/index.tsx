@@ -12,7 +12,8 @@ import { Cards, Card, TitleSection, TitleProject, HoldHours, Hours, Status, Date
         ConsultoresAlocados,
         Title,
         Form,
-        Filters} from './styles';
+        Filters,
+        Filter} from './styles';
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
@@ -69,14 +70,16 @@ const handleNotShow = useCallback(() => {
       <Header>
         <p>PROJETOS</p>
       </Header>
-
+      
       <Profile/>
       <Menu/>
       <Filters>
         <div>
-            <Title>PROJETOS ALOCADOS</Title>
+            <Title>
+              PROJETOS ALOCADOS
+            </Title>
             <div>
-                <div id="filter">
+                <Filter>
                     <Form >
                         <label>Projeto:</label>
                         <input type="text" placeholder="Digite aqui... "/>
@@ -91,7 +94,7 @@ const handleNotShow = useCallback(() => {
                         <span>Todos</span>
                         <IoIosArrowDown id="img" size={17}/>
                     </div>
-                </div>
+                </Filter>
                 <button onClick={handleShow}><img src={display1} alt=""/></button>
                 <button onClick={handleNotShow}><img src={display2} alt=""/></button>
             </div> 

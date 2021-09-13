@@ -9,24 +9,36 @@ export const Filters = styled.div`
     justify-content: space-between;
     margin: 7rem 0rem 0rem 4rem;
 
-    div{
-        width: 90%;
-        height: 60px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
+        div{
+            width: 90%;
+            height: 60px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-    #filter{
-        width: 90%;
-        height: 60px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 3rem;
-        margin-bottom: 3rem;
+        
+        #img{
+            float: right;
+        }
+
+        button{
+            border: none;
+            background: transparent;
+        }
+  
+`;
+
+export const Filter= styled.div`
+    width: 90%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 
         p{
             color: #7E7E7E;
@@ -48,17 +60,9 @@ export const Filters = styled.div`
                 font-size: 14px;
             }
         }
-    }
-    #img{
-        float: right;
-    }
 
-    button{
-        border: none;
-        background: transparent;
-    }
+
 `;
-
 export const Title = styled.h1`
     font-weight:normal;
     font-size: 20px;
@@ -169,7 +173,7 @@ export const TitleProject = styled.p<cardProps>`
 
     @media (max-width: 1024px) and (min-width: 769px) {
         font-size: 15px;
-        width: 200px;
+        width: 350px;
     }
     
     @media (max-width: 768px) and (min-width: 426px) {
@@ -264,6 +268,11 @@ export const Hours = styled.div<cardProps>`
                 font-size: 12px;
             } 
     }
+
+    @media (max-width: 1024px){
+        margin-left: 1rem;
+        width: 150px;
+    }
 `;
 
 export const Status = styled.div<cardProps>`
@@ -316,7 +325,9 @@ export const Status = styled.div<cardProps>`
     `}
 
     @media (max-width: 1024px) and (min-width: 769px) {
-        margin-right: 5px;
+        margin-right: 25px;
+        height: 45px;
+        
         p:nth-child(1){
             font-weight: regular;
             font-size: 13px;
