@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Filters = styled.div`
     width: 95%;
@@ -106,14 +106,25 @@ export const Consultores = styled.div`
     }
 `;
 
-export const Container = styled.div`
+interface PopUp {
+  show: boolean;
+}
+
+export const Container = styled.div<PopUp>`
+
+  ${(props) => !props.show && 
+  css`
+    div {
+        visibility: hidden;
+    }
+  `}
+  
   transition: 200ms ease-in-out;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   height: 100%;
   z-index: 9999;
-  visibility: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
