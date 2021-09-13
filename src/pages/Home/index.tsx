@@ -138,7 +138,7 @@ const handleNotShow = useCallback(() => {
           </HoldHours>
           <Status Show={!!show}>
             <p>Situação: </p>
-            <p>Em Andamento</p>
+            <p>Em Atraso</p>
           </Status>
           <Date Show={!!show}>
             <p>De:20/20/2020</p>
@@ -160,7 +160,7 @@ const handleNotShow = useCallback(() => {
           </HoldHours>
           <Status Show={!!show}>
             <p>Situação: </p>
-            <p>Em Andamento</p>
+            <p>Concluído</p>
           </Status>
           <Date Show={!!show}>
             <p>De:20/20/2020</p>
@@ -182,7 +182,7 @@ const handleNotShow = useCallback(() => {
           </HoldHours>
           <Status Show={!!show}>
             <p>Situação: </p>
-            <p>Em Andamento</p>
+            <p>Concluído</p>
           </Status>
           <Date Show={!!show}>
             <p>De:20/20/2020</p>
@@ -204,7 +204,7 @@ const handleNotShow = useCallback(() => {
             </HoldHours>
             <Status Show={!!show}>
               <p>Situação: </p>
-              <p>Em Andamento</p>
+              <p>Concluído</p>
             </Status>
             <Date Show={!!show}>
               <p>De:20/20/2020</p>
@@ -226,7 +226,7 @@ const handleNotShow = useCallback(() => {
           </HoldHours>
           <Status Show={!!show}>
             <p>Situação: </p>
-            <p>Em Andamento</p>
+            <p>Concluído</p>
           </Status>
           <Date Show={!!show}>
             <p>De:20/20/2020</p>

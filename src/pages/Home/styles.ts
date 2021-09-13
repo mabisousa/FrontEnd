@@ -28,6 +28,11 @@ export const Filters = styled.div`
             background: transparent;
         }
   
+        @media (max-width: 768px) {
+            img{
+                width: 25px;
+            }
+    }
 `;
 
 export const Filter= styled.div`
@@ -61,6 +66,32 @@ export const Filter= styled.div`
             }
         }
 
+        @media (max-width: 1024px) and (min-width: 769px)  {
+            
+            p{
+                margin-left: 10px;
+            }
+
+            div{
+                width: 130px;
+            }
+        }
+
+        @media (max-width: 768px)  {
+            
+            p:nth-child(2){
+                margin-left: 25px;
+            }
+
+            p:nth-child(4){
+                margin-left: 7px;
+            }
+
+            div{
+                width: 100px;
+            }
+        }
+
 
 `;
 export const Title = styled.h1`
@@ -69,6 +100,10 @@ export const Title = styled.h1`
     text-decoration: underline #0075B1;
     margin-left: 50px;
     width: 300px;
+
+    @media (max-width:768px) {
+        margin-right: 10px;
+    }
 `;
 
 export const Form = styled.form`
@@ -78,11 +113,29 @@ export const Form = styled.form`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    
     label {
         color: #7E7E7E;
         font-size: 20px;
         text-align: center;
     }
+
+    @media (max-width: 1024px) and (min-width: 769px) {
+        width: 200px;
+
+            input{
+                width: 130px;
+            }
+    }
+
+    @media (max-width:768px) {
+        width: 150px;
+
+            input{
+                width: 100px;
+            }
+    }
+
     
 `;
 
@@ -123,13 +176,13 @@ export const Card = styled.a<cardProps>`
             width: 30%;
             height : 200px;
 
-            @media (max-width: 1024px) {
+            @media (max-width: 1024px) and (min-width: 769px) {
                 margin: .6rem;
             }
             
             @media (max-width: 768px){
                 width: 40%;
-                margin: 1rem 1.3rem 1rem 1.6rem;
+                margin: 1rem .6rem 1rem 1.6rem;
             }
     `}
 
@@ -139,7 +192,7 @@ export const Card = styled.a<cardProps>`
 
     @media (max-width: 768px){
         width: 43%;
-        margin: 1rem 1.6rem 1rem 1rem;
+        margin: 1rem .6rem 1rem 1rem;
     }
 `;
 
@@ -199,6 +252,12 @@ export const TitleProject = styled.p<cardProps>`
                 width: 200px;
                 margin-top: 5px;
             }
+
+            @media (max-width: 1024px) and (min-width: 769px) {
+                width: 220px;
+                font-size: 14px;
+                margin-top: 10px;
+            }
     `}
     
 `;
@@ -227,9 +286,10 @@ export const HoldHours = styled.div<cardProps>`
             margin-left: 7px;
             margin-top: 1rem; 
             
-            @media (max-width: 1024px){
+            @media (max-width: 1024px) and (min-width: 769px){
             margin-left: 1rem;
-            width: 100px;
+            width: 140px;
+            margin-top: 10px;
             }
 
             @media (max-width: 768px){
@@ -250,10 +310,10 @@ export const Hours = styled.div<cardProps>`
             width:200px;
             font-size: 12px;
         `: css`
-            width:150px;
+            width:100px;
             font-size:11px;   
 
-            @media (max-width: 1024px){
+            @media (max-width: 1024px) and (min-width: 769px){
                 width: 100px;
                     p{
                         font-size: 12px;
@@ -269,7 +329,7 @@ export const Hours = styled.div<cardProps>`
             } 
     }
 
-    @media (max-width: 1024px){
+    @media (max-width: 1024px) and (min-width: 769px){
         margin-left: 1rem;
         width: 150px;
     }
@@ -320,6 +380,10 @@ export const Status = styled.div<cardProps>`
 
             @media (max-width: 768px) {
                 margin: 5px 0 5px 0;
+            }
+
+            @media (max-width: 1024px) and (min-width: 769px) {
+                margin: 5px 0 0 0;
             }
 
     `}
@@ -390,7 +454,8 @@ export const Date = styled.div<cardProps>`
             margin-top: 10px;
 
             @media (max-width: 1024px){
-            width: 220px;
+                width: 200px;
+                margin-top: 5px;
             }
 
     `}
