@@ -13,7 +13,7 @@ import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web"
 import { openModal, closeModal } from "../../script/modal/script.js"
 import { BsX } from "react-icons/bs";
-import { checkbox, openDescription, openRequest } from "./script";
+import { checkbox, openRequest } from "./script";
 import api from "../../services/api";
 
 interface Consultor{
@@ -24,9 +24,11 @@ interface Consultor{
   }
 
 interface Apontamento {
+    id:number,
     data: Date,
-    hora: number,
+    horasTrabalhadas: number,
     descricao: string,
+    situacaoApontamento: string,
     projeto: {
         id: number,
     }
@@ -39,6 +41,7 @@ const Aprovacao: React.FC = () => {
     const [isSelected, setSelected] = useState(false);
 
     const handleSubmit = useCallback(async () => {},[]);
+
     const handleSelected = useCallback(async () => {
         console.log(isSelected)
         if(!!isSelected === false) {
@@ -53,15 +56,13 @@ const Aprovacao: React.FC = () => {
         setConfirm(true);
     }, [setConfirm]);
     
-    const handleOpen = useCallback(() => {
+    const handleOpen = useCallback((id) => {
         if(!!isOpen === false) {
         setOpen(true);    
         } else {
             setOpen(false);    
         }
-
-        openDescription(!!isOpen);
-
+  
     }, [isOpen, setOpen]);
 
     useEffect(() => {
@@ -70,6 +71,17 @@ const Aprovacao: React.FC = () => {
         })
     }, []);
 
+    const [apontamentos, setApontamentos] = useState<Apontamento[]>([]);
+
+    useEffect(() => {
+        api.get("/apontamentos").then((response) => {
+            setApontamentos(response.data)
+        })
+    }, []);
+    const apontamentosaprovados = apontamentos.filter(apontamento => apontamento.situacaoApontamento === "APROVADO")
+    ,aprovados = apontamentosaprovados.length;
+    const apontamentosreprovados = apontamentos.filter(apontamento => apontamento.situacaoApontamento === "REPROVADO")
+    ,reprovados = apontamentosreprovados.length;
     return (
         <>
             <Profile/>
@@ -106,15 +118,15 @@ const Aprovacao: React.FC = () => {
                     <h1>APROVAÇÕES</h1>
                     <div>
                         <div className="hold">
-                            <div className="numbers"><p>50</p></div>
+                            <div className="numbers"><p>{apontamentos.length}</p></div>
                             <p> APONTAMENTOS</p>
                         </div>
                         <div className="hold">
-                            <div className="numbers"><p>30</p></div>
+                            <div className="numbers"><p>{aprovados}</p></div>
                             <p> APROVADOS</p>
                         </div>
                         <div className="hold">
-                            <div className="numbers"><p>20</p></div>
+                            <div className="numbers"><p>{reprovados}</p></div>
                             <p> REPROVADOS</p>
                         </div>
                     </div>
@@ -126,20 +138,7 @@ const Aprovacao: React.FC = () => {
                     </Buttons>
                 </Count>
                 <Apontamentos>
-                <Descriptions Open={!!isOpen} id="descricao">
-                
-                    <header><p>Descrição</p><span/></header>
-                    <div>
-                        <p>
-                            *******************************
-                            *******************************
-                            *******************************
-                            *******************************
-                            *******************************
-                            *******************************
-                        </p>
-                    </div>
-                </Descriptions>
+
                     <table>
                     <thead>
                         <tr>
@@ -150,66 +149,25 @@ const Aprovacao: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><input type="checkbox" onClick={handleSelected}/></td>
-                            <td>11/08</td>
-                            <td>4h</td> 
-                            <td><button onClick={handleOpen}><GoChevronDown/></button></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>11/08</td>
-                            <td>4h</td> 
-                            <td><button onClick={() => {openDescription(2)}}><GoChevronDown/></button></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>11/08</td>
-                            <td>4h</td> 
-                            <td><button onClick={() => {openDescription(3)}}><GoChevronDown/></button></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>11/08</td>
-                            <td>4h</td> 
-                            <td><button onClick={() => {openDescription(4)}}><GoChevronDown/></button></td>
-                        </tr> 
-                        <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>11/08</td>
-                            <td>4h</td> 
-                            <td><button onClick={() => {openDescription(5)}}><GoChevronDown/></button></td>
-                        </tr>
-                        <tr>            
-                            <td><input type="checkbox" /></td>
-                            <td>11/08</td>
-                            <td>4h</td> 
-                            <td><button onClick={() => {openDescription(6)}}><GoChevronDown/></button></td>
-                        </tr>
-                        <tr>            
-                            <td><input type="checkbox" /></td>
-                            <td>11/08</td>
-                            <td>4h</td> 
-                            <td><button onClick={() => {openDescription(7)}}><GoChevronDown/></button></td>
-                        </tr>
-                        <tr>            
-                            <td><input type="checkbox" /></td>
-                            <td>11/08</td>
-                            <td>4h</td> 
-                            <td><button onClick={() => {openDescription(8)}}><GoChevronDown/></button></td>
-                        </tr>
-                        <tr>            
-                            <td><input type="checkbox" /></td>
-                            <td>11/08</td>
-                            <td>4h</td> 
-                            <td><button onClick={() => {openDescription(9)}}><GoChevronDown/></button></td>
-                        </tr>
-                        <tr>            
-                            <td><input type="checkbox" /></td>
-                            <td>11/08</td>
-                            <td>4h</td> 
-                            <td><button onClick={() => {openDescription(10)}}><GoChevronDown/></button></td>
-                        </tr>
+                        {apontamentos.map((apontamento) => {
+                        
+                        return (
+                            <tr key={apontamento.id}>
+                                <td><input type="checkbox" value={apontamento.id} onClick={handleSelected}/></td>
+                                <td>{apontamento.data}</td>
+                                <td>{apontamento.horasTrabalhadas}h</td> 
+                                <td><button onClick={() => handleOpen(apontamento.id)}><GoChevronDown/></button></td>
+
+                                <Descriptions Open={!!isOpen}>
+                                    <header><p>Descrição</p><span/></header>
+                                    <div>
+                                        <p>
+                                        {apontamento.descricao}
+                                        </p>
+                                    </div>
+                                </Descriptions>
+                            </tr>
+                        )})}
                     </tbody>
                     </table>
                 </Apontamentos>

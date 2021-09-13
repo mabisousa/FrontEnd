@@ -25,16 +25,3 @@ export function openRequest(choice) {
   const request = document.getElementById("request");
   request.style.visibility = "visible"; 
 }
-
-export function openDescription(isOpened) {
-  const description = document.getElementById("descricao");
-  
-  if(!!isOpened) {
-    description.style.width = "0px";
-    description.style.visibility = "hidden";
-    description.style.transitionDuration = "0"
-  } else {
-    description.style.visibility = "visible";
-    description.style.width = "330px";
-  } 
-}

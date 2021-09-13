@@ -400,26 +400,18 @@ export const Descriptions = styled.div<Description>`
     height: 270px;
     background: #fff;
     position: absolute;
+    top: 0;
 
-    ${(props) => !props.Open && 
+    ${(props) => !!props.Open ?
     css`
-    
-    header p, span{
-        display: none;
-    }
-    div {
-        display: none;
-    }
-    
-    `}
+    width: 330px;
+    visibility: visible;
     background: #fff;
     border-left: 1px solid #8B8787;
     border-top: 1px solid #8B8787;
     border-bottom: 1px solid #8B8787;
-    visibility: hidden;
     transition: 1.5s;
 
-    
     header {
         width: 100%;
         height: 55px;
@@ -437,7 +429,8 @@ export const Descriptions = styled.div<Description>`
         span {
             border-top: 20px solid transparent;
             border-bottom: 20px solid transparent;
-            border-right: 20px solid #8B8787;
+            border-right: 20px solid #0075B1;
+            transition-delay:1.5s;
         }
     }
 
@@ -451,4 +444,18 @@ export const Descriptions = styled.div<Description>`
             transition-delay: 1.5s;
         }
     }
+   
+    `
+    : css`
+    
+    visibility: hidden;
+    width: 0px;
+
+    header p, span{
+        display: none;
+    }
+    div {
+        display: none;
+    }
+    `}
 `;
