@@ -163,7 +163,9 @@ const Login: React.FC = () => {
               </table>
             </PopUpTable>
           </Content>
-          <Grid/>
+          <div id="grid"> 
+            <Grid/>
+          </div>
           </div>
         </Container>
       }

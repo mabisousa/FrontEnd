@@ -132,7 +132,7 @@ export const Container = styled.div<PopUp>`
   
   #hold{
     background-color: #fff;
-    width: 900px;
+    width: 960px;
     height: 570px;
     padding: 10px;
   }
@@ -149,6 +149,10 @@ export const Container = styled.div<PopUp>`
     svg{
       color: black;
     }
+  }
+
+  #grid{
+    margin-left: 30px;
   }
 `;
 
@@ -189,7 +193,6 @@ export const PopUpInfo = styled.div`
 export const Content = styled.div`
   display: flex;
   margin-top: 25px;
-  margin-left: 15px;
   margin-bottom: 60px;
   width: 100%;
   height: 260px;
@@ -198,6 +201,7 @@ export const Content = styled.div`
 
 export const Skills = styled.div`
   width: 40%;
+  margin-left: 30px;
 
   h5{
     margin-bottom: 35px;
@@ -219,9 +223,9 @@ export const HoldContent = styled.div`
 `;
 
 export const PopUpTable = styled.div`
-  width: 55%;
+  width: 50%;
   height: 100%;
-  margin-right: 15px;
+  margin-right: 30px;
 
   table{
     border-collapse: collapse;
