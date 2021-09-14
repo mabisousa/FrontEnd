@@ -34,12 +34,14 @@ interface Apontamento {
 }
 
 const Aprovacao: React.FC = () => {
+    
     const [consultores, setConsultor] = useState<Consultor[]>([]);
     const formRef = useRef<FormHandles>(null);
     const [isConfirmed, setConfirm] = useState(false);
     const [isOpen, setOpen] = useState(false);
     const [isSelected, setSelected] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
+    const [a, setApontamento] = useState<Apontamento[]>([]);
 
     const handleSubmit = useCallback(async () => {},[]);
 
@@ -63,7 +65,9 @@ const Aprovacao: React.FC = () => {
         } else {
             setOpen(false);    
         }
-  
+
+        setApontamento(apontamentos.filter(apontamento => apontamento.id === id));
+        
     }, [isOpen, setOpen]);
 
     useEffect(() => {
@@ -79,8 +83,10 @@ const Aprovacao: React.FC = () => {
             setApontamentos(response.data)
         })
     }, []);
+
     const apontamentosaprovados = apontamentos.filter(apontamento => apontamento.situacaoApontamento === "APROVADO")
     ,aprovados = apontamentosaprovados.length;
+
     const apontamentosreprovados = apontamentos.filter(apontamento => apontamento.situacaoApontamento === "REPROVADO")
     ,reprovados = apontamentosreprovados.length;
     return (
@@ -162,7 +168,7 @@ const Aprovacao: React.FC = () => {
                                     <header><p>Descrição</p><span/></header>
                                     <div>
                                         <p>
-                                        {apontamento.descricao}
+                                        {a && a.map(as => as.descricao)}
                                         </p>
                                     </div>
                                 </Descriptions>
