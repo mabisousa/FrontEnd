@@ -1,6 +1,6 @@
 import React, {useCallback, useContext, useRef} from 'react';
 
-import { Main, Inputs,  FormButton, ImgLogo, Button } from './style';
+import { Main, Inputs,  FormButton, ImgLogo, HoldButton } from './style';
 import logo from "../../imgs/logo.svg"
 
 import { FormHandles } from "@unform/core"
@@ -76,7 +76,7 @@ const Login: React.FC = () => {
                     <Input name="email" type="text" placeholder=" ">Usuário</Input>
                     <Input name="senha" type="password" placeholder=" ">Senha</Input>
 
-                    <Button><button>Esqueceu a senha?</button></Button>
+                    <HoldButton><button>Esqueceu a senha?</button></HoldButton>
 
                     <FormButton type="submit" value="Entrar"/>
                 </Form>

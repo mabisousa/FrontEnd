@@ -43,7 +43,7 @@ export const FormButton = styled.input`
   }  
 `;
 
-export const Button = styled.div`
+export const HoldButton = styled.div`
   width: 100%;
   height: 40px;
     
