@@ -24,10 +24,10 @@ interface Projetos{
     skill: string
   }],
   status: string,
-  data_inicio: string,
-  data_fim: string,
-  horas_apontadas: number,
-  horas_total: number,
+  dataInicio: Date,
+  dataFim: Date,
+  horasApontadas: number,
+  horasTotal: number,
 }
 
 const Home: React.FC = () => {
@@ -107,11 +107,11 @@ const Home: React.FC = () => {
           <HoldHours Show={!!show}>
             <Hours Show={!!show}>
               <p>Total:</p>
-              <p>{projeto.horas_total}</p>
+              <p>{projeto.horasTotal}</p>
             </Hours>
             <Hours Show={!!show}>
               <p>Apontadas:</p>
-              <p>{projeto.horas_apontadas}</p>
+              <p>{projeto.horasApontadas}</p>
             </Hours>
           </HoldHours>
           <Status Show={!!show}>
@@ -119,8 +119,8 @@ const Home: React.FC = () => {
             <p>{projeto.status}</p>
           </Status>
           <Date Show={!!show}>
-            <p>De: {projeto.data_inicio}</p>
-            <p>Até: {projeto.data_fim}</p>
+            <p>De: {projeto.dataInicio}</p>
+            <p>Até: {projeto.dataFim}</p>
           </Date>
         </Card>
       ))}
