@@ -7,7 +7,7 @@ export const Filters = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: 7rem 0rem 0rem 4rem;
+    margin: 6rem 0rem 0rem 4rem;
 
         div{
             width: 90%;
@@ -601,6 +601,7 @@ export const Objetivo = styled.div<ContainerProps>`
 
     display: flex;
     flex-direction: column;
+    margin-top: 34px;
 
     h1 {
         margin-bottom: 17px;
@@ -627,6 +628,9 @@ export const Objetivo = styled.div<ContainerProps>`
     display: flex;
     flex-direction: column;
 
+    h1 {
+        color: #023A67;
+    }
  `;
  export const HorasApontadas = styled.div`
     width: 80%;
@@ -701,10 +705,10 @@ export const Table = styled.div`
         display: block;
         height: 60px;
         overflow-y: scroll;
-        border:1px solid #7e7e7e;
+        border:1px solid #e2e2e280;
 
         tr {
-            border-bottom:1px solid #7e7e7e;
+            border-bottom:1px solid #e2e2e280;
         }
     }
     td {
@@ -761,7 +765,7 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
         }
         
         tbody {
-            height: 277px;
+            height: 288px;
             overflow-y: auto;
             display: block;
             border: 1px solid #e2e2e280;
