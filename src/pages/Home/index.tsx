@@ -99,7 +99,7 @@ const Home: React.FC = () => {
       </Filters>
       <Cards > 
       {projetos.map((projeto) => (
-        <Card Show={!!show} color="#EBB93A" onClick={() => setShowPopup(!showPopup)} key={projeto.id}>
+        <Card Show={!!show} color={projeto.status} onClick={() => setShowPopup(!showPopup)} key={projeto.id}>
           <TitleSection Show={!!show}>000 - {projeto.secao}</TitleSection>
           <TitleProject Show={!!show}>{projeto.id} - {projeto.nome} </TitleProject>
           <HoldHours Show={!!show}>

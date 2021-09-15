@@ -163,9 +163,25 @@ export const Card = styled.a<cardProps>`
     margin: 1rem;
     float: left;
 
-    ${(props) => props.color && css`
-        border-left: 15px solid ${props.color};
-    `}
+    
+    ${(props) =>
+      props.color == "ANDAMENTO" &&
+      css`
+        border-left:  15px solid #EBB93A;
+      `}
+
+      ${(props) =>
+      props.color == "CONCLUÍDO" && 
+      css`
+        border-left:  15px solid #6AACDA;
+      `}
+
+      ${(props) =>
+      props.color == "ATRASADO" &&
+      css`
+        border-left:  15px solid #AC341A;
+      `}
+
     
     ${(props) => props.Show ? 
         css` 
