@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Filters, Title, Form, Consultores } from './style';
+import { Filters, Title, Form, Consultores, Container, PopUpInfo, Content, Skills, HoldContent, PopUpTable } from './style';
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
 import api from "../../services/api";
-import Popup from "../../components/PopupConsultor";
+import { HiUserCircle } from "react-icons/hi";
+import { BsX } from "react-icons/bs";
+import Grid from "../../components/Grid";
+//import Popup from "../../components/PopupConsultor";
 
 interface Consultor{
   id: number;
@@ -74,11 +77,9 @@ const Login: React.FC = () => {
                 <td>{consultor.nome}</td>
                 <td>{consultor.status}</td> 
                 <td>{consultor.projetos.length}</td>
-                <button onClick={() => openPopup(consultor.id)} id="button"><td> + </td></button>
+                <button onClick={() => setShowPopup(!showPopup)} id="button"><td> + </td></button>
               </tr>
-              {showPopup &&
-                <Popup consultor={consult}/>
-              }
+              
               </>
             ))}
           </tbody>
@@ -86,7 +87,101 @@ const Login: React.FC = () => {
         </Consultores>
       </main>
       
-      
+      {showPopup &&
+        <Container show={!showPopup}>
+        <div id="hold">
+        <button onClick={() => setShowPopup(!showPopup)}><BsX/></button>
+        <PopUpInfo>
+          <header>
+            <HiUserCircle/>
+            <div id="EmployeeInformation">
+                <p></p>
+                <p>E-mail: isac_bezerra@empresa.com</p>
+            </div>
+          </header>
+        </PopUpInfo>
+        <Content>
+          <Skills>
+            <h5>SKILLS</h5>
+            <HoldContent>
+                <p>UI / UX</p>
+                <p>Desing Responsivo</p>
+                <p>CSS e JavaScript Frameworks</p>
+                <p>ReactJS</p>
+                <p>Bootstrap</p>
+                <p>Debug</p>
+                <p>Git</p>
+                <p>Git</p>
+                <p>Git</p>
+                <p>Git</p>
+                <p>Git</p>
+            </HoldContent>
+          </Skills>
+          <PopUpTable>
+            <table>
+              <thead>
+                <tr>
+                  <td>NÚMERO</td>
+                  <td>STATUS</td>
+                  <td>PROJETO</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0000000</td>
+                  <td>Concluido</td>
+                  <td>Restauração de alteradores</td> 
+                </tr>
+                <tr>
+                  <td>0000000</td>
+                  <td>Concluido</td>
+                  <td>Restauração de alteradores</td> 
+                </tr>
+                <tr>
+                  <td>0000000</td>
+                  <td>Concluido</td>
+                  <td>Restauração de alteradores</td> 
+                </tr>
+                <tr>
+                  <td>0000000</td>
+                  <td>Concluido</td>
+                  <td>Restauração de alteradores</td> 
+                </tr>
+                <tr>
+                  <td>0000000</td>
+                  <td>Concluido</td>
+                  <td>Restauração de alteradores</td> 
+                </tr>
+                <tr>
+                  <td>0000000</td>
+                  <td>Concluido</td>
+                  <td>Restauração de alteradores</td> 
+                </tr>
+                <tr>
+                  <td>0000000</td>
+                  <td>Concluido</td>
+                  <td>Restauração de alteradores</td> 
+                </tr>
+                <tr>
+                  <td>0000000</td>
+                  <td>Concluido</td>
+                  <td>Restauração de alteradores</td> 
+                </tr>
+                <tr>
+                  <td>0000000</td>
+                  <td>Concluido</td>
+                  <td>Restauração de alteradores</td> 
+                </tr>
+              </tbody>
+            </table>
+          </PopUpTable>
+        </Content>
+        <div id="grid"> 
+          <Grid/>
+        </div>
+        </div>
+      </Container>
+      }
     </>
 )};
 
