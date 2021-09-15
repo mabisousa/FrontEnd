@@ -41,7 +41,8 @@ const Aprovacao: React.FC = () => {
     const [isOpen, setOpen] = useState(false);
     const [isSelected, setSelected] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
-    const [a, setApontamento] = useState<Apontamento[]>([]);
+    const [descricao, setDescricao] = useState<Apontamento>();
+    const [apontamentos, setApontamentos] = useState<Apontamento[]>([]);
 
     const handleSubmit = useCallback(async () => {},[]);
 
@@ -59,16 +60,16 @@ const Aprovacao: React.FC = () => {
         setConfirm(true);
     }, [setConfirm]);
     
-    const handleOpen = useCallback((id) => {
+    const handleOpen = useCallback((id: number) => {
         if(!!isOpen === false) {
         setOpen(true);    
         } else {
             setOpen(false);    
         }
 
-        setApontamento(apontamentos.filter(apontamento => apontamento.id === id));
+        setDescricao(apontamentos[id-1]);
         
-    }, [isOpen, setOpen]);
+    }, [apontamentos, isOpen, setOpen]);
 
     useEffect(() => {
         api.get("/consultores").then((response) => {
@@ -76,7 +77,6 @@ const Aprovacao: React.FC = () => {
         })
     }, []);
 
-    const [apontamentos, setApontamentos] = useState<Apontamento[]>([]);
 
     useEffect(() => {
         api.get("/apontamentos").then((response) => {
@@ -168,7 +168,8 @@ const Aprovacao: React.FC = () => {
                                     <header><p>Descrição</p><span/></header>
                                     <div>
                                         <p>
-                                        {a && a.map(as => as.descricao)}
+                                        {descricao && descricao?.descricao}
+
                                         </p>
                                     </div>
                                 </Descriptions>
