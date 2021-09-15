@@ -49,6 +49,9 @@ const Home: React.FC = () => {
       setProjeto(response.data)
     })
   }, []);
+  const [search, setSearch] = useState('');
+
+  const filter = projetos.filter((projeto) => projeto.nome.toLowerCase().includes(search.toLowerCase()));
 
   const handleOpen = useCallback(() => {
       if(!!isOpen === false) {
@@ -98,7 +101,7 @@ const Home: React.FC = () => {
                 <Filter>
                     <Form >
                         <label>Projeto:</label>
-                        <input type="text" placeholder="Digite aqui... "/>
+                        <input type="text" placeholder="Digite aqui... " value={search} onChange={(ev) => setSearch(ev.target.value)}/>
                     </Form>
                     <p>Seção:</p>
                     <div>
