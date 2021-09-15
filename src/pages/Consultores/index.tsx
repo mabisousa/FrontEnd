@@ -24,6 +24,10 @@ const Login: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [consultores, setConsultor] = useState<Consultor[]>([]);
   const [consult, setConsult] = useState<Consultor>();
+  const [search, setSearch] = useState('');
+
+  const filter = consultores.filter((consultor) => consultor.nome.toLowerCase().includes(search.toLowerCase()))
+
   const openPopup = useCallback((id: number) => {
     setShowPopup(!showPopup);
     
@@ -50,7 +54,7 @@ const Login: React.FC = () => {
               <div id="filter">
                 <Form>
                   <label>Nome:</label>
-                  <input placeholder="Digite aqui..." />
+                  <input placeholder="Digite aqui..." value={search} onChange={(ev) => setSearch(ev.target.value)}/>
                 </Form>
               </div>
           </div>
@@ -70,7 +74,7 @@ const Login: React.FC = () => {
           </tr>
         </thead>
           <tbody>
-            {consultores.map((consultor) => (
+            {filter.map((consultor) => (
               <>
               <tr>
                 <td>{consultor.id}</td>
