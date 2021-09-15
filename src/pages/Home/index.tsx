@@ -27,6 +27,13 @@ interface Projetos{
   dataFim: string,
   horasApontadas: number,
   horasTotal: number,
+  apontamentos: [{
+    alocacao: {
+      skill:string,
+    },
+    horasTrabalhadas: number,
+    situacaoApontamento: string,
+  }]
 }
 
 const Home: React.FC = () => {
@@ -35,6 +42,13 @@ const Home: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [projetos, setProjeto] = useState<Projetos[]>([]);
   const [show, setShow] = useState(false);
+  const [projetopopup, setPopup] = useState<Projetos>();
+
+  useEffect(() => {
+    api.get("/projetos").then((response) => {
+      setProjeto(response.data)
+    })
+  }, []);
 
   const handleOpen = useCallback(() => {
       if(!!isOpen === false) {
@@ -44,6 +58,15 @@ const Home: React.FC = () => {
       }
     }, [isOpen, setOpen]);
 
+  const openPopup = useCallback((id) => {
+    setShowPopup(!showPopup);
+
+    
+    setPopup(projetos[id-1]);
+    console.log(projetopopup?.apontamentos)
+    
+  },[showPopup, setShowPopup, projetos]);
+  
   const handleShow = useCallback(() => {
     if(!!show === false) {
       setShow(true);    
@@ -56,11 +79,7 @@ const Home: React.FC = () => {
     }
   }, [show, setShow]);
 
-  useEffect(() => {
-    api.get("/projetos").then((response) => {
-      setProjeto(response.data)
-    })
-  }, []);
+  
 
   return (
     <>
@@ -99,7 +118,7 @@ const Home: React.FC = () => {
       </Filters>
       <Cards > 
       {projetos.map((projeto) => (
-        <Card Show={!!show} color="#EBB93A" onClick={() => setShowPopup(!showPopup)} key={projeto.id}>
+        <Card Show={!!show} color="#EBB93A" onClick={() => openPopup(projeto.id)} key={projeto.id}>
           <TitleSection Show={!!show}>000 - {projeto.secao}</TitleSection>
           <TitleProject Show={!!show}>{projeto.id} - {projeto.nome} </TitleProject>
           <HoldHours Show={!!show}>
@@ -123,37 +142,26 @@ const Home: React.FC = () => {
         </Card>
       ))}
       </Cards>
-      {showPopup && 
+      {showPopup && projetopopup && 
         <Container Open={!!isOpen}  show={!!showPopup}>
         <div id="hold">
-          <button onClick={() => setShowPopup(!showPopup)}><BsX/></button>
+          <button onClick={() => openPopup(1)}><BsX/></button>
           <TitlePopUp>
-            <h2> 0000 - SEÇÃO XYZ</h2>
-            <h1>0000000 - RESTAURAÇÃO DE ALTERADORES</h1>
+            <h2> 0000 - {projetopopup.secao}</h2>
+            <h1>0000000 - {projetopopup.nome}</h1>
           </TitlePopUp>
           <InfosPopup>
             <InfosGerais Open={!!isOpen}  className="cont">
               <h1>INFORMAÇÕES GERAIS:</h1>
               <div>
-                <p>GESTOR RESPONSÁVEL: </p>
-                <p>FORNECEDOR: </p>
+                <p>GESTOR RESPONSÁVEL: ?</p>
+                <p>FORNECEDOR: ?</p>
               </div>
             </InfosGerais>
             <Objetivo Open={!!isOpen} className="cont">
               <h1>OBJETIVO: </h1>
               <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Consequuntur officiis ducimus ut debitis mollitia modi 
-                  tempora unde nobis reiciendis illum libero ipsam excepturi
-                  itaque aperiam quae assumenda praesentium, maxime consequatur.
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Consequuntur officiis ducimus ut debitis mollitia modi 
-                  tempora unde nobis reiciendis illum libero ipsam excepturi
-                  itaque aperiam quae assumenda praesentium, maxime consequatur.
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Consequuntur officiis ducimus ut debitis mollitia modi 
-                  tempora unde nobis reiciendis illum libero ipsam excepturi
-                  itaque aperiam quae assumenda praesentium, maxime consequatur.
+                {projetopopup.descricao}
               </p>
             </Objetivo>
             <Horas Open={!!isOpen}  className="cont">
@@ -166,8 +174,8 @@ const Home: React.FC = () => {
                   chartType="PieChart"
                   data={[
                     ['Task', 'Hours per Day'],  
-                    ['Total', 10],
-                    ['Apontadas', 10]
+                    ['Apontada', 10],
+                    ['Restante', 1]
                   ]}
                   options={{
                     pieHole: 0.7  ,
@@ -183,10 +191,10 @@ const Home: React.FC = () => {
                 />
                 <div>
                   <p>TOTAL:
-                    <span>1600h</span> 
+                    <span>{projetopopup.horasTotal}</span> 
                   </p> 
                   <p>APONTADAS:
-                    <span>800h</span>
+                    <span>{projetopopup.horasApontadas}</span>
                   </p>
                 </div>
               </HorasApontadas>
@@ -201,10 +209,7 @@ const Home: React.FC = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Desenvolvimento PHP</td>
-                      <td>40H</td>
-                    </tr>
+                   
                     <tr>
                       <td>Desenvolvimento JAVA</td>
                       <td>15H</td>
@@ -227,79 +232,19 @@ const Home: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody>
+                {projetopopup.consultores.map((consultor) => {
                   <tr>
-                    <td>67270</td>
-                    <td >Isac Freire Bezerra</td>
-                  </tr>
-                  <tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr>
-                  <tr>
-                    <td>67270</td>
-                    <td >Isac Freire Bezerra</td>
-                  </tr>
-                  <tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr>
-                  <tr>
-                    <td>67270</td>
-                    <td >Isac Freire Bezerra</td>
-                  </tr>
-                  <tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr>
-                  <tr>
-                    <td>67270</td>
-                    <td >Isac Freire Bezerra</td>
-                  </tr>
-                  <tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr>
-                  <tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr>
-                  <tr>
-                    <td>67270</td>
-                    <td >Isac Freire Bezerra</td>
-                  </tr>
-                  <tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr><tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr>
-                  <tr>
-                    <td>67270</td>
-                    <td >Isac Freire Bezerra</td>
-                  </tr>
-                  <tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr><tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr>
-                  <tr>
-                    <td>67270</td>
-                    <td >Isac Freire Bezerra</td>
-                  </tr>
-                  <tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr>
+                  <td>{consultor.id}</td>
+                  <td>{consultor.nome}</td>
+                </tr>
+                })}
                 </tbody>
               </table>
             </ConsultoresAlocados>
           </InfosPopup>
           <DetailsPopup>
             <Grid/>
-            <h1>EM ANDAMENTO</h1>
+            <h1>{projetopopup.status}</h1>
           </DetailsPopup>
         </div>
       </Container>

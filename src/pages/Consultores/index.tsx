@@ -9,26 +9,38 @@ import { BsX } from "react-icons/bs";
 import Grid from "../../components/Grid";
 //import Popup from "../../components/PopupConsultor";
 
-interface Consultor{
-  id: number;
-  nome: string;
-  status: string
-  projetos: [
-    {
-      id: number
-    }
-  ]
-  }
 
+  interface Consultor{
+    id: number,
+    nome: string,
+    status: string,
+    usuario: {
+      email: string,
+    },
+    projetos: [
+      {
+        id: number,
+        nome: string,
+        status: string,
+      }
+    ]
+    alocacoes: [
+      {
+      skill: string,
+      }
+    ]
+}
 const Login: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [consultores, setConsultor] = useState<Consultor[]>([]);
   const [consult, setConsult] = useState<Consultor>();
+  
   const openPopup = useCallback((id: number) => {
     setShowPopup(!showPopup);
     
-    setConsult(consultores[id]);
-  },[consultores]);
+    setConsult(consultores[id-1]);
+    console.log(consult?.usuario)
+  },[consultores,consult,setConsult]);
 
   useEffect(() => {
     api.get("/consultores").then((response) => {
@@ -77,7 +89,7 @@ const Login: React.FC = () => {
                 <td>{consultor.nome}</td>
                 <td>{consultor.status}</td> 
                 <td>{consultor.projetos.length}</td>
-                <button onClick={() => setShowPopup(!showPopup)} id="button"><td> + </td></button>
+                <button onClick={() => openPopup(consultor.id)} id="button"><td> + </td></button>
               </tr>
               
               </>
@@ -87,16 +99,16 @@ const Login: React.FC = () => {
         </Consultores>
       </main>
       
-      {showPopup &&
+      {showPopup && consult &&
         <Container show={!showPopup}>
         <div id="hold">
-        <button onClick={() => setShowPopup(!showPopup)}><BsX/></button>
+        <button onClick={() => openPopup(consult.id)}><BsX/></button>
         <PopUpInfo>
           <header>
             <HiUserCircle/>
             <div id="EmployeeInformation">
-                <p></p>
-                <p>E-mail: isac_bezerra@empresa.com</p>
+                <h1>{consult.id} - {consult.nome}</h1>
+                <p>E-mail: {consult.usuario.email}</p>
             </div>
           </header>
         </PopUpInfo>
@@ -104,17 +116,9 @@ const Login: React.FC = () => {
           <Skills>
             <h5>SKILLS</h5>
             <HoldContent>
-                <p>UI / UX</p>
-                <p>Desing Responsivo</p>
-                <p>CSS e JavaScript Frameworks</p>
-                <p>ReactJS</p>
-                <p>Bootstrap</p>
-                <p>Debug</p>
-                <p>Git</p>
-                <p>Git</p>
-                <p>Git</p>
-                <p>Git</p>
-                <p>Git</p>
+                {consult.alocacoes.map((num => (
+                  num.skill
+                )))}
             </HoldContent>
           </Skills>
           <PopUpTable>
@@ -127,51 +131,13 @@ const Login: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>0000000</td>
-                  <td>Concluido</td>
-                  <td>Restauração de alteradores</td> 
-                </tr>
-                <tr>
-                  <td>0000000</td>
-                  <td>Concluido</td>
-                  <td>Restauração de alteradores</td> 
-                </tr>
-                <tr>
-                  <td>0000000</td>
-                  <td>Concluido</td>
-                  <td>Restauração de alteradores</td> 
-                </tr>
-                <tr>
-                  <td>0000000</td>
-                  <td>Concluido</td>
-                  <td>Restauração de alteradores</td> 
-                </tr>
-                <tr>
-                  <td>0000000</td>
-                  <td>Concluido</td>
-                  <td>Restauração de alteradores</td> 
-                </tr>
-                <tr>
-                  <td>0000000</td>
-                  <td>Concluido</td>
-                  <td>Restauração de alteradores</td> 
-                </tr>
-                <tr>
-                  <td>0000000</td>
-                  <td>Concluido</td>
-                  <td>Restauração de alteradores</td> 
-                </tr>
-                <tr>
-                  <td>0000000</td>
-                  <td>Concluido</td>
-                  <td>Restauração de alteradores</td> 
-                </tr>
-                <tr>
-                  <td>0000000</td>
-                  <td>Concluido</td>
-                  <td>Restauração de alteradores</td> 
-                </tr>
+                {consult.projetos.map((projeto => (
+                   <tr key={projeto.id}>
+                   <td>{projeto.id}</td>
+                   <td>{projeto.status}</td>
+                   <td>{projeto.nome}</td> 
+                 </tr>
+                  )))}
               </tbody>
             </table>
           </PopUpTable>
