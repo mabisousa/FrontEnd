@@ -35,6 +35,9 @@ const Home: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [projetos, setProjeto] = useState<Projetos[]>([]);
   const [show, setShow] = useState(false);
+  const [search, setSearch] = useState('');
+
+  const filter = projetos.filter((projeto) => projeto.nome.toLowerCase().includes(search.toLowerCase()));
 
   const handleOpen = useCallback(() => {
       if(!!isOpen === false) {
@@ -79,7 +82,7 @@ const Home: React.FC = () => {
                 <Filter>
                     <Form >
                         <label>Projeto:</label>
-                        <input type="text" placeholder="Digite aqui... "/>
+                        <input type="text" placeholder="Digite aqui... " value={search} onChange={(ev) => setSearch(ev.target.value)}/>
                     </Form>
                     <p>Seção:</p>
                     <div>
@@ -98,7 +101,7 @@ const Home: React.FC = () => {
         </div>
       </Filters>
       <Cards > 
-      {projetos.map((projeto) => (
+      {filter.map((projeto) => (
         <Card Show={!!show} color="#EBB93A" onClick={() => setShowPopup(!showPopup)} key={projeto.id}>
           <TitleSection Show={!!show}>000 - {projeto.secao}</TitleSection>
           <TitleProject Show={!!show}>{projeto.id} - {projeto.nome} </TitleProject>
