@@ -798,7 +798,8 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
                 border-right: 1px solid #e2e2e280;
             }
             td:nth-child(2) {
-                max-width: 70%;
+                padding: 10px;
+                width: 70%;
                 border-right: 1px solid #e2e2e280;
             }
         }

@@ -7,7 +7,6 @@ import { IoIosArrowDown } from 'react-icons/io';
 import display1 from '../../imgs/display1.svg';
 import display2 from '../../imgs/display2.svg';
 import api from "../../services/api"
-import Popup from "../../components/PopupProjetos"
 import Chart from 'react-google-charts';
 import { BsX } from 'react-icons/bs';
 import Grid from '../../components/Grid';
@@ -17,17 +16,19 @@ interface Projetos{
   secao: string,
   nome: string,
   descricao: string,
-  consultores: [{
+  consultores: [
+    {
     id: number,
-    nome: string,
-    skill: string
-  }],
+    nome: string
+    }
+  ],
   status: string,
   dataInicio: string,
   dataFim: string,
   horasApontadas: number,
   horasTotal: number,
   apontamentos: [{
+    id: number,
     alocacao: {
       skill:string,
     },
@@ -63,12 +64,9 @@ const Home: React.FC = () => {
 
   const openPopup = useCallback((id) => {
     setShowPopup(!showPopup);
-
-    
     setPopup(projetos[id-1]);
-    console.log(projetopopup?.apontamentos)
     
-  },[showPopup, setShowPopup, projetos]);
+  },[showPopup, setShowPopup, projetos, projetopopup, setPopup]);
   
   const handleShow = useCallback(() => {
     if(!!show === false) {
@@ -81,8 +79,6 @@ const Home: React.FC = () => {
       setShow(false);    
     }
   }, [show, setShow]);
-
-  
 
   return (
     <>
@@ -121,7 +117,7 @@ const Home: React.FC = () => {
       </Filters>
       <Cards > 
       {projetos.map((projeto) => (
-        <Card Show={!!show} color="#EBB93A" onClick={() => openPopup(projeto.id)} key={projeto.id}>
+        <Card Show={!!  show} color="#EBB93A" onClick={() => openPopup(projeto.id)} key={projeto.id}>
           <TitleSection Show={!!show}>000 - {projeto.secao}</TitleSection>
           <TitleProject Show={!!show}>{projeto.id} - {projeto.nome} </TitleProject>
           <HoldHours Show={!!show}>
@@ -177,8 +173,8 @@ const Home: React.FC = () => {
                   chartType="PieChart"
                   data={[
                     ['Task', 'Hours per Day'],  
-                    ['Apontada', 10],
-                    ['Restante', 1]
+                    ['Apontadas', 2500],
+                    ['Restante', 40]
                   ]}
                   options={{
                     pieHole: 0.7  ,
@@ -212,15 +208,13 @@ const Home: React.FC = () => {
                     </tr>
                   </thead>
                   <tbody>
-                   
-                    <tr>
-                      <td>Desenvolvimento JAVA</td>
-                      <td>15H</td>
+                   {projetopopup.apontamentos.map(apontamento => (
+
+                    <tr key={apontamento.id}>
+                        <td>{apontamento.alocacao.skill}</td>
+                        <td>{apontamento.horasTrabalhadas}</td>
                     </tr>
-                    <tr>
-                      <td>Desenvolvimento React</td>
-                      <td>20H</td>
-                    </tr>
+                   ))}  
                   </tbody>
                 </table>
               </Table>
@@ -235,12 +229,12 @@ const Home: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody>
-                {projetopopup.consultores.map((consultor) => {
-                  <tr>
-                  <td>{consultor.id}</td>
-                  <td>{consultor.nome}</td>
-                </tr>
-                })}
+                {projetopopup.consultores.map((consultor) => (
+                  <tr key={consultor.id}>
+                    <td>{consultor.id}</td>
+                    <td>{consultor.nome}</td>
+                  </tr>
+                ))}
                 </tbody>
               </table>
             </ConsultoresAlocados>
