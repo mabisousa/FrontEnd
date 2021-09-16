@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Filters, Title, Form, Consultores, Container, PopUpInfo, Content, Skills, HoldContent, PopUpTable } from './style';
+import { Filters, Title, Form, Consultores, Container, PopUpInfo, Content, Skills, HoldContent, PopUpTable, FilterBar, Filterbyname, Filterbynumber, Filterbystatus } from './style';
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
@@ -8,7 +8,6 @@ import { HiUserCircle } from "react-icons/hi";
 import { BsX } from "react-icons/bs";
 import Grid from "../../components/Grid";
 //import Popup from "../../components/PopupConsultor";
-
 
   interface Consultor{
     id: number,
@@ -42,7 +41,6 @@ const Login: React.FC = () => {
     setShowPopup(!showPopup);
     
     setConsult(consultores[id-1]);
-    console.log(consult?.usuario)
   },[consultores,consult,setConsult]);
 
   useEffect(() => {
@@ -59,18 +57,30 @@ const Login: React.FC = () => {
       <Profile/>
       <Menu/>
       <main>
-        <Filters>
-          <div>
-            <Title>CONSULTORES</Title>
-              <div id="filter">
-                <Form>
-                  <label>Nome:</label>
-                  <input placeholder="Digite aqui..." value={search} onChange={(ev) => setSearch(ev.target.value)}/>
-                </Form>
-              </div>
-          </div>
-        </Filters>
+        <FilterBar>
+          <Title>CONSULTORES</Title>
+          <Filters>
+            <Form>
+              <Filterbyname>
+                <label>Nome:</label>
+                <input placeholder="Digite aqui..." value={search} onChange={(ev) => setSearch(ev.target.value)}/>
+              </Filterbyname>
+              <Filterbynumber>
+                <label>Cadastro:</label>
+                <input/><p> - </p><input/>
+              </Filterbynumber>
 
+              <Filterbystatus>
+                <label>Status:</label>
+                <input list="status" placeholder="Todos"/>
+                <datalist id="status">
+                  <option value="Ativo"/>
+                  <option value="Inativo"/>
+                </datalist>
+              </Filterbystatus>
+            </Form>
+          </Filters>
+        </FilterBar>
         <Menu/>
         
         <Consultores>
@@ -86,7 +96,6 @@ const Login: React.FC = () => {
         </thead>
           <tbody>
             {filter.map((consultor) => (
-              <>
               <tr>
                 <td>{consultor.id}</td>
                 <td>{consultor.nome}</td>
@@ -94,8 +103,6 @@ const Login: React.FC = () => {
                 <td>{consultor.projetos.length}</td>
                 <button onClick={() => openPopup(consultor.id)} id="button"><td> + </td></button>
               </tr>
-              
-              </>
             ))}
           </tbody>
         </table>
