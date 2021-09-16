@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Filters, Title, Form, Consultores, Container, PopUpInfo, Content, Skills, HoldContent, PopUpTable, FilterBar, Filterbyname, Filterbynumber, Filterbystatus } from './style';
+import { Filters, Title, Form, Consultores, Container, PopUpInfo, Content, Skills, HoldContent, 
+  PopUpTable, FilterBar, Filterbyname, Filterbynumber, Filterbystatus, Tr } from './style';
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
@@ -96,13 +97,13 @@ const Login: React.FC = () => {
         </thead>
           <tbody>
             {filter.map((consultor) => (
-              <tr>
+              <Tr color={consultor.status}>
                 <td>{consultor.id}</td>
                 <td>{consultor.nome}</td>
                 <td>{consultor.status}</td> 
                 <td>{consultor.projetos.length}</td>
                 <button onClick={() => openPopup(consultor.id)} id="button"><td> + </td></button>
-              </tr>
+              </Tr>
             ))}
           </tbody>
         </table>
