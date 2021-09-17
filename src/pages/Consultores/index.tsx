@@ -8,6 +8,7 @@ import api from "../../services/api";
 import { HiUserCircle } from "react-icons/hi";
 import { BsX } from "react-icons/bs";
 import Grid from "../../components/Grid";
+import Dropdown from '../../components/Filter';
 //import Popup from "../../components/PopupConsultor";
 
   interface Consultor{
@@ -72,12 +73,15 @@ const Login: React.FC = () => {
               </Filterbynumber>
 
               <Filterbystatus>
-                <label>Status:</label>
-                <input list="status" placeholder="Todos"/>
-                <datalist id="status">
-                  <option value="Ativo"/>
-                  <option value="Inativo"/>
-                </datalist>
+                <span>Status:</span>
+                <Dropdown>
+                  <div>
+                    <p>ABC</p>
+                    <p>XYZ</p>
+                    <p>DEF</p>
+                    <p>Todos</p>
+                  </div>
+                </Dropdown>
               </Filterbystatus>
             </Form>
           </Filters>

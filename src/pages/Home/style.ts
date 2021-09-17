@@ -51,19 +51,9 @@ export const Filter= styled.div`
             text-align: center;
         }
 
+
         div{
             width: 150px;
-            height: 20px;
-            border: solid 1px  #7E7E7E;
-            color:#7E7E7E;
-            font-size: 14px;
-            text-align: center;
-            cursor: pointer;
-            display: block;
-
-            span{
-                font-size: 14px;
-            }
         }
 
         @media (max-width: 1024px) and (min-width: 769px)  {
@@ -120,11 +110,16 @@ export const Form = styled.form`
         text-align: center;
     }
 
+    input{
+        padding-left: 10px;
+    }
+
     @media (max-width: 1024px) and (min-width: 769px) {
         width: 200px;
 
             input{
                 width: 130px;
+                
             }
     }
 
@@ -133,6 +128,7 @@ export const Form = styled.form`
 
             input{
                 width: 100px;
+                
             }
     }
 

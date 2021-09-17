@@ -1,5 +1,6 @@
 import React, { useCallback, useRef, useState, useEffect } from "react";
-import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores, Buttons, Button, Step, Descriptions } from "./style"
+import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores, Buttons, 
+    Button, Step, Descriptions, Tr } from "./style"
 import { FiCheck } from 'react-icons/fi' 
 import { VscChromeClose } from 'react-icons/vsc'
 import { GoChevronDown } from 'react-icons/go'
@@ -215,11 +216,11 @@ const Aprovacao: React.FC = () => {
                     </thead>
                     <tbody>
                     {consultores.map((consultor) => (
-                        <tr>
+                        <Tr color={consultor.status}>
                             <td>{consultor.id}</td>
                             <td>{consultor.nome}</td>
                             <td>{consultor.status}</td> 
-                        </tr>
+                        </Tr>
                         ))}
                     </tbody>
                     </table>
