@@ -376,6 +376,55 @@ export const Consultores = styled.div<PopUp>`
     }
     
 `;
+
+interface colorConsultores{
+    color: string;
+  }
+  
+export const Tr = styled.div<colorConsultores>`
+    ${(props) =>
+    props.color == "ATIVO" &&
+    css`
+    td:nth-child(3){
+        color: #000;
+    }
+    
+    `}
+
+    ${(props) =>
+    props.color == "INATIVO" && 
+    css`
+    td:nth-child(3){
+        color: #AC341A;
+    }
+    `}
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid #8B8787;
+    border-top: 0;
+    height: 56px;
+    color: rgba(0, 0, 0, 0.87);
+    text-transform: uppercase;
+    font-size: 14px;
+
+    td{
+    width: 150px;
+    }
+    
+    td:nth-child(2){
+    width: 450px;
+    text-align: start;
+    }
+
+    button{
+    background: #fff;
+    border: 0;
+    font-size: 20px;
+    }
+`;
 export const Buttons = styled.div`
     width: 10vw;
     height: 20vh;
