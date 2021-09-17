@@ -10,6 +10,8 @@ import api from "../../services/api"
 import Chart from 'react-google-charts';
 import { BsX } from 'react-icons/bs';
 import Grid from '../../components/Grid';
+import DropdownSecao from "../../components/FilterSeção";
+import DropdownStatus from "../../components/FilterStatus";
 
 interface Projetos{
   id: number,
@@ -80,6 +82,8 @@ const Home: React.FC = () => {
     }
   }, [show, setShow]);
 
+
+
   return (
     <>
       <Header>
@@ -94,21 +98,15 @@ const Home: React.FC = () => {
               PROJETOS ALOCADOS
             </Title>
             <div>
-                <Filter>
+                <Filter >
                     <Form >
                         <label>Projeto:</label>
                         <input type="text" placeholder="Digite aqui... " value={search} onChange={(ev) => setSearch(ev.target.value)}/>
                     </Form>
                     <p>Seção:</p>
-                    <div>
-                        <span>Todos</span>
-                        <IoIosArrowDown id="img" size={17}/>
-                    </div>
+                    <DropdownSecao />
                     <p>Status:</p>
-                    <div>
-                        <span>Todos</span>
-                        <IoIosArrowDown id="img" size={17}/>
-                    </div>
+                    <DropdownStatus />
                 </Filter>
                 <button onClick={handleShow}><img src={display1} alt=""/></button>
                 <button onClick={handleNotShow}><img src={display2} alt=""/></button>

@@ -51,7 +51,7 @@ export const Filter= styled.div`
             text-align: center;
         }
 
-        div{
+        #dropdown{
             width: 150px;
             height: 20px;
             border: solid 1px  #7E7E7E;
@@ -62,8 +62,20 @@ export const Filter= styled.div`
             display: block;
 
             span{
-                font-size: 14px;
+                font-size: 15px;
             }
+        }
+
+        div{
+            position: relative;
+            top: 0;
+            left: -1px;
+            width: 150px;
+            min-height: 20px;
+            text-align: center;
+            border-top: 0;
+            color:#7E7E7E;
+
         }
 
         @media (max-width: 1024px) and (min-width: 769px)  {
