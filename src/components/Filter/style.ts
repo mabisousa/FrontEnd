@@ -23,11 +23,7 @@ export const Filter = styled.div<dropdownProps>`
 
         div{
             position: relative;
-            top: 0;
             left: -1px;
-            width: 150px;
-            min-height: 20px;
-            text-align: center;
             border: solid 1px  #7E7E7E;
             border-top: 0;
             color:#7E7E7E;

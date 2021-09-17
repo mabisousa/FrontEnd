@@ -10,8 +10,8 @@ import api from "../../services/api"
 import Chart from 'react-google-charts';
 import { BsX } from 'react-icons/bs';
 import Grid from '../../components/Grid';
-import DropdownSecao from "../../components/FilterSeção";
-import DropdownStatus from "../../components/FilterStatus";
+import Dropdown from "../../components/Filter";
+
 
 interface Projetos{
   id: number,
@@ -104,9 +104,23 @@ const Home: React.FC = () => {
                         <input type="text" placeholder="Digite aqui... " value={search} onChange={(ev) => setSearch(ev.target.value)}/>
                     </Form>
                     <p>Seção:</p>
-                    <DropdownSecao />
+                    <Dropdown>
+                      <div>
+                        <p>ABC</p>
+                        <p>XYZ</p>
+                        <p>DEF</p>
+                        <p>Todos</p>
+                      </div>
+                    </Dropdown>
                     <p>Status:</p>
-                    <DropdownStatus />
+                    <Dropdown>
+                      <div>
+                        <p>ABC</p>
+                        <p>XYZ</p>
+                        <p>DEF</p>
+                        <p>Todos</p>
+                      </div>
+                    </Dropdown>
                 </Filter>
                 <button onClick={handleShow}><img src={display1} alt=""/></button>
                 <button onClick={handleNotShow}><img src={display2} alt=""/></button>
