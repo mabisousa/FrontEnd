@@ -5,7 +5,7 @@ interface dropdownProps {
     ShowArrow: boolean;
 }
 
-export const Filter = styled.div<dropdownProps>`
+export const Container = styled.div<dropdownProps>`
     #dropdown{
         width: 150px;
         height: 20px;
@@ -18,10 +18,6 @@ export const Filter = styled.div<dropdownProps>`
 
         span{
             font-size: 15px;
-        }
-
-        svg{
-            float: right;
         }
 
         div{
