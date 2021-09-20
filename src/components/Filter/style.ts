@@ -3,8 +3,9 @@ import styled, { css } from 'styled-components';
 
 interface dropdownProps {
     ShowDropdown: boolean;
+    ShowArrow: boolean;
 }
-export const Filter = styled.div<dropdownProps>`
+export const Container = styled.div<dropdownProps>`
 
 
     #dropdown{
@@ -29,6 +30,7 @@ export const Filter = styled.div<dropdownProps>`
             color:#7E7E7E;
             overflow-y: auto;
 
+
             ${(props) => props.ShowDropdown ?
                 css`
                     display: none;
@@ -42,7 +44,36 @@ export const Filter = styled.div<dropdownProps>`
                 height: 20px;
                 padding-top:1%;
             }
+
+           
         }
+        
+        #arrowDown{
+            float: right;
+            display: block;
+
+            ${(props) => props.ShowArrow ?
+                css`
+                    display: block;
+                `: css`
+                    display: none;
+                `}
+        }
+
+        #arrowLeft{
+            float: right;
+            display: none;
+
+            ${(props) => props.ShowArrow ?
+                css`
+                    display: none;
+                `: css`
+                    display: block;
+                `}
+        }
+
+       
+        
     }
 
    

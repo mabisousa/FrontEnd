@@ -85,7 +85,7 @@ const Home: React.FC = () => {
 
 
   return (
-    <>
+    < >
       <Header>
         <p>PROJETOS</p>
       </Header>
@@ -115,14 +115,14 @@ const Home: React.FC = () => {
                     <p>Status:</p>
                     <Dropdown>
                       <div>
-                        <p>ABC</p>
-                        <p>XYZ</p>
-                        <p>DEF</p>
+                        <p>Concluído</p>
+                        <p>Em andamento</p>
+                        <p>Atrasado</p>
                         <p>Todos</p>
                       </div>
                     </Dropdown>
                 </Filter>
-                <button onClick={handleShow}><img src={display1} alt=""/></button>
+                <button  onClick={handleShow}><img src={display1} alt=""/></button>
                 <button onClick={handleNotShow}><img src={display2} alt=""/></button>
             </div> 
         </div>

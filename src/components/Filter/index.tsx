@@ -1,27 +1,34 @@
 import React, { useCallback, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-import { Filter } from "./style";
+import { Container } from "./style";
+import { IoIosArrowBack }  from "react-icons/io";
+
 
 const DropdownSeção: React.FC = (props) => {
 
   const [showDropdown, setShowDropDown] = useState(true);
+  const [showArrow, setShowArrow] = useState(true);
 
   const handleShowDropdown = useCallback(() => {
     if(!!showDropdown === false) {
-      setShowDropDown(true);    
+      setShowDropDown(true);
+      setShowArrow(true);    
     }else {
-      setShowDropDown(false);    
+      setShowDropDown(false);  
+      setShowArrow(false);     
     }
   }, [showDropdown, setShowDropDown]);
+
     return(
         <>
-          <Filter ShowDropdown={!!showDropdown}>
+          <Container ShowDropdown={!!showDropdown} ShowArrow={!!showArrow}>
               <div onClick={handleShowDropdown} id="dropdown">
                           <span>Todos</span>
-                          <IoIosArrowDown id="img" size={17}/>
+                          <IoIosArrowDown id="arrowDown" size={17}/>
+                          <IoIosArrowBack id="arrowLeft" size={17}/>
                   {props.children}
               </div>
-          </Filter>
+          </Container>
         </>
     )
 

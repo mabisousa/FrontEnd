@@ -18,11 +18,6 @@ export const Filters = styled.div`
             justify-content: space-between;
         }
 
-        
-        #img{
-            float: right;
-        }
-
         button{
             border: none;
             background: transparent;
