@@ -27,7 +27,9 @@ import Dropdown from '../../components/Filter';
     ]
     alocacoes: [
       {
-      skill: string,
+      skill: {
+        nome: string,
+      },
       }
     ]
 }
@@ -43,6 +45,8 @@ const Login: React.FC = () => {
     setShowPopup(!showPopup);
     
     setConsult(consultores[id-1]);
+    console.log(consult);
+
   },[consultores,consult,setConsult]);
 
   useEffect(() => {
@@ -131,8 +135,8 @@ const Login: React.FC = () => {
           <Skills>
             <h5>SKILLS</h5>
             <HoldContent>
-                {consult.alocacoes.map((num => (
-                  num.skill
+                {consult.alocacoes.map((alocacao => (
+                  alocacao.skill.nome
                 )))}
             </HoldContent>
           </Skills>
