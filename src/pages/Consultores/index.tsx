@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Filters, Title, Form, Consultores, Container, PopUpInfo, Content, Skills, HoldContent, 
-  PopUpTable, FilterBar, Filterbyname, Filterbynumber, Filterbystatus, Tr } from './style';
+  PopUpTable, Filterbynumber, Tr, Filter } from './style';
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
@@ -8,8 +8,7 @@ import api from "../../services/api";
 import { HiUserCircle } from "react-icons/hi";
 import { BsX } from "react-icons/bs";
 import Grid from "../../components/Grid";
-import Dropdown from '../../components/Filter';
-//import Popup from "../../components/PopupConsultor";
+import Dropdown from "../../components/Filter";
 
   interface Consultor{
     id: number,
@@ -63,33 +62,28 @@ const Login: React.FC = () => {
       <Profile/>
       <Menu/>
       <main>
-        <FilterBar>
+        <Filters>
           <Title>CONSULTORES</Title>
-          <Filters>
-            <Form>
-              <Filterbyname>
+          <Filter>
+              <Form>
                 <label>Nome:</label>
                 <input placeholder="Digite aqui..." value={search} onChange={(ev) => setSearch(ev.target.value)}/>
-              </Filterbyname>
+              </Form>
               <Filterbynumber>
-                <label>Cadastro:</label>
+                <p>Cadastro:</p>
                 <input/><p> - </p><input/>
               </Filterbynumber>
-
-              <Filterbystatus>
-                <span>Status:</span>
-                <Dropdown>
-                  <div>
-                    <p>ABC</p>
-                    <p>XYZ</p>
-                    <p>DEF</p>
-                    <p>Todos</p>
-                  </div>
-                </Dropdown>
-              </Filterbystatus>
-            </Form>
-          </Filters>
-        </FilterBar>
+              <p>Status:</p>
+              <Dropdown>
+                <div>
+                  <p>ABC</p>
+                  <p>XYZ</p>
+                  <p>DEF</p>
+                  <p>Todos</p>
+                </div>
+              </Dropdown>
+          </Filter>
+        </Filters>
         <Menu/>
         
         <Consultores>

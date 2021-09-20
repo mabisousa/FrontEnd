@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Container = styled.div`
+interface dropdownProps {
+    ShowDropdown: boolean;
+}
+
+export const Container = styled.div<dropdownProps>`
     width: 100%;
     height: 12vh;
     background: #fff;
@@ -40,18 +44,73 @@ export const Container = styled.div`
         align-items: center;
         justify-content: space-between;
 
-        img{
-            height: 30px;
-            width: 30px;
-            cursor: pointer;
-        }
-        p {
+        div{
+
+            width: 100px;
+            display: flex;
+            flex-direction: row;
+
+            img{
+                height: 30px;
+                width: 30px;
+                cursor: pointer;
+                margin-right: 7px;
+            }
+
+            #sair {
                 font-size: 14px;
                 width: 40px;
                 color: #00579D;
                 cursor: pointer;
                 border-left: 1.5px solid #00579D;
                 text-align: center;
+                margin-top: 7px;
+            }
+
+        }
+
+        #dropdown{
+            position: absolute;
+            right: 57px;
+            min-height: 20px;
+            top: 29px;
+            border: solid 1px #CBCBCB;
+            border-bottom: 0;
+            color: #7E7E7E;
+            cursor: pointer;
+            width: 180px;
+            background-color: #FFF;
+
+            ${(props) => props.ShowDropdown ?
+                css`
+                    display: none;
+                `: css`
+                    display: block;
+                `}
+
+            div{ 
+                width: 100%;
+                border-bottom: solid 1px  #CBCBCB;
+                display: flex;
+                align-items: center;
+
+                p{
+                    font-size: 12px;
+                    height: 20px;
+                    font-size: 14px;
+
+                }
+
+                img{
+                    height: 30px;
+                    width: 30px;
+                    cursor: pointer;
+                    margin-left: 8px;
+                }
+
+            }
+
+           
         }
     }
 `;

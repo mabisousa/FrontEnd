@@ -3,7 +3,6 @@ import { Cards, Card, TitleSection, TitleProject, HoldHours, Hours, Status, Date
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
-import { IoIosArrowDown } from 'react-icons/io';
 import display1 from '../../imgs/display1.svg';
 import display2 from '../../imgs/display2.svg';
 import api from "../../services/api"
@@ -98,7 +97,7 @@ const Home: React.FC = () => {
   
 
   return (
-    <>
+    < >
       <Header>
         <p>PROJETOS</p>
       </Header>
@@ -106,39 +105,37 @@ const Home: React.FC = () => {
       <Profile/>
       <Menu/>
       <Filters>
+        <Title>
+          PROJETOS ALOCADOS
+        </Title>
         <div>
-            <Title>
-              PROJETOS ALOCADOS
-            </Title>
-            <div>
-                <Filter >
-                    <Form >
-                        <label>Projeto:</label>
-                        <input type="text" placeholder="Digite aqui... " value={search} onChange={(ev) => setSearch(ev.target.value)}/>
-                    </Form>
-                    <p>Seção:</p>
-                    <Dropdown>
-                      <div>
-                        <p>ABC</p>
-                        <p>XYZ</p>
-                        <p>DEF</p>
-                        <p>Todos</p>
-                      </div>
-                    </Dropdown>
-                    <p>Status:</p>
-                    <Dropdown>
-                      <div>
-                        <p>ABC</p>
-                        <p>XYZ</p>
-                        <p>DEF</p>
-                        <p>Todos</p>
-                      </div>
-                    </Dropdown>
-                </Filter>
-                <button onClick={handleShow}><img src={display1} alt=""/></button>
-                <button onClick={handleNotShow}><img src={display2} alt=""/></button>
-            </div> 
-        </div>
+            <Filter>
+                <Form>
+                    <label>Projeto:</label>
+                    <input type="text" placeholder="Digite aqui... " value={search} onChange={(ev) => setSearch(ev.target.value)}/>
+                </Form>
+                <p>Seção:</p>
+                <Dropdown>
+                  <div>
+                    <p>ABC</p>
+                    <p>XYZ</p>
+                    <p>DEF</p>
+                    <p>Todos</p>
+                  </div>
+                </Dropdown>
+                <p>Status:</p>
+                <Dropdown>
+                  <div>
+                    <p>ABC</p>
+                    <p>XYZ</p>
+                    <p>DEF</p>
+                    <p>Todos</p>
+                  </div>
+                </Dropdown>
+            </Filter>
+            <button onClick={handleShow}><img src={display1} alt=""/></button>
+            <button onClick={handleNotShow}><img src={display2} alt=""/></button>
+        </div> 
       </Filters>
       <Cards > 
       {filter.map((projeto) => (
