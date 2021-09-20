@@ -15,7 +15,10 @@ import Dropdown from "../../components/Filter";
 
 interface Projetos{
   id: number,
-  secao: string,
+  secao: {
+    idSecao: number,
+    nomeSecao: string
+  },
   nome: string,
   descricao: string,
   consultores: [
@@ -29,14 +32,22 @@ interface Projetos{
   dataFim: string,
   horasApontadas: number,
   horasTotal: number,
-  apontamentos: [{
+  /*apontamentos: [{
     id: number,
     alocacao: {
       skill:string,
     },
     horasTrabalhadas: number,
     situacaoApontamento: string,
-  }]
+  }]*/
+  skills: [
+    {
+      id: number,
+      nome: string,
+      horasApontadas: number,
+      horasTotal: number,
+    }
+  ]
 }
 
 const Home: React.FC = () => {
@@ -67,7 +78,6 @@ const Home: React.FC = () => {
   const openPopup = useCallback((id) => {
     setShowPopup(!showPopup);
     setPopup(projetos[id-1]);
-    
   },[showPopup, setShowPopup, projetos, projetopopup, setPopup]);
   
   const handleShow = useCallback(() => {
@@ -82,7 +92,10 @@ const Home: React.FC = () => {
     }
   }, [show, setShow]);
 
+  const restantes = projetopopup?.horasTotal;
+  const apontadas = projetopopup?.horasApontadas;
 
+  
 
   return (
     <>
@@ -130,7 +143,7 @@ const Home: React.FC = () => {
       <Cards > 
       {filter.map((projeto) => (
         <Card Show={!!show} color={projeto.status} onClick={() => openPopup(projeto.id)} key={projeto.id}>
-          <TitleSection Show={!!show}>000 - {projeto.secao}</TitleSection>
+          <TitleSection Show={!!show}>{projeto.secao.idSecao} - {projeto.secao.nomeSecao}</TitleSection>
           <TitleProject Show={!!show}>{projeto.id} - {projeto.nome} </TitleProject>
           <HoldHours Show={!!show}>
             <Hours Show={!!show}>
@@ -158,8 +171,8 @@ const Home: React.FC = () => {
         <div id="hold">
           <button onClick={() => openPopup(1)}><BsX/></button>
           <TitlePopUp>
-            <h2> 0000 - {projetopopup.secao}</h2>
-            <h1>0000000 - {projetopopup.nome}</h1>
+            <h2> {projetopopup.secao.idSecao} - {projetopopup.secao.nomeSecao}</h2>
+            <h1>{projetopopup.id} - {projetopopup.nome}</h1>
           </TitlePopUp>
           <InfosPopup>
             <InfosGerais Open={!!isOpen}  className="cont">
@@ -185,8 +198,8 @@ const Home: React.FC = () => {
                   chartType="PieChart"
                   data={[
                     ['Task', 'Hours per Day'],  
-                    ['Apontadas', 2500],
-                    ['Restante', 40]
+                    ['Apontadas', apontadas],
+                    ['Restante', restantes]
                   ]}
                   options={{
                     pieHole: 0.7  ,
@@ -220,11 +233,11 @@ const Home: React.FC = () => {
                     </tr>
                   </thead>
                   <tbody>
-                   {projetopopup.apontamentos.map(apontamento => (
+                   {projetopopup.skills.map(skill => (
 
-                    <tr key={apontamento.id}>
-                        <td>{apontamento.alocacao.skill}</td>
-                        <td>{apontamento.horasTrabalhadas}</td>
+                    <tr key={skill.id}>
+                        <td>{skill.nome}</td>
+                        <td>{skill.horasApontadas}</td>
                     </tr>
                    ))}  
                   </tbody>

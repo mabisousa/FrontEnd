@@ -584,7 +584,7 @@ export const InfosGerais = styled.div<ContainerProps>`
 
         `: css`
         width: 50%;
-        transition: 0s;
+        transition: 1s;
         `}
 
     height: 40%;
@@ -608,7 +608,7 @@ export const Objetivo = styled.div<ContainerProps>`
         transition: 1s;
         `: css`
         width: 50%;
-        transition: 0s;
+        transition: 1s;
         `}
     height: 50%;
 
@@ -624,6 +624,8 @@ export const Objetivo = styled.div<ContainerProps>`
         height: 70%;
         align-self: center;
         overflow-y: scroll;
+        overflow-x: hidden;
+
     }
 
 `;
@@ -634,7 +636,7 @@ export const Objetivo = styled.div<ContainerProps>`
         transition: 1s;
         `: css`
         width: 50%;
-        transition: 0s;
+        transition: 1s;
         `}
     height: 50%;
 
@@ -678,7 +680,7 @@ export const Skills = styled.div<ContainerProps>`
         transition: 1s;
         `: css`
         width: 50%;
-        transition: 0s;
+        transition: 1s;
         `}
 
     height: 50%;
