@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const Filters = styled.div`
-    width: 95%;
+    width: 85%;
     height: 60px;
     display: flex;
     flex-direction: row;
@@ -11,16 +11,10 @@ export const Filters = styled.div`
 
         div{
             width: 90%;
-            height: 60px;
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-        }
-
-        
-        #img{
-            float: right;
         }
 
         button{
@@ -32,28 +26,18 @@ export const Filters = styled.div`
             img{
                 width: 25px;
             }
-    }
+        }
 `;
 
-export const Filter= styled.div`
-    width: 90%;
-    height: 60px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+export const Filter = styled.div`
+    margin-left: 5px;
 
         p{
             color: #7E7E7E;
             font-size: 20px;
             text-align: center;
-        }
-
-
-        div{
-            width: 150px;
+            margin-right: 10px;
+            margin-left: 10px;
         }
 
         @media (max-width: 1024px) and (min-width: 769px)  {
@@ -81,8 +65,6 @@ export const Filter= styled.div`
                 width: 100px;
             }
         }
-
-
 `;
 export const Title = styled.h1`
     font-weight:normal;
@@ -103,6 +85,7 @@ export const Form = styled.form`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin-right: 10px;
     
     label {
         color: #7E7E7E;
@@ -112,6 +95,7 @@ export const Form = styled.form`
 
     input{
         padding-left: 10px;
+        margin-left: 10px;
     }
 
     @media (max-width: 1024px) and (min-width: 769px) {
@@ -131,8 +115,6 @@ export const Form = styled.form`
                 
             }
     }
-
-    
 `;
 
 export const Cards = styled.div`

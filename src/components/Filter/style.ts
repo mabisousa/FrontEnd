@@ -1,12 +1,10 @@
-
 import styled, { css } from 'styled-components';
 
 interface dropdownProps {
     ShowDropdown: boolean;
 }
+
 export const Filter = styled.div<dropdownProps>`
-
-
     #dropdown{
         width: 150px;
         height: 20px;
@@ -21,13 +19,19 @@ export const Filter = styled.div<dropdownProps>`
             font-size: 15px;
         }
 
+        svg{
+            float: right;
+        }
+
         div{
+            width: 150px;
             position: relative;
             left: -1px;
             border: solid 1px  #7E7E7E;
-            border-top: 0;
-            color:#7E7E7E;
-            overflow-y: auto;
+            color: #7E7E7E;
+            background: #fff;
+            overflow-y: scroll;
+            height: 50px;
 
             ${(props) => props.ShowDropdown ?
                 css`
@@ -44,7 +48,4 @@ export const Filter = styled.div<dropdownProps>`
             }
         }
     }
-
-   
-
 `;
