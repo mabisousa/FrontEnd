@@ -1,24 +1,49 @@
 import styled, {css} from 'styled-components';
 
-export const FilterBar = styled.div`
-    width: 95%;
-    height: 60px;
-    display: flex;
-    flex-direction: row;
-    margin: 6rem 0rem 0rem 4rem;
-    align-items: center;
-`;
-
 export const Filters = styled.div`
-    width: 90%;
+    width: 85%;
     height: 60px;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 6rem 0rem 0rem 4rem;
 
     p{
       color: #7E7E7E;
       font-size: 20px;
     }
+
+    #img{
+            float: right;
+        }
+
+    label{
+      color: #7E7E7E;
+      font-size: 20px;
+      margin: 10px;
+    }
+
+    input{
+      padding-left: 2px;
+    }
+`;
+
+export const Filter = styled.div`
+    width: 90%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    p{
+      color: #7E7E7E;
+      font-size: 20px;
+      text-align: center;
+      margin-right: 10px;
+      margin-left: 10px;
+  } 
 `;
 
 export const Title = styled.h1`
@@ -34,22 +59,9 @@ export const Form = styled.form`
     height: 60px;
     display: flex;
     align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
 
-    label {
-      color: #7E7E7E;
-      font-size: 20px;
-      margin: 10px;
-    }  
-`;
-
-export const Filterbyname = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: row;
     input{
-      padding-left: 10px;
+      height: 20px;
     }
 `;
 
@@ -60,35 +72,13 @@ export const Filterbynumber = styled.div`
 
     input{
       width: 60px;
-      
     }
+
     p{
       margin: 0px 5px;
       font-size: 20px;
-    }
-    
+    }  
 `;
-
-export const Filterbystatus = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-
-    input::placeholder{
-      text-align: center;
-      color: #7E7E7E;
-    }
-
-    datalist{
-      color: #7E7E7E;
-    }
-
-    datalist::-webkit-calendar-picker-indicator {
-      display: none;
-    }
-`;
-
-
 
 export const Consultores = styled.div`
     margin-left: 130px;
