@@ -133,8 +133,8 @@ const Home: React.FC = () => {
                   </div>
                 </Dropdown>
             </Filter>
-            <button onClick={handleShow}><img src={display1} alt=""/></button>
-            <button onClick={handleNotShow}><img src={display2} alt=""/></button>
+            <button onClick={handleNotShow}><img src={display1} alt=""/></button>
+            <button onClick={handleShow}><img src={display2} alt=""/></button>
         </div> 
       </Filters>
       <Cards > 

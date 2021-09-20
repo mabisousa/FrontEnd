@@ -32,40 +32,41 @@ export const Filters = styled.div`
 export const Filter = styled.div`
     margin-left: 5px;
 
+    p{
+        color: #7E7E7E;
+        font-size: 20px;
+        text-align: center;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    @media (max-width: 1024px) and (min-width: 769px)  {
+        
         p{
-            color: #7E7E7E;
-            font-size: 20px;
-            text-align: center;
-            margin-right: 10px;
             margin-left: 10px;
         }
 
-        @media (max-width: 1024px) and (min-width: 769px)  {
-            
-            p{
-                margin-left: 10px;
-            }
+        div{
+            width: 130px;
+        }
+    }
 
-            div{
-                width: 130px;
-            }
+    @media (max-width: 768px)  {
+        
+        p:nth-child(2){
+            margin-left: 25px;
         }
 
-        @media (max-width: 768px)  {
-            
-            p:nth-child(2){
-                margin-left: 25px;
-            }
-
-            p:nth-child(4){
-                margin-left: 7px;
-            }
-
-            div{
-                width: 100px;
-            }
+        p:nth-child(4){
+            margin-left: 7px;
         }
+
+        div{
+            width: 100px;
+        }
+    }
 `;
+
 export const Title = styled.h1`
     font-weight:normal;
     font-size: 20px;
@@ -100,7 +101,6 @@ export const Form = styled.form`
 
     @media (max-width: 1024px) and (min-width: 769px) {
         width: 200px;
-
             input{
                 width: 130px;
                 
@@ -142,42 +142,38 @@ export const Card = styled.a<cardProps>`
     float: left;
 
     
-    ${(props) =>
-      props.color == "ANDAMENTO" &&
-      css`
-        border-left:  15px solid #EBB93A;
-      `}
+    ${(props) => props.color == "ANDAMENTO" &&
+        css`
+            border-left:  15px solid #EBB93A;
+        `}
 
-      ${(props) =>
-      props.color == "CONCLUÍDO" && 
-      css`
-        border-left:  15px solid #6AACDA;
-      `}
+    ${(props) => props.color == "CONCLUÍDO" && 
+        css`
+            border-left:  15px solid #6AACDA;
+        `}
 
-      ${(props) =>
-      props.color == "ATRASADO" &&
-      css`
-        border-left:  15px solid #AC341A;
-      `}
+    ${(props) => props.color == "ATRASADO" &&
+        css`
+            border-left:  15px solid #AC341A;
+        `}
 
     
     ${(props) => props.Show ? 
         css` 
+            width: 30%;
+            height : 200px;
+        `: css`
             width:45%; 
             height: 150px;
 
-        `: css`
-            width: 30%;
-            height : 200px;
-
-            @media (max-width: 1024px) and (min-width: 769px) {
-                margin: .6rem;
-            }
-            
-            @media (max-width: 768px){
-                width: 40%;
-                margin: 1rem .6rem 1rem 1.6rem;
-            }
+        @media (max-width: 1024px) and (min-width: 769px) {
+            margin: .6rem;
+        }
+        
+        @media (max-width: 768px){
+            width: 40%;
+            margin: 1rem .6rem 1rem 1.6rem;
+        }
     `}
 
     @media (max-width: 425px){
@@ -209,8 +205,6 @@ export const TitleSection = styled.p<cardProps>`
             font-size: 14px;
         `: css`
             font-size: 12px;
-
-          
     `}
 `;
 
@@ -234,26 +228,25 @@ export const TitleProject = styled.p<cardProps>`
 
     ${(props) => props.Show ? 
         css` 
+            width: 315px;
+            font-size: 16px;
+            margin-top: 1rem; 
+        `: css`
             width: 500px;
             font-size: 18px;
             margin-top: 0;
-        `: css`
-            width: 315px;
-            font-size: 16px;
-            margin-top: 1rem;   
 
-            @media (max-width: 768px){
-                width: 200px;
-                margin-top: 5px;
-            }
+        @media (max-width: 768px){
+            width: 200px;
+            margin-top: 5px;
+        }
 
-            @media (max-width: 1024px) and (min-width: 769px) {
-                width: 220px;
-                font-size: 14px;
-                margin-top: 10px;
-            }
+        @media (max-width: 1024px) and (min-width: 769px) {
+            width: 220px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
     `}
-    
 `;
 
 export const HoldHours = styled.div<cardProps>`
@@ -273,22 +266,21 @@ export const HoldHours = styled.div<cardProps>`
 
     ${(props) => props.Show ? 
         css` 
-            margin-left: 2rem;
-            margin-top: 7px;
-
-        `: css`
             margin-left: 7px;
             margin-top: 1rem; 
+        `: css`
+            margin-left: 2rem;
+            margin-top: 7px;
             
-            @media (max-width: 1024px) and (min-width: 769px){
+        @media (max-width: 1024px) and (min-width: 769px){
             margin-left: 1rem;
             width: 140px;
             margin-top: 10px;
-            }
+        }
 
-            @media (max-width: 768px){
+        @media (max-width: 768px){
             width: 140px;
-            }
+        }
     `}
 `;
 
@@ -301,18 +293,18 @@ export const Hours = styled.div<cardProps>`
     
     ${(props) => props.Show ? 
         css` 
+            width:100px;
+            font-size:11px; 
+        `: css`
             width:200px;
             font-size: 12px;
-        `: css`
-            width:100px;
-            font-size:11px;   
-
-            @media (max-width: 1024px) and (min-width: 769px){
-                width: 100px;
-                    p{
-                        font-size: 12px;
-                    } 
-            }
+              
+        @media (max-width: 1024px) and (min-width: 769px){
+            width: 100px;
+                p{
+                    font-size: 12px;
+                } 
+        }
     `}
 
     @media (max-width: 768px){
@@ -346,19 +338,6 @@ export const Status = styled.div<cardProps>`
 
     ${(props) => props.Show ? 
         css` 
-            margin-top: 7px;
-            margin-right: 32px;
-            height:80px;
-
-            p:nth-child(1){
-                font-size: 15px;
-            }
-
-            p:nth-child(2){
-                font-size: 17px;
-            }
-
-        `: css`
             margin-top: 17px;
             margin-right: 16px;
             height:60px;
@@ -370,16 +349,26 @@ export const Status = styled.div<cardProps>`
             p:nth-child(2){
                 font-size: 16px;
             }
+        `: css`
+            margin-top: 7px;
+            margin-right: 32px;
+            height:80px;
 
-
-            @media (max-width: 768px) {
-                margin: 5px 0 5px 0;
+            p:nth-child(1){
+                font-size: 15px;
             }
 
-            @media (max-width: 1024px) and (min-width: 769px) {
-                margin: 5px 0 0 0;
+            p:nth-child(2){
+                font-size: 17px;
             }
+            
+        @media (max-width: 768px) {
+            margin: 5px 0 5px 0;
+        }
 
+        @media (max-width: 1024px) and (min-width: 769px) {
+            margin: 5px 0 0 0;
+        }
     `}
 
     @media (max-width: 1024px) and (min-width: 769px) {
@@ -424,8 +413,6 @@ export const Status = styled.div<cardProps>`
             font-size: 75%;
         }
     }
-   
-    
 `;
 
 export const Date = styled.div<cardProps>`
@@ -443,23 +430,20 @@ export const Date = styled.div<cardProps>`
 
     ${(props) => props.Show ? 
         css` 
-            margin-top: 4rem;
-        `: css`
             margin-top: 10px;
+        `: css`
+            margin-top: 4rem;
 
-            @media (max-width: 1024px){
-                width: 200px;
-                margin-top: 5px;
-            }
-
+        @media (max-width: 1024px){
+            width: 200px;
+            margin-top: 5px;
+        }
     `}
 
     @media (max-width: 768px) and (min-width: 426px) {
-        width: 230px;
-        
+        width: 230px;  
     }
 `;
-
 
 interface PopUp{
     Open: boolean;
@@ -532,13 +516,14 @@ export const TitlePopUp = styled.div`
         font-weight: bold;
     }
 `;
-export const InfosPopup = styled.div`
 
+export const InfosPopup = styled.div`
     height: 75%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
 `;
+
 export const DetailsPopup = styled.div`
     height: 10%;
     display: flex;
@@ -561,12 +546,12 @@ export const InfosGerais = styled.div<ContainerProps>`
 
     ${(props) => props.Open ? 
         css`
-        width: 35%;
-        transition: 1s;
+            width: 35%;
+            transition: 1s;
 
         `: css`
-        width: 50%;
-        transition: 1s;
+            width: 50%;
+            transition: 1s;
         `}
 
     height: 40%;
@@ -581,19 +566,18 @@ export const InfosGerais = styled.div<ContainerProps>`
     div:nth-child(2) {
         padding: 20px;
     }
-
 `;
+
 export const Objetivo = styled.div<ContainerProps>`
     ${(props) => props.Open ? 
         css`
-        width: 35%;
-        transition: 1s;
+            width: 35%;
+            transition: 1s;
         `: css`
-        width: 50%;
-        transition: 1s;
+            width: 50%;
+            transition: 1s;
         `}
     height: 50%;
-
     display: flex;
     flex-direction: column;
     margin-top: 34px;
@@ -607,21 +591,20 @@ export const Objetivo = styled.div<ContainerProps>`
         align-self: center;
         overflow-y: scroll;
         overflow-x: hidden;
-
     }
-
 `;
+
  export const Horas = styled.div<ContainerProps>`
     ${(props) => props.Open ? 
         css`
-        width: 40%;
-        transition: 1s;
+            width: 40%;
+            transition: 1s;
         `: css`
-        width: 50%;
-        transition: 1s;
+            width: 50%;
+            transition: 1s;
         `}
-    height: 50%;
 
+    height: 50%;
     display: flex;
     flex-direction: column;
 
@@ -629,6 +612,7 @@ export const Objetivo = styled.div<ContainerProps>`
         color: #023A67;
     }
  `;
+
  export const HorasApontadas = styled.div`
     width: 80%;
     height: 90%;
@@ -655,15 +639,16 @@ export const Objetivo = styled.div<ContainerProps>`
         }
     }
  `;
+
 export const Skills = styled.div<ContainerProps>`
   ${(props) => props.Open ? 
-        css`
+    css`
         width: 40%;
         transition: 1s;
-        `: css`
+    `: css`
         width: 50%;
         transition: 1s;
-        `}
+    `}
 
     height: 50%;
     display: flex;
@@ -671,14 +656,15 @@ export const Skills = styled.div<ContainerProps>`
     align-items: center;
 
     button:nth-child(2) {
-            border: 0;
-            width: 85%;
-            height: 40px;
-            font-size: 14px;
-            color: #fff;
-            background: #28B9DA;
-        }
+        border: 0;
+        width: 85%;
+        height: 40px;
+        font-size: 14px;
+        color: #fff;
+        background: #28B9DA;
+    }
 `;
+
 export const Table = styled.div`
   width: 85%;
   height: 65%;
@@ -716,26 +702,25 @@ export const Table = styled.div`
 `;
 
 export const ConsultoresAlocados = styled.div<ContainerProps>`
-
     ${(props) => props.Open ? 
         css`
-        table {
-        visibility: visible;
-        transition-delay: 1s;
-        }
-        width: 25%;
+            width: 25%;
 
+            table {
+                visibility: visible;
+                transition-delay: 1s;
+            }
         `: css`
-        table {
-        visibility: hidden;
-        transition-delay: 0s;
-        }
-        width: 0%;
+            width: 0%;
+
+            table {
+                visibility: hidden;
+                transition-delay: 0s;
+            }
         `}
 
     height: 100%;
-    
-    
+
     table {
         border-collapse: collapse;
         text-align: center;
