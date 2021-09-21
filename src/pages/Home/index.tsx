@@ -261,7 +261,7 @@ const Home: React.FC = () => {
               </table>
             </ConsultoresAlocados>
           </InfosPopup>
-          <DetailsPopup>
+          <DetailsPopup color={projetopopup.status}>
             <Grid/>
             <h1>{projetopopup.status}</h1>
           </DetailsPopup>
