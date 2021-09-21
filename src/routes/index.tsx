@@ -9,7 +9,7 @@ import Home from '../pages/Home/index';
 
 const Routes: React.FC = () => (
   <Switch>
-    <Route path="/" exact component={Login} isPrivate/>
+    <Route path="/" exact component={Login}/>
     <Route path="/home" exact component={Home} isPrivate/>
     <Route path="/aprovacao" exact component={Aprovacao} isPrivate/>
     <Route path="/consultores" component={Consultores} isPrivate/>
