@@ -546,12 +546,22 @@ export const DetailsPopup = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 95%;
-
     h1 {
-        color: #EBB93A;
         font-size: 24px;
         font-weight: 700;
     }
+    ${(props) => props.color == "ANDAMENTO" &&
+        css`
+            color: #EBB93A; 
+        `}
+    ${(props) => props.color == "CONCLUÍDO" && 
+        css`
+            color: #6AACDA; 
+        `}
+    ${(props) => props.color == "ATRASADO" &&
+        css`
+            color: #AC341A
+        `}
 `;
 
 interface ContainerProps {
