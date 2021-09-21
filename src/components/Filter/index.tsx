@@ -4,9 +4,9 @@ import { Container } from "./style";
 import { IoIosArrowBack }  from "react-icons/io";
 
 
-const DropdownSeção: React.FC = (props) => {
+const Dropdown: React.FC = (props) => {
 
-  const [showDropdown, setShowDropDown] = useState(true);
+  const [showDropdown, setShowDropDown] = useState(true) 
   const [showArrow, setShowArrow] = useState(true);
 
   const handleShowDropdown = useCallback(() => {
@@ -34,4 +34,4 @@ const DropdownSeção: React.FC = (props) => {
 
 }
 
-export default DropdownSeção
+export default Dropdown;

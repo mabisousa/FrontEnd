@@ -44,6 +44,7 @@ export const Filter = styled.div`
         
         p{
             margin-left: 10px;
+            
         }
 
         div{
@@ -54,11 +55,14 @@ export const Filter = styled.div`
     @media (max-width: 768px)  {
         
         p:nth-child(2){
-            margin-left: 25px;
+            font-size: 16px;
+            margin-left: 10px;
         }
 
         p:nth-child(4){
-            margin-left: 7px;
+
+            font-size: 16px;
+            margin-left: 10px;
         }
 
         div{
@@ -76,6 +80,7 @@ export const Title = styled.h1`
 
     @media (max-width:768px) {
         margin-right: 10px;
+        font-size: 19px;
     }
 `;
 
@@ -110,9 +115,13 @@ export const Form = styled.form`
     @media (max-width:768px) {
         width: 150px;
 
+        label{
+             font-size: 16px;
+        }
+       
             input{
                 width: 100px;
-                
+                margin-left: 5px;
             }
     }
 `;
@@ -279,7 +288,7 @@ export const HoldHours = styled.div<cardProps>`
         }
 
         @media (max-width: 768px){
-            width: 140px;
+            width: 130px;
         }
     `}
 `;
@@ -293,7 +302,7 @@ export const Hours = styled.div<cardProps>`
     
     ${(props) => props.Show ? 
         css` 
-            width:100px;
+            width: 155px;
             font-size:11px; 
         `: css`
             width:200px;
@@ -352,7 +361,7 @@ export const Status = styled.div<cardProps>`
         `: css`
             margin-top: 7px;
             margin-right: 32px;
-            height:80px;
+            height:60px;
 
             p:nth-child(1){
                 font-size: 15px;
@@ -364,6 +373,7 @@ export const Status = styled.div<cardProps>`
             
         @media (max-width: 768px) {
             margin: 5px 0 5px 0;
+            
         }
 
         @media (max-width: 1024px) and (min-width: 769px) {
@@ -388,7 +398,7 @@ export const Status = styled.div<cardProps>`
 
     @media (max-width: 768px) and (min-width: 426px) {
         margin-right: 15px;
-        height: 40px;
+        height:60px;
 
         p:nth-child(1){
             font-weight: regular;
@@ -416,11 +426,11 @@ export const Status = styled.div<cardProps>`
 `;
 
 export const Date = styled.div<cardProps>`
-    width:300px;
     height:15px;
     display: flex;
     justify-content: space-between;
     margin-left: 2rem;
+    
 
     p {
         color: #7E7E7E;
@@ -430,9 +440,9 @@ export const Date = styled.div<cardProps>`
 
     ${(props) => props.Show ? 
         css` 
-            margin-top: 10px;
+            width: 300px;
         `: css`
-            margin-top: 4rem;
+            width: 465px;
 
         @media (max-width: 1024px){
             width: 200px;
@@ -441,7 +451,8 @@ export const Date = styled.div<cardProps>`
     `}
 
     @media (max-width: 768px) and (min-width: 426px) {
-        width: 230px;  
+        width: 215px;
+        
     }
 `;
 
