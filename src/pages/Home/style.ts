@@ -139,7 +139,7 @@ export const Cards = styled.div`
 
 interface cardProps {
     color?: string,
-    Show?: boolean;
+    Show: boolean;
 }
 
 export const Card = styled.a<cardProps>`
@@ -441,6 +441,11 @@ export const Date = styled.div<cardProps>`
     ${(props) => props.Show ? 
         css` 
             width: 300px;
+
+            @media (max-width: 1024px){
+            width: 250px;
+            margin-top: 5px;
+        }
         `: css`
             width: 465px;
 
@@ -535,7 +540,7 @@ export const InfosPopup = styled.div`
     flex-wrap: wrap;
 `;
 
-export const DetailsPopup = styled.div<cardProps>`
+export const DetailsPopup = styled.div`
     height: 10%;
     display: flex;
     justify-content: space-between;
@@ -543,25 +548,10 @@ export const DetailsPopup = styled.div<cardProps>`
     width: 95%;
 
     h1 {
+        color: #EBB93A;
         font-size: 24px;
         font-weight: 700;
     }
-
-    ${(props) => props.color == "ANDAMENTO" &&
-        css`
-            color: #EBB93A; 
-        `}
-
-    ${(props) => props.color == "CONCLUÍDO" && 
-        css`
-            color: #6AACDA; 
-        `}
-
-    ${(props) => props.color == "ATRASADO" &&
-        css`
-            color: #AC341A
-        `}
-
 `;
 
 interface ContainerProps {
