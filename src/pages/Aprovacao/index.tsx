@@ -25,7 +25,7 @@ interface Consultor{
 
 interface Apontamento {
     id:number,
-    data: Date,
+    data: string,
     horasTrabalhadas: number,
     descricao: string,
     situacaoApontamento: string,
@@ -161,7 +161,7 @@ const Aprovacao: React.FC = () => {
                         return (
                             <tr key={apontamento.id}>
                                 <td><input type="checkbox" value={apontamento.id} onClick={handleSelected}/></td>
-                                <td>{apontamento.data}</td>
+                                <td>{apontamento.data.substring(0,10)}</td>
                                 <td>{apontamento.horasTrabalhadas}h</td> 
                                 <td><button onClick={() => handleOpen(apontamento.id)}><GoChevronDown/></button></td>
 
