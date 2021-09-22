@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Cards, Card, TitleSection, TitleProject, HoldHours, Hours, Status, Date, Title, Form, Filters, Filter, Container, TitlePopUp, InfosPopup, InfosGerais, Objetivo, Horas, HorasApontadas, Skills, Table, ConsultoresAlocados, DetailsPopup} from './style';
+import { Title, Form, Filters, Filter, Container, TitlePopUp, InfosPopup, InfosGerais, Objetivo, Horas, HorasApontadas, Skills, Table, ConsultoresAlocados, DetailsPopup} from './style';
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
@@ -10,6 +10,7 @@ import Chart from 'react-google-charts';
 import { BsX } from 'react-icons/bs';
 import Grid from '../../components/Grid';
 import Dropdown from "../../components/Filter";
+import Card from "../../components/Cards"
 
 
 interface Projetos{
@@ -64,7 +65,6 @@ const Home: React.FC = () => {
   }, []);
   const [search, setSearch] = useState('');
 
-  const filter = projetos.filter((projeto) => projeto.nome.toLowerCase().includes(search.toLowerCase()));
 
   const handleOpen = useCallback(() => {
       if(!!isOpen === false) {
@@ -93,8 +93,6 @@ const Home: React.FC = () => {
 
   const restantes = projetopopup?.horasTotal;
   const apontadas = projetopopup?.horasApontadas;
-
-  
 
   return (
     < >
@@ -137,32 +135,7 @@ const Home: React.FC = () => {
             <button onClick={handleShow}><img src={display2} alt=""/></button>
         </div> 
       </Filters>
-      <Cards > 
-      {filter.map((projeto) => (
-        <Card Show={!!show} color={projeto.status} onClick={() => openPopup(projeto.id)} key={projeto.id}>
-          <TitleSection Show={!!show}>{projeto.secao.idSecao} - {projeto.secao.nomeSecao}</TitleSection>
-          <TitleProject Show={!!show}>{projeto.id} - {projeto.nome} </TitleProject>
-          <HoldHours Show={!!show}>
-            <Hours Show={!!show}>
-              <p>Total:</p>
-              <p>{projeto.horasTotal}</p>
-            </Hours>
-            <Hours Show={!!show}>
-              <p>Apontadas:</p>
-              <p>{projeto.horasApontadas}</p>
-            </Hours>
-          </HoldHours>
-          <Status Show={!!show}>
-            <p>Situação: </p>
-            <p>{projeto.status}</p>
-          </Status>
-          <Date Show={!!show}>
-            <p>De: {projeto.dataInicio}</p>
-            <p>Até: {projeto.dataFim}</p>
-          </Date>
-        </Card>
-      ))}
-      </Cards>
+      <Card/>
       {showPopup && projetopopup && 
         <Container Open={!!isOpen}  show={!!showPopup}>
         <div id="hold">
