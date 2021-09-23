@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Title, Form, Filters, Filter, Container, TitlePopUp, InfosPopup, InfosGerais, Objetivo, Horas, HorasApontadas, Skills, Table, ConsultoresAlocados, DetailsPopup} from './style';
+import { Title, Form, Filters, Filter, Container, Cards, TitlePopUp, InfosPopup, InfosGerais, Objetivo, Horas, HorasApontadas, Skills, Table, ConsultoresAlocados, DetailsPopup} from './style';
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
@@ -11,7 +11,6 @@ import { BsX } from 'react-icons/bs';
 import Grid from '../../components/Grid';
 import Dropdown from "../../components/Filter";
 import Card from "../../components/Cards"
-
 
 interface Projetos{
   id: number,
@@ -49,22 +48,40 @@ interface Projetos{
     }
   ]
 }
-
+interface Secoes {
+    idSecao: number,
+    nomeSecao: string
+}
 const Home: React.FC = () => {
 
   const [isOpen, setOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [projetos, setProjeto] = useState<Projetos[]>([]);
+  const [projetossec, setProjetoSec] = useState<Projetos[]>([]);
   const [show, setShow] = useState(false);
   const [projetopopup, setPopup] = useState<Projetos>();
+  const [secoes, setSecoes] = useState<Secoes[]>([]);
 
   useEffect(() => {
     api.get("/projetos").then((response) => {
       setProjeto(response.data)
     })
-  }, []);
-  const [search, setSearch] = useState('');
+    api.get("/secoes").then((response) => {
+      setSecoes(response.data)
+    })
+  }, [secoes, setSecoes]);
 
+  const [search, setSearch] = useState('');
+  const filter = projetos.filter((projeto) => projeto.nome.toLowerCase().includes(search.toLowerCase()));
+
+  /*const filtrarSecao = useCallback((secao: string) => {
+
+    api.get(`/projetos/secao/${secao}`).then((response) => {
+      setProjetoSec(response.data)
+    })
+    console.log(projetossec);
+
+  },[projetos, setProjeto]);*/
 
   const handleOpen = useCallback(() => {
       if(!!isOpen === false) {
@@ -91,8 +108,13 @@ const Home: React.FC = () => {
     }
   }, [show, setShow]);
 
-  const restantes = projetopopup?.horasTotal;
-  const apontadas = projetopopup?.horasApontadas;
+  let restantes = 0;
+  let apontadas = 0;
+
+  if (projetopopup) {
+    apontadas = projetopopup?.horasApontadas;
+    restantes = projetopopup?.horasTotal - apontadas;
+  } 
 
   return (
     < >
@@ -115,9 +137,9 @@ const Home: React.FC = () => {
                 <p>Seção:</p>
                 <Dropdown>
                   <div>
-                    <p>ABC</p>
-                    <p>XYZ</p>
-                    <p>DEF</p>
+                    {/*secoes.map((secao) => (
+                      <button onClick={() => filtrarSecao(secao.nomeSecao)} key={secao.nomeSecao}>{secao.nomeSecao}</button>
+                    ))*/}
                     <p>Todos</p>
                   </div>
                 </Dropdown>
@@ -135,112 +157,11 @@ const Home: React.FC = () => {
             <button onClick={handleShow}><img src={display2} alt=""/></button>
         </div> 
       </Filters>
-      <Card/>
-      {showPopup && projetopopup && 
-        <Container Open={!!isOpen}  show={!!showPopup}>
-        <div id="hold">
-          <button onClick={() => openPopup(1)}><BsX/></button>
-          <TitlePopUp>
-            <h2> {projetopopup.secao.idSecao} - {projetopopup.secao.nomeSecao}</h2>
-            <h1>{projetopopup.id} - {projetopopup.nome}</h1>
-          </TitlePopUp>
-          <InfosPopup>
-            <InfosGerais Open={!!isOpen}  className="cont">
-              <h1>INFORMAÇÕES GERAIS:</h1>
-              <div>
-                <p>GESTOR RESPONSÁVEL: ?</p>
-                <p>FORNECEDOR: ?</p>
-              </div>
-            </InfosGerais>
-            <Objetivo Open={!!isOpen} className="cont">
-              <h1>OBJETIVO: </h1>
-              <p>
-                {projetopopup.descricao}
-              </p>
-            </Objetivo>
-            <Horas Open={!!isOpen}  className="cont">
-              <h1>HORAS: </h1>
-              <HorasApontadas>
-                <Chart
-                  width={'160px'}
-                  height={'160px'}
-                  rootProps
-                  chartType="PieChart"
-                  data={[
-                    ['Task', 'Hours per Day'],  
-                    ['Apontadas', apontadas],
-                    ['Restante', restantes]
-                  ]}
-                  options={{
-                    pieHole: 0.7  ,
-                    tooltip: { trigger: 'none'},
-                    legend: 'none',
-                    backgroundColor: '',
-                    pieSliceText: 'none',
-                    slices: {
-                      0: { color: '57b7dc' },
-                      1: { color: 'B4DDFB' },
-                    },  
-                  }}
-                />
-                <div>
-                  <p>TOTAL:
-                    <span>{projetopopup.horasTotal}</span> 
-                  </p> 
-                  <p>APONTADAS:
-                    <span>{projetopopup.horasApontadas}</span>
-                  </p>
-                </div>
-              </HorasApontadas>
-            </Horas>
-            <Skills Open={!!isOpen}  className="cont">
-              <Table id="table">
-                <table>
-                  <thead>
-                    <tr>
-                      <td>SKILL</td>
-                      <td>HORAS APONTADAS</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                   {projetopopup.skills.map(skill => (
-
-                    <tr key={skill.id}>
-                        <td>{skill.nome}</td>
-                        <td>{skill.horasApontadas}</td>
-                    </tr>
-                   ))}  
-                  </tbody>
-                </table>
-              </Table>
-              <button id="visualizar" onClick={handleOpen}>VISUALIZAR CONSULTORES</button>
-            </Skills>
-            <ConsultoresAlocados Open={!!isOpen}>
-              <table>
-                <thead>
-                  <tr>
-                    <td>CADASTRO</td>
-                    <td>NOME</td>
-                  </tr>
-                </thead>
-                <tbody>
-                {projetopopup.consultores.map((consultor) => (
-                  <tr key={consultor.id}>
-                    <td>{consultor.id}</td>
-                    <td>{consultor.nome}</td>
-                  </tr>
-                ))}
-                </tbody>
-              </table>
-            </ConsultoresAlocados>
-          </InfosPopup>
-          <DetailsPopup color={projetopopup.status}>
-            <Grid/>
-            <h1>{projetopopup.status}</h1>
-          </DetailsPopup>
-        </div>
-      </Container>
-      }
+      <Cards > 
+      { filter.map((projeto) => (
+        <Card id={projeto.id} /> 
+      ))}
+      </Cards>
     </>
                 
   ) 

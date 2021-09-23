@@ -1,10 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import { Container } from "./style";
+import { useTransition } from "react-spring";
+import Toast from "./Toast";
+import { messageContent } from "../../hooks/toast";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+interface ContainerProps{
+    message: messageContent[];
+}
+
+const ToastContainer: React.FC<ContainerProps> = ({ message }) => {
+    const messagesWithTransition = useTransition(
+        message,
+        (message) => message.id,
+        {
+            from: { right: "-120%" },
+            enter: { right: "0%" },
+            leave: { right: "-120%" }
+        }
+    )
+
+    return(
+        <Container>
+            {messagesWithTransition.map(({item, key, props}) =>(
+                <Toast key={key} style={props} message={item}/>
+            ))}
+        </Container>
+    )
+}
+
+export default ToastContainer;
