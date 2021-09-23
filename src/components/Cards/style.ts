@@ -10,6 +10,10 @@ export const Container = styled.div`
         width: 100%;
     }
 `;
+interface PopUp{
+    Open: boolean;
+    show: boolean;
+}
 
 interface cardProps {
     color?: string,
