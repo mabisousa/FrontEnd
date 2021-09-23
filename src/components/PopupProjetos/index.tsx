@@ -1,15 +1,55 @@
-import React, {useState, useCallback} from "react";
-import { Container,  
-    TitlePopUp, InfosPopup, DetailsPopup, Objetivo, InfosGerais, Skills, Horas, Table, HorasApontadas, 
-    ConsultoresAlocados,} from "./style"
-
+import React, {useState, useCallback, useEffect} from "react";
+import { TitlePopUp, InfosPopup, InfosGerais, Objetivo, Horas, HorasApontadas, Skills, Table, ConsultoresAlocados, DetailsPopup  } from "../../pages/Home/style"
+import { ContainerPopup } from "./style";
 import { Chart } from "react-google-charts";
 import { BsX } from 'react-icons/bs';
 import Grid from '../../components/Grid';
+import api from "../../services/api"
+interface Projetos{
+  id: number,
+  secao: {
+    idSecao: number,
+    nomeSecao: string
+  },
+  nome: string,
+  descricao: string,
+  consultores: [
+    {
+    id: number,
+    nome: string
+    }
+  ],
+  status: string,
+  dataInicio: string,
+  dataFim: string,
+  horasApontadas: number,
+  horasTotal: number,
+  /*apontamentos: [{
+    id: number,
+    alocacao: {
+      skill:string,
+    },
+    horasTrabalhadas: number,
+    situacaoApontamento: string,
+  }]*/
+  skills: [
+    {
+      id: number,
+      nome: string,
+      horasApontadas: number,
+      horasTotal: number,
+    }
+  ]
+}
+interface Projeto {
+  id: number,
+}
+const Popup: React.FC<Projeto> = ({id, ...props}) => {
 
-const Popup: React.FC = () => {
     const [isOpen, setOpen] = useState(false);
-    const [showPopup, setShowPopup] = useState(false);
+    const [showPopup, setShowPopup] = useState(true);
+    const [projeto, setProjeto] = useState<Projetos>();
+
 
     const handleOpen = useCallback(() => {
         if(!!isOpen === false) {
@@ -18,38 +58,43 @@ const Popup: React.FC = () => {
           setOpen(false);    
         }
       }, [isOpen, setOpen]);
+      
+      useEffect(() => {
+        api.get(`/projetos/${id}`).then((response) => {
+          setProjeto(response.data)
+        })
+      }, [projeto, setProjeto]);
+
+      let restantes = 0;
+      let apontadas = 0;
+    
+      if (projeto) {
+      apontadas = projeto.horasApontadas;
+      restantes = projeto.horasTotal - apontadas;
+      } 
+
     return(
     <>
-        <Container Open={!!isOpen}  show={!!showPopup}>
+    { projeto &&
+        <ContainerPopup Open={!!isOpen}  show={!!showPopup}>
         <div id="hold">
-          <button onClick={() => setShowPopup(!showPopup)}><BsX/></button>
+          <button onClick={() => { setShowPopup(!showPopup)}}><BsX/></button>
           <TitlePopUp>
-            <h2> 0000 - SEÇÃO XYZ</h2>
-            <h1>0000000 - RESTAURAÇÃO DE ALTERADORES</h1>
+            <h2> {projeto.secao.idSecao} - {projeto.secao.nomeSecao}</h2>
+            <h1>{projeto.id} - {projeto.nome}</h1>
           </TitlePopUp>
           <InfosPopup>
             <InfosGerais Open={!!isOpen}  className="cont">
               <h1>INFORMAÇÕES GERAIS:</h1>
               <div>
-                <p>GESTOR RESPONSÁVEL: </p>
-                <p>FORNECEDOR: </p>
+                <p>GESTOR RESPONSÁVEL: ?</p>
+                <p>FORNECEDOR: ?</p>
               </div>
             </InfosGerais>
             <Objetivo Open={!!isOpen} className="cont">
               <h1>OBJETIVO: </h1>
               <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                 Consequuntur officiis ducimus ut debitis mollitia modi 
-                 tempora unde nobis reiciendis illum libero ipsam excepturi
-                  itaque aperiam quae assumenda praesentium, maxime consequatur.
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                 Consequuntur officiis ducimus ut debitis mollitia modi 
-                 tempora unde nobis reiciendis illum libero ipsam excepturi
-                  itaque aperiam quae assumenda praesentium, maxime consequatur.
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                 Consequuntur officiis ducimus ut debitis mollitia modi 
-                 tempora unde nobis reiciendis illum libero ipsam excepturi
-                  itaque aperiam quae assumenda praesentium, maxime consequatur.
+                {projeto.descricao}
               </p>
             </Objetivo>
             <Horas Open={!!isOpen}  className="cont">
@@ -62,8 +107,8 @@ const Popup: React.FC = () => {
                   chartType="PieChart"
                   data={[
                     ['Task', 'Hours per Day'],  
-                    ['Total', 10],
-                    ['Apontadas', 10]
+                    ['Apontadas', apontadas],
+                    ['Restante', restantes]
                   ]}
                   options={{
                     pieHole: 0.7  ,
@@ -79,10 +124,10 @@ const Popup: React.FC = () => {
                 />
                 <div>
                   <p>TOTAL:
-                    <span>1600h</span> 
+                    <span>{projeto.horasTotal}</span> 
                   </p> 
                   <p>APONTADAS:
-                    <span>800h</span>
+                    <span>{projeto.horasApontadas}</span>
                   </p>
                 </div>
               </HorasApontadas>
@@ -97,18 +142,13 @@ const Popup: React.FC = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Desenvolvimento PHP</td>
-                      <td>40H</td>
+                   {projeto.skills.map(skill => (
+
+                    <tr key={skill.id}>
+                        <td>{skill.nome}</td>
+                        <td>{skill.horasApontadas}</td>
                     </tr>
-                    <tr>
-                      <td>Desenvolvimento JAVA</td>
-                      <td>15H</td>
-                    </tr>
-                    <tr>
-                      <td>Desenvolvimento React</td>
-                      <td>20H</td>
-                    </tr>
+                   ))}  
                   </tbody>
                 </table>
               </Table>
@@ -123,82 +163,23 @@ const Popup: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>67270</td>
-                    <td >Isac Freire Bezerra</td>
+                {projeto.consultores.map((consultor) => (
+                  <tr key={consultor.id}>
+                    <td>{consultor.id}</td>
+                    <td>{consultor.nome}</td>
                   </tr>
-                  <tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr>
-                  <tr>
-                    <td>67270</td>
-                    <td >Isac Freire Bezerra</td>
-                  </tr>
-                  <tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr>
-                  <tr>
-                    <td>67270</td>
-                    <td >Isac Freire Bezerra</td>
-                  </tr>
-                  <tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr>
-                  <tr>
-                    <td>67270</td>
-                    <td >Isac Freire Bezerra</td>
-                  </tr>
-                  <tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr>
-                  <tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr>
-                  <tr>
-                    <td>67270</td>
-                    <td >Isac Freire Bezerra</td>
-                  </tr>
-                  <tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr><tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr>
-                  <tr>
-                    <td>67270</td>
-                    <td >Isac Freire Bezerra</td>
-                  </tr>
-                  <tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr><tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr>
-                  <tr>
-                    <td>67270</td>
-                    <td >Isac Freire Bezerra</td>
-                  </tr>
-                  <tr>
-                    <td>67271</td>
-                    <td>Jean Henrique Reiguel</td>
-                  </tr>
+                ))}
                 </tbody>
               </table>
             </ConsultoresAlocados>
           </InfosPopup>
-          <DetailsPopup>
+          <DetailsPopup color={projeto.status}>
             <Grid/>
-            <h1>EM ANDAMENTO</h1>
+            <h1>{projeto.status}</h1>
           </DetailsPopup>
         </div>
-      </Container>
+      </ContainerPopup>
+    }
     </>
     )
 }

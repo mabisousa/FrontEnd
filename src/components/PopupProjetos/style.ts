@@ -4,8 +4,7 @@ interface PopUp{
     Open: boolean;
     show: boolean;
 }
-
-export const Container = styled.div<PopUp>`
+export const ContainerPopup = styled.div<PopUp>`
     ${(props) => props.Open ? 
         css`
             #hold{
@@ -17,11 +16,14 @@ export const Container = styled.div<PopUp>`
             }
     `}
 
-    ${(props) => !props.show && 
+    ${(props) => !props.show ? 
     css`
+
       div {
           visibility: hidden;
       }
+    `: css`
+    
     `}
 
     position: fixed;
@@ -33,6 +35,7 @@ export const Container = styled.div<PopUp>`
     justify-content: center;
     align-items: center;
     top: 0;
+    left: 0;
     
     button:nth-child(1) {
         position: absolute;
@@ -52,8 +55,7 @@ export const Container = styled.div<PopUp>`
         flex-direction: column;
         padding: 35px;
     }
-`;
-
+`
 export const TitlePopUp = styled.div`
     width: 80%;
     height: 17%;
