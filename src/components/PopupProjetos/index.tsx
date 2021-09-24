@@ -43,11 +43,11 @@ interface Projetos{
 }
 interface Projeto {
   id: number,
+  showPopup: (arg0: boolean) => void,
 }
-const Popup: React.FC<Projeto> = ({id, ...props}) => {
+const Popup: React.FC<Projeto> = ({id, showPopup}) => {
 
     const [isOpen, setOpen] = useState(false);
-    const [showPopup, setShowPopup] = useState(true);
     const [projeto, setProjeto] = useState<Projetos>();
 
 
@@ -59,11 +59,15 @@ const Popup: React.FC<Projeto> = ({id, ...props}) => {
         }
       }, [isOpen, setOpen]);
       
+      const closePopup = () => {
+        showPopup(false);
+      }
+
       useEffect(() => {
         api.get(`/projetos/${id}`).then((response) => {
           setProjeto(response.data)
         })
-      }, [projeto, setProjeto]);
+      }, [projeto, setProjeto, id]);
 
       let restantes = 0;
       let apontadas = 0;
@@ -78,7 +82,7 @@ const Popup: React.FC<Projeto> = ({id, ...props}) => {
     { projeto &&
         <ContainerPopup Open={!!isOpen}  show={!!showPopup}>
         <div id="hold">
-          <button onClick={() => { setShowPopup(!showPopup)}}><BsX/></button>
+          <button onClick={closePopup}><BsX/></button>
           <TitlePopUp>
             <h2> {projeto.secao.idSecao} - {projeto.secao.nomeSecao}</h2>
             <h1>{projeto.id} - {projeto.nome}</h1>

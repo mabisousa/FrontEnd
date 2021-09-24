@@ -1,10 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, TitleSection, TitleProject, HoldHours, Hours, Status, Date } from './style';
-import { TitlePopUp, InfosPopup, InfosGerais, Objetivo, Horas, HorasApontadas, Skills, Table, ConsultoresAlocados, DetailsPopup } from "../../pages/Home/style"
 import api from "../../services/api"
-import Chart from 'react-google-charts';
-import { BsX } from 'react-icons/bs';
-import Grid from '../../components/Grid';
 import Popup from "../../components/PopupProjetos"
 interface Projetos{
   id: number,
@@ -43,33 +39,25 @@ interface Projetos{
   ]
 }
 
-
 interface Projeto {
   id: number,
 }
+
 const Cards: React.FC<Projeto> = ({id}) => {
 
-  const [isOpen, setOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [projeto, setProjeto] = useState<Projetos>();
-  const [show, setShow] = useState(false);
+  const [show] = useState(false);
 
   useEffect(() => {
     api.get(`/projetos/${id}`).then((response) => {
       setProjeto(response.data)
     })
-  }, []);
-  const [search, setSearch] = useState('');
+  }, [id]);
 
-
-
-  const handleOpen = useCallback(() => {
-    if(!!isOpen === false) {
-      setOpen(true);    
-    } else {
-      setOpen(false);    
-    }
-  }, [isOpen, setOpen]);
+  const handleShow = (showPop: boolean) => {
+    setShowPopup(showPop);
+  }
 
   return (
     < >
@@ -102,7 +90,7 @@ const Cards: React.FC<Projeto> = ({id}) => {
         </Card>
       }
       {showPopup && projeto &&
-        <Popup id={projeto.id} /> 
+        <Popup id={projeto.id} showPopup={handleShow}/> 
       }
     </>                
   ) 

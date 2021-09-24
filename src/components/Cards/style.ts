@@ -9,11 +9,7 @@ export const Container = styled.div`
     @media (max-width: 425px){
         width: 100%;
     }
-`;
-interface PopUp{
-    Open: boolean;
-    show: boolean;
-}
+`
 
 interface cardProps {
     color?: string,
@@ -29,17 +25,17 @@ export const Card = styled.a<cardProps>`
     float: left;
 
     
-    ${(props) => props.color == "ANDAMENTO" &&
+    ${(props) => props.color === "ANDAMENTO" &&
         css`
             border-left:  15px solid #EBB93A;
         `}
 
-    ${(props) => props.color == "CONCLUÍDO" && 
+    ${(props) => props.color === "CONCLUÍDO" && 
         css`
             border-left:  15px solid #6AACDA;
         `}
 
-    ${(props) => props.color == "ATRASADO" &&
+    ${(props) => props.color === "ATRASADO" &&
         css`
             border-left:  15px solid #AC341A;
         `}
