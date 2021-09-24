@@ -23,7 +23,6 @@ const Dropdown: React.FC = (props) => {
         <>
           <Container ShowDropdown={!!showDropdown} ShowArrow={!!showArrow}>
               <div onClick={handleShowDropdown} id="dropdown">
-                          <span>Todos</span>
                           <IoIosArrowDown id="arrowDown" size={17}/>
                           <IoIosArrowBack id="arrowLeft" size={17}/>
                   {props.children}
