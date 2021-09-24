@@ -53,30 +53,30 @@ const Home: React.FC = () => {
 
   const [projetos, setProjeto] = useState<Projetos[]>([]);
   const [show, setShow] = useState(false);
-  const [filtro, setFiltro] = useState('');
+  const [filtro, setFiltro] = useState('Todos');
   const [secoes, setSecoes] = useState<Secoes[]>([]);
 
   useEffect(() => {
 
-    api.get("/projetos").then((response) => {
-      setProjeto(response.data)
-    })
-
+    if(filtro === 'Todos') {
+    
+      api.get("/projetos").then((response) => {
+        setProjeto(response.data)
+      })
+    } 
     api.get("/secoes").then((response) => {
       setSecoes(response.data)
     })
-  console.log(projetos)
-    return;
 
-  }, [projetos, setProjeto]);
+  }, [projetos, setProjeto, filtro]);
 
   const filtrarSecao = useCallback((secao: string) => {
+    setFiltro(secao)
 
-    
     api.get(`/projetos/secao/${secao}`).then((response) => {
-      console.log(response.data)
-      setProjeto(projetos.map(projeto => ))
+      setProjeto(response.data)
     })
+
 
   },[setProjeto]);
   
@@ -117,11 +117,12 @@ const Home: React.FC = () => {
                 <div>
                   <label>Seção:</label>
                   <Dropdown>
+                  <span>{filtro}</span>
                     <div>
                       {secoes.map((secao) => (
                         <button onClick={() => filtrarSecao(secao.nomeSecao)} key={secao.nomeSecao}>{secao.nomeSecao}</button>
                       ))}
-                      <button>Todos</button>
+                      <button onClick={() => setFiltro('Todos')}>Todos</button>
                     </div>
                   </Dropdown>
                 </div>
