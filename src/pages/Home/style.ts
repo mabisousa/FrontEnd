@@ -151,17 +151,17 @@ export const Card = styled.a<cardProps>`
     float: left;
 
     
-    ${(props) => props.color == "ANDAMENTO" &&
+    ${(props) => props.color === "ANDAMENTO" &&
         css`
             border-left:  15px solid #EBB93A;
         `}
 
-    ${(props) => props.color == "CONCLUÍDO" && 
+    ${(props) => props.color === "CONCLUÍDO" && 
         css`
             border-left:  15px solid #6AACDA;
         `}
 
-    ${(props) => props.color == "ATRASADO" &&
+    ${(props) => props.color === "ATRASADO" &&
         css`
             border-left:  15px solid #AC341A;
         `}
@@ -550,15 +550,15 @@ export const DetailsPopup = styled.div`
         font-size: 24px;
         font-weight: 700;
     }
-    ${(props) => props.color == "ANDAMENTO" &&
+    ${(props) => props.color === "ANDAMENTO" &&
         css`
             color: #EBB93A; 
         `}
-    ${(props) => props.color == "CONCLUÍDO" && 
+    ${(props) => props.color === "CONCLUÍDO" && 
         css`
             color: #6AACDA; 
         `}
-    ${(props) => props.color == "ATRASADO" &&
+    ${(props) => props.color === "ATRASADO" &&
         css`
             color: #AC341A
         `}
