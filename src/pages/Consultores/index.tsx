@@ -46,7 +46,7 @@ const Login: React.FC = () => {
     setConsult(consultores[id-1]);
     console.log(consult);
 
-  },[consultores,consult,setConsult]);
+  },[consultores, consult, setConsult, setShowPopup, showPopup]);
 
   useEffect(() => {
     api.get("/consultores").then((response) => {

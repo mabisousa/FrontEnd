@@ -383,7 +383,7 @@ interface colorConsultores{
   
 export const Tr = styled.div<colorConsultores>`
     ${(props) =>
-    props.color == "ATIVO" &&
+    props.color === "ATIVO" &&
     css`
     td:nth-child(3){
         color: #000;
@@ -392,7 +392,7 @@ export const Tr = styled.div<colorConsultores>`
     `}
 
     ${(props) =>
-    props.color == "INATIVO" && 
+    props.color === "INATIVO" && 
     css`
     td:nth-child(3){
         color: #AC341A;
