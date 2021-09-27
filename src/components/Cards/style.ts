@@ -1,15 +1,5 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
-    width: 90%;
-    height: 90%;
-    margin-left: 89.6px;
-    margin-top: 48px;
-
-    @media (max-width: 425px){
-        width: 100%;
-    }
-`
 
 interface cardProps {
     color?: string,
