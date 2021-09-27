@@ -9,24 +9,36 @@ export const Filters = styled.div`
     justify-content: space-between;
     margin: 6rem 0rem 0rem 4rem;
 
-    p{
-      color: #7E7E7E;
-      font-size: 20px;
-    }
+      div{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+      }
 
-    #img{
-            float: right;
-        }
+      button{
+          border: none;
+          background: transparent;
+      }
 
-    label{
-      color: #7E7E7E;
-      font-size: 20px;
-      margin: 10px;
-    }
+      p{
+        color: #7E7E7E;
+        font-size: 20px;
+      }
 
-    input{
-      padding-left: 2px;
-    }
+      #img{
+        float: right;
+      }
+
+      label{
+        color: #7E7E7E;
+        font-size: 20px;
+        margin: 10px;
+      }
+
+      input{
+        padding-left: 2px;
+      }
 `;
 
 export const Filter = styled.div`

@@ -35,6 +35,7 @@ import Dropdown from "../../components/Filter";
 const Login: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [consultores, setConsultor] = useState<Consultor[]>([]);
+  const [filtro, setFiltro] = useState('Todos');
   const [consult, setConsult] = useState<Consultor>();
   const [search, setSearch] = useState('');
 
@@ -44,15 +45,24 @@ const Login: React.FC = () => {
     setShowPopup(!showPopup);
     
     setConsult(consultores[id-1]);
-    console.log(consult);
 
   },[consultores, consult, setConsult, setShowPopup, showPopup]);
 
   useEffect(() => {
-    api.get("/consultores").then((response) => {
-      setConsultor(response.data);
+    if(filtro === 'Todos') {
+      api.get("/consultores").then((response) => {
+        setConsultor(response.data);
+      })
+    }
+  }, [consultores, setConsultor, filtro]);
+
+  const filtrarStatus = useCallback((status: string) => {
+    setFiltro(status)
+
+    api.get(`/consultores/status/${status}`).then((response) => {
+      setConsultor(response.data)
     })
-  }, [consultores, setConsultor]);
+  },[setConsultor]);
   
   return (
     <>  
@@ -73,15 +83,17 @@ const Login: React.FC = () => {
                 <p>Cadastro:</p>
                 <input/><p> - </p><input/>
               </Filterbynumber>
-              <p>Status:</p>
-              <Dropdown>
-                <div>
-                  <p>ABC</p>
-                  <p>XYZ</p>
-                  <p>DEF</p>
-                  <p>Todos</p>
+              <div>
+                  <label>Status:</label>
+                  <Dropdown>
+                  <span>{filtro}</span>
+                    <div>
+                    <button onClick={() => filtrarStatus('Ativo')} key={'Ativo'}>{'Ativo'}</button>
+                    <button onClick={() => filtrarStatus('Inativo')} key={'Inativo'}>{'Inativo'}</button>
+                    <button onClick={() => setFiltro('Todos')}>Todos</button>
+                    </div>
+                  </Dropdown>
                 </div>
-              </Dropdown>
           </Filter>
         </Filters>
         <Menu/>
