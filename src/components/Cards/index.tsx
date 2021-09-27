@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Card, TitleSection, TitleProject, HoldHours, Hours, Status, Date } from './style';
-import api from "../../services/api"
-import Popup from "../../components/PopupProjetos"
+import api from "../../services/api";
+import Popup from "../../components/PopupProjetos";
+
 interface Projetos{
   id: number,
   secao: {
@@ -41,13 +42,13 @@ interface Projetos{
 
 interface Projeto {
   id: number,
+  show: boolean
 }
 
-const Cards: React.FC<Projeto> = ({id}) => {
+const Cards: React.FC<Projeto> = ({id, show}) => {
 
   const [showPopup, setShowPopup] = useState(false);
   const [projeto, setProjeto] = useState<Projetos>();
-  const [show] = useState(false);
 
   useEffect(() => {
     api.get(`/projetos/${id}`).then((response) => {

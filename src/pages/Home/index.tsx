@@ -115,7 +115,7 @@ const Home: React.FC = () => {
                     <input type="text" placeholder="Digite aqui... " value={search} onChange={(ev) => setSearch(ev.target.value)}/>
                 </Form>
                 <div>
-                  <label>Seção:</label>
+                  <label className="secao">Seção:</label>
                   <Dropdown>
                   <span>{filtro}</span>
                     <div>
@@ -128,7 +128,7 @@ const Home: React.FC = () => {
                 </div>
                 
                 <div>
-                  <label>Status:</label>
+                  <label  className="status" >Status:</label>
                   <Dropdown>
                     <div>
                       <button>Andamento</button>
@@ -145,7 +145,7 @@ const Home: React.FC = () => {
       </Filters>
       <Cards > 
       { filtrados.map((projeto) => (
-        <Card id={projeto.id} key={projeto.id} /> 
+        <Card id={projeto.id} key={projeto.id} show={show}/> 
       ))}
       </Cards>
     </>
