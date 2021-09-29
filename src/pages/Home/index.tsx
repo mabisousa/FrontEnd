@@ -70,6 +70,10 @@ const Home: React.FC = () => {
 
   }, [projetos, setProjeto, filtro]);
 
+  const [search, setSearch] = useState('');
+
+  let filtrados = projetos.filter((projeto) => projeto.nome.toLowerCase().includes(search.toLowerCase()));
+
   const filtrarSecao = useCallback((secao: string) => {
     setFiltro(secao)
 
@@ -77,6 +81,12 @@ const Home: React.FC = () => {
       setProjeto(response.data)
     })
 
+
+  },[setProjeto]);
+
+  const filtrarStatus = useCallback((status: string) => {
+
+    setProjeto(projetos.filter((projeto) => projeto.status === status));
 
   },[setProjeto]);
   
@@ -93,8 +103,6 @@ const Home: React.FC = () => {
   }, [show, setShow]);
 
   
-  const [search, setSearch] = useState('');
-  const filtrados = projetos.filter((projeto) => projeto.nome.toLowerCase().includes(search.toLowerCase()));
 
   return (
     < >
@@ -131,10 +139,10 @@ const Home: React.FC = () => {
                   <label  className="status" >Status:</label>
                   <Dropdown>
                     <div>
-                      <button>Andamento</button>
-                      <button>Atrasado</button>
-                      <button>Concluído</button>
-                      <button>Todos</button>
+                      <button onClick={() => filtrarStatus("ANDAMENTO")}>Andamento</button>
+                      <button onClick={() => filtrarStatus("ATRASADO")}>Atrasado</button>
+                      <button onClick={() => filtrarStatus("CONCLUÍDO")}>Concluído</button>
+                      <button onClick={() => filtrarStatus("Todos")}>Todos</button>
                     </div>
                   </Dropdown>
                 </div>
