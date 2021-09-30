@@ -33,6 +33,19 @@ interface Apontamento {
         id: number,
     }
 }
+interface Aprovacao {
+    data: Date,
+    nomeFornecedor: string,
+    nomeResponsavel: string,
+    idConsultor: number,
+    horasAprovadas: number,
+    valorHora: number,
+    apontamentos: [
+        {
+            id: number,
+        }
+    ]
+}
 
 const Aprovacao: React.FC = () => {
     
@@ -40,22 +53,47 @@ const Aprovacao: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
     const [isConfirmed, setConfirm] = useState(false);
     const [isOpen, setOpen] = useState(false);
-    const [isSelected, setSelected] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [descricao, setDescricao] = useState<Apontamento>();
-    const [apontamentos, setApontamentos] = useState<Apontamento[]>([]);
+    const [apontamentosList, setApontamentos] = useState<Apontamento[]>([]);
 
-    const handleSubmit = useCallback(async () => {},[]);
+    const aprovacao = {
+        data:  new Date("2019-01-16"),  
+        nomeFornecedor: "",
+        nomeResponsavel: "",
+        idConsultor: 0,
+        horasAprovadas: 0,
+        valorHora: 0,
+        apontamentos: 
+        [ {
+            id: 0
+          }
+        ]
+    }
 
-    const handleSelected = useCallback(async () => {
-        console.log(isSelected)
-        if(!!isSelected === false) {
-            setSelected(true);    
-            } else {
-                setSelected(false);    
-            }
-            checkbox(isSelected);
-    },[isSelected, setSelected]);
+    const aprovar = useCallback(async (dados: Aprovacao) => {
+        try {
+            formRef.current?.setErrors({});
+
+            aprovacao.data = dados.data;
+            aprovacao.nomeFornecedor = dados.nomeFornecedor;
+            aprovacao.nomeResponsavel = dados.nomeResponsavel;
+            aprovacao.idConsultor = dados.idConsultor;
+            aprovacao.horasAprovadas = dados.horasAprovadas;
+            aprovacao.valorHora = dados.valorHora;
+            aprovacao.apontamentos = dados.apontamentos;
+
+            console.log(aprovacao)
+        } catch(e) {
+            console.log(e);
+        }
+    },[]);
+
+    const handleSelected = useCallback(async (id) => {
+        console.log(aprovacao)
+
+        aprovacao.apontamentos.push({id: id});
+    },[aprovacao]);
 
     const handleActive = useCallback(() => {
         setConfirm(true);
@@ -68,27 +106,22 @@ const Aprovacao: React.FC = () => {
             setOpen(false);    
         }
 
-        setDescricao(apontamentos[id-1]);
+        setDescricao(apontamentosList[id-1]);
         
-    }, [apontamentos, isOpen, setOpen]);
+    }, [apontamentosList, isOpen, setOpen]);
 
     useEffect(() => {
         api.get("/consultores").then((response) => {
         setConsultor(response.data)
         })
-    }, []);
-
-
-    useEffect(() => {
         api.get("/apontamentos").then((response) => {
             setApontamentos(response.data)
         })
     }, []);
-
-    const apontamentosaprovados = apontamentos.filter(apontamento => apontamento.situacaoApontamento === "APROVADO")
+    const apontamentosaprovados = apontamentosList.filter(apontamento => apontamento.situacaoApontamento === "APROVADO")
     ,aprovados = apontamentosaprovados.length;
 
-    const apontamentosreprovados = apontamentos.filter(apontamento => apontamento.situacaoApontamento === "REPROVADO")
+    const apontamentosreprovados = apontamentosList.filter(apontamento => apontamento.situacaoApontamento === "REPROVADO")
     ,reprovados = apontamentosreprovados.length;
     return (
         <>
@@ -102,23 +135,23 @@ const Aprovacao: React.FC = () => {
             <Title>APROVAÇÃO</Title>
             <Container>
                 <Infos>
-                    <Form ref={ formRef} onSubmit={ handleSubmit }>
+                <Form ref={ formRef} id="aprovar" onSubmit={ aprovar }>
                         <h1>INFORMAÇÕES DO CONSULTOR</h1>
                         <div className="inputs">
-                            <Input name="cadastro" type="text" placeholder=" ">Cadastro</Input>
-                            <Input name="nome" type="text" placeholder=" ">Nome</Input>
+                            <Input name="idConsultor" type="number" placeholder=" ">Cadastro</Input>
+                            <Input name="nomeConsultor" type="text" placeholder=" ">Nome</Input>
                         </div>
                         <div>
                             <h1>INFORMAÇÕES DA APROVAÇÃO</h1>
                             <div className="inputs">
-                                <Input name="data" type="text" placeholder=" ">00/00/00</Input>
-                                <Input name="responsavel" type="text" placeholder=" ">Responsável</Input>
+                                <Input name="data" type="date" placeholder=" ">00/00/00</Input>
+                                <Input name="nomeResponsavel" type="text" placeholder=" ">Responsável</Input>
                             </div>
                         </div>
                         <h1>VALORES APROVADOS</h1>
                         <div className="inputs">
-                            <Input name="valorhora" type="text" placeholder=" ">R$ 00,00</Input>
-                            <Input name="horas" type="text" placeholder=" ">00h</Input>
+                            <Input name="valorHora" type="number" placeholder=" ">R$ 00,00</Input>
+                            <Input name="horasAprovadas" type="number" placeholder=" ">00h</Input>
                         </div>
                     </Form>
                 </Infos>
@@ -126,7 +159,7 @@ const Aprovacao: React.FC = () => {
                     <h1>APROVAÇÕES</h1>
                     <div>
                         <div className="hold">
-                            <div className="numbers"><p>{apontamentos.length}</p></div>
+                            <div className="numbers"><p>{apontamentosList.length}</p></div>
                             <p> APONTAMENTOS</p>
                         </div>
                         <div className="hold">
@@ -157,10 +190,10 @@ const Aprovacao: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {apontamentos.map((apontamento) => {
+                        {apontamentosList.map((apontamento) => {
                         return (
                             <tr key={apontamento.id}>
-                                <td><input type="checkbox" value={apontamento.id} onClick={handleSelected}/></td>
+                                <td><input type="checkbox" onClick={() => handleSelected(apontamento.id)}/></td>
                                 <td>{apontamento.data.substring(0,10)}</td>
                                 <td>{apontamento.horasTrabalhadas}h</td> 
                                 <td><button onClick={() => handleOpen(apontamento.id)}><GoChevronDown/></button></td>
@@ -201,7 +234,7 @@ const Aprovacao: React.FC = () => {
                         </Step>
                     </div>
                 </ProgressBar>
-                <FinishButton onClick={handleActive}>FINALIZAR</FinishButton>
+                <button form="aprovar" onClick={handleActive}>FINALIZAR</button>
             </Container>
             {showPopup && 
                 <Consultores show={!!showPopup}>
