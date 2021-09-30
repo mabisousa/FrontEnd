@@ -52,43 +52,49 @@ interface Secoes {
 const Home: React.FC = () => {
 
   const [projetos, setProjeto] = useState<Projetos[]>([]);
+  const [filtrados, setFiltrados] = useState<Projetos[]>([]);
   const [show, setShow] = useState(false);
-  const [filtro, setFiltro] = useState('Todos');
+  const [secao, setSecao] = useState('Todos');
+  const [status, setStatus] = useState('Todos');
   const [secoes, setSecoes] = useState<Secoes[]>([]);
+
 
   useEffect(() => {
 
-    if(filtro === 'Todos') {
-    
+    if(secao !== 'Todos') {
+      api.get(`/projetos/secao/${secao}`).then((response) => {
+        setProjeto(response.data)
+      })
+    } else {
       api.get("/projetos").then((response) => {
         setProjeto(response.data)
       })
-    } 
+    }
     api.get("/secoes").then((response) => {
       setSecoes(response.data)
     })
 
-  }, [projetos, setProjeto, filtro]);
-
+  }, [projetos, setProjeto, secao, status]);
+  
+  useEffect(() => {
+    api.get("/projetos").then((response) => {
+      setFiltrados(response.data)
+    })
+  }, []);
   const [search, setSearch] = useState('');
 
-  let filtrados = projetos.filter((projeto) => projeto.nome.toLowerCase().includes(search.toLowerCase()));
+  const filtrarNome = useCallback((ev: string) => {
+    setSearch(ev)
+    setFiltrados(projetos.filter((projeto) => projeto.nome.toLowerCase().includes(search.toLowerCase())));
 
-  const filtrarSecao = useCallback((secao: string) => {
-    setFiltro(secao)
-
-    api.get(`/projetos/secao/${secao}`).then((response) => {
-      setProjeto(response.data)
-    })
-
-
-  },[setProjeto]);
+  },[projetos, setSearch, search]);  
 
   const filtrarStatus = useCallback((status: string) => {
 
-    setProjeto(projetos.filter((projeto) => projeto.status === status));
+    setStatus(status);
+    setFiltrados(projetos.filter((projeto) => projeto.status === status));
 
-  },[setProjeto]);
+  },[setProjeto, projetos, secao]);  
   
   const handleShow = useCallback(() => {
     if(!!show === false) {
@@ -120,17 +126,17 @@ const Home: React.FC = () => {
             <Filter>
                 <Form>
                     <label>Projeto:</label>
-                    <input type="text" placeholder="Digite aqui... " value={search} onChange={(ev) => setSearch(ev.target.value)}/>
+                    <input type="text" placeholder="Digite aqui... " value={search} onChange={(ev) => filtrarNome(ev.target.value)}/>
                 </Form>
                 <div>
                   <label className="secao">Seção:</label>
                   <Dropdown>
-                  <span>{filtro}</span>
+                  <span>{secao}</span>
                     <div>
                       {secoes.map((secao) => (
-                        <button onClick={() => filtrarSecao(secao.nomeSecao)} key={secao.nomeSecao}>{secao.nomeSecao}</button>
+                        <button onClick={() => setSecao(secao.nomeSecao)} key={secao.nomeSecao}>{secao.nomeSecao}</button>
                       ))}
-                      <button onClick={() => setFiltro('Todos')}>Todos</button>
+                      <button onClick={() => setSecao('Todos')}>Todos</button>
                     </div>
                   </Dropdown>
                 </div>
@@ -138,6 +144,7 @@ const Home: React.FC = () => {
                 <div>
                   <label  className="status" >Status:</label>
                   <Dropdown>
+                    <span>{status}</span>
                     <div>
                       <button onClick={() => filtrarStatus("ANDAMENTO")}>Andamento</button>
                       <button onClick={() => filtrarStatus("ATRASADO")}>Atrasado</button>
