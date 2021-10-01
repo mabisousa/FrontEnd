@@ -2,6 +2,10 @@ import styled, { css } from "styled-components";
 
 interface dropdownProps {
     ShowDropdown: boolean;
+    showIdioms: boolean;
+    showFonts: boolean;
+    changeTheme: boolean;
+
 }
 
 export const Container = styled.div<dropdownProps>`
@@ -17,6 +21,7 @@ export const Container = styled.div<dropdownProps>`
     top: 0;
     left: 0;
     z-index: 999;
+
     #name{
         width:220px;
         display: flex;
@@ -27,6 +32,7 @@ export const Container = styled.div<dropdownProps>`
             height: 70px;
             cursor: pointer;
         }
+        
         p {
             font-weight: bold;
             font-size: 16px;
@@ -35,51 +41,45 @@ export const Container = styled.div<dropdownProps>`
         }
     }
 
-    #flagExit{
-        width: 80px;
+    #exit{
+        width: 60px;
         height: 30px;
-        margin: 5px;
+        margin: 5px 20px 5px 5px;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
 
-        div{
-
-            width: 100px;
-            display: flex;
-            flex-direction: row;
-
-            img{
-                height: 30px;
-                width: 30px;
-                cursor: pointer;
-                margin-right: 7px;
-            }
-
-            #sair {
-                font-size: 14px;
-                width: 40px;
-                color: #00579D;
-                cursor: pointer;
-                border-left: 1.5px solid #00579D;
-                text-align: center;
-                margin-top: 7px;
-            }
-
+        svg{
+            height: 20px;
+            width: 20px;
+            cursor: pointer;
+            margin-right: 7px;
+            margin-top: 10px;
+            color: #7E7E7E;
+        }
+    
+        #sair {
+            font-size: 14px;
+            width: 40px;
+            color: #00579D;
+            cursor: pointer;
+            border-left: 1.5px solid #00579D;
+            text-align: center;
+            margin-top: 7px;
         }
 
         #dropdown{
             position: absolute;
-            right: 57px;
-            min-height: 20px;
-            top: 29px;
-            border: solid 1px #CBCBCB;
+            right: 62px;
+            top: 35px;
+            border: solid 1px #7E7E7E;
             border-bottom: 0;
             color: #7E7E7E;
             cursor: pointer;
             width: 180px;
-            background-color: #FFF;
+            background-color: #FFF; 
+            height: auto;
 
             ${(props) => props.ShowDropdown ?
                 css`
@@ -90,15 +90,14 @@ export const Container = styled.div<dropdownProps>`
 
             div{ 
                 width: 100%;
-                border-bottom: solid 1px  #CBCBCB;
+                border-bottom: solid 1px  #7E7E7E;
                 display: flex;
+                height: 35px;
                 align-items: center;
 
                 p{
-                    font-size: 12px;
                     height: 20px;
-                    font-size: 14px;
-
+                    font-size: 16px;
                 }
 
                 img{
@@ -106,10 +105,76 @@ export const Container = styled.div<dropdownProps>`
                     width: 30px;
                     cursor: pointer;
                     margin-left: 8px;
+                    margin-right: 8px;
                 }
 
+                span{
+                    height: 20px;
+                    font-size: 14px;
+                }
+
+                .border{
+                    border-bottom: solid 1px  #CBCBCB;
+                }
+            }
+            
+            #idioms{
+                height: 105px;
+
+                img{
+                    height: 25px;
+                    width: 25px;
+                    cursor: pointer;
+                    margin-left: 16px;
+                    margin-right: 8px;
+                }
+
+                ${(props) => props.showIdioms ?
+                css`
+                    display: none;
+                `: css`
+                    display: block;
+                `}
             }
 
+            #fonts{
+                height: 70px;
+
+                img{
+                    height: 25px;
+                    width: 25px;
+                    cursor: pointer;
+                    margin-left: 16px;
+                    margin-right: 8px;
+                }
+                
+                ${(props) => props.showFonts ?
+                css`
+                    display: none;
+                `: css`
+                    display: block;
+                `}
+            }
+
+            #switchThemeLight{
+                
+                ${(props) => props.changeTheme ?
+                css`
+                    display: none;
+                `: css`
+                    display: block;
+                `}
+            }
+
+            #switchThemeDark{
+                
+                ${(props) => props.changeTheme ?
+                css`
+                    display: block;
+                `: css`
+                    display: none;
+                `}
+            }
            
         }
     }
