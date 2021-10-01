@@ -15,6 +15,7 @@ import { Form } from "@unform/web"
 import { BsX } from "react-icons/bs";
 import { checkbox, openRequest } from "./script";
 import api from "../../services/api";
+import { number } from "yup";
 
 interface Consultor{
     id: number;
@@ -55,7 +56,7 @@ const Aprovacao: React.FC = () => {
     const [isOpen, setOpen] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [descricao, setDescricao] = useState<Apontamento>();
-    const [apontamentosList, setApontamentos] = useState<Apontamento[]>([]);
+    const [apontamentos, setApontamentos] = useState<Apontamento[]>([]);
 
     const aprovacao = {
         data:  new Date("2019-01-16"),  
@@ -64,10 +65,10 @@ const Aprovacao: React.FC = () => {
         idConsultor: 0,
         horasAprovadas: 0,
         valorHora: 0,
-        apontamentos: 
-        [ {
-            id: 0
-          }
+        apontamentos: [
+            {
+                id: 0
+            }
         ]
     }
 
@@ -81,34 +82,50 @@ const Aprovacao: React.FC = () => {
             aprovacao.idConsultor = dados.idConsultor;
             aprovacao.horasAprovadas = dados.horasAprovadas;
             aprovacao.valorHora = dados.valorHora;
-            aprovacao.apontamentos = dados.apontamentos;
 
             console.log(aprovacao)
+
         } catch(e) {
             console.log(e);
         }
-    },[]);
+    },[aprovacao]);
 
     const handleSelected = useCallback(async (id) => {
-        console.log(aprovacao)
 
-        aprovacao.apontamentos.push({id: id});
+        let alreadySelected;
+        let indexSelected = 0;
+
+        aprovacao.apontamentos.map(apontamento => {
+            if(apontamento.id === id) {
+                alreadySelected = true;
+                indexSelected = aprovacao.apontamentos.indexOf(apontamento,0);
+            }
+        })
+
+        if(alreadySelected === true) {
+            aprovacao.apontamentos.splice(indexSelected);
+        } else {
+            aprovacao.apontamentos.push({id: id});
+        }
+
+        aprovacao.apontamentos = aprovacao.apontamentos.filter(apontamento => apontamento.id !== 0);
+
     },[aprovacao]);
 
     const handleActive = useCallback(() => {
         setConfirm(true);
     }, [setConfirm]);
     
-    const handleOpen = useCallback((id: number) => {
-        if(!!isOpen === false) {
-        setOpen(true);    
-        } else {
-            setOpen(false);    
-        }
+    const handleOpen = useCallback((apontamento) => {
+    
+            let index = apontamentos.indexOf(apontamento);
+            setDescricao(apontamentos[index]);
 
-        setDescricao(apontamentosList[id-1]);
-        
-    }, [apontamentosList, isOpen, setOpen]);
+            if(apontamento.id === descricao?.id) {
+                setOpen(!isOpen);
+            }
+ 
+    }, [apontamentos, isOpen, setOpen, descricao, setDescricao]);
 
     useEffect(() => {
         api.get("/consultores").then((response) => {
@@ -118,10 +135,10 @@ const Aprovacao: React.FC = () => {
             setApontamentos(response.data)
         })
     }, []);
-    const apontamentosaprovados = apontamentosList.filter(apontamento => apontamento.situacaoApontamento === "APROVADO")
+    const apontamentosaprovados = apontamentos.filter(apontamento => apontamento.situacaoApontamento === "APROVADO")
     ,aprovados = apontamentosaprovados.length;
 
-    const apontamentosreprovados = apontamentosList.filter(apontamento => apontamento.situacaoApontamento === "REPROVADO")
+    const apontamentosreprovados = apontamentos.filter(apontamento => apontamento.situacaoApontamento === "REPROVADO")
     ,reprovados = apontamentosreprovados.length;
     return (
         <>
@@ -159,7 +176,7 @@ const Aprovacao: React.FC = () => {
                     <h1>APROVAÇÕES</h1>
                     <div>
                         <div className="hold">
-                            <div className="numbers"><p>{apontamentosList.length}</p></div>
+                            <div className="numbers"><p>{apontamentos.length}</p></div>
                             <p> APONTAMENTOS</p>
                         </div>
                         <div className="hold">
@@ -179,7 +196,6 @@ const Aprovacao: React.FC = () => {
                     </Buttons>
                 </Count>
                 <Apontamentos>
-
                     <table>
                     <thead>
                         <tr>
@@ -190,24 +206,27 @@ const Aprovacao: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {apontamentosList.map((apontamento) => {
+                        {apontamentos.map((apontamento) => { 
                         return (
+                            
                             <tr key={apontamento.id}>
-                                <td><input type="checkbox" onClick={() => handleSelected(apontamento.id)}/></td>
+                                <td><input type="checkbox" value={apontamento.id} onClick={() => handleSelected(apontamento.id)}/></td>
                                 <td>{apontamento.data.substring(0,10)}</td>
                                 <td>{apontamento.horasTrabalhadas}h</td> 
-                                <td><button onClick={() => handleOpen(apontamento.id)}><GoChevronDown/></button></td>
-
-                                <Descriptions Open={!!isOpen}>
-                                    <header><p>Descrição</p><span/></header>
+                                <td><button onClick={() => handleOpen(apontamento)}><GoChevronDown/></button></td>
+                                {isOpen &&
+                                    <Descriptions Open={!!isOpen}>
+                                    <header>Descrição<span/></header>
                                     <div>
                                         <p>
-                                        {descricao && descricao?.descricao}
-
+                                            {descricao && descricao?.descricao}
                                         </p>
                                     </div>
                                 </Descriptions>
+                                }
+                                
                             </tr>
+                            
                         )})}
                     </tbody>
                     </table>
@@ -234,7 +253,7 @@ const Aprovacao: React.FC = () => {
                         </Step>
                     </div>
                 </ProgressBar>
-                <button form="aprovar" onClick={handleActive}>FINALIZAR</button>
+                <button form="aprovar" type="submit">FINALIZAR</button>
             </Container>
             {showPopup && 
                 <Consultores show={!!showPopup}>
