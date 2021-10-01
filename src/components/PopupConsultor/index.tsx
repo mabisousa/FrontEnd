@@ -5,115 +5,99 @@ import { BsX } from "react-icons/bs";
 import Grid from "../Grid";
 import api from "../../services/api";
 
-interface Consultor{
-  id: number;
-  nome: string;
-  status: string
-  projetos: [
-    {
-      id: number
-    }
-  ]
+interface Consultores{
+id: number,
+nome: string,
+status: string,
+usuario: {
+  email: string,
+},
+projetos: [
+  {
+    id: number,
+    nome: string,
+    status: string,
+  }
+]
+alocacoes: [
+  {
+  skill: {
+    nome: string,
+  },
+  }
+]
 }
 
-const Popup: React.FC = () => {
-  const [showPopup, setShowPopup] = useState(false);
+interface Consultor {
+  id: number,
+  showPopup: (arg0: boolean) => void,
+}
+
+const Popup: React.FC<Consultor> = ({id, showPopup} ) => {
+
+  const [consultor, setConsultor] = useState<Consultores>();
+
+  useEffect(() => {
+    api.get(`/consultores/${id}`).then((response) => {
+      setConsultor(response.data)
+    })
+  }, [consultor, setConsultor, id]);
+  
+  const closePopup = () => {
+    showPopup(false);
+  }
 
     return(
         <>
-         <Container show={!showPopup}>
-          <div id="hold">
-          <button onClick={() => setShowPopup(!showPopup)}><BsX/></button>
-          <PopUpInfo>
-            <header>
-              <HiUserCircle/>
-              <div id="EmployeeInformation">
-                  <p></p>
-                  <p>E-mail: isac_bezerra@empresa.com</p>
-              </div>
-            </header>
-          </PopUpInfo>
-          <Content>
-            <Skills>
-              <h5>SKILLS</h5>
-              <HoldContent>
-                  <p>UI / UX</p>
-                  <p>Desing Responsivo</p>
-                  <p>CSS e JavaScript Frameworks</p>
-                  <p>ReactJS</p>
-                  <p>Bootstrap</p>
-                  <p>Debug</p>
-                  <p>Git</p>
-                  <p>Git</p>
-                  <p>Git</p>
-                  <p>Git</p>
-                  <p>Git</p>
-              </HoldContent>
-            </Skills>
-            <PopUpTable>
-              <table>
-                <thead>
-                  <tr>
-                    <td>NÚMERO</td>
-                    <td>STATUS</td>
-                    <td>PROJETO</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>0000000</td>
-                    <td>Concluido</td>
-                    <td>Restauração de alteradores</td> 
-                  </tr>
-                  <tr>
-                    <td>0000000</td>
-                    <td>Concluido</td>
-                    <td>Restauração de alteradores</td> 
-                  </tr>
-                  <tr>
-                    <td>0000000</td>
-                    <td>Concluido</td>
-                    <td>Restauração de alteradores</td> 
-                  </tr>
-                  <tr>
-                    <td>0000000</td>
-                    <td>Concluido</td>
-                    <td>Restauração de alteradores</td> 
-                  </tr>
-                  <tr>
-                    <td>0000000</td>
-                    <td>Concluido</td>
-                    <td>Restauração de alteradores</td> 
-                  </tr>
-                  <tr>
-                    <td>0000000</td>
-                    <td>Concluido</td>
-                    <td>Restauração de alteradores</td> 
-                  </tr>
-                  <tr>
-                    <td>0000000</td>
-                    <td>Concluido</td>
-                    <td>Restauração de alteradores</td> 
-                  </tr>
-                  <tr>
-                    <td>0000000</td>
-                    <td>Concluido</td>
-                    <td>Restauração de alteradores</td> 
-                  </tr>
-                  <tr>
-                    <td>0000000</td>
-                    <td>Concluido</td>
-                    <td>Restauração de alteradores</td> 
-                  </tr>
-                </tbody>
-              </table>
-            </PopUpTable>
-          </Content>
-          <div id="grid"> 
-            <Grid/>
-          </div>
-          </div>
-        </Container>
+        { consultor && 
+          <Container show={!!showPopup}>
+            <div id="hold">
+            <button onClick={closePopup}><BsX/></button>
+            <PopUpInfo>
+              <header>
+                <HiUserCircle/>
+                <div id="EmployeeInformation">
+                    <h1>{consultor.id} - {consultor.nome}</h1>
+                    <p>E-mail: {consultor.usuario.email}</p>
+                </div>
+              </header>
+            </PopUpInfo>
+            <Content>
+              <Skills>
+                <h5>SKILLS</h5>
+                <HoldContent>
+                    {consultor.alocacoes.map((alocacao => (
+                      alocacao.skill.nome
+                    )))}
+                </HoldContent>
+              </Skills>
+              <PopUpTable>
+                <table>
+                  <thead>
+                    <tr>
+                      <td>NÚMERO</td>
+                      <td>STATUS</td>
+                      <td>PROJETO</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {consultor.projetos.map((projeto => (
+                      <tr key={projeto.id}>
+                      <td>{projeto.id}</td>
+                      <td>{projeto.status}</td>
+                      <td>{projeto.nome}</td> 
+                    </tr>
+                      )))}
+                  </tbody>
+                </table>
+              </PopUpTable>
+            </Content>
+            <div id="grid"> 
+              <Grid/>
+            </div>
+            </div>
+          </Container>
+        }
         </>
     )
 }
