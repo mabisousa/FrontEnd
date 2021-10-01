@@ -41,6 +41,7 @@ export const Container = styled.div<dropdownProps>`
             button{
                 font-size: 15px;
                 border-bottom: solid 1px  #7E7E7E;
+                color: #7E7E7E; 
                 height: 20px;
                 padding-top:1%;
                 width: 100%;
