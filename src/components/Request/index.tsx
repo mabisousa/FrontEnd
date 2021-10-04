@@ -2,7 +2,6 @@ import React from 'react';
 import { useCallback } from 'react';
 import { useState } from 'react';
 import {RiArrowLeftSLine} from 'react-icons/ri';
-import { closeRequest } from "../../pages/Aprovacao/script"
 import { Main } from './style';
 
 
@@ -43,7 +42,7 @@ const Request: React.FC = () => {
                 <>
                     <p>Deseja enviar uma solicitação de alteração?</p>
                     <div>
-                        <button onClick={closeRequest}>Não</button>
+                        <button >Não</button>
                         <button onClick={handleRequest}>Sim</button>
                     </div>
                 </>
