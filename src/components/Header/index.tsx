@@ -11,9 +11,11 @@ import bandeiraEspanha from "../../imgs/espanha.svg";
 import bandeiraEUA from "../../imgs/estados-unidos-da-america.svg";
 import increaseFont from "../../imgs/aumentarFonte.svg";
 import decreaseFont from "../../imgs/diminuirFonte.svg";
+import diminuir from "../../js/decrease";
+import aumentar from "../../js/increase";
 
 const Header: React.FC = ({children,...props}) => {
-
+  
     const [showDropdown, setShowDropDown] = useState(true);
     const [showIdioms, setShowIdioms] = useState(true);
     const [showFonts, setShowFonts] = useState(true);
@@ -62,6 +64,7 @@ const Header: React.FC = ({children,...props}) => {
         history.push("/")
       }
     return(
+      
       <Container  changeTheme={showTheme} showFonts={!!showFonts} showIdioms={!!showIdioms} ShowDropdown={!!showDropdown} {...props}> 
           <div id="name">
               <Link to="/home"><img src={logo} alt=""/></Link>
@@ -96,11 +99,11 @@ const Header: React.FC = ({children,...props}) => {
                   <p>Fonte</p> 
                 </div>
                 <div id="fonts">
-                  <div className="border">
+                  <div onClick={() => aumentar()} className="border">
                     <img src={increaseFont} alt=""/> 
                     <span>Aumentar fonte</span> 
                   </div>
-                  <div>
+                  <div onClick={() => diminuir()}>
                     <img src={decreaseFont} alt=""/> 
                     <span>Diminuir fonte</span> 
                   </div>   
