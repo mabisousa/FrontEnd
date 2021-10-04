@@ -6,7 +6,7 @@ import switchThemeDark from "../../imgs/Vector.svg";
 import switchThemeLight from "../../imgs/switch.svg";
 import font from "../../imgs/fonte-do-texto.svg";
 import bandeiraBrasil from "../../imgs/bandeiraBrasil.svg";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import bandeiraEspanha from "../../imgs/espanha.svg";
 import bandeiraEUA from "../../imgs/estados-unidos-da-america.svg";
 import increaseFont from "../../imgs/aumentarFonte.svg";
@@ -19,6 +19,7 @@ const Header: React.FC = ({children,...props}) => {
     const [showFonts, setShowFonts] = useState(true);
     const [showTheme, setShowTheme] = useState(true);
 
+    const history = useHistory();
     const handleShowDropdown = useCallback(() => {
       if(!!showDropdown === false) {
         setShowDropDown(true);    
@@ -54,6 +55,12 @@ const Header: React.FC = ({children,...props}) => {
         }
       }, [showTheme, setShowDropDown]);
     
+      const exitSystem = () => {
+        localStorage.removeItem("@WEGusers:token");
+        localStorage.removeItem("@WEGusers:usuario");
+
+        history.push("/")
+      }
     return(
       <Container  changeTheme={showTheme} showFonts={!!showFonts} showIdioms={!!showIdioms} ShowDropdown={!!showDropdown} {...props}> 
           <div id="name">
@@ -64,7 +71,7 @@ const Header: React.FC = ({children,...props}) => {
             <div onClick={handleShowDropdown} >
               <IoSettingsSharp />
             </div> 
-            <Link to="/"><p id="sair">Sair</p></Link>
+            <p id="sair" onClick={exitSystem}>Sair</p>
               <div id="dropdown">
                 <div onClick={handleShowIdioms}>
                   <img src={bandeiraBrasil} alt=""/> 
