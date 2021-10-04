@@ -61,12 +61,22 @@ const Home: React.FC = () => {
 
   useEffect(() => {
 
-    if(secao !== 'Todos') {
+    if (secao !== "Todos" && status !== "Todos") {
+      api.get(`/projetos/${secao}/${status}`).then((response) => {
+        setProjeto(response.data)
+      console.log(response.data)
+
+      })
+    } else if(secao !== 'Todos') {
       api.get(`/projetos/secao/${secao}`).then((response) => {
         setProjeto(response.data)
       })
+    } else if(status !== 'Todos'){
+      api.get(`/projetos/status/${status}`).then((response) => {
+        setProjeto(response.data)
+      })
     } else {
-      api.get("/projetos").then((response) => {
+      api.get(`/projetos`).then((response) => {
         setProjeto(response.data)
       })
     }
@@ -77,10 +87,9 @@ const Home: React.FC = () => {
   }, [projetos, setProjeto, secao, status]);
   
   useEffect(() => {
-    api.get("/projetos").then((response) => {
-      setFiltrados(response.data)
-    })
-  }, []);
+      setFiltrados(projetos);
+  }, [projetos]);
+
   const [search, setSearch] = useState('');
 
   const filtrarNome = useCallback((ev: string) => {
@@ -92,9 +101,8 @@ const Home: React.FC = () => {
   const filtrarStatus = useCallback((status: string) => {
 
     setStatus(status);
-    setFiltrados(projetos.filter((projeto) => projeto.status === status));
 
-  },[setProjeto, projetos, secao]);  
+  },[setFiltrados,setProjeto, projetos, secao]);  
   
   const handleShow = useCallback(() => {
     if(!!show === false) {
