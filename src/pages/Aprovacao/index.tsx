@@ -1,27 +1,25 @@
 import React, { useCallback, useRef, useState, useEffect } from "react";
 import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores, Buttons, 
-    Button, Step, Descriptions, Tr } from "./style"
+    Button, Step, Descriptions, Tr, Info } from "./style"
 import { FiCheck } from 'react-icons/fi' 
 import { VscChromeClose } from 'react-icons/vsc'
 import { GoChevronDown } from 'react-icons/go'
-import FinishButton from "../../components/FinishButton";
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
-import Input from "../../components/Input"
 import Request from "../../components/Request";
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web"
 import { BsX } from "react-icons/bs";
-import { checkbox, openRequest } from "./script";
 import api from "../../services/api";
-import { number } from "yup";
 
 interface Consultor{
-    id: number;
-    nome: string;
-    status: string
-    skill: string;
+    id: number,
+    nome: string,
+    status: string,
+    skill: string,
+    limiteHoras: number,
+    valorHoras: number,
 }
 
 interface Apontamento {
@@ -50,7 +48,8 @@ interface Aprovacao {
 
 const Aprovacao: React.FC = () => {
     
-    const [consultores, setConsultor] = useState<Consultor[]>([]);
+    const [consultores, setConsultores] = useState<Consultor[]>([]);
+    const [consultor,setConsultor] = useState<Consultor>();
     const formRef = useRef<FormHandles>(null);
     const [isConfirmed, setConfirm] = useState(false);
     const [isOpen, setOpen] = useState(false);
@@ -72,16 +71,20 @@ const Aprovacao: React.FC = () => {
         ]
     }
 
-    const aprovar = useCallback(async (dados: Aprovacao) => {
+    const selectConsult = useCallback((id) => {
+
+        api.get(`consultores/${id}`).then((response) => {
+            setConsultor(response.data);
+            console.log(response.data)
+        })
+        setShowPopup(false);
+    },[]);
+    const aprovar = useCallback(async () => {
         try {
             formRef.current?.setErrors({});
 
-            aprovacao.data = dados.data;
-            aprovacao.nomeFornecedor = dados.nomeFornecedor;
-            aprovacao.nomeResponsavel = dados.nomeResponsavel;
-            aprovacao.idConsultor = dados.idConsultor;
-            aprovacao.horasAprovadas = dados.horasAprovadas;
-            aprovacao.valorHora = dados.valorHora;
+
+            await api.post("aprovacao/inserir", aprovacao);
 
             console.log(aprovacao)
 
@@ -107,15 +110,8 @@ const Aprovacao: React.FC = () => {
         } else {
             aprovacao.apontamentos.push({id: id});
         }
-
-        aprovacao.apontamentos = aprovacao.apontamentos.filter(apontamento => apontamento.id !== 0);
-
     },[aprovacao]);
 
-    const handleActive = useCallback(() => {
-        setConfirm(true);
-    }, [setConfirm]);
-    
     const handleOpen = useCallback((apontamento) => {
     
             let index = apontamentos.indexOf(apontamento);
@@ -129,7 +125,7 @@ const Aprovacao: React.FC = () => {
 
     useEffect(() => {
         api.get("/consultores").then((response) => {
-        setConsultor(response.data)
+        setConsultores(response.data)
         })
         api.get("/apontamentos").then((response) => {
             setApontamentos(response.data)
@@ -152,23 +148,18 @@ const Aprovacao: React.FC = () => {
             <Title>APROVAÇÃO</Title>
             <Container>
                 <Infos>
-                <Form ref={ formRef} id="aprovar" onSubmit={ aprovar }>
-                        <h1>INFORMAÇÕES DO CONSULTOR</h1>
+                <Form ref={formRef} id="aprovar" onSubmit={ aprovar }>
+                        <h1>INFORMAÇÕES DA APROVACAO</h1>
                         <div className="inputs">
-                            <Input name="idConsultor" type="number" placeholder=" ">Cadastro</Input>
-                            <Input name="nomeConsultor" type="text" placeholder=" ">Nome</Input>
-                        </div>
-                        <div>
-                            <h1>INFORMAÇÕES DA APROVAÇÃO</h1>
-                            <div className="inputs">
-                                <Input name="data" type="date" placeholder=" ">00/00/00</Input>
-                                <Input name="nomeResponsavel" type="text" placeholder=" ">Responsável</Input>
+                            <div>
+                                <Info>{consultor && consultor.nome}</Info>
                             </div>
-                        </div>
-                        <h1>VALORES APROVADOS</h1>
-                        <div className="inputs">
-                            <Input name="valorHora" type="number" placeholder=" ">R$ 00,00</Input>
-                            <Input name="horasAprovadas" type="number" placeholder=" ">00h</Input>
+                            <div>
+                            </div>
+                            <div>
+                                <Info>{consultor && consultor.limiteHoras}</Info>
+                                <Info>{consultor && consultor.valorHoras}</Info>
+                            </div>
                         </div>
                     </Form>
                 </Infos>
@@ -191,8 +182,8 @@ const Aprovacao: React.FC = () => {
                     
                     <button id="visualizar" onClick={() => setShowPopup(!showPopup)}>VISUALIZAR CONSULTORES</button>
                     <Buttons id="buttons">
-                        <Button onClick={() => {openRequest("reprovar")}}>REPROVAR</Button>
-                        <Button onClick={() => {openRequest("aprovar")}}>APROVAR</Button>
+                        <Button onClick={() => {}}>REPROVAR</Button>
+                        <Button onClick={() => {}}>APROVAR</Button>
                     </Buttons>
                 </Count>
                 <Apontamentos>
@@ -224,7 +215,6 @@ const Aprovacao: React.FC = () => {
                                     </div>
                                 </Descriptions>
                                 }
-                                
                             </tr>
                             
                         )})}
@@ -253,7 +243,7 @@ const Aprovacao: React.FC = () => {
                         </Step>
                     </div>
                 </ProgressBar>
-                <button form="aprovar" type="submit">FINALIZAR</button>
+                <button form="aprovar" id="finalizar" type="submit">FINALIZAR</button>
             </Container>
             {showPopup && 
                 <Consultores show={!!showPopup}>
@@ -268,7 +258,7 @@ const Aprovacao: React.FC = () => {
                     </thead>
                     <tbody>
                     {consultores.map((consultor) => (
-                        <Tr color={consultor.status}>
+                        <Tr key={consultor.id} color={consultor.status} onClick={() => selectConsult(consultor.id)}>
                             <td>{consultor.id}</td>
                             <td>{consultor.nome}</td>
                             <td>{consultor.status}</td> 

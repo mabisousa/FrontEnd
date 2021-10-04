@@ -13,6 +13,14 @@ export const Container = styled.div`
         font-weight:500;
         margin:10px 0;
     }
+
+    #finalizar {
+        height: 50px;
+        padding: 10px;
+        color: #fff;
+        background-color: #28B9DA;
+        border: none;
+    }
 `;
 
 export const Infos = styled.div`
@@ -28,13 +36,11 @@ export const Infos = styled.div`
         
         .inputs {
             display: flex;
+            flex-direction:column;
 
-            div:nth-child(1) {
-                width:30%;
-            }
-            div:nth-child(2) {
-                width:70%;
-                margin-left:2%;
+            div {
+                display: flex;
+                margin: 5px 0;
             }
         }
     }  
@@ -135,7 +141,13 @@ export const Count = styled.div`
         }
     }
 `;
-
+export const Info = styled.div`
+    height: 50px;
+    width: 100px;
+    border: 1px solid #a2a2a2;
+    padding: 15px;
+    color: #a2a2a2;
+`;
 export const Apontamentos = styled.div`
     width: 22vw;
     height: 300px;
@@ -382,6 +394,9 @@ interface colorConsultores{
   }
   
 export const Tr = styled.div<colorConsultores>`
+
+    cursor: pointer;
+    
     ${(props) =>
     props.color === "ATIVO" &&
     css`
