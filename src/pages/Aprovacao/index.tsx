@@ -85,7 +85,7 @@ const Aprovacao: React.FC = () => {
         ]
     }
 
-    const selectConsult = useCallback((id) => {
+    const handleSelectConsult = useCallback((id) => {
 
         api.get(`consultores/${id}`).then((response) => {
             setConsultor(response.data);
@@ -94,7 +94,7 @@ const Aprovacao: React.FC = () => {
         setShowPopup(false);
     },[]);
 
-    const aprovar = useCallback(async () => {
+    const handleAprove = useCallback(async () => {
         try {
             formRef.current?.setErrors({});
 
@@ -128,7 +128,7 @@ const Aprovacao: React.FC = () => {
         }
     },[aprovacao]);
 
-    const handleOpen = useCallback((apontamento) => {
+    const handleOpenPopup = useCallback((apontamento) => {
     
         console.log(apontamento)
             let index = apontamentos.indexOf(apontamento);
@@ -169,7 +169,7 @@ const Aprovacao: React.FC = () => {
             <Title>APROVAÇÃO</Title>
             <Container>
                 <Infos>
-                <Form ref={formRef} id="aprovar" onSubmit={ aprovar }>
+                <Form ref={formRef} id="aprovar" onSubmit={ handleAprove }>
                         <h1>INFORMAÇÕES DA APROVACAO</h1>
                         <div>
                             <p>NOME SADSADASDSAD</p>
@@ -231,7 +231,7 @@ const Aprovacao: React.FC = () => {
                                 <td><input type="checkbox" value={apontamento.id} onClick={() => handleSelected(apontamento.id)}/></td>
                                 <td>{apontamento.data.substring(0,10)}</td>
                                 <td>{apontamento.horasTrabalhadas}h</td> 
-                                <td><button onClick={() => handleOpen(apontamento)}><GoChevronDown/></button></td>
+                                <td><button onClick={() => handleOpenPopup(apontamento)}><GoChevronDown/></button></td>
                                 {isOpen &&
                                     <Descriptions Open={!!isOpen}>
                                     <header>Descrição<span/></header>
@@ -285,7 +285,7 @@ const Aprovacao: React.FC = () => {
                     </thead>
                     <tbody>
                     {consultores.map((consultor) => (
-                        <Tr key={consultor.id} color={consultor.status} onClick={() => selectConsult(consultor.id)}>
+                        <Tr key={consultor.id} color={consultor.status} onClick={() => handleSelectConsult(consultor.id)}>
                             <td>{consultor.id}</td>
                             <td>{consultor.nome}</td>
                             <td>{consultor.status}</td> 

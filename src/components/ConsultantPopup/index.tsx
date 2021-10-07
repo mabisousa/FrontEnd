@@ -43,7 +43,7 @@ const Popup: React.FC<Consultor> = ({id, showPopup} ) => {
     })
   }, [consultor, setConsultor, id]);
   
-  const closePopup = () => {
+  const handleClosePopup = () => {
     showPopup(false);
   }
 
@@ -52,7 +52,7 @@ const Popup: React.FC<Consultor> = ({id, showPopup} ) => {
         { consultor && 
           <Container show={!!showPopup}>
             <div id="hold">
-            <button onClick={closePopup}><BsX/></button>
+            <button onClick={handleClosePopup}><BsX/></button>
             <PopUpInfo>
               <header>
                 <HiUserCircle/>

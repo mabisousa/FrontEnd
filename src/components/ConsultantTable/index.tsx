@@ -16,11 +16,11 @@ const Login: React.FC = () => {
   const [consult, setConsult] = useState<Consultores>();
 
 
-  const handleShow = (showPop: boolean) => {
+  const handleShowPopup = (showPop: boolean) => {
     setShowPopup(showPop);
   }
 
-  const openPopup = useCallback((id: number) => {
+  const handleOpenPopup = useCallback((id: number) => {
     setShowPopup(!showPopup);
     
     setConsult(consultor[id-1]);
@@ -54,7 +54,7 @@ const Login: React.FC = () => {
                 <td>{consultor.nome}</td>
                 <td>{consultor.status}</td> 
                 <td>{consultor.projetos.length}</td>
-                <button onClick={() => openPopup(consultor.id)} key={consultor.id}><td> + </td></button>
+                <button onClick={() => handleOpenPopup(consultor.id)} key={consultor.id}><td> + </td></button>
               </Tr>
             ))}
           </tbody>
@@ -63,7 +63,7 @@ const Login: React.FC = () => {
       } 
         
       {showPopup && consult &&
-        <Popup id={consult.id} showPopup={handleShow}/>
+        <Popup id={consult.id} showPopup={handleShowPopup}/>
       }
     </>
 )};

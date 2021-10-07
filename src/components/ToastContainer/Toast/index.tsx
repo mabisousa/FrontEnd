@@ -15,17 +15,17 @@ const icons = {
 }
 
 const Toast: React.FC<ToastMessage> = ({message, style}) => {
-    const { removeToast } = useToast();
+    const { handleRemoveToast } = useToast();
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            removeToast(message.id);
+        const handleTimer = setTimeout(() => {
+            handleRemoveToast(message.id);
         }, 3000)
 
         return () => {
-            clearTimeout(timer);
+            clearTimeout(handleTimer);
         }
-    }, [ removeToast, message.id])
+    }, [ handleRemoveToast, message.id])
 
     return (
         <Container type={message.type} hasDescription={!!message.description} style={style}>
@@ -36,7 +36,7 @@ const Toast: React.FC<ToastMessage> = ({message, style}) => {
                 {message.description && <p>{message.description}</p>}
             </div>
 
-            <button onClick={() => removeToast(message.id)}>
+            <button onClick={() => handleRemoveToast(message.id)}>
                 <FiXCircle size={20}/>
             </button>
 

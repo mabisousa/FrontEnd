@@ -34,7 +34,7 @@ const Login: React.FC = () => {
   const [filtro, setFiltro] = useState('Todos');
   const [search, setSearch] = useState('');
 
-  //const filter = consultores.filter((consultor) => consultor.nome.toLowerCase().includes(search.toLowerCase()))
+  //const handleFilter = consultores.filter((consultor) => consultor.nome.toLowerCase().includes(search.toLowerCase()))
 
   useEffect(() => {
     if(filtro === 'Todos') {
@@ -44,7 +44,7 @@ const Login: React.FC = () => {
     }
   }, [consultores, setConsultor, filtro]);
 
-  const filtrarStatus = useCallback((status: string) => {
+  const handleFilterStatus = useCallback((status: string) => {
     setFiltro(status)
 
     api.get(`/consultores/status/${status}`).then((response) => {
@@ -76,8 +76,8 @@ const Login: React.FC = () => {
                   <Dropdown>
                   <span>{filtro}</span>
                     <div>
-                    <button onClick={() => filtrarStatus('Ativo')} key={'Ativo'}>{'Ativo'}</button>
-                    <button onClick={() => filtrarStatus('Inativo')} key={'Inativo'}>{'Inativo'}</button>
+                    <button onClick={() => handleFilterStatus('Ativo')} key={'Ativo'}>{'Ativo'}</button>
+                    <button onClick={() => handleFilterStatus('Inativo')} key={'Inativo'}>{'Inativo'}</button>
                     <button onClick={() => setFiltro('Todos')}>Todos</button>
                     </div>
                   </Dropdown>

@@ -51,7 +51,7 @@ const Popup: React.FC<Projeto> = ({id, showPopup}) => {
     const [projeto, setProjeto] = useState<Projetos>();
 
 
-    const handleOpen = useCallback(() => {
+    const handleOpenPopup = useCallback(() => {
         if(!!isOpen === false) {
           setOpen(true);    
         } else {
@@ -59,7 +59,7 @@ const Popup: React.FC<Projeto> = ({id, showPopup}) => {
         }
       }, [isOpen, setOpen]);
       
-      const closePopup = () => {
+      const handleClosePopup = () => {
         showPopup(false);
       }
 
@@ -82,7 +82,7 @@ const Popup: React.FC<Projeto> = ({id, showPopup}) => {
     { projeto &&
         <ContainerPopup Open={!!isOpen}  show={!!showPopup}>
         <div id="hold">
-          <button onClick={closePopup}><BsX/></button>
+          <button onClick={handleClosePopup}><BsX/></button>
           <TitlePopUp>
             <h2> {projeto.secao.idSecao} - {projeto.secao.nomeSecao}</h2>
             <h1>{projeto.id} - {projeto.nome}</h1>
@@ -156,7 +156,7 @@ const Popup: React.FC<Projeto> = ({id, showPopup}) => {
                   </tbody>
                 </table>
               </Table>
-              <button id="visualizar" onClick={handleOpen}>VISUALIZAR CONSULTORES</button>
+              <button id="visualizar" onClick={handleOpenPopup}>VISUALIZAR CONSULTORES</button>
             </Skills>
             <ConsultoresAlocados Open={!!isOpen}>
               <table>
