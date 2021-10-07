@@ -24,7 +24,7 @@ export const Container = styled.div`
 `;
 
 export const Infos = styled.div`
-    height: 53vh;
+    height: 40vh;
     width: 30vw;
     display:flex;
     flex-direction: column;
@@ -32,15 +32,17 @@ export const Infos = styled.div`
     padding: 0 2%;
 
     form {
-        margin:2px 0;
-        
-        .inputs {
-            display: flex;
-            flex-direction:column;
+        height: 100%;
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
+        div {
             div {
                 display: flex;
-                margin: 5px 0;
+                flex-direction: row;
+                justify-content: space-between;
             }
         }
     }  
@@ -143,7 +145,7 @@ export const Count = styled.div`
 `;
 export const Info = styled.div`
     height: 50px;
-    width: 100px;
+    max-width: 250px;
     border: 1px solid #a2a2a2;
     padding: 15px;
     color: #a2a2a2;
@@ -175,6 +177,13 @@ export const Apontamentos = styled.div`
             overflow-x: hidden;
             display: block;
             border: 1px solid #8B8787;
+
+            span {
+                position: relative;
+                top: 120px;
+                left: 40px;
+
+            }
         }
 
         tr{

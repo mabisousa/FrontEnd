@@ -1,8 +1,8 @@
 import React from "react";
 import { Container } from './style'
-import folder from '../../imgs/folder.svg';
-import clock from '../../imgs/clock.svg';
-import group from '../../imgs/group.svg';
+import folder from '../../assets/folder.svg';
+import clock from '../../assets/clock.svg';
+import group from '../../assets/group.svg';
 import { Link } from 'react-router-dom'
 
 const Menu: React.FC = () => (

@@ -3,8 +3,8 @@ import { Title, Form, Filters, Filter, Cards } from './style';
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
-import display1 from '../../imgs/display1.svg';
-import display2 from '../../imgs/display2.svg';
+import display1 from '../../assets/listView.svg';
+import display2 from '../../assets/gridView.svg';
 import api from "../../services/api"
 import Dropdown from "../../components/Filter";
 import Card from "../../components/Cards"
@@ -92,13 +92,13 @@ const Home: React.FC = () => {
 
   const [search, setSearch] = useState('');
 
-  const filtrarNome = useCallback((ev: string) => {
+  const handleFilterName = useCallback((ev: string) => {
     setSearch(ev)
     setFiltrados(projetos.filter((projeto) => projeto.nome.toLowerCase().includes(search.toLowerCase())));
 
   },[projetos, setSearch, search]);  
 
-  const filtrarStatus = useCallback((status: string) => {
+  const handleFilterStatus = useCallback((status: string) => {
 
     setStatus(status);
 
@@ -134,7 +134,7 @@ const Home: React.FC = () => {
             <Filter>
                 <Form>
                     <label>Projeto:</label>
-                    <input type="text" placeholder="Digite aqui... " value={search} onChange={(ev) => filtrarNome(ev.target.value)}/>
+                    <input type="text" placeholder="Digite aqui... " value={search} onChange={(ev) => handleFilterName(ev.target.value)}/>
                 </Form>
                 <div>
                   <label className="secao">Seção:</label>
@@ -154,10 +154,10 @@ const Home: React.FC = () => {
                   <Dropdown>
                     <span>{status}</span>
                     <div>
-                      <button onClick={() => filtrarStatus("ANDAMENTO")}>Andamento</button>
-                      <button onClick={() => filtrarStatus("ATRASADO")}>Atrasado</button>
-                      <button onClick={() => filtrarStatus("CONCLUÍDO")}>Concluído</button>
-                      <button onClick={() => filtrarStatus("Todos")}>Todos</button>
+                      <button onClick={() => handleFilterStatus("ANDAMENTO")}>Andamento</button>
+                      <button onClick={() => handleFilterStatus("ATRASADO")}>Atrasado</button>
+                      <button onClick={() => handleFilterStatus("CONCLUÍDO")}>Concluído</button>
+                      <button onClick={() => handleFilterStatus("Todos")}>Todos</button>
                     </div>
                   </Dropdown>
                 </div>

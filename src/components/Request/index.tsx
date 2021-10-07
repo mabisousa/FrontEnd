@@ -10,7 +10,7 @@ const Request: React.FC = () => {
     const [isConfirm, setConfirm] = useState(false);
     const [content, newContent] = useState('');
 
-    const backRequest = useCallback(() => {
+    const handleBackRequest = useCallback(() => {
         setConfirm(false);
     }, []);
     const handleRequest = useCallback(() => {
@@ -28,7 +28,7 @@ const Request: React.FC = () => {
             {!!isConfirm ? 
                 <>
                     <div>
-                        <RiArrowLeftSLine onClick={backRequest}/>
+                        <RiArrowLeftSLine onClick={handleBackRequest}/>
                         <p>Insira sua Solicitação:</p>
                     </div>
                     <textarea id="text"

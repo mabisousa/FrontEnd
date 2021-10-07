@@ -5,7 +5,6 @@ interface dropdownProps {
     showIdioms: boolean;
     showFonts: boolean;
     changeTheme: boolean;
-
 }
 
 export const Container = styled.div<dropdownProps>`
@@ -119,17 +118,19 @@ export const Container = styled.div<dropdownProps>`
                     border-bottom: solid 1px  #CBCBCB;
                 }
             }
-            
-            #idioms{
-                height: 105px;
 
+            #idioms, #fonts{
                 img{
                     height: 25px;
                     width: 25px;
                     cursor: pointer;
                     margin-left: 16px;
                     margin-right: 8px;
-                }
+                }                
+            }
+            
+            #idioms{
+                height: 105px;
 
                 ${(props) => props.showIdioms ?
                 css`
@@ -137,18 +138,11 @@ export const Container = styled.div<dropdownProps>`
                 `: css`
                     display: block;
                 `}
+                
             }
 
             #fonts{
                 height: 70px;
-
-                img{
-                    height: 25px;
-                    width: 25px;
-                    cursor: pointer;
-                    margin-left: 16px;
-                    margin-right: 8px;
-                }
                 
                 ${(props) => props.showFonts ?
                 css`
@@ -159,23 +153,22 @@ export const Container = styled.div<dropdownProps>`
             }
 
             #switchThemeLight{
-                
                 ${(props) => props.changeTheme ?
                 css`
-                    display: none;
-                `: css`
                     display: block;
+                `: css`
+                    display: none;
                 `}
             }
 
             #switchThemeDark{
-                
                 ${(props) => props.changeTheme ?
                 css`
-                    display: block;
-                `: css`
                     display: none;
+                `: css`
+                    display: block;
                 `}
+                
             }
            
         }

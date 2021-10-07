@@ -1,18 +1,18 @@
 import React, { useCallback, useState } from "react";
 import { Container } from './style';
-import logo from "../../imgs/logo-weg.svg";
+import logo from "../../assets/logo.svg";
 import { IoSettingsSharp } from "react-icons/io5";
-import switchThemeDark from "../../imgs/Vector.svg";
-import switchThemeLight from "../../imgs/switch.svg";
-import font from "../../imgs/fonte-do-texto.svg";
-import bandeiraBrasil from "../../imgs/bandeiraBrasil.svg";
+import switchThemeDark from "../../assets/switchOn.svg";
+import switchThemeLight from "../../assets/switchOff.svg";
+import font from "../../assets/textFont.svg";
+import bandeiraBrasil from "../../assets/brazilFlag.svg";
 import { Link, useHistory } from "react-router-dom";
-import bandeiraEspanha from "../../imgs/espanha.svg";
-import bandeiraEUA from "../../imgs/estados-unidos-da-america.svg";
-import increaseFont from "../../imgs/aumentarFonte.svg";
-import decreaseFont from "../../imgs/diminuirFonte.svg";
 import decrease from "../../js/decrease";
 import increse from "../../js/increase";
+import bandeiraEspanha from "../../assets/spainFlag.svg";
+import bandeiraEUA from "../../assets/usaFlag.svg";
+import increaseFont from "../../assets/increaseFont.svg";
+import decreaseFont from "../../assets/decreaseFont.svg";
 
 const Header: React.FC = ({children,...props}) => {
   
@@ -107,8 +107,8 @@ const Header: React.FC = ({children,...props}) => {
                   </div>   
                 </div>
                 <div onClick={handleChangeTheme}>
-                  <img src={switchThemeDark} id="switchThemeDark"/> 
                   <img src={switchThemeLight} id="switchThemeLight"/> 
+                  <img src={switchThemeDark} id="switchThemeDark"/> 
                   <p>Tema</p> 
                 </div> 
               </div>

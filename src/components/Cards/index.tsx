@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, TitleSection, TitleProject, HoldHours, Hours, Status, Date } from './style';
 import api from "../../services/api";
-import Popup from "../../components/PopupProjetos";
+import Popup from "../ProjectsPopup";
 
 interface Projetos{
   id: number,
@@ -56,7 +56,7 @@ const Cards: React.FC<Projeto> = ({id, show}) => {
     })
   }, [id]);
 
-  const handleShow = (showPop: boolean) => {
+  const handleShowPopup = (showPop: boolean) => {
     setShowPopup(showPop);
   }
 
@@ -91,7 +91,7 @@ const Cards: React.FC<Projeto> = ({id, show}) => {
         </Card>
       }
       {showPopup && projeto &&
-        <Popup id={projeto.id} showPopup={handleShow}/> 
+        <Popup id={projeto.id} showPopup={handleShowPopup}/> 
       }
     </>                
   ) 

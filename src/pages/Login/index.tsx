@@ -1,7 +1,7 @@
 import React, {useCallback, useContext, useRef} from 'react';
 
 import { Main, Inputs,  FormButton, ImgLogo, HoldButton } from './style';
-import logo from "../../imgs/logo.svg"
+import logo from "../../assets/logo.svg"
 
 import { FormHandles } from "@unform/core"
 import { Form } from '@unform/web'
@@ -24,7 +24,7 @@ const Login: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
 
     const { signIn } = useContext(AuthContext);
-    const { addToast } = useToast();
+    const { handleAddToast } = useToast();
     const history = useHistory();
 
     const handleSubmit = useCallback(async (data: SignInData) => {
@@ -59,13 +59,13 @@ const Login: React.FC = () => {
 
                 return
             }
-            addToast({
+            handleAddToast({
                 type: 'error',
                 title: 'Erro de autenticação',
                 description: 'Ocorreu um erro ao fazer login, verifique suas credenciais.',
             })
         }      
-    },[ signIn, addToast, history ]);
+    },[ signIn, handleAddToast, history ]);
     return (
     <>
         <Main>
