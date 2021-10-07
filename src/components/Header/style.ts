@@ -26,6 +26,7 @@ export const Container = styled.div<dropdownProps>`
         width:220px;
         display: flex;
         align-items: center;
+        
 
         img{
             margin:0 30px;
@@ -35,7 +36,7 @@ export const Container = styled.div<dropdownProps>`
         
         p {
             font-weight: bold;
-            font-size: 16px;
+            font-size: 1em;
             cursor: pointer;
             color: #00579D;
         }
@@ -49,6 +50,7 @@ export const Container = styled.div<dropdownProps>`
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        
 
         svg{
             height: 20px;
@@ -60,7 +62,7 @@ export const Container = styled.div<dropdownProps>`
         }
     
         #sair {
-            font-size: 14px;
+            font-size: .9em;
             width: 40px;
             color: #00579D;
             cursor: pointer;
@@ -77,7 +79,7 @@ export const Container = styled.div<dropdownProps>`
             border-bottom: 0;
             color: #7E7E7E;
             cursor: pointer;
-            width: 180px;
+            min-width: 180px;
             background-color: #FFF; 
             height: auto;
 
@@ -92,12 +94,12 @@ export const Container = styled.div<dropdownProps>`
                 width: 100%;
                 border-bottom: solid 1px  #7E7E7E;
                 display: flex;
-                height: 35px;
+                min-height: 35px;
                 align-items: center;
 
                 p{
-                    height: 20px;
-                    font-size: 16px;
+                    min-height: 20px;
+                    font-size: 1em;
                 }
 
                 img{
@@ -109,8 +111,8 @@ export const Container = styled.div<dropdownProps>`
                 }
 
                 span{
-                    height: 20px;
-                    font-size: 14px;
+                    min-height: 20px;
+                    font-size: .9em;
                 }
 
                 .border{
