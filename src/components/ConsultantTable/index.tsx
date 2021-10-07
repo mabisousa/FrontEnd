@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Container, Tr } from './style';
 import api from "../../services/api";
-import Popup from "../../components/PopupConsultor"
+import Popup from "../ConsultantPopup"
 
 interface Consultores{
   id: number,

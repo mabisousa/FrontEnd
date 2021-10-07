@@ -3,7 +3,7 @@ import { TitlePopUp, InfosPopup, InfosGerais, Objetivo, Horas, HorasApontadas, S
 import { ContainerPopup } from "./style";
 import { Chart } from "react-google-charts";
 import { BsX } from 'react-icons/bs';
-import Grid from '../../components/Grid';
+import Grid from '../Grid';
 import api from "../../services/api"
 interface Projetos{
   id: number,
