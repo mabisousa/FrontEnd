@@ -1,8 +1,10 @@
-let tamanho = 16;
-const diminuir = () => {
-  tamanho--;
-  document.body.style.fontSize=`${tamanho}pt`;
-  console.log(tamanho)
+
+const decrease= (prarameterSize) => {
+  
+  let size = parseInt(prarameterSize);  
+  size--;
+  document.body.style.fontSize=`${size}px`;
+  console.log(size)
 }
 
-export default diminuir;
+export default decrease;

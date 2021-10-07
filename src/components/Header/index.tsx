@@ -7,12 +7,12 @@ import switchThemeLight from "../../assets/switchOff.svg";
 import font from "../../assets/textFont.svg";
 import bandeiraBrasil from "../../assets/brazilFlag.svg";
 import { Link, useHistory } from "react-router-dom";
+import decrease from "../../js/decrease";
+import increse from "../../js/increase";
 import bandeiraEspanha from "../../assets/spainFlag.svg";
 import bandeiraEUA from "../../assets/usaFlag.svg";
 import increaseFont from "../../assets/increaseFont.svg";
 import decreaseFont from "../../assets/decreaseFont.svg";
-import diminuir from "../../js/decrease";
-import aumentar from "../../js/increase";
 
 const Header: React.FC = ({children,...props}) => {
   
@@ -29,8 +29,6 @@ const Header: React.FC = ({children,...props}) => {
         setShowDropDown(false);    
       }
     }, [showDropdown, setShowDropDown]); 
-
-   
 
     const handleShowIdioms = useCallback(() => {
       if(!!showIdioms === false) {
@@ -78,12 +76,12 @@ const Header: React.FC = ({children,...props}) => {
               <div id="dropdown">
                 <div onClick={handleShowIdioms}>
                   <img src={bandeiraBrasil} alt=""/> 
-                  <p>Idioma</p>          
+                  <p id="a">Idioma</p>          
                 </div>
                 <div id="idioms">
                   <div className="border">
                     <img src={bandeiraEspanha} alt=""/> 
-                    <span>Español</span> 
+                    <span >Español</span> 
                   </div>
                   <div className="border">
                       <img src={bandeiraEUA} alt=""/> 
@@ -96,14 +94,14 @@ const Header: React.FC = ({children,...props}) => {
                 </div>
                 <div onClick={handleShowFont}>
                   <img src={font} alt=""/> 
-                  <p>Fonte</p> 
+                  <p >Fonte</p> 
                 </div>
                 <div id="fonts">
-                  <div onClick={() => aumentar()} className="border">
+                  <div  onClick={() => increse(window.getComputedStyle(document.body).getPropertyValue('font-size'))} className="border">
                     <img src={increaseFont} alt=""/> 
                     <span>Aumentar fonte</span> 
                   </div>
-                  <div onClick={() => diminuir()}>
+                  <div  onClick={() => decrease(window.getComputedStyle(document.body).getPropertyValue('font-size'))}>
                     <img src={decreaseFont} alt=""/> 
                     <span>Diminuir fonte</span> 
                   </div>   
