@@ -477,7 +477,7 @@ export const Button = styled.button`
 `;
 
 interface Description {
-    Open: boolean;
+    open: boolean;
 }
 export const Descriptions = styled.div<Description>`
     width:0;
@@ -487,7 +487,7 @@ export const Descriptions = styled.div<Description>`
     position: absolute;
     top: 0;
 
-    ${(props) => !!props.Open ?
+    ${(props) => !!props.open ?
     css`
     width: 330px;
     visibility: visible;

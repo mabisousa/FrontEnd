@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 interface dropdownProps {
-    ShowDropdown: boolean;
+    showDropdown: boolean;
     showIdioms: boolean;
     showFonts: boolean;
     changeTheme: boolean;
@@ -82,7 +82,7 @@ export const Container = styled.div<dropdownProps>`
             background-color: #FFF; 
             height: auto;
 
-            ${(props) => props.ShowDropdown ?
+            ${(props) => props.showDropdown ?
                 css`
                     display: none;
                 `: css`

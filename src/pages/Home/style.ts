@@ -148,12 +148,12 @@ export const Cards = styled.div`
 
 
 interface PopUp{
-    Open: boolean;
+    open: boolean;
     show: boolean;
 }
 
 export const Container = styled.div<PopUp>`
-    ${(props) => props.Open ? 
+    ${(props) => props.open ? 
         css`
             #hold{
                 width:1160px; 
@@ -251,12 +251,12 @@ export const DetailsPopup = styled.div`
 `;
 
 interface ContainerProps {
-    Open: boolean;
+    open: boolean;
 }
 
 export const InfosGerais = styled.div<ContainerProps>`
 
-    ${(props) => props.Open ? 
+    ${(props) => props.open ? 
         css`
             width: 35%;
             transition: 1s;
@@ -281,7 +281,7 @@ export const InfosGerais = styled.div<ContainerProps>`
 `;
 
 export const Objetivo = styled.div<ContainerProps>`
-    ${(props) => props.Open ? 
+    ${(props) => props.open ? 
         css`
             width: 35%;
             transition: 1s;
@@ -307,7 +307,7 @@ export const Objetivo = styled.div<ContainerProps>`
 `;
 
  export const Horas = styled.div<ContainerProps>`
-    ${(props) => props.Open ? 
+    ${(props) => props.open ? 
         css`
             width: 40%;
             transition: 1s;
@@ -353,7 +353,7 @@ export const Objetivo = styled.div<ContainerProps>`
  `;
 
 export const Skills = styled.div<ContainerProps>`
-  ${(props) => props.Open ? 
+  ${(props) => props.open ? 
     css`
         width: 40%;
         transition: 1s;
@@ -414,7 +414,7 @@ export const Table = styled.div`
 `;
 
 export const ConsultoresAlocados = styled.div<ContainerProps>`
-    ${(props) => props.Open ? 
+    ${(props) => props.open ? 
         css`
             width: 25%;
 
