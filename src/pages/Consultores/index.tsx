@@ -30,27 +30,27 @@ alocacoes: [
 ]
 }
 const Login: React.FC = () => {
-  const [consultores, setConsultor] = useState<Consultor[]>([]);
-  const [filtro, setFiltro] = useState('Todos');
+  const [consultant, setConsultant] = useState<Consultor[]>([]);
+  const [filter, setFilter] = useState('Todos');
   const [search, setSearch] = useState('');
 
   //const handleFilter = consultores.filter((consultor) => consultor.nome.toLowerCase().includes(search.toLowerCase()))
 
   useEffect(() => {
-    if(filtro === 'Todos') {
+    if(filter === 'Todos') {
       api.get("/consultores").then((response) => {
-        setConsultor(response.data);
+        setConsultant(response.data);
       })
     }
-  }, [consultores, setConsultor, filtro]);
+  }, [consultant, setConsultant, filter]);
 
   const handleFilterStatus = useCallback((status: string) => {
-    setFiltro(status)
+    setFilter(status)
 
     api.get(`/consultores/status/${status}`).then((response) => {
-      setConsultor(response.data)
+      setConsultant(response.data)
     })
-  },[setConsultor]);
+  },[setConsultant]);
   
   return (
     <>  
@@ -74,11 +74,11 @@ const Login: React.FC = () => {
               <div>
                   <label>Status:</label>
                   <Dropdown>
-                  <span>{filtro}</span>
+                  <span>{filter}</span>
                     <div>
                     <button onClick={() => handleFilterStatus('Ativo')} key={'Ativo'}>{'Ativo'}</button>
                     <button onClick={() => handleFilterStatus('Inativo')} key={'Inativo'}>{'Inativo'}</button>
-                    <button onClick={() => setFiltro('Todos')}>Todos</button>
+                    <button onClick={() => setFilter('Todos')}>Todos</button>
                     </div>
                   </Dropdown>
                 </div>

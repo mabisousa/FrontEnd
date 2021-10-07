@@ -57,13 +57,13 @@ interface Aprovacao {
 
 const Aprovacao: React.FC = () => {
     
-    const [consultores, setConsultores] = useState<Consultor[]>([]);
-    const [consultor,setConsultor] = useState<Consultor>();
+    const [consultants, setConsultants] = useState<Consultor[]>([]);
+    const [consultant, setConsultant] = useState<Consultor>();
     const formRef = useRef<FormHandles>(null);
     const [isConfirmed, setConfirm] = useState(false);
     const [isOpen, setOpen] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
-    const [descricao, setDescricao] = useState<Apontamento>();
+    const [description, setDescription] = useState<Apontamento>();
     const [apontamentos, setApontamentos] = useState<Apontamento[]>([]);
 
     let horasSelecionadas = 0;
@@ -88,7 +88,7 @@ const Aprovacao: React.FC = () => {
     const handleSelectConsult = useCallback((id) => {
 
         api.get(`consultores/${id}`).then((response) => {
-            setConsultor(response.data);
+            setConsultant(response.data);
             console.log(response.data)
         })
         setShowPopup(false);
@@ -132,17 +132,17 @@ const Aprovacao: React.FC = () => {
     
         console.log(apontamento)
             let index = apontamentos.indexOf(apontamento);
-            setDescricao(apontamentos[index]);
+            setDescription(apontamentos[index]);
 
-            if(apontamento.id === descricao?.id) {
+            if(apontamento.id === description?.id) {
                 setOpen(!isOpen);
             }
  
-    }, [apontamentos, isOpen, setOpen, descricao, setDescricao]);
+    }, [apontamentos, isOpen, setOpen, description, setDescription]);
 
     useEffect(() => {
         api.get("/consultores").then((response) => {
-        setConsultores(response.data)
+            setConsultants(response.data)
         })
         api.get("/apontamentos").then((response) => {
             setApontamentos(response.data)
@@ -155,7 +155,7 @@ const Aprovacao: React.FC = () => {
     const apontamentosreprovados = apontamentos.filter(apontamento => apontamento.situacaoApontamento === "REPROVADO")
     ,reprovados = apontamentosreprovados.length;
 
-    const apontamentoslist = consultor?.apontamentos.filter(apontamento => apontamento.situacaoApontamento === "ESPERA");
+    const apontamentoslist = consultant?.apontamentos.filter(apontamento => apontamento.situacaoApontamento === "ESPERA");
     console.log(apontamentoslist)
     return (
         <>
@@ -174,7 +174,7 @@ const Aprovacao: React.FC = () => {
                         <div>
                             <p>NOME SADSADASDSAD</p>
                             <div>
-                                <Info>{consultor ? consultor.nome : "a"}</Info>
+                                <Info>{consultant ? consultant.nome : "a"}</Info>
                                 <Info>{horasSelecionadas ? horasSelecionadas : 0}</Info>
                             </div>
                         </div>
@@ -184,8 +184,8 @@ const Aprovacao: React.FC = () => {
                         <div>
                             <p>INFOS</p>
                             <div>
-                                <Info>{consultor ? consultor.limiteHoras : 0}</Info>
-                                <Info>{consultor ? consultor.valorHoras : 0}</Info>
+                                <Info>{consultant ? consultant.limiteHoras : 0}</Info>
+                                <Info>{consultant ? consultant.valorHoras : 0}</Info>
                             </div>
                         </div>
                         
@@ -237,7 +237,7 @@ const Aprovacao: React.FC = () => {
                                     <header>Descrição<span/></header>
                                     <div>
                                         <p>
-                                            {descricao && descricao?.descricao}
+                                            {description && description?.descricao}
                                         </p>
                                     </div>
                                 </Descriptions>
@@ -284,11 +284,11 @@ const Aprovacao: React.FC = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    {consultores.map((consultor) => (
-                        <Tr key={consultor.id} color={consultor.status} onClick={() => handleSelectConsult(consultor.id)}>
-                            <td>{consultor.id}</td>
-                            <td>{consultor.nome}</td>
-                            <td>{consultor.status}</td> 
+                    {consultants.map((consultant) => (
+                        <Tr key={consultant.id} color={consultant.status} onClick={() => handleSelectConsult(consultant.id)}>
+                            <td>{consultant.id}</td>
+                            <td>{consultant.nome}</td>
+                            <td>{consultant.status}</td> 
                         </Tr>
                         ))}
                     </tbody>

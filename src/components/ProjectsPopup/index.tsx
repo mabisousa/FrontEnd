@@ -1,5 +1,5 @@
 import React, {useState, useCallback, useEffect} from "react";
-import { TitlePopUp, InfosPopup, InfosGerais, Objetivo, Horas, HorasApontadas, Skills, Table, ConsultoresAlocados, DetailsPopup, Container  } from "../../pages/Home/style"
+import { TitlePopUp, InfosPopup, InfosGerais, Objetivo, Horas, HorasApontadas, Skills, Table, ConsultoresAlocados, DetailsPopup, Container  } from "./style"
 import { Chart } from "react-google-charts";
 import { BsX } from 'react-icons/bs';
 import Grid from '../Grid';
@@ -47,7 +47,7 @@ interface Projeto {
 const Popup: React.FC<Projeto> = ({id, showPopup}) => {
 
     const [isOpen, setOpen] = useState(false);
-    const [projeto, setProjeto] = useState<Projetos>();
+    const [project, setProject] = useState<Projetos>();
 
 
     const handleOpenPopup = useCallback(() => {
@@ -64,27 +64,27 @@ const Popup: React.FC<Projeto> = ({id, showPopup}) => {
 
       useEffect(() => {
         api.get(`/projetos/${id}`).then((response) => {
-          setProjeto(response.data)
+          setProject(response.data)
         })
-      }, [projeto, setProjeto, id]);
+      }, [project, setProject, id]);
 
       let restantes = 0;
       let apontadas = 0;
     
-      if (projeto) {
-      apontadas = projeto.horasApontadas;
-      restantes = projeto.horasTotal - apontadas;
+      if (project) {
+      apontadas = project.horasApontadas;
+      restantes = project.horasTotal - apontadas;
       } 
 
     return(
     <>
-    { projeto &&
+    { project &&
         <Container open={!!isOpen}  show={!!showPopup}>
         <div id="hold">
           <button onClick={handleClosePopup}><BsX/></button>
           <TitlePopUp>
-            <h2> {projeto.secao.idSecao} - {projeto.secao.nomeSecao}</h2>
-            <h1>{projeto.id} - {projeto.nome}</h1>
+            <h2> {project.secao.idSecao} - {project.secao.nomeSecao}</h2>
+            <h1>{project.id} - {project.nome}</h1>
           </TitlePopUp>
           <InfosPopup>
             <InfosGerais open={!!isOpen}  className="cont">
@@ -97,7 +97,7 @@ const Popup: React.FC<Projeto> = ({id, showPopup}) => {
             <Objetivo open={!!isOpen} className="cont">
               <h1>OBJETIVO: </h1>
               <p>
-                {projeto.descricao}
+                {project.descricao}
               </p>
             </Objetivo>
             <Horas open={!!isOpen}  className="cont">
@@ -127,10 +127,10 @@ const Popup: React.FC<Projeto> = ({id, showPopup}) => {
                 />
                 <div>
                   <p>TOTAL:
-                    <span>{projeto.horasTotal}</span> 
+                    <span>{project.horasTotal}</span> 
                   </p> 
                   <p>APONTADAS:
-                    <span>{projeto.horasApontadas}</span>
+                    <span>{project.horasApontadas}</span>
                   </p>
                 </div>
               </HorasApontadas>
@@ -145,7 +145,7 @@ const Popup: React.FC<Projeto> = ({id, showPopup}) => {
                     </tr>
                   </thead>
                   <tbody>
-                   {projeto.skills.map(skill => (
+                   {project.skills.map(skill => (
 
                     <tr key={skill.id}>
                         <td>{skill.nome}</td>
@@ -166,7 +166,7 @@ const Popup: React.FC<Projeto> = ({id, showPopup}) => {
                   </tr>
                 </thead>
                 <tbody>
-                {projeto.consultores.map((consultor) => (
+                {project.consultores.map((consultor) => (
                   <tr key={consultor.id}>
                     <td>{consultor.id}</td>
                     <td>{consultor.nome}</td>
@@ -176,9 +176,9 @@ const Popup: React.FC<Projeto> = ({id, showPopup}) => {
               </table>
             </ConsultoresAlocados>
           </InfosPopup>
-          <DetailsPopup color={projeto.status}>
+          <DetailsPopup color={project.status}>
             <Grid/>
-            <h1>{projeto.status}</h1>
+            <h1>{project.status}</h1>
           </DetailsPopup>
         </div>
       </Container>

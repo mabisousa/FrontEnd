@@ -35,13 +35,13 @@ interface Consultor {
 
 const Popup: React.FC<Consultor> = ({id, showPopup} ) => {
 
-  const [consultor, setConsultor] = useState<Consultores>();
+  const [consultant, setConsultant] = useState<Consultores>();
 
   useEffect(() => {
     api.get(`/consultores/${id}`).then((response) => {
-      setConsultor(response.data)
+      setConsultant(response.data)
     })
-  }, [consultor, setConsultor, id]);
+  }, [consultant, setConsultant, id]);
   
   const handleClosePopup = () => {
     showPopup(false);
@@ -49,7 +49,7 @@ const Popup: React.FC<Consultor> = ({id, showPopup} ) => {
 
     return(
         <>
-        { consultor && 
+        { consultant && 
           <Container show={!!showPopup}>
             <div id="hold">
             <button onClick={handleClosePopup}><BsX/></button>
@@ -57,8 +57,8 @@ const Popup: React.FC<Consultor> = ({id, showPopup} ) => {
               <header>
                 <HiUserCircle/>
                 <div id="EmployeeInformation">
-                    <h1>{consultor.id} - {consultor.nome}</h1>
-                    <p>E-mail: {consultor.usuario.email}</p>
+                    <h1>{consultant.id} - {consultant.nome}</h1>
+                    <p>E-mail: {consultant.usuario.email}</p>
                 </div>
               </header>
             </PopUpInfo>
@@ -66,7 +66,7 @@ const Popup: React.FC<Consultor> = ({id, showPopup} ) => {
               <Skills>
                 <h5>SKILLS</h5>
                 <HoldContent>
-                    {consultor.alocacoes.map((alocacao => (
+                    {consultant.alocacoes.map((alocacao => (
                       alocacao.skill.nome
                     )))}
                 </HoldContent>
@@ -81,11 +81,11 @@ const Popup: React.FC<Consultor> = ({id, showPopup} ) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {consultor.projetos.map((projeto => (
-                      <tr key={projeto.id}>
-                      <td>{projeto.id}</td>
-                      <td>{projeto.status}</td>
-                      <td>{projeto.nome}</td> 
+                    {consultant.projetos.map((project => (
+                      <tr key={project.id}>
+                      <td>{project.id}</td>
+                      <td>{project.status}</td>
+                      <td>{project.nome}</td> 
                     </tr>
                       )))}
                   </tbody>

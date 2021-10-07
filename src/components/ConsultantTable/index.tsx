@@ -12,7 +12,7 @@ interface Consultores{
 
 const Login: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const [consultor, setConsultor] = useState<Consultores[]>([]);
+  const [consultant, setConsultant] = useState<Consultores[]>([]);
   const [consult, setConsult] = useState<Consultores>();
 
 
@@ -23,19 +23,19 @@ const Login: React.FC = () => {
   const handleOpenPopup = useCallback((id: number) => {
     setShowPopup(!showPopup);
     
-    setConsult(consultor[id-1]);
+    setConsult(consultant[id-1]);
 
-  },[consultor, consult, setConsult, setShowPopup, showPopup]);
+  },[consultant, consult, setConsult, setShowPopup, showPopup]);
 
   useEffect(() => {
     api.get("/consultores").then((response) => {
-      setConsultor(response.data);
+      setConsultant(response.data);
     })
-  }, [consultor, setConsultor]);
+  }, [consultant, setConsultant]);
   
   return (
     <> 
-      { consultor &&
+      { consultant &&
         <Container>
           <table>
           <thead>
@@ -48,13 +48,13 @@ const Login: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {consultor.map((consultor) => (
-              <Tr color={consultor.status}>
-                <td>{consultor.id}</td>
-                <td>{consultor.nome}</td>
-                <td>{consultor.status}</td> 
-                <td>{consultor.projetos.length}</td>
-                <button onClick={() => handleOpenPopup(consultor.id)} key={consultor.id}><td> + </td></button>
+            {consultant.map((consultant) => (
+              <Tr color={consultant.status}>
+                <td>{consultant.id}</td>
+                <td>{consultant.nome}</td>
+                <td>{consultant.status}</td> 
+                <td>{consultant.projetos.length}</td>
+                <button onClick={() => handleOpenPopup(consultant.id)} key={consultant.id}><td> + </td></button>
               </Tr>
             ))}
           </tbody>

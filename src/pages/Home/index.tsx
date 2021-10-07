@@ -51,58 +51,58 @@ interface Secoes {
 }
 const Home: React.FC = () => {
 
-  const [projetos, setProjeto] = useState<Projetos[]>([]);
-  const [filtrados, setFiltrados] = useState<Projetos[]>([]);
+  const [projects, setProjects] = useState<Projetos[]>([]);
+  const [filtered, setFiltereds] = useState<Projetos[]>([]);
   const [show, setShow] = useState(false);
-  const [secao, setSecao] = useState('Todos');
+  const [section, setSection] = useState('Todos');
   const [status, setStatus] = useState('Todos');
-  const [secoes, setSecoes] = useState<Secoes[]>([]);
+  const [sections, setSections] = useState<Secoes[]>([]);
 
 
   useEffect(() => {
 
-    if (secao !== "Todos" && status !== "Todos") {
-      api.get(`/projetos/${secao}/${status}`).then((response) => {
-        setProjeto(response.data)
+    if (section !== "Todos" && status !== "Todos") {
+      api.get(`/projetos/${section}/${status}`).then((response) => {
+        setProjects(response.data)
       console.log(response.data)
 
       })
-    } else if(secao !== 'Todos') {
-      api.get(`/projetos/secao/${secao}`).then((response) => {
-        setProjeto(response.data)
+    } else if(section !== 'Todos') {
+      api.get(`/projetos/secao/${section}`).then((response) => {
+        setProjects(response.data)
       })
     } else if(status !== 'Todos'){
       api.get(`/projetos/status/${status}`).then((response) => {
-        setProjeto(response.data)
+        setProjects(response.data)
       })
     } else {
       api.get(`/projetos`).then((response) => {
-        setProjeto(response.data)
+        setProjects(response.data)
       })
     }
     api.get("/secoes").then((response) => {
-      setSecoes(response.data)
+      setSections(response.data)
     })
 
-  }, [projetos, setProjeto, secao, status]);
+  }, [projects, setProjects, section, status]);
   
   useEffect(() => {
-      setFiltrados(projetos);
-  }, [projetos]);
+    setFiltereds(projects);
+  }, [projects]);
 
   const [search, setSearch] = useState('');
 
   const handleFilterName = useCallback((ev: string) => {
     setSearch(ev)
-    setFiltrados(projetos.filter((projeto) => projeto.nome.toLowerCase().includes(search.toLowerCase())));
+    setFiltereds(projects.filter((project) => project.nome.toLowerCase().includes(search.toLowerCase())));
 
-  },[projetos, setSearch, search]);  
+  },[projects, setSearch, search]);  
 
   const handleFilterStatus = useCallback((status: string) => {
 
     setStatus(status);
 
-  },[setFiltrados,setProjeto, projetos, secao]);  
+  },[setFiltereds, setProjects, projects, section]);  
   
   const handleShow = useCallback(() => {
     if(!!show === false) {
@@ -139,12 +139,12 @@ const Home: React.FC = () => {
                 <div>
                   <label className="secao">Seção:</label>
                   <Dropdown>
-                  <span>{secao}</span>
+                  <span>{section}</span>
                     <div>
-                      {secoes.map((secao) => (
-                        <button onClick={() => setSecao(secao.nomeSecao)} key={secao.nomeSecao}>{secao.nomeSecao}</button>
+                      {sections.map((section) => (
+                        <button onClick={() => setSection(section.nomeSecao)} key={section.nomeSecao}>{section.nomeSecao}</button>
                       ))}
-                      <button onClick={() => setSecao('Todos')}>Todos</button>
+                      <button onClick={() => setSection('Todos')}>Todos</button>
                     </div>
                   </Dropdown>
                 </div>
@@ -167,7 +167,7 @@ const Home: React.FC = () => {
         </div> 
       </Container>
       <Cards > 
-      { filtrados.map((projeto) => (
+      { filtered.map((projeto) => (
         <Card id={projeto.id} key={projeto.id} show={show}/> 
       ))}
       </Cards>
