@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 interface RequestProps {
     confirm: boolean;
 }
-export const Main = styled.main<RequestProps>`
+export const Container = styled.main<RequestProps>`
     width: 500px;
     padding: 3% 2% 0% 2%;
     background-color: #fff;

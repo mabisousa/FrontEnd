@@ -58,7 +58,7 @@ export const FormLabel = styled.label<ContainerProps>`
   `}
 `;
 
-export const FormDiv = styled.div`
+export const Container = styled.div`
   position: relative;
   height: 48px;
   margin-bottom: 1.5rem; 

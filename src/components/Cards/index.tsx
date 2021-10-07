@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, TitleSection, TitleProject, HoldHours, Hours, Status, Date } from './style';
+import { Container, TitleSection, TitleProject, HoldHours, Hours, Status, Date } from './style';
 import api from "../../services/api";
 import Popup from "../ProjectsPopup";
 
@@ -63,7 +63,7 @@ const Cards: React.FC<Projeto> = ({id, show}) => {
   return (
     < >
       {projeto &&
-        <Card show={!!show} color={projeto.status} onClick={() => (setshowPopup(!showPopup))} key={projeto.id}>
+        <Container show={!!show} color={projeto.status} onClick={() => (setshowPopup(!showPopup))} key={projeto.id}>
           <TitleSection show={!!show}>{projeto.secao.idSecao} - {projeto.secao.nomeSecao}</TitleSection>
           <TitleProject show={!!show}>{projeto.id} - {projeto.nome} </TitleProject>
           <HoldHours show={!!show}>
@@ -88,7 +88,7 @@ const Cards: React.FC<Projeto> = ({id, show}) => {
                 <p>Até: 00-00-00</p>
             }
           </Date>
-        </Card>
+        </Container>
       }
       {showPopup && projeto &&
         <Popup id={projeto.id} showPopup={handleshowPopup}/> 

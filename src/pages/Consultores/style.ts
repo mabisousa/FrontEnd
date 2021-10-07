@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+export const Container = styled.main``;
+
 export const Filters = styled.div`
     width: 85%;
     height: 60px;

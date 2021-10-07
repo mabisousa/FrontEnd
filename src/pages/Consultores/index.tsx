@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Filters, Title, Form, Filterbynumber, Filter } from './style';
+import { Container, Filters, Title, Form, Filterbynumber, Filter } from './style';
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
@@ -59,7 +59,7 @@ const Login: React.FC = () => {
       </Header>
       <Profile/>
       <Menu/>
-      <main>
+      <Container>
         <Filters>
           <Title>CONSULTORES</Title>
           <Filter>
@@ -86,7 +86,7 @@ const Login: React.FC = () => {
         </Filters>
         <Menu/>
         <Table/>
-      </main>
+      </Container>
     </>
 )};
 

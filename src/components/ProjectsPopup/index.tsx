@@ -1,6 +1,5 @@
 import React, {useState, useCallback, useEffect} from "react";
-import { TitlePopUp, InfosPopup, InfosGerais, Objetivo, Horas, HorasApontadas, Skills, Table, ConsultoresAlocados, DetailsPopup  } from "../../pages/Home/style"
-import { ContainerPopup } from "./style";
+import { TitlePopUp, InfosPopup, InfosGerais, Objetivo, Horas, HorasApontadas, Skills, Table, ConsultoresAlocados, DetailsPopup, Container  } from "../../pages/Home/style"
 import { Chart } from "react-google-charts";
 import { BsX } from 'react-icons/bs';
 import Grid from '../Grid';
@@ -80,7 +79,7 @@ const Popup: React.FC<Projeto> = ({id, showPopup}) => {
     return(
     <>
     { projeto &&
-        <ContainerPopup open={!!isOpen}  show={!!showPopup}>
+        <Container open={!!isOpen}  show={!!showPopup}>
         <div id="hold">
           <button onClick={handleClosePopup}><BsX/></button>
           <TitlePopUp>
@@ -182,7 +181,7 @@ const Popup: React.FC<Projeto> = ({id, showPopup}) => {
             <h1>{projeto.status}</h1>
           </DetailsPopup>
         </div>
-      </ContainerPopup>
+      </Container>
     }
     </>
     )

@@ -4,7 +4,7 @@ interface PopUp{
     open: boolean;
     show: boolean;
 }
-export const ContainerPopup = styled.div<PopUp>`
+export const Container = styled.div<PopUp>`
     ${(props) => props.open ? 
         css`
             #hold{

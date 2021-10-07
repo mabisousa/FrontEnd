@@ -1,6 +1,6 @@
 import React, {useCallback, useContext, useRef} from 'react';
 
-import { Main, Inputs,  FormButton, ImgLogo, HoldButton } from './style';
+import { Container, Inputs,  FormButton, ImgLogo, HoldButton } from './style';
 import logo from "../../assets/logo.svg"
 
 import { FormHandles } from "@unform/core"
@@ -68,7 +68,7 @@ const Login: React.FC = () => {
     },[ signIn, handleAddToast, history ]);
     return (
     <>
-        <Main>
+        <Container>
             <Inputs>
                 <Form ref={ formRef } onSubmit={ handleSubmit }>
                     <ImgLogo src={logo} alt="WEG" />
@@ -81,7 +81,7 @@ const Login: React.FC = () => {
                     <FormButton type="submit" value="Entrar"/>
                 </Form>
             </Inputs>
-        </Main>
+        </Container>
     </>
 )};
 

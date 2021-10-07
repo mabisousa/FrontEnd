@@ -2,7 +2,7 @@ import React from 'react';
 import { useCallback } from 'react';
 import { useState } from 'react';
 import {RiArrowLeftSLine} from 'react-icons/ri';
-import { Main } from './style';
+import { Container } from './style';
 
 
 const Request: React.FC = () => {
@@ -24,7 +24,7 @@ const Request: React.FC = () => {
 
     return (
     <>
-        <Main id="request" confirm={isConfirm}>
+        <Container id="request" confirm={isConfirm}>
             {!!isConfirm ? 
                 <>
                     <div>
@@ -48,7 +48,7 @@ const Request: React.FC = () => {
                 </>
             }
             
-        </Main>
+        </Container>
     </>
 )};
 

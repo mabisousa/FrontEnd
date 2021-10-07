@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Title, Form, Filters, Filter, Cards } from './style';
+import { Title, Form, Container, Filter, Cards } from './style';
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
@@ -126,7 +126,7 @@ const Home: React.FC = () => {
       
       <Profile/>
       <Menu/>
-      <Filters>
+      <Container>
         <Title>
           PROJETOS ALOCADOS
         </Title>
@@ -165,7 +165,7 @@ const Home: React.FC = () => {
             <button onClick={handleNotShow}><img src={display1} alt=""/></button>
             <button onClick={handleShow}><img src={display2} alt=""/></button>
         </div> 
-      </Filters>
+      </Container>
       <Cards > 
       { filtrados.map((projeto) => (
         <Card id={projeto.id} key={projeto.id} show={show}/> 

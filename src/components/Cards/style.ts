@@ -6,7 +6,7 @@ interface cardProps {
     show: boolean;
 }
 
-export const Card = styled.a<cardProps>`
+export const Container = styled.a<cardProps>`
     background-color: #FFFFFF;
     cursor: pointer;
 
