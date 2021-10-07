@@ -47,7 +47,7 @@ interface Projeto {
 
 const Cards: React.FC<Projeto> = ({id, show}) => {
 
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setshowPopup] = useState(false);
   const [projeto, setProjeto] = useState<Projetos>();
 
   useEffect(() => {
@@ -56,31 +56,31 @@ const Cards: React.FC<Projeto> = ({id, show}) => {
     })
   }, [id]);
 
-  const handleShowPopup = (showPop: boolean) => {
-    setShowPopup(showPop);
+  const handleshowPopup = (showPop: boolean) => {
+    setshowPopup(showPop);
   }
 
   return (
     < >
       {projeto &&
-        <Card Show={!!show} color={projeto.status} onClick={() => (setShowPopup(!showPopup))} key={projeto.id}>
-          <TitleSection Show={!!show}>{projeto.secao.idSecao} - {projeto.secao.nomeSecao}</TitleSection>
-          <TitleProject Show={!!show}>{projeto.id} - {projeto.nome} </TitleProject>
-          <HoldHours Show={!!show}>
-            <Hours Show={!!show}>
+        <Card show={!!show} color={projeto.status} onClick={() => (setshowPopup(!showPopup))} key={projeto.id}>
+          <TitleSection show={!!show}>{projeto.secao.idSecao} - {projeto.secao.nomeSecao}</TitleSection>
+          <TitleProject show={!!show}>{projeto.id} - {projeto.nome} </TitleProject>
+          <HoldHours show={!!show}>
+            <Hours show={!!show}>
               <p>Total:</p>
               <p>{projeto.horasTotal}</p>
             </Hours>
-            <Hours Show={!!show}>
+            <Hours show={!!show}>
               <p>Apontadas:</p>
               <p>{projeto.horasApontadas}</p>
             </Hours>
           </HoldHours>
-          <Status Show={!!show}>
+          <Status show={!!show}>
             <p>Situação: </p>
             <p>{projeto.status}</p>
           </Status>
-          <Date Show={!!show}>
+          <Date show={!!show}>
             <p>De: {projeto.dataInicio.substring(0,10)}</p>
             { projeto.dataFim ?
                 <p>Até: {projeto.dataFim.substring(0,10)}</p>
@@ -91,7 +91,7 @@ const Cards: React.FC<Projeto> = ({id, show}) => {
         </Card>
       }
       {showPopup && projeto &&
-        <Popup id={projeto.id} showPopup={handleShowPopup}/> 
+        <Popup id={projeto.id} showPopup={handleshowPopup}/> 
       }
     </>                
   ) 

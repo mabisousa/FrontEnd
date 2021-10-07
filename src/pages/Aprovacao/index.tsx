@@ -233,7 +233,7 @@ const Aprovacao: React.FC = () => {
                                 <td>{apontamento.horasTrabalhadas}h</td> 
                                 <td><button onClick={() => handleOpenPopup(apontamento)}><GoChevronDown/></button></td>
                                 {isOpen &&
-                                    <Descriptions Open={!!isOpen}>
+                                    <Descriptions open={!!isOpen}>
                                     <header>Descrição<span/></header>
                                     <div>
                                         <p>

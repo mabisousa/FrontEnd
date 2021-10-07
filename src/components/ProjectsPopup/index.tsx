@@ -80,7 +80,7 @@ const Popup: React.FC<Projeto> = ({id, showPopup}) => {
     return(
     <>
     { projeto &&
-        <ContainerPopup Open={!!isOpen}  show={!!showPopup}>
+        <ContainerPopup open={!!isOpen}  show={!!showPopup}>
         <div id="hold">
           <button onClick={handleClosePopup}><BsX/></button>
           <TitlePopUp>
@@ -88,20 +88,20 @@ const Popup: React.FC<Projeto> = ({id, showPopup}) => {
             <h1>{projeto.id} - {projeto.nome}</h1>
           </TitlePopUp>
           <InfosPopup>
-            <InfosGerais Open={!!isOpen}  className="cont">
+            <InfosGerais open={!!isOpen}  className="cont">
               <h1>INFORMAÇÕES GERAIS:</h1>
               <div>
                 <p>GESTOR RESPONSÁVEL: ?</p>
                 <p>FORNECEDOR: ?</p>
               </div>
             </InfosGerais>
-            <Objetivo Open={!!isOpen} className="cont">
+            <Objetivo open={!!isOpen} className="cont">
               <h1>OBJETIVO: </h1>
               <p>
                 {projeto.descricao}
               </p>
             </Objetivo>
-            <Horas Open={!!isOpen}  className="cont">
+            <Horas open={!!isOpen}  className="cont">
               <h1>HORAS: </h1>
               <HorasApontadas>
                 <Chart
@@ -136,7 +136,7 @@ const Popup: React.FC<Projeto> = ({id, showPopup}) => {
                 </div>
               </HorasApontadas>
             </Horas>
-            <Skills Open={!!isOpen}  className="cont">
+            <Skills open={!!isOpen}  className="cont">
               <Table id="table">
                 <table>
                   <thead>
@@ -158,7 +158,7 @@ const Popup: React.FC<Projeto> = ({id, showPopup}) => {
               </Table>
               <button id="visualizar" onClick={handleOpenPopup}>VISUALIZAR CONSULTORES</button>
             </Skills>
-            <ConsultoresAlocados Open={!!isOpen}>
+            <ConsultoresAlocados open={!!isOpen}>
               <table>
                 <thead>
                   <tr>

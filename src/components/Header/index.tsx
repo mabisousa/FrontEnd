@@ -65,7 +65,7 @@ const Header: React.FC = ({children,...props}) => {
       }
     return(
       
-      <Container  changeTheme={showTheme} showFonts={!!showFonts} showIdioms={!!showIdioms} ShowDropdown={!!showDropdown} {...props}> 
+      <Container  changeTheme={showTheme} showFonts={!!showFonts} showIdioms={!!showIdioms} showDropdown={!!showDropdown} {...props}> 
           <div id="name">
               <Link to="/home"><img src={logo} alt=""/></Link>
               {children}
