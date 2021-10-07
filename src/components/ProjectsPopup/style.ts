@@ -1,11 +1,11 @@
 import styled, { css } from "styled-components";
 
 interface PopUp{
-    Open: boolean;
+    open: boolean;
     show: boolean;
 }
 export const ContainerPopup = styled.div<PopUp>`
-    ${(props) => props.Open ? 
+    ${(props) => props.open ? 
         css`
             #hold{
                 width:1160px; 

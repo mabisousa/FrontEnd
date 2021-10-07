@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 interface cardProps {
     color?: string,
-    Show: boolean;
+    show: boolean;
 }
 
 export const Card = styled.a<cardProps>`
@@ -31,7 +31,7 @@ export const Card = styled.a<cardProps>`
         `}
 
     
-    ${(props) => props.Show ? 
+    ${(props) => props.show ? 
         css` 
             width: 30%;
             height : 200px;
@@ -73,7 +73,7 @@ export const TitleSection = styled.p<cardProps>`
         font-size: 80%;
     }
 
-    ${(props) => props.Show ? 
+    ${(props) => props.show ? 
         css` 
             font-size: 14px;
         `: css`
@@ -99,7 +99,7 @@ export const TitleProject = styled.p<cardProps>`
         font-size: 100%;
     }
 
-    ${(props) => props.Show ? 
+    ${(props) => props.show ? 
         css` 
             width: 315px;
             font-size: 16px;
@@ -137,7 +137,7 @@ export const HoldHours = styled.div<cardProps>`
         width: 130px;
     }
 
-    ${(props) => props.Show ? 
+    ${(props) => props.show ? 
         css` 
             margin-left: 7px;
             margin-top: 1rem; 
@@ -164,7 +164,7 @@ export const Hours = styled.div<cardProps>`
     justify-content: space-between;
     margin-top: 2px;
     
-    ${(props) => props.Show ? 
+    ${(props) => props.show ? 
         css` 
             width: 155px;
             font-size:11px; 
@@ -209,7 +209,7 @@ export const Status = styled.div<cardProps>`
         font-size: 17px;
     }
 
-    ${(props) => props.Show ? 
+    ${(props) => props.show ? 
         css` 
             margin-top: 17px;
             margin-right: 16px;
@@ -302,7 +302,7 @@ export const Date = styled.div<cardProps>`
         font-size: 12px;
     }
 
-    ${(props) => props.Show ? 
+    ${(props) => props.show ? 
         css` 
             width: 300px;
 

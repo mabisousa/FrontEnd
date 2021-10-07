@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
 interface dropdownProps {
-    ShowDropdown: boolean;
-    ShowArrow: boolean;
+    showDropdown: boolean;
+    showArrow: boolean;
 }
 
 export const Container = styled.div<dropdownProps>`
@@ -31,7 +31,7 @@ export const Container = styled.div<dropdownProps>`
             height: 50px;
 
 
-            ${(props) => props.ShowDropdown ?
+            ${(props) => props.showDropdown ?
                 css`
                     display: none;
                 `: css`
@@ -54,7 +54,7 @@ export const Container = styled.div<dropdownProps>`
             float: right;
             display: block;
 
-            ${(props) => props.ShowArrow ?
+            ${(props) => props.showArrow ?
                 css`
                     display: block;
                 `: css`
@@ -66,7 +66,7 @@ export const Container = styled.div<dropdownProps>`
             float: right;
             display: none;
 
-            ${(props) => props.ShowArrow ?
+            ${(props) => props.showArrow ?
                 css`
                     display: none;
                 `: css`
