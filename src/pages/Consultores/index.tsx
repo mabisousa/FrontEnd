@@ -5,7 +5,7 @@ import Header from "../../components/Header";
 import Menu from "../../components/Menu";
 import api from "../../services/api";
 import Dropdown from "../../components/Filter";
-import Table from "../../components/TableConsultor"
+import Table from "../../components/ConsultantTable"
 
 interface Consultor{
 id: number,
@@ -30,24 +30,11 @@ alocacoes: [
 ]
 }
 const Login: React.FC = () => {
-  const [showPopup, setShowPopup] = useState(false);
   const [consultores, setConsultor] = useState<Consultor[]>([]);
   const [filtro, setFiltro] = useState('Todos');
-  const [consult] = useState<Consultor>();
   const [search, setSearch] = useState('');
 
-  const filter = consultores.filter((consultor) => consultor.nome.toLowerCase().includes(search.toLowerCase()))
-
-  const handleShow = (showPop: boolean) => {
-    setShowPopup(showPop);
-  }
-
-  /*const handleShow = useCallback((id: number, showPop: boolean) => {
-    setShowPopup(showPop);
-    
-    setConsult(consultores[id-1]);
-
-  },[]);*/
+  //const filter = consultores.filter((consultor) => consultor.nome.toLowerCase().includes(search.toLowerCase()))
 
   useEffect(() => {
     if(filtro === 'Todos') {

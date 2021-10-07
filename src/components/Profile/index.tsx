@@ -1,7 +1,7 @@
 import React, {HTMLAttributes} from "react";
 import { Container } from './style'
 import Notification from '../Notification'
-import avatar from "../../imgs/Avatar.svg"
+import avatar from "../../assets/avatar.svg"
 
 type ProfileProps  = HTMLAttributes<HTMLDivElement>;
 

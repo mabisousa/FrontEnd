@@ -153,19 +153,20 @@ export const Container = styled.div<dropdownProps>`
             #switchThemeLight{
                 ${(props) => props.changeTheme ?
                 css`
-                    display: none;
-                `: css`
                     display: block;
+                `: css`
+                    display: none;
                 `}
             }
 
             #switchThemeDark{
                 ${(props) => props.changeTheme ?
                 css`
-                    display: block;
-                `: css`
                     display: none;
+                `: css`
+                    display: block;
                 `}
+                
             }
            
         }

@@ -1,7 +1,7 @@
 import React, {useCallback, useContext, useRef} from 'react';
 
 import { Main, Inputs,  FormButton, ImgLogo, HoldButton } from './style';
-import logo from "../../imgs/logo.svg"
+import logo from "../../assets/logo.svg"
 
 import { FormHandles } from "@unform/core"
 import { Form } from '@unform/web'

@@ -3,8 +3,8 @@ import { Title, Form, Filters, Filter, Cards } from './style';
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
-import display1 from '../../imgs/display1.svg';
-import display2 from '../../imgs/display2.svg';
+import display1 from '../../assets/listView.svg';
+import display2 from '../../assets/gridView.svg';
 import api from "../../services/api"
 import Dropdown from "../../components/Filter";
 import Card from "../../components/Cards"
