@@ -20,6 +20,15 @@ interface Consultor{
     skill: string,
     limiteHoras: number,
     valorHoras: number,
+    apontamentos: [
+        {
+            id:number,
+            data: string,
+            horasTrabalhadas: number,
+            descricao: string,
+            situacaoApontamento: string,
+        }
+    ]
 }
 
 interface Apontamento {
@@ -57,16 +66,21 @@ const Aprovacao: React.FC = () => {
     const [descricao, setDescricao] = useState<Apontamento>();
     const [apontamentos, setApontamentos] = useState<Apontamento[]>([]);
 
+    let horasSelecionadas = 0;
+
     const aprovacao = {
-        data:  new Date("2019-01-16"),  
-        nomeFornecedor: "",
-        nomeResponsavel: "",
-        idConsultor: 0,
-        horasAprovadas: 0,
-        valorHora: 0,
+        data: new Date(),  
+        nomeFornecedor: "teste",
+        nomeResponsavel: "teste",
+        idConsultor: 1,
+        horasAprovadas: 20,
+        valorHora: 1.5,
         apontamentos: [
             {
-                id: 0
+                id: 1,
+            },
+            {
+                id: 2,
             }
         ]
     }
@@ -79,6 +93,7 @@ const Aprovacao: React.FC = () => {
         })
         setShowPopup(false);
     },[]);
+
     const aprovar = useCallback(async () => {
         try {
             formRef.current?.setErrors({});
@@ -106,6 +121,7 @@ const Aprovacao: React.FC = () => {
         })
 
         if(alreadySelected === true) {
+            
             aprovacao.apontamentos.splice(indexSelected);
         } else {
             aprovacao.apontamentos.push({id: id});
@@ -114,6 +130,7 @@ const Aprovacao: React.FC = () => {
 
     const handleOpen = useCallback((apontamento) => {
     
+        console.log(apontamento)
             let index = apontamentos.indexOf(apontamento);
             setDescricao(apontamentos[index]);
 
@@ -131,11 +148,15 @@ const Aprovacao: React.FC = () => {
             setApontamentos(response.data)
         })
     }, []);
+
     const apontamentosaprovados = apontamentos.filter(apontamento => apontamento.situacaoApontamento === "APROVADO")
     ,aprovados = apontamentosaprovados.length;
 
     const apontamentosreprovados = apontamentos.filter(apontamento => apontamento.situacaoApontamento === "REPROVADO")
     ,reprovados = apontamentosreprovados.length;
+
+    const apontamentoslist = consultor?.apontamentos.filter(apontamento => apontamento.situacaoApontamento === "ESPERA");
+    console.log(apontamentoslist)
     return (
         <>
             <Profile/>
@@ -150,17 +171,24 @@ const Aprovacao: React.FC = () => {
                 <Infos>
                 <Form ref={formRef} id="aprovar" onSubmit={ aprovar }>
                         <h1>INFORMAÇÕES DA APROVACAO</h1>
-                        <div className="inputs">
+                        <div>
+                            <p>NOME SADSADASDSAD</p>
                             <div>
-                                <Info>{consultor && consultor.nome}</Info>
-                            </div>
-                            <div>
-                            </div>
-                            <div>
-                                <Info>{consultor && consultor.limiteHoras}</Info>
-                                <Info>{consultor && consultor.valorHoras}</Info>
+                                <Info>{consultor ? consultor.nome : "a"}</Info>
+                                <Info>{horasSelecionadas ? horasSelecionadas : 0}</Info>
                             </div>
                         </div>
+                        <div>
+
+                        </div>
+                        <div>
+                            <p>INFOS</p>
+                            <div>
+                                <Info>{consultor ? consultor.limiteHoras : 0}</Info>
+                                <Info>{consultor ? consultor.valorHoras : 0}</Info>
+                            </div>
+                        </div>
+                        
                     </Form>
                 </Infos>
                 <Count id="count">
@@ -197,9 +225,8 @@ const Aprovacao: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {apontamentos.map((apontamento) => { 
+                        {apontamentoslist != null && apontamentoslist.length != 0 ? apontamentoslist.map((apontamento) => { 
                         return (
-                            
                             <tr key={apontamento.id}>
                                 <td><input type="checkbox" value={apontamento.id} onClick={() => handleSelected(apontamento.id)}/></td>
                                 <td>{apontamento.data.substring(0,10)}</td>
@@ -217,7 +244,7 @@ const Aprovacao: React.FC = () => {
                                 }
                             </tr>
                             
-                        )})}
+                        )}) : <span>Não há apontamentos para aprovar.</span>}
                     </tbody>
                     </table>
                 </Apontamentos>
