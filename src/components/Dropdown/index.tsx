@@ -3,7 +3,6 @@ import { IoIosArrowDown } from "react-icons/io";
 import { Container } from "./style";
 import { IoIosArrowBack }  from "react-icons/io";
 
-
 const Dropdown: React.FC = (props) => {
 
   const [showDropdown, setShowDropDown] = useState(true) 
