@@ -6,7 +6,7 @@ import Menu from "../../components/Menu";
 import display1 from '../../assets/listView.svg';
 import display2 from '../../assets/gridView.svg';
 import api from "../../services/api"
-import Dropdown from "../../components/Filter";
+import Dropdown from "../../components/Dropdown";
 import Card from "../../components/Cards"
 
 interface Projetos{
@@ -45,10 +45,12 @@ interface Projetos{
     }
   ]
 }
+
 interface Secoes {
     idSecao: number,
     nomeSecao: string
 }
+
 const Home: React.FC = () => {
 
   const [projects, setProjects] = useState<Projetos[]>([]);
@@ -57,15 +59,13 @@ const Home: React.FC = () => {
   const [section, setSection] = useState('Todos');
   const [status, setStatus] = useState('Todos');
   const [sections, setSections] = useState<Secoes[]>([]);
-
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
-
     if (section !== "Todos" && status !== "Todos") {
       api.get(`/projetos/${section}/${status}`).then((response) => {
         setProjects(response.data)
       console.log(response.data)
-
       })
     } else if(section !== 'Todos') {
       api.get(`/projetos/secao/${section}`).then((response) => {
@@ -90,18 +90,13 @@ const Home: React.FC = () => {
     setFiltereds(projects);
   }, [projects]);
 
-  const [search, setSearch] = useState('');
-
   const handleFilterName = useCallback((ev: string) => {
     setSearch(ev)
     setFiltereds(projects.filter((project) => project.nome.toLowerCase().includes(search.toLowerCase())));
-
   },[projects, setSearch, search]);  
 
   const handleFilterStatus = useCallback((status: string) => {
-
     setStatus(status);
-
   },[setFiltereds, setProjects, projects, section]);  
   
   const handleShow = useCallback(() => {
@@ -116,60 +111,56 @@ const Home: React.FC = () => {
     }
   }, [show, setShow]);
 
-  
-
   return (
-    < >
+    <>
       <Header>
         <p>PROJETOS</p>
       </Header>
-      
       <Profile/>
       <Menu/>
       <Container>
         <div className="containerHead">
-        <Title>
-          PROJETOS ALOCADOS
-        </Title>
-        <div>
+          <Title>
+            PROJETOS ALOCADOS
+          </Title>
+          <div>
             <Filter>
-                <label>Projeto:</label>
-                <input type="text" placeholder="Digite aqui... " value={search} onChange={(ev) => handleFilterName(ev.target.value)}/>
-                <div>
-                  <label className="secao">Seção:</label>
-                  <Dropdown>
-                  <span>{section}</span>
-                    <div>
-                      {sections.map((section) => (
-                        <button onClick={() => setSection(section.nomeSecao)} key={section.nomeSecao}>{section.nomeSecao}</button>
-                      ))}
-                      <button onClick={() => setSection('Todos')}>Todos</button>
-                    </div>
-                  </Dropdown>
-                </div>
-                <div>
-                  <label  className="status" >Status:</label>
-                  <Dropdown>
-                    <span>{status}</span>
-                    <div>
-                      <button onClick={() => handleFilterStatus("ANDAMENTO")}>Andamento</button>
-                      <button onClick={() => handleFilterStatus("ATRASADO")}>Atrasado</button>
-                      <button onClick={() => handleFilterStatus("CONCLUÍDO")}>Concluído</button>
-                      <button onClick={() => handleFilterStatus("Todos")}>Todos</button>
-                    </div>
-                  </Dropdown>
-                </div>
-                <button onClick={handleNotShow}><img src={display1} alt=""/></button>
-                <button onClick={handleShow}><img src={display2} alt=""/></button>
+              <label>Projeto:</label>
+              <input type="text" placeholder="Digite aqui... " value={search} onChange={(ev) => handleFilterName(ev.target.value)}/>
+              <div>
+                <label className="secao">Seção:</label>
+                <Dropdown>
+                <span>{section}</span>
+                  <div>
+                    {sections.map((section) => (
+                      <button onClick={() => setSection(section.nomeSecao)} key={section.nomeSecao}>{section.nomeSecao}</button>
+                    ))}
+                    <button onClick={() => setSection('Todos')}>Todos</button>
+                  </div>
+                </Dropdown>
+              </div>
+              <div>
+                <label  className="status" >Status:</label>
+                <Dropdown>
+                  <span>{status}</span>
+                  <div>
+                    <button onClick={() => handleFilterStatus("ANDAMENTO")}>Andamento</button>
+                    <button onClick={() => handleFilterStatus("ATRASADO")}>Atrasado</button>
+                    <button onClick={() => handleFilterStatus("CONCLUÍDO")}>Concluído</button>
+                    <button onClick={() => handleFilterStatus("Todos")}>Todos</button>
+                  </div>
+                </Dropdown>
+              </div>
+              <button onClick={handleNotShow}><img src={display1} alt=""/></button>
+              <button onClick={handleShow}><img src={display2} alt=""/></button>
             </Filter>
+          </div>
         </div>
-        </div>
-         
       </Container>
       <Cards > 
-      { filtered.map((projeto) => (
-        <Card id={projeto.id} key={projeto.id} show={show}/> 
-      ))}
+        { filtered.map((projeto) => (
+          <Card id={projeto.id} key={projeto.id} show={show}/> 
+        ))}
       </Cards>
     </>
                 

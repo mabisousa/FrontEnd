@@ -1,55 +1,55 @@
 import styled, { css } from 'styled-components';
 
 interface RequestProps {
-    confirm: boolean;
+  confirm: boolean;
 }
 export const Container = styled.main<RequestProps>`
-    width: 500px;
-    padding: 3% 2% 0% 2%;
-    background-color: #fff;
+  width: 500px;
+  padding: 3% 2% 0% 2%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute; 
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99999;
+  visibility: hidden;
+  box-shadow: 0px 5px 27px 10px #e2e2e2;    
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute; 
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 99999;
-    visibility: hidden;
-    box-shadow: 0px 5px 27px 10px #e2e2e2;    
+  button {
+    width: 90px;
+    height: 45px;
+    border: none;
+    color: #fff;
+    background: #28B9DA;
+  }   
+      
+  svg{
+    width: 30px;
+    height: 30px;
+    margin-left: -8px;
+    cursor: pointer;
+  }
 
-    button {
-        width: 90px;
-        height: 45px;
-        border: none;
-        color: #fff;
-        background: #28B9DA;
-    }   
-        
-    svg{
-        width: 30px;
-        height: 30px;
-        margin-left: -8px;
-        cursor: pointer;
-    }
-    textarea{
-        font-size: .9em;
-        width: 100%;
-        height: 55%;
-        overflow-y: auto;
-        border: 1px solid #7e7e7e;
-        background: #F5F5F5;
-        padding: 10px;
-        resize: none;
-        margin: 18px 0px 18px 0px;
-    }
+  textarea{
+    font-size: .9em;
+    width: 100%;
+    height: 55%;
+    overflow-y: auto;
+    border: 1px solid #7e7e7e;
+    background: #F5F5F5;
+    padding: 10px;
+    resize: none;
+    margin: 18px 0px 18px 0px;
+  }
 
-    ${(props) => !props.confirm ? 
+  ${(props) => !props.confirm ? 
     css`
-    height: 200px;
-    
-    div {
+      height: 200px;
+      
+      div {
         width: 100%;
         height: 90%;
         display: flex;
@@ -57,25 +57,25 @@ export const Container = styled.main<RequestProps>`
         align-items: center;
 
         button:nth-child(1) {
-            background: #96CBE2;
+          background: #96CBE2;
         }
-        button:nth-child(2) {
-            background: #28B9DA;
-        }
-    }
-    ` : css`
-    height: 300px;
 
-    div {
+        button:nth-child(2) {
+          background: #28B9DA;
+        }
+      }
+    ` : css`
+      height: 300px;
+
+      div {
         width: 100%;
         height: 5%;
         display: flex;
         align-items: center;
 
         p {
-            margin-left: 28%;
+          margin-left: 28%;
         }
-    }
+      }
     `}
-
-`
+`;

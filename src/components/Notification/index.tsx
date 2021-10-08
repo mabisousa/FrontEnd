@@ -4,8 +4,9 @@ import { Container } from './style'
 type NotificationProps = HTMLAttributes<HTMLDivElement>;
 
 const Notification: React.FC<NotificationProps> = (props) => (
-    <Container {...props}>
-    </Container>
+  <Container 
+    {...props}>
+  </Container>
 )
 
 export default Notification;

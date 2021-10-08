@@ -5,12 +5,14 @@ interface PopUp {
 }
 
 export const Container = styled.div<PopUp>`
+
   ${(props) => !props.show && 
-  css`
-    div {
+    css`
+      div {
         visibility: visible;
-    }
+      }
   `}
+
   transition: 200ms ease-in-out;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.7);
@@ -137,24 +139,24 @@ export const PopUpTable = styled.div`
   }
               
   tbody {
-      height: 230px;
-      overflow-y: scroll;
-      overflow-x: hidden;
-      display: block;
-      border: 1px solid #8B8787;
+    height: 230px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: block;
+    border: 1px solid #8B8787;
   }
 
   tr {
-      font-size: .9em;
-      letter-spacing: 0.01071em;
-      height: 17px;
-      margin:15px;
-      color: rgba(0, 0, 0, 0.87);
-      border-bottom: 1px solid #8B8787;
+    font-size: .9em;
+    letter-spacing: 0.01071em;
+    height: 17px;
+    margin:15px;
+    color: rgba(0, 0, 0, 0.87);
+    border-bottom: 1px solid #8B8787;
   }
 
   td {
     padding: 5px;
-      width: 484px;
+    width: 484px;
   }
 `;

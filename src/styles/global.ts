@@ -2,49 +2,49 @@ import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
 * {
-    margin: 0;
-    padding: 0;
-    outline: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
 
-  *,::before,::after{
-    box-sizing: border-box;
-  }
+*,::before,::after{
+  box-sizing: border-box;
+}
   
-  body {
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-  }
+body {
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+}
   
-  h1, h2, h3, h4, h5, h6, p {
-    font: 16px Roboto, sans-serif;
-  }
-  body, input, button {
-    font: 16px Roboto, sans-serif;
-  }
-  
-  #root {
-    margin: 0 auto;
-  
-  }
-  
-  button {
-    cursor: pointer;
-  }
+h1, h2, h3, h4, h5, h6, p {
+  font: 16px Roboto, sans-serif;
+}
 
-  a {
-    text-decoration:none;
-  }
+body, input, button {
+  font: 16px Roboto, sans-serif;
+}
+  
+#root {
+  margin: 0 auto;
+}
+  
+button {
+  cursor: pointer;
+}
 
-  ::-webkit-scrollbar-track {
-    background-color: #F4F4F4;
-  }
-  ::-webkit-scrollbar {
-      width: 2px;
-      background: #F4F4F4;
-  }
-  ::-webkit-scrollbar-thumb {
-      background: #dad7d7;
-  }
+a {
+  text-decoration:none;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #F4F4F4;
+}
+::-webkit-scrollbar {
+  width: 2px;
+  background: #F4F4F4;
+}
+::-webkit-scrollbar-thumb {
+  background: #dad7d7;
+}
 `;

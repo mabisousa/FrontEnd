@@ -18,18 +18,17 @@ const Dropdown: React.FC = (props) => {
     }
   }, [showDropdown, setShowDropDown]);
 
-    return(
-        <>
-          <Container showDropdown={!!showDropdown} showArrow={!!showArrow}>
-              <div onClick={handleShowDropdown} id="dropdown">
-                          <IoIosArrowDown id="arrowDown" size={17}/>
-                          <IoIosArrowBack id="arrowLeft" size={17}/>
-                  {props.children}
-              </div>
-          </Container>
-        </>
-    )
-
+  return(
+    <>
+      <Container showDropdown={!!showDropdown} showArrow={!!showArrow}>
+        <div onClick={handleShowDropdown} id="dropdown">
+            <IoIosArrowDown id="arrowDown" size={17}/>
+            <IoIosArrowBack id="arrowLeft" size={17}/>
+            {props.children}
+        </div>
+      </Container>
+    </>
+  )
 }
 
 export default Dropdown;

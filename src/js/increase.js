@@ -1,4 +1,3 @@
-
 const increse = (prarameterSize) => {
   let size = parseInt(prarameterSize);  
   size++;
