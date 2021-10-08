@@ -52,7 +52,7 @@ const Header: React.FC = ({children,...props}) => {
     }else {
       setShowTheme(false);     
     }
-  }, [showTheme, setShowDropDown]);
+  }, [showTheme]);
   
   const exitSystem = () => {
     localStorage.removeItem("@WEGusers:token");
@@ -106,8 +106,8 @@ const Header: React.FC = ({children,...props}) => {
             </div>   
           </div>
           <div onClick={handleChangeTheme}>
-            <img src={switchThemeLight} id="switchThemeLight"/> 
-            <img src={switchThemeDark} id="switchThemeDark"/> 
+            <img src={switchThemeLight} id="switchThemeLight" alt=""/> 
+            <img src={switchThemeDark} id="switchThemeDark" alt=""/> 
             <p>Tema</p> 
           </div> 
         </div>

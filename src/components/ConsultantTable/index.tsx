@@ -27,7 +27,7 @@ const ConsultantTable: React.FC<Consultor> = ({status}) => {
     setShowPopup(!showPopup);
     setConsult(consultant[id-1]);
 
-  },[consultant, consult, setConsult, setShowPopup, showPopup]);
+  },[consultant, setConsult, setShowPopup, showPopup]);
 
   useEffect(() => {
     if(status !== 'Todos'){
