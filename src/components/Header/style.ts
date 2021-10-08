@@ -25,7 +25,6 @@ export const Container = styled.div<dropdownProps>`
     display: flex;
     align-items: center;
     
-
     img{
       margin:0 30px;
       height: 70px;

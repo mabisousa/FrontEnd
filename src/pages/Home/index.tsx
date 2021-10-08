@@ -97,7 +97,7 @@ const Home: React.FC = () => {
 
   const handleFilterStatus = useCallback((status: string) => {
     setStatus(status);
-  },[setFiltereds, setProjects, projects, section]);  
+  },[]);  
   
   const handleShow = useCallback(() => {
     if(!!show === false) {

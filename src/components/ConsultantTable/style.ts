@@ -58,13 +58,6 @@ interface colorConsultores{
 
 export const Tr = styled.div<colorConsultores>`
 
-  ${(props) => props.color === "ATIVO" &&
-    css`
-      td:nth-child(3){
-        color: #000;
-      }
-  `}
-
   ${(props) => props.color === "INATIVO" && 
     css`
       td:nth-child(3){
