@@ -3,7 +3,6 @@ import { IoIosArrowDown } from "react-icons/io";
 import { Container } from "./style";
 import { IoIosArrowBack }  from "react-icons/io";
 
-
 const Dropdown: React.FC = (props) => {
 
   const [showDropdown, setShowDropDown] = useState(true) 
@@ -19,18 +18,17 @@ const Dropdown: React.FC = (props) => {
     }
   }, [showDropdown, setShowDropDown]);
 
-    return(
-        <>
-          <Container showDropdown={!!showDropdown} showArrow={!!showArrow}>
-              <div onClick={handleShowDropdown} id="dropdown">
-                          <IoIosArrowDown id="arrowDown" size={17}/>
-                          <IoIosArrowBack id="arrowLeft" size={17}/>
-                  {props.children}
-              </div>
-          </Container>
-        </>
-    )
-
+  return(
+    <>
+      <Container showDropdown={!!showDropdown} showArrow={!!showArrow}>
+        <div onClick={handleShowDropdown} id="dropdown">
+            <IoIosArrowDown id="arrowDown" size={17}/>
+            <IoIosArrowBack id="arrowLeft" size={17}/>
+            {props.children}
+        </div>
+      </Container>
+    </>
+  )
 }
 
 export default Dropdown;

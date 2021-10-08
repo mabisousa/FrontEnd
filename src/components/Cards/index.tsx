@@ -61,8 +61,8 @@ const Cards: React.FC<Projeto> = ({id, show}) => {
   }
 
   return (
-    < >
-      {project &&
+    <>
+      { project &&
         <Container show={!!show} color={project.status} onClick={() => (setShowPopup(!showPopup))} key={project.id}>
           <TitleSection show={!!show}>{project.secao.idSecao} - {project.secao.nomeSecao}</TitleSection>
           <TitleProject show={!!show}>{project.id} - {project.nome} </TitleProject>
@@ -83,14 +83,14 @@ const Cards: React.FC<Projeto> = ({id, show}) => {
           <Date show={!!show}>
             <p>De: {project.dataInicio.substring(0,10)}</p>
             { project.dataFim ?
-                <p>Até: {project.dataFim.substring(0,10)}</p>
+              <p>Até: {project.dataFim.substring(0,10)}</p>
             :
-                <p>Até: 00-00-00</p>
+              <p>Até: 00-00-00</p>
             }
           </Date>
         </Container>
       }
-      {showPopup && project &&
+      { showPopup && project &&
         <Popup id={project.id} showPopup={handleshowPopup}/> 
       }
     </>                

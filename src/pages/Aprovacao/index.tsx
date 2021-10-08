@@ -14,146 +14,144 @@ import { BsX } from "react-icons/bs";
 import api from "../../services/api";
 import { format } from "date-fns"
 interface Consultor{
-    id: number,
-    nome: string,
-    status: string,
-    skill: string,
-    limiteHoras: number,
-    valorHoras: number,
-    apontamentos: [
-        {
-            id:number,
-            data: string,
-            horasTrabalhadas: number,
-            descricao: string,
-            situacaoApontamento: string,
-        }
-    ]
+  id: number,
+  nome: string,
+  status: string,
+  skill: string,
+  limiteHoras: number,
+  valorHoras: number,
+  apontamentos: [
+    {
+        id:number,
+        data: string,
+        horasTrabalhadas: number,
+        descricao: string,
+        situacaoApontamento: string,
+    }
+  ]
 }
 
 interface Apontamento {
-    id:number,
-    data: string,
-    horasTrabalhadas: number,
-    descricao: string,
-    situacaoApontamento: string,
-    projeto: {
-        id: number,
-    }
+  id:number,
+  data: string,
+  horasTrabalhadas: number,
+  descricao: string,
+  situacaoApontamento: string,
+  projeto: {
+      id: number,
+  }
 }
+
 interface Aprovacao {
-    data: Date,
-    nomeFornecedor: string,
-    nomeResponsavel: string,
-    idConsultor: number,
-    horasAprovadas: number,
-    valorHora: number,
-    apontamentos: [
-        {
-            id: number,
-        }
-    ]
+  data: Date,
+  nomeFornecedor: string,
+  nomeResponsavel: string,
+  idConsultor: number,
+  horasAprovadas: number,
+  valorHora: number,
+  apontamentos: [
+    {
+      id: number,
+    }
+  ]
 }
 
 const Aprovacao: React.FC = () => {
     
-    const [consultants, setConsultants] = useState<Consultor[]>([]);
-    const [consultant, setConsultant] = useState<Consultor>();
-    const formRef = useRef<FormHandles>(null);
-    const [isConfirmed, setConfirm] = useState(false);
-    const [isOpen, setOpen] = useState(false);
-    const [showPopup, setShowPopup] = useState(false);
-    const [description, setDescription] = useState<Apontamento>();
-    const [apontamentos, setApontamentos] = useState<Apontamento[]>([]);
+  const [consultants, setConsultants] = useState<Consultor[]>([]);
+  const [consultant, setConsultant] = useState<Consultor>();
+  const formRef = useRef<FormHandles>(null);
+  const [isConfirmed, setConfirm] = useState(false);
+  const [isOpen, setOpen] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [description, setDescription] = useState<Apontamento>();
+  const [apontamentos, setApontamentos] = useState<Apontamento[]>([]);
 
-    let horasSelecionadas = 0;
+  let horasSelecionadas = 0;
 
-    const aprovacao = {
-        data: new Date(),  
-        nomeFornecedor: "teste",
-        nomeResponsavel: "teste",
-        idConsultor: 1,
-        horasAprovadas: 20,
-        valorHora: 1.5,
-        apontamentos: [
-            {
-                id: 1,
-            },
-            {
-                id: 2,
-            }
-        ]
+  const aprovacao = {
+    data: new Date(),  
+    nomeFornecedor: "teste",
+    nomeResponsavel: "teste",
+    idConsultor: 1,
+    horasAprovadas: 20,
+    valorHora: 1.5,
+    apontamentos: [
+      {
+        id: 1,
+      },
+      {
+        id: 2,
+      }
+    ]
+  }
+
+  const handleSelectConsult = useCallback((id) => {
+
+    api.get(`consultores/${id}`).then((response) => {
+      setConsultant(response.data);
+      console.log(response.data)
+    })
+    setShowPopup(false);
+  },[]);
+
+  const handleAprove = useCallback(async () => {
+    try {
+      formRef.current?.setErrors({});
+      await api.post("aprovacao/inserir", aprovacao);
+      console.log(aprovacao)
+
+    } catch(e) {
+      console.log(e);
     }
+  },[aprovacao]);
 
-    const handleSelectConsult = useCallback((id) => {
+  const handleSelected = useCallback(async (id) => {
+    let alreadySelected;
+    let indexSelected = 0;
 
-        api.get(`consultores/${id}`).then((response) => {
-            setConsultant(response.data);
-            console.log(response.data)
-        })
-        setShowPopup(false);
-    },[]);
+    aprovacao.apontamentos.map(apontamento => {
+      if(apontamento.id === id) {
+        alreadySelected = true;
+        indexSelected = aprovacao.apontamentos.indexOf(apontamento,0);
+      }
+    })
 
-    const handleAprove = useCallback(async () => {
-        try {
-            formRef.current?.setErrors({});
+    if(alreadySelected === true) {
+      aprovacao.apontamentos.splice(indexSelected);
+    } else {
+      aprovacao.apontamentos.push({id: id});
+    }
+  },[aprovacao]);
 
+  const handleOpenPopup = useCallback((apontamento) => {
+    console.log(apontamento)
+      let index = apontamentos.indexOf(apontamento);
+      setDescription(apontamentos[index]);
 
-            await api.post("aprovacao/inserir", aprovacao);
+      if(apontamento.id === description?.id) {
+        setOpen(!isOpen);
+      }
 
-            console.log(aprovacao)
+  }, [apontamentos, isOpen, setOpen, description, setDescription]);
 
-        } catch(e) {
-            console.log(e);
-        }
-    },[aprovacao]);
+  useEffect(() => {
+    api.get("/consultores").then((response) => {
+      setConsultants(response.data)
+    })
+    api.get("/apontamentos").then((response) => {
+      setApontamentos(response.data)
+    })
+  }, []);
 
-    const handleSelected = useCallback(async (id) => {
+  const apontamentosaprovados = apontamentos.filter(apontamento => 
+    apontamento.situacaoApontamento === "APROVADO")
+  ,aprovados = apontamentosaprovados.length;
 
-        let alreadySelected;
-        let indexSelected = 0;
+  const apontamentosreprovados = apontamentos.filter(apontamento => 
+    apontamento.situacaoApontamento === "REPROVADO")
+  ,reprovados = apontamentosreprovados.length;
 
-        aprovacao.apontamentos.map(apontamento => {
-            if(apontamento.id === id) {
-                alreadySelected = true;
-                indexSelected = aprovacao.apontamentos.indexOf(apontamento,0);
-            }
-        })
-
-        if(alreadySelected === true) {
-            
-            aprovacao.apontamentos.splice(indexSelected);
-        } else {
-            aprovacao.apontamentos.push({id: id});
-        }
-    },[aprovacao]);
-
-    const handleOpenPopup = useCallback((apontamento) => {
-    
-        console.log(apontamento)
-            let index = apontamentos.indexOf(apontamento);
-            setDescription(apontamentos[index]);
-
-            if(apontamento.id === description?.id) {
-                setOpen(!isOpen);
-            }
- 
-    }, [apontamentos, isOpen, setOpen, description, setDescription]);
-
-    useEffect(() => {
-        api.get("/consultores").then((response) => {
-            setConsultants(response.data)
-        })
-        api.get("/apontamentos").then((response) => {
-            setApontamentos(response.data)
-        })
-    }, []);
-
-    const apontamentosaprovados = apontamentos.filter(apontamento => apontamento.situacaoApontamento === "APROVADO")
-    ,aprovados = apontamentosaprovados.length;
-
-    const apontamentosreprovados = apontamentos.filter(apontamento => apontamento.situacaoApontamento === "REPROVADO")
-    ,reprovados = apontamentosreprovados.length;
 
     const apontamentoslist = consultant?.apontamentos.filter(apontamento => apontamento.situacaoApontamento === "ESPERA");
     console.log(apontamentoslist)
@@ -300,10 +298,11 @@ const Aprovacao: React.FC = () => {
                     </tbody>
                     </table>
                     <button onClick={() => setShowPopup(!showPopup)}><BsX/></button>
-                </div>
-                </Consultores>
-            }
-        </>
-    )
+          </div>
+        </Consultores>
+      }
+    </>
+  )
 }
+
 export default Aprovacao;

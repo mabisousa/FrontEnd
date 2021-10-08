@@ -20,11 +20,11 @@ export const Inputs = styled.div`
   border: 1px solid #DADCE0;
   border-radius: .5rem;
 
-    form {
-      margin: 0 auto;
-      width: 360px;
-      text-align: center;
-    }
+  form {
+    margin: 0 auto;
+    width: 360px;
+    text-align: center;
+  }
 `;
 
 export const FormButton = styled.input`
@@ -32,7 +32,7 @@ export const FormButton = styled.input`
   border: none;
   background-color: rgb(0, 87, 157);
   color: #fff;
-  font-size: 1rem;
+  font-size: 1em;
   border-radius: .5rem;
   cursor: pointer;
   transition: .3s;
@@ -48,11 +48,11 @@ export const HoldButton = styled.div`
   height: 40px;
     
   button{
-      background: transparent;
-      border: none;
-      color: #448DCA;
-      font-size: 12px;
-      text-decoration: underline;
-      float: left ;
-    }
+    background: transparent;
+    border: none;
+    color: #448DCA;
+    font-size: 0.75em;
+    text-decoration: underline;
+    float: left ;
+  }
 `;

@@ -6,26 +6,26 @@ import Grid from "../Grid";
 import api from "../../services/api";
 
 interface Consultores{
-id: number,
-nome: string,
-status: string,
-usuario: {
-  email: string,
-},
-projetos: [
-  {
-    id: number,
-    nome: string,
-    status: string,
-  }
-]
-alocacoes: [
-  {
-  skill: {
-    nome: string,
+  id: number,
+  nome: string,
+  status: string,
+  usuario: {
+    email: string,
   },
-  }
-]
+  projetos: [
+    {
+      id: number,
+      nome: string,
+      status: string,
+    }
+  ]
+  alocacoes: [
+    {
+    skill: {
+      nome: string,
+    },
+    }
+  ]
 }
 
 interface Consultor {
@@ -33,7 +33,7 @@ interface Consultor {
   showPopup: (arg0: boolean) => void,
 }
 
-const Popup: React.FC<Consultor> = ({id, showPopup} ) => {
+const ConsultantPopup: React.FC<Consultor> = ({id, showPopup} ) => {
 
   const [consultant, setConsultant] = useState<Consultores>();
 
@@ -47,18 +47,18 @@ const Popup: React.FC<Consultor> = ({id, showPopup} ) => {
     showPopup(false);
   }
 
-    return(
-        <>
-        { consultant && 
-          <Container show={!!showPopup}>
-            <div id="hold">
+  return (
+    <>
+      { consultant && 
+        <Container show={!!showPopup}>
+          <div id="hold">
             <button onClick={handleClosePopup}><BsX/></button>
             <PopUpInfo>
               <header>
                 <HiUserCircle/>
                 <div id="EmployeeInformation">
-                    <h1>{consultant.id} - {consultant.nome}</h1>
-                    <p>E-mail: {consultant.usuario.email}</p>
+                  <h1>{consultant.id} - {consultant.nome}</h1>
+                  <p>E-mail: {consultant.usuario.email}</p>
                 </div>
               </header>
             </PopUpInfo>
@@ -66,9 +66,9 @@ const Popup: React.FC<Consultor> = ({id, showPopup} ) => {
               <Skills>
                 <h5>SKILLS</h5>
                 <HoldContent>
-                    {consultant.alocacoes.map((alocacao => (
-                      alocacao.skill.nome
-                    )))}
+                  {consultant.alocacoes.map((alocacao => (
+                    alocacao.skill.nome
+                  )))}
                 </HoldContent>
               </Skills>
               <PopUpTable>
@@ -95,11 +95,11 @@ const Popup: React.FC<Consultor> = ({id, showPopup} ) => {
             <div id="grid"> 
               <Grid/>
             </div>
-            </div>
-          </Container>
-        }
-        </>
-    )
+          </div>
+        </Container>
+      }
+    </>
+  )
 }
 
-export default Popup;
+export default ConsultantPopup;

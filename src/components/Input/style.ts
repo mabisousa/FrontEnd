@@ -10,7 +10,7 @@ export const FormInput = styled.input<ContainerProps>`
   left: 0;
   width: 100%;
   height: 100%;
-  font-size: 1rem;
+  font-size: 1em;
   border: 1px solid #DADCE0;
   border-radius: .5rem;
   outline: none;
@@ -26,7 +26,7 @@ export const FormInput = styled.input<ContainerProps>`
     top: -.4rem;
     left: .8rem;
     color: rgb(0, 87, 157);
-    font-size: 0.75rem;
+    font-size: 0.75em;
     font-weight: 500;
     z-index: 10;
   }
@@ -34,7 +34,7 @@ export const FormInput = styled.input<ContainerProps>`
   &:not(:placeholder-shown) + #form__label{
     top: -.4rem;
     left: .8rem;
-    font-size: 0.75rem;
+    font-size: 0.75em;
     font-weight: 500;
     z-index: 10;
   }
@@ -50,7 +50,7 @@ export const FormLabel = styled.label<ContainerProps>`
   top: 1rem;
   background-color: #fff;
   color: #80868B;
-  font-size: 1rem;
+  font-size: 1em;
   transition: .3s;
 
   ${(props) => props.hasError && css`
@@ -62,5 +62,4 @@ export const Container = styled.div`
   position: relative;
   height: 48px;
   margin-bottom: 1.5rem; 
-  
 `;
