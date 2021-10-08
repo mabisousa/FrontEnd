@@ -12,7 +12,7 @@ import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web"
 import { BsX } from "react-icons/bs";
 import api from "../../services/api";
-
+import { format } from "date-fns"
 interface Consultor{
     id: number,
     nome: string,
@@ -157,6 +157,11 @@ const Aprovacao: React.FC = () => {
 
     const apontamentoslist = consultant?.apontamentos.filter(apontamento => apontamento.situacaoApontamento === "ESPERA");
     console.log(apontamentoslist)
+
+    let date = new Date();
+    const formattedDate = format(date, "dd'/'MM'/'yyyy");
+
+    console.log(formattedDate)
     return (
         <>
             <Profile/>
@@ -170,25 +175,26 @@ const Aprovacao: React.FC = () => {
             <Container>
                 <Infos>
                 <Form ref={formRef} id="aprovar" onSubmit={ handleAprove }>
-                        <h1>INFORMAÇÕES DA APROVACAO</h1>
-                        <div>
-                            <p>NOME SADSADASDSAD</p>
-                            <div>
-                                <Info>{consultant ? consultant.nome : "a"}</Info>
-                                <Info>{horasSelecionadas ? horasSelecionadas : 0}</Info>
-                            </div>
+                    <h1>INFORMAÇÕES DO CONSULTOR</h1>
+                    <div className="information">
+                        <div className="holding">
+                            <Info>{consultant ? consultant.id : "Cadastro"}</Info>
+                            <Info>{consultant ? consultant.nome : "Nome"}</Info>
                         </div>
-                        <div>
-
+                    </div>
+                    <h1>INFORMAÇÕES DA APROVAÇÃO</h1>
+                    <div className="information">
+                        <div className="holding">
+                            <Info>{consultant ? formattedDate: "Data"}</Info>
+                            <Info>{consultant ? "Responsável" : "Responsável"}</Info>
                         </div>
-                        <div>
-                            <p>INFOS</p>
-                            <div>
-                                <Info>{consultant ? consultant.limiteHoras : 0}</Info>
-                                <Info>{consultant ? consultant.valorHoras : 0}</Info>
-                            </div>
+                        <div className="holding">
+                            <p>HORAS TOTAIS: </p>
+                            <Info>{consultant ? consultant.limiteHoras + "h /" + consultant.limiteHoras +"h" : "00h"}</Info>
+                            <p>VALOR POR HORA: </p>
+                            <Info>{consultant ? "R$ " + consultant.valorHoras  : "R$ 00,00"}</Info>
                         </div>
-                        
+                    </div>
                     </Form>
                 </Infos>
                 <Count id="count">

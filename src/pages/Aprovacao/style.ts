@@ -33,16 +33,43 @@ export const Infos = styled.div`
 
     form {
         height: 100%;
-        margin-top: 5px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
 
-        div {
-            div {
+        .information {
+            margin: 3% 0;
+            width: 100%;
+            height: 100%;
+           
+            p {
+                font-size: 12px;
+                width: auto;
+            }
+            .holding {
                 display: flex;
-                flex-direction: row;
+                align-items: center;
+                margin-bottom: 3%;
+                
+                div:nth-child(1) {
+                    width: 25%;
+                    margin-right: 5%;
+                }
+                div:nth-child(2) {
+                    width: 70%;
+                }
+            }
+
+            .holding:nth-child(2) {
+                display: flex;
                 justify-content: space-between;
+                
+                p:nth-child(1) {
+                    width: 40px;
+                }
+                div {
+                    width: auto;
+                }
+                
             }
         }
     }  
@@ -54,7 +81,6 @@ export const Count = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin-left: -70px;   
     transition: 1s;
 
     div {
@@ -144,10 +170,13 @@ export const Count = styled.div`
     }
 `;
 export const Info = styled.div`
-    height: 50px;
-    max-width: 250px;
+    height: 45px;
+    max-width: 300px;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
     border: 1px solid #a2a2a2;
-    padding: 15px;
+    padding: 5px;
     color: #a2a2a2;
 `;
 export const Apontamentos = styled.div`
@@ -179,10 +208,9 @@ export const Apontamentos = styled.div`
             border: 1px solid #8B8787;
 
             span {
-                position: relative;
-                top: 120px;
+                position:relative;
+                top: 40%;
                 left: 40px;
-
             }
         }
 
