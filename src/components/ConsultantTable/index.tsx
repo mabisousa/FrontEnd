@@ -10,11 +10,14 @@ interface Consultores{
   projetos: string
 }
 
-const Login: React.FC = () => {
+interface Consultor {
+  status: string
+}
+
+const Login: React.FC<Consultor> = ({status}) => {
   const [showPopup, setShowPopup] = useState(false);
   const [consultant, setConsultant] = useState<Consultores[]>([]);
   const [consult, setConsult] = useState<Consultores>();
-
 
   const handleShowPopup = (showPop: boolean) => {
     setShowPopup(showPop);
@@ -28,10 +31,17 @@ const Login: React.FC = () => {
   },[consultant, consult, setConsult, setShowPopup, showPopup]);
 
   useEffect(() => {
-    api.get("/consultores").then((response) => {
-      setConsultant(response.data);
-    })
-  }, [consultant, setConsultant]);
+    if(status !== 'Todos'){
+      api.get(`/consultores/status/${status}`).then((response) => {
+        setConsultant(response.data)
+        console.log(consultant)
+      })
+    } else {
+      api.get(`/consultores`).then((response) => {
+        setConsultant(response.data);
+      })
+    }
+  }, [consultant, setConsultant, status]);
   
   return (
     <> 

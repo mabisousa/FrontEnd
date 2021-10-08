@@ -31,26 +31,19 @@ alocacoes: [
 }
 const Login: React.FC = () => {
   const [consultant, setConsultant] = useState<Consultor[]>([]);
-  const [filter, setFilter] = useState('Todos');
   const [search, setSearch] = useState('');
-
-  //const handleFilter = consultores.filter((consultor) => consultor.nome.toLowerCase().includes(search.toLowerCase()))
+  const [status, setStatus] = useState('Todos');
 
   useEffect(() => {
-    if(filter === 'Todos') {
-      api.get("/consultores").then((response) => {
-        setConsultant(response.data);
-      })
-    }
-  }, [consultant, setConsultant, filter]);
+    api.get(`/consultores`).then((response) => {
+      setConsultant(response.data);
+    })
+  }, [consultant, setConsultant]);
 
   const handleFilterStatus = useCallback((status: string) => {
-    setFilter(status)
-
-    api.get(`/consultores/status/${status}`).then((response) => {
-      setConsultant(response.data)
-    })
-  },[setConsultant]);
+    setStatus(status);
+    console.log(status)
+  },[]);  
   
   return (
     <>  
@@ -74,18 +67,18 @@ const Login: React.FC = () => {
               <div>
                   <label>Status:</label>
                   <Dropdown>
-                  <span>{filter}</span>
+                  <span>{status}</span>
                     <div>
-                    <button onClick={() => handleFilterStatus('Ativo')} key={'Ativo'}>{'Ativo'}</button>
-                    <button onClick={() => handleFilterStatus('Inativo')} key={'Inativo'}>{'Inativo'}</button>
-                    <button onClick={() => setFilter('Todos')}>Todos</button>
+                    <button onClick={() => handleFilterStatus('Ativo')}>Ativo</button>
+                    <button onClick={() => handleFilterStatus('Inativo')}>Inativo</button>
+                    <button onClick={() => handleFilterStatus('Todos')}>Todos</button>
                     </div>
                   </Dropdown>
                 </div>
           </Filter>
         </Filters>
         <Menu/>
-        <Table/>
+        <Table status={status}/>
       </Container>
     </>
 )};
