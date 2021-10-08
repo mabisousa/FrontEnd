@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Title, Form, Container, Filter, Cards } from './style';
+import { Title, Container, Filter, Cards } from './style';
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
@@ -127,15 +127,14 @@ const Home: React.FC = () => {
       <Profile/>
       <Menu/>
       <Container>
+        <div className="containerHead">
         <Title>
           PROJETOS ALOCADOS
         </Title>
         <div>
             <Filter>
-                <Form>
-                    <label>Projeto:</label>
-                    <input type="text" placeholder="Digite aqui... " value={search} onChange={(ev) => handleFilterName(ev.target.value)}/>
-                </Form>
+                <label>Projeto:</label>
+                <input type="text" placeholder="Digite aqui... " value={search} onChange={(ev) => handleFilterName(ev.target.value)}/>
                 <div>
                   <label className="secao">Seção:</label>
                   <Dropdown>
@@ -148,7 +147,6 @@ const Home: React.FC = () => {
                     </div>
                   </Dropdown>
                 </div>
-                
                 <div>
                   <label  className="status" >Status:</label>
                   <Dropdown>
@@ -161,10 +159,12 @@ const Home: React.FC = () => {
                     </div>
                   </Dropdown>
                 </div>
+                <button onClick={handleNotShow}><img src={display1} alt=""/></button>
+                <button onClick={handleShow}><img src={display2} alt=""/></button>
             </Filter>
-            <button onClick={handleNotShow}><img src={display1} alt=""/></button>
-            <button onClick={handleShow}><img src={display2} alt=""/></button>
-        </div> 
+        </div>
+        </div>
+         
       </Container>
       <Cards > 
       { filtered.map((projeto) => (
