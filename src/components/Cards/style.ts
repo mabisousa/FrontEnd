@@ -66,7 +66,7 @@ export const TitleSection = styled.p<cardProps>`
     margin-left: 2rem;
 
     @media (max-width: 1024px) and (min-width: 426px) {
-        font-size: 13px;
+        font-size: .81em;
     }
     
     @media (max-width: 425px){
@@ -75,9 +75,9 @@ export const TitleSection = styled.p<cardProps>`
 
     ${(props) => props.show ? 
         css` 
-            font-size: 14px;
+            font-size: .9em;
         `: css`
-            font-size: 12px;
+            font-size: .75em;
     `}
 `;
 
@@ -86,12 +86,12 @@ export const TitleProject = styled.p<cardProps>`
     margin-left: 2rem;
 
     @media (max-width: 1024px) and (min-width: 769px) {
-        font-size: 15px;
+        font-size: .94em;
         width: 350px;
     }
     
     @media (max-width: 768px) and (min-width: 426px) {
-        font-size: 12px;
+        font-size: .75em;
         width: 245px; 
     }
 
@@ -102,11 +102,11 @@ export const TitleProject = styled.p<cardProps>`
     ${(props) => props.show ? 
         css` 
             width: 315px;
-            font-size: 16px;
+            font-size: 1em;
             margin-top: 1rem; 
         `: css`
             width: 500px;
-            font-size: 18px;
+            font-size: 1.15em;
             margin-top: 0;
 
         @media (max-width: 768px){
@@ -116,7 +116,7 @@ export const TitleProject = styled.p<cardProps>`
 
         @media (max-width: 1024px) and (min-width: 769px) {
             width: 220px;
-            font-size: 14px;
+            font-size: .9em;
             margin-top: 10px;
         }
     `}
@@ -167,15 +167,15 @@ export const Hours = styled.div<cardProps>`
     ${(props) => props.show ? 
         css` 
             width: 155px;
-            font-size:11px; 
+            font-size:.7em; 
         `: css`
             width:200px;
-            font-size: 12px;
+            font-size: .75em;
               
         @media (max-width: 1024px) and (min-width: 769px){
             width: 100px;
                 p{
-                    font-size: 12px;
+                    font-size: .75em;
                 } 
         }
     `}
@@ -184,7 +184,7 @@ export const Hours = styled.div<cardProps>`
         margin-left: 1rem;
         width: 100px;
             p{
-                font-size: 12px;
+                font-size: .75em;
             } 
     }
 
@@ -201,12 +201,12 @@ export const Status = styled.div<cardProps>`
 
     p:nth-child(1){
         font-weight: regular;
-        font-size: 15px;
+        font-size: .95em;
     }
 
     p:nth-child(2){
         font-weight: bold;
-        font-size: 17px;
+        font-size: 1.1em;
     }
 
     ${(props) => props.show ? 
@@ -216,11 +216,11 @@ export const Status = styled.div<cardProps>`
             height:60px;
             
             p:nth-child(1){
-                font-size: 14px;
+                font-size: .9em;
             }
 
             p:nth-child(2){
-                font-size: 16px;
+                font-size: 1em;
             }
         `: css`
             margin-top: 7px;
@@ -228,11 +228,11 @@ export const Status = styled.div<cardProps>`
             height:60px;
 
             p:nth-child(1){
-                font-size: 15px;
+                font-size: .95em;
             }
 
             p:nth-child(2){
-                font-size: 17px;
+                font-size: 1.1em;
             }
             
         @media (max-width: 768px) {
@@ -251,12 +251,12 @@ export const Status = styled.div<cardProps>`
         
         p:nth-child(1){
             font-weight: regular;
-            font-size: 13px;
+            font-size: .8em;
         }
 
         p:nth-child(2){
             font-weight: bold;
-            font-size: 15px;
+            font-size: .95em;
         }
     }
 
@@ -266,12 +266,12 @@ export const Status = styled.div<cardProps>`
 
         p:nth-child(1){
             font-weight: regular;
-            font-size: 13px;
+            font-size: .8em;
         }
 
         p:nth-child(2){
             font-weight: bold;
-            font-size: 15px;
+            font-size: .95em;
         }
     }
 
@@ -299,7 +299,7 @@ export const Date = styled.div<cardProps>`
     p {
         color: #7E7E7E;
         float: left;
-        font-size: 12px;
+        font-size: .75em;
     }
 
     ${(props) => props.show ? 

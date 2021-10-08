@@ -11,13 +11,13 @@ export const Container = styled.div<dropdownProps>`
         height: 20px;
         border: solid 1px  #7E7E7E;
         color:#7E7E7E;
-        font-size: 14px;
+        font-size: .9em;
         text-align: center;
         cursor: pointer;
         display: block;
 
         span{
-            font-size: 15px;
+            font-size: .91em;
         }
 
         div{
@@ -39,7 +39,7 @@ export const Container = styled.div<dropdownProps>`
                 `}
 
             button{
-                font-size: 15px;
+                font-size: .91em;
                 border-bottom: solid 1px  #7E7E7E;
                 color: #7E7E7E; 
                 height: 20px;

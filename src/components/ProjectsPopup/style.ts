@@ -41,7 +41,7 @@ export const Container = styled.div<PopUp>`
         position: absolute;
         top: 5%;
         right: 5%;
-        font-size: 30px;
+        font-size: 1.9em;
         height: 30px;
         width: 30px;
         border: 0;
@@ -65,11 +65,11 @@ export const TitlePopUp = styled.div`
 
     h2 {
         color: #0075B1;
-        font-size: 18px;
+        font-size: 1.15em;
     }
     h1 {
         color: #000;
-        font-size: 22px;
+        font-size: 1.4em;
         font-weight: bold;
     }
 `;
@@ -89,7 +89,7 @@ export const DetailsPopup = styled.div`
 
     h1 {
         color: #EBB93A;
-        font-size: 24px;
+        font-size: 1.5em;
         font-weight: 700;
     }
 `;
@@ -116,7 +116,7 @@ export const InfosGerais = styled.div<ContainerProps>`
         color: #023A67;
     }
     p {
-      font-size: 12px;
+      font-size: .75em;
       margin: 5px;
     }
     div:nth-child(2) {
@@ -184,7 +184,7 @@ export const Objetivo = styled.div<ContainerProps>`
         justify-content: space-evenly;
 
         p {
-            font-size: 12px;
+            font-size: .75em;
             display: flex;
             justify-content: space-between;
 
@@ -213,7 +213,7 @@ export const Skills = styled.div<ContainerProps>`
             border: 0;
             width: 85%;
             height: 40px;
-            font-size: 14px;
+            font-size: .9em;
             color: #fff;
             background: #28B9DA;
         }
@@ -233,7 +233,7 @@ export const Table = styled.div`
           color: #fff;
           width: 100%;
           height: 40px;
-          font-size: 14px;
+          font-size: .9em;
           align-items: center;
       }
       tbody {
@@ -285,10 +285,10 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
             display: inline-flex;
             width: 100%;
             text-transform: uppercase;
-            font-size: 14px;
+            font-size: .9em;
             margin-bottom: 15px;
             tr {
-                font-size: 14px;
+                font-size: .9em;
                 height: 40px;
                 width:100%;
                 padding:12px;
@@ -306,7 +306,7 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
             display: block;
             border: 1px solid #e2e2e280;
             tr {
-                font-size: 14px;
+                font-size: .9em;
                 width: 100%;
                 color: rgba(0, 0, 0, 0.87);
                 border: 1px solid #e2e2e280;

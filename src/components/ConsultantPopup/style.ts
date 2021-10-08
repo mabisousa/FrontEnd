@@ -33,7 +33,7 @@ export const Container = styled.div<PopUp>`
     float: right;
     color: black;
     margin-right: 20px;
-    font-size: 30px;
+    font-size: 1.9em;
     margin-top: 20px;
     background-color: transparent;
     border: 0;
@@ -69,13 +69,13 @@ export const PopUpInfo = styled.div`
   }
 
   h1{
-    font-size: 18px;
+    font-size: 1.15em;
     font-weight: bolder;
     text-decoration: 2px underline #0075B1;
   }
 
   p{
-    font-size: 18px;
+    font-size: 1.15em;
     color: #7E7E7E;
     font-weight: lighter;
     margin-top: 4px;
@@ -126,7 +126,7 @@ export const PopUpTable = styled.div`
     display: inline-flex;
     width:100%;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: .9em;
     margin-bottom: 15px;
   }
 
@@ -145,7 +145,7 @@ export const PopUpTable = styled.div`
   }
 
   tr {
-      font-size: 14px;
+      font-size: .9em;
       letter-spacing: 0.01071em;
       height: 17px;
       margin:15px;

@@ -25,7 +25,7 @@ export const Filters = styled.div`
 
       p{
         color: #7E7E7E;
-        font-size: 20px;
+        font-size: 1.25em;
       }
 
       #img{
@@ -34,7 +34,7 @@ export const Filters = styled.div`
 
       label{
         color: #7E7E7E;
-        font-size: 20px;
+        font-size: 1.25em;
         margin: 10px;
       }
 
@@ -53,7 +53,7 @@ export const Filter = styled.div`
 
     p{
       color: #7E7E7E;
-      font-size: 20px;
+      font-size: 1.25em;
       text-align: center;
       margin-right: 10px;
       margin-left: 10px;
@@ -62,7 +62,7 @@ export const Filter = styled.div`
 
 export const Title = styled.h1`
     font-weight:normal;
-    font-size: 20px;
+    font-size: 1.25em;
     text-decoration: underline #0075B1;
     margin-left: 50px;
     width: 300px;
@@ -90,6 +90,6 @@ export const Filterbynumber = styled.div`
 
     p{
       margin: 0px 5px;
-      font-size: 20px;
+      font-size: 1.25em;
     }  
 `;

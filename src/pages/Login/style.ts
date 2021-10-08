@@ -32,7 +32,7 @@ export const FormButton = styled.input`
   border: none;
   background-color: rgb(0, 87, 157);
   color: #fff;
-  font-size: 1rem;
+  font-size: 1em;
   border-radius: .5rem;
   cursor: pointer;
   transition: .3s;
@@ -51,7 +51,7 @@ export const HoldButton = styled.div`
       background: transparent;
       border: none;
       color: #448DCA;
-      font-size: 12px;
+      font-size: 0.75em;
       text-decoration: underline;
       float: left ;
     }

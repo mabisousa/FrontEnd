@@ -68,10 +68,10 @@ export const Container = styled.div`
                 transition: 1s;
 
                 h2 {
-                    font-size: 14px;
+                    font-size: .9em;
                 }
                 p {
-                    font-size: 12px;
+                    font-size: .75em;
                 }
             }
             img {

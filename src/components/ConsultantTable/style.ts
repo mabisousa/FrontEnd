@@ -14,7 +14,7 @@ export const Container = styled.div`
     thead{
       background: #0075B1;
       text-transform: uppercase;
-      font-size: 14px;
+      font-size: .9em;
     }
 
     thead tr{
@@ -39,7 +39,7 @@ export const Container = styled.div`
       height: 56px;
       color: rgba(0, 0, 0, 0.87);
       text-transform: uppercase;
-      font-size: 14px;
+      font-size: .9em;
 
       td{
         width: 150px;
@@ -83,7 +83,7 @@ export const Tr = styled.div<colorConsultores>`
     height: 56px;
     color: rgba(0, 0, 0, 0.87);
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: .9em;
   
     td{
       width: 150px;
@@ -97,6 +97,6 @@ export const Tr = styled.div<colorConsultores>`
     button{
       background: #fff;
       border: 0;
-      font-size: 20px;
+      font-size: 1.25em;
     }
 `;

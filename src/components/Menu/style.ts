@@ -32,7 +32,7 @@ export const Container = styled.div`
     a {
         color: #fff;
         text-decoration: none;
-        font-size: 8px;
+        font-size: .5em;
         position: relative;
         position: absolute;
         right: -110px;

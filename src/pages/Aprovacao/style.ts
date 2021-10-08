@@ -9,7 +9,7 @@ export const Container = styled.div`
     padding: 1% 8% 1% 8%;
 
     h1 {
-        font-size:16px;
+        font-size: 1em;
         font-weight:500;
         margin:10px 0;
     }
@@ -75,13 +75,13 @@ export const Count = styled.div`
                 align-items: center;
             }
             p {
-                font-size: 14px;
+                font-size: .9em;
             }
         }
         .hold:nth-child(1) {
             .numbers {
                 p {
-                    font-size: 18px;
+                    font-size: 1.12em;
                     color: #7E7E7E90;
                 }
             }
@@ -89,7 +89,7 @@ export const Count = styled.div`
         .hold:nth-child(2) {
             .numbers {
                 p {
-                    font-size: 18px;
+                    font-size: 1.12em;
                     color: #13B77C;
                 }
             }
@@ -97,7 +97,7 @@ export const Count = styled.div`
         .hold:nth-child(3) {
             .numbers {
                 p {
-                    font-size: 18px;
+                    font-size: 1.2em;
                     color: #AC341A;
                 }
             }
@@ -107,7 +107,7 @@ export const Count = styled.div`
         border: 0;
         width: 80%;
         height: 50px;
-        font-size: 14px;
+        font-size: .9em;
         color: #fff;
         background: #28B9DA;
         transition: 1s;
@@ -122,14 +122,14 @@ export const Count = styled.div`
         display: none;
 
         h1 {
-            font-size: 16px;
+            font-size: 1em;
             width: 100%;
             height: 30px;
             border-bottom: 2px solid #8B8787;
         }
         p {
             padding: 5px;
-            font-size: 14px;
+            font-size: .9em;
         }
 
         &::after {
@@ -158,12 +158,12 @@ export const Apontamentos = styled.div`
     table{
         border-collapse: collapse;
         width: 100%;
-        font-size: 14px;       
+        font-size: .9em;       
         
         button{
             background: transparent;
             border: 0;
-            font-size: 20px;
+            font-size: 1.25em;
         }
         
         thead tr{
@@ -208,7 +208,7 @@ export const Apontamentos = styled.div`
 
 export const Title = styled.h1`
     font-weight:normal;
-    font-size: 20px;
+    font-size: 1.25em;
     text-decoration: underline #0075B1;
     height: 60px;
     display: flex;
@@ -339,7 +339,7 @@ export const Consultores = styled.div<PopUp>`
 
     button{
         color: black;
-        font-size: 30px;
+        font-size: 1.9em;
         background-color: transparent;
         border: 0;
         position: absolute;
@@ -355,7 +355,7 @@ export const Consultores = styled.div<PopUp>`
 
     thead tr{
       text-transform: uppercase;
-      font-size: 14px;
+      font-size: .9em;
       background: #0075B1;
       color: #fff;
     }
@@ -369,7 +369,7 @@ export const Consultores = styled.div<PopUp>`
       height: 56px;
       color: rgba(0, 0, 0, 0.87);
       text-transform: uppercase;
-      font-size: 14px;
+      font-size: .9em;
       background: #fff;
       
       td{
@@ -384,7 +384,7 @@ export const Consultores = styled.div<PopUp>`
       button{
         background: #fff;
         border: 0;
-        font-size: 20px;
+        font-size: 1.25em;
       }
     }
 
@@ -432,7 +432,7 @@ export const Tr = styled.div<colorConsultores>`
     height: 56px;
     color: rgba(0, 0, 0, 0.87);
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: .9em;
 
     td{
     width: 150px;
@@ -446,7 +446,7 @@ export const Tr = styled.div<colorConsultores>`
     button{
     background: #fff;
     border: 0;
-    font-size: 20px;
+    font-size: 1.25em;
     }
 `;
 export const Buttons = styled.div`
@@ -503,7 +503,7 @@ export const Descriptions = styled.div<Description>`
         border-bottom: 1px solid #8B8787;
         padding:15px 0px 15px 15px;
         align-items: center;
-        font-size: 16px;
+        font-size: 1em;
         display: flex;
         justify-content: space-between;
 

@@ -52,7 +52,7 @@ export const Container = styled(animated.div)<ToastProps>`
         margin-left: 10px;
         p{
             margin-top: 4px;
-            font-size: 14px;
+            font-size: .9em;
             opacity: 0.8;
             line-height: 20px;
         }

@@ -34,7 +34,7 @@ export const Container = styled.main<RequestProps>`
         cursor: pointer;
     }
     textarea{
-        font-size: 14px;
+        font-size: .9em;
         width: 100%;
         height: 55%;
         overflow-y: auto;
