@@ -9,6 +9,7 @@ const messages = {
         status: "Status:"
       },
       approval: {
+        titleHeader: "APROBACIÓN",
         titlePage: "APROBACIÓN",
         consultantInfo: "INFORMACION DEL CONSULTOR",
         approvalInfor: "INFORMACIÓN DE APROBACIÓN",
@@ -32,7 +33,45 @@ const messages = {
         finish: "TERMINAR"
       },
       consultants: {
-
+        titleHeader: "CONSULTORES",
+        titlePage: "CONSULTORES",
+        name: 'Nombre:',
+        registration: "Registro:", 
+        status: "Status:",
+        active: "Activo",
+        inactive: "Inactivo",
+        all: "Todos"
+      },
+      login: {
+        user: "Usuario",
+        password: "Contraseña",
+        forgotPassword: "Olvido la contraseña?",
+        signIn: "Iniciar sesión"
+      },
+      card: {
+        total: "Total:",
+        pointed: "Señaló:",
+        status: "Situación:",
+        from: "En:",
+        to: "Hasta:"
+      },
+      ConsultantPopup: {
+        project: "PROYECTO"
+      },
+      ConsultantTable: {
+        registration: "REGISTRO",
+        name: "NOMBRE",
+        project: "PROYECTOS",
+        details: "DETALLES"
+      },
+      header: {
+        font: "Fuente",
+        increaseFont: "Aumentar fuent",
+        decreaseFont: "Disminuir fuente"
+      },
+      menu: {
+        projects: "Proyectos",
+        approval: "Aprobación"
       }
     }
   }

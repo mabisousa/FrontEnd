@@ -6,6 +6,7 @@ import Menu from "../../components/Menu";
 import api from "../../services/api";
 import Dropdown from "../../components/Dropdown";
 import Table from "../../components/ConsultantTable"
+import { i18n } from '../../translate/i18n';
 
 interface Consultor{
   id: number,
@@ -48,30 +49,30 @@ const Consultants: React.FC = () => {
   return (
     <>  
       <Header>
-        <p>CONSULTORES</p>
+        <p>{i18n.t('consultants.titleHeader')}</p>
       </Header>
       <Profile/>
       <Menu/>
       <Container>
         <Filters>
-          <Title>CONSULTORES</Title>
+          <Title>{i18n.t('consultants.titleHeader')}</Title>
           <Filter>
             <Form>
-              <label>Nome:</label>
+              <label>{i18n.t('consultants.name')}</label>
               <input placeholder="Digite aqui..." value={search} onChange={(ev) => setSearch(ev.target.value)}/>
             </Form>
             <Filterbynumber>
-              <p>Cadastro:</p>
+              <p>{i18n.t('consultants.registration')}</p>
               <input/><p> - </p><input/>
             </Filterbynumber>
             <div>
-              <label>Status:</label>
+              <label>{i18n.t('consultants.status')}</label>
               <Dropdown>
               <span>{status}</span>
                 <div>
-                <button onClick={() => handleFilterStatus('Ativo')}>Ativo</button>
-                <button onClick={() => handleFilterStatus('Inativo')}>Inativo</button>
-                <button onClick={() => handleFilterStatus('Todos')}>Todos</button>
+                <button onClick={() => handleFilterStatus('Ativo')}>{i18n.t('consultants.active')}</button>
+                <button onClick={() => handleFilterStatus('Inativo')}>{i18n.t('consultants.inactive')}</button>
+                <button onClick={() => handleFilterStatus('Todos')}>{i18n.t('consultants.all')}</button>
                 </div>
               </Dropdown>
             </div>

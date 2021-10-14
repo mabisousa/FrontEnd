@@ -13,6 +13,8 @@ import bandeiraEspanha from "../../assets/spainFlag.svg";
 import bandeiraEUA from "../../assets/usaFlag.svg";
 import increaseFont from "../../assets/increaseFont.svg";
 import decreaseFont from "../../assets/decreaseFont.svg";
+import { IoLanguage } from "react-icons/io5";
+import { i18n } from "../../translate/i18n";
 
 const Header: React.FC = ({children,...props}) => {
   
@@ -89,8 +91,8 @@ const Header: React.FC = ({children,...props}) => {
         <p id="sair" onClick={exitSystem}>Sair</p>
         <div id="dropdown">
           <button onClick={handleShowIdioms}>
-            <img src={bandeiraBrasil} alt=""/> 
-            <p id="a">Idioma</p>          
+            <IoLanguage /> 
+            <p>{i18n.t('header.idioms')}</p>          
           </button>
           <div id="idioms">
             <button  onClick={handleChangeEs} className="border">
@@ -108,22 +110,22 @@ const Header: React.FC = ({children,...props}) => {
           </div>
           <button onClick={handleShowFont}>
             <img src={font} alt=""/> 
-            <p >Fonte</p> 
+            <p >{i18n.t('header.font')}</p> 
           </button>
           <div id="fonts">
             <button  onClick={() => increse(window.getComputedStyle(document.body).getPropertyValue('font-size'))} className="border">
               <img src={increaseFont} alt=""/> 
-              <span>Aumentar fonte</span> 
+              <span>{i18n.t('header.increaseFont')}</span> 
             </button>
             <button  onClick={() => decrease(window.getComputedStyle(document.body).getPropertyValue('font-size'))}>
               <img src={decreaseFont} alt=""/> 
-              <span>Diminuir fonte</span> 
+              <span>{i18n.t('header.decreaseFont')}</span> 
             </button>   
           </div>
           <button onClick={handleChangeTheme}>
             <img src={switchThemeLight} id="switchThemeLight" alt=""/> 
             <img src={switchThemeDark} id="switchThemeDark" alt=""/> 
-            <p>Tema</p> 
+            <p>{i18n.t('header.theme')}</p> 
           </button> 
         </div>
       </div>

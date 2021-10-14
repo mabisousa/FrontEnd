@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+ import styled from 'styled-components';
 
 export const Container = styled.main`
   margin-top: 5%;
@@ -27,7 +27,7 @@ export const Inputs = styled.div`
   }
 `;
 
-export const FormButton = styled.input`
+export const FormButton = styled.button`
   padding: .75rem 2rem;
   border: none;
   background-color: rgb(0, 87, 157);

@@ -115,7 +115,7 @@ const Home: React.FC = () => {
   return (
     <>
       <Header>
-        <p>PROJETOS</p>
+        <p>{i18n.t('projects.titleHeader')}</p>
       </Header>
       <Profile/>
       <Menu/>

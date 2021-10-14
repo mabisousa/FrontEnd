@@ -86,6 +86,12 @@ export const Container = styled.div<dropdownProps>`
           display: block;
         `}
 
+      svg{
+        height: 27px;
+        width: 27px;
+        margin: 4px 8px 4px 8px;
+      }
+
       button{ 
         width: 100%;
         border: none;
@@ -105,7 +111,6 @@ export const Container = styled.div<dropdownProps>`
           img{
             height: 30px;
             width: 30px;
-            cursor: pointer;
             margin-left: 8px;
             margin-right: 8px;
           }

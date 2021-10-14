@@ -4,6 +4,7 @@ import { HiUserCircle } from "react-icons/hi";
 import { BsX } from "react-icons/bs";
 import Grid from "../Grid";
 import api from "../../services/api";
+import { i18n } from "../../translate/i18n";
 
 interface Consultores{
   id: number,
@@ -58,13 +59,13 @@ const ConsultantPopup: React.FC<Consultor> = ({id, showPopup} ) => {
                 <HiUserCircle/>
                 <div id="EmployeeInformation">
                   <h1>{consultant.id} - {consultant.nome}</h1>
-                  <p>E-mail: {consultant.usuario.email}</p>
+                  <p>{i18n.t('ConsultantPopup.email')}  {consultant.usuario.email}</p>
                 </div>
               </header>
             </PopUpInfo>
             <Content>
               <Skills>
-                <h5>SKILLS</h5>
+                <h5>{i18n.t('ConsultantPopup.skills')}</h5>
                 <HoldContent>
                   {consultant.alocacoes.map((alocacao => (
                     alocacao.skill.nome
@@ -75,9 +76,9 @@ const ConsultantPopup: React.FC<Consultor> = ({id, showPopup} ) => {
                 <table>
                   <thead>
                     <tr>
-                      <td>NÚMERO</td>
-                      <td>STATUS</td>
-                      <td>PROJETO</td>
+                      <td>{i18n.t('ConsultantPopup.number')}</td>
+                      <td>{i18n.t('ConsultantPopup.status')}</td>
+                      <td>{i18n.t('ConsultantPopup.project')}</td>
                     </tr>
                   </thead>
                   <tbody>

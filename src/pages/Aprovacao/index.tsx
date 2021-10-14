@@ -168,7 +168,7 @@ const Aprovacao: React.FC = () => {
           <Menu />
           <Request/>
           <Header>
-            <p>APROVAÇÃO</p>
+            <p>{i18n.t('approval.titleHeader')}</p>
           </Header>
           <Title>{i18n.t('approval.titlePage')}</Title>
           <Container>

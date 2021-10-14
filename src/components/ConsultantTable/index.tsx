@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Container, Tr } from './style';
 import api from "../../services/api";
 import Popup from "../ConsultantPopup"
+import { i18n } from '../../translate/i18n';
 
 interface Consultores{
   id: number,
@@ -48,11 +49,11 @@ const ConsultantTable: React.FC<Consultor> = ({status}) => {
           <table>
             <thead>
               <tr>
-                <td>CADASTRO</td>
-                <td>NOME</td>
-                <td>STATUS</td>
-                <td>PROJETOS</td>
-                <td>DETALHES</td>
+                <td>{i18n.t('ConsultantTable.registration')}</td>
+                <td>{i18n.t('ConsultantTable.name')}</td>
+                <td>{i18n.t('ConsultantTable.status')}</td>
+                <td>{i18n.t('ConsultantTable.project')}</td>
+                <td>{i18n.t('ConsultantTable.details')}</td>
               </tr>
             </thead>
             <tbody>
