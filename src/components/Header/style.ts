@@ -86,12 +86,16 @@ export const Container = styled.div<dropdownProps>`
           display: block;
         `}
 
-      div{ 
+      button{ 
         width: 100%;
+        border: none;
         border-bottom: solid 1px  #7E7E7E;
         display: flex;
         min-height: 35px;
+        color: #7E7E7E;
         align-items: center;
+        background-color: transparent;
+        
 
           p{
             min-height: 20px;

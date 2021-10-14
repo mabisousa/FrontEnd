@@ -25,8 +25,11 @@ export const Container = styled.div`
     button{
       border: none;
       background: transparent;
-      margin-left: 10px;
     }
+
+    img{
+        border-left: 10px;
+      }
 
     @media (max-width: 768px) {
       img{

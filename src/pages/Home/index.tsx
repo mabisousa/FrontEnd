@@ -5,9 +5,10 @@ import Header from "../../components/Header";
 import Menu from "../../components/Menu";
 import display1 from '../../assets/listView.svg';
 import display2 from '../../assets/gridView.svg';
-import api from "../../services/api"
+import api from "../../services/api";
 import Dropdown from "../../components/Dropdown";
-import Card from "../../components/Cards"
+import Card from "../../components/Cards";
+import { i18n } from "../../translate/i18n";
 
 interface Projetos{
   id: number,
@@ -121,14 +122,14 @@ const Home: React.FC = () => {
       <Container>
         <div className="containerHead">
           <Title>
-            PROJETOS ALOCADOS
+            {i18n.t('projects.titlePage')}
           </Title>
           <div>
             <Filter>
-              <label>Projeto:</label>
+              <label>{i18n.t('projects.project')}</label>
               <input type="text" placeholder="Digite aqui... " value={search} onChange={(ev) => handleFilterName(ev.target.value)}/>
               <div>
-                <label className="secao">Seção:</label>
+                <label className="secao">{i18n.t('projects.section')}</label>
                 <Dropdown>
                 <span>{section}</span>
                   <div>
@@ -140,7 +141,7 @@ const Home: React.FC = () => {
                 </Dropdown>
               </div>
               <div>
-                <label  className="status" >Status:</label>
+                <label  className="status" >{i18n.t('projects.status')}</label>
                 <Dropdown>
                   <span>{status}</span>
                   <div>

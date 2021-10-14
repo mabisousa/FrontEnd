@@ -12,7 +12,9 @@ import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web"
 import { BsX } from "react-icons/bs";
 import api from "../../services/api";
-import { format } from "date-fns"
+import { format } from "date-fns";
+import { i18n } from "../../translate/i18n";
+
 interface Consultor{
   id: number,
   nome: string,
@@ -162,145 +164,142 @@ const Aprovacao: React.FC = () => {
     console.log(formattedDate)
     return (
         <>
-            <Profile/>
-            <Menu />
-            <Request/>
-            
-            <Header>
-                <p>APROVAÇÃO</p>
-            </Header>
-            <Title>APROVAÇÃO</Title>
-            <Container>
-                <Infos>
-                <Form ref={formRef} id="aprovar" onSubmit={ handleAprove }>
-                    <h1>INFORMAÇÕES DO CONSULTOR</h1>
-                    <div className="information">
-                        <div className="holding">
-                            <Info>{consultant ? consultant.id : "Cadastro"}</Info>
-                            <Info>{consultant ? consultant.nome : "Nome"}</Info>
-                        </div>
-                    </div>
-                    <h1>INFORMAÇÕES DA APROVAÇÃO</h1>
-                    <div className="information">
-                        <div className="holding">
-                            <Info>{consultant ? formattedDate: "Data"}</Info>
-                            <Info>{consultant ? "Responsável" : "Responsável"}</Info>
-                        </div>
-                        <div className="holding">
-                            <p>HORAS TOTAIS: </p>
-                            <Info>{consultant ? consultant.limiteHoras + "h /" + consultant.limiteHoras +"h" : "00h"}</Info>
-                            <p>VALOR POR HORA: </p>
-                            <Info>{consultant ? "R$ " + consultant.valorHoras  : "R$ 00,00"}</Info>
-                        </div>
-                    </div>
-                    </Form>
-                </Infos>
-                <Count id="count">
-                    <h1>APROVAÇÕES</h1>
-                    <div>
-                        <div className="hold">
-                            <div className="numbers"><p>{apontamentos.length}</p></div>
-                            <p> APONTAMENTOS</p>
-                        </div>
-                        <div className="hold">
-                            <div className="numbers"><p>{aprovados}</p></div>
-                            <p> APROVADOS</p>
-                        </div>
-                        <div className="hold">
-                            <div className="numbers"><p>{reprovados}</p></div>
-                            <p> REPROVADOS</p>
-                        </div>
-                    </div>
-                    
-                    <button id="visualizar" onClick={() => setShowPopup(!showPopup)}>VISUALIZAR CONSULTORES</button>
-                    <Buttons id="buttons">
-                        <Button onClick={() => {}}>REPROVAR</Button>
-                        <Button onClick={() => {}}>APROVAR</Button>
-                    </Buttons>
-                </Count>
-                <Apontamentos>
-                    <table>
-                    <thead>
-                        <tr>
-                            <td></td>
-                            <td>DATA</td>
-                            <td>HORA</td>
-                            <td>INFO</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {apontamentoslist != null && apontamentoslist.length != 0 ? apontamentoslist.map((apontamento) => { 
-                        return (
-                            <tr key={apontamento.id}>
-                                <td><input type="checkbox" value={apontamento.id} onClick={() => handleSelected(apontamento.id)}/></td>
-                                <td>{apontamento.data.substring(0,10)}</td>
-                                <td>{apontamento.horasTrabalhadas}h</td> 
-                                <td><button onClick={() => handleOpenPopup(apontamento)}><GoChevronDown/></button></td>
-                                {isOpen &&
-                                    <Descriptions open={!!isOpen}>
-                                    <header>Descrição<span/></header>
-                                    <div>
-                                        <p>
-                                            {description && description?.descricao}
-                                        </p>
-                                    </div>
-                                </Descriptions>
-                                }
-                            </tr>
-                            
-                        )}) : <span>Não há apontamentos para aprovar.</span>}
-                    </tbody>
-                    </table>
-                </Apontamentos>
-                <ProgressBar>
-                    <div className="headers">
-                        <p>Registro Efetuado</p>
-                        <p>Aprovação Fornecedor</p>
-                        <p>Aprovação Gestor</p>
-                        <p>Requisição de compra</p>
-                    </div>
-                    <div className="steps">
-                        <Step isActive={true}>
-                            <FiCheck/>
-                        </Step>
-                        <Step isActive={isConfirmed} >
-                            { !!isConfirmed ? <FiCheck/> : <VscChromeClose/> }
-                        </Step>
-                        <Step isActive={false}>
-                            <VscChromeClose/>
-                        </Step>
-                        <Step isActive={false}>
-                           <VscChromeClose/>
-                        </Step>
-                    </div>
-                </ProgressBar>
-                <button form="aprovar" id="finalizar" type="submit">FINALIZAR</button>
-            </Container>
-            {showPopup && 
-                <Consultores show={!!showPopup}>
-                <div id="hold">
-                    <table>
-                    <thead>
-                    <tr>
-                        <td>CADASTRO</td>
-                        <td>NOME</td>
-                        <td>STATUS</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {consultants.map((consultant) => (
-                        <Tr key={consultant.id} color={consultant.status} onClick={() => handleSelectConsult(consultant.id)}>
-                            <td>{consultant.id}</td>
-                            <td>{consultant.nome}</td>
-                            <td>{consultant.status}</td> 
-                        </Tr>
-                        ))}
-                    </tbody>
-                    </table>
-                    <button onClick={() => setShowPopup(!showPopup)}><BsX/></button>
-          </div>
-        </Consultores>
-      }
+          <Profile/>
+          <Menu />
+          <Request/>
+          <Header>
+            <p>APROVAÇÃO</p>
+          </Header>
+          <Title>{i18n.t('approval.titlePage')}</Title>
+          <Container>
+            <Infos>
+              <Form ref={formRef} id="aprovar" onSubmit={ handleAprove }>
+                <h1>{i18n.t('approval.consultantInfo')}</h1>
+                <div className="information">
+                  <div className="holding">
+                    <Info>{consultant ? consultant.id : "Cadastro"}</Info>
+                    <Info>{consultant ? consultant.nome : "Nome"}</Info>
+                  </div>
+                </div>
+                <h1>{i18n.t('approval.approvalInfor')}</h1>
+                <div className="information">
+                  <div className="holding">
+                    <Info>{consultant ? formattedDate: "Data"}</Info>
+                    <Info>{consultant ? "Responsável" : "Responsável"}</Info>
+                  </div>
+                  <div className="holding">
+                    <p>{i18n.t('approval.totalHours')}</p>
+                    <Info>{consultant ? consultant.limiteHoras + "h /" + consultant.limiteHoras +"h" : "00h"}</Info>
+                    <p>{i18n.t('approval.hourlyRate')}</p>
+                    <Info>{consultant ? "R$ " + consultant.valorHoras  : "R$ 00,00"}</Info>
+                  </div>
+                </div>
+              </Form>
+            </Infos>
+            <Count id="count">
+              <h1> {i18n.t('approval.approvals')}</h1>
+              <div>
+                <div className="hold">
+                  <div className="numbers"><p>{apontamentos.length}</p></div>
+                  <p>{i18n.t('approval.appointments')}</p>
+                </div>
+                <div className="hold">
+                  <div className="numbers"><p>{aprovados}</p></div>
+                  <p>{i18n.t('approval.approved')}</p>
+                </div>
+                <div className="hold">
+                  <div className="numbers"><p>{reprovados}</p></div>
+                  <p>{i18n.t('approval.disapprove')}</p>
+                </div>
+              </div>
+              <button id="visualizar" onClick={() => setShowPopup(!showPopup)}>VISUALIZAR CONSULTORES</button>
+              <Buttons id="buttons">
+                <Button onClick={() => {}}>{i18n.t('approval.buttonapproved')}</Button>
+                <Button onClick={() => {}}>{i18n.t('approval.buttonDisapprove')}</Button>
+              </Buttons>
+            </Count>
+            <Apontamentos>
+              <table>
+                <thead>
+                  <tr>
+                    <td></td>
+                    <td>{i18n.t('approval.date')}</td>
+                    <td>{i18n.t('approval.hour')}</td>
+                    <td>{i18n.t('approval.info')}</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {apontamentoslist != null && apontamentoslist.length != 0 ? apontamentoslist.map((apontamento) => { 
+                    return (
+                      <tr key={apontamento.id}>
+                        <td><input type="checkbox" value={apontamento.id} onClick={() => handleSelected(apontamento.id)}/></td>
+                        <td>{apontamento.data.substring(0,10)}</td>
+                        <td>{apontamento.horasTrabalhadas}h</td> 
+                        <td><button onClick={() => handleOpenPopup(apontamento)}><GoChevronDown/></button></td>
+                        {isOpen &&
+                          <Descriptions open={!!isOpen}>
+                            <header>{i18n.t('approval.description')}<span/></header>
+                            <div>
+                              <p>
+                                {description && description?.descricao}
+                              </p>
+                            </div>
+                          </Descriptions>
+                          }
+                      </tr> 
+                    )}) : <span>{i18n.t('approval.default')}</span>}
+                </tbody>
+              </table>
+            </Apontamentos>
+            <ProgressBar>
+              <div className="headers">
+                <p>{i18n.t('approval.registration')}</p>
+                <p>{i18n.t('approval.supplierApproval')}</p>
+                <p>{i18n.t('approval.managerApproval')}</p>
+                <p>{i18n.t('approval.requisition')}</p>
+              </div>
+              <div className="steps">
+                <Step isActive={true}>
+                  <FiCheck/>
+                </Step>
+                <Step isActive={isConfirmed} >
+                  { !!isConfirmed ? <FiCheck/> : <VscChromeClose/> }
+                </Step>
+                <Step isActive={false}>
+                  <VscChromeClose/>
+                </Step>
+                <Step isActive={false}>
+                  <VscChromeClose/>
+                </Step>
+              </div>
+            </ProgressBar>
+            <button form="aprovar" id="finalizar" type="submit">{i18n.t('approval.finish')}</button>
+          </Container>
+          {showPopup && 
+            <Consultores show={!!showPopup}>
+              <div id="hold">
+                <table>
+                <thead>
+                  <tr>
+                    <td>CADASTRO</td>
+                    <td>NOME</td>
+                    <td>STATUS</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {consultants.map((consultant) => (
+                    <Tr key={consultant.id} color={consultant.status} onClick={() => handleSelectConsult(consultant.id)}>
+                      <td>{consultant.id}</td>
+                      <td>{consultant.nome}</td>
+                      <td>{consultant.status}</td> 
+                    </Tr>
+                      ))}
+                </tbody>
+                </table>
+                <button onClick={() => setShowPopup(!showPopup)}><BsX/></button>
+              </div>
+            </Consultores>
+    }
     </>
   )
 }

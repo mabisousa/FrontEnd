@@ -61,6 +61,21 @@ const Header: React.FC = ({children,...props}) => {
     history.push("/")
   }
 
+  const handleChangeEn = () => {
+    localStorage.setItem('i18nextLng', 'en-US');
+    window.location = window.location
+  }
+
+  const handleChangePt = () => {
+    localStorage.setItem('i18nextLng', 'pt-BR');
+    window.location = window.location
+  }
+
+  const handleChangeEs = () => {
+    localStorage.setItem('i18nextLng', 'es-ES');
+    window.location = window.location
+  }
+
   return( 
     <Container changeTheme={showTheme} showFonts={!!showFonts} showIdioms={!!showIdioms} showDropdown={!!showDropdown} {...props}> 
       <div id="name">
@@ -73,43 +88,43 @@ const Header: React.FC = ({children,...props}) => {
         </div> 
         <p id="sair" onClick={exitSystem}>Sair</p>
         <div id="dropdown">
-          <div onClick={handleShowIdioms}>
+          <button onClick={handleShowIdioms}>
             <img src={bandeiraBrasil} alt=""/> 
             <p id="a">Idioma</p>          
-          </div>
+          </button>
           <div id="idioms">
-            <div className="border">
+            <button  onClick={handleChangeEs} className="border">
               <img src={bandeiraEspanha} alt=""/> 
               <span >Español</span> 
-            </div>
-            <div className="border">
+            </button>
+            <button onClick={handleChangeEn} className="border">
               <img src={bandeiraEUA} alt=""/> 
               <span>English</span> 
-            </div>
-            <div>
+            </button>
+            <button onClick={handleChangePt}>
               <img src={bandeiraBrasil} alt=""/> 
               <span>Português do Brasil</span> 
-            </div>    
+            </button>    
           </div>
-          <div onClick={handleShowFont}>
+          <button onClick={handleShowFont}>
             <img src={font} alt=""/> 
             <p >Fonte</p> 
-          </div>
+          </button>
           <div id="fonts">
-            <div  onClick={() => increse(window.getComputedStyle(document.body).getPropertyValue('font-size'))} className="border">
+            <button  onClick={() => increse(window.getComputedStyle(document.body).getPropertyValue('font-size'))} className="border">
               <img src={increaseFont} alt=""/> 
               <span>Aumentar fonte</span> 
-            </div>
-            <div  onClick={() => decrease(window.getComputedStyle(document.body).getPropertyValue('font-size'))}>
+            </button>
+            <button  onClick={() => decrease(window.getComputedStyle(document.body).getPropertyValue('font-size'))}>
               <img src={decreaseFont} alt=""/> 
               <span>Diminuir fonte</span> 
-            </div>   
+            </button>   
           </div>
-          <div onClick={handleChangeTheme}>
+          <button onClick={handleChangeTheme}>
             <img src={switchThemeLight} id="switchThemeLight" alt=""/> 
             <img src={switchThemeDark} id="switchThemeDark" alt=""/> 
             <p>Tema</p> 
-          </div> 
+          </button> 
         </div>
       </div>
     </Container>
