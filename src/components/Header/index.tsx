@@ -102,7 +102,6 @@ const Header: React.FC = ({children,...props}) => {
         {children}
       </div>   
       <div id="exit">
-<<<<<<< Updated upstream
         <div onClick={handleShowDropdown} >
           <IoSettingsSharp />
         </div> 
@@ -111,24 +110,6 @@ const Header: React.FC = ({children,...props}) => {
           <button onClick={handleShowIdioms}>
             <IoLanguage /> 
             <p>{i18n.t('header.idioms')}</p>          
-=======
-        <IoSettingsSharp onClick={handleShowDropdown}/>
-        <p id="sair" onClick={exitSystem}>Sair</p>
-      </div>
-      <div id="dropdown">
-        <button onClick={handleShowIdioms}>
-          <IoLanguage /> 
-          <p>{i18n.t('header.idioms')}</p>          
-        </button>
-        <div id="idioms">
-          <button  onClick={handleChangeEs}>
-            <img src={bandeiraEspanha} alt=""/> 
-            <span >Español</span> 
-          </button>
-          <button onClick={handleChangeEn}>
-            <img src={bandeiraEUA} alt=""/> 
-            <span>English</span> 
->>>>>>> Stashed changes
           </button>
           <button onClick={handleChangePt}>
             <img src={bandeiraBrasil} alt=""/> 
