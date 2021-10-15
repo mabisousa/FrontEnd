@@ -1,7 +1,11 @@
 import React, { useCallback, useState } from "react";
-import { IoIosArrowDown } from "react-icons/io";
+
 import { Container } from "./style";
+
 import { IoIosArrowBack }  from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
+
+
 
 const Dropdown: React.FC = (props) => {
 

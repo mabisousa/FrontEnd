@@ -1,18 +1,23 @@
 import React, { useCallback, useRef, useState, useEffect } from "react";
+import { FormHandles } from "@unform/core";
+import { Form } from "@unform/web";
+import { format } from "date-fns";
+
 import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores, Buttons, 
-    Button, Step, Descriptions, Tr, Info } from "./style"
-import { FiCheck } from 'react-icons/fi' 
-import { VscChromeClose } from 'react-icons/vsc'
-import { GoChevronDown } from 'react-icons/go'
+    Button, Step, Descriptions, Tr, Info } from "./style";
+
+import { VscChromeClose } from 'react-icons/vsc';
+import { GoChevronDown } from 'react-icons/go';
+import { FiCheck } from 'react-icons/fi';
+import { BsX } from "react-icons/bs";
+
+import Request from "../../components/Request";
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
-import Request from "../../components/Request";
-import { FormHandles } from "@unform/core";
-import { Form } from "@unform/web"
-import { BsX } from "react-icons/bs";
+
 import api from "../../services/api";
-import { format } from "date-fns";
+
 import { i18n } from "../../translate/i18n";
 
 interface Consultor{
@@ -99,7 +104,8 @@ const Aprovacao: React.FC = () => {
         aprovacao.valorHora = consultant.valorHoras;
         aprovacao.nomeFornecedor = "carlos";
         aprovacao.horasAprovadas = horasSelecionadas;
-        aprovacao.apontamentos = aprovacao.apontamentos.filter(apontamento => apontamento.id !== 0)
+        aprovacao.apontamentos = aprovacao.apontamentos
+        .filter(apontamento => apontamento.id !== 0)
       }
 
       api.post("aprovacao/inserir", aprovacao);
@@ -158,7 +164,8 @@ const Aprovacao: React.FC = () => {
   ,reprovados = apontamentosreprovados.length;
 
 
-    const apontamentoslist = consultant?.apontamentos.filter(apontamento => apontamento.situacaoApontamento === "ESPERA");
+    const apontamentoslist = consultant?.apontamentos.
+    filter(apontamento => apontamento.situacaoApontamento === "ESPERA");
 
     let date = new Date();
     const formattedDate = format(date, "dd'/'MM'/'yyyy");
@@ -169,30 +176,54 @@ const Aprovacao: React.FC = () => {
           <Menu />
           <Request/>
           <Header>
-            <p>{i18n.t('approval.titleHeader')}</p>
+            <p>
+              {i18n.t('approval.titleHeader')}
+            </p>
           </Header>
-          <Title>{i18n.t('approval.titleHeader')}</Title>
+          <Title>
+            {i18n.t('approval.titleHeader')}
+          </Title>
           <Container>
             <Infos>
               <Form ref={formRef} id="aprovar" onSubmit={ handleApproval }>
-                <h1>{i18n.t('approval.consultantInfo')}</h1>
+                <h1>
+                  {i18n.t('approval.consultantInfo')}
+                </h1>
                 <div className="information">
                   <div className="holding">
-                    <Info>{consultant ? consultant.id : i18n.t('approval.registration')}</Info>
-                    <Info>{consultant ? consultant.nome : i18n.t('approval.name')}</Info>
+                    <Info>
+                      {consultant ? consultant.id : i18n.t('approval.registration')}
+                    </Info>
+                    <Info>
+                      {consultant ? consultant.nome : i18n.t('approval.name')}
+                    </Info>
                   </div>
                 </div>
-                <h1>{i18n.t('approval.approvalInfor')}</h1>
+                <h1>
+                  {i18n.t('approval.approvalInfor')}
+                </h1>
                 <div className="information">
                   <div className="holding">
-                    <Info>{consultant ? formattedDate: i18n.t('approval.dateApproval')}</Info>
-                    <Info>{consultant ? "Responsável" : i18n.t('approval.responsible')}</Info>
+                    <Info>
+                      {consultant ? formattedDate: i18n.t('approval.dateApproval')}
+                    </Info>
+                    <Info>
+                      {consultant ? "Responsável" : i18n.t('approval.responsible')}
+                    </Info>
                   </div>
                   <div className="holding">
-                    <p>{i18n.t('approval.totalHours')}</p>
-                    <Info>{consultant ?  consultant.limiteHoras +"h" : "00h"}</Info>
-                    <p>{i18n.t('approval.hourlyRate')}</p>
-                    <Info>{consultant ? "R$ " + consultant.valorHoras  : "R$ 00,00"}</Info>
+                    <p>
+                      {i18n.t('approval.totalHours')}
+                    </p>
+                    <Info>
+                      {consultant ?  consultant.limiteHoras +"h" : "00h"}
+                    </Info>
+                    <p>
+                      {i18n.t('approval.hourlyRate')}
+                    </p>
+                    <Info>
+                      {consultant ? "R$ " + consultant.valorHoras  : "R$ 00,00"}
+                    </Info>
                   </div>
                 </div>
               </Form>
@@ -201,22 +232,46 @@ const Aprovacao: React.FC = () => {
               <h1> {i18n.t('approval.approvals')}</h1>
               <div>
                 <div className="hold">
-                  <div className="numbers"><p>{apontamentos.length}</p></div>
-                  <p>{i18n.t('approval.appointments')}</p>
+                  <div className="numbers">
+                    <p>
+                      {apontamentos.length}
+                    </p>
+                  </div>
+                  <p>
+                    {i18n.t('approval.appointments')}
+                  </p>
                 </div>
                 <div className="hold">
-                  <div className="numbers"><p>{aprovados}</p></div>
-                  <p>{i18n.t('approval.approved')}</p>
+                  <div className="numbers">
+                    <p>
+                      {aprovados}
+                    </p>
+                  </div>
+                  <p>
+                    {i18n.t('approval.approved')}
+                  </p>
                 </div>
                 <div className="hold">
-                  <div className="numbers"><p>{reprovados}</p></div>
-                  <p>{i18n.t('approval.disapprove')}</p>
+                  <div className="numbers">
+                    <p>
+                      {reprovados}
+                    </p>
+                  </div>
+                  <p>
+                    {i18n.t('approval.disapprove')}
+                  </p>
                 </div>
               </div>
-              <button id="visualizar" onClick={() => setShowPopup(!showPopup)}>{i18n.t('approval.consultants')}</button>
+              <button id="visualizar" onClick={() => setShowPopup(!showPopup)}>
+                {i18n.t('approval.consultants')}
+              </button>
               <Buttons id="buttons">
-                <Button onClick={() => {}}>{i18n.t('approval.buttonapproved')}</Button>
-                <Button onClick={() => {}}>{i18n.t('approval.buttonDisapprove')}</Button>
+                <Button onClick={() => {}}>
+                  {i18n.t('approval.buttonapproved')}
+                </Button>
+                <Button onClick={() => {}}>
+                  {i18n.t('approval.buttonDisapprove')}
+                </Button>
               </Buttons>
             </Count>
             <Apontamentos>
@@ -224,22 +279,43 @@ const Aprovacao: React.FC = () => {
                 <thead>
                   <tr>
                     <td></td>
-                    <td>{i18n.t('approval.date')}</td>
-                    <td>{i18n.t('approval.hour')}</td>
-                    <td>{i18n.t('approval.info')}</td>
+                    <td>
+                      {i18n.t('approval.date')}
+                    </td>
+                    <td>
+                      {i18n.t('approval.hour')}
+                    </td>
+                    <td>
+                      {i18n.t('approval.info')}
+                    </td>
                   </tr>
                 </thead>
                 <tbody>
-                  {apontamentoslist != null && apontamentoslist.length != 0 ? apontamentoslist.map((apontamento) => { 
+                  {apontamentoslist != null && apontamentoslist.length != 0 ? 
+                  apontamentoslist.map((apontamento) => { 
                     return (
                       <tr key={apontamento.id}>
-                        <td><input type="checkbox" value={apontamento.id} onClick={() => handleSelected(apontamento.id, apontamento.horasTrabalhadas)}/></td>
-                        <td>{apontamento.data.substring(0,10)}</td>
-                        <td>{apontamento.horasTrabalhadas}h</td> 
-                        <td><button onClick={() => handleOpenPopup(apontamento)}><GoChevronDown/></button></td>
+                        <td>
+                          <input type="checkbox" value={apontamento.id} onClick={() => 
+                          handleSelected(apontamento.id, apontamento.horasTrabalhadas)}/>
+                        </td>
+                        <td>
+                          {apontamento.data.substring(0,10)}
+                        </td>
+                        <td>
+                          {apontamento.horasTrabalhadas}h
+                        </td> 
+                        <td>
+                          <button onClick={() => handleOpenPopup(apontamento)}>
+                            <GoChevronDown/>
+                          </button>
+                        </td>
                         {isOpen &&
                           <Descriptions open={!!isOpen}>
-                            <header>{i18n.t('approval.description')}<span/></header>
+                            <header>
+                              {i18n.t('approval.description')}
+                              <span/>
+                            </header>
                             <div>
                               <p>
                                 {description && description?.descricao}
@@ -254,10 +330,18 @@ const Aprovacao: React.FC = () => {
             </Apontamentos>
             <ProgressBar>
               <div className="headers">
-                <p>{i18n.t('approval.registrationAcconplished')}</p>
-                <p>{i18n.t('approval.supplierApproval')}</p>
-                <p>{i18n.t('approval.managerApproval')}</p>
-                <p>{i18n.t('approval.requisition')}</p>
+                <p>
+                  {i18n.t('approval.registrationAcconplished')}
+                </p>
+                <p>
+                  {i18n.t('approval.supplierApproval')}
+                </p>
+                <p>
+                  {i18n.t('approval.managerApproval')}
+                </p>
+                <p>
+                  {i18n.t('approval.requisition')}
+                </p>
               </div>
               <div className="steps">
                 <Step isActive={true}>
@@ -282,22 +366,37 @@ const Aprovacao: React.FC = () => {
                 <table>
                 <thead>
                   <tr>
-                    <td>CADASTRO</td>
-                    <td>NOME</td>
-                    <td>STATUS</td>
+                    <td>
+                      CADASTRO
+                    </td>
+                    <td>
+                      NOME
+                    </td>
+                    <td>
+                      STATUS
+                    </td>
                   </tr>
                 </thead>
                 <tbody>
                   {consultants.map((consultant) => (
-                    <Tr key={consultant.id} color={consultant.status} onClick={() => handleSelectConsult(consultant.id)}>
-                      <td>{consultant.id}</td>
-                      <td>{consultant.nome}</td>
-                      <td>{consultant.status}</td> 
+                    <Tr key={consultant.id} color={consultant.status}
+                     onClick={() => handleSelectConsult(consultant.id)}>
+                      <td>
+                        {consultant.id}
+                      </td>
+                      <td>
+                        {consultant.nome}
+                      </td>
+                      <td>
+                        {consultant.status}
+                      </td> 
                     </Tr>
                       ))}
                 </tbody>
                 </table>
-                <button onClick={() => setShowPopup(!showPopup)}><BsX/></button>
+                <button onClick={() => setShowPopup(!showPopup)}>
+                  <BsX/>
+                </button>
               </div>
             </Consultores>
     }

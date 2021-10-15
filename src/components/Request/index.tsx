@@ -1,9 +1,10 @@
-import React from 'react';
-import { useCallback } from 'react';
-import { useState } from 'react';
+import React,{ useCallback, useState  }  from 'react';
+
 import {RiArrowLeftSLine} from 'react-icons/ri';
-import { i18n } from '../../translate/i18n';
+
 import { Container } from './style';
+
+import { i18n } from '../../translate/i18n';
 
 const Request: React.FC = () => {
 
@@ -31,20 +32,30 @@ const Request: React.FC = () => {
           <>
             <div>
               <RiArrowLeftSLine onClick={handleBackRequest}/>
-              <p>{i18n.t('request.request')}</p>
+              <p>
+                {i18n.t('request.request')}
+              </p>
             </div>
             <textarea id="text"
               value={content}
               onChange={e => newContent(e.target.value)}
             />
-            <button onClick={handleSubmit}>{i18n.t('request.send')}</button>
+            <button onClick={handleSubmit}>
+              {i18n.t('request.send')}
+              </button>
           </>
         :
           <>
-            <p>{i18n.t('request.change')}</p>
+            <p>
+              {i18n.t('request.change')}
+            </p>
             <div>
-              <button >{i18n.t('request.no')}</button>
-              <button onClick={handleRequest}>{i18n.t('request.yes')}</button>
+              <button >
+                {i18n.t('request.no')}
+              </button>
+              <button onClick={handleRequest}>
+                {i18n.t('request.yes')}
+              </button>
             </div>
           </>
         }   

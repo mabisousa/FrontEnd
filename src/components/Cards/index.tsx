@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+
 import { Container, TitleSection, TitleProject, HoldHours, Hours, Status, Date } from './style';
+
 import api from "../../services/api";
 import Popup from "../ProjectsPopup";
+
 import { i18n } from '../../translate/i18n';
 
 interface Projetos{
@@ -64,29 +67,52 @@ const Cards: React.FC<Projeto> = ({id, show}) => {
   return (
     <>
       { project &&
-        <Container show={!!show} color={project.status} onClick={() => (setShowPopup(!showPopup))} key={project.id}>
-          <TitleSection show={!!show}>{project.secao.idSecao} - {project.secao.nomeSecao}</TitleSection>
-          <TitleProject show={!!show}>{project.id} - {project.nome} </TitleProject>
+        <Container show={!!show} color={project.status} 
+          onClick={() => (setShowPopup(!showPopup))} key={project.id}>
+          <TitleSection show={!!show}>
+            {project.secao.idSecao} - {project.secao.nomeSecao}
+          </TitleSection>
+          <TitleProject show={!!show}>
+            {project.id} - {project.nome} 
+          </TitleProject>
           <HoldHours show={!!show}>
             <Hours show={!!show}>
-              <p>{i18n.t('card.total')}</p>
-              <p>{project.horasTotal}</p>
+              <p>
+                {i18n.t('card.total')}
+              </p>
+              <p>
+                {project.horasTotal}
+              </p>
             </Hours>
             <Hours show={!!show}>
-              <p>{i18n.t('card.pointed')}</p>
-              <p>{project.horasApontadas}</p>
+              <p>
+                {i18n.t('card.pointed')}
+              </p>
+              <p>
+                {project.horasApontadas}
+              </p>
             </Hours>
           </HoldHours>
           <Status show={!!show}>
-            <p>{i18n.t('card.status')}</p>
-            <p>{project.status}</p>
+            <p>
+              {i18n.t('card.status')}
+            </p>
+            <p>
+              {project.status}
+            </p>
           </Status>
           <Date show={!!show}>
-            <p>{i18n.t('card.from')} {project.dataInicio.substring(0,10)}</p>
+            <p>
+              {i18n.t('card.from')} {project.dataInicio.substring(0,10)}
+            </p>
             { project.dataFim ?
-              <p>{i18n.t('card.to')} {project.dataFim.substring(0,10)}</p>
+              <p>
+                {i18n.t('card.to')} {project.dataFim.substring(0,10)}
+              </p>
             :
-              <p>{i18n.t('card.to')} 00-00-00</p>
+              <p>
+                {i18n.t('card.to')} 00-00-00
+              </p>
             }
           </Date>
         </Container>

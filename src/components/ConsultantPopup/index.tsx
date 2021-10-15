@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
+
 import { Container, PopUpInfo, Content, Skills, HoldContent, PopUpTable } from "./style";
+
 import { HiUserCircle } from "react-icons/hi";
 import { BsX } from "react-icons/bs";
-import Grid from "../Grid";
+
 import api from "../../services/api";
+import Grid from "../Grid";
+
 import { i18n } from "../../translate/i18n";
 
 interface Consultores{
@@ -53,19 +57,27 @@ const ConsultantPopup: React.FC<Consultor> = ({id, showPopup} ) => {
       { consultant && 
         <Container show={!!showPopup}>
           <div id="hold">
-            <button onClick={handleClosePopup}><BsX/></button>
+            <button onClick={handleClosePopup}>
+              <BsX/>
+            </button>
             <PopUpInfo>
               <header>
                 <HiUserCircle/>
                 <div id="EmployeeInformation">
-                  <h1>{consultant.id} - {consultant.nome}</h1>
-                  <p>{i18n.t('ConsultantPopup.email')}  {consultant.usuario.email}</p>
+                  <h1>
+                    {consultant.id} - {consultant.nome}
+                  </h1>
+                  <p>
+                    {i18n.t('ConsultantPopup.email')}  {consultant.usuario.email}
+                  </p>
                 </div>
               </header>
             </PopUpInfo>
             <Content>
               <Skills>
-                <h5>{i18n.t('ConsultantPopup.skills')}</h5>
+                <h5>
+                  {i18n.t('ConsultantPopup.skills')}
+                </h5>
                 <HoldContent>
                   {consultant.alocacoes.map((alocacao => (
                     alocacao.skill.nome
@@ -76,17 +88,29 @@ const ConsultantPopup: React.FC<Consultor> = ({id, showPopup} ) => {
                 <table>
                   <thead>
                     <tr>
-                      <td>{i18n.t('ConsultantPopup.number')}</td>
-                      <td>{i18n.t('ConsultantPopup.status')}</td>
-                      <td>{i18n.t('ConsultantPopup.project')}</td>
+                      <td>
+                        {i18n.t('ConsultantPopup.number')}
+                      </td>
+                      <td>
+                        {i18n.t('ConsultantPopup.status')}
+                      </td>
+                      <td>
+                        {i18n.t('ConsultantPopup.project')}
+                      </td>
                     </tr>
                   </thead>
                   <tbody>
                     {consultant.projetos.map((project => (
                       <tr key={project.id}>
-                      <td>{project.id}</td>
-                      <td>{project.status}</td>
-                      <td>{project.nome}</td> 
+                      <td>
+                        {project.id}
+                      </td>
+                      <td>
+                        {project.status}
+                      </td>
+                      <td>
+                        {project.nome}
+                      </td> 
                     </tr>
                       )))}
                   </tbody>

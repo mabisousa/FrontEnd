@@ -306,9 +306,14 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
           color: rgba(0, 0, 0, 0.87);
         }
 
-        td {
+        td:nth-child(1) {
           color:#fff;
-          width: 20%;
+          width: 35%;
+        }
+        
+        td:nth-child(2) {
+          color:#fff;
+          max-width: 65%;
         }
       }
         
@@ -327,12 +332,12 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
 
         td:nth-child(1) {
           padding: 15px;
-          width: 20%;
+          width: 35%;
           border-right: 1px solid #e2e2e280;
         }
         
         td:nth-child(2) {
-          max-width: 70%;
+          max-width: 65%;
           border-right: 1px solid #e2e2e280;
         }
       }
