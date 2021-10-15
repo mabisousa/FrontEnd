@@ -69,46 +69,47 @@ const Aprovacao: React.FC = () => {
   const [description, setDescription] = useState<Apontamento>();
   const [apontamentos, setApontamentos] = useState<Apontamento[]>([]);
 
+  let responsible = localStorage.getItem("@WEGusers: nome");
   let horasSelecionadas = 0;
 
   const aprovacao = {
     data: new Date(),  
-    nomeFornecedor: "teste",
-    nomeResponsavel: "teste",
-    idConsultor: 1,
-    horasAprovadas: 20,
-    valorHora: 1.5,
-    apontamentos: [
-      {
-        id: 1,
-      },
-      {
-        id: 2,
-      }
-    ]
+    nomeFornecedor: "",
+    nomeResponsavel: "",
+    idConsultor: 0,
+    horasAprovadas: 0,
+    valorHora: 0,
+    apontamentos: [{ id: 0}]
   }
-
-  const handleSelectConsult = useCallback((id) => {
+  if(responsible != null) {
+    aprovacao.nomeResponsavel = responsible;
+  }
+  const handleSelectConsult = useCallback((id: number) => {
 
     api.get(`consultores/${id}`).then((response) => {
       setConsultant(response.data);
-      console.log(response.data)
     })
     setShowPopup(false);
   },[]);
 
-  const handleAprove = useCallback(async () => {
+  const handleApproval = useCallback(async () => {
     try {
-      formRef.current?.setErrors({});
-      await api.post("aprovacao/inserir", aprovacao);
-      console.log(aprovacao)
+      if(consultant) {
+        aprovacao.idConsultor = consultant.id;
+        aprovacao.valorHora = consultant.valorHoras;
+        aprovacao.nomeFornecedor = "carlos";
+        aprovacao.horasAprovadas = horasSelecionadas;
+        aprovacao.apontamentos = aprovacao.apontamentos.filter(apontamento => apontamento.id !== 0)
+      }
 
+      api.post("aprovacao/inserir", aprovacao);
+      console.log(aprovacao)
     } catch(e) {
       console.log(e);
     }
   },[aprovacao]);
 
-  const handleSelected = useCallback(async (id) => {
+  const handleSelected = useCallback(async (id, horas) => {
     let alreadySelected;
     let indexSelected = 0;
 
@@ -117,17 +118,19 @@ const Aprovacao: React.FC = () => {
         alreadySelected = true;
         indexSelected = aprovacao.apontamentos.indexOf(apontamento,0);
       }
+
     })
 
     if(alreadySelected === true) {
+      horasSelecionadas -= horas;
       aprovacao.apontamentos.splice(indexSelected);
     } else {
+      horasSelecionadas += horas;
       aprovacao.apontamentos.push({id: id});
     }
   },[aprovacao]);
 
   const handleOpenPopup = useCallback((apontamento) => {
-    console.log(apontamento)
       let index = apontamentos.indexOf(apontamento);
       setDescription(apontamentos[index]);
 
@@ -156,12 +159,10 @@ const Aprovacao: React.FC = () => {
 
 
     const apontamentoslist = consultant?.apontamentos.filter(apontamento => apontamento.situacaoApontamento === "ESPERA");
-    console.log(apontamentoslist)
 
     let date = new Date();
     const formattedDate = format(date, "dd'/'MM'/'yyyy");
 
-    console.log(formattedDate)
     return (
         <>
           <Profile/>
@@ -173,7 +174,7 @@ const Aprovacao: React.FC = () => {
           <Title>{i18n.t('approval.titlePage')}</Title>
           <Container>
             <Infos>
-              <Form ref={formRef} id="aprovar" onSubmit={ handleAprove }>
+              <Form ref={formRef} id="aprovar" onSubmit={ handleApproval }>
                 <h1>{i18n.t('approval.consultantInfo')}</h1>
                 <div className="information">
                   <div className="holding">
@@ -185,11 +186,11 @@ const Aprovacao: React.FC = () => {
                 <div className="information">
                   <div className="holding">
                     <Info>{consultant ? formattedDate: "Data"}</Info>
-                    <Info>{consultant ? "Responsável" : "Responsável"}</Info>
+                    <Info>{consultant ? aprovacao.nomeResponsavel : "Responsável"}</Info>
                   </div>
                   <div className="holding">
                     <p>{i18n.t('approval.totalHours')}</p>
-                    <Info>{consultant ? consultant.limiteHoras + "h /" + consultant.limiteHoras +"h" : "00h"}</Info>
+                    <Info>{consultant ?  consultant.limiteHoras +"h" : "00h"}</Info>
                     <p>{i18n.t('approval.hourlyRate')}</p>
                     <Info>{consultant ? "R$ " + consultant.valorHoras  : "R$ 00,00"}</Info>
                   </div>
@@ -232,7 +233,7 @@ const Aprovacao: React.FC = () => {
                   {apontamentoslist != null && apontamentoslist.length != 0 ? apontamentoslist.map((apontamento) => { 
                     return (
                       <tr key={apontamento.id}>
-                        <td><input type="checkbox" value={apontamento.id} onClick={() => handleSelected(apontamento.id)}/></td>
+                        <td><input type="checkbox" value={apontamento.id} onClick={() => handleSelected(apontamento.id, apontamento.horasTrabalhadas)}/></td>
                         <td>{apontamento.data.substring(0,10)}</td>
                         <td>{apontamento.horasTrabalhadas}h</td> 
                         <td><button onClick={() => handleOpenPopup(apontamento)}><GoChevronDown/></button></td>

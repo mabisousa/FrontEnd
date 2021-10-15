@@ -47,7 +47,8 @@ export const AuthProvider: React.FC = ({ children }) => {
 
     localStorage.setItem("@WEGusers:token", jwt);
     localStorage.setItem("@WEGusers:usuario", JSON.stringify(usuario));
-      
+    localStorage.setItem("@WEGusers: nome", "Jean Reiguel");
+    
     setData({jwt, usuario});
 
   }, []);
