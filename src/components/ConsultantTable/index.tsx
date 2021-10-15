@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
+
 import { Container, Tr } from './style';
+
+import Popup from "../ConsultantPopup";
 import api from "../../services/api";
-import Popup from "../ConsultantPopup"
+
 import { i18n } from '../../translate/i18n';
 
 interface Consultores{
@@ -49,21 +52,41 @@ const ConsultantTable: React.FC<Consultor> = ({status}) => {
           <table>
             <thead>
               <tr>
-                <td>{i18n.t('ConsultantTable.registration')}</td>
-                <td>{i18n.t('ConsultantTable.name')}</td>
-                <td>{i18n.t('ConsultantPopup.status')}</td>
-                <td>{i18n.t('projects.titleHeader')}</td>
-                <td>{i18n.t('ConsultantTable.details')}</td>
+                <td>
+                  {i18n.t('ConsultantTable.registration')}
+                </td>
+                <td>
+                  {i18n.t('ConsultantTable.name')}
+                </td>
+                <td>
+                  {i18n.t('ConsultantPopup.status')}
+                </td>
+                <td>
+                  {i18n.t('projects.titleHeader')}
+                </td>
+                <td>
+                  {i18n.t('ConsultantTable.details')}
+                </td>
               </tr>
             </thead>
             <tbody>
               {consultant.map((consultant) => (
                 <Tr color={consultant.status}>
-                  <td>{consultant.id}</td>
-                  <td>{consultant.nome}</td>
-                  <td>{consultant.status}</td> 
-                  <td>{consultant.projetos.length}</td>
-                  <button onClick={() => handleOpenPopup(consultant.id)} key={consultant.id}><td> + </td></button>
+                  <td>
+                    {consultant.id}
+                  </td>
+                  <td>
+                    {consultant.nome}
+                  </td>
+                  <td>
+                    {consultant.status}
+                  </td> 
+                  <td>
+                    {consultant.projetos.length}
+                  </td>
+                  <button onClick={() => handleOpenPopup(consultant.id)} key={consultant.id}>
+                    <td> + </td>
+                  </button>
                 </Tr>
               ))}
             </tbody>

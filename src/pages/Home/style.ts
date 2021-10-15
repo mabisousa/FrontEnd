@@ -64,6 +64,10 @@ export const Filter = styled.div`
     max-width: 80%;
   }
 
+  img{
+    margin-left: 10px;
+  }
+
   @media (max-width: 1024px) and (min-width: 769px)  {
     label{
       margin-left: 10px;  

@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
+
 import { Container, Filters, Title, Form, Filterbynumber, Filter } from './style';
+
+import Table from "../../components/ConsultantTable"
+import Dropdown from "../../components/Dropdown";
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
 import api from "../../services/api";
-import Dropdown from "../../components/Dropdown";
-import Table from "../../components/ConsultantTable"
+
 import { i18n } from '../../translate/i18n';
 
 interface Consultor{
@@ -49,30 +52,53 @@ const Consultants: React.FC = () => {
   return (
     <>  
       <Header>
-        <p>{i18n.t('consultants.titleHeader')}</p>
+        <p>
+          {i18n.t('consultants.titleHeader')}
+        </p>
       </Header>
       <Profile/>
       <Menu/>
       <Container>
         <Filters>
-          <Title>{i18n.t('consultants.titleHeader')}</Title>
+          <Title>
+            {i18n.t('consultants.titleHeader')}
+          </Title>
           <Filter>
             <Form>
-              <label>{i18n.t('consultants.name')}</label>
-              <input placeholder={i18n.t('consultants.placeHolder')} value={search} onChange={(ev) => setSearch(ev.target.value)}/>
+              <label>
+                {i18n.t('consultants.name')}
+              </label>
+              <input placeholder={i18n.t('consultants.placeHolder')} 
+                value={search} onChange={(ev) => setSearch(ev.target.value)}/>
             </Form>
             <Filterbynumber>
-              <p>{i18n.t('consultants.registration')}</p>
-              <input/><p> - </p><input/>
+              <p>
+                {i18n.t('consultants.registration')}
+              </p>
+              <input/>
+              <p> 
+                - 
+              </p>
+              <input/>
             </Filterbynumber>
             <div>
-              <label>{i18n.t('projects.status')}</label>
+              <label>
+                {i18n.t('projects.status')}
+              </label>
               <Dropdown>
-              <span>{status}</span>
+                <span>
+                  {status}
+                </span>
                 <div>
-                <button onClick={() => handleFilterStatus('Ativo')}>{i18n.t('consultants.active')}</button>
-                <button onClick={() => handleFilterStatus('Inativo')}>{i18n.t('consultants.inactive')}</button>
-                <button onClick={() => handleFilterStatus('Todos')}>{i18n.t('projects.all')}</button>
+                  <button onClick={() => handleFilterStatus('Ativo')}>
+                    {i18n.t('consultants.active')}
+                  </button>
+                  <button onClick={() => handleFilterStatus('Inativo')}>
+                    {i18n.t('consultants.inactive')}
+                  </button>
+                  <button onClick={() => handleFilterStatus('Todos')}>
+                    {i18n.t('projects.all')}
+                  </button>
                 </div>
               </Dropdown>
             </div>

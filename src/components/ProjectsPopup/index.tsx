@@ -1,10 +1,16 @@
 import React, {useState, useCallback, useEffect} from "react";
-import { TitlePopUp, InfosPopup, InfosGerais, Objetivo, Horas, HorasApontadas, Skills, Table, ConsultoresAlocados, DetailsPopup, Container  } from "./style"
+
+import { TitlePopUp, InfosPopup, InfosGerais, Objetivo, Horas, HorasApontadas, 
+  Skills, Table, ConsultoresAlocados, DetailsPopup, Container  } from "./style";
+
 import { Chart } from "react-google-charts";
 import { BsX } from 'react-icons/bs';
+
+import api from "../../services/api";
 import Grid from '../Grid';
-import api from "../../services/api"
+
 import { i18n } from "../../translate/i18n";
+
 interface Projetos{
   id: number,
   secao: {
@@ -83,27 +89,43 @@ const ProjectPopup: React.FC<Projeto> = ({id, showPopup}) => {
       { project &&
         <Container open={!!isOpen}  show={!!showPopup}>
           <div id="hold">
-            <button onClick={handleClosePopup}><BsX/></button>
+            <button onClick={handleClosePopup}>
+              <BsX/>
+            </button>
             <TitlePopUp>
-              <h2> {project.secao.idSecao} - {project.secao.nomeSecao}</h2>
-              <h1>{project.id} - {project.nome}</h1>
+              <h2> 
+                {project.secao.idSecao} - {project.secao.nomeSecao}
+              </h2>
+              <h1>
+                {project.id} - {project.nome}
+              </h1>
             </TitlePopUp>
             <InfosPopup>
               <InfosGerais open={!!isOpen}  className="cont">
-                <h1>{i18n.t('projectsPopup.infos')}</h1>
+                <h1>
+                  {i18n.t('projectsPopup.infos')}
+                </h1>
                 <div>
-                  <p>{i18n.t('projectsPopup.manager')} ?</p>
-                  <p>{i18n.t('projectsPopup.provider')} ?</p>
+                  <p>
+                    {i18n.t('projectsPopup.manager')} ?
+                  </p>
+                  <p>
+                    {i18n.t('projectsPopup.provider')} ?
+                  </p>
                 </div>
               </InfosGerais>
               <Objetivo open={!!isOpen} className="cont">
-                <h1>{i18n.t('projectsPopup.objective')} </h1>
+                <h1>
+                  {i18n.t('projectsPopup.objective')} 
+                </h1>
                 <p>
                   {project.descricao}
                 </p>
               </Objetivo>
               <Horas open={!!isOpen}  className="cont">
-                <h1>{i18n.t('projectsPopup.hours')} </h1>
+                <h1>
+                  {i18n.t('projectsPopup.hours')} 
+                </h1>
                 <HorasApontadas>
                   <Chart
                     width={'160px'}
@@ -128,11 +150,17 @@ const ProjectPopup: React.FC<Projeto> = ({id, showPopup}) => {
                     }}
                   />
                   <div>
-                    <p>{i18n.t('projectsPopup.total')}
-                      <span>{project.horasTotal}</span> 
+                    <p>
+                      {i18n.t('projectsPopup.total')}
+                      <span>
+                        {project.horasTotal}
+                      </span> 
                     </p> 
-                    <p>{i18n.t('projectsPopup.pointed')}
-                      <span>{project.horasApontadas}</span>
+                    <p>
+                      {i18n.t('projectsPopup.pointed')}
+                      <span>
+                        {project.horasApontadas}
+                      </span>
                     </p>
                   </div>
                 </HorasApontadas>
@@ -142,15 +170,23 @@ const ProjectPopup: React.FC<Projeto> = ({id, showPopup}) => {
                   <table>
                     <thead>
                       <tr>
-                        <td>{i18n.t('projectsPopup.skill')}</td>
-                        <td>{i18n.t('projectsPopup.pointedHour')}</td>
+                        <td>
+                          {i18n.t('projectsPopup.skill')}
+                        </td>
+                        <td>
+                          {i18n.t('projectsPopup.pointedHour')}
+                        </td>
                       </tr>
                     </thead>
                     <tbody>
                       {project.skills.map(skill => (
                         <tr key={skill.id}>
-                          <td>{skill.nome}</td>
-                          <td>{skill.horasApontadas}</td>
+                          <td>
+                            {skill.nome}
+                          </td>
+                          <td>
+                            {skill.horasApontadas}
+                          </td>
                         </tr>
                       ))}  
                     </tbody>
@@ -164,15 +200,23 @@ const ProjectPopup: React.FC<Projeto> = ({id, showPopup}) => {
                 <table>
                   <thead>
                     <tr>
-                      <td>{i18n.t('ConsultantTable.registration')}</td>
-                      <td>{i18n.t('ConsultantTable.name')}</td>
+                      <td>
+                        {i18n.t('ConsultantTable.registration')}
+                      </td>
+                      <td>
+                        {i18n.t('ConsultantTable.name')}
+                      </td>
                     </tr>
                   </thead>
                   <tbody>
                     {project.consultores.map((consultor) => (
                       <tr key={consultor.id}>
-                        <td>{consultor.id}</td>
-                        <td>{consultor.nome}</td>
+                        <td>
+                          {consultor.id}
+                        </td>
+                        <td>
+                          {consultor.nome}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -181,7 +225,9 @@ const ProjectPopup: React.FC<Projeto> = ({id, showPopup}) => {
             </InfosPopup>
             <DetailsPopup color={project.status}>
               <Grid/>
-              <h1>{project.status}</h1>
+              <h1>
+                {project.status}
+              </h1>
             </DetailsPopup>
           </div>
         </Container>

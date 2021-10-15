@@ -1,16 +1,19 @@
 import React, {useCallback, useContext, useRef} from 'react';
-import { Container, Inputs,  FormButton, ImgLogo, HoldButton } from './style';
-import logo from "../../assets/logo.svg";
+import { useHistory } from 'react-router-dom';
 import { FormHandles } from "@unform/core";
 import { Form } from '@unform/web';
 import * as Yup from "yup";
-import { AuthContext } from '../../hooks/Auth';
-import getValidationErrors from '../../utils/getValidationErrors';
-import Input from '../../components/Input';
-import { useToast } from '../../hooks/toast';
-import { useHistory } from 'react-router-dom';
-import { i18n } from '../../translate/i18n';
 
+import logo from "../../assets/logo.svg";
+
+import { Container, Inputs,  FormButton, ImgLogo, HoldButton } from './style';
+
+import getValidationErrors from '../../utils/getValidationErrors';
+import { AuthContext } from '../../hooks/Auth';
+import { useToast } from '../../hooks/toast';
+import Input from '../../components/Input';
+
+import { i18n } from '../../translate/i18n';
 
 interface SignInData {
   email: string,
@@ -69,10 +72,20 @@ const Login: React.FC = () => {
         <Inputs>
           <Form ref={ formRef } onSubmit={ handleSubmit }>
             <ImgLogo src={logo} alt="WEG" />
-            <Input name="email" type="text" placeholder=" ">{i18n.t('login.user')}</Input>
-            <Input name="senha" type="password" placeholder=" ">{i18n.t('login.password')}</Input>
-            <HoldButton><button>{i18n.t('login.forgotPassword')}</button></HoldButton>
-            <FormButton type="submit">{i18n.t('login.signIn')}</FormButton>
+            <Input name="email" type="text" placeholder=" ">
+              {i18n.t('login.user')}
+            </Input>
+            <Input name="senha" type="password" placeholder=" ">
+              {i18n.t('login.password')}
+            </Input>
+            <HoldButton>
+              <button>
+                {i18n.t('login.forgotPassword')}
+              </button>
+            </HoldButton>
+            <FormButton type="submit">
+              {i18n.t('login.signIn')}
+            </FormButton>
           </Form>
         </Inputs>
       </Container>
