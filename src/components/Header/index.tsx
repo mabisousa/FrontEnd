@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { Container } from './style';
 import logo from "../../assets/logo.svg";
 import { IoSettingsSharp } from "react-icons/io5";
@@ -22,6 +22,21 @@ const Header: React.FC = ({children,...props}) => {
   const [showIdioms, setShowIdioms] = useState(true);
   const [showFonts, setShowFonts] = useState(true);
   const [showTheme, setShowTheme] = useState(true);
+  const [darkMode, setDarkMode] = useState(() => {
+    const storageTheme = localStorage.getItem(
+      'Theme:darkMode',
+    );
+    if(storageTheme){
+      return JSON.parse(storageTheme)
+    }
+    return [];
+    });
+    useEffect(() => {
+      localStorage.setItem(
+        'Theme:darkMode',
+        JSON.stringify(darkMode)
+    )
+  }, [darkMode]);
   const history = useHistory();
 
   const handleShowDropdown = useCallback(() => {
@@ -49,12 +64,14 @@ const Header: React.FC = ({children,...props}) => {
   }, [showFonts, setShowFonts]); 
 
   const handleChangeTheme = useCallback(() => {
-    if(!!showTheme === false) {
-      setShowTheme(true);    
+    if(!!showTheme === false && darkMode === false) {
+      setShowTheme(true);  
+      setDarkMode(true)
     }else {
-      setShowTheme(false);     
+      setShowTheme(false); 
+      setDarkMode(false)
     }
-  }, [showTheme]);
+  }, [showTheme, darkMode]);
   
   const exitSystem = () => {
     localStorage.removeItem("@WEGusers:token");
@@ -77,14 +94,15 @@ const Header: React.FC = ({children,...props}) => {
     localStorage.setItem('i18nextLng', 'es-ES');
     window.location = window.location
   }
-
+  
   return( 
-    <Container changeTheme={showTheme} showFonts={!!showFonts} showIdioms={!!showIdioms} showDropdown={!!showDropdown} {...props}> 
+    <Container darkMode={darkMode} changeTheme={showTheme} showFonts={!!showFonts} showIdioms={!!showIdioms} showDropdown={!!showDropdown} {...props}> 
       <div id="name">
         <Link to="/home"><img src={logo} alt=""/></Link>
         {children}
       </div>   
       <div id="exit">
+<<<<<<< Updated upstream
         <div onClick={handleShowDropdown} >
           <IoSettingsSharp />
         </div> 
@@ -93,41 +111,49 @@ const Header: React.FC = ({children,...props}) => {
           <button onClick={handleShowIdioms}>
             <IoLanguage /> 
             <p>{i18n.t('header.idioms')}</p>          
+=======
+        <IoSettingsSharp onClick={handleShowDropdown}/>
+        <p id="sair" onClick={exitSystem}>Sair</p>
+      </div>
+      <div id="dropdown">
+        <button onClick={handleShowIdioms}>
+          <IoLanguage /> 
+          <p>{i18n.t('header.idioms')}</p>          
+        </button>
+        <div id="idioms">
+          <button  onClick={handleChangeEs}>
+            <img src={bandeiraEspanha} alt=""/> 
+            <span >Español</span> 
           </button>
-          <div id="idioms">
-            <button  onClick={handleChangeEs} className="border">
-              <img src={bandeiraEspanha} alt=""/> 
-              <span >Español</span> 
-            </button>
-            <button onClick={handleChangeEn} className="border">
-              <img src={bandeiraEUA} alt=""/> 
-              <span>English</span> 
-            </button>
-            <button onClick={handleChangePt}>
-              <img src={bandeiraBrasil} alt=""/> 
-              <span>Português do Brasil</span> 
-            </button>    
-          </div>
-          <button onClick={handleShowFont}>
-            <img src={font} alt=""/> 
-            <p >{i18n.t('header.font')}</p> 
+          <button onClick={handleChangeEn}>
+            <img src={bandeiraEUA} alt=""/> 
+            <span>English</span> 
+>>>>>>> Stashed changes
           </button>
-          <div id="fonts">
-            <button  onClick={() => increse(window.getComputedStyle(document.body).getPropertyValue('font-size'))} className="border">
-              <img src={increaseFont} alt=""/> 
-              <span>{i18n.t('header.increaseFont')}</span> 
-            </button>
-            <button  onClick={() => decrease(window.getComputedStyle(document.body).getPropertyValue('font-size'))}>
-              <img src={decreaseFont} alt=""/> 
-              <span>{i18n.t('header.decreaseFont')}</span> 
-            </button>   
-          </div>
-          <button onClick={handleChangeTheme}>
-            <img src={switchThemeLight} id="switchThemeLight" alt=""/> 
-            <img src={switchThemeDark} id="switchThemeDark" alt=""/> 
-            <p>{i18n.t('header.theme')}</p> 
-          </button> 
+          <button onClick={handleChangePt}>
+            <img src={bandeiraBrasil} alt=""/> 
+            <span>Português do Brasil</span> 
+          </button>    
         </div>
+        <button onClick={handleShowFont}>
+          <img src={font} alt=""/> 
+          <p >{i18n.t('header.font')}</p> 
+        </button>
+        <div id="fonts">
+          <button  onClick={() => increse(window.getComputedStyle(document.body).getPropertyValue('font-size'))}>
+            <img src={increaseFont} alt=""/> 
+            <span>{i18n.t('header.increaseFont')}</span> 
+          </button>
+          <button  onClick={() => decrease(window.getComputedStyle(document.body).getPropertyValue('font-size'))}>
+            <img src={decreaseFont} alt=""/> 
+            <span>{i18n.t('header.decreaseFont')}</span> 
+          </button>   
+        </div>
+        <button onClick={handleChangeTheme}>
+          <img src={switchThemeLight} id="switchThemeLight" alt=""/> 
+          <img src={switchThemeDark} id="switchThemeDark" alt=""/> 
+          <p>{i18n.t('header.theme')}</p> 
+        </button> 
       </div>
     </Container>
   )
