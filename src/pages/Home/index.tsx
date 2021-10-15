@@ -61,6 +61,21 @@ const Home: React.FC = () => {
   const [status, setStatus] = useState('Todos');
   const [sections, setSections] = useState<Secoes[]>([]);
   const [search, setSearch] = useState('');
+  const [darkMode, setDarkMode] = useState(() => {
+    const storageTheme = localStorage.getItem(
+      'Theme:darkMode',
+    );
+    if(storageTheme){
+      return JSON.parse(storageTheme)
+    }
+    return [];
+    });
+    useEffect(() => {
+      localStorage.setItem(
+        'Theme:darkMode',
+        JSON.stringify(darkMode)
+      )
+  }, [darkMode]);
 
   useEffect(() => {
     if (section !== "Todos" && status !== "Todos") {
@@ -119,7 +134,7 @@ const Home: React.FC = () => {
       </Header>
       <Profile/>
       <Menu/>
-      <Container>
+      <Container darkMode={darkMode}>
         <div className="containerHead">
           <Title>
             {i18n.t('projects.titlePage')}
@@ -163,8 +178,7 @@ const Home: React.FC = () => {
           <Card id={projeto.id} key={projeto.id} show={show}/> 
         ))}
       </Cards>
-    </>
-                
+    </>          
   ) 
 };
 

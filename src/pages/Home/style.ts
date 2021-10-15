@@ -1,9 +1,19 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
-export const Container = styled.div`
+interface changeTheme{
+  darkMode: boolean;
+}
+export const Container = styled.div<changeTheme>`
   width: 100%;
   display: flex;
   justify-content: center;
+
+  ${(props) => props.darkMode ?
+    css`
+      background: #fff; 
+    `: css`
+      background: #1F262B;
+    `}
 
   .containerHead{
     width: 85%;
