@@ -170,22 +170,22 @@ const Aprovacao: React.FC = () => {
           <Header>
             <p>{i18n.t('approval.titleHeader')}</p>
           </Header>
-          <Title>{i18n.t('approval.titlePage')}</Title>
+          <Title>{i18n.t('approval.titleHeader')}</Title>
           <Container>
             <Infos>
               <Form ref={formRef} id="aprovar" onSubmit={ handleAprove }>
                 <h1>{i18n.t('approval.consultantInfo')}</h1>
                 <div className="information">
                   <div className="holding">
-                    <Info>{consultant ? consultant.id : "Cadastro"}</Info>
-                    <Info>{consultant ? consultant.nome : "Nome"}</Info>
+                    <Info>{consultant ? consultant.id : i18n.t('approval.registration')}</Info>
+                    <Info>{consultant ? consultant.nome : i18n.t('approval.name')}</Info>
                   </div>
                 </div>
                 <h1>{i18n.t('approval.approvalInfor')}</h1>
                 <div className="information">
                   <div className="holding">
-                    <Info>{consultant ? formattedDate: "Data"}</Info>
-                    <Info>{consultant ? "Responsável" : "Responsável"}</Info>
+                    <Info>{consultant ? formattedDate: i18n.t('approval.dateApproval')}</Info>
+                    <Info>{consultant ? "Responsável" : i18n.t('approval.responsible')}</Info>
                   </div>
                   <div className="holding">
                     <p>{i18n.t('approval.totalHours')}</p>
@@ -212,7 +212,7 @@ const Aprovacao: React.FC = () => {
                   <p>{i18n.t('approval.disapprove')}</p>
                 </div>
               </div>
-              <button id="visualizar" onClick={() => setShowPopup(!showPopup)}>VISUALIZAR CONSULTORES</button>
+              <button id="visualizar" onClick={() => setShowPopup(!showPopup)}>{i18n.t('approval.consultants')}</button>
               <Buttons id="buttons">
                 <Button onClick={() => {}}>{i18n.t('approval.buttonapproved')}</Button>
                 <Button onClick={() => {}}>{i18n.t('approval.buttonDisapprove')}</Button>
@@ -253,7 +253,7 @@ const Aprovacao: React.FC = () => {
             </Apontamentos>
             <ProgressBar>
               <div className="headers">
-                <p>{i18n.t('approval.registration')}</p>
+                <p>{i18n.t('approval.registrationAcconplished')}</p>
                 <p>{i18n.t('approval.supplierApproval')}</p>
                 <p>{i18n.t('approval.managerApproval')}</p>
                 <p>{i18n.t('approval.requisition')}</p>

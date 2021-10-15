@@ -2,6 +2,7 @@ import React from 'react';
 import { useCallback } from 'react';
 import { useState } from 'react';
 import {RiArrowLeftSLine} from 'react-icons/ri';
+import { i18n } from '../../translate/i18n';
 import { Container } from './style';
 
 const Request: React.FC = () => {
@@ -30,20 +31,20 @@ const Request: React.FC = () => {
           <>
             <div>
               <RiArrowLeftSLine onClick={handleBackRequest}/>
-              <p>Insira sua Solicitação:</p>
+              <p>{i18n.t('request.request')}</p>
             </div>
             <textarea id="text"
               value={content}
               onChange={e => newContent(e.target.value)}
             />
-            <button onClick={handleSubmit}>Enviar</button>
+            <button onClick={handleSubmit}>{i18n.t('request.send')}</button>
           </>
         :
           <>
-            <p>Deseja enviar uma solicitação de alteração?</p>
+            <p>{i18n.t('request.change')}</p>
             <div>
-              <button >Não</button>
-              <button onClick={handleRequest}>Sim</button>
+              <button >{i18n.t('request.no')}</button>
+              <button onClick={handleRequest}>{i18n.t('request.yes')}</button>
             </div>
           </>
         }   

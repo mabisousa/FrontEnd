@@ -5,21 +5,30 @@ const messages = {
         titleHeader: "PROJETOS",
         titlePage: "PROJETOS ALOCADOS",
         project: "Projeto:",
+        placeHolder:"Digite aqui...",
         section: "Seção:",
-        status: "Status:"
+        status: "Status:",
+        progress: "Andamento",
+        late:"Atrasado",
+        concluded: "Concluído",
+        all: "Todos"
       },
 
       approval: {
         titleHeader: "APROVAÇÃO",
-        titlePage: "APROVAÇÃO",
         consultantInfo: "INFORMAÇÕES DO CONSULTOR",
+        registration: "Cadastro",
+        name: "Nome",
         approvalInfor: "INFORMAÇÕES DA APROVAÇÃO",
+        dateApproval: "Data",
+        responsible: "Responsável",
         totalHours: "HORAS TOTAIS:",
         hourlyRate: "VALOR POR HORA:",
         approvals: "APROVAÇÕES",
         appointments: "APONTAMENTOS",
         approved: "APROVADOS",
         disapprove: "REPROVADOS",
+        consultants:"VISUALIZAR CONSULTORES",
         buttonapproved: "APROVAR",
         buttonDisapprove: "REPROVAR",
         date: "DATA",
@@ -27,7 +36,7 @@ const messages = {
         info: "INFO",
         description: "Descrição",
         default: "Não há apontamentos para aprovar.",
-        registration: "Registro Efetuado",
+        registrationAcconplished: "Registro Efetuado",
         supplierApproval: "Aprovação Fornecedor",
         managerApproval: "Aprovação Gestor",
         requisition: "Requisição de compra",
@@ -36,13 +45,11 @@ const messages = {
 
       consultants: {
         titleHeader: "CONSULTORES",
-        titlePage: "CONSULTORES",
         name: 'Nome:',
+        placeHolder:"Digite aqui...",
         registration: "Cadastro:", 
-        status: "Status:",
         active: "Ativo",
-        inactive: "Inativo",
-        all: "Todos"
+        inactive: "Inativo"
       },
       login: {
         user: "Usuário",
@@ -67,11 +74,10 @@ const messages = {
       ConsultantTable: {
         registration: "CADASTRO",
         name: "NOME",
-        status: "STATUS",
-        project: "PROJETOS",
         details: "DETALHES"
       },
       header: {
+        exit :"Sair",
         idioms: "Idioma",
         font: "Fonte",
         increaseFont: "Aumentar fonte",
@@ -82,8 +88,25 @@ const messages = {
         projects: "Projetos",
         approval: "Aprovação",
         consultants: "Consultores"
+      },
+      projectsPopup: {
+        infos: "INFORMAÇÕES GERAIS:",
+        manager: "GESTOR RESPONSÁVEL:",
+        provider: "FORNECEDOR:",
+        objective:"OBJETIVO:",
+        hours: "HORAS:",
+        total: "TOTAL:",
+        pointed: "APONTADAS:",
+        skill:"SKILL",
+        pointedHour:"HORAS APONTADAS"
+      },
+      request: {
+        request: "Insira sua Solicitação:",
+        send: "Enviar",
+        change: "Deseja enviar uma solicitação de alteração?",
+        no:"Não",
+        yes: "Sim"
       }
-
     }
   }
 }

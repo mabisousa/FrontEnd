@@ -4,6 +4,7 @@ import { Chart } from "react-google-charts";
 import { BsX } from 'react-icons/bs';
 import Grid from '../Grid';
 import api from "../../services/api"
+import { i18n } from "../../translate/i18n";
 interface Projetos{
   id: number,
   secao: {
@@ -89,20 +90,20 @@ const ProjectPopup: React.FC<Projeto> = ({id, showPopup}) => {
             </TitlePopUp>
             <InfosPopup>
               <InfosGerais open={!!isOpen}  className="cont">
-                <h1>INFORMAÇÕES GERAIS:</h1>
+                <h1>{i18n.t('projectsPopup.infos')}</h1>
                 <div>
-                  <p>GESTOR RESPONSÁVEL: ?</p>
-                  <p>FORNECEDOR: ?</p>
+                  <p>{i18n.t('projectsPopup.manager')} ?</p>
+                  <p>{i18n.t('projectsPopup.provider')} ?</p>
                 </div>
               </InfosGerais>
               <Objetivo open={!!isOpen} className="cont">
-                <h1>OBJETIVO: </h1>
+                <h1>{i18n.t('projectsPopup.objective')} </h1>
                 <p>
                   {project.descricao}
                 </p>
               </Objetivo>
               <Horas open={!!isOpen}  className="cont">
-                <h1>HORAS: </h1>
+                <h1>{i18n.t('projectsPopup.hours')} </h1>
                 <HorasApontadas>
                   <Chart
                     width={'160px'}
@@ -127,10 +128,10 @@ const ProjectPopup: React.FC<Projeto> = ({id, showPopup}) => {
                     }}
                   />
                   <div>
-                    <p>TOTAL:
+                    <p>{i18n.t('projectsPopup.total')}
                       <span>{project.horasTotal}</span> 
                     </p> 
-                    <p>APONTADAS:
+                    <p>{i18n.t('projectsPopup.pointed')}
                       <span>{project.horasApontadas}</span>
                     </p>
                   </div>
@@ -141,8 +142,8 @@ const ProjectPopup: React.FC<Projeto> = ({id, showPopup}) => {
                   <table>
                     <thead>
                       <tr>
-                        <td>SKILL</td>
-                        <td>HORAS APONTADAS</td>
+                        <td>{i18n.t('projectsPopup.skill')}</td>
+                        <td>{i18n.t('projectsPopup.pointedHour')}</td>
                       </tr>
                     </thead>
                     <tbody>
@@ -155,14 +156,16 @@ const ProjectPopup: React.FC<Projeto> = ({id, showPopup}) => {
                     </tbody>
                   </table>
                 </Table>
-                <button id="visualizar" onClick={handleOpenPopup}>VISUALIZAR CONSULTORES</button>
+                <button id="visualizar" onClick={handleOpenPopup}>
+                  {i18n.t('approval.consultants')}
+                </button>
               </Skills>
               <ConsultoresAlocados open={!!isOpen}>
                 <table>
                   <thead>
                     <tr>
-                      <td>CADASTRO</td>
-                      <td>NOME</td>
+                      <td>{i18n.t('ConsultantTable.registration')}</td>
+                      <td>{i18n.t('ConsultantTable.name')}</td>
                     </tr>
                   </thead>
                   <tbody>

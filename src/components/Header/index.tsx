@@ -88,7 +88,7 @@ const Header: React.FC = ({children,...props}) => {
         <div onClick={handleShowDropdown} >
           <IoSettingsSharp />
         </div> 
-        <p id="sair" onClick={exitSystem}>Sair</p>
+        <p id="sair" onClick={exitSystem}>{i18n.t('header.exit')}</p>
         <div id="dropdown">
           <button onClick={handleShowIdioms}>
             <IoLanguage /> 

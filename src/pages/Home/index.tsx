@@ -127,7 +127,7 @@ const Home: React.FC = () => {
           <div>
             <Filter>
               <label>{i18n.t('projects.project')}</label>
-              <input type="text" placeholder="Digite aqui... " value={search} onChange={(ev) => handleFilterName(ev.target.value)}/>
+              <input type="text" placeholder={i18n.t('projects.placeHolder')} value={search} onChange={(ev) => handleFilterName(ev.target.value)}/>
               <div>
                 <label className="secao">{i18n.t('projects.section')}</label>
                 <Dropdown>
@@ -136,7 +136,7 @@ const Home: React.FC = () => {
                     {sections.map((section) => (
                       <button onClick={() => setSection(section.nomeSecao)} key={section.nomeSecao}>{section.nomeSecao}</button>
                     ))}
-                    <button onClick={() => setSection('Todos')}>Todos</button>
+                    <button onClick={() => setSection('Todos')}>{i18n.t('projects.all')}</button>
                   </div>
                 </Dropdown>
               </div>
@@ -145,10 +145,10 @@ const Home: React.FC = () => {
                 <Dropdown>
                   <span>{status}</span>
                   <div>
-                    <button onClick={() => handleFilterStatus("ANDAMENTO")}>Andamento</button>
-                    <button onClick={() => handleFilterStatus("ATRASADO")}>Atrasado</button>
-                    <button onClick={() => handleFilterStatus("CONCLUÍDO")}>Concluído</button>
-                    <button onClick={() => handleFilterStatus("Todos")}>Todos</button>
+                    <button onClick={() => handleFilterStatus("ANDAMENTO")}>{i18n.t('projects.progress')}</button>
+                    <button onClick={() => handleFilterStatus("ATRASADO")}>{i18n.t('projects.late')}</button>
+                    <button onClick={() => handleFilterStatus("CONCLUÍDO")}>{i18n.t('projects.concluded')}</button>
+                    <button onClick={() => handleFilterStatus("Todos")}>{i18n.t('projects.all')}</button>
                   </div>
                 </Dropdown>
               </div>

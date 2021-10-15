@@ -59,20 +59,20 @@ const Consultants: React.FC = () => {
           <Filter>
             <Form>
               <label>{i18n.t('consultants.name')}</label>
-              <input placeholder="Digite aqui..." value={search} onChange={(ev) => setSearch(ev.target.value)}/>
+              <input placeholder={i18n.t('consultants.placeHolder')} value={search} onChange={(ev) => setSearch(ev.target.value)}/>
             </Form>
             <Filterbynumber>
               <p>{i18n.t('consultants.registration')}</p>
               <input/><p> - </p><input/>
             </Filterbynumber>
             <div>
-              <label>{i18n.t('consultants.status')}</label>
+              <label>{i18n.t('projects.status')}</label>
               <Dropdown>
               <span>{status}</span>
                 <div>
                 <button onClick={() => handleFilterStatus('Ativo')}>{i18n.t('consultants.active')}</button>
                 <button onClick={() => handleFilterStatus('Inativo')}>{i18n.t('consultants.inactive')}</button>
-                <button onClick={() => handleFilterStatus('Todos')}>{i18n.t('consultants.all')}</button>
+                <button onClick={() => handleFilterStatus('Todos')}>{i18n.t('projects.all')}</button>
                 </div>
               </Dropdown>
             </div>

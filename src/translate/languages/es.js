@@ -5,20 +5,26 @@ const messages = {
         titleHeader: "PROYECTOS",
         titlePage: "PROYECTOS ASIGNADOS",
         project: "Proyectos:",
+        placeHolder:"Escriba aquí...",
         section: "Sección:",
-        status: "Status:"
+        progress: "Progreso",
+        late:"Tarde",
+        concluded: "Concluido",
       },
       approval: {
         titleHeader: "APROBACIÓN",
-        titlePage: "APROBACIÓN",
         consultantInfo: "INFORMACION DEL CONSULTOR",
+        registration: "Registro",
+        name: "Nombre",
         approvalInfor: "INFORMACIÓN DE APROBACIÓN",
+        dateApproval: "Fecha",
+        responsible: "Responsable",
         totalHours: "HORAS TOTALES:",
-        hourlyRate: "VALOR POR HORA:",
         approvals: "APROBACIONES",
         appointments: "NOTA",
         approved: "APROBADO",
         disapprove: "DESAPROBADO",
+        consultants:"VER CONSULTORES",
         buttonapproved: "APROBAR",
         buttonDisapprove: "DESAPROBAR",
         date: "FECHA",
@@ -26,21 +32,18 @@ const messages = {
         info: "INFO",
         description: "Descripción",
         default: "No hay aprobaciones para aprobar.",
-        registration: "Registro Realizado",
+        registrationAcconplished: "Registro Realizado",
         supplierApproval: "Aprobación Proveedor",
         managerApproval: "Aprobación Gerencial",
         requisition: "Requisición de compra",
         finish: "TERMINAR"
       },
       consultants: {
-        titleHeader: "CONSULTORES",
-        titlePage: "CONSULTORES",
         name: 'Nombre:',
+        placeHolder:"Escriba aquí...",
         registration: "Registro:", 
-        status: "Status:",
         active: "Activo",
-        inactive: "Inactivo",
-        all: "Todos"
+        inactive: "Inactivo"
       },
       login: {
         user: "Usuario",
@@ -49,7 +52,6 @@ const messages = {
         signIn: "Iniciar sesión"
       },
       card: {
-        total: "Total:",
         pointed: "Señaló:",
         status: "Situación:",
         from: "En:",
@@ -61,10 +63,10 @@ const messages = {
       ConsultantTable: {
         registration: "REGISTRO",
         name: "NOMBRE",
-        project: "PROYECTOS",
         details: "DETALLES"
       },
       header: {
+        exit :"Salir",
         font: "Fuente",
         increaseFont: "Aumentar fuent",
         decreaseFont: "Disminuir fuente"
@@ -72,6 +74,23 @@ const messages = {
       menu: {
         projects: "Proyectos",
         approval: "Aprobación"
+      },
+      projectsPopup: {
+        infos: "INFORMACIONES GENERALES:",
+        manager: "GERENTE RESPONSABLE:",
+        provider: "PROVEEDOR:",
+        pointed: "SEÑALADO:",
+        pointedHour:"HORAS SEÑALADO",
+        consultants:"VER CONSULTORES",
+        registration:"REGISTRO",
+        name:"NOMBRE"
+      },
+      request: {
+        request: "Ingrese su Solicitud:",
+        send: "Mandar",
+        change: "¿Quieres enviar una solicitud de cambio?",
+        no:"No",
+        yes: "Sí"
       }
     }
   }

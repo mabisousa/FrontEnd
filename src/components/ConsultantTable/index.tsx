@@ -51,8 +51,8 @@ const ConsultantTable: React.FC<Consultor> = ({status}) => {
               <tr>
                 <td>{i18n.t('ConsultantTable.registration')}</td>
                 <td>{i18n.t('ConsultantTable.name')}</td>
-                <td>{i18n.t('ConsultantTable.status')}</td>
-                <td>{i18n.t('ConsultantTable.project')}</td>
+                <td>{i18n.t('ConsultantPopup.status')}</td>
+                <td>{i18n.t('projects.titleHeader')}</td>
                 <td>{i18n.t('ConsultantTable.details')}</td>
               </tr>
             </thead>
