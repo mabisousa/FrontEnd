@@ -22,6 +22,9 @@ const ConsultantTable: React.FC<Consultor> = ({status}) => {
   const [showPopup, setShowPopup] = useState(false);
   const [consultant, setConsultant] = useState<Consultores[]>([]);
   const [consult, setConsult] = useState<Consultores>();
+  const [darkMode] = useState(false);
+
+  window.localStorage.getItem('Theme:darkMode')
 
   const handleShowPopup = (showPop: boolean) => {
     setShowPopup(showPop);
@@ -48,7 +51,7 @@ const ConsultantTable: React.FC<Consultor> = ({status}) => {
   return (
     <> 
       { consultant &&
-        <Container>
+        <Container darkMode={darkMode}>
           <table>
             <thead>
               <tr>
