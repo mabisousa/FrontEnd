@@ -1,10 +1,38 @@
 import styled, {css} from 'styled-components';
 
-export const Container = styled.div`
+interface tableProps{
+  color?: string;
+  darkMode?: boolean;
+}
+
+export const Container = styled.div<tableProps>`
   margin-left: 130px;
   margin-top: 50px;
   margin-bottom: 40px;
   height: 350px;
+
+  ${(props) => props.darkMode ?
+    css`
+      thead{
+        background: #0075B1;
+      }
+      tbody{
+        border: 1px solid #8B8787;
+      }
+      tr{
+        border-bottom: 1px solid #8B8787;
+      }
+    `: css`
+      thead{
+        background: #0B2E4A;
+      }
+      tbody{
+        border: 1px solid #fff;
+      }
+      tr{
+        border-bottom: 1px solid #fff;
+      }
+    `}
 
   table{
     border-collapse: collapse;
@@ -12,7 +40,6 @@ export const Container = styled.div`
   }
 
   thead{
-    background: #0075B1;
     text-transform: uppercase;
     font-size: .9em;
   }
@@ -26,7 +53,6 @@ export const Container = styled.div`
     overflow-y: scroll;
     overflow-x: hidden;
     display: block;
-    border: 1px solid #8B8787;
   }
 
   tr{
@@ -34,7 +60,6 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
-    border-bottom: 1px solid #8B8787;
     border-top: 0;
     height: 56px;
     color: rgba(0, 0, 0, 0.87);
@@ -52,11 +77,7 @@ export const Container = styled.div`
   }    
 `;
 
-interface colorConsultores{
-  color: string;
-}
-
-export const Tr = styled.div<colorConsultores>`
+export const Tr = styled.div<tableProps>`
 
   ${(props) => props.color === "INATIVO" && 
     css`
@@ -65,11 +86,23 @@ export const Tr = styled.div<colorConsultores>`
       }
   `}
 
+  ${(props) => props.darkMode ?
+    css`
+      border-bottom: 1px solid #8B8787;
+      td{
+        color: #000;
+      }
+    `: css`
+      border-bottom: 1px solid #fff;
+      td{
+        color: #fff;
+      }
+    `}
+
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  border-bottom: 1px solid #8B8787;
   border-top: 0;
   height: 56px;
   color: rgba(0, 0, 0, 0.87);
@@ -83,10 +116,10 @@ export const Tr = styled.div<colorConsultores>`
   td:nth-child(2){
     width: 450px;
     text-align: start;
-  }
+  }  
 
   button{
-    background: #fff;
+    background: transparent;
     border: 0;
     font-size: 1.25em;
   }

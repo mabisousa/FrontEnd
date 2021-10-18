@@ -37,6 +37,9 @@ const Consultants: React.FC = () => {
   const [consultant, setConsultant] = useState<Consultor[]>([]);
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState('Todos');
+  const [darkMode] = useState(false);
+
+  window.localStorage.getItem('Theme:darkMode')
 
   useEffect(() => {
     api.get(`/consultores`).then((response) => {
@@ -58,12 +61,12 @@ const Consultants: React.FC = () => {
       </Header>
       <Profile/>
       <Menu/>
-      <Container>
-        <Filters>
-          <Title>
+      <Container darkMode={darkMode}>
+        <Filters darkMode={darkMode}>
+          <Title darkMode={darkMode}>
             {i18n.t('consultants.titleHeader')}
           </Title>
-          <Filter>
+          <Filter darkMode={darkMode}>
             <Form>
               <label>
                 {i18n.t('consultants.name')}

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { Title, Container, Filter, Cards } from './style';
+import { Title, Container, Filter, Cards, Filters } from './style';
 
 import Dropdown from "../../components/Dropdown";
 import Profile from "../../components/Profile";
@@ -66,21 +66,9 @@ const Home: React.FC = () => {
   const [section, setSection] = useState('Todos');
   const [status, setStatus] = useState('Todos');
   const [search, setSearch] = useState('');
-  const [darkMode, setDarkMode] = useState(() => {
-    const storageTheme = localStorage.getItem(
-      'Theme:darkMode',
-    );
-    if(storageTheme){
-      return JSON.parse(storageTheme)
-    }
-    return [];
-    });
-    useEffect(() => {
-      localStorage.setItem(
-        'Theme:darkMode',
-        JSON.stringify(darkMode)
-      )
-  }, [darkMode]);
+  const [darkMode] = useState(false);
+
+  window.localStorage.getItem('Theme:darkMode')
 
   useEffect(() => {
     if (section !== "Todos" && status !== "Todos") {
@@ -142,65 +130,64 @@ const Home: React.FC = () => {
       <Profile/>
       <Menu/>
       <Container darkMode={darkMode}>
-        <div className="containerHead">
-          <Title>
+        <Filters darkMode={darkMode}>
+          <Title darkMode={darkMode}>
             {i18n.t('projects.titlePage')}
           </Title>
-          <div>
-            <Filter>
-              <label>{i18n.t('projects.project')}</label>
-              <input type="text" placeholder={i18n.t('projects.placeHolder')} 
-                value={search} onChange={(ev) => handleFilterName(ev.target.value)}/>
-              <div>
-                <label className="secao">{i18n.t('projects.section')}</label>
-                <Dropdown>
-                <span>{section}</span>
-                  <div>
-                    {sections.map((section) => (
-                      <button onClick={() => setSection(section.nomeSecao)} key={section.nomeSecao}>
-                        {section.nomeSecao}
-                      </button>
-                    ))}
-                    <button onClick={() => setSection('Todos')}>
-                      {i18n.t('projects.all')}
+          <Filter darkMode={darkMode}>
+            <label>{i18n.t('projects.project')}</label>
+            <input type="text" placeholder={i18n.t('projects.placeHolder')} 
+              value={search} onChange={(ev) => handleFilterName(ev.target.value)}/>
+            <div>
+              <label className="secao">{i18n.t('projects.section')}</label>
+              <Dropdown>
+              <span>{section}</span>
+                <div>
+                  {sections.map((section) => (
+                    <button onClick={() => setSection(section.nomeSecao)} key={section.nomeSecao}>
+                      {section.nomeSecao}
                     </button>
-                  </div>
-                </Dropdown>
-              </div>
-              <div>
-                <label  className="status" >{i18n.t('projects.status')}</label>
-                <Dropdown>
-                  <span>{status}</span>
-                  <div>
-                    <button onClick={() => handleFilterStatus("ANDAMENTO")}>
-                      {i18n.t('projects.progress')}
-                    </button>
-                    <button onClick={() => handleFilterStatus("ATRASADO")}>
-                      {i18n.t('projects.late')}
-                    </button>
-                    <button onClick={() => handleFilterStatus("CONCLUÍDO")}>
-                      {i18n.t('projects.concluded')}
-                    </button>
-                    <button onClick={() => handleFilterStatus("Todos")}>
-                      {i18n.t('projects.all')}
-                    </button>
-                  </div>
-                </Dropdown>
-              </div>
-              <button onClick={handleShowListCard}>
-                <img src={listCard} alt=""/></button>
-              <button onClick={handleShowGridCard}>
-                <img src={gridCard} alt=""/>
-              </button>
-            </Filter>
-          </div>
-        </div>
-      </Container>
-      <Cards > 
+                  ))}
+                  <button onClick={() => setSection('Todos')}>
+                    {i18n.t('projects.all')}
+                  </button>
+                </div>
+              </Dropdown>
+            </div>
+            <div>
+              <label  className="status" >{i18n.t('projects.status')}</label>
+              <Dropdown>
+                <span>{status}</span>
+                <div>
+                  <button onClick={() => handleFilterStatus("ANDAMENTO")}>
+                    {i18n.t('projects.progress')}
+                  </button>
+                  <button onClick={() => handleFilterStatus("ATRASADO")}>
+                    {i18n.t('projects.late')}
+                  </button>
+                  <button onClick={() => handleFilterStatus("CONCLUÍDO")}>
+                    {i18n.t('projects.concluded')}
+                  </button>
+                  <button onClick={() => handleFilterStatus("Todos")}>
+                    {i18n.t('projects.all')}
+                  </button>
+                </div>
+              </Dropdown>
+            </div>
+            <button onClick={handleShowListCard}>
+              <img src={listCard} alt=""/></button>
+            <button onClick={handleShowGridCard}>
+              <img src={gridCard} alt=""/>
+            </button>
+          </Filter>
+        </Filters>
+        <Cards> 
         { filtered.map((projeto) => (
           <Card id={projeto.id} key={projeto.id} show={showCard}/> 
         ))}
       </Cards>
+      </Container>
+      
     </>          
   ) 
 };

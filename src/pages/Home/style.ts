@@ -3,10 +3,10 @@ import styled, {css} from 'styled-components';
 interface changeTheme{
   darkMode: boolean;
 }
+
 export const Container = styled.div<changeTheme>`
   width: 100%;
-  display: flex;
-  justify-content: center;
+  height: 85.4vh;
 
   ${(props) => props.darkMode ?
     css`
@@ -14,46 +14,102 @@ export const Container = styled.div<changeTheme>`
     `: css`
       background: #1F262B;
     `}
+`;
 
-  .containerHead{
-    width: 85%;
-    height: 60px;
+export const Filters = styled.div<changeTheme>`
+  width: 85%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 6rem 0rem 0rem 4rem;
+
+  ${(props) => props.darkMode ?
+    css`
+      label{
+        color: #7E7E7E;
+      }
+    `: css`
+      label{
+        color: #fff;
+      }
+      input{
+        background: #1F262B;
+        border: 1px solid #fff;
+        
+        &::placeholder{
+          color: #fff;
+        }
+      }
+    `}
+
+  div{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-top: 6rem;
+  }
 
-    div{
-      width: 90%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-    }
+  button{
+    border: none;
+    background: transparent;
+  }
 
-    button{
-      border: none;
-      background: transparent;
-    }
+  #img{
+    float: right;
+  }
 
-    img{
-        border-left: 10px;
-      }
+  label{
+    font-size: 1.25em;
+    margin: 10px;
+  }
 
-    @media (max-width: 768px) {
-      img{
-        width: 25px;
-      }
-    }
+  input{
+    padding-left: 2px;
   }
 `;
 
-export const Filter = styled.div`
-  margin-left: 5px;
+export const Filter = styled.div<changeTheme>`
+  width: 90%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  ${(props) => props.darkMode ?
+    css`
+      label{
+        color: #7E7E7E;
+      }
+    `: css`
+      label{
+        color: #fff;
+      }
+      input{
+        background: #1F262B;
+        border: 1px solid #fff;
+        
+        &::placeholder{
+          color: #fff;
+        }
+      }
+    `}
+
+  button{
+    border: none;
+    background: transparent;
+  }
+
+  div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   label{
-    color: #7E7E7E;
     font-size: 1.25em;
     text-align: center;
     margin-left: 5px;
@@ -76,6 +132,7 @@ export const Filter = styled.div`
 
   img{
     margin-left: 10px;
+    border-left: 10px;
   }
 
   @media (max-width: 1024px) and (min-width: 769px)  {
@@ -106,15 +163,27 @@ export const Filter = styled.div`
     div{
       width: 100px;
     }
+
+    img{
+      width: 25px;
+    }
   }
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h1<changeTheme>`
   font-weight:normal;
   font-size: 1.25em;
-  text-decoration: underline #0075B1;
   margin-left: 50px;
   width: 300px;
+
+  ${(props) => props.darkMode ?
+    css`
+      color: #000;
+      text-decoration: underline #0075B1;
+    `: css`
+      color: #fff;
+      text-decoration: underline #57B7DC;
+    `}
 
   @media (max-width:768px) {
     margin-right: 10px;
@@ -124,7 +193,6 @@ export const Title = styled.h1`
 
 export const Cards = styled.div`
   width: 90%;
-  height: 90%;
   margin-left: 89.6px;
   margin-top: 48px;
 
