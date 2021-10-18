@@ -22,7 +22,7 @@ const Header: React.FC = ({children,...props}) => {
   const [showIdioms, setShowIdioms] = useState(true);
   const [showFonts, setShowFonts] = useState(true);
   const [showTheme, setShowTheme] = useState(true);
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
   const history = useHistory();
   
   const handleShowDropdown = useCallback(() => {
