@@ -3,14 +3,21 @@ import styled, { css } from 'styled-components';
 interface cardProps {
   color?: string,
   show: boolean;
+  darkMode?: boolean;
 }
 
 export const Container = styled.a<cardProps>`
-  background-color: #FFFFFF;
   cursor: pointer;
   box-shadow: 5px 5px 5px rgb(0 0 0 / 0.2);
   margin: 1rem;
   float: left;
+
+  ${(props) => props.darkMode ?
+    css`
+      background: #fff; 
+    `: css`
+      background: #11181D;
+    `}
 
   ${(props) => props.color === "ANDAMENTO" &&
     css`
@@ -57,9 +64,15 @@ export const Container = styled.a<cardProps>`
 
 export const TitleSection = styled.p<cardProps>`
   width: 200px;
-  color: #0075B1;
   margin-top: 1rem;
   margin-left: 2rem;
+
+  ${(props) => props.darkMode ?
+    css`
+      color: #0075B1;
+    ` : css`
+      color: #96CBE2;
+    `}
 
   @media (max-width: 1024px) and (min-width: 426px) {
     font-size: .81em;
@@ -78,8 +91,14 @@ export const TitleSection = styled.p<cardProps>`
 `;
 
 export const TitleProject = styled.p<cardProps>`
-  color: #000000;
   margin-left: 2rem;
+
+  ${(props) => props.darkMode ?
+    css`
+      color: #000000;
+    ` : css`
+      color: #fff;
+    `}
 
   @media (max-width: 1024px) and (min-width: 769px) {
     font-size: .94em;
@@ -122,6 +141,13 @@ export const HoldHours = styled.div<cardProps>`
   width:200px;
   height:40px;
   float: left;
+
+  ${(props) => props.darkMode ?
+    css`
+      color: #000000;
+    ` : css`
+      color: #fff;
+    `}
 
   @media (max-width: 425px){
     margin-left: 2rem;
@@ -194,6 +220,13 @@ export const Status = styled.div<cardProps>`
   width:120px;
   float:right;
   text-align: center;
+
+  ${(props) => props.darkMode ?
+    css`
+      color: #000000;
+    ` : css`
+      color: #fff;
+    `}
 
   p:nth-child(1){
     font-weight: regular;
@@ -289,9 +322,19 @@ export const Date = styled.div<cardProps>`
   display: flex;
   justify-content: space-between;
   margin-left: 2rem;
+
+  ${(props) => props.darkMode ?
+    css`
+      p {
+        color: #7E7E7E;
+      }
+    ` : css`
+      p {
+        color: #D2D2D2;
+      }
+    `}
   
   p {
-    color: #7E7E7E;
     float: left;
     font-size: .75em;
   }
