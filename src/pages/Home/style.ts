@@ -6,7 +6,8 @@ interface changeTheme{
 
 export const Container = styled.div<changeTheme>`
   width: 100%;
-  height: 85.4vh;
+  height: auto;
+  position: absolute;
 
   ${(props) => props.darkMode ?
     css`

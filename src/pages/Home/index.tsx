@@ -181,7 +181,7 @@ const Home: React.FC = () => {
             </button>
           </Filter>
         </Filters>
-        <Cards> 
+      <Cards> 
         { filtered.map((projeto) => (
           <Card id={projeto.id} key={projeto.id} show={showCard}/> 
         ))}
