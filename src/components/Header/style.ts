@@ -63,7 +63,7 @@ export const Container = styled.div<dropdownProps>`
         border-left: 1.5px solid #fff;
       }
       #dropdown{
-        //border: solid 1px #fff;
+        border-bottom: solid 1px #fff;
         background-color: #1F262B; 
 
         button{
@@ -120,7 +120,6 @@ export const Container = styled.div<dropdownProps>`
     position: absolute;
     right: 62px;
     top: 35px;
-    border-bottom: 0;
     cursor: pointer;
     min-width: 180px;
     height: auto;

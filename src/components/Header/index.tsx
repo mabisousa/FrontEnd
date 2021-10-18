@@ -106,15 +106,33 @@ const Header: React.FC = ({children,...props}) => {
           <IoSettingsSharp />
         </div> 
         <p id="sair" onClick={exitSystem}>{i18n.t('header.exit')}</p>
-        <div id="dropdown">
-          <button onClick={handleShowIdioms}>
+      </div>
+      {/*<div id="dropdown">
+        <button onClick={handleShowIdioms}>
             <IoLanguage /> 
-            <p>{i18n.t('header.idioms')}</p>          
+            <p>{i18n.t('header.idioms')}</p>   
+          </button>       
+        <IoSettingsSharp onClick={handleShowDropdown}/>
+        <p id="sair" onClick={exitSystem}>Sair</p>
+  </div>*/}
+      <div id="dropdown">
+        <button onClick={handleShowIdioms}>
+          <IoLanguage /> 
+          <p>{i18n.t('header.idioms')}</p>          
+        </button>
+        <div id="idioms">
+          <button  onClick={handleChangeEs}>
+            <img src={bandeiraEspanha} alt=""/> 
+            <span >Español</span> 
+          </button>
+          <button onClick={handleChangeEn}>
+            <img src={bandeiraEUA} alt=""/> 
+            <span>English</span> 
           </button>
           <button onClick={handleChangePt}>
-            <img src={bandeiraBrasil} alt=""/> 
+            <img src={bandeiraBrasil} alt=""/>
             <span>Português do Brasil</span> 
-          </button>    
+          </button>
         </div>
         <button onClick={handleShowFont}>
           <img src={font} alt=""/> 
