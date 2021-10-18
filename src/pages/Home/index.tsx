@@ -66,21 +66,9 @@ const Home: React.FC = () => {
   const [section, setSection] = useState('Todos');
   const [status, setStatus] = useState('Todos');
   const [search, setSearch] = useState('');
-  const [darkMode, setDarkMode] = useState(() => {
-    const storageTheme = localStorage.getItem(
-      'Theme:darkMode',
-    );
-    if(storageTheme){
-      return JSON.parse(storageTheme)
-    }
-    return [];
-    });
-    useEffect(() => {
-      localStorage.setItem(
-        'Theme:darkMode',
-        JSON.stringify(darkMode)
-      )
-  }, [darkMode]);
+  const [darkMode] = useState(false);
+
+  window.localStorage.getItem('Theme:darkMode')
 
   useEffect(() => {
     if (section !== "Todos" && status !== "Todos") {
@@ -143,11 +131,11 @@ const Home: React.FC = () => {
       <Menu/>
       <Container darkMode={darkMode}>
         <div className="containerHead">
-          <Title>
+          <Title darkMode={darkMode}>
             {i18n.t('projects.titlePage')}
           </Title>
           <div>
-            <Filter>
+            <Filter darkMode={darkMode}>
               <label>{i18n.t('projects.project')}</label>
               <input type="text" placeholder={i18n.t('projects.placeHolder')} 
                 value={search} onChange={(ev) => handleFilterName(ev.target.value)}/>
@@ -196,7 +184,7 @@ const Home: React.FC = () => {
           </div>
         </div>
       </Container>
-      <Cards > 
+      <Cards> 
         { filtered.map((projeto) => (
           <Card id={projeto.id} key={projeto.id} show={showCard}/> 
         ))}

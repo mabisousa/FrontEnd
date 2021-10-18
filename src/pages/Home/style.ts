@@ -3,6 +3,7 @@ import styled, {css} from 'styled-components';
 interface changeTheme{
   darkMode: boolean;
 }
+
 export const Container = styled.div<changeTheme>`
   width: 100%;
   display: flex;
@@ -49,11 +50,29 @@ export const Container = styled.div<changeTheme>`
   }
 `;
 
-export const Filter = styled.div`
+export const Filter = styled.div<changeTheme>`
   margin-left: 5px;
 
+  ${(props) => props.darkMode ?
+    css`
+      label{
+        color: #7E7E7E;
+      }
+    `: css`
+      label{
+        color: #fff;
+      }
+      input{
+        background: #1F262B;
+        border: 1px solid #fff;
+        
+        &::placeholder{
+          color: #fff;
+        }
+      }
+    `}
+
   label{
-    color: #7E7E7E;
     font-size: 1.25em;
     text-align: center;
     margin-left: 5px;
@@ -109,12 +128,20 @@ export const Filter = styled.div`
   }
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h1<changeTheme>`
   font-weight:normal;
   font-size: 1.25em;
-  text-decoration: underline #0075B1;
   margin-left: 50px;
   width: 300px;
+
+  ${(props) => props.darkMode ?
+    css`
+      color: #000;
+      text-decoration: underline #0075B1;
+    `: css`
+      color: #fff;
+      text-decoration: underline #57B7DC;
+    `}
 
   @media (max-width:768px) {
     margin-right: 10px;
