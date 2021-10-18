@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
 
 export default createGlobalStyle`
 * {
@@ -14,15 +14,17 @@ export default createGlobalStyle`
   
 body {
   -webkit-font-smoothing: antialiased;
-  font-size: 16px;
+  font: ${() =>
+      !localStorage.getItem("Fontsize") ? '16px Roboto, sans-serif' : localStorage.getItem("Fontsize")
+    };
 }
   
 h1, h2, h3, h4, h5, h6, p {
   font: 16px Roboto, sans-serif;
 }
 
-body, input, button {
-  font: 16px Roboto, sans-serif;
+input, button, label, span {
+  font: 16px Roboto, sans-serif; 
 }
   
 #root {

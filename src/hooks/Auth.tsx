@@ -28,6 +28,10 @@ export const AuthProvider: React.FC = ({ children }) => {
     const jwt = localStorage.getItem("@WEGusers:token");
     const usuario = localStorage.getItem("@WEGusers:usuario");
 
+    if(localStorage.getItem("Fontsize")){
+      document.body.style.fontSize=`${localStorage.getItem("Fontsize")}`;
+    }
+
     if(jwt && usuario) {
       return { jwt, usuario: JSON.parse(usuario) };
     }

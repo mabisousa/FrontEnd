@@ -15,7 +15,7 @@ const messages = {
       approval: {
         titleHeader: "APPROVAL",
         consultantInfo : "CONSULTANT INFORMATION",
-        registration: "Registration",
+        registration: "Register",
         name: "Name",
         approvalInfor: "APPROVAL INFORMATION",
         dateApproval: "Date",
