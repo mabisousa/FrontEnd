@@ -1,14 +1,50 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
-export const Container = styled.div`
+interface profileProps{
+  darkMode: boolean;
+}
+
+export const Container = styled.div<profileProps>`
+  ${(props) => props.darkMode ?
+    css`
+      background: #fff; 
+      border: 1px solid #00579D;
+      div{
+        &::after {
+          content: "";  
+          border-left: 15px solid #014C88;
+        }
+
+        &::before {
+          content: "";  
+          border-left: 15px solid #fff;
+          z-index: 2; 
+        }
+      }
+    `: css`
+      background: #1F262B;
+      border: 1px solid #90C0E3;
+      div{
+        &::after {
+          border-left: 15px solid #90C0E3;
+        }
+
+        &::before {
+          border-left: 15px solid #1F262B;
+        }
+      }
+
+      &:hover{
+        color: #fff;
+      }
+    `}
+
   width: 250px;
   height: 550px;
-  background: #fff;
   position: fixed;
   top: 15%;
   left: -180px;
   padding: 10px;
-  border: 1px solid #00579D;
   border-radius:00px 20px 20px 0px;
   box-shadow: 0px 0px 5px 2px #e2e2e280;
   display: flex;
@@ -32,7 +68,6 @@ export const Container = styled.div`
       right: -15px;   
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
-      border-left: 15px solid #014C88;
     }
 
     &::before {
@@ -42,7 +77,6 @@ export const Container = styled.div`
       right: -13px;  
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
-      border-left: 15px solid #fff;
       z-index: 2; 
     }
 
