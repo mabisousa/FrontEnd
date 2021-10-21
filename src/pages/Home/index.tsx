@@ -175,7 +175,8 @@ const Home: React.FC = () => {
               </Dropdown>
             </div>
             <button onClick={handleShowListCard}>
-              <img src={listCard} alt=""/></button>
+              <img src={listCard} alt=""/>
+            </button>
             <button onClick={handleShowGridCard}>
               <img src={gridCard} alt=""/>
             </button>

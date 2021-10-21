@@ -30,24 +30,18 @@ export const Filters = styled.div<changeTheme>`
     border: none;
     background: transparent;
   }
-
-  label{
-        color: #7E7E7E;
-      }
-
-  #img{
-    float: right;
-  }
-
+  
   label{
     font-size: 1.25em;
-    margin: 10px;
+    color: #7E7E7E;
   }
 
   input{
     padding-left: 2px;
     background: transparent;
     border: 1px solid #7E7E7E;
+    min-height: 20px;
+    font-size: 1em;
     
     &::placeholder{
       color: #7E7E7E;
@@ -56,7 +50,7 @@ export const Filters = styled.div<changeTheme>`
 `;
 
 export const Filter = styled.div<changeTheme>`
-  width: 90%;
+  width:90%;
   height: 60px;
   display: flex;
   flex-direction: row;
@@ -99,6 +93,8 @@ export const Filter = styled.div<changeTheme>`
   img{
     margin-left: 10px;
     border-left: 10px;
+    height: 1.31em;
+    width: 1.31em;
   }
 
   @media (max-width: 1024px) and (min-width: 769px)  {
