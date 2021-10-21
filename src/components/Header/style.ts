@@ -22,31 +22,6 @@ export const Container = styled.div<dropdownProps>`
 
   ${(props) => props.darkMode ?
     css`
-      background: #fff; 
-      #name{
-        p{
-          color: #00579D;
-        }
-      }  
-      #exit{
-        svg{
-          color: #7E7E7E;
-        }
-      }   
-      #sair {
-        color: #00579D;
-        border-left: 1.5px solid #00579D;
-      }
-      #dropdown{
-        border: solid 1px #7E7E7E;
-        background-color: #FFF; 
-
-        button{
-          border-bottom: solid 1px #7E7E7E;
-          color: #7E7E7E;
-        }
-      }
-    `: css`
       background: #1B2126;
       #name{
         p{
@@ -70,6 +45,31 @@ export const Container = styled.div<dropdownProps>`
           color: #fff;
         }
       }
+    `: css`
+      background: #fff; 
+        #name{
+          p{
+            color: #00579D;
+          }
+        }  
+        #exit{
+          svg{
+            color: #7E7E7E;
+          }
+        }   
+        #sair {
+          color: #00579D;
+          border-left: 1.5px solid #00579D;
+        }
+        #dropdown{
+          border: solid 1px #7E7E7E;
+          background-color: #FFF; 
+
+          button{
+            border-bottom: solid 1px #7E7E7E;
+            color: #7E7E7E;
+          }
+        }
     `}
 
   #name{
@@ -198,18 +198,18 @@ export const Container = styled.div<dropdownProps>`
     #switchThemeLight{
       ${(props) => props.changeTheme ?
       css`
-        display: block;
-      `: css`
         display: none;
+      `: css`
+        display: block;
       `}
     }
 
     #switchThemeDark{
       ${(props) => props.changeTheme ?
       css`
-        display: none;
-      `: css`
         display: block;
+      `: css`
+        display: none;
       `}
     }     
   }

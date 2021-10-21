@@ -8,13 +8,6 @@ export const Container = styled.main<changeTheme>`
   width: 100%;
   height: 100%;
   position: fixed;
-
-  ${(props) => props.darkMode ?
-    css`
-      background: #fff; 
-    `: css`
-      background: #1F262B;
-    `}
 `;
 
 export const Filters = styled.div<changeTheme>`
@@ -25,25 +18,6 @@ export const Filters = styled.div<changeTheme>`
   align-items: center;
   justify-content: space-between;
   margin: 6rem 0rem 0rem 4rem;
-
-  ${(props) => props.darkMode ?
-    css`
-      label{
-        color: #7E7E7E;
-      }
-    `: css`
-      label{
-        color: #fff;
-      }
-      input{
-        background: #1F262B;
-        border: 1px solid #fff;
-        
-        &::placeholder{
-          color: #fff;
-        }
-      }
-    `}
 
   div{
     display: flex;
@@ -62,12 +36,19 @@ export const Filters = styled.div<changeTheme>`
   }
 
   label{
+    color: #7E7E7E;
     font-size: 1.25em;
     margin: 10px;
   }
 
   input{
     padding-left: 2px;
+    background: transparent;
+    border: 1px solid #7E7E7E;
+    
+    &::placeholder{
+      color: #7E7E7E;
+    }
   }
 `;
 
@@ -79,15 +60,9 @@ export const Filter = styled.div<changeTheme>`
   align-items: center;
   justify-content: space-between;
 
-  ${(props) => props.darkMode ?
-    css`
-      color: #7E7E7E;
-    `: css`
-      color: #fff;
-    `}
-
   p{
     font-size: 1.25em;
+    color: #7E7E7E;
     text-align: center;
     margin-right: 10px;
     margin-left: 10px;

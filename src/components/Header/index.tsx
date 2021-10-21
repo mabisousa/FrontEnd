@@ -21,7 +21,7 @@ const Header: React.FC = ({children,...props}) => {
   const [showDropdown, setShowDropDown] = useState(true);
   const [showIdioms, setShowIdioms] = useState(true);
   const [showFonts, setShowFonts] = useState(true);
-  const [showTheme, setShowTheme] = useState(true);
+  const [showTheme, setShowTheme] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const history = useHistory();
   
@@ -50,14 +50,17 @@ const Header: React.FC = ({children,...props}) => {
   }, [showFonts, setShowFonts]); 
 
   const handleChangeTheme = useCallback(() => {
-    if(!!showTheme === false && darkMode === true) {
+    if(showTheme === false && darkMode === false) {
       setShowTheme(true);  
-      setDarkMode(false);
-      window.localStorage.setItem('Theme:darkMode', JSON.stringify(darkMode));
+      setDarkMode(true);
+      localStorage.setItem('Theme:darkMode', JSON.stringify(darkMode));
+      document.body.style.background="#1F262B"
     }else {
       setShowTheme(false); 
-      setDarkMode(true)
-      window.localStorage.setItem('Theme:darkMode', JSON.stringify(darkMode));
+      setDarkMode(false)
+      localStorage.setItem('Theme:darkMode', JSON.stringify(darkMode));
+      document.body.style.background="#fff"
+
     }
   }, [showTheme, darkMode]);
   
