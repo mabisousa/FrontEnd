@@ -8,13 +8,6 @@ export const Container = styled.div<changeTheme>`
   width: 100%;
   height: auto;
   position: absolute;
-
-  ${(props) => props.darkMode ?
-    css`
-      background: #fff; 
-    `: css`
-      background: #1F262B;
-    `}
 `;
 
 export const Filters = styled.div<changeTheme>`
@@ -25,25 +18,6 @@ export const Filters = styled.div<changeTheme>`
   align-items: center;
   justify-content: space-between;
   margin: 6rem 0rem 0rem 4rem;
-
-  ${(props) => props.darkMode ?
-    css`
-      label{
-        color: #7E7E7E;
-      }
-    `: css`
-      label{
-        color: #fff;
-      }
-      input{
-        background: #1F262B;
-        border: 1px solid #fff;
-        
-        &::placeholder{
-          color: #fff;
-        }
-      }
-    `}
 
   div{
     display: flex;
@@ -57,6 +31,10 @@ export const Filters = styled.div<changeTheme>`
     background: transparent;
   }
 
+  label{
+        color: #7E7E7E;
+      }
+
   #img{
     float: right;
   }
@@ -68,6 +46,12 @@ export const Filters = styled.div<changeTheme>`
 
   input{
     padding-left: 2px;
+    background: transparent;
+    border: 1px solid #7E7E7E;
+    
+    &::placeholder{
+      color: #7E7E7E;
+    }
   }
 `;
 
@@ -78,25 +62,6 @@ export const Filter = styled.div<changeTheme>`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
-  ${(props) => props.darkMode ?
-    css`
-      label{
-        color: #7E7E7E;
-      }
-    `: css`
-      label{
-        color: #fff;
-      }
-      input{
-        background: #1F262B;
-        border: 1px solid #fff;
-        
-        &::placeholder{
-          color: #fff;
-        }
-      }
-    `}
 
   button{
     border: none;
