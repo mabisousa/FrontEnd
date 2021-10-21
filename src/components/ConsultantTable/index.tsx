@@ -18,40 +18,40 @@ interface Consultor {
   status: string
 }
 
-const ConsultantTable: React.FC<Consultor> = ({status}) => {
-  const [showPopup, setShowPopup] = useState(false);
-  const [consultant, setConsultant] = useState<Consultores[]>([]);
-  const [consult, setConsult] = useState<Consultores>();
-  const [darkMode] = useState(false);
+const TabelaConsultor: React.FC<Consultor> = ({status}) => {
+  const [mostrarPopup, setMostrarPopup] = useState(false);
+  const [consultor, setConsultor] = useState<Consultores[]>([]);
+  const [consulta, setConsulta] = useState<Consultores>();
+  const [modoEscuro] = useState(false);
 
   window.localStorage.getItem('Theme:darkMode')
 
   const handleShowPopup = (showPop: boolean) => {
-    setShowPopup(showPop);
+    setMostrarPopup(showPop);
   }
 
   const handleOpenPopup = useCallback((id: number) => {
-    setShowPopup(!showPopup);
-    setConsult(consultant[id-1]);
+    setMostrarPopup(!mostrarPopup);
+    setConsulta(consultor[id-1]);
 
-  },[consultant, setConsult, setShowPopup, showPopup]);
+  },[consultor, setConsulta, setMostrarPopup, mostrarPopup]);
 
   useEffect(() => {
     if(status !== 'Todos'){
       api.get(`/consultores/status/${status}`).then((response) => {
-        setConsultant(response.data)
+        setConsultor(response.data)
       })
     } else {
       api.get(`/consultores`).then((response) => {
-        setConsultant(response.data);
+        setConsultor(response.data);
       })
     }
-  }, [consultant, setConsultant, status]);
+  }, [consultor, setConsultor, status]);
   
   return (
     <> 
-      { consultant &&
-        <Container darkMode={darkMode}>
+      { consultor &&
+        <Container darkMode={modoEscuro}>
           <table>
             <thead>
               <tr>
@@ -73,7 +73,7 @@ const ConsultantTable: React.FC<Consultor> = ({status}) => {
               </tr>
             </thead>
             <tbody>
-              {consultant.map((consultant) => (
+              {consultor.map((consultant) => (
                 <Tr color={consultant.status}>
                   <td>
                     {consultant.id}
@@ -97,11 +97,11 @@ const ConsultantTable: React.FC<Consultor> = ({status}) => {
         </Container>
       } 
         
-      { showPopup && consult &&
-        <Popup id={consult.id} showPopup={handleShowPopup}/>
+      { mostrarPopup && consulta &&
+        <Popup id={consulta.id} mostrarPopup={handleShowPopup}/>
       }
     </>
   )
 };
 
-export default ConsultantTable;
+export default TabelaConsultor;

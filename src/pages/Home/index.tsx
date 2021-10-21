@@ -184,7 +184,7 @@ const Home: React.FC = () => {
         </Filters>
       <Cards> 
         { filtered.map((projeto) => (
-          <Card id={projeto.id} key={projeto.id} show={showCard}/> 
+          <Card id={projeto.id} key={projeto.id} mostrar={showCard}/> 
         ))}
       </Cards>
       </Container>

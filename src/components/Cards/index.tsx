@@ -46,14 +46,14 @@ interface Projetos{
 
 interface Projeto {
   id: number,
-  show: boolean
+  mostrar: boolean
 }
 
-const Cards: React.FC<Projeto> = ({id, show}) => {
+const Cards: React.FC<Projeto> = ({id, mostrar}) => {
 
-  const [showPopup, setShowPopup] = useState(false);
-  const [project, setProject] = useState<Projetos>();
-  const [darkMode] = useState(false);
+  const [mostrarPopup, setmostarPopup] = useState(false);
+  const [projeto, setProject] = useState<Projetos>();
+  const [modoEscuro] = useState(false);
 
   window.localStorage.getItem('Theme:darkMode')
 
@@ -63,54 +63,54 @@ const Cards: React.FC<Projeto> = ({id, show}) => {
     })
   }, [id]);
 
-  const handleshowPopup = (showPop: boolean) => {
-    setShowPopup(showPop);
+  const handleMostarPopup = (showPop: boolean) => {
+    setmostarPopup(showPop);
   }
 
   return (
     <>
-      { project &&
-        <Container show={!!show} color={project.status} 
-          onClick={() => (setShowPopup(!showPopup))} key={project.id} darkMode={darkMode}>
-          <TitleSection show={!!show} darkMode={darkMode}>
-            {project.secao.idSecao} - {project.secao.nomeSecao}
+      { projeto &&
+        <Container show={!!mostrar} color={projeto.status} 
+          onClick={() => (setmostarPopup(!mostrarPopup))} key={projeto.id} darkMode={modoEscuro}>
+          <TitleSection show={!!mostrar} darkMode={modoEscuro}>
+            {projeto.secao.idSecao} - {projeto.secao.nomeSecao}
           </TitleSection>
-          <TitleProject show={!!show} darkMode={darkMode}>
-            {project.id} - {project.nome} 
+          <TitleProject show={!!mostrar} darkMode={modoEscuro}>
+            {projeto.id} - {projeto.nome} 
           </TitleProject>
-          <HoldHours show={!!show} darkMode={darkMode}>
-            <Hours show={!!show}>
+          <HoldHours show={!!mostrar} darkMode={modoEscuro}>
+            <Hours show={!!mostrar}>
               <p>
                 {i18n.t('card.total')}
               </p>
               <p>
-                {project.horasTotal}
+                {projeto.horasTotal}
               </p>
             </Hours>
-            <Hours show={!!show}>
+            <Hours show={!!mostrar}>
               <p>
                 {i18n.t('card.pointed')}
               </p>
               <p>
-                {project.horasApontadas}
+                {projeto.horasApontadas}
               </p>
             </Hours>
           </HoldHours>
-          <Status show={!!show} darkMode={darkMode}>
+          <Status show={!!mostrar} darkMode={modoEscuro}>
             <p>
               {i18n.t('card.status')}
             </p>
             <p>
-              {project.status}
+              {projeto.status}
             </p>
           </Status>
-          <Date show={!!show} darkMode={darkMode}>
+          <Date show={!!mostrar} darkMode={modoEscuro}>
             <p>
-              {i18n.t('card.from')} {project.dataInicio.substring(0,10)}
+              {i18n.t('card.from')} {projeto.dataInicio.substring(0,10)}
             </p>
-            { project.dataFim ?
+            { projeto.dataFim ?
               <p>
-                {i18n.t('card.to')} {project.dataFim.substring(0,10)}
+                {i18n.t('card.to')} {projeto.dataFim.substring(0,10)}
               </p>
             :
               <p>
@@ -120,8 +120,8 @@ const Cards: React.FC<Projeto> = ({id, show}) => {
           </Date>
         </Container>
       }
-      { showPopup && project &&
-        <Popup id={project.id} showPopup={handleshowPopup}/> 
+      { mostrarPopup && projeto &&
+        <Popup id={projeto.id} mostrarPopup={handleMostarPopup}/> 
       }
     </>                
   ) 

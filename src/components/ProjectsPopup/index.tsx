@@ -30,14 +30,6 @@ interface Projetos{
   dataFim: string,
   horasApontadas: number,
   horasTotal: number,
-  /*apontamentos: [{
-    id: number,
-    alocacao: {
-      skill:string,
-    },
-    horasTrabalhadas: number,
-    situacaoApontamento: string,
-  }]*/
   skills: [
     {
       id: number,
@@ -50,58 +42,58 @@ interface Projetos{
 
 interface Projeto {
   id: number,
-  showPopup: (arg0: boolean) => void,
+  mostrarPopup: (arg0: boolean) => void,
 }
 
-const ProjectPopup: React.FC<Projeto> = ({id, showPopup}) => {
+const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
 
-    const [isOpen, setOpen] = useState(false);
-    const [project, setProject] = useState<Projetos>();
+  const [estaAberto, setAberto] = useState(false);
+  const [projeto, setProjeto] = useState<Projetos>();
 
-    const handleOpenPopup = useCallback(() => {
-      if(!!isOpen === false) {
-        setOpen(true);    
-      } else {
-        setOpen(false);    
-      }
-    }, [isOpen, setOpen]);
-      
-    const handleClosePopup = () => {
-      showPopup(false);
+  const handleOpenPopup = useCallback(() => {
+    if(!!estaAberto === false) {
+      setAberto(true);    
+    } else {
+      setAberto(false);    
     }
+  }, [estaAberto, setAberto]);
+    
+  const handleClosePopup = () => {
+    mostrarPopup(false);
+  }
 
-    useEffect(() => {
-      api.get(`/projetos/${id}`).then((response) => {
-        setProject(response.data)
-      })
-    }, [project, setProject, id]);
+  useEffect(() => {
+    api.get(`/projetos/${id}`).then((response) => {
+      setProjeto(response.data)
+    })
+  }, [projeto, setProjeto, id]);
 
-    let restantes = 0;
-    let apontadas = 0;
-  
-    if (project) {
-      apontadas = project.horasApontadas;
-      restantes = project.horasTotal - apontadas;
-    } 
+  let restantes = 0;
+  let apontadas = 0;
+
+  if (projeto) {
+    apontadas = projeto.horasApontadas;
+    restantes = projeto.horasTotal - apontadas;
+  } 
 
   return(
     <>
-      { project &&
-        <Container open={!!isOpen}  show={!!showPopup}>
+      { projeto &&
+        <Container open={!!estaAberto}  show={!!mostrarPopup}>
           <div id="hold">
             <button onClick={handleClosePopup}>
               <BsX/>
             </button>
             <TitlePopUp>
               <h2> 
-                {project.secao.idSecao} - {project.secao.nomeSecao}
+                {projeto.secao.idSecao} - {projeto.secao.nomeSecao}
               </h2>
               <h1>
-                {project.id} - {project.nome}
+                {projeto.id} - {projeto.nome}
               </h1>
             </TitlePopUp>
             <InfosPopup>
-              <InfosGerais open={!!isOpen}  className="cont">
+              <InfosGerais open={!!estaAberto}  className="cont">
                 <h1>
                   {i18n.t('projectsPopup.infos')}
                 </h1>
@@ -114,15 +106,15 @@ const ProjectPopup: React.FC<Projeto> = ({id, showPopup}) => {
                   </p>
                 </div>
               </InfosGerais>
-              <Objetivo open={!!isOpen} className="cont">
+              <Objetivo open={!!estaAberto} className="cont">
                 <h1>
                   {i18n.t('projectsPopup.objective')} 
                 </h1>
                 <p>
-                  {project.descricao}
+                  {projeto.descricao}
                 </p>
               </Objetivo>
-              <Horas open={!!isOpen}  className="cont">
+              <Horas open={!!estaAberto}  className="cont">
                 <h1>
                   {i18n.t('projectsPopup.hours')} 
                 </h1>
@@ -153,19 +145,19 @@ const ProjectPopup: React.FC<Projeto> = ({id, showPopup}) => {
                     <p>
                       {i18n.t('projectsPopup.total')}
                       <span>
-                        {project.horasTotal}
+                        {projeto.horasTotal}
                       </span> 
                     </p> 
                     <p>
                       {i18n.t('projectsPopup.pointed')}
                       <span>
-                        {project.horasApontadas}
+                        {projeto.horasApontadas}
                       </span>
                     </p>
                   </div>
                 </HorasApontadas>
               </Horas>
-              <Skills open={!!isOpen}  className="cont">
+              <Skills open={!!estaAberto}  className="cont">
                 <Table id="table">
                   <table>
                     <thead>
@@ -179,7 +171,7 @@ const ProjectPopup: React.FC<Projeto> = ({id, showPopup}) => {
                       </tr>
                     </thead>
                     <tbody>
-                      {project.skills.map(skill => (
+                      {projeto.skills.map((skill) => (
                         <tr key={skill.id}>
                           <td>
                             {skill.nome}
@@ -196,7 +188,7 @@ const ProjectPopup: React.FC<Projeto> = ({id, showPopup}) => {
                   {i18n.t('approval.consultants')}
                 </button>
               </Skills>
-              <ConsultoresAlocados open={!!isOpen}>
+              <ConsultoresAlocados open={!!estaAberto}>
                 <table>
                   <thead>
                     <tr>
@@ -209,7 +201,7 @@ const ProjectPopup: React.FC<Projeto> = ({id, showPopup}) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {project.consultores.map((consultor) => (
+                    {projeto.consultores.map((consultor) => (
                       <tr key={consultor.id}>
                         <td>
                           {consultor.id}
@@ -223,10 +215,10 @@ const ProjectPopup: React.FC<Projeto> = ({id, showPopup}) => {
                 </table>
               </ConsultoresAlocados>
             </InfosPopup>
-            <DetailsPopup color={project.status}>
+            <DetailsPopup color={projeto.status}>
               <Grid/>
               <h1>
-                {project.status}
+                {projeto.status}
               </h1>
             </DetailsPopup>
           </div>

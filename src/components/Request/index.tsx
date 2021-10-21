@@ -8,27 +8,27 @@ import { i18n } from '../../translate/i18n';
 
 const Request: React.FC = () => {
 
-  const [isConfirm, setConfirm] = useState(false);
-  const [content, newContent] = useState('');
+  const [estaConfirmado, setConfirmado] = useState(false);
+  const [conteudo, newConteudo] = useState('');
 
   const handleBackRequest = useCallback(() => {
-    setConfirm(false);
+    setConfirmado(false);
   }, []);
 
   const handleRequest = useCallback(() => {
-    setConfirm(true);
+    setConfirmado(true);
   }, []);
 
   const handleSubmit = useCallback(() => {
-    if(isConfirm) {
-      console.log(content)
+    if(estaConfirmado) {
+      console.log(conteudo)
     }
-  }, [isConfirm, content]);
+  }, [estaConfirmado, conteudo]);
 
   return (
     <>
-      <Container id="request" confirm={isConfirm}>
-        {!!isConfirm ? 
+      <Container id="request" confirm={estaConfirmado}>
+        {!!estaConfirmado ? 
           <>
             <div>
               <RiArrowLeftSLine onClick={handleBackRequest}/>
@@ -37,8 +37,8 @@ const Request: React.FC = () => {
               </p>
             </div>
             <textarea id="text"
-              value={content}
-              onChange={e => newContent(e.target.value)}
+              value={conteudo}
+              onChange={e => newConteudo(e.target.value)}
             />
             <button onClick={handleSubmit}>
               {i18n.t('request.send')}

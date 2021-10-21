@@ -5,26 +5,24 @@ import { Container } from "./style";
 import { IoIosArrowBack }  from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 
-
-
 const Dropdown: React.FC = (props) => {
 
-  const [showDropdown, setShowDropDown] = useState(true) 
-  const [showArrow, setShowArrow] = useState(true);
+  const [mostrarDropdown, setMostrarDropdown] = useState(true) 
+  const [alterarFlecha, setAlterarFlecha] = useState(true);
 
   const handleShowDropdown = useCallback(() => {
-    if(!!showDropdown === false) {
-      setShowDropDown(true);
-      setShowArrow(true);    
+    if(!!mostrarDropdown === false) {
+      setMostrarDropdown(true);
+      setAlterarFlecha(true);    
     }else {
-      setShowDropDown(false);  
-      setShowArrow(false);     
+      setMostrarDropdown(false);  
+      setAlterarFlecha(false);     
     }
-  }, [showDropdown, setShowDropDown]);
+  }, [mostrarDropdown, setMostrarDropdown]);
 
   return(
     <>
-      <Container showDropdown={!!showDropdown} showArrow={!!showArrow}>
+      <Container showDropdown={!!mostrarDropdown} showArrow={!!alterarFlecha}>
         <div onClick={handleShowDropdown} id="dropdown">
             <IoIosArrowDown id="arrowDown" />
             <IoIosArrowBack id="arrowLeft" />

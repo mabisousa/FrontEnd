@@ -10,12 +10,12 @@ type ProfileProps  = HTMLAttributes<HTMLDivElement>;
 
 const Profile: React.FC<ProfileProps> = (props) => {
 
-  const [darkMode] = useState(false);
+  const [modoEscuro] = useState(false);
 
   window.localStorage.getItem('');
   
   return(
-    <Container  darkMode={darkMode} {...props}>
+    <Container  darkMode={modoEscuro} {...props}>
       <div>
         <div id="perfil">
           <img src={ avatar } alt="" />

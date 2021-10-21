@@ -35,29 +35,29 @@ interface Consultores{
 
 interface Consultor {
   id: number,
-  showPopup: (arg0: boolean) => void,
+  mostrarPopup: (arg0: boolean) => void,
 }
 
-const ConsultantPopup: React.FC<Consultor> = ({id, showPopup} ) => {
+const PopupConsultor: React.FC<Consultor> = ({id, mostrarPopup} ) => {
 
-  const [consultant, setConsultant] = useState<Consultores>();
+  const [consultor, setConsultor] = useState<Consultores>();
 
   useEffect(() => {
     api.get(`/consultores/${id}`).then((response) => {
-      setConsultant(response.data)
+      setConsultor(response.data)
     })
-  }, [consultant, setConsultant, id]);
+  }, [consultor, setConsultor, id]);
   
-  const handleClosePopup = () => {
-    showPopup(false);
+  const handleFecharPopup = () => {
+    mostrarPopup(false);
   }
 
   return (
     <>
-      { consultant && 
-        <Container show={!!showPopup}>
+      { consultor && 
+        <Container show={!!mostrarPopup}>
           <div id="hold">
-            <button onClick={handleClosePopup}>
+            <button onClick={handleFecharPopup}>
               <BsX/>
             </button>
             <PopUpInfo>
@@ -65,10 +65,10 @@ const ConsultantPopup: React.FC<Consultor> = ({id, showPopup} ) => {
                 <HiUserCircle/>
                 <div id="EmployeeInformation">
                   <h1>
-                    {consultant.id} - {consultant.nome}
+                    {consultor.nome} -{consultor.id} 
                   </h1>
                   <p>
-                    {i18n.t('ConsultantPopup.email')}  {consultant.usuario.email}
+                    {i18n.t('ConsultantPopup.email')}  {consultor.usuario.email}
                   </p>
                 </div>
               </header>
@@ -79,7 +79,7 @@ const ConsultantPopup: React.FC<Consultor> = ({id, showPopup} ) => {
                   {i18n.t('ConsultantPopup.skills')}
                 </h5>
                 <HoldContent>
-                  {consultant.alocacoes.map((alocacao => (
+                  {consultor.alocacoes.map((alocacao => (
                     alocacao.skill.nome
                   )))}
                 </HoldContent>
@@ -100,16 +100,16 @@ const ConsultantPopup: React.FC<Consultor> = ({id, showPopup} ) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {consultant.projetos.map((project => (
-                      <tr key={project.id}>
+                    {consultor.projetos.map((projeto => (
+                      <tr key={projeto.id}>
                       <td>
-                        {project.id}
+                        {projeto.id}
                       </td>
                       <td>
-                        {project.status}
+                        {projeto.status}
                       </td>
                       <td>
-                        {project.nome}
+                        {projeto.nome}
                       </td> 
                     </tr>
                       )))}
@@ -127,4 +127,4 @@ const ConsultantPopup: React.FC<Consultor> = ({id, showPopup} ) => {
   )
 }
 
-export default ConsultantPopup;
+export default PopupConsultor;
