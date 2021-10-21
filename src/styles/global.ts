@@ -14,16 +14,17 @@ export default createGlobalStyle`
   
 body {
   -webkit-font-smoothing: antialiased;
-  font: ${() =>
-      !localStorage.getItem("Fontsize") ? '16px Roboto, sans-serif' : localStorage.getItem("Fontsize")
+  font-size: ${() =>
+      !localStorage.getItem("Fontsize") ? '16px ' : localStorage.getItem("Fontsize")
     };
+    font-family: Roboto, sans-serif;
 }
   
 h1, h2, h3, h4, h5, h6, p {
   font: 16px Roboto, sans-serif;
 }
 
-input, button, label, span {
+input, button {
   font: 16px Roboto, sans-serif; 
 }
   
