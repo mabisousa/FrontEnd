@@ -8,7 +8,7 @@ interface dropdownProps {
 export const Container = styled.div<dropdownProps>`
   #dropdown{
     width: 150px;
-    height: 20px;
+    min-height: 20px;
     border: solid 1px  #7E7E7E;
     color:#7E7E7E;
     font-size: .9em;
@@ -51,6 +51,8 @@ export const Container = styled.div<dropdownProps>`
     #arrowDown{
       float: right;
       display: block;
+      height: 1.06em;
+      width: 1.06em;
 
       ${(props) => props.showArrow ?
         css`

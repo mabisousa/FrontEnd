@@ -11,6 +11,7 @@ export const Container = styled.a<cardProps>`
   box-shadow: 5px 5px 5px rgb(0 0 0 / 0.2);
   margin: 1rem;
   float: left;
+  min-height: 150px;
 
   ${(props) => props.darkMode ?
     css`
@@ -37,10 +38,10 @@ export const Container = styled.a<cardProps>`
   ${(props) => props.show ? 
     css` 
       width: 30%;
-      height : 200px;
+      min-height : 200px;
     `: css`
       width:45%; 
-      height: 150px;
+      min-height: 150px;
 
     @media (max-width: 1024px) and (min-width: 769px) {
       margin: .6rem;
@@ -139,7 +140,7 @@ export const TitleProject = styled.p<cardProps>`
 
 export const HoldHours = styled.div<cardProps>`
   width:200px;
-  height:40px;
+  min-height:40px;
   float: left;
 
   ${(props) => props.darkMode ?
@@ -180,7 +181,7 @@ export const HoldHours = styled.div<cardProps>`
 `;
 
 export const Hours = styled.div<cardProps>`
-  height:20px;
+  min-height:20px;
   margin-left: 15%;
   display: flex;
   justify-content: space-between;
@@ -217,7 +218,8 @@ export const Hours = styled.div<cardProps>`
 `;
 
 export const Status = styled.div<cardProps>`
-  width:120px;
+  width:7.7em;
+  max-width: 10em;
   float:right;
   text-align: center;
 
@@ -231,6 +233,7 @@ export const Status = styled.div<cardProps>`
   p:nth-child(1){
     font-weight: regular;
     font-size: .95em;
+    
   }
 
   p:nth-child(2){
@@ -242,7 +245,7 @@ export const Status = styled.div<cardProps>`
     css` 
       margin-top: 17px;
       margin-right: 16px;
-      height:60px;
+      min-height:60px;
       
       p:nth-child(1){
         font-size: .9em;
@@ -254,7 +257,7 @@ export const Status = styled.div<cardProps>`
     `: css`
       margin-top: 7px;
       margin-right: 32px;
-      height:60px;
+      min-height:60px;
 
       p:nth-child(1){
         font-size: .95em;
@@ -275,7 +278,7 @@ export const Status = styled.div<cardProps>`
 
   @media (max-width: 1024px) and (min-width: 769px) {
     margin-right: 25px;
-    height: 45px;
+    min-height: 45px;
     
     p:nth-child(1){
       font-weight: regular;
@@ -290,7 +293,7 @@ export const Status = styled.div<cardProps>`
 
   @media (max-width: 768px) and (min-width: 426px) {
     margin-right: 15px;
-    height:60px;
+    min-height:60px;
 
     p:nth-child(1){
       font-weight: regular;
@@ -318,7 +321,7 @@ export const Status = styled.div<cardProps>`
 `;
 
 export const Date = styled.div<cardProps>`
-  height:15px;
+  min-height:15px;
   display: flex;
   justify-content: space-between;
   margin-left: 2rem;
