@@ -24,8 +24,8 @@ export const Container = styled.div`
 `;
 
 export const Infos = styled.div`
-  height: 40vh;
-  width: 30vw;
+  height: 18.75em;
+  width: 25.63em;
   display:flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -38,8 +38,8 @@ export const Infos = styled.div`
 
         .information {
             margin: 3% 0;
-            width: 100%;
-            height: 100%;
+            width: 24em;
+            height: 60px;
            
             p {
                 font-size: 12px;
