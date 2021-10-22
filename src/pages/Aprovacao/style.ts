@@ -9,7 +9,7 @@ export const Container = styled.div`
   padding: 1% 8% 1% 8%;
 
   h1 {
-    font-size: 1em;
+    font-size: 16px;
     font-weight:500;
     margin:10px 0;
   }
@@ -24,8 +24,8 @@ export const Container = styled.div`
 `;
 
 export const Infos = styled.div`
-  height: 18.75em;
-  width: 25.63em;
+  height: 40vh;
+  width: 30vw;
   display:flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -38,8 +38,8 @@ export const Infos = styled.div`
 
         .information {
             margin: 3% 0;
-            width: 24em;
-            height: 60px;
+            width: 100%;
+            height: 100%;
            
             p {
                 font-size: 12px;
