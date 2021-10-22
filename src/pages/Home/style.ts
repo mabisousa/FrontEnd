@@ -67,6 +67,7 @@ export const Filter = styled.div<changeTheme>`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    min-height: 1.25em;
   }
 
   label{

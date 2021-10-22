@@ -138,10 +138,12 @@ const Home: React.FC = () => {
             <label>{i18n.t('projects.project')}</label>
             <input type="text" placeholder={i18n.t('projects.placeHolder')} 
               value={search} onChange={(ev) => handleFilterName(ev.target.value)}/>
-            <div>
+            <div >
               <label className="secao">{i18n.t('projects.section')}</label>
               <Dropdown>
-              <span>{section}</span>
+                <span>
+                  {section}
+                </span>
                 <div>
                   {sections.map((section) => (
                     <button onClick={() => setSection(section.nomeSecao)} key={section.nomeSecao}>

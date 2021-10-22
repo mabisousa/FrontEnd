@@ -8,7 +8,7 @@ interface dropdownProps {
 export const Container = styled.div<dropdownProps>`
   #dropdown{
     width: 150px;
-    min-height: 20px;
+    height: 20px;
     border: solid 1px  #7E7E7E;
     color:#7E7E7E;
     font-size: .9em;
@@ -22,7 +22,7 @@ export const Container = styled.div<dropdownProps>`
 
     div{
       width: 150px;
-      position: relative;
+      position:relative;
       left: -1px;
       border: solid 1px  #7E7E7E;
       color: #7E7E7E;
