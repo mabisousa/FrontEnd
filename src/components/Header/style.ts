@@ -5,7 +5,6 @@ interface dropdownProps {
   showIdioms: boolean;
   showFonts: boolean;
   changeTheme: boolean;
-  darkMode: boolean;
 }
 
 export const Container = styled.div<dropdownProps>`
@@ -19,58 +18,7 @@ export const Container = styled.div<dropdownProps>`
   left: 0;
   z-index: 999;
   border-bottom: 2px solid #90C0E3;  
-
-  ${(props) => props.darkMode ?
-    css`
-      background: #1B2126;
-      #name{
-        p{
-          color: #fff;
-        }
-      } 
-      #exit{
-        svg{
-          color: #fff;
-        }
-      }  
-      #sair {
-        color: #fff;
-        border-left: 1.5px solid #fff;
-      }
-      #dropdown{
-        border-bottom: solid 1px #fff;
-        background-color: #1F262B; 
-
-        button{
-          color: #fff;
-        }
-      }
-    `: css`
-      background: #fff; 
-        #name{
-          p{
-            color: #00579D;
-          }
-        }  
-        #exit{
-          svg{
-            color: #7E7E7E;
-          }
-        }   
-        #sair {
-          color: #00579D;
-          border-left: 1.5px solid #00579D;
-        }
-        #dropdown{
-          border: solid 1px #7E7E7E;
-          background-color: #FFF; 
-
-          button{
-            border-bottom: solid 1px #7E7E7E;
-            color: #7E7E7E;
-          }
-        }
-    `}
+  background: ${props => props.theme.colors.headerBackground};
 
   #name{
     width:220px;
@@ -87,6 +35,7 @@ export const Container = styled.div<dropdownProps>`
       font-weight: bold;
       font-size: 1em;
       cursor: pointer;
+      color: ${props => props.theme.colors.title};
     }
   }
 
@@ -105,6 +54,7 @@ export const Container = styled.div<dropdownProps>`
       cursor: pointer;
       margin-right: 7px;
       margin-top: 10px;
+      color: ${props => props.theme.colors.iconColor};
     }
 
     #sair {
@@ -113,6 +63,8 @@ export const Container = styled.div<dropdownProps>`
       cursor: pointer;
       text-align: center;
       margin-top: 7px;
+      color: ${props => props.theme.colors.title};
+      border-left: 1.5px solid ${props => props.theme.colors.title};
     }
   }
 
@@ -123,6 +75,8 @@ export const Container = styled.div<dropdownProps>`
     cursor: pointer;
     min-width: 180px;
     height: auto;
+    border-bottom: solid 1px ${props => props.theme.colors.iconColor};
+    background-color: ${props => props.theme.colors.background}; 
 
     ${(props) => props.showDropdown ?
       css`
@@ -144,6 +98,7 @@ export const Container = styled.div<dropdownProps>`
       min-height: 35px;
       align-items: center;
       background-color: transparent;
+      color: ${props => props.theme.colors.iconColor};
 
         p{
           min-height: 20px;

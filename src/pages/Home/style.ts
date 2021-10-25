@@ -4,13 +4,13 @@ interface changeTheme{
   darkMode: boolean;
 }
 
-export const Container = styled.div<changeTheme>`
+export const Container = styled.div`
   width: 100%;
   height: auto;
   position: absolute;
 `;
 
-export const Filters = styled.div<changeTheme>`
+export const Filters = styled.div`
   width: 85%;
   height: 60px;
   display: flex;
@@ -49,7 +49,7 @@ export const Filters = styled.div<changeTheme>`
   }
 `;
 
-export const Filter = styled.div<changeTheme>`
+export const Filter = styled.div`
   width:90%;
   height: 60px;
   display: flex;
@@ -133,20 +133,13 @@ export const Filter = styled.div<changeTheme>`
   }
 `;
 
-export const Title = styled.h1<changeTheme>`
+export const Title = styled.h1`
   font-weight:normal;
   font-size: 1.25em;
   margin-left: 50px;
   width: 300px;
-
-  ${(props) => props.darkMode ?
-    css`
-      color: #000;
-      text-decoration: underline #0075B1;
-    `: css`
-      color: #fff;
-      text-decoration: underline #57B7DC;
-    `}
+  color: ${props => props.theme.colors.title};
+  text-decoration: underline ${props => props.theme.colors.undeline};
 
   @media (max-width:768px) {
     margin-right: 10px;
