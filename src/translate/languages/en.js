@@ -74,8 +74,9 @@ const messages = {
         exit :"Exit",
         idioms: "Idioms",
         font: "Font",
-        increaseFont: "Increase font",
-        decreaseFont: "Fecrease font",
+        small: "Small",
+        medium: "Medium",
+        big: "Large",
         theme: "Theme"
       },
       menu: {
