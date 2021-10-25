@@ -20,6 +20,9 @@ import api from "../../services/api";
 
 import { i18n } from "../../translate/i18n";
 
+import light from '../../styles/themes/light'
+import dark from '../../styles/themes/dark'
+
 interface Consultor{
   id: number,
   nome: string,
@@ -170,12 +173,18 @@ const Aprovacao: React.FC = () => {
     let date = new Date();
     const formattedDate = format(date, "dd'/'MM'/'yyyy");
 
+    const [theme, setTheme] = useState(light);
+
+    const toggleTheme = () => {
+      setTheme(theme.title === 'light' ? dark : light);
+    };
+
     return (
         <>
           <Profile/>
           <Menu />
           <Request/>
-          <Header>
+          <Header toggleTheme={toggleTheme}>
             <p>
               {i18n.t('approval.titleHeader')}
             </p>

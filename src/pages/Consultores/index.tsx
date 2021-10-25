@@ -11,6 +11,9 @@ import api from "../../services/api";
 
 import { i18n } from '../../translate/i18n';
 
+import light from '../../styles/themes/light'
+import dark from '../../styles/themes/dark'
+
 interface Consultor{
   id: number,
   nome: string,
@@ -39,6 +42,12 @@ const Consultants: React.FC = () => {
   const [status, setStatus] = useState('Todos');
   const [darkMode] = useState(false);
 
+  const [theme, setTheme] = useState(light);
+
+  const toggleTheme = () => {
+    setTheme(theme.title === 'light' ? dark : light);
+  };
+
   window.localStorage.getItem('Theme:darkMode')
 
   useEffect(() => {
@@ -54,7 +63,7 @@ const Consultants: React.FC = () => {
   
   return (
     <>  
-      <Header>
+      <Header toggleTheme={toggleTheme}>
         <p>
           {i18n.t('consultants.titleHeader')}
         </p>

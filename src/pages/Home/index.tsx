@@ -15,6 +15,9 @@ import gridCard from '../../assets/gridView.svg';
 
 import { i18n } from "../../translate/i18n";
 
+import light from '../../styles/themes/light'
+import dark from '../../styles/themes/dark'
+
 interface Projetos{
   id: number,
   secao: {
@@ -58,6 +61,12 @@ interface Secoes {
 }
 
 const Home: React.FC = () => {
+
+  const [theme, setTheme] = useState(light);
+
+  const toggleTheme = () => {
+    setTheme(theme.title === 'light' ? dark : light);
+  };
 
   const [filtered, setFiltereds] = useState<Projetos[]>([]);
   const [projects, setProjects] = useState<Projetos[]>([]);
@@ -122,19 +131,19 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <Header>
+      <Header toggleTheme={toggleTheme}>
         <p>
           {i18n.t('projects.titleHeader')}
         </p>
       </Header>
       <Profile/>
       <Menu/>
-      <Container darkMode={darkMode}>
-        <Filters darkMode={darkMode}>
-          <Title darkMode={darkMode}>
+      <Container>
+        <Filters>
+          <Title>
             {i18n.t('projects.titlePage')}
           </Title>
-          <Filter darkMode={darkMode}>
+          <Filter>
             <label>{i18n.t('projects.project')}</label>
             <input type="text" placeholder={i18n.t('projects.placeHolder')} 
               value={search} onChange={(ev) => handleFilterName(ev.target.value)}/>
