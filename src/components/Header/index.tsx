@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useContext } from "react";
 import { Container } from './style';
 import logo from "../../assets/logo.svg";
 import { IoSettingsSharp } from "react-icons/io5";
@@ -15,15 +15,23 @@ import increaseFont from "../../assets/increaseFont.svg";
 import decreaseFont from "../../assets/decreaseFont.svg";
 import { IoLanguage } from "react-icons/io5";
 import { i18n } from "../../translate/i18n";
+import Switch from "react-switch"
+import { ThemeContext } from 'styled-components';
+import { shade } from 'polished';
 
-const Header: React.FC = ({children,...props}) => {
+interface theme{
+  toggleTheme(): void
+}
+
+const Header: React.FC<theme> = ({toggleTheme, children,...props}) => {
   
   const [mostrarDropdown, setMostrarDropdown] = useState(true);
   const [mostrarIdiomas, setMostrarIdiomas] = useState(true);
   const [mostrarFonte, setMostrarFonte] = useState(true);
   const [mostrarTema, setMostrarTema] = useState(false);
   const [modoEscuro, setModoEscuro] = useState(false);
-  
+  const { colors, title } = useContext(ThemeContext);
+
   const handleMostrarDropdown = useCallback(() => {
     if(!!mostrarDropdown === false) {
       setMostrarDropdown(true);    
@@ -85,7 +93,7 @@ const Header: React.FC = ({children,...props}) => {
   }
   
   return( 
-    <Container darkMode={modoEscuro} changeTheme={mostrarTema} showFonts={!!mostrarFonte} 
+    <Container changeTheme={mostrarTema} showFonts={!!mostrarFonte} 
       showIdioms={!!mostrarIdiomas} showDropdown={!!mostrarDropdown} {...props}> 
       <div id="name">
         <Link to="/home"><img src={logo} alt=""/></Link>
@@ -148,9 +156,18 @@ const Header: React.FC = ({children,...props}) => {
             </span> 
           </button>   
         </div>
-        <button onClick={handleMudarTema}>
-          <img src={trocarTemaClaro} id="switchThemeLight" alt=""/> 
-          <img src={trocarTemaEscuro} id="switchThemeDark" alt=""/> 
+        <button>
+          <Switch
+            onChange={toggleTheme}
+            checked={title === 'dark'}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            height={10}
+            width={30}
+            handleDiameter={20}
+            offColor={shade(0.15, colors.undeline)}
+            onColor={colors.undeline}
+          />
           <p>
             {i18n.t('header.theme')}
           </p> 
