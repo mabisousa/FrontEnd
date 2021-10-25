@@ -80,8 +80,9 @@ const messages = {
         exit :"Sair",
         idioms: "Idioma",
         font: "Fonte",
-        increaseFont: "Aumentar fonte",
-        decreaseFont: "Diminuir fonte",
+        small: "Pequena",
+        medium: "Média",
+        big: "Grande",
         theme: "Tema"
       },
       menu: {

@@ -68,8 +68,8 @@ const messages = {
       header: {
         exit :"Salir",
         font: "Fuente",
-        increaseFont: "Aumentar fuent",
-        decreaseFont: "Disminuir fuente"
+        small: "Pequeña",
+        medium: "Media",
       },
       menu: {
         projects: "Proyectos",

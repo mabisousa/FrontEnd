@@ -1,23 +1,24 @@
 import React, { useCallback, useState, useContext } from "react";
 import { Container } from './style';
-import logo from "../../assets/logo.svg";
-import { IoSettingsSharp } from "react-icons/io5";
+
 import trocarTemaEscuro from "../../assets/switchOn.svg";
 import trocarTemaClaro from "../../assets/switchOff.svg";
-import font from "../../assets/textFont.svg";
 import bandeiraBrasil from "../../assets/brazilFlag.svg";
-import { Link } from "react-router-dom";
-import decrease from "../../js/decrease";
-import increse from "../../js/increase";
 import bandeiraEspanha from "../../assets/spainFlag.svg";
 import bandeiraEUA from "../../assets/usaFlag.svg";
-import increaseFont from "../../assets/increaseFont.svg";
-import decreaseFont from "../../assets/decreaseFont.svg";
+import font from "../../assets/textFont.svg";
+import logo from "../../assets/logo.svg";
+
+import tamanhoFonte from "../../js/fontSize";
+
+import { IoSettingsSharp } from "react-icons/io5";
 import { IoLanguage } from "react-icons/io5";
+
 import { i18n } from "../../translate/i18n";
 import Switch from "react-switch"
 import { ThemeContext } from 'styled-components';
 import { shade } from 'polished';
+import { Link } from "react-router-dom";
 
 interface theme{
   toggleTheme(): void
@@ -141,18 +142,22 @@ const Header: React.FC<theme> = ({toggleTheme, children,...props}) => {
           </p> 
         </button>
         <div id="fonts">
-          <button onClick={() => increse(window.getComputedStyle(document.body)
-            .getPropertyValue('font-size'))}>
-            <img src={increaseFont} alt=""/> 
+          <button onClick={() => tamanhoFonte("small")}>
+            <img src={font} alt=""/> 
             <span>
-              {i18n.t('header.increaseFont')}
+              {i18n.t('header.small')}
             </span> 
           </button>
-          <button onClick={() => decrease(window.getComputedStyle(document.body)
-            .getPropertyValue('font-size'))}>
-            <img src={decreaseFont} alt=""/> 
+          <button onClick={() => tamanhoFonte("medium")}>
+            <img src={font} alt=""/> 
             <span>
-              {i18n.t('header.decreaseFont')}
+              {i18n.t('header.medium')}
+            </span> 
+          </button>
+          <button onClick={() => tamanhoFonte("big")}>
+            <img src={font} alt=""/> 
+            <span>
+              {i18n.t('header.big')}
             </span> 
           </button>   
         </div>

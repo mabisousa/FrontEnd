@@ -140,7 +140,7 @@ export const Container = styled.div<dropdownProps>`
     }
 
     #fonts{
-      height: 70px;
+      min-height: 70px;
         
       ${(props) => props.showFonts ?
       css`
