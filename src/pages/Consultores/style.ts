@@ -17,7 +17,7 @@ export const Filters = styled.div<changeTheme>`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 6rem 0rem 0rem 4rem;
+  margin: 6rem 0rem 0rem 5rem;
 
   div{
     display: flex;
