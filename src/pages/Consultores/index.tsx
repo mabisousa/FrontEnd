@@ -63,14 +63,14 @@ const Consultants: React.FC = () => {
   
   return (
     <>  
-      <Header toggleTheme={toggleTheme}>
-        <p>
-          {i18n.t('consultants.titleHeader')}
-        </p>
-      </Header>
-      <Profile/>
-      <Menu/>
       <Container darkMode={darkMode}>
+        <Header toggleTheme={toggleTheme}>
+          <p>
+            {i18n.t('consultants.titleHeader')}
+          </p>
+        </Header>
+        <Profile/>
+        <Menu/>
         <Filters darkMode={darkMode}>
           <Title darkMode={darkMode}>
             {i18n.t('consultants.titleHeader')}
@@ -116,7 +116,6 @@ const Consultants: React.FC = () => {
             </div>
           </Filter>
         </Filters>
-        <Menu/>
         <Table status={status}/>
       </Container>
     </>

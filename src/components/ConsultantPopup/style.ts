@@ -14,7 +14,7 @@ export const Container = styled.div<PopUp>`
   `}
 
   transition: 200ms ease-in-out;
-  position: absolute;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   height: 100%;
@@ -25,6 +25,7 @@ export const Container = styled.div<PopUp>`
   top: 0px;
 
   #hold{
+    position: relative;
     background-color: #fff;
     width: 960px;
     height: 570px;
