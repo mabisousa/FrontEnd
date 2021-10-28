@@ -74,7 +74,44 @@ export const Container = styled.div<tableProps>`
       width: 450px;
       text-align: start;
     }
-  }    
+  } 
+
+
+    @media (max-width: 1024px) and (min-width: 769px) {
+      
+      tbody {
+        height:45vh;
+        width: 79vw;
+      }
+
+      tr{
+          td{
+            width: 11vw;
+          }
+          
+          td:nth-child(2){
+            width: 34vw;
+          }
+        }
+    }
+
+    @media (max-width: 768px)  {
+      tbody {
+        height:45vh;
+        width: 75vw;
+      }
+
+      tr{
+          td{
+            width: 11vw;
+          }
+          
+          td:nth-child(2){
+            width: 31vw;
+          }
+        }
+    }
+ 
 `;
 
 export const Tr = styled.div<tableProps>`
