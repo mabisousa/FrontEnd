@@ -1,43 +1,8 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 
-interface profileProps{
-  darkMode: boolean;
-}
-
-export const Container = styled.div<profileProps>`
-  ${(props) => props.darkMode ?
-    css`
-      background: #fff; 
-      border: 1px solid #00579D;
-      div{
-        &::after {
-          content: "";  
-          border-left: 15px solid #014C88;
-        }
-
-        &::before {
-          content: "";  
-          border-left: 15px solid #fff;
-          z-index: 2; 
-        }
-      }
-    `: css`
-      background: #1F262B;
-      border: 1px solid #90C0E3;
-      div{
-        &::after {
-          border-left: 15px solid #90C0E3;
-        }
-
-        &::before {
-          border-left: 15px solid #1F262B;
-        }
-      }
-
-      &:hover{
-        color: #fff;
-      }
-    `}
+export const Container = styled.div`
+  background: ${props => props.theme.colors.headerBackground};
+  border: 1px solid ${props => props.theme.colors.profileBorder};
 
   width: 250px;
   height: 550px;
@@ -63,6 +28,7 @@ export const Container = styled.div<profileProps>`
 
     &::after {
       content: "";
+      border-left: 15px solid ${props => props.theme.colors.profileBorderAfter};
       position: absolute;
       top: 45%;
       right: -15px;   
@@ -73,6 +39,7 @@ export const Container = styled.div<profileProps>`
     &::before {
       content: "";
       position: absolute;
+      border-left: 15px solid ${props => props.theme.colors.background};
       top: 45%;
       right: -13px;  
       border-top: 15px solid transparent;
@@ -95,6 +62,7 @@ export const Container = styled.div<profileProps>`
         height: 30px;
         overflow: hidden;
         transition: 1s;
+        color: ${props => props.theme.colors.iconColor};
 
         h2 {
           font-size: .9em;
@@ -105,9 +73,11 @@ export const Container = styled.div<profileProps>`
         }
       }
 
-      img {
+      svg {
+        color: ${props => props.theme.colors.iconColor}; 
         height: 50px;
         width: 50px;
+        margin: 10px;
         transition: 1s;
       }
     }
@@ -118,6 +88,7 @@ export const Container = styled.div<profileProps>`
       width: 0;
       justify-content: start;
       overflow: hidden;
+      color: ${props => props.theme.colors.iconColor};
 
       h3 { 
         border-bottom: 2px solid #28B9DA;

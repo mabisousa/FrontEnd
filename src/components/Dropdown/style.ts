@@ -9,8 +9,8 @@ export const Container = styled.div<dropdownProps>`
   #dropdown{
     width: 150px;
     height: 20px;
-    border: solid 1px  #7E7E7E;
-    color:#7E7E7E;
+    border: solid 1px ${props => props.theme.colors.iconColor};
+    color: ${props => props.theme.colors.iconColor};
     font-size: .9em;
     text-align: center;
     cursor: pointer;
@@ -24,9 +24,9 @@ export const Container = styled.div<dropdownProps>`
       width: 150px;
       position:relative;
       left: -1px;
-      border: solid 1px  #7E7E7E;
-      color: #7E7E7E;
-      background: #fff;
+      border: solid 1px  ${props => props.theme.colors.iconColor};
+      color: ${props => props.theme.colors.iconColor};
+      background: transparent;
       overflow-y: scroll;
       height: 50px;
 
@@ -40,8 +40,8 @@ export const Container = styled.div<dropdownProps>`
 
       button{
         font-size: .91em;
-        border-bottom: solid 1px  #7E7E7E;
-        color: #7E7E7E; 
+        border-bottom: solid 1px  ${props => props.theme.colors.iconColor};
+        color: ${props => props.theme.colors.iconColor};
         height: 20px;
         padding-top:1%;
         width: 100%;
@@ -53,6 +53,7 @@ export const Container = styled.div<dropdownProps>`
       display: block;
       height: 1.06em;
       width: 1.06em;
+      color: ${props => props.theme.colors.iconColor};
 
       ${(props) => props.showArrow ?
         css`
@@ -65,6 +66,7 @@ export const Container = styled.div<dropdownProps>`
     #arrowLeft{
       float: right;
       display: none;
+      color: ${props => props.theme.colors.iconColor};
 
       ${(props) => props.showArrow ?
         css`

@@ -53,9 +53,6 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
 
   const [mostrarPopup, setmostarPopup] = useState(false);
   const [projeto, setProject] = useState<Projetos>();
-  const [modoEscuro] = useState(false);
-
-  window.localStorage.getItem('Theme:darkMode')
 
   useEffect(() => {
     api.get(`/projetos/${id}`).then((response) => {
@@ -71,14 +68,14 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
     <>
       { projeto &&
         <Container show={!!mostrar} color={projeto.status} 
-          onClick={() => (setmostarPopup(!mostrarPopup))} key={projeto.id} darkMode={modoEscuro}>
-          <TitleSection show={!!mostrar} darkMode={modoEscuro}>
+          onClick={() => (setmostarPopup(!mostrarPopup))} key={projeto.id}>
+          <TitleSection show={!!mostrar}>
             {projeto.secao.idSecao} - {projeto.secao.nomeSecao}
           </TitleSection>
-          <TitleProject show={!!mostrar} darkMode={modoEscuro}>
+          <TitleProject show={!!mostrar}>
             {projeto.id} - {projeto.nome} 
           </TitleProject>
-          <HoldHours show={!!mostrar} darkMode={modoEscuro}>
+          <HoldHours show={!!mostrar}>
             <Hours show={!!mostrar}>
               <p>
                 {i18n.t('card.total')}
@@ -96,7 +93,7 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
               </p>
             </Hours>
           </HoldHours>
-          <Status show={!!mostrar} darkMode={modoEscuro}>
+          <Status show={!!mostrar}>
             <p>
               {i18n.t('card.status')}
             </p>
@@ -104,7 +101,7 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
               {projeto.status}
             </p>
           </Status>
-          <Date show={!!mostrar} darkMode={modoEscuro}>
+          <Date show={!!mostrar}>
             <p>
               {i18n.t('card.from')} {projeto.dataInicio.substring(0,10)}
             </p>

@@ -9,13 +9,13 @@ export const Container = styled.div`
   height: 190px;
   width: 150px;
   margin: 0px;
-  z-index:999;
+  z-index: 9;
 
   a:nth-child(1) {
     top:0px;
 
     div {
-      background: #00579D;
+      background: ${props => props.theme.colors.projectMenu};
     }
   }
 
@@ -23,7 +23,7 @@ export const Container = styled.div`
     top:60px;
 
     div {
-      background: #0075B1;
+      background: ${props => props.theme.colors.approvalMenu};
     }
   }
 
@@ -31,7 +31,7 @@ export const Container = styled.div`
     top:120px;
 
     div {
-      background: #2382BA;
+      background: ${props => props.theme.colors.consultantMenu};
     }
   }
 

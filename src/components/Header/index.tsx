@@ -1,8 +1,6 @@
 import React, { useCallback, useState, useContext } from "react";
 import { Container } from './style';
 
-import trocarTemaEscuro from "../../assets/switchOn.svg";
-import trocarTemaClaro from "../../assets/switchOff.svg";
 import bandeiraBrasil from "../../assets/brazilFlag.svg";
 import bandeiraEspanha from "../../assets/spainFlag.svg";
 import bandeiraEUA from "../../assets/usaFlag.svg";
@@ -29,8 +27,6 @@ const Header: React.FC<theme> = ({toggleTheme, children,...props}) => {
   const [mostrarDropdown, setMostrarDropdown] = useState(true);
   const [mostrarIdiomas, setMostrarIdiomas] = useState(true);
   const [mostrarFonte, setMostrarFonte] = useState(true);
-  const [mostrarTema, setMostrarTema] = useState(false);
-  const [modoEscuro, setModoEscuro] = useState(false);
   const { colors, title } = useContext(ThemeContext);
 
   const handleMostrarDropdown = useCallback(() => {
@@ -56,20 +52,6 @@ const Header: React.FC<theme> = ({toggleTheme, children,...props}) => {
       setMostrarFonte(false);    
     }
   }, [mostrarFonte, setMostrarFonte]); 
-
-  const handleMudarTema = useCallback(() => {
-    if(mostrarTema === false && modoEscuro === false) {
-      setMostrarTema(true);  
-      setModoEscuro(true);
-      localStorage.setItem('Theme:darkMode', JSON.stringify(modoEscuro));
-      document.body.style.background="#1F262B"
-    }else {
-      setMostrarTema(false); 
-      setModoEscuro(false)
-      localStorage.setItem('Theme:darkMode', JSON.stringify(modoEscuro));
-      document.body.style.background="#fff"
-    }
-  }, [mostrarTema, modoEscuro]);
   
   const sairDoSistema = () => {
     localStorage.removeItem("@WEGusers:token");
@@ -94,7 +76,7 @@ const Header: React.FC<theme> = ({toggleTheme, children,...props}) => {
   }
   
   return( 
-    <Container changeTheme={mostrarTema} showFonts={!!mostrarFonte} 
+    <Container showFonts={!!mostrarFonte} 
       showIdioms={!!mostrarIdiomas} showDropdown={!!mostrarDropdown} {...props}> 
       <div id="name">
         <Link to="/home"><img src={logo} alt=""/></Link>
@@ -136,26 +118,34 @@ const Header: React.FC<theme> = ({toggleTheme, children,...props}) => {
           </button>
         </div>
         <button onClick={handleMostrarFonte}>
-          <img src={font} alt=""/> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-type" viewBox="0 0 16 16">
+          <path d="m2.244 13.081.943-2.803H6.66l.944 2.803H8.86L5.54 3.75H4.322L1 13.081h1.244zm2.7-7.923L6.34 9.314H3.51l1.4-4.156h.034zm9.146 7.027h.035v.896h1.128V8.125c0-1.51-1.114-2.345-2.646-2.345-1.736 0-2.59.916-2.666 2.174h1.108c.068-.718.595-1.19 1.517-1.19.971 0 1.518.52 1.518 1.464v.731H12.19c-1.647.007-2.522.8-2.522 2.058 0 1.319.957 2.18 2.345 2.18 1.06 0 1.716-.43 2.078-1.011zm-1.763.035c-.752 0-1.456-.397-1.456-1.244 0-.65.424-1.115 1.408-1.115h1.805v.834c0 .896-.752 1.525-1.757 1.525z"/>
+        </svg> 
           <p >
             {i18n.t('header.font')}
           </p> 
         </button>
         <div id="fonts">
           <button onClick={() => tamanhoFonte("small")}>
-            <img src={font} alt=""/> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-type" viewBox="0 0 16 16">
+              <path d="m2.244 13.081.943-2.803H6.66l.944 2.803H8.86L5.54 3.75H4.322L1 13.081h1.244zm2.7-7.923L6.34 9.314H3.51l1.4-4.156h.034zm9.146 7.027h.035v.896h1.128V8.125c0-1.51-1.114-2.345-2.646-2.345-1.736 0-2.59.916-2.666 2.174h1.108c.068-.718.595-1.19 1.517-1.19.971 0 1.518.52 1.518 1.464v.731H12.19c-1.647.007-2.522.8-2.522 2.058 0 1.319.957 2.18 2.345 2.18 1.06 0 1.716-.43 2.078-1.011zm-1.763.035c-.752 0-1.456-.397-1.456-1.244 0-.65.424-1.115 1.408-1.115h1.805v.834c0 .896-.752 1.525-1.757 1.525z"/>
+            </svg> 
             <span>
               {i18n.t('header.small')}
             </span> 
           </button>
           <button onClick={() => tamanhoFonte("medium")}>
-            <img src={font} alt=""/> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-type" viewBox="0 0 16 16">
+              <path d="m2.244 13.081.943-2.803H6.66l.944 2.803H8.86L5.54 3.75H4.322L1 13.081h1.244zm2.7-7.923L6.34 9.314H3.51l1.4-4.156h.034zm9.146 7.027h.035v.896h1.128V8.125c0-1.51-1.114-2.345-2.646-2.345-1.736 0-2.59.916-2.666 2.174h1.108c.068-.718.595-1.19 1.517-1.19.971 0 1.518.52 1.518 1.464v.731H12.19c-1.647.007-2.522.8-2.522 2.058 0 1.319.957 2.18 2.345 2.18 1.06 0 1.716-.43 2.078-1.011zm-1.763.035c-.752 0-1.456-.397-1.456-1.244 0-.65.424-1.115 1.408-1.115h1.805v.834c0 .896-.752 1.525-1.757 1.525z"/>
+            </svg> 
             <span>
               {i18n.t('header.medium')}
             </span> 
           </button>
           <button onClick={() => tamanhoFonte("big")}>
-            <img src={font} alt=""/> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-type" viewBox="0 0 16 16">
+              <path d="m2.244 13.081.943-2.803H6.66l.944 2.803H8.86L5.54 3.75H4.322L1 13.081h1.244zm2.7-7.923L6.34 9.314H3.51l1.4-4.156h.034zm9.146 7.027h.035v.896h1.128V8.125c0-1.51-1.114-2.345-2.646-2.345-1.736 0-2.59.916-2.666 2.174h1.108c.068-.718.595-1.19 1.517-1.19.971 0 1.518.52 1.518 1.464v.731H12.19c-1.647.007-2.522.8-2.522 2.058 0 1.319.957 2.18 2.345 2.18 1.06 0 1.716-.43 2.078-1.011zm-1.763.035c-.752 0-1.456-.397-1.456-1.244 0-.65.424-1.115 1.408-1.115h1.805v.834c0 .896-.752 1.525-1.757 1.525z"/>
+            </svg> 
             <span>
               {i18n.t('header.big')}
             </span> 

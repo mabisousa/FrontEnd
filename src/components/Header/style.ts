@@ -4,7 +4,6 @@ interface dropdownProps {
   showDropdown: boolean;
   showIdioms: boolean;
   showFonts: boolean;
-  changeTheme: boolean;
 }
 
 export const Container = styled.div<dropdownProps>`
@@ -118,7 +117,7 @@ export const Container = styled.div<dropdownProps>`
         }
     }
 
-    #idioms, #fonts{
+    #idioms{
       img{
         height: 25px;
         width: 25px;
@@ -141,6 +140,14 @@ export const Container = styled.div<dropdownProps>`
 
     #fonts{
       min-height: 70px;
+
+      svg{
+        height: 25px;
+        width: 25px;
+        cursor: pointer;
+        margin-left: 16px;
+        margin-right: 8px;
+      }  
         
       ${(props) => props.showFonts ?
       css`
@@ -148,24 +155,6 @@ export const Container = styled.div<dropdownProps>`
       `: css`
         display: block;
       `}
-    }
-
-    #switchThemeLight{
-      ${(props) => props.changeTheme ?
-      css`
-        display: none;
-      `: css`
-        display: block;
-      `}
-    }
-
-    #switchThemeDark{
-      ${(props) => props.changeTheme ?
-      css`
-        display: block;
-      `: css`
-        display: none;
-      `}
-    }     
+    }   
   }
 `;
