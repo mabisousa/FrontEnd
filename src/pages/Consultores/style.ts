@@ -1,17 +1,12 @@
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
-interface changeTheme{
-  darkMode: boolean;
-}
-
-export const Container = styled.main<changeTheme>`
+export const Container = styled.main`
   width: 100vw;
   height: 100vw;
   position: fixed;
-
 `;
 
-export const Filters = styled.div<changeTheme>`
+export const Filters = styled.div`
   width: 85vw;
   height: 9vh;
   display: flex;
@@ -37,7 +32,7 @@ export const Filters = styled.div<changeTheme>`
   }
 
   label{
-    color: #7E7E7E;
+    color: ${props => props.theme.colors.iconColor};
     font-size: 1.25em;
     margin: 10px;
   }
@@ -45,10 +40,10 @@ export const Filters = styled.div<changeTheme>`
   input{
     padding-left: 2px;
     background: transparent;
-    border: 1px solid #7E7E7E;
+    border: 1px solid ${props => props.theme.colors.iconColor};
     
     &::placeholder{
-      color: #7E7E7E;
+      color: ${props => props.theme.colors.iconColor};
     }
   }
 
@@ -66,7 +61,7 @@ export const Filters = styled.div<changeTheme>`
   }
 `;
 
-export const Filter = styled.div<changeTheme>`
+export const Filter = styled.div`
   width: 90vw;
   height: 9vh;
   display: flex;
@@ -76,7 +71,7 @@ export const Filter = styled.div<changeTheme>`
 
   p{
     font-size: 1.25em;
-    color: #7E7E7E;
+    color: ${props => props.theme.colors.iconColor};
     text-align: center;
     margin-right: 10px;
     margin-left: 10px;
@@ -97,20 +92,13 @@ export const Filter = styled.div<changeTheme>`
   }
 `;
 
-export const Title = styled.h1<changeTheme>`
+export const Title = styled.h1`
   font-weight:normal;
   font-size: 1.25em;
   margin-left: 50px;
   width: 300px;
-
-  ${(props) => props.darkMode ?
-    css`
-      color: #000;
-      text-decoration: underline #0075B1;
-    `: css`
-      color: #fff;
-      text-decoration: underline #57B7DC;
-    `}
+  color: ${props => props.theme.colors.title};
+  text-decoration: underline ${props => props.theme.colors.undeline};
 
     @media (max-width: 1024px) and (min-width: 769px) {
       width: 150px;

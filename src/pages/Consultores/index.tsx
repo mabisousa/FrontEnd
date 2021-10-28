@@ -40,7 +40,6 @@ const Consultants: React.FC = () => {
   const [consultant, setConsultant] = useState<Consultor[]>([]);
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState('Todos');
-  const [darkMode] = useState(false);
 
   const [theme, setTheme] = useState(light);
 
@@ -63,7 +62,7 @@ const Consultants: React.FC = () => {
   
   return (
     <>  
-      <Container darkMode={darkMode}>
+      <Container>
         <Header toggleTheme={toggleTheme}>
           <p>
             {i18n.t('consultants.titleHeader')}
@@ -71,11 +70,11 @@ const Consultants: React.FC = () => {
         </Header>
         <Profile/>
         <Menu/>
-        <Filters darkMode={darkMode}>
-          <Title darkMode={darkMode}>
+        <Filters>
+          <Title>
             {i18n.t('consultants.titleHeader')}
           </Title>
-          <Filter darkMode={darkMode}>
+          <Filter>
             <Form>
               <label>
                 {i18n.t('consultants.name')}
