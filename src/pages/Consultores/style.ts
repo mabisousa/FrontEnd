@@ -53,7 +53,6 @@ export const Filters = styled.div<changeTheme>`
   }
 
   @media (max-width: 1024px) and (min-width: 769px) {
-    width: 85vw;
     label{
       font-size: 1em;
     }

@@ -11,8 +11,8 @@ export const Container = styled.div`
 `;
 
 export const Filters = styled.div`
-  width: 85%;
-  height: 60px;
+  width: 85vw;
+  height: 9vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -45,6 +45,19 @@ export const Filters = styled.div`
     
     &::placeholder{
       color: #7E7E7E;
+    }
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    label{
+      font-size: 1em;
+    }
+  }
+
+  @media (max-width: 768px)  {
+    width: 70vw;
+    label{
+      font-size: 0.9em;
     }
   }
 `;
@@ -99,36 +112,18 @@ export const Filter = styled.div`
   }
 
   @media (max-width: 1024px) and (min-width: 769px)  {
-    label{
-      margin-left: 10px;  
-    }
-
-    div{
-      width: 130px;
-    }
-
     input{
       width: 130px;    
     }
   }
 
   @media (max-width: 768px)  {
-    label:nth-child(2){
+    input{
+      width: 100px;    
+    }
+    label{
       font-size: 1em;
       margin-left: 10px;
-    }
-
-    label:nth-child(4){
-      font-size: 1em;
-      margin-left: 10px;
-    }
-
-    div{
-      width: 100px;
-    }
-
-    img{
-      width: 25px;
     }
   }
 `;
@@ -143,16 +138,14 @@ export const Title = styled.h1`
 
   @media (max-width:768px) {
     margin-right: 10px;
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 `;
 
 export const Cards = styled.div`
-  width: 90%;
+  width: 90vw;
   margin-left: 89.6px;
   margin-top: 48px;
 
-  @media (max-width: 425px){
-    width: 100%;
-  }
+
 `;
