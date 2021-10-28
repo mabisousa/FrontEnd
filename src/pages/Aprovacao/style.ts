@@ -9,7 +9,7 @@ export const Container = styled.div`
   padding: 1% 8% 1% 8%;
 
   h1 {
-    font-size: 16px;
+    font-size: 1em;
     font-weight:500;
     margin:10px 0;
   }
@@ -20,6 +20,12 @@ export const Container = styled.div`
     color: #fff;
     background-color: #28B9DA;
     border: none;
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    h1 {
+      font-size: 0.9em;
+    }     
   }
 `;
 
@@ -42,7 +48,7 @@ export const Infos = styled.div`
             height: 100%;
            
             p {
-                font-size: 12px;
+                font-size: 0.75em;
                 width: auto;
             }
             .holding {
@@ -57,6 +63,30 @@ export const Infos = styled.div`
                 div:nth-child(2) {
                     width: 70%;
                 }
+            }
+
+            @media (max-width: 1024px) and (min-width: 769px) {
+              p{
+                font-size: 0.65em;
+              }
+              .holding {
+                div:nth-child(1) {
+                    width: 33%;
+                    margin-right: 5%;
+                }
+              }
+            }
+
+            @media (max-width: 768px)  {
+              p{
+                font-size: 0.65em;
+              }
+              .holding {
+                div:nth-child(1) {
+                    width: 43%;
+                    margin-right: 5%;
+                }
+              }
             }
 
             .holding:nth-child(2) {
@@ -153,6 +183,14 @@ export const Info = styled.div`
   align-items: center;
   padding: 5px;
   color: #a2a2a2;
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    font-size: 0.9em;
+  }
+
+  @media (max-width: 768px)  {
+    font-size: .8em;
+  }
 `;
 
 export const Apontamentos = styled.div`
