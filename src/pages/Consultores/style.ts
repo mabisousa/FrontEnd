@@ -5,14 +5,15 @@ interface changeTheme{
 }
 
 export const Container = styled.main<changeTheme>`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vw;
   position: fixed;
+
 `;
 
 export const Filters = styled.div<changeTheme>`
-  width: 85%;
-  height: 60px;
+  width: 85vw;
+  height: 9vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -50,11 +51,25 @@ export const Filters = styled.div<changeTheme>`
       color: #7E7E7E;
     }
   }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    width: 85vw;
+    label{
+      font-size: 1em;
+    }
+  }
+
+  @media (max-width: 768px)  {
+    width: 70vw;
+    label{
+      font-size: 0.9em;
+    }
+  }
 `;
 
 export const Filter = styled.div<changeTheme>`
-  width: 90%;
-  height: 60px;
+  width: 90vw;
+  height: 9vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -67,6 +82,20 @@ export const Filter = styled.div<changeTheme>`
     margin-right: 10px;
     margin-left: 10px;
   } 
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+      width:70vw;
+      p{
+        font-size: 1em;
+      }
+    }
+
+  @media (max-width: 768px)  {
+    width:55vw;
+    p{
+      font-size: 0.9em;
+    }
+  }
 `;
 
 export const Title = styled.h1<changeTheme>`
@@ -83,6 +112,16 @@ export const Title = styled.h1<changeTheme>`
       color: #fff;
       text-decoration: underline #57B7DC;
     `}
+
+    @media (max-width: 1024px) and (min-width: 769px) {
+      width: 150px;
+      font-size: 1em;
+    }
+
+    @media (max-width: 768px)  {
+      width: 150px;
+      font-size: 0.9em;
+    }
 `;
 
 export const Form = styled.form`
@@ -93,6 +132,19 @@ export const Form = styled.form`
 
   input{
     height: 20px;
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    width: 230px;
+    input{
+      width: 150px;
+    }
+  }
+  @media (max-width: 768px)  {
+    width: 230px;
+    input{
+      width: 100px;
+    }
   }
 `;
 
@@ -109,4 +161,19 @@ export const Filterbynumber = styled.div`
     margin: 0px 5px;
     font-size: 1.25em;
   }  
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    p{
+      font-size: 1em;
+    }
+  }
+
+  @media (max-width: 768px)  {
+    p{
+      font-size: 0.9em;
+    }
+    input{
+      width: 40px;
+    }
+  }
 `;
