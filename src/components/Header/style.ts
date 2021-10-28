@@ -117,7 +117,7 @@ export const Container = styled.div<dropdownProps>`
         }
     }
 
-    #idioms, #fonts{
+    #idioms{
       img{
         height: 25px;
         width: 25px;
@@ -140,6 +140,14 @@ export const Container = styled.div<dropdownProps>`
 
     #fonts{
       min-height: 70px;
+
+      svg{
+        height: 25px;
+        width: 25px;
+        cursor: pointer;
+        margin-left: 16px;
+        margin-right: 8px;
+      }  
         
       ${(props) => props.showFonts ?
       css`
