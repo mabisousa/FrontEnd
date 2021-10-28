@@ -75,9 +75,6 @@ const Home: React.FC = () => {
   const [section, setSection] = useState('Todos');
   const [status, setStatus] = useState('Todos');
   const [search, setSearch] = useState('');
-  const [darkMode] = useState(false);
-
-  window.localStorage.getItem('Theme:darkMode')
 
   useEffect(() => {
     if (section !== "Todos" && status !== "Todos") {

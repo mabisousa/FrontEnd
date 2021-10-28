@@ -1,8 +1,4 @@
-import styled, {css} from 'styled-components';
-
-interface changeTheme{
-  darkMode: boolean;
-}
+import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
@@ -33,18 +29,18 @@ export const Filters = styled.div`
   
   label{
     font-size: 1.25em;
-    color: #7E7E7E;
+    color: ${props => props.theme.colors.iconColor};
   }
 
   input{
     padding-left: 2px;
     background: transparent;
-    border: 1px solid #7E7E7E;
+    border: 1px solid ${props => props.theme.colors.iconColor};
     min-height: 20px;
     font-size: 1em;
     
     &::placeholder{
-      color: #7E7E7E;
+      color: ${props => props.theme.colors.iconColor};
     }
   }
 
