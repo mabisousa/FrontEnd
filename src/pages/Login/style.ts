@@ -6,7 +6,6 @@ export const Container = styled.main`
 
 export const ImgLogo = styled.img`
   width: 150px;
-  background-color: white;
   margin-top: -50px;
   margin-bottom: 60px;
 `;
@@ -30,7 +29,7 @@ export const Inputs = styled.div`
 export const FormButton = styled.button`
   padding: .75rem 2rem;
   border: none;
-  background-color: rgb(0, 87, 157);
+  background: ${props => props.theme.colors.projectMenu};
   color: #fff;
   font-size: 1em;
   border-radius: .5rem;
