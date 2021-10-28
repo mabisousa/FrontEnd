@@ -131,14 +131,14 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <Header toggleTheme={toggleTheme}>
-        <p>
-          {i18n.t('projects.titleHeader')}
-        </p>
-      </Header>
-      <Profile/>
-      <Menu/>
       <Container>
+        <Header toggleTheme={toggleTheme}>
+          <p>
+            {i18n.t('projects.titleHeader')}
+          </p>
+        </Header>
+        <Profile/>
+        <Menu/>
         <Filters>
           <Title>
             {i18n.t('projects.titlePage')}
