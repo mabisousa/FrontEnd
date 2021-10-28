@@ -76,4 +76,13 @@ export const Container = styled.div<dropdownProps>`
         `}
     }
   }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    width: 105px;
+  }
+
+  @media (max-width: 768px)  {
+    width: 70px;
+    
+  }
 `;
