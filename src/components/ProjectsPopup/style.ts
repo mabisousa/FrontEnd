@@ -22,9 +22,9 @@ export const Container = styled.div<PopUp>`
         visibility: hidden;
       }
   `: css`
-  
   `}
 
+  color: ${props => props.theme.colors.title};
   position: fixed;
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
@@ -50,10 +50,16 @@ export const Container = styled.div<PopUp>`
   #hold{
     position: relative;
     height: 560px;
-    background: #fff;
+    background: ${props => props.theme.colors.background};
     display: flex;
     flex-direction: column;
     padding: 35px;
+
+    button{
+      svg{
+        color: ${props => props.theme.colors.title}
+      }
+    }
   }
 `;
 
@@ -62,25 +68,25 @@ export const TitlePopUp = styled.div`
   height: 17%;
   padding: 10px;
   font-weight: 500;
-  color: #023A67;
 
   h2 {
-    color: #0075B1;
+    color: ${props => props.theme.colors.titleSection};
     font-size: 1.15em;
   }
 
   h1 {
-    color: #000;
     font-size: 1.4em;
     font-weight: bold;
   }
 `;
+
 export const InfosPopup = styled.div`
   height: 75%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 `;
+
 export const DetailsPopup = styled.div`
   height: 10%;
   display: flex;
@@ -88,8 +94,28 @@ export const DetailsPopup = styled.div`
   align-items: center;
   width: 95%;
 
+  ${(props) => props.color === "ANDAMENTO" &&
+    css`
+      h1{
+        color: ${props => props.theme.colors.progresStatus};
+      }
+    `}
+
+  ${(props) => props.color === "CONCLUÍDO" && 
+    css`
+      h1{
+        color: ${props => props.theme.colors.concludedStatus};
+      }
+    `}
+
+  ${(props) => props.color === "ATRASADO" &&
+    css`
+      h1{
+        color: ${props => props.theme.colors.lateStatus};
+      }
+    `}
+
   h1 {
-    color: #EBB93A;
     font-size: 1.5em;
     font-weight: 700;
   }
@@ -112,10 +138,6 @@ export const InfosGerais = styled.div<ContainerProps>`
     `}
 
   height: 40%;
-
-  h1 {
-    color: #023A67;
-  }
 
   p {
     font-size: .75em;
@@ -152,6 +174,7 @@ export const Objetivo = styled.div<ContainerProps>`
       overflow-y: scroll;
   }
 `;
+
  export const Horas = styled.div<ContainerProps>`
 
   ${(props) => props.open ? 
@@ -166,10 +189,6 @@ export const Objetivo = styled.div<ContainerProps>`
   height: 50%;
   display: flex;
   flex-direction: column;
-
-  h1 {
-      color: #023A67;
-  }
  `;
 
  export const HorasApontadas = styled.div`
@@ -193,7 +212,7 @@ export const Objetivo = styled.div<ContainerProps>`
       justify-content: space-between;
 
       span {
-        color: #7e7e7e;
+        color: ${props => props.theme.colors.date};
       }
     }
   }
@@ -220,7 +239,7 @@ export const Skills = styled.div<ContainerProps>`
     height: 40px;
     font-size: .9em;
     color: #fff;
-    background: #28B9DA;
+    background: ${props => props.theme.colors.skillsButton};
   }
 `;
 
@@ -235,7 +254,7 @@ export const Table = styled.div`
 
     thead {
       display: inline-flex;
-      background: #0075B1;
+      background: ${props => props.theme.colors.approvalMenu};
       color: #fff;
       width: 100%;
       height: 40px;
@@ -281,7 +300,6 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
         transition-delay: 0s;
       }
     `}
-
     height: 100%;
     
     table {
@@ -290,7 +308,7 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
       width: 100%;
 
       thead {
-        background: #0075B1;
+        background: ${props => props.theme.colors.approvalMenu};
         height: 40px;
         display: inline-flex;
         width: 100%;
@@ -303,7 +321,6 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
           height: 40px;
           width:100%;
           padding:12px;
-          color: rgba(0, 0, 0, 0.87);
         }
 
         td:nth-child(1) {
@@ -326,7 +343,6 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
         tr {
           font-size: .9em;
           width: 100%;
-          color: rgba(0, 0, 0, 0.87);
           border: 1px solid #e2e2e280;
         }
 

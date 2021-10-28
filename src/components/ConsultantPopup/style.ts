@@ -23,10 +23,11 @@ export const Container = styled.div<PopUp>`
   justify-content: center;
   align-items: center;
   top: 0px;
+  color: ${props => props.theme.colors.title};
 
   #hold{
     position: relative;
-    background-color: #fff;
+    background-color: ${props => props.theme.colors.background};
     width: 960px;
     height: 570px;
     padding: 10px;
@@ -42,7 +43,7 @@ export const Container = styled.div<PopUp>`
     border: 0;
 
     svg{
-      color: black;
+      color: ${props => props.theme.colors.title};
     }
   }
 
@@ -61,7 +62,7 @@ export const PopUpInfo = styled.div`
   }
 
   svg{
-    color: #023A67;
+    color: ${props => props.theme.colors.iconColor};
     width: 100px;
     height: 100px;
     margin-left: 35px;
@@ -74,12 +75,11 @@ export const PopUpInfo = styled.div`
   h1{
     font-size: 1.15em;
     font-weight: bolder;
-    text-decoration: 2px underline #0075B1;
+    text-decoration: 2px underline ${props => props.theme.colors.undeline};
   }
 
   p{
     font-size: 1.15em;
-    color: #7E7E7E;
     font-weight: lighter;
     margin-top: 4px;
   }
@@ -124,7 +124,7 @@ export const PopUpTable = styled.div`
   }
 
   thead{
-    background: #0075B1;
+    background: ${props => props.theme.colors.thead};
     height: 40px;
     display: inline-flex;
     width:100%;
@@ -152,7 +152,6 @@ export const PopUpTable = styled.div`
     letter-spacing: 0.01071em;
     height: 17px;
     margin:15px;
-    color: rgba(0, 0, 0, 0.87);
     border-bottom: 1px solid #8B8787;
   }
 

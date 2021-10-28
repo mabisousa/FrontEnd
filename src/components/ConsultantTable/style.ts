@@ -2,7 +2,6 @@ import styled, {css} from 'styled-components';
 
 interface tableProps{
   color?: string;
-  darkMode?: boolean;
 }
 
 export const Container = styled.div<tableProps>`
@@ -10,29 +9,6 @@ export const Container = styled.div<tableProps>`
   margin-top: 50px;
   margin-bottom: 40px;
   height: 350px;
-
-  ${(props) => props.darkMode ?
-    css`
-      thead{
-        background: #0075B1;
-      }
-      tbody{
-        border: 1px solid #8B8787;
-      }
-      tr{
-        border-bottom: 1px solid #8B8787;
-      }
-    `: css`
-      thead{
-        background: #0B2E4A;
-      }
-      tbody{
-        border: 1px solid #fff;
-      }
-      tr{
-        border-bottom: 1px solid #fff;
-      }
-    `}
 
   table{
     border-collapse: collapse;
@@ -42,6 +18,7 @@ export const Container = styled.div<tableProps>`
   thead{
     text-transform: uppercase;
     font-size: .9em;
+    background: ${props => props.theme.colors.thead};;
   }
 
   thead tr{
@@ -53,6 +30,7 @@ export const Container = styled.div<tableProps>`
     overflow-y: scroll;
     overflow-x: hidden;
     display: block;
+    border: 1px solid ${props => props.theme.colors.tableBorder};
   }
 
   tr{
@@ -65,6 +43,7 @@ export const Container = styled.div<tableProps>`
     color: rgba(0, 0, 0, 0.87);
     text-transform: uppercase;
     font-size: .9em;
+    border-bottom: 1px solid ${props => props.theme.colors.tableBorder};
 
     td{
       width: 150px;
@@ -119,23 +98,11 @@ export const Tr = styled.div<tableProps>`
   ${(props) => props.color === "INATIVO" && 
     css`
       td:nth-child(3){
-        color: #AC341A;
+        color: ${props => props.theme.colors.inactiveStatus};
       }
   `}
 
-  ${(props) => props.darkMode ?
-    css`
-      border-bottom: 1px solid #8B8787;
-      td{
-        color: #000;
-      }
-    `: css`
-      border-bottom: 1px solid #fff;
-      td{
-        color: #fff;
-      }
-    `}
-
+  border-bottom: 1px solid ${props => props.theme.colors.tableBorder};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -148,6 +115,7 @@ export const Tr = styled.div<tableProps>`
 
   td{
     width: 150px;
+    color: ${props => props.theme.colors.title};
   }
   
   td:nth-child(2){

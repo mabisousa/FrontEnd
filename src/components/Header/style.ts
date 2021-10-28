@@ -4,7 +4,6 @@ interface dropdownProps {
   showDropdown: boolean;
   showIdioms: boolean;
   showFonts: boolean;
-  changeTheme: boolean;
 }
 
 export const Container = styled.div<dropdownProps>`
@@ -148,24 +147,6 @@ export const Container = styled.div<dropdownProps>`
       `: css`
         display: block;
       `}
-    }
-
-    #switchThemeLight{
-      ${(props) => props.changeTheme ?
-      css`
-        display: none;
-      `: css`
-        display: block;
-      `}
-    }
-
-    #switchThemeDark{
-      ${(props) => props.changeTheme ?
-      css`
-        display: block;
-      `: css`
-        display: none;
-      `}
-    }     
+    }   
   }
 `;

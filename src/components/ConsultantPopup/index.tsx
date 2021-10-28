@@ -65,7 +65,7 @@ const PopupConsultor: React.FC<Consultor> = ({id, mostrarPopup} ) => {
                 <HiUserCircle/>
                 <div id="EmployeeInformation">
                   <h1>
-                    {consultor.nome} -{consultor.id} 
+                    {consultor.nome} - {consultor.id} 
                   </h1>
                   <p>
                     {i18n.t('ConsultantPopup.email')}  {consultor.usuario.email}

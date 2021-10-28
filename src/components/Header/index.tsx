@@ -1,8 +1,6 @@
 import React, { useCallback, useState, useContext } from "react";
 import { Container } from './style';
 
-import trocarTemaEscuro from "../../assets/switchOn.svg";
-import trocarTemaClaro from "../../assets/switchOff.svg";
 import bandeiraBrasil from "../../assets/brazilFlag.svg";
 import bandeiraEspanha from "../../assets/spainFlag.svg";
 import bandeiraEUA from "../../assets/usaFlag.svg";
@@ -29,8 +27,6 @@ const Header: React.FC<theme> = ({toggleTheme, children,...props}) => {
   const [mostrarDropdown, setMostrarDropdown] = useState(true);
   const [mostrarIdiomas, setMostrarIdiomas] = useState(true);
   const [mostrarFonte, setMostrarFonte] = useState(true);
-  const [mostrarTema, setMostrarTema] = useState(false);
-  const [modoEscuro, setModoEscuro] = useState(false);
   const { colors, title } = useContext(ThemeContext);
 
   const handleMostrarDropdown = useCallback(() => {
@@ -56,20 +52,6 @@ const Header: React.FC<theme> = ({toggleTheme, children,...props}) => {
       setMostrarFonte(false);    
     }
   }, [mostrarFonte, setMostrarFonte]); 
-
-  const handleMudarTema = useCallback(() => {
-    if(mostrarTema === false && modoEscuro === false) {
-      setMostrarTema(true);  
-      setModoEscuro(true);
-      localStorage.setItem('Theme:darkMode', JSON.stringify(modoEscuro));
-      document.body.style.background="#1F262B"
-    }else {
-      setMostrarTema(false); 
-      setModoEscuro(false)
-      localStorage.setItem('Theme:darkMode', JSON.stringify(modoEscuro));
-      document.body.style.background="#fff"
-    }
-  }, [mostrarTema, modoEscuro]);
   
   const sairDoSistema = () => {
     localStorage.removeItem("@WEGusers:token");
@@ -94,7 +76,7 @@ const Header: React.FC<theme> = ({toggleTheme, children,...props}) => {
   }
   
   return( 
-    <Container changeTheme={mostrarTema} showFonts={!!mostrarFonte} 
+    <Container showFonts={!!mostrarFonte} 
       showIdioms={!!mostrarIdiomas} showDropdown={!!mostrarDropdown} {...props}> 
       <div id="name">
         <Link to="/home"><img src={logo} alt=""/></Link>

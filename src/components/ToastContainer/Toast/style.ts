@@ -8,19 +8,19 @@ interface ToastProps {
 
 const toastTypeVariantions = {
   success: css`
-    background: #fff;
+    background: ${props => props.theme.colors.background};
     color: #2e656a;
     border: 1px solid  #2e656a;
     box-shadow: 0 0 50px 10px #00000020;
   `,
   info: css`
-    background: #fff;
+    background: ${props => props.theme.colors.background};
     color: #3172b7;
     border: 1px solid  #3172b7;
     box-shadow: 0 0 50px 10px #00000020;
   `,
   error: css`
-    background: #fff;
+    background: ${props => props.theme.colors.background};
     color: #c53030;
     border: 1px solid  #c53030;
     box-shadow: 0 0 50px 10px #00000020;

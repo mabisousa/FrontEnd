@@ -15,8 +15,9 @@ export const FormInput = styled.input<ContainerProps>`
   border-radius: .5rem;
   outline: none;
   padding: 1rem;
-  background: none;
+  background: transparent;
   z-index: 10;
+  color: ${props => props.theme.colors.title};
 
   &:focus{
     border: 1.5px solid rgb(0, 87, 157);
@@ -37,6 +38,7 @@ export const FormInput = styled.input<ContainerProps>`
     font-size: 0.75em;
     font-weight: 500;
     z-index: 10;
+    color: ${props => props.theme.colors.title};
   }
 
   ${(props) => props.hasError && css`
@@ -48,7 +50,7 @@ export const FormLabel = styled.label<ContainerProps>`
   position: absolute;
   left: 1rem;
   top: 1rem;
-  background-color: #fff;
+  background-color: ${props => props.theme.colors.background};
   color: #80868B;
   font-size: 1em;
   transition: .3s;
@@ -62,5 +64,4 @@ export const Container = styled.div`
   position: relative;
   height: 48px;
   margin-bottom: 1.5rem; 
-  
 `;

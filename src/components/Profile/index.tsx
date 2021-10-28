@@ -4,21 +4,17 @@ import { Container } from './style'
 
 import Notification from '../Notification'
 
-import avatar from "../../assets/avatar.svg"
+import { FaUser } from 'react-icons/fa';
 
 type ProfileProps  = HTMLAttributes<HTMLDivElement>;
 
 const Profile: React.FC<ProfileProps> = (props) => {
-
-  const [modoEscuro] = useState(false);
-
-  window.localStorage.getItem('');
   
   return(
-    <Container  darkMode={modoEscuro} {...props}>
+    <Container {...props}>
       <div>
         <div id="perfil">
-          <img src={ avatar } alt="" />
+          <FaUser/>
           <div id="txt">
             <h2>
               Nome
