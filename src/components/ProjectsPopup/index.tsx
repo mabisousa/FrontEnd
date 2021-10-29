@@ -188,7 +188,7 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                   {i18n.t('approval.consultants')}
                 </button>
               </Skills>
-              <ConsultoresAlocados open={!!estaAberto}>
+              <ConsultoresAlocados id="ds" open={!!estaAberto}>
                 <table>
                   <thead>
                     <tr>
@@ -215,7 +215,7 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                 </table>
               </ConsultoresAlocados>
             </InfosPopup>
-            <DetailsPopup color={projeto.status}>
+            <DetailsPopup  color={projeto.status}>
               <Grid/>
               <h1>
                 {projeto.status}

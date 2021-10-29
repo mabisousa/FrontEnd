@@ -61,6 +61,12 @@ export const Container = styled.div<PopUp>`
       }
     }
   }
+
+  @media (max-width: 1024px) and (min-width: 769px)  {
+    #hold{
+      height: 490px;
+    }
+  }
 `;
 
 export const TitlePopUp = styled.div`
@@ -81,18 +87,18 @@ export const TitlePopUp = styled.div`
 `;
 
 export const InfosPopup = styled.div`
-  height: 75%;
+  height: 59vh;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 `;
 
 export const DetailsPopup = styled.div`
-  height: 10%;
+  height: 8vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 95%;
+  width: 62.5vw;
 
   ${(props) => props.color === "ANDAMENTO" &&
     css`
@@ -133,11 +139,11 @@ export const InfosGerais = styled.div<ContainerProps>`
       transition: 1s;
 
     `: css`
-      width: 50%;
+      width: 32vw;
       transition: 0s;
     `}
 
-  height: 40%;
+  height: 23vh;
 
   p {
     font-size: .75em;
@@ -154,11 +160,11 @@ export const Objetivo = styled.div<ContainerProps>`
       width: 35%;
       transition: 1s;
     `: css`
-      width: 50%;
+      width: 32vw;
       transition: 0s;
     `}
 
-  height: 50%;
+  height: 28vh;
   display: flex;
   flex-direction: column;
   margin-top: 34px;
@@ -173,6 +179,10 @@ export const Objetivo = styled.div<ContainerProps>`
       align-self: center;
       overflow-y: scroll;
   }
+
+  @media (max-width: 1024px) and (min-width: 769px)  {
+    height: 45%;
+  }
 `;
 
  export const Horas = styled.div<ContainerProps>`
@@ -182,26 +192,26 @@ export const Objetivo = styled.div<ContainerProps>`
       width: 40%;
       transition: 1s;
     `: css`
-      width: 50%;
+      width: 32vw;
       transition: 0s;
     `}
 
-  height: 50%;
+  height: 28.5vh;
   display: flex;
   flex-direction: column;
  `;
 
  export const HorasApontadas = styled.div`
-  width: 80%;
-  height: 90%;
+  width: 26vw;
+  height: 26vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
 
   div:nth-child(2) {
-    height: 50%;
-    width: 40%;
+    height: 13vh;
+    width: 11vw;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -224,18 +234,18 @@ export const Skills = styled.div<ContainerProps>`
       width: 40%;
       transition: 1s;
     `: css`
-      width: 50%;
+      width: 33vw;
       transition: 0s;
     `}
 
-  height: 50%;
+  height: 29vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   button:nth-child(2) {
     border: 0;
-    width: 85%;
+    width: 28.1vw;
     height: 40px;
     font-size: .9em;
     color: #fff;
@@ -244,8 +254,8 @@ export const Skills = styled.div<ContainerProps>`
 `;
 
 export const Table = styled.div`
-  width: 85%;
-  height: 65%;
+  width: 28.1vw;
+  height: 19vh;
   
   table {
     width: 100%;
@@ -285,7 +295,7 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
 
   ${(props) => props.open ? 
     css`
-      width: 25%;
+      width: 19.8vw;
 
       table {
         visibility: visible;
@@ -293,19 +303,19 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
       }
 
       `: css`
-      width: 0%;
+      width: 0;
 
       table {
         visibility: hidden;
         transition-delay: 0s;
       }
     `}
-    height: 100%;
+    height: 80vh;
     
     table {
       border-collapse: collapse;
       text-align: center;
-      width: 100%;
+      width: 20vw;
 
       thead {
         background: ${props => props.theme.colors.approvalMenu};
@@ -335,7 +345,7 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
       }
         
       tbody {
-        height: 288px;
+        height: 282px;
         overflow-y: auto;
         display: block;
         border: 1px solid #e2e2e280;
