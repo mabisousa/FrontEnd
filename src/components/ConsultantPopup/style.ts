@@ -16,14 +16,15 @@ export const Container = styled.div<PopUp>`
   transition: 200ms ease-in-out;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.7);
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
   top: 0px;
   color: ${props => props.theme.colors.title};
+
 
   #hold{
     position: relative;
@@ -32,6 +33,8 @@ export const Container = styled.div<PopUp>`
     height: 570px;
     padding: 10px;
   }
+
+  
 
   button{
     float: right;
@@ -49,6 +52,21 @@ export const Container = styled.div<PopUp>`
 
   #grid{
     margin-left: 30px;
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px)  {
+    #hold{
+      width: 910px;
+      height: 495px;
+    }
+  }
+
+  
+  @media (max-width: 768px)  {
+    #hold{
+      width: 685px;
+      height: 480px;
+    }
   }
 `;
 
@@ -83,6 +101,26 @@ export const PopUpInfo = styled.div`
     font-weight: lighter;
     margin-top: 4px;
   }
+
+  @media (max-width: 1024px) and (min-width: 769px)  {
+    svg{
+      width: 85px;
+      height: 85px;
+    }
+    h1,p{
+      font-size: 1.1em;
+    }
+  }
+
+  @media (max-width: 768px)  {
+    svg{
+      width: 70px;
+      height: 70px;
+    }
+    h1,p{
+      font-size: .9em;
+    }
+  }
 `;
 
 export const Content = styled.div`
@@ -92,6 +130,14 @@ export const Content = styled.div`
   width: 100%;
   height: 260px;
   justify-content: space-between;
+
+  @media (max-width: 1024px) and (min-width: 769px)  {
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 768px)  {
+    margin-bottom: 10px;
+  }
 `;
 
 export const Skills = styled.div`
@@ -102,14 +148,34 @@ export const Skills = styled.div`
     margin-bottom: 35px;
     margin-top: 5px;
   }
+
+  @media (max-width: 1024px) and (min-width: 769px)  {
+    h5{
+      font-size: .95em;
+    }
+  }
+
+  @media (max-width: 768px)  {
+    h5{
+      font-size: .9em;
+    }
+  }
 `;
 
 export const HoldContent = styled.div`
   border: 1px solid #8B8787;
-  height: 88%;
+  height: 36vh;
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 10px;
+
+  @media (max-width: 1024px) and (min-width: 769px)  {
+    height: 35vh;
+  }
+  @media (max-width: 768px)  {
+    height: 35vh;
+    font-size: .9em;
+  }
 `;
 
 export const PopUpTable = styled.div`
@@ -140,7 +206,7 @@ export const PopUpTable = styled.div`
   }
               
   tbody {
-    height: 230px;
+    height: 36.5vh;
     overflow-y: scroll;
     overflow-x: hidden;
     display: block;
@@ -158,5 +224,19 @@ export const PopUpTable = styled.div`
   td {
     padding: 5px;
     width: 484px;
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px)  {
+    tbody{
+      height: 35.5vh;
+    }
+  }
+  @media (max-width: 768px)  {
+    tbody{
+      height: 35.2vh;
+    }
+    td {
+      font-size: .9em;
+    }
   }
 `;

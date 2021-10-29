@@ -12,7 +12,7 @@ const tamanhoFonte = (prarameterSize) => {
 
   if( prarameterSize === "big"){
     document.body.style.fontSize="19px";
-    localStorage.setItem("Fontsize", "20px")
+    localStorage.setItem("Fontsize", "19px")
   }
   
   console.log(prarameterSize)
