@@ -1,16 +1,16 @@
 const tamanhoFonte = (prarameterSize) => {
 
-  if( prarameterSize == "small"){
+  if( prarameterSize === "small"){
     document.body.style.fontSize="14px";
     localStorage.setItem("Fontsize", "14px")
   }
   
-  if( prarameterSize == "medium"){
+  if( prarameterSize === "medium"){
     document.body.style.fontSize="16px";
     localStorage.setItem("Fontsize", "16px")
   }
 
-  if( prarameterSize == "big"){
+  if( prarameterSize === "big"){
     document.body.style.fontSize="19px";
     localStorage.setItem("Fontsize", "20px")
   }
