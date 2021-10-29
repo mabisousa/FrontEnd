@@ -68,6 +68,7 @@ export const Infos = styled.div`
             @media (max-width: 1024px) and (min-width: 769px) {
               p{
                 font-size: 0.65em;
+                width: 80px;
               }
               .holding {
                 div:nth-child(1) {
@@ -274,6 +275,12 @@ export const ProgressBar = styled.div`
       height: 50px;
       font-weight: bold;
       color: #00579D;
+    }
+
+    @media (max-width: 1024px) and (min-width: 769px) {
+      p {
+        font-size: 0.9em;
+      }     
     }
   }
 
