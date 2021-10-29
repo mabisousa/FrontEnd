@@ -27,6 +27,10 @@ declare module 'styled-components' {
       skillsButton: string;
       pointedHours: string;
       totalHours: string;
+      reproveButton: string;
+      aproveButton: string;
+      step: string;
+      activeStep: string;
     }
   }
 }

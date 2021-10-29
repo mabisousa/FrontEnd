@@ -7,6 +7,7 @@ export const Container = styled.div`
   width:100%;
   height:85vh;
   padding: 1% 8% 1% 8%;
+  color: ${props => props.theme.colors.title};
 
   h1 {
     font-size: 1em;
@@ -18,7 +19,7 @@ export const Container = styled.div`
     height: 50px;
     padding: 10px;
     color: #fff;
-    background-color: #28B9DA;
+    background: ${props => props.theme.colors.skillsButton};
     border: none;
   }
 
@@ -120,7 +121,6 @@ export const Count = styled.div`
       flex-direction: row;
       align-items:center;
       margin:10px 0;
-      background: #fff;
 
       .numbers {
         margin: 0 20px 0px 0px;
@@ -171,7 +171,7 @@ export const Count = styled.div`
     height: 50px;
     font-size: .9em;
     color: #fff;
-    background: #28B9DA;
+    background: ${props => props.theme.colors.skillsButton};
     transition: 1s;
   }
 `;
@@ -208,10 +208,13 @@ export const Apontamentos = styled.div`
       background: transparent;
       border: 0;
       font-size: 1.25em;
+      svg{
+        color: ${props => props.theme.colors.title};
+      }
     }
     
     thead tr{
-      background: #0075B1;
+      background: ${props => props.theme.colors.thead};
       color: #fff;
     }
             
@@ -252,11 +255,12 @@ export const Apontamentos = styled.div`
 export const Title = styled.h1`
   font-weight:normal;
   font-size: 1.25em;
-  text-decoration: underline #0075B1;
+  text-decoration: underline ${props => props.theme.colors.undeline};
   height: 60px;
   display: flex;
   align-items: center;
   margin: 6rem 0rem 0rem 7rem;
+  color: ${props => props.theme.colors.title};
 `;
 
 export const ProgressBar = styled.div`
@@ -313,7 +317,7 @@ export const Step = styled.div<StepActive>`
     top: 45%;
     width:25%;
     height: 5px;
-    background: #8B8787;
+    background: ${props => props.theme.colors.step};
   }
 
   img {
@@ -323,7 +327,7 @@ export const Step = styled.div<StepActive>`
 
   ${(props) => props.isActive ?
     css`
-      background: #448DCA;
+      background: ${props => props.theme.colors.activeStep};
       transition: 1s;
 
       &::before {
@@ -333,12 +337,12 @@ export const Step = styled.div<StepActive>`
         top: 45%;
         width:25%;
         height: 5px;
-        background: #448DCA;
+        background: ${props => props.theme.colors.activeStep};
         transition: 1s;
       }
   `:
     css`
-      background: #8B8787;
+      background: ${props => props.theme.colors.step};
   
       &::before {
         z-index: -2;
@@ -347,7 +351,7 @@ export const Step = styled.div<StepActive>`
         top: 45%;
         width:25%;
         height: 5px;
-        background: #8B8787;
+        background: ${props => props.theme.colors.step};
       }
   `}
 `;
@@ -375,19 +379,19 @@ export const Consultores = styled.div<PopUp>`
   justify-content: center;
   align-items: center;
   top: 0px;
+  color: ${props => props.theme.colors.title};
   
   #hold{
-    background-color: #fff;
     height: 600px;
     width: 75%;
-    background: #fff;
+    background-color: ${props => props.theme.colors.background};
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   button{
-    color: black;
+    color: ${props => props.theme.colors.title};
     font-size: 1.9em;
     background-color: transparent;
     border: 0;
@@ -416,10 +420,8 @@ export const Consultores = styled.div<PopUp>`
     border-bottom: 1px solid #8B8787;
     border-top: 0;
     height: 56px;
-    color: rgba(0, 0, 0, 0.87);
     text-transform: uppercase;
     font-size: .9em;
-    background: #fff;
     
     td{
       width: 150px;
@@ -431,7 +433,6 @@ export const Consultores = styled.div<PopUp>`
     }
 
     button{
-      background: #fff;
       border: 0;
       font-size: 1.25em;
     }
@@ -456,14 +457,14 @@ export const Tr = styled.div<colorConsultores>`
   ${(props) => props.color === "ATIVO" &&
     css`
       td:nth-child(3){
-        color: #000;
+        color: ${props => props.theme.colors.title};
       }
   `}
 
   ${(props) => props.color === "INATIVO" && 
     css`
       td:nth-child(3){
-        color: #AC341A;
+        color: ${props => props.theme.colors.inactiveStatus}
       }
   `}
 
@@ -474,7 +475,7 @@ export const Tr = styled.div<colorConsultores>`
   border-bottom: 1px solid #8B8787;
   border-top: 0;
   height: 56px;
-  color: rgba(0, 0, 0, 0.87);
+  color: ${props => props.theme.colors.title};
   text-transform: uppercase;
   font-size: .9em;
 
@@ -506,10 +507,10 @@ export const Buttons = styled.div`
   visibility: hidden;
 
   Button:nth-child(1) {
-    background-color: #8B8787;
+    background-color: ${props => props.theme.colors.reproveButton};
   }
   Button:nth-child(2) {
-    background-color: #28B9DA;
+    background-color: ${props => props.theme.colors.aproveButton};
   }
 `;
 
@@ -530,7 +531,7 @@ export const Descriptions = styled.div<Description>`
   width:0;
   right: 100%;
   height: 270px;
-  background: #fff;
+  background: transparent;
   position: absolute;
   top: 0;
 

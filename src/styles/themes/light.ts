@@ -24,5 +24,9 @@ export default {
     skillsButton: '#28B9DA',
     pointedHours: '#57b7dc',
     totalHours: '#B4DDFB',
+    reproveButton: '#8B8787',
+    aproveButton: '#28B9DA',
+    step: '#8B8787',
+    activeStep: '#448DCA'
   }
 }

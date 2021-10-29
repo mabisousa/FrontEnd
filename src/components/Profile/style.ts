@@ -39,7 +39,7 @@ export const Container = styled.div`
     &::before {
       content: "";
       position: absolute;
-      border-left: 15px solid ${props => props.theme.colors.background};
+      border-left: 15px solid ${props => props.theme.colors.headerBackground};
       top: 45%;
       right: -13px;  
       border-top: 15px solid transparent;
