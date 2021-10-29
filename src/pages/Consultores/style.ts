@@ -12,14 +12,12 @@ export const Filters = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
   margin: 6rem 0rem 0rem 5rem;
 
   div{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
   }
 
   button{
@@ -67,7 +65,7 @@ export const Filter = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  margin-left: 35px;
 
   p{
     font-size: 1.25em;

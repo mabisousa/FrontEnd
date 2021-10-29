@@ -82,16 +82,6 @@ const Consultants: React.FC = () => {
               <input placeholder={i18n.t('consultants.placeHolder')} 
                 value={search} onChange={(ev) => setSearch(ev.target.value)}/>
             </Form>
-            <Filterbynumber>
-              <p>
-                {i18n.t('consultants.registration')}
-              </p>
-              <input/>
-              <p> 
-                - 
-              </p>
-              <input/>
-            </Filterbynumber>
             <div>
               <label>
                 {i18n.t('projects.status')}
