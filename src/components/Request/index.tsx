@@ -2,90 +2,107 @@ import React,{ useCallback, useState  }  from 'react';
 
 import {RiArrowLeftSLine} from 'react-icons/ri';
 
-import { Container } from './style';
+import { Background, Container } from './style';
 
 import { i18n } from '../../translate/i18n';
+import api from '../../services/api';
 
-const Request: React.FC = () => {
+interface MostrarRequest {
+  responsavel: {
+    idResponsavel: number,
+  },
+  consultor: {
+    idConsultor: number,
+  },
+  mostrarRequisicao: (args0: boolean) => void
+}
+interface RequisicaoProps {
+    consultor: {
+      idConsultor: number
+    },
+    responsavel: {
+      idResponsavel: number,
+    },
+    requisicaoDescricao: string
+}
+const Request: React.FC<MostrarRequest> = ({ consultor, responsavel, mostrarRequisicao}) => {
 
-  const [estaConfirmado, setConfirmado] = useState(false);
   const [conteudo, newConteudo] = useState('');
+  const [revisao, setRevisao] = useState(false);
 
-  const handleBackRequest = useCallback(() => {
-    setConfirmado(false);
+  const requisicao = {
+    consultor: {
+      idConsultor: 0
+    },
+    responsavel: {
+      idResponsavel: 0
+    },
+    requisicaoDescricao: ""
+  }
+
+  const confirmarRequisicao = useCallback(() => {
+    setRevisao(true);
   }, []);
 
-  const handleRequest = useCallback(() => {
-    setConfirmado(true);
-  }, []);
+  const enviarRequisicao = useCallback(async () => {
 
-  const handleSubmit = useCallback(() => {
-    if(estaConfirmado) {
-      console.log(conteudo)
+    try {
+      requisicao.requisicaoDescricao = conteudo
+      requisicao.consultor.idConsultor = consultor.idConsultor
+      requisicao.responsavel.idResponsavel = responsavel.idResponsavel
+
+      api.post(`requisicoes/inserir`,requisicao).then((response) => {
+        console.log(response.data)
+      })
+    } catch(e) {
+      console.log(e)
     }
-  }, [estaConfirmado, conteudo]);
+    mostrarRequisicao(false)
+  }, [consultor.idConsultor, conteudo, mostrarRequisicao, requisicao, responsavel.idResponsavel]);
+
 
   return (
     <>
-      <Container id="request" confirm={estaConfirmado}>
-        {!!estaConfirmado ? 
-          <>
-            <div>
-              <RiArrowLeftSLine onClick={handleBackRequest}/>
-              <p>
-                {i18n.t('request.request')}
-              </p>
-            </div>
-            <textarea id="text"
-              value={conteudo}
-              onChange={e => newConteudo(e.target.value)}
-            />
-            <button onClick={handleSubmit}>
-              {i18n.t('request.send')}
-              </button>
-          </>
-        :
-          <>
+    <Background > 
+        <Container id="request" send={!!revisao}>
+        {!revisao ? 
+        <>
+          <div>
+            <RiArrowLeftSLine onClick={() => mostrarRequisicao(false)}/>
             <p>
-              {i18n.t('request.change')}
+              {i18n.t('request.request')}
             </p>
+          </div>
+          <textarea id="text"
+            value={conteudo}
+            onChange={e => newConteudo(e.target.value)}
+          />
+          <button onClick={confirmarRequisicao}>
+            {i18n.t('request.send')}
+          </button>
+        </>
+      :
+          <>
             <div>
-              <button >
-                {i18n.t('request.no')}
-              </button>
-              <button onClick={handleRequest}>
-                {i18n.t('request.yes')}
-              </button>
-            </div>
-          </>
-        }   
-      </Container>
+                <p>
+                  {i18n.t('request.confirm')}
+                </p>
+              </div>
+              <div>
+                <button onClick={() => setRevisao(false)}>
+                  {i18n.t('request.no')}
+                </button>
+                <button onClick={enviarRequisicao}>
+                  {i18n.t('request.yes')}
+                </button>
+              </div>
+            </>
+        }    
+        </Container>
+    </Background>
+
     </>
   )
 };
 
 export default Request;
-
-/*import React from 'react';
-
-import { Container } from './style';
-
-const PopUpAprovacoes: React.FC = () => {
-  
-    
-    return (
-    <>
-        <Container>
-            <div className="container">
-                <div>
-                    <RiArrowLeftSLine />
-                    <p>Insira sua Solicitação:</p>
-                </div>
-                <textarea ></textarea>      
-                <button>Enviar</button>
-            </div>
-        </Container>
-    </>
-)};
-
-export default PopUpAprovacoes;*/

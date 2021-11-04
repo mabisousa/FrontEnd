@@ -1,81 +1,80 @@
 import styled, { css } from 'styled-components';
 
+
 interface RequestProps {
-  confirm: boolean;
+  send: boolean,
 }
+export const Background = styled.div`
+  position: fixed;
+  top: 0;
+  z-index: 9999999;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0,0,0,0.7);
+  visibility:visible;
+`;
 export const Container = styled.main<RequestProps>`
-  width: 500px;
-  padding: 3% 2% 0% 2%;
+
+  width: 600px;
+  height: 400px;
+  padding: 1.5%;
   background-color: #fff;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  position: absolute; 
+  position: relative; 
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 99999;
-  visibility: hidden;
-  box-shadow: 0px 5px 27px 10px #e2e2e2;    
 
-  button {
-    width: 90px;
-    height: 45px;
-    border: none;
-    color: #fff;
-    background: #28B9DA;
-  }   
-      
-  svg{
-    width: 30px;
+  svg {
     height: 30px;
-    margin-left: -8px;
+    width: 30px;
+    display: block;
+    position: absolute;
+    left: 7%;
+    top: 10%;
     cursor: pointer;
   }
-
-  textarea{
-    font-size: .9em;
-    width: 100%;
-    height: 55%;
-    overflow-y: auto;
-    border: 1px solid #7e7e7e;
-    background: #F5F5F5;
-    padding: 10px;
-    resize: none;
-    margin: 18px 0px 18px 0px;
-  }
-
-  ${(props) => !props.confirm ? 
-    css`
+    p {
+      font-size: 18px;
+    }
+    ${props => !props.send ? css`
+    
+    textarea {
+      width: 100%;
       height: 200px;
-      
-      div {
-        width: 100%;
-        height: 90%;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-
-        button:nth-child(1) {
-          background: #96CBE2;
-        }
-
-        button:nth-child(2) {
-          background: #28B9DA;
-        }
-      }
+    }
+    button {
+      border: none;
+      color: #fff;
+      padding: 2% 5%;
+      background-color: blue;
+    }
     ` : css`
-      height: 300px;
 
-      div {
-        width: 100%;
-        height: 5%;
-        display: flex;
-        align-items: center;
+    div {
+      display: flex;
+      justify-content: space-between;
+      width: 70%;
+      height: auto;
 
-        p {
-          margin-left: 28%;
+      button {
+      border: none;
+      color: #fff;
+      padding: 4% 8%;
+
+        :nth-child(1) {
+          background-color: red;
+        }
+        :nth-child(2) {
+        background-color: blue;
         }
       }
+    }
     `}
+   
 `;
