@@ -14,30 +14,8 @@ import { i18n } from '../../translate/i18n';
 import light from '../../styles/themes/light'
 import dark from '../../styles/themes/dark'
 
-interface Consultor{
-  id: number,
-  nome: string,
-  status: string,
-  usuario: {
-    email: string,
-  },
-  projetos: [
-    {
-      id: number,
-      nome: string,
-      status: string,
-    }
-  ]
-  alocacoes: [
-    {
-    skill: {
-      nome: string,
-    },
-    }
-  ]
-}
+
 const Consultants: React.FC = () => {
-  const [consultant, setConsultant] = useState<Consultor[]>([]);
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState('Todos');
 
@@ -48,12 +26,6 @@ const Consultants: React.FC = () => {
   };
 
   window.localStorage.getItem('Theme:darkMode')
-
-  useEffect(() => {
-    api.get(`/consultores`).then((response) => {
-      setConsultant(response.data);
-    })
-  }, [consultant, setConsultant]);
 
   const handleFilterStatus = useCallback((status: string) => {
     setStatus(status);
