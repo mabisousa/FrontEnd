@@ -17,47 +17,41 @@ import { i18n } from "../../translate/i18n";
 
 import light from '../../styles/themes/light'
 import dark from '../../styles/themes/dark'
+import { string } from 'yup/lib/locale';
+import { number } from 'yup';
 
-interface Projetos{
+interface Projetos {
   id: number,
   secao: {
     idSecao: number,
-    nomeSecao: string
+    secaoNome: string,
   },
-  nome: string,
-  descricao: string,
-  consultores: [
-    {
-    id: number,
-    nome: string
-    }
-  ],
-  status: string,
-  dataInicio: string,
-  dataFim: string,
-  horasApontadas: number,
-  horasTotal: number,
-  /*apontamentos: [{
-    id: number,
-    alocacao: {
-      skill:string,
-    },
-    horasTrabalhadas: number,
-    situacaoApontamento: string,
-  }]*/
-  skills: [
+  projetoNome: string,
+  projetoDescricao: string,
+  projetoStatus: string,
+  projetoDateInicio: Date,
+  projetoDateFim: Date,
+  projetoHorasTotais: number,
+  projetoHorasTrabalhadas: number,
+  projetoConsultores: [
     {
       id: number,
-      nome: string,
-      horasApontadas: number,
-      horasTotal: number,
+      consultorNome: string,
+      consultorStatus: string
+    }
+  ],
+  projetoSkills: [
+    {
+      skillNome: string,
+      horasTotais: number,
+      horasTrabalhadas: number
     }
   ]
 }
 
 interface Secoes {
     idSecao: number,
-    nomeSecao: string
+    secaoNome: string
 }
 
 const Home: React.FC = () => {
@@ -107,7 +101,7 @@ const Home: React.FC = () => {
 
   const handleFilterName = useCallback((ev: string) => {
     setSearch(ev)
-    setFiltereds(projects.filter((project) => project.nome.toLowerCase().includes(search.toLowerCase())));
+    setFiltereds(projects.filter((project) => project.projetoNome.toLowerCase().includes(search.toLowerCase())));
   },[projects, setSearch, search]);  
 
   const handleFilterStatus = useCallback((status: string) => {
@@ -152,8 +146,8 @@ const Home: React.FC = () => {
                 </span>
                 <div>
                   {sections.map((section) => (
-                    <button onClick={() => setSection(section.nomeSecao)} key={section.nomeSecao}>
-                      {section.nomeSecao}
+                    <button onClick={() => setSection(section.secaoNome)} key={section.secaoNome}>
+                      {section.secaoNome}
                     </button>
                   ))}
                   <button onClick={() => setSection('Todos')}>
