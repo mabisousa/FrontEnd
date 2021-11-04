@@ -1,10 +1,10 @@
 import styled, {css} from 'styled-components';
 
-interface tableProps{
+interface propriedadesTabela{
   color?: string;
 }
 
-export const Container = styled.div<tableProps>`
+export const Container = styled.div<propriedadesTabela>`
   margin-left: 130px;
   margin-top: 50px;
   margin-bottom: 40px;
@@ -18,7 +18,7 @@ export const Container = styled.div<tableProps>`
   thead{
     text-transform: uppercase;
     font-size: .9em;
-    background: ${props => props.theme.colors.thead};;
+    background: ${props => props.theme.cor.thead};;
   }
 
   thead tr{
@@ -30,7 +30,7 @@ export const Container = styled.div<tableProps>`
     overflow-y: scroll;
     overflow-x: hidden;
     display: block;
-    border: 1px solid ${props => props.theme.colors.tableBorder};
+    border: 1px solid ${props => props.theme.cor.tableBorder};
   }
 
   tr{
@@ -43,7 +43,7 @@ export const Container = styled.div<tableProps>`
     color: rgba(0, 0, 0, 0.87);
     text-transform: uppercase;
     font-size: .9em;
-    border-bottom: 1px solid ${props => props.theme.colors.tableBorder};
+    border-bottom: 1px solid ${props => props.theme.cor.tableBorder};
 
     td{
       width: 150px;
@@ -93,16 +93,16 @@ export const Container = styled.div<tableProps>`
  
 `;
 
-export const Tr = styled.div<tableProps>`
+export const Tr = styled.div<propriedadesTabela>`
 
   ${(props) => props.color === "INATIVO" && 
     css`
       td:nth-child(3){
-        color: ${props => props.theme.colors.inactiveStatus};
+        color: ${props => props.theme.cor.inactiveStatus};
       }
   `}
 
-  border-bottom: 1px solid ${props => props.theme.colors.tableBorder};
+  border-bottom: 1px solid ${props => props.theme.cor.tableBorder};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -115,7 +115,7 @@ export const Tr = styled.div<tableProps>`
 
   td{
     width: 150px;
-    color: ${props => props.theme.colors.title};
+    color: ${props => props.theme.cor.title};
   }
   
   td:nth-child(2){

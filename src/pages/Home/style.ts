@@ -6,7 +6,7 @@ export const Container = styled.div`
   position: absolute;
 `;
 
-export const Filters = styled.div`
+export const Filtros = styled.div`
   width: 85vw;
   height: 9vh;
   display: flex;
@@ -29,18 +29,18 @@ export const Filters = styled.div`
   
   label{
     font-size: 1.25em;
-    color: ${props => props.theme.colors.iconColor};
+    color: ${props => props.theme.cor.iconColor};
   }
 
   input{
     padding-left: 2px;
     background: transparent;
-    border: 1px solid ${props => props.theme.colors.iconColor};
+    border: 1px solid ${props => props.theme.cor.iconColor};
     min-height: 20px;
     font-size: 1em;
     
     &::placeholder{
-      color: ${props => props.theme.colors.iconColor};
+      color: ${props => props.theme.cor.iconColor};
     }
   }
 
@@ -58,7 +58,7 @@ export const Filters = styled.div`
   }
 `;
 
-export const Filter = styled.div`
+export const Filtro = styled.div`
   width:90%;
   height: 60px;
   display: flex;
@@ -100,11 +100,12 @@ export const Filter = styled.div`
     max-width: 80%;
   }
 
-  img{
+  svg{
     margin-left: 10px;
     border-left: 10px;
     height: 1.31em;
     width: 1.31em;
+    color: ${props => props.theme.cor.iconColor};
   }
 
   @media (max-width: 1024px) and (min-width: 769px)  {
@@ -124,13 +125,13 @@ export const Filter = styled.div`
   }
 `;
 
-export const Title = styled.h1`
+export const Titulo = styled.h1`
   font-weight:normal;
   font-size: 1.25em;
   margin-left: 50px;
   width: 300px;
-  color: ${props => props.theme.colors.title};
-  text-decoration: underline ${props => props.theme.colors.undeline};
+  color: ${props => props.theme.cor.title};
+  text-decoration: underline ${props => props.theme.cor.undeline};
 
   @media (max-width:768px) {
     margin-right: 10px;

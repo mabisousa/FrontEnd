@@ -17,7 +17,7 @@ export const Container = styled.div<dropdownProps>`
   left: 0;
   z-index: 999;
   border-bottom: 2px solid #90C0E3;  
-  background: ${props => props.theme.colors.headerBackground};
+  background: ${props => props.theme.cor.headerBackground};
 
   #name{
     width:220px;
@@ -34,7 +34,7 @@ export const Container = styled.div<dropdownProps>`
       font-weight: bold;
       font-size: 1em;
       cursor: pointer;
-      color: ${props => props.theme.colors.title};
+      color: ${props => props.theme.cor.title};
     }
   }
 
@@ -53,7 +53,7 @@ export const Container = styled.div<dropdownProps>`
       cursor: pointer;
       margin-right: 7px;
       margin-top: 10px;
-      color: ${props => props.theme.colors.iconColor};
+      color: ${props => props.theme.cor.iconColor};
     }
 
     #sair {
@@ -62,8 +62,8 @@ export const Container = styled.div<dropdownProps>`
       cursor: pointer;
       text-align: center;
       margin-top: 7px;
-      color: ${props => props.theme.colors.title};
-      border-left: 1.5px solid ${props => props.theme.colors.title};
+      color: ${props => props.theme.cor.title};
+      border-left: 1.5px solid ${props => props.theme.cor.title};
     }
   }
 
@@ -74,8 +74,9 @@ export const Container = styled.div<dropdownProps>`
     cursor: pointer;
     min-width: 180px;
     height: auto;
-    border-bottom: solid 1px ${props => props.theme.colors.iconColor};
-    background-color: ${props => props.theme.colors.background}; 
+    border: solid 1px ${props => props.theme.cor.iconColor};
+    border-bottom: none;
+    background-color: ${props => props.theme.cor.background}; 
 
     ${(props) => props.showDropdown ?
       css`
@@ -97,7 +98,8 @@ export const Container = styled.div<dropdownProps>`
       min-height: 35px;
       align-items: center;
       background-color: transparent;
-      color: ${props => props.theme.colors.iconColor};
+      color: ${props => props.theme.cor.iconColor};
+      border-bottom: solid 1px ${props => props.theme.cor.iconColor};
 
         p{
           min-height: 20px;

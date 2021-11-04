@@ -11,22 +11,21 @@ import AuthProvider from './hooks';
 
 
 const App = () => {
-  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light);
+  const [tema, setTema] = usePersistedState<DefaultTheme>('tema', light);
 
-  const toggleTheme = () => {
-    setTheme(theme.title === 'light' ? dark : light);
+  const alternarTema = () => {
+    setTema(tema.titulo === 'light' ? dark : light);
     window.location = window.location
   };
-  console.log(theme)
   
   return (
   <>
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={tema}>
       <BrowserRouter>
         <AuthProvider>
-          <Routes toggleTheme={toggleTheme}/>
+          <Routes/>
         </AuthProvider>
-        <Header toggleTheme={toggleTheme}/>
+        <Header alternarTema={alternarTema}/>
 
         <GlobalStyle/>
       </BrowserRouter>

@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
-import { Container, Filters, Title, Form, Filterbynumber, Filter } from './style';
+import { Container, Filtros, Titulo, Formulario, Filtro } from './style';
 
 import Table from "../../components/ConsultantTable"
 import Dropdown from "../../components/Dropdown";
 import Profile from "../../components/Profile";
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
-import api from "../../services/api";
 
 import { i18n } from '../../translate/i18n';
 
@@ -15,19 +14,19 @@ import light from '../../styles/themes/light'
 import dark from '../../styles/themes/dark'
 
 
-const Consultants: React.FC = () => {
-  const [search, setSearch] = useState('');
+const Consultor: React.FC = () => {
+  const [pesquisa, setPesquisa] = useState('');
   const [status, setStatus] = useState('Todos');
 
-  const [theme, setTheme] = useState(light);
+  const [tema, setTema] = useState(light);
 
-  const toggleTheme = () => {
-    setTheme(theme.title === 'light' ? dark : light);
+  const alternarTema = () => {
+    setTema(tema.titulo === 'light' ? dark : light);
   };
 
   window.localStorage.getItem('Theme:darkMode')
 
-  const handleFilterStatus = useCallback((status: string) => {
+  const handleFiltrarStatus = useCallback((status: string) => {
     setStatus(status);
     console.log(status)
   },[]);  
@@ -35,25 +34,25 @@ const Consultants: React.FC = () => {
   return (
     <>  
       <Container>
-        <Header toggleTheme={toggleTheme}>
+      <Header alternarTema={alternarTema}>
           <p>
             {i18n.t('consultants.titleHeader')}
           </p>
         </Header>
         <Profile/>
         <Menu/>
-        <Filters>
-          <Title>
+        <Filtros>
+          <Titulo>
             {i18n.t('consultants.titleHeader')}
-          </Title>
-          <Filter>
-            <Form>
+          </Titulo>
+          <Filtro>
+            <Formulario>
               <label>
                 {i18n.t('consultants.name')}
               </label>
               <input placeholder={i18n.t('consultants.placeHolder')} 
-                value={search} onChange={(ev) => setSearch(ev.target.value)}/>
-            </Form>
+                value={pesquisa} onChange={(ev) => setPesquisa(ev.target.value)}/>
+            </Formulario>
             <div>
               <label>
                 {i18n.t('projects.status')}
@@ -63,24 +62,24 @@ const Consultants: React.FC = () => {
                   {status}
                 </span>
                 <div>
-                  <button onClick={() => handleFilterStatus('Ativo')}>
+                  <button onClick={() => handleFiltrarStatus('Ativo')}>
                     {i18n.t('consultants.active')}
                   </button>
-                  <button onClick={() => handleFilterStatus('Inativo')}>
+                  <button onClick={() => handleFiltrarStatus('Inativo')}>
                     {i18n.t('consultants.inactive')}
                   </button>
-                  <button onClick={() => handleFilterStatus('Todos')}>
+                  <button onClick={() => handleFiltrarStatus('Todos')}>
                     {i18n.t('projects.all')}
                   </button>
                 </div>
               </Dropdown>
             </div>
-          </Filter>
-        </Filters>
+          </Filtro>
+        </Filtros>
         <Table status={status}/>
       </Container>
     </>
   )
 };
 
-export default Consultants;
+export default Consultor;

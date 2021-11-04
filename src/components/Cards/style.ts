@@ -1,34 +1,34 @@
 import styled, { css } from 'styled-components';
 
-interface cardProps {
-  color?: string,
-  show: boolean;
+interface propriedadesCard {
+  cor?: string,
+  mostrar: boolean;
 }
 
-export const Container = styled.a<cardProps>`
+export const Container = styled.a<propriedadesCard>`
   cursor: pointer;
   box-shadow: 5px 5px 5px rgb(0 0 0 / 0.2);
   margin: 1rem;
   float: left;
   min-height: 150px;
-  background: ${props => props.theme.colors.cardBackground}; 
+  background: ${props => props.theme.cor.cardBackground}; 
 
-  ${(props) => props.color === "ANDAMENTO" &&
+  ${(props) => props.cor === "ANDAMENTO" &&
     css`
-      border-left:  15px solid ${props => props.theme.colors.progresStatus};
+      border-left:  15px solid ${props => props.theme.cor.progresStatus};
     `}
 
-  ${(props) => props.color === "CONCLUÍDO" && 
+  ${(props) => props.cor === "CONCLUÍDO" && 
     css`
-      border-left:  15px solid ${props => props.theme.colors.concludedStatus};
+      border-left:  15px solid ${props => props.theme.cor.concludedStatus};
     `}
 
-  ${(props) => props.color === "ATRASADO" &&
+  ${(props) => props.cor === "ATRASADO" &&
     css`
-      border-left:  15px solid ${props => props.theme.colors.lateStatus};
+      border-left:  15px solid ${props => props.theme.cor.lateStatus};
     `}
 
-  ${(props) => props.show ? 
+  ${(props) => props.mostrar ? 
     css` 
       width: 30%;
       min-height : 200px;
@@ -56,11 +56,11 @@ export const Container = styled.a<cardProps>`
   }
 `;
 
-export const TitleSection = styled.p<cardProps>`
+export const TituloSecao = styled.p<propriedadesCard>`
   width: 200px;
   margin-top: 1rem;
   margin-left: 2rem;
-  color: ${props => props.theme.colors.titleSection};
+  color: ${props => props.theme.cor.titleSection};
 
   @media (max-width: 1024px) and (min-width: 426px) {
     font-size: .81em;
@@ -70,7 +70,7 @@ export const TitleSection = styled.p<cardProps>`
     font-size: 80%;
   }
 
-  ${(props) => props.show ? 
+  ${(props) => props.mostrar ? 
     css` 
       font-size: .9em;
     `: css`
@@ -78,9 +78,9 @@ export const TitleSection = styled.p<cardProps>`
   `}
 `;
 
-export const TitleProject = styled.p<cardProps>`
+export const TituloProjeto = styled.p<propriedadesCard>`
   margin-left: 2rem;
-  color: ${props => props.theme.colors.title};
+  color: ${props => props.theme.cor.title};
 
   @media (max-width: 1024px) and (min-width: 769px) {
     font-size: .94em;
@@ -96,7 +96,7 @@ export const TitleProject = styled.p<cardProps>`
     font-size: 100%;
   }
 
-  ${(props) => props.show ? 
+  ${(props) => props.mostrar ? 
     css` 
       width: 315px;
       font-size: 1em;
@@ -119,11 +119,11 @@ export const TitleProject = styled.p<cardProps>`
   `}
 `;
 
-export const HoldHours = styled.div<cardProps>`
+export const SeguraHoras = styled.div<propriedadesCard>`
   width:200px;
   min-height:40px;
   float: left;
-  color: ${props => props.theme.colors.title};
+  color: ${props => props.theme.cor.title};
 
   @media (max-width: 425px){
     margin-left: 2rem;
@@ -135,7 +135,7 @@ export const HoldHours = styled.div<cardProps>`
     width: 130px;
   }
 
-  ${(props) => props.show ? 
+  ${(props) => props.mostrar ? 
     css` 
       margin-left: 7px;
       margin-top: 1rem; 
@@ -155,14 +155,14 @@ export const HoldHours = styled.div<cardProps>`
   `}
 `;
 
-export const Hours = styled.div<cardProps>`
+export const Hora = styled.div<propriedadesCard>`
   min-height:20px;
   margin-left: 15%;
   display: flex;
   justify-content: space-between;
   margin-top: 2px;
   
-  ${(props) => props.show ? 
+  ${(props) => props.mostrar ? 
     css` 
       width: 155px;
       font-size:.7em; 
@@ -192,12 +192,12 @@ export const Hours = styled.div<cardProps>`
   }
 `;
 
-export const Status = styled.div<cardProps>`
+export const Status = styled.div<propriedadesCard>`
   width:7.7em;
   max-width: 10em;
   float:right;
   text-align: center;
-  color: ${props => props.theme.colors.title};
+  color: ${props => props.theme.cor.title};
 
   p:nth-child(1){
     font-weight: regular;
@@ -210,7 +210,7 @@ export const Status = styled.div<cardProps>`
     font-size: 1.1em;
   }
 
-  ${(props) => props.show ? 
+  ${(props) => props.mostrar ? 
     css` 
       margin-top: 17px;
       margin-right: 16px;
@@ -289,19 +289,19 @@ export const Status = styled.div<cardProps>`
   }
 `;
 
-export const Date = styled.div<cardProps>`
+export const Data = styled.div<propriedadesCard>`
   min-height:15px;
   display: flex;
   justify-content: space-between;
   margin-left: 2rem;
-  color: ${props => props.theme.colors.date};
+  color: ${props => props.theme.cor.date};
   
   p {
     float: left;
     font-size: .75em;
   }
 
-  ${(props) => props.show ? 
+  ${(props) => props.mostrar ? 
     css` 
       width: 300px;
 

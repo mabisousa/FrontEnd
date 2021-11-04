@@ -69,7 +69,7 @@ const AprovacaoTest: React.FC = () => {
     const [mostrarRequisicao, setMostrarRequisicao] = useState(false);
 
     const toggleTheme = () => {
-        setTheme(theme.title === 'light' ? dark : light);
+        setTheme(theme.titulo === 'light' ? dark : light);
     };
 
     useEffect(()=> {
@@ -158,7 +158,7 @@ const AprovacaoTest: React.FC = () => {
         {mostrarRequisicao && consultor && <Request responsavel={responsavel} consultor={consultor} mostrarRequisicao={mostrarPopupRequisicao}/> }
           <Profile/>
           <Menu />
-          <Header toggleTheme={toggleTheme}>
+          <Header alternarTema={toggleTheme}>
             <p>
               {i18n.t('approval.titleHeader')}
             </p>

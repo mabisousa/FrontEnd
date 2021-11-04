@@ -2,9 +2,9 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    title: string;
+    titulo: string;
 
-    colors: {
+    cor: {
       background: string;
       headerBackground: string;
       title: string;
