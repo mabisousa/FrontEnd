@@ -10,7 +10,7 @@ const Dropdown: React.FC = (props) => {
   const [mostrarDropdown, setMostrarDropdown] = useState(true) 
   const [alterarFlecha, setAlterarFlecha] = useState(true);
 
-  const handleShowDropdown = useCallback(() => {
+  const handleMostrarDropdown = useCallback(() => {
     if(!!mostrarDropdown === false) {
       setMostrarDropdown(true);
       setAlterarFlecha(true);    
@@ -22,8 +22,8 @@ const Dropdown: React.FC = (props) => {
 
   return(
     <>
-      <Container showDropdown={!!mostrarDropdown} showArrow={!!alterarFlecha}>
-        <div onClick={handleShowDropdown} id="dropdown">
+      <Container mostrarDropdown={!!mostrarDropdown} alterarFlecha={!!alterarFlecha}>
+        <div onClick={handleMostrarDropdown} id="dropdown">
             <IoIosArrowDown id="arrowDown" />
             <IoIosArrowBack id="arrowLeft" />
             {props.children}

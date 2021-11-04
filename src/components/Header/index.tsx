@@ -18,16 +18,16 @@ import { ThemeContext } from 'styled-components';
 import { shade } from 'polished';
 import { Link } from "react-router-dom";
 
-interface theme{
-  toggleTheme(): void
+interface tema{
+  alternarTema(): void
 }
 
-const Header: React.FC<theme> = ({toggleTheme, children,...props}) => {
+const Header: React.FC<tema> = ({alternarTema, children,...props}) => {
   
   const [mostrarDropdown, setMostrarDropdown] = useState(true);
   const [mostrarIdiomas, setMostrarIdiomas] = useState(true);
   const [mostrarFonte, setMostrarFonte] = useState(true);
-  const { colors, title } = useContext(ThemeContext);
+  const { cor, titulo } = useContext(ThemeContext);
 
   const handleMostrarDropdown = useCallback(() => {
     if(!!mostrarDropdown === false) {
@@ -145,15 +145,15 @@ const Header: React.FC<theme> = ({toggleTheme, children,...props}) => {
         </div>
         <button>
           <Switch
-            onChange={toggleTheme}
-            checked={title === 'dark'}
+            onChange={alternarTema}
+            checked={titulo === 'dark'}
             checkedIcon={false}
             uncheckedIcon={false}
             height={10}
             width={30}
             handleDiameter={20}
-            offColor={shade(0.15, colors.undeline)}
-            onColor={colors.undeline}
+            offColor={shade(0.15, cor.undeline)}
+            onColor={cor.undeline}
           />
           <p>
             {i18n.t('header.theme')}

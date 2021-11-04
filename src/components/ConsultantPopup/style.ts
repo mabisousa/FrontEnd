@@ -1,12 +1,12 @@
 import styled, {css} from 'styled-components';
 
-interface PopUp {
-  show: boolean;
+interface propriedadesPopup {
+  mostrar: boolean;
 }
 
-export const Container = styled.div<PopUp>`
+export const Container = styled.div<propriedadesPopup>`
 
-  ${(props) => !props.show && 
+  ${(props) => !props.mostrar && 
     css`
       div {
         visibility: visible;
@@ -23,12 +23,12 @@ export const Container = styled.div<PopUp>`
   justify-content: center;
   align-items: center;
   top: 0px;
-  color: ${props => props.theme.colors.title};
+  color: ${props => props.theme.cor.title};
 
 
   #hold{
     position: relative;
-    background-color: ${props => props.theme.colors.background};
+    background-color: ${props => props.theme.cor.background};
     width: 960px;
     height: 570px;
     padding: 10px;
@@ -46,7 +46,7 @@ export const Container = styled.div<PopUp>`
     border: 0;
 
     svg{
-      color: ${props => props.theme.colors.title};
+      color: ${props => props.theme.cor.title};
     }
   }
 
@@ -70,7 +70,7 @@ export const Container = styled.div<PopUp>`
   }
 `;
 
-export const PopUpInfo = styled.div`
+export const InfoPopUp = styled.div`
   margin-top: 50px;
   margin-left: 35px;
 
@@ -80,7 +80,7 @@ export const PopUpInfo = styled.div`
   }
 
   svg{
-    color: ${props => props.theme.colors.iconColor};
+    color: ${props => props.theme.cor.iconColor};
     width: 100px;
     height: 100px;
     margin-left: 35px;
@@ -93,7 +93,7 @@ export const PopUpInfo = styled.div`
   h1{
     font-size: 1.15em;
     font-weight: bolder;
-    text-decoration: 2px underline ${props => props.theme.colors.undeline};
+    text-decoration: 2px underline ${props => props.theme.cor.undeline};
   }
 
   p{
@@ -123,7 +123,7 @@ export const PopUpInfo = styled.div`
   }
 `;
 
-export const Content = styled.div`
+export const Conteudo = styled.div`
   display: flex;
   margin-top: 25px;
   margin-bottom: 60px;
@@ -140,7 +140,7 @@ export const Content = styled.div`
   }
 `;
 
-export const Skills = styled.div`
+export const Habilidades = styled.div`
   width: 40%;
   margin-left: 30px;
 
@@ -162,7 +162,7 @@ export const Skills = styled.div`
   }
 `;
 
-export const HoldContent = styled.div`
+export const SeguraConteudo = styled.div`
   border: 1px solid #8B8787;
   height: 36vh;
   overflow-y: scroll;
@@ -178,7 +178,7 @@ export const HoldContent = styled.div`
   }
 `;
 
-export const PopUpTable = styled.div`
+export const TabelaPopUp = styled.div`
   width: 50%;
   height: 100%;
   margin-right: 30px;
@@ -190,7 +190,7 @@ export const PopUpTable = styled.div`
   }
 
   thead{
-    background: ${props => props.theme.colors.thead};
+    background: ${props => props.theme.cor.thead};
     height: 40px;
     display: inline-flex;
     width:100%;

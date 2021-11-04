@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Container, TitleSection, TitleProject, HoldHours, Hours, Status, Date } from './style';
+import { Container, TituloSecao, TituloProjeto, SeguraHoras, Hora, Status, Data } from './style';
 
 import api from "../../services/api";
 import Popup from "../ProjectsPopup";
@@ -51,49 +51,49 @@ interface Projeto {
 
 const Cards: React.FC<Projeto> = ({id, mostrar}) => {
 
-  const [mostrarPopup, setmostarPopup] = useState(false);
-  const [projeto, setProject] = useState<Projetos>();
+  const [mostrarPopup, setMostarPopup] = useState(false);
+  const [projeto, setProjeto] = useState<Projetos>();
 
   useEffect(() => {
     api.get(`/projetos/${id}`).then((response) => {
-      setProject(response.data)
+      setProjeto(response.data)
     })
   }, [id]);
 
-  const handleMostarPopup = (showPop: boolean) => {
-    setmostarPopup(showPop);
+  const handleMostarPopup = (mostrarPop: boolean) => {
+    setMostarPopup(mostrarPop);
   }
 
   return (
     <>
       { projeto &&
-        <Container show={!!mostrar} color={projeto.status} 
-          onClick={() => (setmostarPopup(!mostrarPopup))} key={projeto.id}>
-          <TitleSection show={!!mostrar}>
+        <Container mostrar={!!mostrar} cor={projeto.status} 
+          onClick={() => (setMostarPopup(!mostrarPopup))} key={projeto.id}>
+          <TituloSecao mostrar={!!mostrar}>
             {projeto.secao.idSecao} - {projeto.secao.nomeSecao}
-          </TitleSection>
-          <TitleProject show={!!mostrar}>
+          </TituloSecao>
+          <TituloProjeto mostrar={!!mostrar}>
             {projeto.id} - {projeto.nome} 
-          </TitleProject>
-          <HoldHours show={!!mostrar}>
-            <Hours show={!!mostrar}>
+          </TituloProjeto>
+          <SeguraHoras mostrar={!!mostrar}>
+            <Hora mostrar={!!mostrar}>
               <p>
                 {i18n.t('card.total')}
               </p>
               <p>
                 {projeto.horasTotal}
               </p>
-            </Hours>
-            <Hours show={!!mostrar}>
+            </Hora>
+            <Hora mostrar={!!mostrar}>
               <p>
                 {i18n.t('card.pointed')}
               </p>
               <p>
                 {projeto.horasApontadas}
               </p>
-            </Hours>
-          </HoldHours>
-          <Status show={!!mostrar}>
+            </Hora>
+          </SeguraHoras>
+          <Status mostrar={!!mostrar}>
             <p>
               {i18n.t('card.status')}
             </p>
@@ -101,7 +101,7 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
               {projeto.status}
             </p>
           </Status>
-          <Date show={!!mostrar}>
+          <Data mostrar={!!mostrar}>
             <p>
               {i18n.t('card.from')} {projeto.dataInicio.substring(0,10)}
             </p>
@@ -114,7 +114,7 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
                 {i18n.t('card.to')} 00-00-00
               </p>
             }
-          </Date>
+          </Data>
         </Container>
       }
       { mostrarPopup && projeto &&
