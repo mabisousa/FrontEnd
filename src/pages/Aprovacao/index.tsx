@@ -175,8 +175,8 @@ const Aprovacao: React.FC = () => {
 
     const [theme, setTheme] = useState(light);
 
-    const toggleTheme = () => {
-      setTheme(theme.title === 'light' ? dark : light);
+    const alternarTema = () => {
+      setTheme(theme.titulo === 'light' ? dark : light);
     };
 
     return (
@@ -184,7 +184,7 @@ const Aprovacao: React.FC = () => {
           <Profile/>
           <Menu />
           <Request/>
-          <Header toggleTheme={toggleTheme}>
+          <Header alternarTema={alternarTema}>
             <p>
               {i18n.t('approval.titleHeader')}
             </p>

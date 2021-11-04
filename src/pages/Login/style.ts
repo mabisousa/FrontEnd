@@ -29,7 +29,7 @@ export const Inputs = styled.div`
 export const FormButton = styled.button`
   padding: .75rem 2rem;
   border: none;
-  background: ${props => props.theme.colors.projectMenu};
+  background: ${props => props.theme.cor.projectMenu};
   color: #fff;
   font-size: 1em;
   border-radius: .5rem;

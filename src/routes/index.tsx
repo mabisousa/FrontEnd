@@ -6,11 +6,7 @@ import Aprovacao from '../pages/Aprovacao';
 import Consultores from '../pages/Consultores';
 import Home from '../pages/Home/index';
 
-interface theme{
-  toggleTheme(): void
-}
-
-const Routes: React.FC<theme> = (toggleTheme) => (
+const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={Login}/>
     <Route path="/home" exact component={Home} isPrivate/>
