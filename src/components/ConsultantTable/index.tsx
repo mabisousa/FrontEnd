@@ -8,10 +8,27 @@ import api from "../../services/api";
 import { i18n } from '../../translate/i18n';
 
 interface Consultores{
-  id: number,
-  nome: string,
-  status: string,
-  projetos: string
+  idConsultor: number,
+  consultorNome: string,
+  consultorStatus: string,
+  consultorValorHora: number,
+  usuario: {
+    email: string,
+  },
+  consultorAlocacoes: [
+    {
+      projeto: {
+        id: number,
+        projetoNome: string,
+        projetoStatus: string,
+      }
+      skill: {
+        skillNome: string,
+      }
+    }
+  ],
+  horasTotais: number,
+  horasTrabalhadas: number
 }
 
 interface Consultor {
@@ -71,20 +88,20 @@ const TabelaConsultor: React.FC<Consultor> = ({status}) => {
             </thead>
             <tbody>
               {consultor.map((consultant) => (
-                <Tr color={consultant.status}>
+                <Tr color={consultant.consultorStatus}>
                   <td>
-                    {consultant.id}
+                    {consultant.idConsultor}
                   </td>
                   <td>
-                    {consultant.nome}
+                    {consultant.consultorNome}
                   </td>
                   <td>
-                    {consultant.status}
+                    {consultant.consultorStatus}
                   </td> 
                   <td>
-                    {consultant.projetos.length}
+                    {consultant.consultorAlocacoes.length}
                   </td>
-                  <button onClick={() => handleOpenPopup(consultant.id)} key={consultant.id}>
+                  <button onClick={() => handleOpenPopup(consultant.idConsultor)} key={consultant.idConsultor}>
                     <td> + </td>
                   </button>
                 </Tr>
@@ -95,7 +112,7 @@ const TabelaConsultor: React.FC<Consultor> = ({status}) => {
       } 
         
       { mostrarPopup && consulta &&
-        <Popup id={consulta.id} mostrarPopup={handleShowPopup}/>
+        <Popup id={consulta.idConsultor} mostrarPopup={handleShowPopup}/>
       }
     </>
   )

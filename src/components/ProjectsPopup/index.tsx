@@ -10,32 +10,31 @@ import api from "../../services/api";
 import Grid from '../Grid';
 
 import { i18n } from "../../translate/i18n";
-
-interface Projetos{
+interface Projetos {
   id: number,
   secao: {
     idSecao: number,
-    nomeSecao: string
+    secaoNome: string,
   },
-  nome: string,
-  descricao: string,
-  consultores: [
-    {
-    id: number,
-    nome: string
-    }
-  ],
-  status: string,
-  dataInicio: string,
-  dataFim: string,
-  horasApontadas: number,
-  horasTotal: number,
-  skills: [
+  projetoNome: string,
+  projetoDescricao: string,
+  projetoStatus: string,
+  projetoDateInicio: Date,
+  projetoDateFim: Date,
+  projetoHorasTotais: number,
+  projetoHorasTrabalhadas: number,
+  projetoConsultores: [
     {
       id: number,
-      nome: string,
-      horasApontadas: number,
-      horasTotal: number,
+      consultorNome: string,
+      consultorStatus: string
+    }
+  ],
+  projetoSkills: [
+    {
+      skillNome: string,
+      horasTotais: number,
+      horasTrabalhadas: number
     }
   ]
 }
@@ -72,8 +71,8 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
   let apontadas = 0;
 
   if (projeto) {
-    apontadas = projeto.horasApontadas;
-    restantes = projeto.horasTotal - apontadas;
+    apontadas = projeto.projetoHorasTrabalhadas;
+    restantes = projeto.projetoHorasTotais - apontadas;
   } 
 
   return(
@@ -86,10 +85,10 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
             </button>
             <TitlePopUp>
               <h2> 
-                {projeto.secao.idSecao} - {projeto.secao.nomeSecao}
+                {projeto.secao.idSecao} - {projeto.secao.secaoNome}
               </h2>
               <h1>
-                {projeto.id} - {projeto.nome}
+                {projeto.id} - {projeto.projetoNome}
               </h1>
             </TitlePopUp>
             <InfosPopup>
@@ -111,7 +110,7 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                   {i18n.t('projectsPopup.objective')} 
                 </h1>
                 <p>
-                  {projeto.descricao}
+                  {projeto.projetoDescricao}
                 </p>
               </Objetivo>
               <Horas open={!!estaAberto}  className="cont">
@@ -145,13 +144,13 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                     <p>
                       {i18n.t('projectsPopup.total')}
                       <span>
-                        {projeto.horasTotal}
+                        {projeto.projetoHorasTotais}
                       </span> 
                     </p> 
                     <p>
                       {i18n.t('projectsPopup.pointed')}
                       <span>
-                        {projeto.horasApontadas}
+                        {projeto.projetoHorasTrabalhadas}
                       </span>
                     </p>
                   </div>
@@ -171,13 +170,13 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                       </tr>
                     </thead>
                     <tbody>
-                      {projeto.skills.map((skill) => (
-                        <tr key={skill.id}>
+                      {projeto.projetoSkills.map((skill) => (
+                        <tr key={skill.skillNome}>
                           <td>
-                            {skill.nome}
+                            {skill.skillNome}
                           </td>
                           <td>
-                            {skill.horasApontadas}
+                            {skill.horasTrabalhadas}
                           </td>
                         </tr>
                       ))}  
@@ -201,13 +200,13 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {projeto.consultores.map((consultor) => (
+                    {projeto.projetoConsultores.map((consultor) => (
                       <tr key={consultor.id}>
                         <td>
                           {consultor.id}
                         </td>
                         <td>
-                          {consultor.nome}
+                          {consultor.consultorNome}
                         </td>
                       </tr>
                     ))}
@@ -215,10 +214,10 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                 </table>
               </ConsultoresAlocados>
             </InfosPopup>
-            <DetailsPopup  color={projeto.status}>
+            <DetailsPopup  color={projeto.projetoStatus}>
               <Grid/>
               <h1>
-                {projeto.status}
+                {projeto.projetoStatus}
               </h1>
             </DetailsPopup>
           </div>

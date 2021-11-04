@@ -7,39 +7,31 @@ import Popup from "../ProjectsPopup";
 
 import { i18n } from '../../translate/i18n';
 
-interface Projetos{
+interface Projetos {
   id: number,
   secao: {
     idSecao: number,
-    nomeSecao: string
+    secaoNome: string,
   },
-  nome: string,
-  descricao: string,
-  consultores: [
-    {
-    id: number,
-    nome: string
-    }
-  ],
-  status: string,
-  dataInicio: string,
-  dataFim: string,
-  horasApontadas: number,
-  horasTotal: number,
-  /*apontamentos: [{
-    id: number,
-    alocacao: {
-      skill:string,
-    },
-    horasTrabalhadas: number,
-    situacaoApontamento: string,
-  }]*/
-  skills: [
+  projetoNome: string,
+  projetoDescricao: string,
+  projetoStatus: string,
+  projetoDateInicio: Date,
+  projetoDateFim: Date,
+  projetoHorasTotais: number,
+  projetoHorasTrabalhadas: number,
+  projetoConsultores: [
     {
       id: number,
-      nome: string,
-      horasApontadas: number,
-      horasTotal: number,
+      consultorNome: string,
+      consultorStatus: string
+    }
+  ],
+  projetoSkills: [
+    {
+      skillNome: string,
+      horasTotais: number,
+      horasTrabalhadas: number
     }
   ]
 }
@@ -51,7 +43,7 @@ interface Projeto {
 
 const Cards: React.FC<Projeto> = ({id, mostrar}) => {
 
-  const [mostrarPopup, setmostarPopup] = useState(false);
+  const [mostrarPopup, setMostrarPopup] = useState(false);
   const [projeto, setProject] = useState<Projetos>();
 
   useEffect(() => {
@@ -60,20 +52,20 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
     })
   }, [id]);
 
-  const handleMostarPopup = (showPop: boolean) => {
-    setmostarPopup(showPop);
+  const handleMostrarPopup = (showPop: boolean) => {
+    setMostrarPopup(showPop);
   }
 
   return (
     <>
       { projeto &&
-        <Container show={!!mostrar} color={projeto.status} 
-          onClick={() => (setmostarPopup(!mostrarPopup))} key={projeto.id}>
+        <Container show={!!mostrar} color={projeto.projetoStatus} 
+          onClick={() => (setMostrarPopup(!mostrarPopup))} key={projeto.id}>
           <TitleSection show={!!mostrar}>
-            {projeto.secao.idSecao} - {projeto.secao.nomeSecao}
+            {projeto.secao.idSecao} - {projeto.secao.secaoNome}
           </TitleSection>
           <TitleProject show={!!mostrar}>
-            {projeto.id} - {projeto.nome} 
+            {projeto.id} - {projeto.projetoNome} 
           </TitleProject>
           <HoldHours show={!!mostrar}>
             <Hours show={!!mostrar}>
@@ -81,7 +73,7 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
                 {i18n.t('card.total')}
               </p>
               <p>
-                {projeto.horasTotal}
+                {projeto.projetoHorasTotais}
               </p>
             </Hours>
             <Hours show={!!mostrar}>
@@ -89,7 +81,7 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
                 {i18n.t('card.pointed')}
               </p>
               <p>
-                {projeto.horasApontadas}
+                {projeto.projetoHorasTrabalhadas}
               </p>
             </Hours>
           </HoldHours>
@@ -98,16 +90,16 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
               {i18n.t('card.status')}
             </p>
             <p>
-              {projeto.status}
+              {projeto.projetoStatus}
             </p>
           </Status>
           <Date show={!!mostrar}>
             <p>
-              {i18n.t('card.from')} {projeto.dataInicio.substring(0,10)}
+              {i18n.t('card.from')} {projeto.projetoDateInicio}
             </p>
-            { projeto.dataFim ?
+            { projeto.projetoDateFim ?
               <p>
-                {i18n.t('card.to')} {projeto.dataFim.substring(0,10)}
+                {i18n.t('card.to')} {projeto.projetoDateFim}
               </p>
             :
               <p>
@@ -118,7 +110,7 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
         </Container>
       }
       { mostrarPopup && projeto &&
-        <Popup id={projeto.id} mostrarPopup={handleMostarPopup}/> 
+        <Popup id={projeto.id} mostrarPopup={handleMostrarPopup}/> 
       }
     </>                
   ) 

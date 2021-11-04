@@ -11,27 +11,29 @@ import Grid from "../Grid";
 import { i18n } from "../../translate/i18n";
 
 interface Consultores{
-  id: number,
-  nome: string,
-  status: string,
+  idConsultor: number,
+  consultorNome: string,
+  consultorStatus: string,
+  consultorValorHora: number,
   usuario: {
     email: string,
   },
-  projetos: [
+  consultorAlocacoes: [
     {
-      id: number,
-      nome: string,
-      status: string,
+      projeto: {
+        id: number,
+        projetoNome: string,
+        projetoStatus: string,
+      }
+      skill: {
+        skillNome: string,
+      }
     }
-  ]
-  alocacoes: [
-    {
-    skill: {
-      nome: string,
-    },
-    }
-  ]
+  ],
+  horasTotais: number,
+  horasTrabalhadas: number
 }
+
 
 interface Consultor {
   id: number,
@@ -65,7 +67,7 @@ const PopupConsultor: React.FC<Consultor> = ({id, mostrarPopup} ) => {
                 <PersonCircle/>
                 <div id="EmployeeInformation">
                   <h1>
-                    {consultor.nome} - {consultor.id} 
+                    {consultor.consultorNome} - {consultor.idConsultor} 
                   </h1>
                   <p>
                     {i18n.t('ConsultantPopup.email')}  {consultor.usuario.email}
@@ -79,8 +81,8 @@ const PopupConsultor: React.FC<Consultor> = ({id, mostrarPopup} ) => {
                   {i18n.t('ConsultantPopup.skills')}
                 </h5>
                 <HoldContent>
-                  {consultor.alocacoes.map((alocacao => (
-                    alocacao.skill.nome
+                  {consultor.consultorAlocacoes.map((alocacao => (
+                    alocacao.skill.skillNome
                   )))}
                 </HoldContent>
               </Skills>
@@ -100,16 +102,16 @@ const PopupConsultor: React.FC<Consultor> = ({id, mostrarPopup} ) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {consultor.projetos.map((projeto => (
-                      <tr key={projeto.id}>
+                    {consultor.consultorAlocacoes.map((alocacao => (
+                      <tr key={alocacao.projeto.id}>
                       <td>
-                        {projeto.id}
+                        {alocacao.projeto.id}
                       </td>
                       <td>
-                        {projeto.status}
+                        {alocacao.projeto.projetoStatus}
                       </td>
                       <td>
-                        {projeto.nome}
+                        {alocacao.projeto.projetoNome}
                       </td> 
                     </tr>
                       )))}
