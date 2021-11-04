@@ -27,6 +27,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
     const jwt = localStorage.getItem("@WEGusers:token");
     const usuario = localStorage.getItem("@WEGusers:usuario");
+    const responsavel = localStorage.getItem("@WEGusers:responsavel");
 
     if(localStorage.getItem("Fontsize")){
       document.body.style.fontSize=`${localStorage.getItem("Fontsize")}`;
@@ -46,12 +47,11 @@ export const AuthProvider: React.FC = ({ children }) => {
       senha,
     });
       
-    console.log(response.data)
-    const { jwt, usuario } = response.data;
+    const { jwt, usuario, responsavel } = response.data;
 
     localStorage.setItem("@WEGusers:token", jwt);
     localStorage.setItem("@WEGusers:usuario", JSON.stringify(usuario));
-    localStorage.setItem("@WEGusers: nome", "Jean Reiguel");
+    localStorage.setItem("@WEGusers:responsavel", JSON.stringify(responsavel));
     
     setData({jwt, usuario});
 
