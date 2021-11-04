@@ -116,7 +116,7 @@ const Aprovacao: React.FC = () => {
     } catch(e) {
       console.log(e);
     }
-  },[aprovacao]);
+  },[aprovacao, consultant, horasSelecionadas]);
 
   const handleSelected = useCallback(async (id, horas) => {
     let alreadySelected;
@@ -183,7 +183,6 @@ const Aprovacao: React.FC = () => {
         <>
           <Profile/>
           <Menu />
-          <Request/>
           <Header toggleTheme={toggleTheme}>
             <p>
               {i18n.t('approval.titleHeader')}
