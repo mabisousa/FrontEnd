@@ -28,11 +28,17 @@ export const Container = styled.div`
       font-size: 0.9em;
     }     
   }
+
+  @media (max-width: 768px)  {
+    h1 {
+      font-size: 0.8em;
+    } 
+  }
 `;
 
 export const Infos = styled.div`
   height: 40vh;
-  width: 30vw;
+  width: 35vw;
   display:flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -42,6 +48,7 @@ export const Infos = styled.div`
         height: 100%;
         display: flex;
         flex-direction: column;
+        margin-left: 20px;
 
         .information {
             margin: 3% 0;
@@ -71,6 +78,7 @@ export const Infos = styled.div`
                 font-size: 0.65em;
                 width: 80px;
               }
+
               .holding {
                 div:nth-child(1) {
                     width: 33%;
@@ -82,6 +90,7 @@ export const Infos = styled.div`
             @media (max-width: 768px)  {
               p{
                 font-size: 0.65em;
+                margin-left: 8px;
               }
               .holding {
                 div:nth-child(1) {
@@ -108,7 +117,7 @@ export const Infos = styled.div`
 
 export const Count = styled.div`
     height: 40vh;
-    width: 20vw;
+    width: 25vw;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -173,6 +182,25 @@ export const Count = styled.div`
     color: #fff;
     background: ${props => props.theme.colors.skillsButton};
     transition: 1s;
+  }
+
+  @media (max-width: 768px)  {
+    p{
+      font-size: 0.8em;
+    }
+
+    .hold {
+      .numbers {
+        p {
+          font-size: .9em;
+        }
+      }
+    }
+
+    button {
+      font-size: .8em;
+      width: 90%;
+    }
   }
 `;
 
@@ -250,6 +278,21 @@ export const Apontamentos = styled.div`
       width: 40px;
     }
   }
+
+  @media (max-width: 768px)  {
+    thead tr{
+      width: 170px;
+    }
+    
+    td{
+      font-size: .8em;
+    }
+
+    tbody {
+      width: 170px;
+    }
+  }
+ 
 `;
 
 export const Title = styled.h1`
@@ -272,7 +315,7 @@ export const ProgressBar = styled.div`
     display: flex;
     justify-content: space-between;
     text-align: center; 
-    padding: 0px 11%;
+    padding: 0px 6vw;
 
     p {
       width:100px;
@@ -285,6 +328,12 @@ export const ProgressBar = styled.div`
       p {
         font-size: 0.9em;
       }     
+    }
+
+    @media (max-width: 768px)  {
+      p {
+        font-size: 0.8em;
+      }   
     }
   }
 
@@ -354,6 +403,13 @@ export const Step = styled.div<StepActive>`
         background: ${props => props.theme.colors.step};
       }
   `}
+
+  @media (max-width: 768px)  {
+    width: 50px;
+    height: 50px;
+  }
+
+    
 `;
 
 interface PopUp {
