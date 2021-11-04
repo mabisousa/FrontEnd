@@ -104,7 +104,7 @@ const messages = {
       request: {
         request: "Insira sua Solicitação:",
         send: "Enviar",
-        change: "Deseja enviar uma solicitação de alteração?",
+        confirm: "Tem certeza que deseja enviar uma requisição para os apontamentos:",
         no:"Não",
         yes: "Sim"
       }
