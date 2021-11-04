@@ -6,7 +6,7 @@ export const Container = styled.main`
   position: fixed;
 `;
 
-export const Filters = styled.div`
+export const Filtros = styled.div`
   width: 85vw;
   height: 9vh;
   display: flex;
@@ -30,18 +30,18 @@ export const Filters = styled.div`
   }
 
   label{
-    color: ${props => props.theme.colors.iconColor};
+    color: ${props => props.theme.cor.iconColor};
     font-size: 1.25em;
     margin: 10px;
   }
 
   input{
-    padding-left: 2px;
+    padding-left: 10px;
     background: transparent;
-    border: 1px solid ${props => props.theme.colors.iconColor};
+    border: 1px solid ${props => props.theme.cor.iconColor};
     
     &::placeholder{
-      color: ${props => props.theme.colors.iconColor};
+      color: ${props => props.theme.cor.iconColor};
     }
   }
 
@@ -59,7 +59,7 @@ export const Filters = styled.div`
   }
 `;
 
-export const Filter = styled.div`
+export const Filtro = styled.div`
   width: 90vw;
   height: 9vh;
   display: flex;
@@ -69,7 +69,7 @@ export const Filter = styled.div`
 
   p{
     font-size: 1.25em;
-    color: ${props => props.theme.colors.iconColor};
+    color: ${props => props.theme.cor.iconColor};
     text-align: center;
     margin-right: 10px;
     margin-left: 10px;
@@ -90,13 +90,13 @@ export const Filter = styled.div`
   }
 `;
 
-export const Title = styled.h1`
+export const Titulo = styled.h1`
   font-weight:normal;
   font-size: 1.25em;
   margin-left: 50px;
   width: 300px;
-  color: ${props => props.theme.colors.title};
-  text-decoration: underline ${props => props.theme.colors.undeline};
+  color: ${props => props.theme.cor.title};
+  text-decoration: underline ${props => props.theme.cor.undeline};
 
     @media (max-width: 1024px) and (min-width: 769px) {
       width: 150px;
@@ -109,7 +109,7 @@ export const Title = styled.h1`
     }
 `;
 
-export const Form = styled.form`
+export const Formulario = styled.form`
   width: 280px;
   height: 60px;
   display: flex;
@@ -129,36 +129,6 @@ export const Form = styled.form`
     width: 230px;
     input{
       width: 100px;
-    }
-  }
-`;
-
-export const Filterbynumber = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-
-  input{
-    width: 60px;
-  }
-
-  p{
-    margin: 0px 5px;
-    font-size: 1.25em;
-  }  
-
-  @media (max-width: 1024px) and (min-width: 769px) {
-    p{
-      font-size: 1em;
-    }
-  }
-
-  @media (max-width: 768px)  {
-    p{
-      font-size: 0.9em;
-    }
-    input{
-      width: 40px;
     }
   }
 `;
