@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { Title, Container, Filter, Cards, Filters } from './style';
+import { Container, Filtros, Titulo, Cards, Filtro } from './style';
 
 import Dropdown from "../../components/Dropdown";
 import Profile from "../../components/Profile";
@@ -10,8 +10,8 @@ import Menu from "../../components/Menu";
 
 import api from "../../services/api";
 
-import listCard from '../../assets/listView.svg';
-import gridCard from '../../assets/gridView.svg';
+import { List } from "react-bootstrap-icons";
+import { GridFill } from "react-bootstrap-icons";
 
 import { i18n } from "../../translate/i18n";
 
@@ -64,8 +64,8 @@ const Home: React.FC = () => {
 
   const [theme, setTheme] = useState(light);
 
-  const toggleTheme = () => {
-    setTheme(theme.title === 'light' ? dark : light);
+  const alternarTema = () => {
+    setTheme(theme.titulo === 'light' ? dark : light);
   };
 
   const [filtered, setFiltereds] = useState<Projetos[]>([]);
@@ -129,18 +129,18 @@ const Home: React.FC = () => {
   return (
     <>
       <Container>
-        <Header toggleTheme={toggleTheme}>
+        <Header alternarTema={alternarTema}>
           <p>
             {i18n.t('projects.titleHeader')}
           </p>
         </Header>
         <Profile/>
         <Menu/>
-        <Filters>
-          <Title>
+        <Filtros>
+          <Titulo>
             {i18n.t('projects.titlePage')}
-          </Title>
-          <Filter>
+          </Titulo>
+          <Filtro>
             <label>{i18n.t('projects.project')}</label>
             <input type="text" placeholder={i18n.t('projects.placeHolder')} 
               value={search} onChange={(ev) => handleFilterName(ev.target.value)}/>
@@ -183,13 +183,13 @@ const Home: React.FC = () => {
               </Dropdown>
             </div>
             <button onClick={handleShowListCard}>
-              <img src={listCard} alt=""/>
+              <List/>
             </button>
             <button onClick={handleShowGridCard}>
-              <img src={gridCard} alt=""/>
+              <GridFill/>
             </button>
-          </Filter>
-        </Filters>
+          </Filtro>
+        </Filtros>
       <Cards> 
         { filtered.map((projeto) => (
           <Card id={projeto.id} key={projeto.id} mostrar={showCard}/> 
