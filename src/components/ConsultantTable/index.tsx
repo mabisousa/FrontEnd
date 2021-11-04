@@ -23,11 +23,11 @@ const TabelaConsultor: React.FC<Consultor> = ({status}) => {
   const [consultor, setConsultor] = useState<Consultores[]>([]);
   const [consulta, setConsulta] = useState<Consultores>();
 
-  const handleShowPopup = (showPop: boolean) => {
-    setMostrarPopup(showPop);
+  const handleMostrarPopup = (mostrarPop: boolean) => {
+    setMostrarPopup(mostrarPop);
   }
 
-  const handleOpenPopup = useCallback((id: number) => {
+  const handleAbrirPopup = useCallback((id: number) => {
     setMostrarPopup(!mostrarPopup);
     setConsulta(consultor[id-1]);
 
@@ -84,7 +84,7 @@ const TabelaConsultor: React.FC<Consultor> = ({status}) => {
                   <td>
                     {consultant.projetos.length}
                   </td>
-                  <button onClick={() => handleOpenPopup(consultant.id)} key={consultant.id}>
+                  <button onClick={() => handleAbrirPopup(consultant.id)} key={consultant.id}>
                     <td> + </td>
                   </button>
                 </Tr>
@@ -95,7 +95,7 @@ const TabelaConsultor: React.FC<Consultor> = ({status}) => {
       } 
         
       { mostrarPopup && consulta &&
-        <Popup id={consulta.id} mostrarPopup={handleShowPopup}/>
+        <Popup id={consulta.id} mostrarPopup={handleMostrarPopup}/>
       }
     </>
   )

@@ -6,5 +6,5 @@ export const Container = styled.button`
   height:50px;
   width:120px;
   color: #fff;
-  background: ${props => props.theme.colors.skillsButton};
+  background: ${props => props.theme.cor.skillsButton};
 `;

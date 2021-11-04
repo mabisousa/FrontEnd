@@ -24,7 +24,7 @@ export const Container = styled.div<PopUp>`
   `: css`
   `}
 
-  color: ${props => props.theme.colors.title};
+  color: ${props => props.theme.cor.title};
   position: fixed;
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
@@ -50,14 +50,14 @@ export const Container = styled.div<PopUp>`
   #hold{
     position: relative;
     height: 560px;
-    background: ${props => props.theme.colors.background};
+    background: ${props => props.theme.cor.background};
     display: flex;
     flex-direction: column;
     padding: 35px;
 
     button{
       svg{
-        color: ${props => props.theme.colors.title}
+        color: ${props => props.theme.cor.title}
       }
     }
   }
@@ -76,7 +76,7 @@ export const TitlePopUp = styled.div`
   font-weight: 500;
 
   h2 {
-    color: ${props => props.theme.colors.titleSection};
+    color: ${props => props.theme.cor.titleSection};
     font-size: 1.15em;
   }
 
@@ -103,21 +103,21 @@ export const DetailsPopup = styled.div`
   ${(props) => props.color === "ANDAMENTO" &&
     css`
       h1{
-        color: ${props => props.theme.colors.progresStatus};
+        color: ${props => props.theme.cor.progresStatus};
       }
     `}
 
   ${(props) => props.color === "CONCLUÍDO" && 
     css`
       h1{
-        color: ${props => props.theme.colors.concludedStatus};
+        color: ${props => props.theme.cor.concludedStatus};
       }
     `}
 
   ${(props) => props.color === "ATRASADO" &&
     css`
       h1{
-        color: ${props => props.theme.colors.lateStatus};
+        color: ${props => props.theme.cor.lateStatus};
       }
     `}
 
@@ -222,7 +222,7 @@ export const Objetivo = styled.div<ContainerProps>`
       justify-content: space-between;
 
       span {
-        color: ${props => props.theme.colors.date};
+        color: ${props => props.theme.cor.date};
       }
     }
   }
@@ -249,7 +249,7 @@ export const Skills = styled.div<ContainerProps>`
     height: 40px;
     font-size: .9em;
     color: #fff;
-    background: ${props => props.theme.colors.skillsButton};
+    background: ${props => props.theme.cor.skillsButton};
   }
 `;
 
@@ -264,7 +264,7 @@ export const Table = styled.div`
 
     thead {
       display: inline-flex;
-      background: ${props => props.theme.colors.approvalMenu};
+      background: ${props => props.theme.cor.approvalMenu};
       color: #fff;
       width: 100%;
       height: 40px;
@@ -318,7 +318,7 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
       width: 20vw;
 
       thead {
-        background: ${props => props.theme.colors.approvalMenu};
+        background: ${props => props.theme.cor.approvalMenu};
         height: 40px;
         display: inline-flex;
         width: 100%;

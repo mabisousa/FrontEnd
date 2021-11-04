@@ -1,16 +1,16 @@
 import styled, { css } from 'styled-components';
 
-interface dropdownProps {
-  showDropdown: boolean;
-  showArrow: boolean;
+interface propriedadesDropdown {
+  mostrarDropdown: boolean;
+  alterarFlecha: boolean;
 }
 
-export const Container = styled.div<dropdownProps>`
+export const Container = styled.div<propriedadesDropdown>`
   #dropdown{
     width: 150px;
     height: 20px;
-    border: solid 1px ${props => props.theme.colors.iconColor};
-    color: ${props => props.theme.colors.iconColor};
+    border: solid 1px ${props => props.theme.cor.iconColor};
+    color: ${props => props.theme.cor.iconColor};
     font-size: .9em;
     text-align: center;
     cursor: pointer;
@@ -24,14 +24,14 @@ export const Container = styled.div<dropdownProps>`
       width: 150px;
       position:relative;
       left: -1px;
-      border: solid 1px  ${props => props.theme.colors.iconColor};
-      color: ${props => props.theme.colors.iconColor};
+      border: solid 1px  ${props => props.theme.cor.iconColor};
+      color: ${props => props.theme.cor.iconColor};
       background: transparent;
       overflow-y: scroll;
       height: 50px;
 
 
-      ${(props) => props.showDropdown ?
+      ${(props) => props.mostrarDropdown ?
         css`
           display: none;
         `: css`
@@ -40,8 +40,8 @@ export const Container = styled.div<dropdownProps>`
 
       button{
         font-size: .91em;
-        border-bottom: solid 1px  ${props => props.theme.colors.iconColor};
-        color: ${props => props.theme.colors.iconColor};
+        border-bottom: solid 1px  ${props => props.theme.cor.iconColor};
+        color: ${props => props.theme.cor.iconColor};
         height: 20px;
         padding-top:1%;
         width: 100%;
@@ -53,9 +53,9 @@ export const Container = styled.div<dropdownProps>`
       display: block;
       height: 1.06em;
       width: 1.06em;
-      color: ${props => props.theme.colors.iconColor};
+      color: ${props => props.theme.cor.iconColor};
 
-      ${(props) => props.showArrow ?
+      ${(props) => props.alterarFlecha ?
         css`
           display: block;
         `: css`
@@ -66,9 +66,9 @@ export const Container = styled.div<dropdownProps>`
     #arrowLeft{
       float: right;
       display: none;
-      color: ${props => props.theme.colors.iconColor};
+      color: ${props => props.theme.cor.iconColor};
 
-      ${(props) => props.showArrow ?
+      ${(props) => props.alterarFlecha ?
         css`
           display: none;
         `: css`

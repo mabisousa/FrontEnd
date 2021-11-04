@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Container, PopUpInfo, Content, Skills, HoldContent, PopUpTable } from "./style";
+import { Container, InfoPopUp, Conteudo, Habilidades, SeguraConteudo, TabelaPopUp } from "./style";
 
 import { BsX } from "react-icons/bs";
 import { PersonCircle } from "react-bootstrap-icons";
@@ -55,12 +55,12 @@ const PopupConsultor: React.FC<Consultor> = ({id, mostrarPopup} ) => {
   return (
     <>
       { consultor && 
-        <Container show={!!mostrarPopup}>
+        <Container mostrar={!!mostrarPopup}>
           <div id="hold">
             <button onClick={handleFecharPopup}>
               <BsX/>
             </button>
-            <PopUpInfo>
+            <InfoPopUp>
               <header>
                 <PersonCircle/>
                 <div id="EmployeeInformation">
@@ -72,19 +72,19 @@ const PopupConsultor: React.FC<Consultor> = ({id, mostrarPopup} ) => {
                   </p>
                 </div>
               </header>
-            </PopUpInfo>
-            <Content>
-              <Skills>
+            </InfoPopUp>
+            <Conteudo>
+              <Habilidades>
                 <h5>
                   {i18n.t('ConsultantPopup.skills')}
                 </h5>
-                <HoldContent>
+                <SeguraConteudo>
                   {consultor.alocacoes.map((alocacao => (
                     alocacao.skill.nome
                   )))}
-                </HoldContent>
-              </Skills>
-              <PopUpTable>
+                </SeguraConteudo>
+              </Habilidades>
+              <TabelaPopUp>
                 <table>
                   <thead>
                     <tr>
@@ -115,8 +115,8 @@ const PopupConsultor: React.FC<Consultor> = ({id, mostrarPopup} ) => {
                       )))}
                   </tbody>
                 </table>
-              </PopUpTable>
-            </Content>
+              </TabelaPopUp>
+            </Conteudo>
             <div id="grid"> 
               <Grid/>
             </div>
