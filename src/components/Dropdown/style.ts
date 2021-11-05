@@ -24,6 +24,7 @@ export const Container = styled.div<propriedadesDropdown>`
       width: 150px;
       position:relative;
       left: -1px;
+      top: 2px;
       border: solid 1px  ${props => props.theme.cor.corDoIcone};
       color: ${props => props.theme.cor.corDoIcone};
       background: transparent;
