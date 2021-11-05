@@ -214,7 +214,7 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                 </table>
               </ConsultoresAlocados>
             </InfosPopup>
-            <DetailsPopup  color={projeto.projetoStatus}>
+            <DetailsPopup open={!!estaAberto}  color={projeto.projetoStatus}>
               <Grid/>
               <h1>
                 {projeto.projetoStatus}
