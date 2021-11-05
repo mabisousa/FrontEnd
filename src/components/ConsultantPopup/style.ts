@@ -13,7 +13,7 @@ export const Container = styled.div<propriedadesPopup>`
       }
   `}
 
-  transition: 200ms ease-in-out;
+  color: ${props => props.theme.cor.titulo};
   position: fixed;
   background-color: rgba(0, 0, 0, 0.7);
   width: 100vw;
@@ -22,9 +22,8 @@ export const Container = styled.div<propriedadesPopup>`
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 0px;
-  color: ${props => props.theme.cor.titulo};
-
+  top: 0;
+  left: 0;
 
   #hold{
     position: relative;
@@ -33,8 +32,6 @@ export const Container = styled.div<propriedadesPopup>`
     height: 570px;
     padding: 10px;
   }
-
-  
 
   button{
     float: right;

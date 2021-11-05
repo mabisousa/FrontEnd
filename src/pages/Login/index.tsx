@@ -61,7 +61,7 @@ const Login: React.FC = () => {
       handleAddToast({
         type: 'error',
         title: i18n.t('login.titulo'),
-        description: i18n.t('login.titulo'),
+        description: i18n.t('login.descricao'),
       })
     }      
   },[ signIn, handleAddToast, history ]);

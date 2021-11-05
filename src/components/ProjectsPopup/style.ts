@@ -70,6 +70,8 @@ export const Container = styled.div<PopUp>`
   }
 
   @media (max-width: 768px)  {
+
+
     #hold{
       width: 685px;
       height: 480px;
@@ -99,53 +101,12 @@ export const InfosPopup = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+
 `;
 
 interface ContainerProps {
   open: boolean;
 }
-
-export const DetailsPopup = styled.div<ContainerProps>`
-  height: 8vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  
-
-  ${(props) => props.open ? 
-    css`
-      width: 78.5vw;
-    `: css`
-      width: 64vw;
-    `}
-
-  ${(props) => props.color === "ANDAMENTO" &&
-    css`
-      h1{
-        color: ${props => props.theme.cor.andamentoStatus};
-      }
-    `}
-
-  ${(props) => props.color === "CONCLUÍDO" && 
-    css`
-      h1{
-        color: ${props => props.theme.cor.concluidoStatus};
-      }
-    `}
-
-  ${(props) => props.color === "ATRASADO" &&
-    css`
-      h1{
-        color: ${props => props.theme.cor.atrasadoStatus};
-      }
-    `}
-
-  h1 {
-    font-size: 1.5em;
-    font-weight: 700;
-  }
-`;
-
 
 export const InfosGerais = styled.div<ContainerProps>`
 
@@ -197,7 +158,23 @@ export const Objetivo = styled.div<ContainerProps>`
   }
 
   @media (max-width: 1024px) and (min-width: 769px)  {
-    
+    ${(props) => props.open ? 
+    css`
+      width: 28vw;
+      transition: 1s;
+
+      p {
+        width: 27vw;
+      }
+      
+    `: css`
+      width: 45vw;
+      transition: 0s;
+
+      p {
+        width: 40vw;
+      }
+    `}  
   }
 `;
 
@@ -217,7 +194,14 @@ export const Objetivo = styled.div<ContainerProps>`
   flex-direction: column;
 
   @media (max-width: 1024px) and (min-width: 769px)  {
-    
+    ${(props) => props.open ? 
+    css`
+      width: 30vw;
+      transition: 1s;
+    `: css`
+      width: 40vw;
+      transition: 0s;
+    `}
   }
  `;
 
@@ -271,10 +255,25 @@ export const Skills = styled.div<ContainerProps>`
     color: #fff;
     background: ${props => props.theme.cor.habilidadeBotao};
   }
+
+  @media (max-width: 1024px) and (min-width: 769px)  {
+
+    ${(props) => props.open ? 
+    css`
+      width: 29vw;
+    `: css`
+      width: 28vw;
+      
+    `}
+    
+    button:nth-child(2) {
+      margin-top: 2px;
+    }
+  }
 `;
 
 export const Table = styled.div`
-  width: 28.1vw;
+  width: 28vw;
   height: 19vh;
   
   table {
@@ -308,6 +307,10 @@ export const Table = styled.div`
       width: 250px;
       padding: 10px;
     }
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px)  {
+    width: 28.1vw;
   }
 `;
 
@@ -383,9 +386,87 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
         }
         
         td:nth-child(2) {
-          max-width: 13vw;
+          width: 13vw;
           border-right: 1px solid #e2e2e280;
         }
       }
     }
+
+    @media (max-width: 1024px) and (min-width: 769px)  {
+      ${(props) => props.open ? 
+      css`
+      width: 21vw;
+      `: css`
+      width: 0;
+    `}
+      
+      table{
+        thead{
+          width: 23vw;
+          tr{
+            width: 20vw;
+          }
+          td:nth-child(1) {
+            width: 7vw;
+          }
+          td:nth-child(2) {
+            width: 13vw;
+          }
+        }
+        tbody{
+          height: 257px;
+          td:nth-child(1) {
+            width: 9vw;
+          }
+          td:nth-child(2) {
+            width: 16vw;
+          }
+        }
+      }
+    }
+`;
+
+export const DetailsPopup = styled.div<ContainerProps>`
+  height: 8vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+
+  ${(props) => props.open ? 
+    css`
+      width: 78.5vw;
+    `: css`
+      width: 64vw;
+    `}
+
+  ${(props) => props.color === "ANDAMENTO" &&
+    css`
+      h1{
+        color: ${props => props.theme.cor.andamentoStatus};
+      }
+    `}
+
+  ${(props) => props.color === "CONCLUÍDO" && 
+    css`
+      h1{
+        color: ${props => props.theme.cor.concluidoStatus};
+      }
+    `}
+
+  ${(props) => props.color === "ATRASADO" &&
+    css`
+      h1{
+        color: ${props => props.theme.cor.atrasadoStatus};
+      }
+    `}
+
+  h1 {
+    font-size: 1.5em;
+    font-weight: 700;
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px)  {
+      width: 81.5vw;
+  }
 `;

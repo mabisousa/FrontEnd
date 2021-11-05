@@ -34,7 +34,7 @@ const Consultor: React.FC = () => {
   return (
     <>  
       <Container>
-      <Header alternarTema={alternarTema}>
+        <Header alternarTema={alternarTema}>
           <p>
             {i18n.t('consultores.titulo')}
           </p>
