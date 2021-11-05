@@ -19,7 +19,7 @@ const messages = {
         consultantInfo: "INFORMAÇÕES DO CONSULTOR",
         registration: "Cadastro",
         name: "Nome",
-        approvalInfor: "INFORMAÇÕES DA APROVAÇÃO",
+        approvalInfor: "INFORMAÇÕES DO RESPONSÁVEL",
         dateApproval: "Data",
         responsible: "Responsável",
         totalHours: "HORAS TOTAIS:",

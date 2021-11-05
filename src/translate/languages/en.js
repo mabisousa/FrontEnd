@@ -17,7 +17,7 @@ const messages = {
         consultantInfo : "CONSULTANT INFORMATION",
         registration: "Register",
         name: "Name",
-        approvalInfor: "APPROVAL INFORMATION",
+        approvalInfor: "RESPONSIBLE INFORMATION",
         dateApproval: "Date",
         responsible: "Responsible",
         totalHours: "TOTAL HOURS:",
@@ -97,7 +97,7 @@ const messages = {
       request: {
         request: "Enter your Request:",
         send: "Send",
-        change: "Do you want to submit a change request?",
+        change: "Are you sure you want to send a request for the notes:",
         no:"No",
         yes: "Yes"
       }
