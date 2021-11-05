@@ -9,6 +9,7 @@ interface SignInCredentials {
 interface AuthState {
   jwt: string,
   usuario: object,
+  responsavel: object
 }
 
 interface ContextData {
@@ -33,8 +34,8 @@ export const AuthProvider: React.FC = ({ children }) => {
       document.body.style.fontSize=`${localStorage.getItem("Fontsize")}`;
     }
 
-    if(jwt && usuario) {
-      return { jwt, usuario: JSON.parse(usuario) };
+    if(jwt && usuario && responsavel) {
+      return { jwt, usuario: JSON.parse(usuario), responsavel: JSON.parse(responsavel)};
     }
 
     return {} as AuthState;
@@ -53,12 +54,14 @@ export const AuthProvider: React.FC = ({ children }) => {
     localStorage.setItem("@WEGusers:usuario", JSON.stringify(usuario));
     localStorage.setItem("@WEGusers:responsavel", JSON.stringify(responsavel));
     
-    setData({jwt, usuario});
+    setData({jwt, usuario, responsavel});
 
   }, []);
 
   const signOut = useCallback(() => {
     localStorage.removeItem("@WEGusers: token");
+    localStorage.removeItem("@WEGusers: usuario");
+    localStorage.removeItem("@WEGusers: responsavel");
 
     setData({} as AuthState);
   }, []);
