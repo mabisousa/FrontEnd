@@ -30,7 +30,7 @@ export const Filtros = styled.div`
   }
 
   label{
-    color: ${props => props.theme.cor.iconColor};
+    color: ${props => props.theme.cor.corDoIcone};
     font-size: 1.25em;
     margin: 10px;
   }
@@ -38,10 +38,10 @@ export const Filtros = styled.div`
   input{
     padding-left: 10px;
     background: transparent;
-    border: 1px solid ${props => props.theme.cor.iconColor};
+    border: 1px solid ${props => props.theme.cor.corDoIcone};
     
     &::placeholder{
-      color: ${props => props.theme.cor.iconColor};
+      color: ${props => props.theme.cor.corDoIcone};
     }
   }
 
@@ -69,7 +69,7 @@ export const Filtro = styled.div`
 
   p{
     font-size: 1.25em;
-    color: ${props => props.theme.cor.iconColor};
+    color: ${props => props.theme.cor.corDoIcone};
     text-align: center;
     margin-right: 10px;
     margin-left: 10px;
@@ -95,7 +95,7 @@ export const Titulo = styled.h1`
   font-size: 1.25em;
   margin-left: 50px;
   width: 300px;
-  color: ${props => props.theme.cor.title};
+  color: ${props => props.theme.cor.titulo};
   text-decoration: underline ${props => props.theme.cor.undeline};
 
     @media (max-width: 1024px) and (min-width: 769px) {

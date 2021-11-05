@@ -11,21 +11,21 @@ export const Container = styled.a<propriedadesCard>`
   margin: 1rem;
   float: left;
   min-height: 150px;
-  background: ${props => props.theme.cor.cardBackground}; 
+  background: ${props => props.theme.cor.fundoCard}; 
 
   ${(props) => props.cor === "ANDAMENTO" &&
     css`
-      border-left:  15px solid ${props => props.theme.cor.progresStatus};
+      border-left:  15px solid ${props => props.theme.cor.andamentoStatus};
     `}
 
   ${(props) => props.cor === "CONCLUÍDO" && 
     css`
-      border-left:  15px solid ${props => props.theme.cor.concludedStatus};
+      border-left:  15px solid ${props => props.theme.cor.concluidoStatus};
     `}
 
   ${(props) => props.cor === "ATRASADO" &&
     css`
-      border-left:  15px solid ${props => props.theme.cor.lateStatus};
+      border-left:  15px solid ${props => props.theme.cor.atrasadoStatus};
     `}
 
   ${(props) => props.mostrar ? 
@@ -60,7 +60,7 @@ export const TituloSecao = styled.p<propriedadesCard>`
   width: 200px;
   margin-top: 1rem;
   margin-left: 2rem;
-  color: ${props => props.theme.cor.titleSection};
+  color: ${props => props.theme.cor.secaoTitulo};
 
   @media (max-width: 1024px) and (min-width: 426px) {
     font-size: .81em;
@@ -80,7 +80,7 @@ export const TituloSecao = styled.p<propriedadesCard>`
 
 export const TituloProjeto = styled.p<propriedadesCard>`
   margin-left: 2rem;
-  color: ${props => props.theme.cor.title};
+  color: ${props => props.theme.cor.titulo};
 
   @media (max-width: 1024px) and (min-width: 769px) {
     font-size: .94em;
@@ -123,7 +123,7 @@ export const SeguraHoras = styled.div<propriedadesCard>`
   width:200px;
   min-height:40px;
   float: left;
-  color: ${props => props.theme.cor.title};
+  color: ${props => props.theme.cor.titulo};
 
   @media (max-width: 425px){
     margin-left: 2rem;
@@ -197,7 +197,7 @@ export const Status = styled.div<propriedadesCard>`
   max-width: 10em;
   float:right;
   text-align: center;
-  color: ${props => props.theme.cor.title};
+  color: ${props => props.theme.cor.titulo};
 
   p:nth-child(1){
     font-weight: regular;
@@ -294,7 +294,7 @@ export const Data = styled.div<propriedadesCard>`
   display: flex;
   justify-content: space-between;
   margin-left: 2rem;
-  color: ${props => props.theme.cor.date};
+  color: ${props => props.theme.cor.data};
   
   p {
     float: left;
