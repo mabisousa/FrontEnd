@@ -26,7 +26,6 @@ declare module 'styled-components' {
       inativoStatus: string;
       habilidadeBotao: string;
       botaoReprovar: string;
-      botaoAprovar: string;
       passo: string;
       passoAtivo: string;
     }
