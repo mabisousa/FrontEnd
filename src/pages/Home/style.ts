@@ -103,8 +103,8 @@ export const Filtro = styled.div`
   svg{
     margin-left: 10px;
     border-left: 10px;
-    height: 1.31em;
-    width: 1.31em;
+    height: 1.12em;
+    width: 1.12em;
     color: ${props => props.theme.cor.corDoIcone};
   }
 
