@@ -54,7 +54,9 @@ interface Apontamento {
     apontamentoDescricao: string,
     apontamentoSituacao: string,
 }
-
+interface Selecionados {
+      idApontamento: number,
+}
 const AprovacaoTest: React.FC = () => {
 
     const formRef = useRef<FormHandles>(null);
@@ -67,6 +69,7 @@ const AprovacaoTest: React.FC = () => {
     const [popupDescricao, setPopupDescricao] = useState(false);
     const [apontamentoSelecionado, setApontamentoSelecionado] = useState(false)
     const [mostrarRequisicao, setMostrarRequisicao] = useState(false);
+    const [finalizado, setFinalizado] = useState(false);
 
     const toggleTheme = () => {
         setTheme(theme.titulo === 'light' ? dark : light);
@@ -84,36 +87,40 @@ const AprovacaoTest: React.FC = () => {
     if(value) {
         responsavel = JSON.parse(value);
     }
-    
+    const aprovacao = {
+      consultor: {
+          idConsultor: 0
+      },
+      responsavel: {
+          idResponsavel: 0
+      },
+      apontamentos: [
+          { 
+              idApontamento: 0,
+          }
+      ],
+      valorHora: 0
+    }
     const selecionarConsultor = useCallback((idConsultor: number) => {
         api.get(`consultores/${idConsultor}`).then((response)=> {
             setConsultor(response.data);
+            setFinalizado(false)
         })
         setPopupState(false);
     },[setConsultor])
-
-    const aprovacao = {
-        consultor: {
-            idConsultor: 0
-        },
-        responsavel: {
-            idResponsavel: 0
-        },
-        apontamentos: [
-            { 
-                idApontamento: 3,
-            },
-            { 
-                idApontamento: 2,
-            }
-        ],
-        valorHora: 0
-    }
+    const [selecionados,setSelecionados] = useState<Selecionados[]>([]);
 
     const selecionarApontamento = useCallback(async (id: number, horas: number) => {
+    
+      if(selecionados.find(selecionado => selecionado.idApontamento  === id)) {
+        setSelecionados(selecionados.filter(apontamento => apontamento.idApontamento !== id))
+      } else {
+        selecionados.push({idApontamento: id})
+        setSelecionados(selecionados)
+        }
         setApontamentoSelecionado(!apontamentoSelecionado);
     },[apontamentoSelecionado])
-    
+
     const exibirDescricao = useCallback((apontamento: Apontamento) => {
 
         if(!descricao) {
@@ -125,37 +132,58 @@ const AprovacaoTest: React.FC = () => {
         setDescricao(apontamento)
 
     },[descricao, popupDescricao])
-
-    const enviarAprovacao = useCallback(async () => {
-
+    let alocacoesfiltradas = consultor?.consultorAlocacoes.map(alocacao => 
+      alocacao.apontamentos.filter(apontamento => apontamento.apontamentoSituacao === "ESPERA"))
+    
+      const enviarAprovacao = useCallback(async () => {
+     if(consultor) {
         try {
-            if(consultor) {
+            
                 aprovacao.consultor.idConsultor = consultor.idConsultor;
                 aprovacao.valorHora = consultor.consultorValorHora;
-            }
-            aprovacao.responsavel.idResponsavel = responsavel.idResponsavel;
-            aprovacao.apontamentos = aprovacao.apontamentos
-            .filter(apontamento => apontamento.idApontamento !== 0);
-
-        console.log(aprovacao)
             
-        api.post(`aprovacoes/inserir`,aprovacao);
+            aprovacao.responsavel.idResponsavel = responsavel.idResponsavel;
+            aprovacao.apontamentos = selecionados;
+
+        api.post(`aprovacoes/inserir`,aprovacao).then(() => {
+          api.get(`consultores/${consultor.idConsultor}`).then((response)=> {
+            setConsultor(response.data);
+            setFinalizado(true);
+          })
+        })
+        
         } catch(e) {
             console.log(e)
         }
-        
+      }
     },[aprovacao, consultor, responsavel.idResponsavel])
 
     const mostrarPopupRequisicao = useCallback((state: boolean) => {
         setMostrarRequisicao(state)
     },[setMostrarRequisicao]);
-                        
-    const alocacoesfiltradas = consultor?.consultorAlocacoes.map(alocacao => 
-    alocacao.apontamentos.filter(apontamento => apontamento.apontamentoSituacao === "ESPERA"))
     
+    let horasTotais = 0;
+    let apontamentosconsultor = 0;
+    let apontamentosaprovados = 0;
+    let apontamentosreprovados = 0;
+
+    consultor?.consultorAlocacoes.map(alocacao => {
+
+      horasTotais += alocacao.horasTotais
+      apontamentosconsultor += alocacao.apontamentos.length;
+
+      alocacao.apontamentos.map(apontamento => {
+        if(apontamento.apontamentoSituacao === "APROVADO") {
+          apontamentosaprovados++;
+        } else if(apontamento.apontamentoSituacao === "REPROVADO") {
+          apontamentosreprovados++;
+        }
+      })
+    })
+
     return (
         <>
-        {mostrarRequisicao && consultor && <Request responsavel={responsavel} consultor={consultor} mostrarRequisicao={mostrarPopupRequisicao}/> }
+        {mostrarRequisicao && consultor && <Request selecionados={selecionados} responsavel={responsavel} consultor={consultor} mostrarRequisicao={mostrarPopupRequisicao}/> }
           <Profile/>
           <Menu />
           <Header alternarTema={toggleTheme}>
@@ -181,30 +209,21 @@ const AprovacaoTest: React.FC = () => {
                       {consultor ? consultor.consultorNome : i18n.t('approval.name')}
                     </Info>
                   </div>
+                  
                 </div>
                 <h1>
                   {i18n.t('approval.approvalInfor')}
                 </h1>
                 <div className="information">
                   <div className="holding">
+                  <Info>
+                      {responsavel ? responsavel.idResponsavel :  "ID"}
+                    </Info>
                     <Info>
                       {responsavel ? responsavel.responsavelNome :  i18n.t('approval.responsible')}
                     </Info>
                   </div>
-                  <div className="holding">
-                    <p>
-                      { i18n.t('approval.totalHours')}
-                    </p>
-                    <Info>
-                    00h
-                    </Info>
-                    <p>
-                      {i18n.t('approval.hourlyRate')}
-                    </p>
-                    <Info>
-                    {consultor ? consultor.consultorValorHora : "R$ 00,00"}
-                    </Info>
-                  </div>
+                  
                 </div>
               </Form>
             </Infos>
@@ -214,7 +233,7 @@ const AprovacaoTest: React.FC = () => {
                 <div className="hold">
                   <div className="numbers">
                     <p>
-                      {0}
+                      {apontamentosconsultor}
                     </p>
                   </div>
                   <p>
@@ -224,7 +243,7 @@ const AprovacaoTest: React.FC = () => {
                 <div className="hold">
                   <div className="numbers">
                     <p>
-                      {0}
+                      {apontamentosaprovados}
                     </p>
                   </div>
                   <p>
@@ -234,7 +253,7 @@ const AprovacaoTest: React.FC = () => {
                 <div className="hold">
                   <div className="numbers">
                     <p>
-                      {0}
+                      {apontamentosreprovados}
                     </p>
                   </div>
                   <p>
@@ -289,7 +308,6 @@ const AprovacaoTest: React.FC = () => {
                                 <Descriptions open={!!popupDescricao}>
                                     <header>
                                         { i18n.t('approval.description')}
-                                        <span/>
                                     </header>
                                     <div>
                                         <p>
@@ -323,8 +341,8 @@ const AprovacaoTest: React.FC = () => {
                 <Step isActive={true}>
                   <FiCheck/>
                 </Step>
-                <Step isActive={false} >
-                  { !!false ? <FiCheck/> : <VscChromeClose/> }
+                <Step isActive={!!finalizado} >
+                  { !!finalizado ? <FiCheck/> : <VscChromeClose/> }
                 </Step>
                 <Step isActive={false}>
                   <VscChromeClose/>
@@ -336,44 +354,46 @@ const AprovacaoTest: React.FC = () => {
             </ProgressBar>
             <button form="aprovar" id="finalizar" type="submit">{i18n.t('approval.finish')}</button>
           </Container>
+          {popup &&
             <Consultores show={popup}>
-              <div id="hold">
-                <table>
-                <thead>
-                  <tr>
-                    <td>
-                      CADASTRO
-                    </td>
-                    <td>
-                      NOME
-                    </td>
-                    <td>
-                      STATUS
-                    </td>
-                  </tr>
-                </thead>
-                <tbody>
-                    {consultores.map(consultor => 
-                        <Tr key={consultor.idConsultor} color={"ATIVO"}
-                            onClick={() => selecionarConsultor(consultor.idConsultor)}>
-                            <td>
-                                {consultor.idConsultor}
-                            </td>
-                            <td>
-                                {consultor.consultorNome}
-                            </td>
-                            <td>
-                                {consultor.consultorStatus}
-                            </td> 
-                        </Tr>
-                    )}
-                </tbody>
-                </table>
-                <button onClick={() => setPopupState(false)}>
-                  <BsX/>
-                </button>
-              </div>
-            </Consultores>
+            <div id="hold">
+              <table>
+              <thead>
+                <tr>
+                  <td>
+                    CADASTRO
+                  </td>
+                  <td>
+                    NOME
+                  </td>
+                  <td>
+                    STATUS
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                  {consultores.map(consultor => 
+                      <Tr key={consultor.idConsultor} color={"ATIVO"}
+                          onClick={() => selecionarConsultor(consultor.idConsultor)}>
+                          <td>
+                              {consultor.idConsultor}
+                          </td>
+                          <td>
+                              {consultor.consultorNome}
+                          </td>
+                          <td>
+                              {consultor.consultorStatus}
+                          </td> 
+                      </Tr>
+                  )}
+              </tbody>
+              </table>
+              <button onClick={() => setPopupState(false)}>
+                <BsX/>
+              </button>
+            </div>
+          </Consultores>
+          }
     {/* } */}
     </>
   )

@@ -5,9 +5,9 @@ export const Container = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   width:100%;
-  height:85vh;
+  height:75vh;
   padding: 1% 8% 1% 8%;
-  color: ${props => props.theme.colors.title};
+  color: ${props => props.theme.cor.title};
 
   h1 {
     font-size: 1em;
@@ -19,7 +19,8 @@ export const Container = styled.div`
     height: 50px;
     padding: 10px;
     color: #fff;
-    background: ${props => props.theme.colors.skillsButton};
+    margin-top: 40px;
+    background: ${props => props.theme.cor.skillsButton};
     border: none;
   }
 
@@ -36,9 +37,9 @@ export const Infos = styled.div`
   display:flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: 0 2%;
 
     form {
+        margin-top: 3px;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -65,6 +66,7 @@ export const Infos = styled.div`
                     width: 70%;
                 }
             }
+            
 
             @media (max-width: 1024px) and (min-width: 769px) {
               p{
@@ -108,7 +110,7 @@ export const Infos = styled.div`
 
 export const Count = styled.div`
     height: 40vh;
-    width: 20vw;
+    width: 27vw;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -171,8 +173,9 @@ export const Count = styled.div`
     height: 50px;
     font-size: .9em;
     color: #fff;
-    background: ${props => props.theme.colors.skillsButton};
+    background: ${props => props.theme.cor.skillsButton};
     transition: 1s;
+    position: relative;
   }
 `;
 
@@ -209,12 +212,12 @@ export const Apontamentos = styled.div`
       border: 0;
       font-size: 1.25em;
       svg{
-        color: ${props => props.theme.colors.title};
+        color: ${props => props.theme.cor.title};
       }
     }
     
     thead tr{
-      background: ${props => props.theme.colors.thead};
+      background: ${props => props.theme.cor.thead};
       color: #fff;
     }
             
@@ -255,12 +258,12 @@ export const Apontamentos = styled.div`
 export const Title = styled.h1`
   font-weight:normal;
   font-size: 1.25em;
-  text-decoration: underline ${props => props.theme.colors.undeline};
+  text-decoration: underline ${props => props.theme.cor.undeline};
   height: 60px;
   display: flex;
   align-items: center;
   margin: 6rem 0rem 0rem 7rem;
-  color: ${props => props.theme.colors.title};
+  color: ${props => props.theme.cor.title};
 `;
 
 export const ProgressBar = styled.div`
@@ -317,7 +320,7 @@ export const Step = styled.div<StepActive>`
     top: 45%;
     width:25%;
     height: 5px;
-    background: ${props => props.theme.colors.step};
+    background: ${props => props.theme.cor.step};
   }
 
   img {
@@ -327,7 +330,7 @@ export const Step = styled.div<StepActive>`
 
   ${(props) => props.isActive ?
     css`
-      background: ${props => props.theme.colors.activeStep};
+      background: ${props => props.theme.cor.activeStep};
       transition: 1s;
 
       &::before {
@@ -337,12 +340,12 @@ export const Step = styled.div<StepActive>`
         top: 45%;
         width:25%;
         height: 5px;
-        background: ${props => props.theme.colors.activeStep};
+        background: ${props => props.theme.cor.activeStep};
         transition: 1s;
       }
   `:
     css`
-      background: ${props => props.theme.colors.step};
+      background: ${props => props.theme.cor.step};
   
       &::before {
         z-index: -2;
@@ -351,7 +354,7 @@ export const Step = styled.div<StepActive>`
         top: 45%;
         width:25%;
         height: 5px;
-        background: ${props => props.theme.colors.step};
+        background: ${props => props.theme.cor.step};
       }
   `}
 `;
@@ -362,15 +365,8 @@ interface PopUp {
     
 export const Consultores = styled.div<PopUp>`
     
-  ${(props) => !props.show ? 
-    css`
-      div {
-        visibility: hidden;
-        background-color: rgba(0, 0, 0, 0);
-      }
-    `:
-    css`
-    
+  ${(props) => !!props.show && css`
+   
     transition: 200ms ease-in-out;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.7);
@@ -381,19 +377,19 @@ export const Consultores = styled.div<PopUp>`
     justify-content: center;
     align-items: center;
     top: 0px;
-    color: ${props => props.theme.colors.title};
+    color: ${props => props.theme.cor.title};
     
     #hold{
         height: 600px;
         width: 75%;
-        background-color: ${props => props.theme.colors.background};
+        background-color: ${props => props.theme.cor.background};
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
     button{
-        color: ${props => props.theme.colors.title};
+        color: ${props => props.theme.cor.title};
         font-size: 1.9em;
         background-color: transparent;
         border: 0;
@@ -462,14 +458,14 @@ export const Tr = styled.div<colorConsultores>`
   ${(props) => props.color === "ATIVO" &&
     css`
       td:nth-child(3){
-        color: ${props => props.theme.colors.title};
+        color: ${props => props.theme.cor.title};
       }
   `}
 
   ${(props) => props.color === "INATIVO" && 
     css`
       td:nth-child(3){
-        color: ${props => props.theme.colors.inactiveStatus}
+        color: ${props => props.theme.cor.inactiveStatus}
       }
   `}
 
@@ -480,7 +476,7 @@ export const Tr = styled.div<colorConsultores>`
   border-bottom: 1px solid #8B8787;
   border-top: 0;
   height: 56px;
-  color: ${props => props.theme.colors.title};
+  color: ${props => props.theme.cor.title};
   text-transform: uppercase;
   font-size: .9em;
 
@@ -503,7 +499,7 @@ interface Request {
     request: boolean;
   }
 export const Requisicao = styled.div<Request>`
-  width: 10vw;
+  width: 10vw;  
   height: 20vh;
   position: absolute;
   right: 0vw;
@@ -513,8 +509,8 @@ export const Requisicao = styled.div<Request>`
   justify-content: space-evenly;
 
   button {
-        width: 130px;
-        height: 50px;
+        width: 110px;
+        height: 40px;
         background-color: #a10e03;
         display: flex;
         align-items: center;
@@ -522,7 +518,7 @@ export const Requisicao = styled.div<Request>`
     }
 
   ${props => !!props.request ? 
-  css` visibility: visible; ` 
+  css` visibility: visible;  ` 
   :
    css`
     visibility: hidden;
@@ -556,21 +552,15 @@ export const Descriptions = styled.div<Description>`
         height: 55px;
         border-bottom: 1px solid #8B8787;
         padding:15px 0px 15px 15px;
+        display: flex;
         align-items: center;
         font-size: 1em;
-        display: flex;
-        justify-content: space-between;
 
         p {
           transition: 0.5s;
           transition-delay: 1.5s;
         }
-        span {
-          border-top: 20px solid transparent;
-          border-bottom: 20px solid transparent;
-          border-right: 20px solid #0075B1;
-          transition-delay:1.5s;
-        }
+        
       }
 
       div {
