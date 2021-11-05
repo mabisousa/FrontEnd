@@ -25,7 +25,7 @@ const messages = {
         horasTotais: "HORAS TOTAIS:",
         valorHora: "VALOR POR HORA:",
         aprovacoes: "APROVAÇÕES",
-        apontamento: "APONTAMENTOS",
+        apontamentos: "APONTAMENTOS",
         aprovado: "APROVADOS",
         reprovado: "REPROVADOS",
         consultor:"VISUALIZAR CONSULTORES",
@@ -37,7 +37,7 @@ const messages = {
         descricao: "Descrição",
         default: "Não há apontamentos para aprovar.",
         registroEfetuado: "Registro Efetuado",
-        aprovacaoFonecedor: "Aprovação Fornecedor",
+        aprovacaoFornecedor: "Aprovação Fornecedor",
         aprovacaoGestor: "Aprovação Gestor",
         requisicao: "Requisição de compra",
         finalizar: "FINALIZAR"
