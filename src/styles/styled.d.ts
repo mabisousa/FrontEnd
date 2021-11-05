@@ -5,32 +5,30 @@ declare module 'styled-components' {
     titulo: string;
 
     cor: {
-      background: string;
-      headerBackground: string;
-      title: string;
+      fundo: string;
+      fundoEscuro: string;
+      titulo: string;
       undeline: string;
-      iconColor: string;
-      progresStatus: string;
-      concludedStatus: string;
-      lateStatus: string;
-      cardBackground: string;
-      titleSection: string;
-      date: string;
-      profileBorder: string;
-      profileBorderAfter: string;
-      projectMenu: string;
-      approvalMenu: string;
-      consultantMenu: string;
+      corDoIcone: string;
+      andamentoStatus: string;
+      concluidoStatus: string;
+      atrasadoStatus: string;
+      fundoCard: string;
+      secaoTitulo: string;
+      data: string;
+      bordaPerfil: string;
+      bordaPerfilAfter: string;
+      projetoMenu: string;
+      aprovacaoMenu: string;
+      consultoresMenu: string;
       thead: string;
-      tableBorder: string;
-      inactiveStatus: string;
-      skillsButton: string;
-      pointedHours: string;
-      totalHours: string;
-      reproveButton: string;
-      aproveButton: string;
-      step: string;
-      activeStep: string;
+      bordaTabela: string;
+      inativoStatus: string;
+      habilidadeBotao: string;
+      botaoReprovar: string;
+      botaoAprovar: string;
+      passo: string;
+      passoAtivo: string;
     }
   }
 }

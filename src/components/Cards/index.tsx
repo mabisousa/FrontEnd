@@ -59,7 +59,7 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
   return (
     <>
       { projeto &&
-        <Container mostrar={!!mostrar} color={projeto.projetoStatus} 
+        <Container mostrar={!!mostrar} cor={projeto.projetoStatus} 
           onClick={() => (setMostrarPopup(!mostrarPopup))} key={projeto.id}>
           <TituloSecao mostrar={!!mostrar}>
             {projeto.secao.idSecao} - {projeto.secao.secaoNome}
