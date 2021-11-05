@@ -70,7 +70,7 @@ const Request: React.FC<MostrarRequest> = ({ consultor, responsavel, mostrarRequ
           <div>
             <RiArrowLeftSLine onClick={() => mostrarRequisicao(false)}/>
             <p>
-              {i18n.t('request.request')}
+              {i18n.t('requisicao.requisicao')}
             </p>
           </div>
           <textarea id="text"
@@ -78,22 +78,22 @@ const Request: React.FC<MostrarRequest> = ({ consultor, responsavel, mostrarRequ
             onChange={e => newConteudo(e.target.value)}
           />
           <button onClick={confirmarRequisicao}>
-            {i18n.t('request.send')}
+            {i18n.t('requisicao.enviar')}
           </button>
         </>
       :
           <>
             <div>
                 <p>
-                  {i18n.t('request.confirm')}
+                  {i18n.t('requisicao.confirmar')}
                 </p>
               </div>
               <div>
                 <button onClick={() => setRevisao(false)}>
-                  {i18n.t('request.no')}
+                  {i18n.t('requisicao.nao')}
                 </button>
                 <button onClick={enviarRequisicao}>
-                  {i18n.t('request.yes')}
+                  {i18n.t('requisicao.sim')}
                 </button>
               </div>
             </>

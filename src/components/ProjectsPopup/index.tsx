@@ -94,20 +94,20 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
             <InfosPopup>
               <InfosGerais open={!!estaAberto}  className="cont">
                 <h1>
-                  {i18n.t('projectsPopup.infos')}
+                  {i18n.t('projetoPopup.info')}
                 </h1>
                 <div>
                   <p>
-                    {i18n.t('projectsPopup.manager')} ?
+                    {i18n.t('projetoPopup.gestor')} ?
                   </p>
                   <p>
-                    {i18n.t('projectsPopup.provider')} ?
+                    {i18n.t('projetoPopup.fornecedor')} ?
                   </p>
                 </div>
               </InfosGerais>
               <Objetivo open={!!estaAberto} className="cont">
                 <h1>
-                  {i18n.t('projectsPopup.objective')} 
+                  {i18n.t('projetoPopup.objetivo')} 
                 </h1>
                 <p>
                   {projeto.projetoDescricao}
@@ -115,7 +115,7 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
               </Objetivo>
               <Horas open={!!estaAberto}  className="cont">
                 <h1>
-                  {i18n.t('projectsPopup.hours')} 
+                  {i18n.t('projetoPopup.horas')} 
                 </h1>
                 <HorasApontadas>
                   <Chart
@@ -142,13 +142,13 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                   />
                   <div>
                     <p>
-                      {i18n.t('projectsPopup.total')}
+                      {i18n.t('projetoPopup.total')}
                       <span>
                         {projeto.projetoHorasTotais}
                       </span> 
                     </p> 
                     <p>
-                      {i18n.t('projectsPopup.pointed')}
+                      {i18n.t('projetoPopup.apontadas')}
                       <span>
                         {projeto.projetoHorasTrabalhadas}
                       </span>
@@ -162,10 +162,10 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                     <thead>
                       <tr>
                         <td>
-                          {i18n.t('projectsPopup.skill')}
+                          {i18n.t('projetoPopup.habilidades')}
                         </td>
                         <td>
-                          {i18n.t('projectsPopup.pointedHour')}
+                          {i18n.t('projetoPopup.horasApontadas')}
                         </td>
                       </tr>
                     </thead>
@@ -184,7 +184,7 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                   </table>
                 </Table>
                 <button id="visualizar" onClick={handleOpenPopup}>
-                  {i18n.t('approval.consultants')}
+                  {i18n.t('aprovacao.consultor')}
                 </button>
               </Skills>
               <ConsultoresAlocados id="ds" open={!!estaAberto}>
@@ -192,10 +192,10 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                   <thead>
                     <tr>
                       <td>
-                        {i18n.t('ConsultantTable.registration')}
+                        {i18n.t('tabelaConsultor.cadastro')}
                       </td>
                       <td>
-                        {i18n.t('ConsultantTable.name')}
+                        {i18n.t('tabelaConsultor.nome')}
                       </td>
                     </tr>
                   </thead>

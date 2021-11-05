@@ -1,113 +1,115 @@
 const messages = {
   pt: {
     translations: {
-      projects: {
-        titleHeader: "PROJETOS",
-        titlePage: "PROJETOS ALOCADOS",
-        project: "Projeto:",
+      projetos: {
+        titulo: "PROJETOS",
+        tituloPagina: "PROJETOS ALOCADOS",
+        projeto: "Projeto:",
         placeHolder:"Digite aqui...",
-        section: "Seção:",
+        secao: "Seção:",
         status: "Status:",
-        progress: "Andamento",
-        late:"Atrasado",
-        concluded: "Concluído",
-        all: "Todos"
+        andamento: "Andamento",
+        atrasado:"Atrasado",
+        concluido: "Concluído",
+        todos: "Todos"
       },
 
-      approval: {
-        titleHeader: "APROVAÇÃO",
-        consultantInfo: "INFORMAÇÕES DO CONSULTOR",
-        registration: "Cadastro",
-        name: "Nome",
-        approvalInfor: "INFORMAÇÕES DA APROVAÇÃO",
-        dateApproval: "Data",
-        responsible: "Responsável",
-        totalHours: "HORAS TOTAIS:",
-        hourlyRate: "VALOR POR HORA:",
-        approvals: "APROVAÇÕES",
-        appointments: "APONTAMENTOS",
-        approved: "APROVADOS",
-        disapprove: "REPROVADOS",
-        consultants:"VISUALIZAR CONSULTORES",
-        buttonapproved: "APROVAR",
-        buttonDisapprove: "REPROVAR",
-        date: "DATA",
-        hour: "HORA",
+      aprovacao: {
+        titulo: "APROVAÇÃO",
+        consultorInfo: "INFORMAÇÕES DO CONSULTOR",
+        cadastro: "Cadastro",
+        nome: "Nome",
+        aprovacaoInfo: "INFORMAÇÕES DA APROVAÇÃO",
+        dataAprovacao: "Data",
+        responsavel: "Responsável",
+        horasTotais: "HORAS TOTAIS:",
+        valorHora: "VALOR POR HORA:",
+        aprovacoes: "APROVAÇÕES",
+        apontamento: "APONTAMENTOS",
+        aprovado: "APROVADOS",
+        reprovado: "REPROVADOS",
+        consultor:"VISUALIZAR CONSULTORES",
+        aprovar: "APROVAR",
+        reprovar: "REPROVAR",
+        data: "DATA",
+        hora: "HORA",
         info: "INFO",
-        description: "Descrição",
+        descricao: "Descrição",
         default: "Não há apontamentos para aprovar.",
-        registrationAcconplished: "Registro Efetuado",
-        supplierApproval: "Aprovação Fornecedor",
-        managerApproval: "Aprovação Gestor",
-        requisition: "Requisição de compra",
-        finish: "FINALIZAR"
+        registroEfetuado: "Registro Efetuado",
+        aprovacaoFonecedor: "Aprovação Fornecedor",
+        aprovacaoGestor: "Aprovação Gestor",
+        requisicao: "Requisição de compra",
+        finalizar: "FINALIZAR"
       },
 
-      consultants: {
-        titleHeader: "CONSULTORES",
-        name: 'Nome:',
+      consultores: {
+        titulo: "CONSULTORES",
+        nome: 'Nome:',
         placeHolder:"Digite aqui...",
-        registration: "Cadastro:", 
-        active: "Ativo",
-        inactive: "Inativo"
+        cadastro: "Cadastro:", 
+        ativo: "Ativo",
+        inativo: "Inativo"
       },
       login: {
-        user: "Usuário",
-        password: "Senha",
-        forgotPassword: "Esqueceu a senha?",
-        signIn: "Entrar"
+        usuario: "Usuário",
+        senha: "Senha",
+        esqueceuSenha: "Esqueceu a senha?",
+        entrar: "Entrar",
+        titulo: 'Erro de autenticação',
+        descricao: 'Ocorreu um erro ao fazer login, verifique suas credenciais.'
       },
       card: {
         total: "Total:",
-        pointed: "Apontadas:",
+        apontadas: "Apontadas:",
         status: "Situação:",
-        from: "De:",
-        to: "Até:"
+        de: "De:",
+        ate: "Até:"
       },
-      ConsultantPopup: {
+      consultorPopup: {
         email: "E-mail:",
-        skills: "SKILLS",
-        number: "NÚMERO",
+        habilidades: "SKILLS",
+        numero: "NÚMERO",
         status: "STATUS",
-        project: "PROJETO"
+        projeto: "PROJETO"
       },
-      ConsultantTable: {
-        registration: "CADASTRO",
-        name: "NOME",
-        details: "DETALHES"
+      tabelaConsultor: {
+        cadastro: "CADASTRO",
+        nome: "NOME",
+        detalhes: "DETALHES"
       },
-      header: {
-        exit :"Sair",
-        idioms: "Idioma",
-        font: "Fonte",
-        small: "Pequena",
-        medium: "Média",
-        big: "Grande",
-        theme: "Tema"
+      cabecalho: {
+        sair :"Sair",
+        idioma: "Idioma",
+        fonte: "Fonte",
+        pequeno: "Pequena",
+        medio: "Média",
+        grande: "Grande",
+        tema: "Tema"
       },
       menu: {
-        projects: "Projetos",
-        approval: "Aprovação",
-        consultants: "Consultores"
+        projetos: "Projetos",
+        aprovacao: "Aprovação",
+        consultores: "Consultores"
       },
-      projectsPopup: {
-        infos: "INFORMAÇÕES GERAIS:",
-        manager: "GESTOR RESPONSÁVEL:",
-        provider: "FORNECEDOR:",
-        objective:"OBJETIVO:",
-        hours: "HORAS:",
+      projetoPopup: {
+        info: "INFORMAÇÕES GERAIS:",
+        gestor: "GESTOR RESPONSÁVEL:",
+        fornecedor: "FORNECEDOR:",
+        objetivo:"OBJETIVO:",
+        horas: "HORAS:",
         total: "TOTAL:",
-        pointed: "APONTADAS:",
-        skill:"SKILL",
-        pointedHour:"HORAS APONTADAS"
+        apontadas: "APONTADAS:",
+        habilidades:"SKILL",
+        horasApontadas:"HORAS APONTADAS"
       },
-      request: {
-        request: "Insira sua Solicitação:",
-        send: "Enviar",
-        confirm: "Tem certeza que deseja enviar uma requisição para os apontamentos:",
-        no:"Não",
-        yes: "Sim"
-      }
+      requisicao: {
+        requisicao: "Insira sua Solicitação:",
+        enviar: "Enviar",
+        confirmar: "Tem certeza que deseja enviar uma requisição para os apontamentos?",
+        nao:"Não",
+        sim: "Sim"
+      },
     }
   }
 }

@@ -103,9 +103,9 @@ export const Filtro = styled.div`
   svg{
     margin-left: 10px;
     border-left: 10px;
-    height: 1.31em;
-    width: 1.31em;
-    color: ${props => props.theme.cor.iconColor};
+    height: 1.12em;
+    width: 1.12em;
+    color: ${props => props.theme.cor.undeline};
   }
 
   @media (max-width: 1024px) and (min-width: 769px)  {

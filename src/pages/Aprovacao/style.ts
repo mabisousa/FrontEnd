@@ -38,7 +38,7 @@ export const Container = styled.div`
 
 export const Infos = styled.div`
   height: 40vh;
-  width: 35vw;
+  width: 30vw;
   display:flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -117,7 +117,7 @@ export const Infos = styled.div`
 
 export const Count = styled.div`
     height: 40vh;
-    width: 25vw;
+    width: 20vw;
     position: relative;
     display: flex;
     flex-direction: column;

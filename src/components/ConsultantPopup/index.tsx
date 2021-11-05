@@ -70,7 +70,7 @@ const PopupConsultor: React.FC<Consultor> = ({id, mostrarPopup} ) => {
                     {consultor.consultorNome} - {consultor.idConsultor} 
                   </h1>
                   <p>
-                    {i18n.t('ConsultantPopup.email')}  {consultor.usuario.email}
+                    {i18n.t('consultorPopup.email')}  {consultor.usuario.email}
                   </p>
                 </div>
               </header>
@@ -78,7 +78,7 @@ const PopupConsultor: React.FC<Consultor> = ({id, mostrarPopup} ) => {
             <Conteudo>
               <Habilidades>
                 <h5>
-                  {i18n.t('ConsultantPopup.skills')}
+                  {i18n.t('consultorPopup.habilidades')}
                 </h5>
                 <SeguraConteudo>
 
@@ -92,13 +92,13 @@ const PopupConsultor: React.FC<Consultor> = ({id, mostrarPopup} ) => {
                   <thead>
                     <tr>
                       <td>
-                        {i18n.t('ConsultantPopup.number')}
+                        {i18n.t('consultorPopup.numero')}
                       </td>
                       <td>
-                        {i18n.t('ConsultantPopup.status')}
+                        {i18n.t('consultorPopup.status')}
                       </td>
                       <td>
-                        {i18n.t('ConsultantPopup.project')}
+                        {i18n.t('consultorPopup.projeto')}
                       </td>
                     </tr>
                   </thead>

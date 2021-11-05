@@ -87,14 +87,14 @@ const Header: React.FC<tema> = ({alternarTema, children,...props}) => {
           <IoSettingsSharp />
         </div> 
         <p id="sair" onClick={sairDoSistema}>
-          {i18n.t('header.exit')}
+          {i18n.t('cabecalho.sair')}
         </p>
       </div>
       <div id="dropdown">
         <button onClick={handleMostrarIdiomas}>
           <IoLanguage /> 
           <p>
-            {i18n.t('header.idioms')}
+            {i18n.t('cabecalho.idioma')}
           </p>          
         </button>
         <div id="idioms">
@@ -120,26 +120,26 @@ const Header: React.FC<tema> = ({alternarTema, children,...props}) => {
         <button onClick={handleMostrarFonte}>
           <Type/>
           <p >
-            {i18n.t('header.font')}
+            {i18n.t('cabecalho.fonte')}
           </p> 
         </button>
         <div id="fonts">
-          <button onClick={() => tamanhoFonte("small")}>
+          <button onClick={() => tamanhoFonte("pequeno")}>
             <Type/>
             <span>
-              {i18n.t('header.small')}
+              {i18n.t('cabecalho.pequeno')}
             </span> 
           </button>
-          <button onClick={() => tamanhoFonte("medium")}>
+          <button onClick={() => tamanhoFonte("medio")}>
             <Type/> 
             <span>
-              {i18n.t('header.medium')}
+              {i18n.t('cabecalho.medio')}
             </span> 
           </button>
-          <button onClick={() => tamanhoFonte("big")}>
+          <button onClick={() => tamanhoFonte("grande")}>
             <Type/>
             <span>
-              {i18n.t('header.big')}
+              {i18n.t('cabecalho.grande')}
             </span> 
           </button>   
         </div>
@@ -156,7 +156,7 @@ const Header: React.FC<tema> = ({alternarTema, children,...props}) => {
             onColor={cor.undeline}
           />
           <p>
-            {i18n.t('header.theme')}
+            {i18n.t('cabecalho.tema')}
           </p> 
         </button> 
       </div>

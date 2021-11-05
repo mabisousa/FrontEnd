@@ -1,105 +1,107 @@
 const messages = {
   en: {
     translations: {
-      projects: {
-        titleHeader: "PROJECTS",
-        titlePage: "ALLOCATED PROJECTS",
-        project: "Project:",
+      projetos: {
+        titulo: "PROJECTS",
+        tituloPagina: "ALLOCATED PROJECTS",
+        projeto: "Project:",
         placeHolder:"Type here...",
-        section: "Section:",
-        progress: "Progress",
-        late:"Late",
-        concluded: "Concluded",
-        all: "All"
+        secao: "Section:",
+        andamento: "Progress",
+        atrasado:"Late",
+        concluido: "Concluded",
+        todos: "All"
       },
-      approval: {
-        titleHeader: "APPROVAL",
-        consultantInfo : "CONSULTANT INFORMATION",
-        registration: "Register",
-        name: "Name",
-        approvalInfor: "APPROVAL INFORMATION",
-        dateApproval: "Date",
-        responsible: "Responsible",
-        totalHours: "TOTAL HOURS:",
-        hourlyRate: "VALUE PER HOUR:",
-        approvals: "APPROVALS",
-        appointments: "APPOINTMENTS",
-        approved: "APPROVED",
-        disapprove: "DISAPPROVE",
-        consultants:"SEE CONSULTANTS",
-        buttonapproved: "APPROVE",
-        buttonDisapprove: "REPROBATE",
-        date: "DATE",
-        hour: "HOUR",
+      aprovacao: {
+        titulo: "APPROVAL",
+        consultorInfo : "CONSULTANT INFORMATION",
+        cadastro: "Register",
+        nome: "Name",
+        aprovacaoInfo: "APPROVAL INFORMATION",
+        dataAprovacao: "Date",
+        responsavel: "Responsible",
+        horasTotais: "TOTAL HOURS:",
+        valorHora: "VALUE PER HOUR:",
+        aprovacoes: "APPROVALS",
+        apontamento: "APPOINTMENTS",
+        aprovado: "APPROVED",
+        reprovado: "DISAPPROVE",
+        consultor:"SEE CONSULTANTS",
+        aprovar: "APPROVE",
+        reprovar: "REPROBATE",
+        data: "DATE",
+        hora: "HOUR",
         info: "INFO",
-        description: "Description",
+        descricao: "Description",
         default: "There are no appointment to approve.",
-        registrationAcconplished: " Registration accomplished",
-        supplierApproval: "Supplier Approval",
-        managerApproval: "Manager Approval",
-        requisition: "Purchase Requisition",
-        finish: "FINISH"
+        registroEfetuado: " Registration accomplished",
+        aprovacaoFonecedor: "Supplier Approval",
+        aprovacaoGestor: "Manager Approval",
+        requisicao: "Purchase Requisition",
+        finalizar: "FINISH"
       },
-      consultants: {
-        titleHeader: "CONSULTANTS",
-        name: 'Name:',
+      consultores: {
+        titulo: "CONSULTANTS",
+        nome: 'Name:',
         placeHolder:"Type here...",
-        registration: "Registration:", 
-        active: "Active",
-        inactive: "Inactive",
-        all: "All"
+        cadastro: "Registration:", 
+        ativo: "Active",
+        inativo: "Inactive",
+ 
       },
       login: {
-        user: "User",
-        password: "Password",
-        forgotPassword: "Forgot password?",
-        signIn: "Sign In"
+        usuario: "User",
+        senha: "Password",
+        esqueceuSenha: "Forgot password?",
+        entrar: "Sign In",
+        titulo: 'Authentication error',
+        descricao: 'There was an error logging in, check your credentials.'
       },
       card: {
-        pointed: "Pointed:",
+        apontadas: "Pointed:",
         status: "Status:",
-        from: "From:",
-        to: "To:"
+        de: "From:",
+        ate: "To:"
       },
-      ConsultantPopup: {
-        number: "NUMBER",
-        project: "PROJECTS"
+      consultorPopup: {
+        numero: "NUMBER",
+        projeto: "PROJECTS"
       },
-      ConsultantTable: {
-        registration: "REGISTRATION",
-        name: "NAME",
-        details: "DETAILS"
+      tabelaConsultor: {
+        cadastro: "REGISTRATION",
+        nome: "NAME",
+        detalhes: "DETAILS"
       },
-      header: {
-        exit :"Exit",
-        idioms: "Idioms",
-        font: "Font",
-        small: "Small",
-        medium: "Medium",
-        big: "Large",
-        theme: "Theme"
+      cabecalho: {
+        sair :"Exit",
+        idioma: "Idioms",
+        fonte: "Font",
+        pequeno: "Small",
+        medio: "Medium",
+        grande: "Large",
+        tema: "Theme"
       },
       menu: {
-        projects: "Projects",
-        approval: "Approval",
-        consultants: "Consultants"
+        projetos: "Projects",
+        aprovacao: "Approval",
+        consultores: "Consultants"
       },
-      projectsPopup: {
-        infos: "GENERAL INFORMATION:",
-        manager: "RESPONSIBLE MANAGER:",
-        provider: "PROVIDER:",
-        objective:"OBJECTIVE:",
-        hours: "HOURS:",
-        pointed: "POINTED:",
-        pointedHour:"POINTED HOURS",
-        registration:"REGISTRATION"
+      projetoPopup: {
+        info: "GENERAL INFORMATION:",
+        gestor: "RESPONSIBLE MANAGER:",
+        fornecedor: "PROVIDER:",
+        objetivo:"OBJECTIVE:",
+        horas: "HOURS:",
+        apontadas: "POINTED:",
+        horasApontadas:"POINTED HOURS",
+        cadastro:"REGISTRATION"
       },
-      request: {
-        request: "Enter your Request:",
-        send: "Send",
-        change: "Do you want to submit a change request?",
-        no:"No",
-        yes: "Yes"
+      requisicao: {
+        requisicao: "Enter your Request:",
+        enviar: "Send",
+        confirmar: "Do you want to submit a change request?",
+        nao:"No",
+        sim: "Yes"
       }
     }
   }

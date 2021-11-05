@@ -60,8 +60,8 @@ const Login: React.FC = () => {
 
       handleAddToast({
         type: 'error',
-        title: 'Erro de autenticação',
-        description: 'Ocorreu um erro ao fazer login, verifique suas credenciais.',
+        title: i18n.t('login.titulo'),
+        description: i18n.t('login.titulo'),
       })
     }      
   },[ signIn, handleAddToast, history ]);
@@ -73,18 +73,18 @@ const Login: React.FC = () => {
           <Form ref={ formRef } onSubmit={ handleSubmit }>
             <ImgLogo src={logo} alt="WEG" />
             <Input name="email" type="text" placeholder=" ">
-              {i18n.t('login.user')}
+              {i18n.t('login.usuario')}
             </Input>
             <Input name="senha" type="password" placeholder=" ">
-              {i18n.t('login.password')}
+              {i18n.t('login.senha')}
             </Input>
             <HoldButton>
               <button>
-                {i18n.t('login.forgotPassword')}
+                {i18n.t('login.esqueceuSenha')}
               </button>
             </HoldButton>
             <FormButton type="submit">
-              {i18n.t('login.signIn')}
+              {i18n.t('login.entrar')}
             </FormButton>
           </Form>
         </Inputs>
