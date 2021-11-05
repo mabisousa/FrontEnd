@@ -19,15 +19,7 @@ interface MostrarRequest {
   selecionados: Selecionados[],
   mostrarRequisicao: (args0: boolean) => void
 }
-interface RequisicaoProps {
-    consultor: {
-      idConsultor: number
-    },
-    responsavel: {
-      idResponsavel: number,
-    },
-    requisicaoDescricao: string
-}
+
 const Request: React.FC<MostrarRequest> = ({ selecionados, consultor, responsavel, mostrarRequisicao}) => {
 
   const [conteudo, newConteudo] = useState('');
@@ -40,6 +32,11 @@ const Request: React.FC<MostrarRequest> = ({ selecionados, consultor, responsave
     responsavel: {
       idResponsavel: 0
     },
+    apontamentos: [
+      {
+        idApontamento: 0
+      }
+    ],
     requisicaoDescricao: ""
   }
 
@@ -53,6 +50,7 @@ const Request: React.FC<MostrarRequest> = ({ selecionados, consultor, responsave
       requisicao.requisicaoDescricao = conteudo
       requisicao.consultor.idConsultor = consultor.idConsultor
       requisicao.responsavel.idResponsavel = responsavel.idResponsavel
+      requisicao.apontamentos = selecionados
 
       api.post(`requisicoes/inserir`,requisicao).then((response) => {
         console.log(response.data)
@@ -91,13 +89,13 @@ console.log(selecionados)
                   {i18n.t('requisicao.confirmar')}
                 </p>
               </div>
-              <div>
+              {/* <div>
               {selecionados && selecionados.map((selecionado) => 
                     <Selecionado>
                       {selecionado.idApontamento}
                     </Selecionado>
                 )}
-              </div>
+              </div> */}
               <div>
                 <button onClick={() => setRevisao(false)}>
                   {i18n.t('requisicao.nao')}
