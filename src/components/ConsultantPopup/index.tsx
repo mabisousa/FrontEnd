@@ -81,10 +81,11 @@ const PopupConsultor: React.FC<Consultor> = ({id, mostrarPopup} ) => {
                   {i18n.t('consultorPopup.habilidades')}
                 </h5>
                 <SeguraConteudo>
-
                   {consultor.consultorAlocacoes.map((alocacao => (
-                    alocacao.skill.skillNome
-                  )))}  
+                    <p>
+                      {alocacao.skill.skillNome}
+                    </p>
+                  )))} 
                 </SeguraConteudo>
               </Habilidades>
               <TabelaPopUp>
