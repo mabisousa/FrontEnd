@@ -5,7 +5,6 @@ import Login from '../pages/Login';
 import Aprovacao from '../pages/Aprovacao';
 import Consultores from '../pages/Consultores';
 import Home from '../pages/Home/index';
-import AprovacaoTest from '../pages/AprovacaoTest';
 
 const Routes: React.FC = () => (
   <Switch>
