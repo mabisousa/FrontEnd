@@ -5,7 +5,7 @@ export const Container = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   width:100%;
-  height:85vh;
+  height:75vh;
   padding: 1% 8% 1% 8%;
   color: ${props => props.theme.cor.titulo};
 
@@ -15,24 +15,23 @@ export const Container = styled.div`
     margin:10px 0;
   }
 
-  #finalizar {
-    height: 50px;
-    padding: 10px;
-    color: #fff;
-    background: ${props => props.theme.cor.habilidadeBotao};
-    border: none;
-  }
+    .buttons {
+      height: 50px;
+      padding: 10px;
+      color: #fff;
+      margin-top: 40px;
+      border: none;
+      background: ${props => props.theme.cor.habilidadeBotao};
+    }
+    #reprovar {
+      background: ${props => props.theme.cor.botaoReprovar};
+    }
+  
 
   @media (max-width: 1024px) and (min-width: 769px) {
     h1 {
       font-size: 0.9em;
     }     
-  }
-
-  @media (max-width: 768px)  {
-    h1 {
-      font-size: 0.8em;
-    } 
   }
 `;
 
@@ -42,13 +41,12 @@ export const Infos = styled.div`
   display:flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: 0 2%;
 
     form {
+        margin-top: 3px;
         height: 100%;
         display: flex;
         flex-direction: column;
-        margin-left: 20px;
 
         .information {
             margin: 3% 0;
@@ -72,13 +70,13 @@ export const Infos = styled.div`
                     width: 70%;
                 }
             }
+            
 
             @media (max-width: 1024px) and (min-width: 769px) {
               p{
                 font-size: 0.65em;
                 width: 80px;
               }
-
               .holding {
                 div:nth-child(1) {
                     width: 33%;
@@ -90,7 +88,6 @@ export const Infos = styled.div`
             @media (max-width: 768px)  {
               p{
                 font-size: 0.65em;
-                margin-left: 8px;
               }
               .holding {
                 div:nth-child(1) {
@@ -117,7 +114,7 @@ export const Infos = styled.div`
 
 export const Count = styled.div`
     height: 40vh;
-    width: 20vw;
+    width: 27vw;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -182,25 +179,7 @@ export const Count = styled.div`
     color: #fff;
     background: ${props => props.theme.cor.habilidadeBotao};
     transition: 1s;
-  }
-
-  @media (max-width: 768px)  {
-    p{
-      font-size: 0.8em;
-    }
-
-    .hold {
-      .numbers {
-        p {
-          font-size: .9em;
-        }
-      }
-    }
-
-    button {
-      font-size: .8em;
-      width: 90%;
-    }
+    position: relative;
   }
 `;
 
@@ -278,21 +257,6 @@ export const Apontamentos = styled.div`
       width: 40px;
     }
   }
-
-  @media (max-width: 768px)  {
-    thead tr{
-      width: 170px;
-    }
-    
-    td{
-      font-size: .8em;
-    }
-
-    tbody {
-      width: 170px;
-    }
-  }
- 
 `;
 
 export const Title = styled.h1`
@@ -315,7 +279,7 @@ export const ProgressBar = styled.div`
     display: flex;
     justify-content: space-between;
     text-align: center; 
-    padding: 0px 6vw;
+    padding: 0px 11%;
 
     p {
       width:100px;
@@ -328,12 +292,6 @@ export const ProgressBar = styled.div`
       p {
         font-size: 0.9em;
       }     
-    }
-
-    @media (max-width: 768px)  {
-      p {
-        font-size: 0.8em;
-      }   
     }
   }
 
@@ -403,13 +361,6 @@ export const Step = styled.div<StepActive>`
         background: ${props => props.theme.cor.passo};
       }
   `}
-
-  @media (max-width: 768px)  {
-    width: 50px;
-    height: 50px;
-  }
-
-    
 `;
 
 interface PopUp {
@@ -418,90 +369,88 @@ interface PopUp {
     
 export const Consultores = styled.div<PopUp>`
     
-  ${(props) => !props.show && 
-    css`
-      div {
-        visibility: hidden;
-      }
-  `}
-  
-  transition: 200ms ease-in-out;
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.7);
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0px;
-  color: ${props => props.theme.cor.titulo};
-  
-  #hold{
-    height: 600px;
-    width: 75%;
-    background-color: ${props => props.theme.cor.fundo};
+  ${(props) => !!props.show && css`
+   
+    transition: 200ms ease-in-out;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  button{
+    top: 0px;
     color: ${props => props.theme.cor.titulo};
-    font-size: 1.9em;
-    background-color: transparent;
-    border: 0;
-    position: absolute;
-    right: 200px;
-    bottom: 567px;
-  }
-
-  table{
-    border-collapse: collapse;
-    width: 85%;
-    text-align: center;
-  }
-
-  thead tr{
-    text-transform: uppercase;
-    font-size: .9em;
-    background: ${props => props.theme.cor.thead};
-    color: #fff;
-  }
-
-  tr{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid #8B8787;
-    border-top: 0;
-    height: 56px;
-    text-transform: uppercase;
-    font-size: .9em;
     
-    td{
-      width: 150px;
-    }
-    
-    td:nth-child(2){
-      width: 450px;
-      text-align: start;
+    #hold{
+        height: 600px;
+        width: 75%;
+        background-color: ${props => props.theme.cor.fundo};
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     button{
-      border: 0;
-      font-size: 1.25em;
+        color: ${props => props.theme.cor.titulo};
+        font-size: 1.9em;
+        background-color: transparent;
+        border: 0;
+        position: absolute;
+        right: 200px;
+        bottom: 567px;
     }
-  }
 
-  tbody {
-    height: 350px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    display: block;
-    border: 1px solid #8B8787;
+    table{
+        border-collapse: collapse;
+        width: 85%;
+        text-align: center;
+    }
+
+    thead tr{
+        text-transform: uppercase;
+        font-size: .9em;
+        background: #0075B1;
+        color: #fff;
+    }
+
+    tr{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid #8B8787;
+        border-top: 0;
+        height: 56px;
+        text-transform: uppercase;
+        font-size: .9em;
+        
+        td{
+        width: 150px;
+        }
+        
+        td:nth-child(2){
+        width: 450px;
+        text-align: start;
+        }
+
+        button{
+        border: 0;
+        font-size: 1.25em;
+        }
+    }
+
+    tbody {
+        height: 350px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: block;
+        border: 1px solid #8B8787;
+    }
+    `
   }
 `;
+  
 
 interface colorConsultores{
   color: string;
@@ -551,34 +500,6 @@ export const Tr = styled.div<colorConsultores>`
   }
 `;
 
-export const Buttons = styled.div`
-  width: 10vw;
-  height: 20vh;
-  position: absolute;
-  right: 0vw;
-  top: 10vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  visibility: hidden;
-
-  Button:nth-child(1) {
-    background-color: ${props => props.theme.cor.botaoReprovar};
-  }
-  Button:nth-child(2) {
-    background-color: ${props => props.theme.cor.botaoAprovar};
-  }
-`;
-
-export const Button = styled.button`
-  width: 100%;
-  height: 50px;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
 interface Description {
   open: boolean;
 }
@@ -606,21 +527,15 @@ export const Descriptions = styled.div<Description>`
         height: 55px;
         border-bottom: 1px solid #8B8787;
         padding:15px 0px 15px 15px;
+        display: flex;
         align-items: center;
         font-size: 1em;
-        display: flex;
-        justify-content: space-between;
 
         p {
           transition: 0.5s;
           transition-delay: 1.5s;
         }
-        span {
-          border-top: 20px solid transparent;
-          border-bottom: 20px solid transparent;
-          border-right: 20px solid #0075B1;
-          transition-delay:1.5s;
-        }
+        
       }
 
       div {

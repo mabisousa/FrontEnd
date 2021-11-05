@@ -17,7 +17,7 @@ const messages = {
         consultorInfo : "CONSULTANT INFORMATION",
         cadastro: "Register",
         nome: "Name",
-        aprovacaoInfo: "APPROVAL INFORMATION",
+        aprovacaoInfo: "RESPONSIBLE INFORMATION",
         dataAprovacao: "Date",
         responsavel: "Responsible",
         horasTotais: "TOTAL HOURS:",
@@ -99,7 +99,7 @@ const messages = {
       requisicao: {
         requisicao: "Enter your Request:",
         enviar: "Send",
-        confirmar: "Do you want to submit a change request?",
+        confirmar: "Are you sure you want to send a request for the notes:",
         nao:"No",
         sim: "Yes"
       }

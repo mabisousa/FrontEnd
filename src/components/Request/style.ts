@@ -30,31 +30,35 @@ export const Container = styled.main<RequestProps>`
   transform: translate(-50%, -50%);
   z-index: 99999;
 
-  svg {
-    height: 30px;
-    width: 30px;
-    display: block;
-    position: absolute;
-    left: 7%;
-    top: 10%;
-    cursor: pointer;
-  }
+    svg {
+      height: 30px;
+      width: 30px;
+      display: block;
+      position: absolute;
+      left: 7%;
+      top: 7%;
+      cursor: pointer;
+    }
     p {
       font-size: 18px;
     }
     ${props => !props.send ? css`
-    
+
     textarea {
       width: 100%;
       height: 200px;
+      padding: 10px;
     }
     button {
       border: none;
       color: #fff;
       padding: 2% 5%;
-      background-color: blue;
+      background-color:  ${props => props.theme.cor.habilidadeBotao};
     }
     ` : css`
+
+    width: 450px;
+    height: 250px;
 
     div {
       display: flex;
@@ -68,13 +72,23 @@ export const Container = styled.main<RequestProps>`
       padding: 4% 8%;
 
         :nth-child(1) {
-          background-color: red;
+          background-color: ${props => props.theme.cor.botaoReprovar};
         }
         :nth-child(2) {
-        background-color: blue;
+        background-color:  ${props => props.theme.cor.habilidadeBotao};
         }
       }
+      /* :nth-child(2) {
+        justify-content: flex-start;
+      } */
     }
-    `}
-   
+    
+    `} 
+`;
+
+export const Selecionado = styled.span`
+  padding: 10px;
+  border: 1px solid black;
+  background: #f5f5f5;
+  margin: 0 5px;
 `;

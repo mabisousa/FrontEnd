@@ -3,8 +3,8 @@ import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web";
 import { format } from "date-fns";
 
-import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores, Buttons, 
-    Button, Step, Descriptions, Tr, Info } from "./style";
+import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores, 
+    Step, Descriptions, Tr, Info } from "./style";
 
 import { VscChromeClose } from 'react-icons/vsc';
 import { GoChevronDown } from 'react-icons/go';
@@ -24,166 +24,173 @@ import light from '../../styles/themes/light'
 import dark from '../../styles/themes/dark'
 
 interface Consultor{
-  id: number,
-  nome: string,
-  status: string,
-  skill: string,
-  limiteHoras: number,
-  valorHoras: number,
-  apontamentos: [
-    {
-        id:number,
-        data: string,
-        horasTrabalhadas: number,
-        descricao: string,
-        situacaoApontamento: string,
-    }
-  ]
-}
-
-interface Apontamento {
-  id:number,
-  data: string,
-  horasTrabalhadas: number,
-  descricao: string,
-  situacaoApontamento: string,
-  projeto: {
-      id: number,
-  }
-}
-
-interface Aprovacao {
-  data: Date,
-  nomeFornecedor: string,
-  nomeResponsavel: string,
   idConsultor: number,
-  horasAprovadas: number,
-  valorHora: number,
-  apontamentos: [
+  consultorNome: string,
+  consultorStatus: string,
+  consultorValorHora: number,
+  consultorAlocacoes: [
     {
-      id: number,
+      skill: {
+        skillNome: string
+      },
+      apontamentos: [
+        {
+          idApontamento: number,
+          horasTrabalhadas: number,
+          apontamentoData: Date,
+          apontamentoDescricao: string,
+          apontamentoSituacao: string
+        }
+      ],
+      horasTotais: number,
+      horasTrabalhadas: number
     }
   ]
 }
+interface Apontamento {
+    idApontamento: number,
+    horasTrabalhadas: number,
+    apontamentoData: Date,
+    apontamentoDescricao: string,
+    apontamentoSituacao: string,
+}
+interface Selecionados {
+      idApontamento: number,
+}
+const AprovacaoTest: React.FC = () => {
 
-const Aprovacao: React.FC = () => {
-    
-  const [consultants, setConsultants] = useState<Consultor[]>([]);
-  const [consultant, setConsultant] = useState<Consultor>();
-  const formRef = useRef<FormHandles>(null);
-  const [isConfirmed, setConfirm] = useState(false);
-  const [isOpen, setOpen] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
-  const [description, setDescription] = useState<Apontamento>();
-  const [apontamentos, setApontamentos] = useState<Apontamento[]>([]);
-
-  let responsible = localStorage.getItem("@WEGusers: nome");
-  let horasSelecionadas = 0;
-
-  const aprovacao = {
-    data: new Date(),  
-    nomeFornecedor: "",
-    nomeResponsavel: "",
-    idConsultor: 0,
-    horasAprovadas: 0,
-    valorHora: 0,
-    apontamentos: [{ id: 0}]
-  }
-  if(responsible != null) {
-    aprovacao.nomeResponsavel = responsible;
-  }
-  const handleSelectConsult = useCallback((id: number) => {
-
-    api.get(`consultores/${id}`).then((response) => {
-      setConsultant(response.data);
-    })
-    setShowPopup(false);
-  },[]);
-
-  const handleApproval = useCallback(async () => {
-    try {
-      if(consultant) {
-        aprovacao.idConsultor = consultant.id;
-        aprovacao.valorHora = consultant.valorHoras;
-        aprovacao.nomeFornecedor = "carlos";
-        aprovacao.horasAprovadas = horasSelecionadas;
-        aprovacao.apontamentos = aprovacao.apontamentos
-        .filter(apontamento => apontamento.id !== 0)
-      }
-
-      api.post("aprovacao/inserir", aprovacao);
-      console.log(aprovacao)
-    } catch(e) {
-      console.log(e);
-    }
-  },[aprovacao, consultant, horasSelecionadas]);
-
-  const handleSelected = useCallback(async (id, horas) => {
-    let alreadySelected;
-    let indexSelected = 0;
-
-    aprovacao.apontamentos.map(apontamento => {
-      if(apontamento.id === id) {
-        alreadySelected = true;
-        indexSelected = aprovacao.apontamentos.indexOf(apontamento,0);
-      }
-
-    })
-
-    if(alreadySelected === true) {
-      horasSelecionadas -= horas;
-      aprovacao.apontamentos.splice(indexSelected);
-    } else {
-      horasSelecionadas += horas;
-      aprovacao.apontamentos.push({id: id});
-    }
-  },[aprovacao]);
-
-  const handleOpenPopup = useCallback((apontamento) => {
-      let index = apontamentos.indexOf(apontamento);
-      setDescription(apontamentos[index]);
-
-      if(apontamento.id === description?.id) {
-        setOpen(!isOpen);
-      }
-
-  }, [apontamentos, isOpen, setOpen, description, setDescription]);
-
-  useEffect(() => {
-    api.get("/consultores").then((response) => {
-      setConsultants(response.data)
-    })
-    api.get("/apontamentos").then((response) => {
-      setApontamentos(response.data)
-    })
-  }, []);
-
-  const apontamentosaprovados = apontamentos.filter(apontamento => 
-    apontamento.situacaoApontamento === "APROVADO")
-  ,aprovados = apontamentosaprovados.length;
-
-  const apontamentosreprovados = apontamentos.filter(apontamento => 
-    apontamento.situacaoApontamento === "REPROVADO")
-  ,reprovados = apontamentosreprovados.length;
-
-
-    const apontamentoslist = consultant?.apontamentos.
-    filter(apontamento => apontamento.situacaoApontamento === "ESPERA");
-
-    let date = new Date();
-    const formattedDate = format(date, "dd'/'MM'/'yyyy");
+    const formRef = useRef<FormHandles>(null);
 
     const [theme, setTheme] = useState(light);
+    const [consultores, setConsultores] = useState<Consultor[]>([]);
+    const [consultor, setConsultor] = useState<Consultor>();
+    const [descricao, setDescricao] = useState<Apontamento>();
+    const [popup, setPopupState] = useState(false);
+    const [popupDescricao, setPopupDescricao] = useState(false);
+    const [apontamentoSelecionado, setApontamentoSelecionado] = useState(false)
+    const [mostrarRequisicao, setMostrarRequisicao] = useState(false);
+    const [finalizado, setFinalizado] = useState(false);
 
-    const alternarTema = () => {
-      setTheme(theme.titulo === 'light' ? dark : light);
+    const toggleTheme = () => {
+        setTheme(theme.titulo === 'light' ? dark : light);
     };
+
+    useEffect(()=> {
+        api.get(`consultores`).then((response)=> {
+            setConsultores(response.data);
+        })
+    })
+
+    let value = localStorage.getItem("@WEGusers:responsavel")
+    let responsavel!: { idResponsavel: number; responsavelNome: string };
+
+    if(value) {
+        responsavel = JSON.parse(value);
+    }
+    const aprovacao = {
+      consultor: {
+          idConsultor: 0
+      },
+      responsavel: {
+          idResponsavel: 0
+      },
+      apontamentos: [
+          { 
+              idApontamento: 0,
+          }
+      ],
+      valorHora: 0
+    }
+    const selecionarConsultor = useCallback((idConsultor: number) => {
+        api.get(`consultores/${idConsultor}`).then((response)=> {
+            setConsultor(response.data);
+            setFinalizado(false)
+        })
+        setPopupState(false);
+    },[setConsultor])
+    const [selecionados,setSelecionados] = useState<Selecionados[]>([]);
+
+    const selecionarApontamento = useCallback(async (id: number, horas: number) => {
+    
+      if(selecionados.find(selecionado => selecionado.idApontamento  === id)) {
+        setSelecionados(selecionados.filter(apontamento => apontamento.idApontamento !== id))
+        setApontamentoSelecionado(false);
+
+      } else {
+        selecionados.push({idApontamento: id})
+        setSelecionados(selecionados)
+        setApontamentoSelecionado(true);
+
+        }
+    },[apontamentoSelecionado])
+
+    const exibirDescricao = useCallback((apontamento: Apontamento) => {
+
+
+      if(!descricao) {
+        setPopupDescricao(!popupDescricao)
+      }
+        if(apontamento === descricao) {
+            setPopupDescricao(!popupDescricao)
+        } 
+        setDescricao(apontamento)
+
+    },[descricao, popupDescricao])
+    let alocacoesfiltradas = consultor?.consultorAlocacoes.map(alocacao => 
+      alocacao.apontamentos.filter(apontamento => apontamento.apontamentoSituacao === "ESPERA"))
+    
+      const enviarAprovacao = useCallback(async () => {
+     if(consultor) {
+        try {
+            
+                aprovacao.consultor.idConsultor = consultor.idConsultor;
+                aprovacao.valorHora = consultor.consultorValorHora;
+            
+            aprovacao.responsavel.idResponsavel = responsavel.idResponsavel;
+            aprovacao.apontamentos = selecionados;
+
+        api.post(`aprovacoes/inserir`,aprovacao).then(() => {
+          api.get(`consultores/${consultor.idConsultor}`).then((response)=> {
+            setConsultor(response.data);
+            setFinalizado(true);
+          })
+        })
+        
+        } catch(e) {
+            console.log(e)
+        }
+      }
+    },[aprovacao, consultor, responsavel.idResponsavel])
+
+    const mostrarPopupRequisicao = useCallback((state: boolean) => {
+        setMostrarRequisicao(state)
+    },[setMostrarRequisicao]);
+    
+    let horasTotais = 0;
+    let apontamentosconsultor = 0;
+    let apontamentosaprovados = 0;
+    let apontamentosreprovados = 0;
+
+    consultor?.consultorAlocacoes.map(alocacao => {
+
+      horasTotais += alocacao.horasTotais
+      apontamentosconsultor += alocacao.apontamentos.length;
+
+      alocacao.apontamentos.map(apontamento => {
+        if(apontamento.apontamentoSituacao === "APROVADO") {
+          apontamentosaprovados++;
+        } else if(apontamento.apontamentoSituacao === "REPROVADO") {
+          apontamentosreprovados++;
+        }
+      })
+    })
 
     return (
         <>
+        {mostrarRequisicao && consultor && <Request selecionados={selecionados} responsavel={responsavel} consultor={consultor} mostrarRequisicao={mostrarPopupRequisicao}/> }
           <Profile/>
           <Menu />
-          <Header alternarTema={alternarTema}>
+          <Header alternarTema={toggleTheme}>
             <p>
               {i18n.t('aprovacao.titulo')}
             </p>
@@ -193,46 +200,34 @@ const Aprovacao: React.FC = () => {
           </Title>
           <Container>
             <Infos>
-              <Form ref={formRef} id="aprovar" onSubmit={ handleApproval }>
+              <Form ref={formRef} id="aprovar" onSubmit={ enviarAprovacao }>
                 <h1>
                   {i18n.t('aprovacao.consultorInfo')}
                 </h1>
                 <div className="information">
                   <div className="holding">
                     <Info>
-                      {consultant ? consultant.id : i18n.t('aprovacao.cadastro')}
+                      {consultor ? consultor.idConsultor : i18n.t('aprovacao.cadastro')}
                     </Info>
                     <Info>
-                      {consultant ? consultant.nome : i18n.t('aprovacao.nome')}
+                      {consultor ? consultor.consultorNome : i18n.t('aprovacao.nome')}
                     </Info>
                   </div>
+                  
                 </div>
                 <h1>
                   {i18n.t('aprovacao.aprovacaoInfo')}
                 </h1>
                 <div className="information">
                   <div className="holding">
-                    <Info>
-                      {consultant ? formattedDate: i18n.t('aprovacao.dataAprovacao')}
+                  <Info>
+                      {responsavel ? responsavel.idResponsavel :  "ID"}
                     </Info>
                     <Info>
-                      {consultant ? "Responsável" : i18n.t('aprovacao.responsavel')}
-                    </Info>
-                  </div>
-                  <div className="holding">
-                    <p>
-                      {i18n.t('aprovacao.horasTotais')}
-                    </p>
-                    <Info>
-                      {consultant ?  consultant.limiteHoras +"h" : "00h"}
-                    </Info>
-                    <p>
-                      {i18n.t('aprovacao.valorHora')}
-                    </p>
-                    <Info>
-                      {consultant ? "R$ " + consultant.valorHoras  : "R$ 00,00"}
+                      {responsavel ? responsavel.responsavelNome :  i18n.t('aprovacao.responsavel')}
                     </Info>
                   </div>
+                  
                 </div>
               </Form>
             </Infos>
@@ -242,17 +237,17 @@ const Aprovacao: React.FC = () => {
                 <div className="hold">
                   <div className="numbers">
                     <p>
-                      {apontamentos.length}
+                      {apontamentosconsultor}
                     </p>
                   </div>
                   <p>
-                    {i18n.t('aprovacao.apontamento')}
+                    {i18n.t('aprovacao.apontamentos')}
                   </p>
                 </div>
                 <div className="hold">
                   <div className="numbers">
                     <p>
-                      {aprovados}
+                      {apontamentosaprovados}
                     </p>
                   </div>
                   <p>
@@ -262,7 +257,7 @@ const Aprovacao: React.FC = () => {
                 <div className="hold">
                   <div className="numbers">
                     <p>
-                      {reprovados}
+                      {apontamentosreprovados}
                     </p>
                   </div>
                   <p>
@@ -270,17 +265,10 @@ const Aprovacao: React.FC = () => {
                   </p>
                 </div>
               </div>
-              <button id="visualizar" onClick={() => setShowPopup(!showPopup)}>
-                {i18n.t('aprovacao.consultor')}
-              </button>
-              <Buttons id="buttons">
-                <Button onClick={() => {}}>
-                  {i18n.t('aprovacao.aprovar')}
-                </Button>
-                <Button onClick={() => {}}>
-                  {i18n.t('aprovacao.reprovar')}
-                </Button>
-              </Buttons>
+                <button id="visualizar" onClick={() => setPopupState(true) }>
+                    {i18n.t('aprovacao.consultor')}
+                </button>
+                
             </Count>
             <Apontamentos>
               <table>
@@ -299,40 +287,38 @@ const Aprovacao: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {apontamentoslist != null && apontamentoslist.length != 0 ? 
-                  apontamentoslist.map((apontamento) => { 
-                    return (
-                      <tr key={apontamento.id}>
-                        <td>
-                          <input type="checkbox" value={apontamento.id} onClick={() => 
-                          handleSelected(apontamento.id, apontamento.horasTrabalhadas)}/>
-                        </td>
-                        <td>
-                          {apontamento.data.substring(0,10)}
-                        </td>
-                        <td>
-                          {apontamento.horasTrabalhadas}h
-                        </td> 
-                        <td>
-                          <button onClick={() => handleOpenPopup(apontamento)}>
-                            <GoChevronDown/>
-                          </button>
-                        </td>
-                        {isOpen &&
-                          <Descriptions open={!!isOpen}>
-                            <header>
-                              {i18n.t('aprovacao.descricao')}
-                              <span/>
-                            </header>
-                            <div>
-                              <p>
-                                {description && description?.descricao}
-                              </p>
-                            </div>
-                          </Descriptions>
-                          }
-                      </tr> 
-                    )}) : <span>{i18n.t('aprovacao.default')}</span>}
+
+                {alocacoesfiltradas && alocacoesfiltradas.map(alocacao => 
+                        alocacao.map(apontamento => 
+                            <tr key={apontamento.idApontamento}>
+                                <td>
+                                    <input type="checkbox" value={apontamento.idApontamento} onClick={() => selecionarApontamento(apontamento.idApontamento, apontamento.horasTrabalhadas)}/>
+                                </td>
+                                <td>
+                                    {apontamento.apontamentoData}
+                                </td>
+                                <td>
+                                    {apontamento.horasTrabalhadas}
+                                </td> 
+                                <td>
+                                    <button onClick={() => exibirDescricao(apontamento)}>
+                                        <GoChevronDown/>
+                                    </button>
+                                </td>
+                                <Descriptions open={!!popupDescricao}>
+                                    <header>
+                                        { i18n.t('aprovacao.descricao')}
+                                    </header>
+                                    <div>
+                                        <p>
+                                            {descricao && descricao.apontamentoDescricao}
+                                        </p>
+                                    </div>
+                                </Descriptions>
+                            </tr> 
+                        )
+                    )}
+                      
                 </tbody>
               </table>
             </Apontamentos>
@@ -342,7 +328,7 @@ const Aprovacao: React.FC = () => {
                   {i18n.t('aprovacao.registroEfetuado')}
                 </p>
                 <p>
-                  {i18n.t('aprovacao.aprovacaoFonecedor')}
+                  {i18n.t('aprovacao.aprovacaoFornecedor')}
                 </p>
                 <p>
                   {i18n.t('aprovacao.aprovacaoGestor')}
@@ -355,8 +341,8 @@ const Aprovacao: React.FC = () => {
                 <Step isActive={true}>
                   <FiCheck/>
                 </Step>
-                <Step isActive={isConfirmed} >
-                  { !!isConfirmed ? <FiCheck/> : <VscChromeClose/> }
+                <Step isActive={!!finalizado} >
+                  { !!finalizado ? <FiCheck/> : <VscChromeClose/> }
                 </Step>
                 <Step isActive={false}>
                   <VscChromeClose/>
@@ -366,50 +352,55 @@ const Aprovacao: React.FC = () => {
                 </Step>
               </div>
             </ProgressBar>
-            <button form="aprovar" id="finalizar" type="submit">{i18n.t('aprovacao.finalizar')}</button>
-          </Container>
-          {showPopup && 
-            <Consultores show={!!showPopup}>
-              <div id="hold">
-                <table>
-                <thead>
-                  <tr>
-                    <td>
-                      {i18n.t('tabelaConsultor.cadastro')}
-                    </td>
-                    <td>
-                      {i18n.t('tabelaConsultor.nome')}
-                    </td>
-                    <td>
-                      {i18n.t('consultorPopup.status')}
-                    </td>
-                  </tr>
-                </thead>
-                <tbody>
-                  {consultants.map((consultant) => (
-                    <Tr key={consultant.id} color={consultant.status}
-                     onClick={() => handleSelectConsult(consultant.id)}>
-                      <td>
-                        {consultant.id}
-                      </td>
-                      <td>
-                        {consultant.nome}
-                      </td>
-                      <td>
-                        {consultant.status}
-                      </td> 
-                    </Tr>
-                      ))}
-                </tbody>
-                </table>
-                <button onClick={() => setShowPopup(!showPopup)}>
-                  <BsX/>
+            {!!apontamentoSelecionado &&
+                <button className="buttons" id="reprovar" onClick={() => setMostrarRequisicao(!mostrarRequisicao)}>
+                  {i18n.t('aprovacao.reprovar')}
                 </button>
-              </div>
-            </Consultores>
-    }
+              }
+            <button form="aprovar" className="buttons" type="submit">{i18n.t('aprovacao.finalizar')}</button>
+          </Container>
+          {popup &&
+            <Consultores show={popup}>
+            <div id="hold">
+              <table>
+              <thead>
+                <tr>
+                  <td>
+                    CADASTRO
+                  </td>
+                  <td>
+                    NOME
+                  </td>
+                  <td>
+                    STATUS
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                  {consultores.map(consultor => 
+                      <Tr key={consultor.idConsultor} color={"ATIVO"}
+                          onClick={() => selecionarConsultor(consultor.idConsultor)}>
+                          <td>
+                              {consultor.idConsultor}
+                          </td>
+                          <td>
+                              {consultor.consultorNome}
+                          </td>
+                          <td>
+                              {consultor.consultorStatus}
+                          </td> 
+                      </Tr>
+                  )}
+              </tbody>
+              </table>
+              <button onClick={() => setPopupState(false)}>
+                <BsX/>
+              </button>
+            </div>
+          </Consultores>
+          }
     </>
   )
 }
 
-export default Aprovacao;
+export default AprovacaoTest;

@@ -16,7 +16,7 @@ const messages = {
         consultorInfo: "INFORMACION DEL CONSULTOR",
         cadastro: "Registro",
         nome: "Nombre",
-        aprovacaoInfo: "INFORMACIÓN DE APROBACIÓN",
+        aprovacaoInfo: "INFORMACIÓN DE RESPONSABLE",
         dataAprovacao: "Fecha",
         responsavel: "Responsable",
         valorHora: "HORAS TOTALES:",
@@ -88,7 +88,7 @@ const messages = {
       requisicao: {
         requisicao: "Ingrese su Solicitud:",
         enviar: "Mandar",
-        confirmar: "¿Quieres enviar una solicitud de cambio?",
+        confirmar: "¿Está seguro de que desea enviar una solicitud para estas notas?",
         nao:"No",
         sim: "Sí"
       }

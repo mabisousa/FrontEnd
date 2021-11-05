@@ -28,7 +28,6 @@ const Login: React.FC = () => {
   const history = useHistory();
 
   const handleSubmit = useCallback(async (data: SignInData) => {
-    console.log(data)
       
     try {
       formRef.current?.setErrors({});
