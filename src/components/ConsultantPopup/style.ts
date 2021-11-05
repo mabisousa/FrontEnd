@@ -168,6 +168,12 @@ export const SeguraConteudo = styled.div`
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  p{
+    padding-top: 5px;
+  }
 
   @media (max-width: 1024px) and (min-width: 769px)  {
     height: 35vh;

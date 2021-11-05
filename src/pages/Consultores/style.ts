@@ -12,6 +12,7 @@ export const Filtros = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   margin: 6rem 0rem 0rem 5rem;
 
   div{
@@ -60,20 +61,27 @@ export const Filtros = styled.div`
 `;
 
 export const Filtro = styled.div`
-  width: 90vw;
-  height: 9vh;
+  width:90%;
+  height: 60px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 35px;
 
-  p{
+  label{
     font-size: 1.25em;
     color: ${props => props.theme.cor.corDoIcone};
     text-align: center;
     margin-right: 10px;
     margin-left: 10px;
   } 
+
+  div{
+    label{
+      margin-right: 10px;
+      margin-left: 55px;
+    }
+    
+  }
 
   @media (max-width: 1024px) and (min-width: 769px) {
       width:70vw;
@@ -116,7 +124,9 @@ export const Formulario = styled.form`
   align-items: center;
 
   input{
-    height: 20px;
+    padding-left: 10px;
+    margin-left: 10px;
+    max-width: 80%;
   }
 
   @media (max-width: 1024px) and (min-width: 769px) {
