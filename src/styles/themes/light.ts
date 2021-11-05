@@ -23,7 +23,6 @@ export default {
     inativoStatus: '#AC341A',
     habilidadeBotao: '#28B9DA',
     botaoReprovar: '#8B8787',
-    botaoAprovar: '#28B9DA',
     passo: '#8B8787',
     passoAtivo: '#448DCA'
   }
