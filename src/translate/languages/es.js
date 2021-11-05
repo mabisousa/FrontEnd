@@ -1,96 +1,96 @@
 const messages = {
   es: {
     translations: {
-      projects: {
-        titleHeader: "PROYECTOS",
-        titlePage: "PROYECTOS ASIGNADOS",
-        project: "Proyectos:",
+      projetos: {
+        titulo: "PROYECTOS",
+        tituloPagina: "PROYECTOS ASIGNADOS",
+        projetos: "Proyectos:",
         placeHolder:"Escriba aquí...",
-        section: "Sección:",
-        progress: "Progreso",
-        late:"Tarde",
-        concluded: "Concluido",
+        secao: "Sección:",
+        andamento: "Progreso",
+        atrasado:"Tarde",
+        concluido: "Concluido",
       },
-      approval: {
-        titleHeader: "APROBACIÓN",
-        consultantInfo: "INFORMACION DEL CONSULTOR",
-        registration: "Registro",
-        name: "Nombre",
-        approvalInfor: "INFORMACIÓN DE RESPONSABLE",
-        dateApproval: "Fecha",
-        responsible: "Responsable",
-        totalHours: "HORAS TOTALES:",
-        approvals: "APROBACIONES",
-        appointments: "NOTA",
-        approved: "APROBADO",
-        disapprove: "DESAPROBADO",
-        consultants:"VER CONSULTORES",
-        buttonapproved: "APROBAR",
-        buttonDisapprove: "DESAPROBAR",
-        date: "FECHA",
-        hour: "HORA",
+      aprovacao: {
+        titulo: "APROBACIÓN",
+        consultorInfo: "INFORMACION DEL CONSULTOR",
+        cadastro: "Registro",
+        nome: "Nombre",
+        aprovacaoInfo: "INFORMACIÓN DE RESPONSABLE",
+        dataAprovacao: "Fecha",
+        responsavel: "Responsable",
+        valorHora: "HORAS TOTALES:",
+        aprovacoes: "APROBACIONES",
+        apontamento: "NOTA",
+        aprovado: "APROBADO",
+        reprovado: "DESAPROBADO",
+        consultor:"VER CONSULTORES",
+        aprovar: "APROBAR",
+        reprovar: "DESAPROBAR",
+        data: "FECHA",
+        hora: "HORA",
         info: "INFO",
-        description: "Descripción",
+        descricao: "Descripción",
         default: "No hay aprobaciones para aprobar.",
-        registrationAcconplished: "Registro Realizado",
-        supplierApproval: "Aprobación Proveedor",
-        managerApproval: "Aprobación Gerencial",
-        requisition: "Requisición de compra",
-        finish: "TERMINAR"
+        registroEfetuado: "Registro Realizado",
+        aprovacaoFonecedor: "Aprobación Proveedor",
+        aprovacaoGestor: "Aprobación Gerencial",
+        requisicao: "Requisición de compra",
+        finalizar: "TERMINAR"
       },
-      consultants: {
-        name: 'Nombre:',
+      consultores: {
+        nome: 'Nombre:',
         placeHolder:"Escriba aquí...",
-        registration: "Registro:", 
-        active: "Activo",
-        inactive: "Inactivo"
+        cadastro: "Registro:", 
+        ativo: "Activo",
+        inativo: "Inactivo"
       },
       login: {
-        user: "Usuario",
-        password: "Contraseña",
-        forgotPassword: "Olvido la contraseña?",
-        signIn: "Iniciar sesión"
+        usuario: "Usuario",
+        senha: "Contraseña",
+        esqueceuSenha: "Olvido la contraseña?",
+        entrar: "Iniciar sesión",
+        titulo: 'Error de autenticación',
+        descricao: 'Hubo un error al iniciar sesión, verifique sus credenciales.'
       },
       card: {
-        pointed: "Señaló:",
+        apontadas: "Señaló:",
         status: "Situación:",
-        from: "En:",
-        to: "Hasta:"
+        de: "En:",
+        ate: "Hasta:"
       },
-      ConsultantPopup: {
-        project: "PROYECTO"
+      consultorPopup: {
+        projeto: "PROYECTO"
       },
-      ConsultantTable: {
-        registration: "REGISTRO",
-        name: "NOMBRE",
-        details: "DETALLES"
+      tabelaConsultor: {
+        cadastro: "REGISTRO",
+        nome: "NOMBRE",
+        detalhes: "DETALLES"
       },
-      header: {
-        exit :"Salir",
-        font: "Fuente",
-        small: "Pequeña",
-        medium: "Media",
+      cabecalho: {
+        sair :"Salir",
+        fonte: "Fuente",
+        pequeno: "Pequeña",
+        medio: "Media",
       },
       menu: {
-        projects: "Proyectos",
-        approval: "Aprobación"
+        projetos: "Proyectos",
+        aprovacao: "Aprobación"
       },
-      projectsPopup: {
-        infos: "INFORMACIONES GENERALES:",
-        manager: "GERENTE RESPONSABLE:",
-        provider: "PROVEEDOR:",
-        pointed: "SEÑALADO:",
-        pointedHour:"HORAS SEÑALADO",
-        consultants:"VER CONSULTORES",
-        registration:"REGISTRO",
-        name:"NOMBRE"
+      projetoPopup: {
+        info: "INFORMACIONES GENERALES:",
+        gestor: "GERENTE RESPONSABLE:",
+        fornecedor: "PROVEEDOR:",
+        apontadas: "SEÑALADO:",
+        horasApontadas:"HORAS SEÑALADO",
+        cadastrp:"REGISTRO"
       },
-      request: {
-        request: "Ingrese su Solicitud:",
-        send: "Mandar",
-        change: "¿Está seguro de que desea enviar una solicitud para estas notas?",
-        no:"No",
-        yes: "Sí"
+      requisicao: {
+        requisicao: "Ingrese su Solicitud:",
+        enviar: "Mandar",
+        confirmar: "¿Está seguro de que desea enviar una solicitud para estas notas?",
+        nao:"No",
+        sim: "Sí"
       }
     }
   }

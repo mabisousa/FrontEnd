@@ -23,12 +23,12 @@ export const Container = styled.div<propriedadesPopup>`
   justify-content: center;
   align-items: center;
   top: 0px;
-  color: ${props => props.theme.cor.title};
+  color: ${props => props.theme.cor.titulo};
 
 
   #hold{
     position: relative;
-    background-color: ${props => props.theme.cor.background};
+    background-color: ${props => props.theme.cor.fundo};
     width: 960px;
     height: 570px;
     padding: 10px;
@@ -46,7 +46,7 @@ export const Container = styled.div<propriedadesPopup>`
     border: 0;
 
     svg{
-      color: ${props => props.theme.cor.title};
+      color: ${props => props.theme.cor.titulo};
     }
   }
 
@@ -80,7 +80,7 @@ export const InfoPopUp = styled.div`
   }
 
   svg{
-    color: ${props => props.theme.cor.iconColor};
+    color: ${props => props.theme.cor.corDoIcone};
     width: 100px;
     height: 100px;
     margin-left: 35px;
@@ -168,6 +168,12 @@ export const SeguraConteudo = styled.div`
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  p{
+    padding-top: 5px;
+  }
 
   @media (max-width: 1024px) and (min-width: 769px)  {
     height: 35vh;

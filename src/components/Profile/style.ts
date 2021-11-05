@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background: ${props => props.theme.cor.headerBackground};
-  border: 1px solid ${props => props.theme.cor.profileBorder};
+  background: ${props => props.theme.cor.fundoEscuro};
+  border: 1px solid ${props => props.theme.cor.bordaPerfil};
 
   width: 250px;
   height: 550px;
@@ -28,7 +28,7 @@ export const Container = styled.div`
 
     &::after {
       content: "";
-      border-left: 15px solid ${props => props.theme.cor.profileBorderAfter};
+      border-left: 15px solid ${props => props.theme.cor.bordaPerfilAfter};
       position: absolute;
       top: 45%;
       right: -15px;   
@@ -39,7 +39,7 @@ export const Container = styled.div`
     &::before {
       content: "";
       position: absolute;
-      border-left: 15px solid ${props => props.theme.cor.headerBackground};
+      border-left: 15px solid ${props => props.theme.cor.fundoEscuro};
       top: 45%;
       right: -13px;  
       border-top: 15px solid transparent;
@@ -62,7 +62,7 @@ export const Container = styled.div`
         height: 30px;
         overflow: hidden;
         transition: 1s;
-        color: ${props => props.theme.cor.iconColor};
+        color: ${props => props.theme.cor.corDoIcone};
 
         h2 {
           font-size: .9em;
@@ -74,7 +74,7 @@ export const Container = styled.div`
       }
 
       svg {
-        color: ${props => props.theme.cor.iconColor}; 
+        color: ${props => props.theme.cor.corDoIcone}; 
         height: 50px;
         width: 50px;
         margin: 10px;
@@ -88,7 +88,7 @@ export const Container = styled.div`
       width: 0;
       justify-content: start;
       overflow: hidden;
-      color: ${props => props.theme.cor.iconColor};
+      color: ${props => props.theme.cor.corDoIcone};
 
       h3 { 
         border-bottom: 2px solid #28B9DA;

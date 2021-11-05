@@ -59,7 +59,7 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
   return (
     <>
       { projeto &&
-        <Container mostrar={!!mostrar} color={projeto.projetoStatus} 
+        <Container mostrar={!!mostrar} cor={projeto.projetoStatus} 
           onClick={() => (setMostrarPopup(!mostrarPopup))} key={projeto.id}>
           <TituloSecao mostrar={!!mostrar}>
             {projeto.secao.idSecao} - {projeto.secao.secaoNome}
@@ -78,7 +78,7 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
             </Hora>
             <Hora mostrar={!!mostrar}>
               <p>
-                {i18n.t('card.pointed')}
+                {i18n.t('card.apontadas')}
               </p>
               <p>
                 {projeto.projetoHorasTrabalhadas}
@@ -95,15 +95,15 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
           </Status>
           <Data mostrar={!!mostrar}>
             <p>
-              {i18n.t('card.from')} {projeto.projetoDateInicio}
+              {i18n.t('card.de')} {projeto.projetoDateInicio}
             </p>
             { projeto.projetoDateFim ?
               <p>
-                {i18n.t('card.to')} {projeto.projetoDateFim}
+                {i18n.t('card.ate')} {projeto.projetoDateFim}
               </p>
             :
               <p>
-                {i18n.t('card.to')} 00-00-00
+                {i18n.t('card.ate')} 00-00-00
               </p>
             }
           </Data>

@@ -70,19 +70,19 @@ const TabelaConsultor: React.FC<Consultor> = ({status}) => {
             <thead>
               <tr>
                 <td>
-                  {i18n.t('ConsultantTable.registration')}
+                  {i18n.t('tabelaConsultor.cadastro')}
                 </td>
                 <td>
-                  {i18n.t('ConsultantTable.name')}
+                  {i18n.t('tabelaConsultor.nome')}
                 </td>
                 <td>
-                  {i18n.t('ConsultantPopup.status')}
+                  {i18n.t('consultorPopup.status')}
                 </td>
                 <td>
-                  {i18n.t('projects.titleHeader')}
+                  {i18n.t('projetos.titulo')}
                 </td>
                 <td>
-                  {i18n.t('ConsultantTable.details')}
+                  {i18n.t('tabelaConsultor.detalhes')}
                 </td>
               </tr>
             </thead>

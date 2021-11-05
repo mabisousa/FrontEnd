@@ -10,15 +10,14 @@ import Menu from "../../components/Menu";
 
 import api from "../../services/api";
 
-import { List } from "react-bootstrap-icons";
-import { GridFill } from "react-bootstrap-icons";
+import { FaThList } from "react-icons/fa";
+import { IoGrid } from "react-icons/io5";
 
 import { i18n } from "../../translate/i18n";
 
 import light from '../../styles/themes/light'
 import dark from '../../styles/themes/dark'
-import { string } from 'yup/lib/locale';
-import { number } from 'yup';
+
 
 interface Projetos {
   id: number,
@@ -125,21 +124,21 @@ const Home: React.FC = () => {
       <Container>
         <Header alternarTema={alternarTema}>
           <p>
-            {i18n.t('projects.titleHeader')}
+            {i18n.t('projetos.titulo')}
           </p>
         </Header>
         <Profile/>
         <Menu/>
         <Filtros>
           <Titulo>
-            {i18n.t('projects.titlePage')}
+            {i18n.t('projetos.tituloPagina')}
           </Titulo>
           <Filtro>
-            <label>{i18n.t('projects.project')}</label>
-            <input type="text" placeholder={i18n.t('projects.placeHolder')} 
+            <label>{i18n.t('projetos.projeto')}</label>
+            <input type="text" placeholder={i18n.t('projetos.placeHolder')} 
               value={search} onChange={(ev) => handleFilterName(ev.target.value)}/>
             <div >
-              <label className="secao">{i18n.t('projects.section')}</label>
+              <label className="secao">{i18n.t('projetos.secao')}</label>
               <Dropdown>
                 <span>
                   {section}
@@ -151,36 +150,36 @@ const Home: React.FC = () => {
                     </button>
                   ))}
                   <button onClick={() => setSection('Todos')}>
-                    {i18n.t('projects.all')}
+                    {i18n.t('projetos.todos')}
                   </button>
                 </div>
               </Dropdown>
             </div>
             <div>
-              <label  className="status" >{i18n.t('projects.status')}</label>
+              <label  className="status" >{i18n.t('projetos.status')}</label>
               <Dropdown>
                 <span>{status}</span>
                 <div>
                   <button onClick={() => handleFilterStatus("ANDAMENTO")}>
-                    {i18n.t('projects.progress')}
+                    {i18n.t('projetos.andamento')}
                   </button>
                   <button onClick={() => handleFilterStatus("ATRASADO")}>
-                    {i18n.t('projects.late')}
+                    {i18n.t('projetos.atrasado')}
                   </button>
                   <button onClick={() => handleFilterStatus("CONCLUÍDO")}>
-                    {i18n.t('projects.concluded')}
+                    {i18n.t('projetos.concluido')}
                   </button>
                   <button onClick={() => handleFilterStatus("Todos")}>
-                    {i18n.t('projects.all')}
+                    {i18n.t('projetos.todos')}
                   </button>
                 </div>
               </Dropdown>
             </div>
             <button onClick={handleShowListCard}>
-              <List/>
+              <FaThList/>
             </button>
             <button onClick={handleShowGridCard}>
-              <GridFill/>
+              <IoGrid/>
             </button>
           </Filtro>
         </Filtros>

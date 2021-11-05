@@ -15,7 +15,7 @@ export const Container = styled.div`
     top:0px;
 
     div {
-      background: ${props => props.theme.cor.projectMenu};
+      background: ${props => props.theme.cor.projetoMenu};
     }
   }
 
@@ -23,7 +23,7 @@ export const Container = styled.div`
     top:60px;
 
     div {
-      background: ${props => props.theme.cor.approvalMenu};
+      background: ${props => props.theme.cor.aprovacaoMenu};
     }
   }
 
@@ -31,7 +31,7 @@ export const Container = styled.div`
     top:120px;
 
     div {
-      background: ${props => props.theme.cor.consultantMenu};
+      background: ${props => props.theme.cor.consultoresMenu};
     }
   }
 

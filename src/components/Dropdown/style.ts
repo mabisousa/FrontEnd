@@ -9,8 +9,8 @@ export const Container = styled.div<propriedadesDropdown>`
   #dropdown{
     width: 150px;
     height: 20px;
-    border: solid 1px ${props => props.theme.cor.iconColor};
-    color: ${props => props.theme.cor.iconColor};
+    border: solid 1px ${props => props.theme.cor.corDoIcone};
+    color: ${props => props.theme.cor.corDoIcone};
     font-size: .9em;
     text-align: center;
     cursor: pointer;
@@ -24,8 +24,9 @@ export const Container = styled.div<propriedadesDropdown>`
       width: 150px;
       position:relative;
       left: -1px;
-      border: solid 1px  ${props => props.theme.cor.iconColor};
-      color: ${props => props.theme.cor.iconColor};
+      top: 2px;
+      border: solid 1px  ${props => props.theme.cor.corDoIcone};
+      color: ${props => props.theme.cor.corDoIcone};
       background: transparent;
       overflow-y: scroll;
       height: 50px;
@@ -40,8 +41,8 @@ export const Container = styled.div<propriedadesDropdown>`
 
       button{
         font-size: .91em;
-        border-bottom: solid 1px  ${props => props.theme.cor.iconColor};
-        color: ${props => props.theme.cor.iconColor};
+        border-bottom: solid 1px  ${props => props.theme.cor.corDoIcone};
+        color: ${props => props.theme.cor.corDoIcone};
         height: 20px;
         padding-top:1%;
         width: 100%;
@@ -53,7 +54,7 @@ export const Container = styled.div<propriedadesDropdown>`
       display: block;
       height: 1.06em;
       width: 1.06em;
-      color: ${props => props.theme.cor.iconColor};
+      color: ${props => props.theme.cor.corDoIcone};
 
       ${(props) => props.alterarFlecha ?
         css`
@@ -66,7 +67,7 @@ export const Container = styled.div<propriedadesDropdown>`
     #arrowLeft{
       float: right;
       display: none;
-      color: ${props => props.theme.cor.iconColor};
+      color: ${props => props.theme.cor.corDoIcone};
 
       ${(props) => props.alterarFlecha ?
         css`

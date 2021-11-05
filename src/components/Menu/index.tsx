@@ -15,7 +15,7 @@ const Menu: React.FC = () => (
       <div>
         <img src={ folder } alt=""/>
         <h1>
-          {i18n.t('menu.projects')}
+          {i18n.t('menu.projetos')}
         </h1>
       </div>
     </Link>
@@ -23,7 +23,7 @@ const Menu: React.FC = () => (
       <div>
         <img src={ clock } alt=""/>
         <h1>
-          {i18n.t('menu.approval')}
+          {i18n.t('menu.aprovacao')}
         </h1>
       </div>
     </Link>
@@ -31,7 +31,7 @@ const Menu: React.FC = () => (
       <div>
         <img src={ group } alt=""/>
         <h1>
-          {i18n.t('menu.consultants')}
+          {i18n.t('menu.consultores')}
         </h1>
       </div>
     </Link>

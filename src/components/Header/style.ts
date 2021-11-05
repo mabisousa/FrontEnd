@@ -17,7 +17,7 @@ export const Container = styled.div<dropdownProps>`
   left: 0;
   z-index: 999;
   border-bottom: 2px solid #90C0E3;  
-  background: ${props => props.theme.cor.headerBackground};
+  background: ${props => props.theme.cor.fundoEscuro};
 
   #name{
     width:220px;
@@ -34,7 +34,7 @@ export const Container = styled.div<dropdownProps>`
       font-weight: bold;
       font-size: 1em;
       cursor: pointer;
-      color: ${props => props.theme.cor.title};
+      color: ${props => props.theme.cor.titulo};
     }
   }
 
@@ -53,7 +53,7 @@ export const Container = styled.div<dropdownProps>`
       cursor: pointer;
       margin-right: 7px;
       margin-top: 10px;
-      color: ${props => props.theme.cor.iconColor};
+      color: ${props => props.theme.cor.corDoIcone};
     }
 
     #sair {
@@ -62,8 +62,8 @@ export const Container = styled.div<dropdownProps>`
       cursor: pointer;
       text-align: center;
       margin-top: 7px;
-      color: ${props => props.theme.cor.title};
-      border-left: 1.5px solid ${props => props.theme.cor.title};
+      color: ${props => props.theme.cor.titulo};
+      border-left: 1.5px solid ${props => props.theme.cor.titulo};
     }
   }
 
@@ -74,9 +74,9 @@ export const Container = styled.div<dropdownProps>`
     cursor: pointer;
     min-width: 180px;
     height: auto;
-    border: solid 1px ${props => props.theme.cor.iconColor};
+    border: solid 1px ${props => props.theme.cor.corDoIcone};
     border-bottom: none;
-    background-color: ${props => props.theme.cor.background}; 
+    background-color: ${props => props.theme.cor.fundo}; 
 
     ${(props) => props.showDropdown ?
       css`
@@ -98,8 +98,8 @@ export const Container = styled.div<dropdownProps>`
       min-height: 35px;
       align-items: center;
       background-color: transparent;
-      color: ${props => props.theme.cor.iconColor};
-      border-bottom: solid 1px ${props => props.theme.cor.iconColor};
+      color: ${props => props.theme.cor.corDoIcone};
+      border-bottom: solid 1px ${props => props.theme.cor.corDoIcone};
 
         p{
           min-height: 20px;

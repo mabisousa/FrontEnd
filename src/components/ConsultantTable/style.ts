@@ -30,7 +30,7 @@ export const Container = styled.div<propriedadesTabela>`
     overflow-y: scroll;
     overflow-x: hidden;
     display: block;
-    border: 1px solid ${props => props.theme.cor.tableBorder};
+    border: 1px solid ${props => props.theme.cor.bordaTabela};
   }
 
   tr{
@@ -43,7 +43,7 @@ export const Container = styled.div<propriedadesTabela>`
     color: rgba(0, 0, 0, 0.87);
     text-transform: uppercase;
     font-size: .9em;
-    border-bottom: 1px solid ${props => props.theme.cor.tableBorder};
+    border-bottom: 1px solid ${props => props.theme.cor.bordaTabela};
 
     td{
       width: 150px;
@@ -98,11 +98,11 @@ export const Tr = styled.div<propriedadesTabela>`
   ${(props) => props.color === "INATIVO" && 
     css`
       td:nth-child(3){
-        color: ${props => props.theme.cor.inactiveStatus};
+        color: ${props => props.theme.cor.inativoStatus};
       }
   `}
 
-  border-bottom: 1px solid ${props => props.theme.cor.tableBorder};
+  border-bottom: 1px solid ${props => props.theme.cor.bordaTabela};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -115,7 +115,7 @@ export const Tr = styled.div<propriedadesTabela>`
 
   td{
     width: 150px;
-    color: ${props => props.theme.cor.title};
+    color: ${props => props.theme.cor.titulo};
   }
   
   td:nth-child(2){

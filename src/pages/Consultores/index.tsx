@@ -36,26 +36,26 @@ const Consultor: React.FC = () => {
       <Container>
       <Header alternarTema={alternarTema}>
           <p>
-            {i18n.t('consultants.titleHeader')}
+            {i18n.t('consultores.titulo')}
           </p>
         </Header>
         <Profile/>
         <Menu/>
         <Filtros>
           <Titulo>
-            {i18n.t('consultants.titleHeader')}
+            {i18n.t('consultores.titulo')}
           </Titulo>
           <Filtro>
             <Formulario>
               <label>
-                {i18n.t('consultants.name')}
+                {i18n.t('consultores.nome')}
               </label>
-              <input placeholder={i18n.t('consultants.placeHolder')} 
+              <input placeholder={i18n.t('consultores.placeHolder')} 
                 value={pesquisa} onChange={(ev) => setPesquisa(ev.target.value)}/>
             </Formulario>
             <div>
               <label>
-                {i18n.t('projects.status')}
+                {i18n.t('projetos.status')}
               </label>
               <Dropdown>
                 <span>
@@ -63,13 +63,13 @@ const Consultor: React.FC = () => {
                 </span>
                 <div>
                   <button onClick={() => handleFiltrarStatus('Ativo')}>
-                    {i18n.t('consultants.active')}
+                    {i18n.t('consultores.ativo')}
                   </button>
                   <button onClick={() => handleFiltrarStatus('Inativo')}>
-                    {i18n.t('consultants.inactive')}
+                    {i18n.t('consultores.inativo')}
                   </button>
                   <button onClick={() => handleFiltrarStatus('Todos')}>
-                    {i18n.t('projects.all')}
+                    {i18n.t('projetos.todos')}
                   </button>
                 </div>
               </Dropdown>
