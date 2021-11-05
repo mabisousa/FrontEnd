@@ -2,11 +2,13 @@ import React,{ useCallback, useState  }  from 'react';
 
 import {RiArrowLeftSLine} from 'react-icons/ri';
 
-import { Background, Container } from './style';
+import { Background, Container, Selecionado } from './style';
 
 import { i18n } from '../../translate/i18n';
 import api from '../../services/api';
-
+interface Selecionados {
+  idApontamento: number,
+}
 interface MostrarRequest {
   responsavel: {
     idResponsavel: number,
@@ -14,6 +16,7 @@ interface MostrarRequest {
   consultor: {
     idConsultor: number,
   },
+  selecionados: Selecionados[],
   mostrarRequisicao: (args0: boolean) => void
 }
 interface RequisicaoProps {
@@ -25,7 +28,7 @@ interface RequisicaoProps {
     },
     requisicaoDescricao: string
 }
-const Request: React.FC<MostrarRequest> = ({ consultor, responsavel, mostrarRequisicao}) => {
+const Request: React.FC<MostrarRequest> = ({ selecionados, consultor, responsavel, mostrarRequisicao}) => {
 
   const [conteudo, newConteudo] = useState('');
   const [revisao, setRevisao] = useState(false);
@@ -59,7 +62,7 @@ const Request: React.FC<MostrarRequest> = ({ consultor, responsavel, mostrarRequ
     }
     mostrarRequisicao(false)
   }, [consultor.idConsultor, conteudo, mostrarRequisicao, requisicao, responsavel.idResponsavel]);
-
+console.log(selecionados)
 
   return (
     <>
@@ -83,10 +86,17 @@ const Request: React.FC<MostrarRequest> = ({ consultor, responsavel, mostrarRequ
         </>
       :
           <>
-            <div>
+              <div>
                 <p>
                   {i18n.t('request.confirm')}
                 </p>
+              </div>
+              <div>
+              {selecionados && selecionados.map((selecionado) => 
+                    <Selecionado>
+                      {selecionado.idApontamento}
+                    </Selecionado>
+                )}
               </div>
               <div>
                 <button onClick={() => setRevisao(false)}>
