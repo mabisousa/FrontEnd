@@ -12,7 +12,6 @@ const Routes: React.FC = () => (
     <Route path="/" exact component={Login}/>
     <Route path="/home" exact component={Home} isPrivate/>
     <Route path="/aprovacao" exact component={Aprovacao} isPrivate/>
-    <Route path="/aprovacaoteste" exact component={AprovacaoTest} isPrivate/>
     <Route path="/consultores" component={Consultores} isPrivate/>
   </Switch>
   );
