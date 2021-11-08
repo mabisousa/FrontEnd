@@ -70,7 +70,8 @@ export const Container = styled.div<PopUp>`
   }
 
   @media (max-width: 768px)  {
-
+    width: 102vw;
+    height: 102vh;
 
     #hold{
       width: 685px;
@@ -93,6 +94,18 @@ export const TitlePopUp = styled.div`
   h1 {
     font-size: 1.4em;
     font-weight: bold;
+  }
+
+  @media (max-width: 768px)  {
+    width: 70vw;
+
+    h2 {
+      font-size: 1em;
+    }
+
+    h1 {
+      font-size: 1.25em;
+    }
   }
 `;
 
@@ -129,6 +142,19 @@ export const InfosGerais = styled.div<ContainerProps>`
   div:nth-child(2) {
     padding: 20px;
   }
+
+  h1{
+    font-size: 1em;
+  }
+
+  @media (max-width: 768px)  {
+    p {
+      font-size: .60em;
+    }
+    h1{
+      font-size: .85em;
+    }
+  }
 `;
 
 export const Objetivo = styled.div<ContainerProps>`
@@ -147,21 +173,21 @@ export const Objetivo = styled.div<ContainerProps>`
   margin-top: 34px;
 
   h1 {
-      margin-bottom: 17px;
+    margin-bottom: 17px;
   }
   
   p {
-      width: 25vw;
-      height: 20vh;
-      align-self: center;
-      overflow-y: scroll;
+    width: 25vw;
+    height: 20vh;
+    font-size: 1em;
+    align-self: center;
+    overflow-y: scroll;
   }
 
   @media (max-width: 1024px) and (min-width: 769px)  {
     ${(props) => props.open ? 
     css`
       width: 28vw;
-      transition: 1s;
 
       p {
         width: 27vw;
@@ -169,12 +195,34 @@ export const Objetivo = styled.div<ContainerProps>`
       
     `: css`
       width: 45vw;
-      transition: 0s;
 
       p {
         width: 40vw;
       }
     `}  
+  }
+  @media (max-width: 768px)  {
+    ${(props) => props.open ? 
+    css`
+      width: 23vw;
+
+      p {
+        width: 22vw;
+        font-size: .85em;
+      }
+
+    `: css`
+      width: 40vw;
+
+      p {
+        width: 35vw;
+        font-size: .85em;
+      }
+    `}  
+
+    h1{
+      font-size: .85em;
+    }
   }
 `;
 
@@ -193,15 +241,30 @@ export const Objetivo = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;
 
+  h1{
+    font-size: 1em;
+  }
+
   @media (max-width: 1024px) and (min-width: 769px)  {
     ${(props) => props.open ? 
     css`
       width: 30vw;
-      transition: 1s;
     `: css`
       width: 40vw;
-      transition: 0s;
     `}
+  }
+
+  @media (max-width: 768px)  {
+    ${(props) => props.open ? 
+    css`
+      width: 30vw;
+    `: css`
+      width: 40vw;
+    `}
+
+    h1{
+      font-size: .85em;
+    }
   }
  `;
 
@@ -270,6 +333,20 @@ export const Skills = styled.div<ContainerProps>`
       margin-top: 2px;
     }
   }
+
+  @media (max-width: 768px)  {
+    ${(props) => props.open ? 
+    css`
+      width: 29vw;
+    `: css`
+      width: 31vw;
+    `}
+    
+    button:nth-child(2) {
+      margin-top: 2px;
+      font-size: .75em;
+    }
+  }
 `;
 
 export const Table = styled.div`
@@ -280,6 +357,7 @@ export const Table = styled.div`
     width: 28vw;
     border-collapse: collapse;
     text-align: center;
+    font-size: 1em;
 
     thead {
       display: inline-flex;
@@ -311,6 +389,12 @@ export const Table = styled.div`
 
   @media (max-width: 1024px) and (min-width: 769px)  {
     width: 28.1vw;
+  }
+
+  @media (max-width: 768px)  {
+    table{
+      font-size: .75em;
+    }
   }
 `;
 
@@ -424,6 +508,37 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
         }
       }
     }
+
+    @media (max-width: 768px)  {
+      ${(props) => props.open ? 
+      css`
+      width: 21vw;
+      `: css`
+      width: 0;
+    `}
+      
+      table{
+        font-size: .75em;
+        thead{
+          width: 22vw;
+          td:nth-child(1) {
+            width: 7vw;
+          }
+          td:nth-child(2) {
+            width: 13vw;
+          }
+        }
+        tbody{
+          height: 257px;
+          td:nth-child(1) {
+            width: 9.5vw;
+          }
+          td:nth-child(2) {
+            width: 14vw;
+          }
+        }
+      }
+    }
 `;
 
 export const DetailsPopup = styled.div<ContainerProps>`
@@ -468,5 +583,9 @@ export const DetailsPopup = styled.div<ContainerProps>`
 
   @media (max-width: 1024px) and (min-width: 769px)  {
       width: 81.5vw;
+  }
+
+  @media (max-width: 768px)  {
+    width: 80.5vw;
   }
 `;
