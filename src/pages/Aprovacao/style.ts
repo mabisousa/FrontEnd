@@ -15,19 +15,19 @@ export const Container = styled.div`
     margin:10px 0;
   }
 
-    .buttons {
-      height: 50px;
-      padding: 10px;
-      color: #fff;
-      margin-top: 40px;
-      border: none;
-      background: ${props => props.theme.cor.habilidadeBotao};
-    }
-    #reprovar {
-      background: ${props => props.theme.cor.botaoReprovar};
-    }
-  
+  .buttons {
+    height: 50px;
+    padding: 10px;
+    color: #fff;
+    margin-top: 40px;
+    border: none;
+    background: ${props => props.theme.cor.habilidadeBotao};
+  }
 
+  #reprovar {
+    background: ${props => props.theme.cor.botaoReprovar};
+  }
+  
   @media (max-width: 1024px) and (min-width: 769px) {
     h1 {
       font-size: 0.9em;
@@ -42,84 +42,88 @@ export const Infos = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
 
-    form {
-        margin-top: 3px;
-        height: 100%;
+  form {
+    margin-top: 3px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .information {
+      margin: 3% 0;
+      width: 100%;
+      height: 100%;
+      
+      p {
+        font-size: 0.75em;
+        width: auto;
+      }
+
+      .holding {
         display: flex;
-        flex-direction: column;
-
-        .information {
-            margin: 3% 0;
-            width: 100%;
-            height: 100%;
-           
-            p {
-                font-size: 0.75em;
-                width: auto;
-            }
-            .holding {
-                display: flex;
-                align-items: center;
-                margin-bottom: 3%;
-                
-                div:nth-child(1) {
-                    width: 25%;
-                    margin-right: 5%;
-                }
-                div:nth-child(2) {
-                    width: 70%;
-                }
-            }
-            
-
-            @media (max-width: 1024px) and (min-width: 769px) {
-              p{
-                font-size: 0.65em;
-                width: 80px;
-              }
-              .holding {
-                div:nth-child(1) {
-                    width: 33%;
-                    margin-right: 5%;
-                }
-              }
-            }
-
-            @media (max-width: 768px)  {
-              p{
-                font-size: 0.65em;
-              }
-              .holding {
-                div:nth-child(1) {
-                    width: 43%;
-                    margin-right: 5%;
-                }
-              }
-            }
-
-            .holding:nth-child(2) {
-                display: flex;
-                justify-content: space-between;
-                
-                p:nth-child(1) {
-                    width: 40px;
-                }
-                div {
-                    width: auto;
-                }
-            }
+        align-items: center;
+        margin-bottom: 3%;
+        
+        div:nth-child(1) {
+          width: 25%;
+          margin-right: 5%;
         }
-    }  
+
+        div:nth-child(2) {
+          width: 70%;
+        }
+      }
+
+      @media (max-width: 1024px) and (min-width: 769px) {
+        p{
+          font-size: 0.65em;
+          width: 80px;
+        }
+
+        .holding {
+          div:nth-child(1) {
+            width: 33%;
+            margin-right: 5%;
+          }
+        }
+      }
+
+      @media (max-width: 768px)  {
+        p{
+          font-size: 0.65em;
+        }
+
+        .holding {
+          div:nth-child(1) {
+            width: 43%;
+            margin-right: 5%;
+          }
+        }
+      }
+
+      .holding:nth-child(2) {
+        display: flex;
+        justify-content: space-between;
+          
+        p:nth-child(1) {
+          width: 40px;
+        }
+
+        div {
+          width: auto;
+        }
+      }
+    }
+  }  
 `;
 
 export const Count = styled.div`
-    height: 40vh;
-    width: 27vw;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    transition: 1s;
+  height: 40vh;
+  width: 27vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  transition: 1s;
 
   div {
     .hold {
@@ -233,9 +237,9 @@ export const Apontamentos = styled.div`
       border: 1px solid #8B8787;
 
       span {
-          position: relative;
-          top: 120px;
-          left: 40px;
+        position: relative;
+        top: 120px;
+        left: 40px;
       }
     }
 
@@ -347,8 +351,7 @@ export const Step = styled.div<StepActive>`
         background: ${props => props.theme.cor.passoAtivo};
         transition: 1s;
       }
-  `:
-    css`
+  `: css`
       background: ${props => props.theme.cor.passo};
   
       &::before {
@@ -370,7 +373,6 @@ interface PopUp {
 export const Consultores = styled.div<PopUp>`
     
   ${(props) => !!props.show && css`
-   
     transition: 200ms ease-in-out;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.7);
@@ -384,71 +386,70 @@ export const Consultores = styled.div<PopUp>`
     color: ${props => props.theme.cor.titulo};
     
     #hold{
-        height: 600px;
-        width: 75%;
-        background-color: ${props => props.theme.cor.fundo};
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      height: 600px;
+      width: 75%;
+      background-color: ${props => props.theme.cor.fundo};
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     button{
-        color: ${props => props.theme.cor.titulo};
-        font-size: 1.9em;
-        background-color: transparent;
-        border: 0;
-        position: absolute;
-        right: 200px;
-        bottom: 567px;
+      color: ${props => props.theme.cor.titulo};
+      font-size: 1.9em;
+      background-color: transparent;
+      border: 0;
+      position: absolute;
+      right: 200px;
+      bottom: 567px;
     }
 
     table{
-        border-collapse: collapse;
-        width: 85%;
-        text-align: center;
+      border-collapse: collapse;
+      width: 85%;
+      text-align: center;
     }
 
     thead tr{
-        text-transform: uppercase;
-        font-size: .9em;
-        background: #0075B1;
-        color: #fff;
+      text-transform: uppercase;
+      font-size: .9em;
+      background: #0075B1;
+      color: #fff;
     }
 
     tr{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-bottom: 1px solid #8B8787;
-        border-top: 0;
-        height: 56px;
-        text-transform: uppercase;
-        font-size: .9em;
-        
-        td{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid #8B8787;
+      border-top: 0;
+      height: 56px;
+      text-transform: uppercase;
+      font-size: .9em;
+      
+      td{
         width: 150px;
-        }
-        
-        td:nth-child(2){
+      }
+      
+      td:nth-child(2){
         width: 450px;
         text-align: start;
-        }
+      }
 
-        button{
+      button{
         border: 0;
         font-size: 1.25em;
-        }
+      }
     }
 
     tbody {
-        height: 350px;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        display: block;
-        border: 1px solid #8B8787;
+      height: 350px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      display: block;
+      border: 1px solid #8B8787;
     }
-    `
-  }
+  `}
 `;
   
 
@@ -535,7 +536,6 @@ export const Descriptions = styled.div<Description>`
           transition: 0.5s;
           transition-delay: 1.5s;
         }
-        
       }
 
       div {
@@ -549,16 +549,16 @@ export const Descriptions = styled.div<Description>`
         }
       }
    
-    ` : 
-    css`
-      visibility: hidden;
-      width: 0px;
+    ` : css`
+        visibility: hidden;
+        width: 0px;
 
-      header p, span{
-        display: none;
-      }
-      div {
-        display: none;
-      }
+        header p, span{
+          display: none;
+        }
+
+        div {
+          display: none;
+        }
     `}
 `;

@@ -22,7 +22,7 @@ const Routes: React.FC = () => {
     } else{
       document.body.style.background = "#1F262B"
     }
-    window.location = window.location
+    window.document.location.reload()
   };
 
   return(
