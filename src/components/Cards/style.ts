@@ -41,7 +41,7 @@ export const Container = styled.a<propriedadesCard>`
     }
     
     @media (max-width: 768px){
-      width: 40%;
+      max-width: 40%;
       margin: 1rem .6rem 1rem 1.6rem;
     }
     `}

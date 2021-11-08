@@ -29,4 +29,12 @@ export const Container = styled.div`
   .five{
     background: #023A67;
   }
+
+  @media (max-width: 768px)  {
+    .box{
+      width: 40px;
+      height: 25px;
+      margin: 5px 5px 5px 0;
+    }
+  }
 `;

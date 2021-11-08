@@ -7,4 +7,5 @@ export const Container = styled.button`
   width:120px;
   color: #fff;
   background: ${props => props.theme.cor.habilidadeBotao};
+  font-size: 1em;
 `;

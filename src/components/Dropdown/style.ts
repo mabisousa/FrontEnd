@@ -79,11 +79,29 @@ export const Container = styled.div<propriedadesDropdown>`
   }
 
   @media (max-width: 1024px) and (min-width: 769px) {
-    width: 105px;
+    #dropdown{
+      width: 105px;
+
+      div{
+        width: 105px;
+      }
+      span{
+        font-size: .80em;
+      }
+    }
+    
   }
 
   @media (max-width: 768px)  {
-    width: 70px;
-    
+    #dropdown{
+      width: 100px;
+
+      div{
+        width:100px;
+      }
+      span{
+        font-size: .75em;
+      }
+    }
   }
 `;

@@ -122,6 +122,9 @@ export const Filtro = styled.div`
       font-size: 1em;
       margin-left: 10px;
     }
+    svg{
+      margin-left: 3px;
+    }
   }
 `;
 
@@ -134,7 +137,7 @@ export const Titulo = styled.h1`
   text-decoration: underline ${props => props.theme.cor.undeline};
 
   @media (max-width:768px) {
-    margin-right: 10px;
+    margin-left: 25px;
     font-size: 1.1em;
   }
 `;

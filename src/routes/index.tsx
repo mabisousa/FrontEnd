@@ -5,6 +5,10 @@ import Login from '../pages/Login';
 import Aprovacao from '../pages/Aprovacao';
 import Consultores from '../pages/Consultores';
 import Home from '../pages/Home/index';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
+import dark from '../styles/themes/dark';
+import light from '../styles/themes/light';
+import usePersistedState from '../utils/usePersistedState';
 
 //alternarTema={alternarTema}
 const Routes: React.FC = () => {
