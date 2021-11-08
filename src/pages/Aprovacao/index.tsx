@@ -57,7 +57,11 @@ interface Apontamento {
 interface Selecionados {
       idApontamento: number,
 }
-const AprovacaoTest: React.FC = () => {
+interface tema{
+  alternarTema(): void
+}
+
+const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
 
     const formRef = useRef<FormHandles>(null);
 
@@ -70,10 +74,6 @@ const AprovacaoTest: React.FC = () => {
     const [apontamentoSelecionado, setApontamentoSelecionado] = useState(false)
     const [mostrarRequisicao, setMostrarRequisicao] = useState(false);
     const [finalizado, setFinalizado] = useState(false);
-
-    const toggleTheme = () => {
-        setTheme(theme.titulo === 'light' ? dark : light);
-    };
 
     useEffect(()=> {
         api.get(`consultores`).then((response)=> {
@@ -190,7 +190,7 @@ const AprovacaoTest: React.FC = () => {
         {mostrarRequisicao && consultor && <Request selecionados={selecionados} responsavel={responsavel} consultor={consultor} mostrarRequisicao={mostrarPopupRequisicao}/> }
           <Profile/>
           <Menu />
-          <Header alternarTema={toggleTheme}>
+          <Header alternarTema={alternarTema}>
             <p>
               {i18n.t('aprovacao.titulo')}
             </p>
