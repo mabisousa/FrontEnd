@@ -15,10 +15,6 @@ import { IoGrid } from "react-icons/io5";
 
 import { i18n } from "../../translate/i18n";
 
-import light from '../../styles/themes/light'
-import dark from '../../styles/themes/dark'
-
-
 interface Projetos {
   id: number,
   secao: {
@@ -53,13 +49,11 @@ interface Secoes {
     secaoNome: string
 }
 
-const Home: React.FC = () => {
+interface tema{
+  alternarTema(): void
+}
 
-  const [theme, setTheme] = useState(light);
-
-  const alternarTema = () => {
-    setTheme(theme.titulo === 'light' ? dark : light);
-  };
+const Home: React.FC<tema> = ({alternarTema}) => {
 
   const [filtered, setFiltereds] = useState<Projetos[]>([]);
   const [projects, setProjects] = useState<Projetos[]>([]);

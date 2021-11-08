@@ -10,19 +10,13 @@ import Menu from "../../components/Menu";
 
 import { i18n } from '../../translate/i18n';
 
-import light from '../../styles/themes/light'
-import dark from '../../styles/themes/dark'
+interface tema{
+  alternarTema(): void
+}
 
-
-const Consultor: React.FC = () => {
+const Consultor: React.FC<tema> = ({alternarTema}) => {
   const [pesquisa, setPesquisa] = useState('');
   const [status, setStatus] = useState('Todos');
-
-  const [tema, setTema] = useState(light);
-
-  const alternarTema = () => {
-    setTema(tema.titulo === 'light' ? dark : light);
-  };
 
   window.localStorage.getItem('Theme:darkMode')
 
