@@ -62,17 +62,17 @@ const Header: React.FC<tema> = ({alternarTema, children,...props}) => {
 
   const handleMudarIngles = () => {
     localStorage.setItem('i18nextLng', 'en-US');
-    window.location = window.location
+    window.document.location.reload()
   }
 
   const handleMudarPortugues = () => {
     localStorage.setItem('i18nextLng', 'pt-BR');
-    window.location = window.location
+    window.document.location.reload()
   }
 
   const handleMudarEspanhol = () => {
     localStorage.setItem('i18nextLng', 'es-ES');
-    window.location = window.location
+    window.document.location.reload()
   }
   
   return( 
