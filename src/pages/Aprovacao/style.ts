@@ -480,6 +480,40 @@ export const Consultores = styled.div<PopUp>`
       border: 1px solid #8B8787;
     }
   `}
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    #hold{
+      height: 90vh;
+      width: 90vw;
+    }
+
+    button{
+      right: 70px;
+      top: 48px;
+    }
+    
+  }
+  @media (max-width: 768px)  {
+    #hold{
+      height: 90vh;
+      width: 90vw;
+    }
+
+    button{
+      right: 70px;
+      top: 48px;
+    }
+
+    table{
+      tbody {
+      width: 74vw;
+    }
+
+    thead tr{
+      width: 74vw;
+    }
+    }
+  }
 `;
   
 
