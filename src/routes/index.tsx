@@ -6,18 +6,18 @@ import Aprovacao from '../pages/Aprovacao';
 import Consultores from '../pages/Consultores';
 import Home from '../pages/Home/index';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
-import dark from '../styles/themes/dark';
-import light from '../styles/themes/light';
+import escuro from '../styles/themes/escuro';
+import claro from '../styles/themes/claro';
 import usePersistedState from '../utils/usePersistedState';
 
 //alternarTema={alternarTema}
 const Routes: React.FC = () => {
-  const [tema, setTema] = usePersistedState<DefaultTheme>('tema', light);
+  const [tema, setTema] = usePersistedState<DefaultTheme>('tema', claro);
 
   const alternarTema = () => {
-    setTema(tema.titulo === 'light' ? dark : light);
+    setTema(tema.titulo === 'claro' ? escuro : claro);
     console.log(tema.titulo)
-    if(tema.titulo === 'dark'){
+    if(tema.titulo === 'escuro'){
       document.body.style.background = "#fff"
     } else{
       document.body.style.background = "#1F262B"

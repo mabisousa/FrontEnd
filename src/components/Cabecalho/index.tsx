@@ -6,10 +6,9 @@ import bandeiraEspanha from "../../assets/spainFlag.svg";
 import bandeiraEUA from "../../assets/usaFlag.svg";
 import logo from "../../assets/logo.svg";
 
-import tamanhoFonte from "../../js/fontSize";
+import tamanhoFonte from "../../js/tamanhoFonte";
 
-import { IoSettingsSharp } from "react-icons/io5";
-import { IoLanguage } from "react-icons/io5";
+import { IoSettingsSharp, IoLanguage } from "react-icons/io5";
 import { Type } from "react-bootstrap-icons";
 
 import { i18n } from "../../translate/i18n";
@@ -22,7 +21,7 @@ interface tema{
   alternarTema(): void
 }
 
-const Header: React.FC<tema> = ({alternarTema, children,...props}) => {
+const Cabecalho: React.FC<tema> = ({alternarTema, children,...props}) => {
   
   const [mostrarDropdown, setMostrarDropdown] = useState(true);
   const [mostrarIdiomas, setMostrarIdiomas] = useState(true);
@@ -76,17 +75,17 @@ const Header: React.FC<tema> = ({alternarTema, children,...props}) => {
   }
   
   return( 
-    <Container showFonts={!!mostrarFonte} 
-      showIdioms={!!mostrarIdiomas} showDropdown={!!mostrarDropdown} {...props}> 
-      <div id="name">
+    <Container mostrarFonte={!!mostrarFonte} 
+      mostrarIdiomas={!!mostrarIdiomas} mostrarDropdown={!!mostrarDropdown} {...props}> 
+      <div id="nome">
         <Link to="/home"><img src={logo} alt=""/></Link>
         {children}
       </div>   
-      <div id="exit">
+      <div id="sair">
         <div onClick={handleMostrarDropdown} >
           <IoSettingsSharp />
         </div> 
-        <p id="sair" onClick={sairDoSistema}>
+        <p onClick={sairDoSistema}>
           {i18n.t('cabecalho.sair')}
         </p>
       </div>
@@ -97,7 +96,7 @@ const Header: React.FC<tema> = ({alternarTema, children,...props}) => {
             {i18n.t('cabecalho.idioma')}
           </p>          
         </button>
-        <div id="idioms">
+        <div id="idiomas">
           <button  onClick={handleMudarEspanhol}>
             <img src={bandeiraEspanha} alt=""/> 
             <span >
@@ -123,7 +122,7 @@ const Header: React.FC<tema> = ({alternarTema, children,...props}) => {
             {i18n.t('cabecalho.fonte')}
           </p> 
         </button>
-        <div id="fonts">
+        <div id="fontes">
           <button onClick={() => tamanhoFonte("pequeno")}>
             <Type/>
             <span>
@@ -146,7 +145,7 @@ const Header: React.FC<tema> = ({alternarTema, children,...props}) => {
         <button>
           <Switch
             onChange={alternarTema}
-            checked={titulo === 'dark'}
+            checked={titulo === 'escuro'}
             checkedIcon={false}
             uncheckedIcon={false}
             height={10}
@@ -164,4 +163,4 @@ const Header: React.FC<tema> = ({alternarTema, children,...props}) => {
   )
 }
 
-export default Header;
+export default Cabecalho;

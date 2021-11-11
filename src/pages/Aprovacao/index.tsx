@@ -11,9 +11,9 @@ import { GoChevronDown } from 'react-icons/go';
 import { FiCheck } from 'react-icons/fi';
 import { BsX } from "react-icons/bs";
 
-import Request from "../../components/Request";
-import Profile from "../../components/Profile";
-import Header from "../../components/Header";
+import Request from "../../components/Requisicao";
+import Profile from "../../components/Perfil";
+import Header from "../../components/Cabecalho";
 import Menu from "../../components/Menu";
 
 import api from "../../services/api";

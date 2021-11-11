@@ -1,9 +1,9 @@
 export default {
-  titulo: 'dark',
+  titulo: 'escuro',
 
   cor: {
-    fundo: '#1F262B',
     fundoEscuro: '#1B2126',
+    fundo: '#1F262B',
     titulo: '#fff',
     undeline: '#57B7DC',
     corDoIcone: '#fff',

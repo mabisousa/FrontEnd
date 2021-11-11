@@ -25,7 +25,7 @@ export const Container = styled.div<propriedadesPopup>`
   top: 0;
   left: 0;
 
-  #hold{
+  #segura{
     position: relative;
     background-color: ${props => props.theme.cor.fundo};
     width: 960px;
@@ -47,12 +47,12 @@ export const Container = styled.div<propriedadesPopup>`
     }
   }
 
-  #grid{
+  #grade{
     margin-left: 30px;
   }
 
   @media (max-width: 1024px) and (min-width: 769px)  {
-    #hold{
+    #segura{
       width: 910px;
       height: 495px;
     }
@@ -60,7 +60,7 @@ export const Container = styled.div<propriedadesPopup>`
 
   
   @media (max-width: 768px)  {
-    #hold{
+    #segura{
       width: 685px;
       height: 480px;
     }

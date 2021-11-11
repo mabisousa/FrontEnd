@@ -82,7 +82,7 @@ export const Container = styled.div`
       }
     }
 
-    #notifications {
+    #notificacoes {
       max-height: 70%;
       min-height: 60%;
       width: 0;
@@ -95,7 +95,7 @@ export const Container = styled.div`
         margin-bottom: 10px; 
       }
 
-      #hold {
+      #segura {
         width: 100%;
         border-left: 1px solid #e2e2e2;
         padding:0 5%;
@@ -134,7 +134,7 @@ export const Container = styled.div`
         }
       }
 
-      #notifications {
+      #notificacoes {
         width: 100%;
         padding: 15px;
         transition: 1s;

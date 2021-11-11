@@ -1,8 +1,14 @@
 import styled, { css } from "styled-components";
 
 interface ContainerProps {
-  hasError: boolean;
+  erro: boolean;
 }
+
+export const Container = styled.div`
+  position: relative;
+  height: 48px;
+  margin-bottom: 1.5rem; 
+`;
 
 export const FormInput = styled.input<ContainerProps>`
   position: absolute;
@@ -41,7 +47,7 @@ export const FormInput = styled.input<ContainerProps>`
     color: ${props => props.theme.cor.titulo};
   }
 
-  ${(props) => props.hasError && css`
+  ${(props) => props.erro && css`
     border-color: #c53030;
   `}
 `;
@@ -55,13 +61,7 @@ export const FormLabel = styled.label<ContainerProps>`
   font-size: 1em;
   transition: .3s;
 
-  ${(props) => props.hasError && css`
+  ${(props) => props.erro && css`
     color: #c53030;
   `}
-`;
-
-export const Container = styled.div`
-  position: relative;
-  height: 48px;
-  margin-bottom: 1.5rem; 
 `;

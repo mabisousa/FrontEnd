@@ -3,8 +3,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Container, Filtros, Titulo, Cards, Filtro } from './style';
 
 import Dropdown from "../../components/Dropdown";
-import Profile from "../../components/Profile";
-import Header from "../../components/Header";
+import Profile from "../../components/Perfil";
+import Header from "../../components/Cabecalho";
 import Card from "../../components/Cards";
 import Menu from "../../components/Menu";
 

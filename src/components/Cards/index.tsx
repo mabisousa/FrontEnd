@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, TituloSecao, TituloProjeto, SeguraHoras, Hora, Status, Data } from './style';
 
 import api from "../../services/api";
-import Popup from "../ProjectsPopup";
+import Popup from "../PopupProjetos";
 
 import { i18n } from '../../translate/i18n';
 

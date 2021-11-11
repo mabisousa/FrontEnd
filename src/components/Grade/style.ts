@@ -4,34 +4,34 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
 
-  .box{
+  .caixa{
     width: 50px;
     height: 35px;
     margin: 0 5px 5px 0;
   }
 
-  .one{
+  .um{
     background: #B4DDFB;
   }
 
-  .two{
+  .dois{
     background: #90C0E3;
   }
 
-  .three{
+  .tres{
     background: #448DCA;
   }
 
-  .four{
+  .quatro{
     background: #2E5CA6;
   }
 
-  .five{
+  .cinco{
     background: #023A67;
   }
 
   @media (max-width: 768px)  {
-    .box{
+    .caixa{
       width: 40px;
       height: 25px;
       margin: 5px 5px 5px 0;

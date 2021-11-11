@@ -2,14 +2,14 @@ import React, { HTMLAttributes } from "react";
 
 import { Container } from './style'
 
-import Notification from '../Notification'
+import Notificacoes from '../Notificacoes'
 
 import { FaUser } from 'react-icons/fa';
 import { i18n } from "../../translate/i18n";
 
 type ProfileProps  = HTMLAttributes<HTMLDivElement>;
 
-const Profile: React.FC<ProfileProps> = (props) => {
+const Perfil: React.FC<ProfileProps> = (props) => {
 
   let value = localStorage.getItem("@WEGusers:responsavel")
   let responsavel!: { idResponsavel: number; responsavelNome: string };
@@ -32,18 +32,18 @@ const Profile: React.FC<ProfileProps> = (props) => {
             </p>
           </div>
         </div>
-        <div id="notifications">
+        <div id="notificacoes">
           <h3>
             Notificações
           </h3>
-          <div id="hold">
-            <Notification/>
-            <Notification/>
-            <Notification/>
-            <Notification/>
-            <Notification/>
-            <Notification/>
-            <Notification/>
+          <div id="segura">
+            <Notificacoes/>
+            <Notificacoes/>
+            <Notificacoes/>
+            <Notificacoes/>
+            <Notificacoes/>
+            <Notificacoes/>
+            <Notificacoes/>
           </div>
         </div>
       </div>
@@ -51,4 +51,4 @@ const Profile: React.FC<ProfileProps> = (props) => {
   )
 }
 
-export default Profile;
+export default Perfil;
