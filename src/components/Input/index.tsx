@@ -22,8 +22,8 @@ const Input: React.FC<InputProps> = ({name, children, ...props}) => {
   return (
     <>
       <Container>
-        <FormInput hasError={!!error} id='form__input' ref={inputRef} {...props}/>
-        <FormLabel hasError={!!error} id='form__label'>
+        <FormInput erro={!!error} ref={inputRef} {...props}/>
+        <FormLabel erro={!!error}>
           { children }
         </FormLabel>
       </Container>  

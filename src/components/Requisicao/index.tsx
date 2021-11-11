@@ -20,7 +20,7 @@ interface MostrarRequest {
   mostrarRequisicao: (args0: boolean) => void
 }
 
-const Request: React.FC<MostrarRequest> = ({ selecionados, consultor, responsavel, mostrarRequisicao}) => {
+const Requisicao: React.FC<MostrarRequest> = ({ selecionados, consultor, responsavel, mostrarRequisicao}) => {
 
   const [conteudo, newConteudo] = useState('');
   const [revisao, setRevisao] = useState(false);
@@ -113,4 +113,4 @@ console.log(selecionados)
   )
 };
 
-export default Request;
+export default Requisicao;

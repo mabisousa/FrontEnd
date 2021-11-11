@@ -2,10 +2,10 @@ import React, { useState, useCallback } from 'react';
 
 import { Container, Filtros, Titulo, Formulario, Filtro } from './style';
 
-import Table from "../../components/ConsultantTable"
+import Table from "../../components/TabelaConsultor"
 import Dropdown from "../../components/Dropdown";
-import Profile from "../../components/Profile";
-import Header from "../../components/Header";
+import Profile from "../../components/Perfil";
+import Header from "../../components/Cabecalho";
 import Menu from "../../components/Menu";
 
 import { i18n } from '../../translate/i18n';

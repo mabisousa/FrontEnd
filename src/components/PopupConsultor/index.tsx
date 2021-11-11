@@ -6,7 +6,7 @@ import { BsX } from "react-icons/bs";
 import { PersonCircle } from "react-bootstrap-icons";
 
 import api from "../../services/api";
-import Grid from "../Grid";
+import Grade from "../Grade";
 
 import { i18n } from "../../translate/i18n";
 
@@ -58,14 +58,14 @@ const PopupConsultor: React.FC<Consultor> = ({id, mostrarPopup} ) => {
     <>
       { consultor && 
         <Container mostrar={!!mostrarPopup}>
-          <div id="hold">
+          <div id="segura">
             <button onClick={handleFecharPopup}>
               <BsX/>
             </button>
             <InfoPopUp>
               <header>
                 <PersonCircle/>
-                <div id="EmployeeInformation">
+                <div>
                   <h1>
                     {consultor.consultorNome} - {consultor.idConsultor} 
                   </h1>
@@ -121,8 +121,8 @@ const PopupConsultor: React.FC<Consultor> = ({id, mostrarPopup} ) => {
                 </table>
               </TabelaPopUp>
             </Conteudo>
-            <div id="grid"> 
-              <Grid/>
+            <div id="grade"> 
+              <Grade/>
             </div>
           </div>
         </Container>

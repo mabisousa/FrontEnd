@@ -1,13 +1,13 @@
 import React, {useState, useCallback, useEffect} from "react";
 
-import { TitlePopUp, InfosPopup, InfosGerais, Objetivo, Horas, HorasApontadas, 
-  Skills, Table, ConsultoresAlocados, DetailsPopup, Container  } from "./style";
+import { TituloPopUp, InfosPopup, InfosGerais, Objetivo, Horas, HorasApontadas, 
+  Skills, Tabela, ConsultoresAlocados, DetalhesPopup, Container } from "./style";
 
 import { Chart } from "react-google-charts";
 import { BsX } from 'react-icons/bs';
 
 import api from "../../services/api";
-import Grid from '../Grid';
+import Grid from '../Grade';
 
 import { i18n } from "../../translate/i18n";
 interface Projetos {
@@ -44,20 +44,20 @@ interface Projeto {
   mostrarPopup: (arg0: boolean) => void,
 }
 
-const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
+const PopupProjetos: React.FC<Projeto> = ({id, mostrarPopup}) => {
 
-  const [estaAberto, setAberto] = useState(false);
+  const [aberto, setAberto] = useState(false);
   const [projeto, setProjeto] = useState<Projetos>();
 
-  const handleOpenPopup = useCallback(() => {
-    if(!!estaAberto === false) {
+  const handleAbrirPopup = useCallback(() => {
+    if(!!aberto === false) {
       setAberto(true);    
     } else {
       setAberto(false);    
     }
-  }, [estaAberto, setAberto]);
+  }, [aberto, setAberto]);
     
-  const handleClosePopup = () => {
+  const handleFecharPopup = () => {
     mostrarPopup(false);
   }
 
@@ -78,21 +78,21 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
   return(
     <>
       { projeto &&
-        <Container open={!!estaAberto}  show={!!mostrarPopup}>
-          <div id="hold">
-            <button onClick={handleClosePopup}>
+        <Container aberto={!!aberto} mostrar={!!mostrarPopup}>
+          <div id="segura">
+            <button onClick={handleFecharPopup}>
               <BsX/>
             </button>
-            <TitlePopUp>
+            <TituloPopUp>
               <h2> 
                 {projeto.secao.idSecao} - {projeto.secao.secaoNome}
               </h2>
               <h1>
                 {projeto.id} - {projeto.projetoNome}
               </h1>
-            </TitlePopUp>
+            </TituloPopUp>
             <InfosPopup>
-              <InfosGerais open={!!estaAberto}  className="cont">
+              <InfosGerais aberto={!!aberto} >
                 <h1>
                   {i18n.t('projetoPopup.info')}
                 </h1>
@@ -105,7 +105,7 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                   </p>
                 </div>
               </InfosGerais>
-              <Objetivo open={!!estaAberto} className="cont">
+              <Objetivo aberto={!!aberto} >
                 <h1>
                   {i18n.t('projetoPopup.objetivo')} 
                 </h1>
@@ -113,7 +113,7 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                   {projeto.projetoDescricao}
                 </p>
               </Objetivo>
-              <Horas open={!!estaAberto}  className="cont">
+              <Horas aberto={!!aberto}>
                 <h1>
                   {i18n.t('projetoPopup.horas')} 
                 </h1>
@@ -129,7 +129,7 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                       ['Restante', restantes]
                     ]}
                     options={{
-                      pieHole: 0.7  ,
+                      pieHole: 0.7,
                       tooltip: { trigger: 'none'},
                       legend: 'none',
                       backgroundColor: '',
@@ -156,8 +156,8 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                   </div>
                 </HorasApontadas>
               </Horas>
-              <Skills open={!!estaAberto}  className="cont">
-                <Table id="table">
+              <Skills aberto={!!aberto}>
+                <Tabela>
                   <table>
                     <thead>
                       <tr>
@@ -182,12 +182,12 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                       ))}  
                     </tbody>
                   </table>
-                </Table>
-                <button id="visualizar" onClick={handleOpenPopup}>
+                </Tabela>
+                <button onClick={handleAbrirPopup}>
                   {i18n.t('aprovacao.consultor')}
                 </button>
               </Skills>
-              <ConsultoresAlocados id="ds" open={!!estaAberto}>
+              <ConsultoresAlocados aberto={!!aberto}>
                 <table>
                   <thead>
                     <tr>
@@ -214,12 +214,12 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
                 </table>
               </ConsultoresAlocados>
             </InfosPopup>
-            <DetailsPopup open={!!estaAberto}  color={projeto.projetoStatus}>
+            <DetalhesPopup aberto={!!aberto} cor={projeto.projetoStatus}>
               <Grid/>
               <h1>
                 {projeto.projetoStatus}
               </h1>
-            </DetailsPopup>
+            </DetalhesPopup>
           </div>
         </Container>
       }
@@ -227,4 +227,4 @@ const ProjectPopup: React.FC<Projeto> = ({id, mostrarPopup}) => {
   )
 }
 
-export default ProjectPopup;
+export default PopupProjetos;

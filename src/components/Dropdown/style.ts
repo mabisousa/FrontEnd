@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 interface propriedadesDropdown {
   mostrarDropdown: boolean;
-  alterarFlecha: boolean;
+  alterarSeta: boolean;
 }
 
 export const Container = styled.div<propriedadesDropdown>`
@@ -49,14 +49,14 @@ export const Container = styled.div<propriedadesDropdown>`
       }  
     }
     
-    #arrowDown{
+    #setaBaixo{
       float: right;
       display: block;
       height: 1.06em;
       width: 1.06em;
       color: ${props => props.theme.cor.corDoIcone};
 
-      ${(props) => props.alterarFlecha ?
+      ${(props) => props.alterarSeta ?
         css`
           display: block;
         `: css`
@@ -64,12 +64,12 @@ export const Container = styled.div<propriedadesDropdown>`
         `}
     }
 
-    #arrowLeft{
+    #setaEsquerda{
       float: right;
       display: none;
       color: ${props => props.theme.cor.corDoIcone};
 
-      ${(props) => props.alterarFlecha ?
+      ${(props) => props.alterarSeta ?
         css`
           display: none;
         `: css`

@@ -1,9 +1,9 @@
 export default {
-  titulo: 'light',
+  titulo: 'claro',
 
   cor: {
-    fundo: '#fff',
     fundoEscuro: '#fff',
+    fundo: '#fff',
     titulo: '#000',
     undeline: '#0075B1',
     corDoIcone: '#7e7e7e',

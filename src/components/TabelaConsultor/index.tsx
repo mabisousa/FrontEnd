@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 
 import { Container, Tr } from './style';
 
-import Popup from "../ConsultantPopup";
+import Popup from "../PopupConsultor";
 import api from "../../services/api";
 
 import { i18n } from '../../translate/i18n';

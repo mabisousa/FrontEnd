@@ -1,22 +1,23 @@
 import styled, { css } from "styled-components";
 
 interface PopUp{
-  open: boolean;
-  show: boolean;
+  aberto: boolean;
+  mostrar: boolean;
 }
+
 export const Container = styled.div<PopUp>`
-  ${(props) => props.open ? 
+  ${(props) => props.aberto ? 
     css`
-      #hold{
+      #segura{
         width:1160px; 
       }
     `: css`
-      #hold{
+      #segura{
         width: 960px; 
       }
   `}
 
-  ${(props) => !props.show ? 
+  ${(props) => !props.mostrar ? 
     css`
       div {
         visibility: hidden;
@@ -47,7 +48,7 @@ export const Container = styled.div<PopUp>`
     background: none;
   }
 
-  #hold{
+  #segura{
     position: relative;
     height: 560px;
     background: ${props => props.theme.cor.fundo};
@@ -63,7 +64,7 @@ export const Container = styled.div<PopUp>`
   }
 
   @media (max-width: 1024px) and (min-width: 769px)  {
-    #hold{
+    #segura{
       width: 910px;
       height: 495px;
     }
@@ -73,14 +74,14 @@ export const Container = styled.div<PopUp>`
     width: 102vw;
     height: 102vh;
 
-    #hold{
+    #segura{
       width: 685px;
       height: 480px;
     }
   }
 `;
 
-export const TitlePopUp = styled.div`
+export const TituloPopUp = styled.div`
   width: 52vw;
   height: 11vh;
   padding: 10px;
@@ -118,12 +119,13 @@ export const InfosPopup = styled.div`
 `;
 
 interface ContainerProps {
-  open: boolean;
+  aberto: boolean;
+  cor?: string,
 }
 
 export const InfosGerais = styled.div<ContainerProps>`
 
-  ${(props) => props.open ? 
+  ${(props) => props.aberto ? 
     css`
       width: 27vw;
       transition: 1s;
@@ -158,7 +160,7 @@ export const InfosGerais = styled.div<ContainerProps>`
 `;
 
 export const Objetivo = styled.div<ContainerProps>`
-  ${(props) => props.open ? 
+  ${(props) => props.aberto ? 
     css`
       width: 27vw;
       transition: 1s;
@@ -185,7 +187,7 @@ export const Objetivo = styled.div<ContainerProps>`
   }
 
   @media (max-width: 1024px) and (min-width: 769px)  {
-    ${(props) => props.open ? 
+    ${(props) => props.aberto ? 
     css`
       width: 28vw;
 
@@ -201,8 +203,9 @@ export const Objetivo = styled.div<ContainerProps>`
       }
     `}  
   }
+  
   @media (max-width: 768px)  {
-    ${(props) => props.open ? 
+    ${(props) => props.aberto ? 
     css`
       width: 23vw;
 
@@ -228,7 +231,7 @@ export const Objetivo = styled.div<ContainerProps>`
 
  export const Horas = styled.div<ContainerProps>`
 
-  ${(props) => props.open ? 
+  ${(props) => props.aberto ? 
     css`
       width: 30vw;
       transition: 1s;
@@ -246,7 +249,7 @@ export const Objetivo = styled.div<ContainerProps>`
   }
 
   @media (max-width: 1024px) and (min-width: 769px)  {
-    ${(props) => props.open ? 
+    ${(props) => props.aberto ? 
     css`
       width: 30vw;
     `: css`
@@ -255,7 +258,7 @@ export const Objetivo = styled.div<ContainerProps>`
   }
 
   @media (max-width: 768px)  {
-    ${(props) => props.open ? 
+    ${(props) => props.aberto ? 
     css`
       width: 30vw;
     `: css`
@@ -302,7 +305,7 @@ export const Objetivo = styled.div<ContainerProps>`
  `;
 
 export const Skills = styled.div<ContainerProps>`
-  ${(props) => props.open ? 
+  ${(props) => props.aberto ? 
     css`
       width: 29vw;
       transition: 1s;
@@ -327,7 +330,7 @@ export const Skills = styled.div<ContainerProps>`
 
   @media (max-width: 1024px) and (min-width: 769px)  {
 
-    ${(props) => props.open ? 
+    ${(props) => props.aberto ? 
     css`
       width: 29vw;
     `: css`
@@ -341,7 +344,7 @@ export const Skills = styled.div<ContainerProps>`
   }
 
   @media (max-width: 768px)  {
-    ${(props) => props.open ? 
+    ${(props) => props.aberto ? 
     css`
       width: 29vw;
     `: css`
@@ -355,7 +358,7 @@ export const Skills = styled.div<ContainerProps>`
   }
 `;
 
-export const Table = styled.div`
+export const Tabela = styled.div`
   width: 28vw;
   height: 19vh;
   
@@ -406,7 +409,7 @@ export const Table = styled.div`
 
 export const ConsultoresAlocados = styled.div<ContainerProps>`
 
-  ${(props) => props.open ? 
+  ${(props) => props.aberto ? 
     css`
       width: 19.8vw;
 
@@ -483,7 +486,7 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
     }
 
     @media (max-width: 1024px) and (min-width: 769px)  {
-      ${(props) => props.open ? 
+      ${(props) => props.aberto ? 
       css`
       width: 21vw;
       `: css`
@@ -516,7 +519,7 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
     }
 
     @media (max-width: 768px)  {
-      ${(props) => props.open ? 
+      ${(props) => props.aberto ? 
       css`
       width: 21vw;
       `: css`
@@ -547,14 +550,14 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
     }
 `;
 
-export const DetailsPopup = styled.div<ContainerProps>`
+export const DetalhesPopup = styled.div<ContainerProps>`
   height: 8vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   
 
-  ${(props) => props.open ? 
+  ${(props) => props.aberto ? 
     css`
       width: 78.5vw;
     `: css`
@@ -568,14 +571,14 @@ export const DetailsPopup = styled.div<ContainerProps>`
       }
     `}
 
-  ${(props) => props.color === "CONCLUÍDO" && 
+  ${(props) => props.cor === "CONCLUÍDO" && 
     css`
       h1{
         color: ${props => props.theme.cor.concluidoStatus};
       }
     `}
 
-  ${(props) => props.color === "ATRASADO" &&
+  ${(props) => props.cor === "ATRASADO" &&
     css`
       h1{
         color: ${props => props.theme.cor.atrasadoStatus};

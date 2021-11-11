@@ -4,11 +4,11 @@ import { Container } from './style'
 
 type NotificationProps = HTMLAttributes<HTMLDivElement>;
 
-const Notification: React.FC<NotificationProps> = (props) => {
+const Notificacoes: React.FC<NotificationProps> = (props) => {
 
   return (
     <Container {...props}/>
   )
 }
 
-export default Notification;
+export default Notificacoes;

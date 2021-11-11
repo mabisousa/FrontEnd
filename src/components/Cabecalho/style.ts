@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 
 interface dropdownProps {
-  showDropdown: boolean;
-  showIdioms: boolean;
-  showFonts: boolean;
+  mostrarDropdown: boolean;
+  mostrarIdiomas: boolean;
+  mostrarFonte: boolean;
 }
 
 export const Container = styled.div<dropdownProps>`
@@ -19,7 +19,7 @@ export const Container = styled.div<dropdownProps>`
   border-bottom: 2px solid #90C0E3;  
   background: ${props => props.theme.cor.fundoEscuro};
 
-  #name{
+  #nome{
     width:220px;
     display: flex;
     align-items: center;
@@ -38,7 +38,7 @@ export const Container = styled.div<dropdownProps>`
     }
   }
 
-  #exit{
+  #sair{
     width: 60px;
     height: 30px;
     margin: 5px 20px 5px 5px;
@@ -56,7 +56,7 @@ export const Container = styled.div<dropdownProps>`
       color: ${props => props.theme.cor.corDoIcone};
     }
 
-    #sair {
+    p {
       font-size: .9em;
       width: 40px;
       cursor: pointer;
@@ -78,7 +78,7 @@ export const Container = styled.div<dropdownProps>`
     border-bottom: none;
     background-color: ${props => props.theme.cor.fundo}; 
 
-    ${(props) => props.showDropdown ?
+    ${(props) => props.mostrarDropdown ?
       css`
         display: none;
       `: css`
@@ -118,29 +118,27 @@ export const Container = styled.div<dropdownProps>`
           font-size: .9em;
         }
     }
+      
+    #idiomas{
+      height: 105px;
 
-    #idioms{
+      ${(props) => props.mostrarIdiomas ?
+      css`
+        display: none;
+      `: css`
+        display: block;
+      `}  
+
       img{
         height: 25px;
         width: 25px;
         cursor: pointer;
         margin-left: 16px;
         margin-right: 8px;
-      }                
-    }
-      
-    #idioms{
-      height: 105px;
-
-      ${(props) => props.showIdioms ?
-      css`
-        display: none;
-      `: css`
-        display: block;
-      `}  
+      }  
     }
 
-    #fonts{
+    #fontes{
       min-height: 70px;
 
       svg{
@@ -151,7 +149,7 @@ export const Container = styled.div<dropdownProps>`
         margin-right: 8px;
       }  
         
-      ${(props) => props.showFonts ?
+      ${(props) => props.mostrarFonte ?
       css`
         display: none;
       `: css`
