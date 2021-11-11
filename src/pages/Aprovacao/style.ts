@@ -19,7 +19,7 @@ export const Container = styled.div`
     height: 50px;
     padding: 10px;
     color: #fff;
-    margin-top: 40px;
+    margin-top: 60px;
     border: none;
     background: ${props => props.theme.cor.habilidadeBotao};
   }
@@ -73,33 +73,6 @@ export const Infos = styled.div`
         }
       }
 
-      @media (max-width: 1024px) and (min-width: 769px) {
-        p{
-          font-size: 0.65em;
-          width: 80px;
-        }
-
-        .holding {
-          div:nth-child(1) {
-            width: 33%;
-            margin-right: 5%;
-          }
-        }
-      }
-
-      @media (max-width: 768px)  {
-        p{
-          font-size: 0.65em;
-        }
-
-        .holding {
-          div:nth-child(1) {
-            width: 43%;
-            margin-right: 5%;
-          }
-        }
-      }
-
       .holding:nth-child(2) {
         display: flex;
         justify-content: space-between;
@@ -114,6 +87,35 @@ export const Infos = styled.div`
       }
     }
   }  
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    form{
+      margin:3px 0 0 10px;
+    }
+
+    p{
+      font-size: 0.65em;
+      width: 80px;
+    }
+
+    .holding {
+      div:nth-child(1) {
+        width: 33%;
+        margin-right: 5%;
+      }
+    }
+  }
+
+  @media (max-width: 768px)  {
+    width: 40vw;
+    margin: 0 0 10px 35px;
+    .holding {
+      div:nth-child(1) {
+        width: 43%;
+        margin-right: 5%;
+      }
+    }
+  }
 `;
 
 export const Count = styled.div`
@@ -184,6 +186,12 @@ export const Count = styled.div`
     background: ${props => props.theme.cor.habilidadeBotao};
     transition: 1s;
     position: relative;
+  }
+  @media (max-width: 1024px) and (min-width: 769px) {
+    width:21vw;
+  }
+  @media (max-width: 768px)  {
+    width: 32vw;
   }
 `;
 
@@ -261,6 +269,20 @@ export const Apontamentos = styled.div`
       width: 40px;
     }
   }
+  @media (max-width: 1024px) and (min-width: 769px) {
+    width: 27vw;   
+  }
+  @media (max-width: 768px)  {
+    margin: 10px 0 10px 35px;
+    width: 73vw;
+    height: 47vh;
+
+    table{
+      tbody {
+        height: 35vh;
+      }
+    }
+  }
 `;
 
 export const Title = styled.h1`
@@ -292,11 +314,6 @@ export const ProgressBar = styled.div`
       color: #00579D;
     }
 
-    @media (max-width: 1024px) and (min-width: 769px) {
-      p {
-        font-size: 0.9em;
-      }     
-    }
   }
 
   .steps {
@@ -305,6 +322,19 @@ export const ProgressBar = styled.div`
     justify-content: space-evenly;
     margin-top: 2px;
     color: #fff; 
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    p {
+      font-size: 0.9em;
+    }     
+  }
+  @media (max-width: 768px)  {
+    width:68vw;
+    margin: 10px 0 0 20px;
+    p {
+      font-size: 0.85em;
+    }  
   }
 `;
 
@@ -512,6 +542,7 @@ export const Descriptions = styled.div<Description>`
   background: transparent;
   position: absolute;
   top: 0;
+  z-index: 99999;
 
   ${(props) => !!props.open ?
     css`
@@ -561,4 +592,25 @@ export const Descriptions = styled.div<Description>`
           display: none;
         }
     `}
+    
+  @media (max-width: 768px)  {
+    right: 0;
+    height: 0;
+    top: 46vh;
+    border: 1px solid #8B8787;
+    width: 561px;
+
+    ${(props) => !!props.open ?
+    css`
+      height: 150px;
+
+      header {
+        background: #0075B1;
+        color: #fff;
+      }
+   
+    ` : css`
+      
+    `}
+  }
 `;
