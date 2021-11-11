@@ -292,6 +292,12 @@ export const Objetivo = styled.div<ContainerProps>`
         color: ${props => props.theme.cor.data};
       }
     }
+    @media (max-width: 768px)  {
+      width: 11vw;
+      p{
+        font-size: .65em;
+      }
+    }
   }
  `;
 

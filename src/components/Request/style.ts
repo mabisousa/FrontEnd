@@ -15,7 +15,6 @@ export const Background = styled.div`
   visibility:visible;
 `;
 export const Container = styled.main<RequestProps>`
-
   width: 600px;
   height: 400px;
   padding: 1.5%;
@@ -46,6 +45,7 @@ export const Container = styled.main<RequestProps>`
 
     textarea {
       width: 100%;
+      resize: none;
       height: 200px;
       padding: 10px;
     }
@@ -83,7 +83,20 @@ export const Container = styled.main<RequestProps>`
       } */
     }
     
-    `} 
+    `}
+
+  @media (max-width: 768px)  {
+    width: 450px;
+    height: 350px;
+
+    textarea {
+      width: 90%;
+      resize: none;
+      height: 200px;
+      padding: 10px;
+    }
+    
+  } 
 `;
 
 export const Selecionado = styled.span`
