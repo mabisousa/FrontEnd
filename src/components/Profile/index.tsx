@@ -5,11 +5,19 @@ import { Container } from './style'
 import Notification from '../Notification'
 
 import { FaUser } from 'react-icons/fa';
+import { i18n } from "../../translate/i18n";
 
 type ProfileProps  = HTMLAttributes<HTMLDivElement>;
 
 const Profile: React.FC<ProfileProps> = (props) => {
-  
+
+  let value = localStorage.getItem("@WEGusers:responsavel")
+  let responsavel!: { idResponsavel: number; responsavelNome: string };
+
+  if(value) {
+    responsavel = JSON.parse(value);
+  }
+
   return(
     <Container {...props}>
       <div>
@@ -17,10 +25,10 @@ const Profile: React.FC<ProfileProps> = (props) => {
           <FaUser/>
           <div id="txt">
             <h2>
-              Nome
+              {responsavel ? responsavel.responsavelNome :  i18n.t('aprovacao.responsavel')}
             </h2>
             <p>
-              Atuação
+              Fornecedor
             </p>
           </div>
         </div>
