@@ -24,7 +24,7 @@ export const AuthContext = createContext<ContextData>(
 
 export const AuthProvider: React.FC = ({ children }) => {
 
-  const [data, setData] = useState<AuthState>(() => {
+  const [dado, setDado] = useState<AuthState>(() => {
 
     const jwt = localStorage.getItem("@WEGusers:token");
     const usuario = localStorage.getItem("@WEGusers:usuario");
@@ -43,18 +43,18 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   const signIn = useCallback(async ({ email, senha }) => {
       
-    const response = await api.post("authenticate", {
+    const resposta = await api.post("authenticate", {
       email,
       senha,
     });
       
-    const { jwt, usuario, responsavel } = response.data;
+    const { jwt, usuario, responsavel } = resposta.data;
 
     localStorage.setItem("@WEGusers:token", jwt);
     localStorage.setItem("@WEGusers:usuario", JSON.stringify(usuario));
     localStorage.setItem("@WEGusers:responsavel", JSON.stringify(responsavel));
     
-    setData({jwt, usuario, responsavel});
+    setDado({jwt, usuario, responsavel});
 
   }, []);
 
@@ -63,11 +63,11 @@ export const AuthProvider: React.FC = ({ children }) => {
     localStorage.removeItem("@WEGusers: usuario");
     localStorage.removeItem("@WEGusers: responsavel");
 
-    setData({} as AuthState);
+    setDado({} as AuthState);
   }, []);
 
   return (
-    <AuthContext.Provider value={{signIn, signOut, usuario: data.usuario}}>
+    <AuthContext.Provider value={{signIn, signOut, usuario: dado.usuario}}>
       { children }
     </AuthContext.Provider>
   )

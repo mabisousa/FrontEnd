@@ -3,8 +3,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Container, Filtros, Titulo, Cards, Filtro } from './style';
 
 import Dropdown from "../../components/Dropdown";
-import Profile from "../../components/Perfil";
-import Header from "../../components/Cabecalho";
+import Perfil from "../../components/Perfil";
+import Cabecalho from "../../components/Cabecalho";
 import Card from "../../components/Cards";
 import Menu from "../../components/Menu";
 
@@ -45,8 +45,8 @@ interface Projetos {
 }
 
 interface Secoes {
-    idSecao: number,
-    secaoNome: string
+  idSecao: number,
+  secaoNome: string
 }
 
 interface tema{
@@ -55,73 +55,71 @@ interface tema{
 
 const Home: React.FC<tema> = ({alternarTema}) => {
 
-  const [filtered, setFiltereds] = useState<Projetos[]>([]);
-  const [projects, setProjects] = useState<Projetos[]>([]);
-  const [sections, setSections] = useState<Secoes[]>([]);
-  const [showCard, setShowCard] = useState(false);
-  const [section, setSection] = useState('Todos');
+  const [filtrados, setFiltrados] = useState<Projetos[]>([]);
+  const [projetos, setProjetos] = useState<Projetos[]>([]);
+  const [secoes, setSecoes] = useState<Secoes[]>([]);
+  const [mostrarCard, setMostrarCard] = useState(false);
+  const [secao, setSecao] = useState('Todos');
   const [status, setStatus] = useState('Todos');
-  const [search, setSearch] = useState('');
+  const [pesquisa, setPesquisa] = useState('');
 
   useEffect(() => {
-    if (section !== "Todos" && status !== "Todos") {
-      api.get(`/projetos/${section}/${status}`).then((response) => {
-        setProjects(response.data)
-      console.log(response.data)
+    if (secao !== "Todos" && status !== "Todos") {
+      api.get(`/projetos/${secao}/${status}`).then((response) => {
+        setProjetos(response.data)
       })
-    } else if(section !== 'Todos') {
-      api.get(`/projetos/secao/${section}`).then((response) => {
-        setProjects(response.data)
+    } else if(secao !== 'Todos') {
+      api.get(`/projetos/secao/${secao}`).then((response) => {
+        setProjetos(response.data)
       })
     } else if(status !== 'Todos'){
       api.get(`/projetos/status/${status}`).then((response) => {
-        setProjects(response.data)
+        setProjetos(response.data)
       })
     } else {
       api.get(`/projetos`).then((response) => {
-        setProjects(response.data)
+        setProjetos(response.data)
       })
     }
     api.get("/secoes").then((response) => {
-      setSections(response.data)
+      setSecoes(response.data)
     })
-
-  }, [projects, setProjects, section, status]);
+  }, [projetos, setProjetos, secao, status]);
   
   useEffect(() => {
-    setFiltereds(projects);
-  }, [projects]);
+    setFiltrados(projetos);
+  }, [projetos]);
 
-  const handleFilterName = useCallback((ev: string) => {
-    setSearch(ev)
-    setFiltereds(projects.filter((project) => project.projetoNome.toLowerCase().includes(search.toLowerCase())));
-  },[projects, setSearch, search]);  
+  const handleFiltrarNome = useCallback((ev: string) => {
+    setPesquisa(ev)
+    setFiltrados(projetos.filter((projetos) => projetos.projetoNome.toLowerCase().includes(pesquisa.toLowerCase())));
+  },[projetos, setPesquisa, pesquisa]);  
 
-  const handleFilterStatus = useCallback((status: string) => {
+  const handleFiltrarStatus = useCallback((status: string) => {
     setStatus(status);
   },[]);  
   
-  const handleShowGridCard = useCallback(() => {
-    if(!!showCard === false) {
-      setShowCard(true);    
+  const handleMostrarGrade = useCallback(() => {
+    if(!!mostrarCard === false) {
+      setMostrarCard(true);    
     }
-  }, [showCard, setShowCard]);
+  }, [mostrarCard, setMostrarCard]);
 
-  const handleShowListCard = useCallback(() => {
-    if(!!showCard !== false) {
-      setShowCard(false);    
+  const handleMostrarLista = useCallback(() => {
+    if(!!mostrarCard !== false) {
+      setMostrarCard(false);    
     }
-  }, [showCard, setShowCard]);
+  }, [mostrarCard, setMostrarCard]);
 
   return (
     <>
       <Container>
-        <Header alternarTema={alternarTema}>
+        <Cabecalho alternarTema={alternarTema}>
           <p>
             {i18n.t('projetos.titulo')}
           </p>
-        </Header>
-        <Profile/>
+        </Cabecalho>
+        <Perfil/>
         <Menu/>
         <Filtros>
           <Titulo>
@@ -130,20 +128,20 @@ const Home: React.FC<tema> = ({alternarTema}) => {
           <Filtro>
             <label>{i18n.t('projetos.projeto')}</label>
             <input type="text" placeholder={i18n.t('projetos.placeHolder')} 
-              value={search} onChange={(ev) => handleFilterName(ev.target.value)}/>
-            <div >
+              value={pesquisa} onChange={(ev) => handleFiltrarNome(ev.target.value)}/>
+            <div>
               <label className="secao">{i18n.t('projetos.secao')}</label>
               <Dropdown>
                 <span>
-                  {section}
+                  {secao}
                 </span>
                 <div>
-                  {sections.map((section) => (
-                    <button onClick={() => setSection(section.secaoNome)} key={section.secaoNome}>
-                      {section.secaoNome}
+                  {secoes.map((secao) => (
+                    <button onClick={() => setSecao(secao.secaoNome)} key={secao.secaoNome}>
+                      {secao.secaoNome}
                     </button>
                   ))}
-                  <button onClick={() => setSection('Todos')}>
+                  <button onClick={() => setSecao('Todos')}>
                     {i18n.t('projetos.todos')}
                   </button>
                 </div>
@@ -154,34 +152,34 @@ const Home: React.FC<tema> = ({alternarTema}) => {
               <Dropdown>
                 <span>{status}</span>
                 <div>
-                  <button onClick={() => handleFilterStatus("ANDAMENTO")}>
+                  <button onClick={() => handleFiltrarStatus("ANDAMENTO")}>
                     {i18n.t('projetos.andamento')}
                   </button>
-                  <button onClick={() => handleFilterStatus("ATRASADO")}>
+                  <button onClick={() => handleFiltrarStatus("ATRASADO")}>
                     {i18n.t('projetos.atrasado')}
                   </button>
-                  <button onClick={() => handleFilterStatus("CONCLUÍDO")}>
+                  <button onClick={() => handleFiltrarStatus("CONCLUÍDO")}>
                     {i18n.t('projetos.concluido')}
                   </button>
-                  <button onClick={() => handleFilterStatus("Todos")}>
+                  <button onClick={() => handleFiltrarStatus("Todos")}>
                     {i18n.t('projetos.todos')}
                   </button>
                 </div>
               </Dropdown>
             </div>
-            <button onClick={handleShowListCard}>
+            <button onClick={handleMostrarLista}>
               <FaThList/>
             </button>
-            <button onClick={handleShowGridCard}>
+            <button onClick={handleMostrarGrade}>
               <IoGrid/>
             </button>
           </Filtro>
         </Filtros>
-      <Cards> 
-        { filtered.map((projeto) => (
-          <Card id={projeto.id} key={projeto.id} mostrar={showCard}/> 
-        ))}
-      </Cards>
+        <Cards> 
+          { filtrados.map((projeto) => (
+            <Card id={projeto.id} key={projeto.id} mostrar={mostrarCard}/> 
+          ))}
+        </Cards>
       </Container>
       
     </>          

@@ -1,9 +1,9 @@
 import React, { useCallback, useState, useContext } from "react";
 import { Container } from './style';
 
-import bandeiraBrasil from "../../assets/brazilFlag.svg";
-import bandeiraEspanha from "../../assets/spainFlag.svg";
-import bandeiraEUA from "../../assets/usaFlag.svg";
+import bandeiraBrasil from "../../assets/bandeiraBrasil.svg";
+import bandeiraEspanha from "../../assets/bandeiraEspanha.svg";
+import bandeiraEUA from "../../assets/bandeiraEUA.svg";
 import logo from "../../assets/logo.svg";
 
 import tamanhoFonte from "../../js/tamanhoFonte";

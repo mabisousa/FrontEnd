@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.main`
   margin-top: 5%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ImgLogo = styled.img`
@@ -13,7 +17,6 @@ export const ImgLogo = styled.img`
 export const Inputs = styled.div`
   width: 450px;
   height: 500px;
-  margin: auto;
   display:flex;
   align-items: center;
   border: 1px solid #DADCE0;
@@ -26,7 +29,7 @@ export const Inputs = styled.div`
   }
 `;
 
-export const FormButton = styled.button`
+export const BotaoForm = styled.button`
   padding: .75rem 2rem;
   border: none;
   background: ${props => props.theme.cor.projetoMenu};
@@ -42,7 +45,7 @@ export const FormButton = styled.button`
   }  
 `;
 
-export const HoldButton = styled.div`
+export const SeguraBotao = styled.div`
   width: 100%;
   height: 40px;
     

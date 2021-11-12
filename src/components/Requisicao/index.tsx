@@ -2,13 +2,15 @@ import React,{ useCallback, useState  }  from 'react';
 
 import {RiArrowLeftSLine} from 'react-icons/ri';
 
-import { Background, Container, Selecionado } from './style';
+import { Fundo, Container } from './style';
 
 import { i18n } from '../../translate/i18n';
 import api from '../../services/api';
+
 interface Selecionados {
   idApontamento: number,
 }
+
 interface MostrarRequest {
   responsavel: {
     idResponsavel: number,
@@ -22,7 +24,7 @@ interface MostrarRequest {
 
 const Requisicao: React.FC<MostrarRequest> = ({ selecionados, consultor, responsavel, mostrarRequisicao}) => {
 
-  const [conteudo, newConteudo] = useState('');
+  const [conteudo, novoConteudo] = useState('');
   const [revisao, setRevisao] = useState(false);
 
   const requisicao = {
@@ -60,30 +62,29 @@ const Requisicao: React.FC<MostrarRequest> = ({ selecionados, consultor, respons
     }
     mostrarRequisicao(false)
   }, [consultor.idConsultor, conteudo, mostrarRequisicao, requisicao, responsavel.idResponsavel]);
-console.log(selecionados)
 
   return (
     <>
-    <Background > 
-        <Container id="request" send={!!revisao}>
-        {!revisao ? 
-        <>
-          <div>
-            <RiArrowLeftSLine onClick={() => mostrarRequisicao(false)}/>
-            <p>
-              {i18n.t('requisicao.requisicao')}
-            </p>
-          </div>
-          <textarea id="text"
-            value={conteudo}
-            onChange={e => newConteudo(e.target.value)}
-          />
-          <button onClick={confirmarRequisicao}>
-            {i18n.t('requisicao.enviar')}
-          </button>
-        </>
-      :
-          <>
+      <Fundo> 
+        <Container id="request" enviar={!!revisao}>
+          {!revisao ? 
+            <>
+              <div>
+                <RiArrowLeftSLine onClick={() => mostrarRequisicao(false)}/>
+                <p>
+                  {i18n.t('requisicao.requisicao')}
+                </p>
+              </div>
+              <textarea id="text"
+                value={conteudo}
+                onChange={e => novoConteudo(e.target.value)}
+              />
+              <button onClick={confirmarRequisicao}>
+                {i18n.t('requisicao.enviar')}
+              </button>
+            </>
+          :
+            <>
               <div>
                 <p>
                   {i18n.t('requisicao.confirmar')}
@@ -105,10 +106,9 @@ console.log(selecionados)
                 </button>
               </div>
             </>
-        }    
+          }    
         </Container>
-    </Background>
-
+      </Fundo>
     </>
   )
 };

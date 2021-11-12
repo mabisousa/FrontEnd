@@ -80,15 +80,14 @@ export const Filtro = styled.div`
       margin-right: 10px;
       margin-left: 55px;
     }
-    
   }
 
   @media (max-width: 1024px) and (min-width: 769px) {
-      width:70vw;
-      p{
-        font-size: 1em;
-      }
+    width:70vw;
+    p{
+      font-size: 1em;
     }
+  }
 
   @media (max-width: 768px)  {
     width:55vw;
@@ -106,15 +105,15 @@ export const Titulo = styled.h1`
   color: ${props => props.theme.cor.titulo};
   text-decoration: underline ${props => props.theme.cor.undeline};
 
-    @media (max-width: 1024px) and (min-width: 769px) {
-      width: 150px;
-      font-size: 1em;
-    }
+  @media (max-width: 1024px) and (min-width: 769px) {
+    width: 150px;
+    font-size: 1em;
+  }
 
-    @media (max-width: 768px)  {
-      width: 150px;
-      font-size: 0.9em;
-    }
+  @media (max-width: 768px)  {
+    width: 150px;
+    font-size: 0.9em;
+  }
 `;
 
 export const Formulario = styled.form`
@@ -131,12 +130,14 @@ export const Formulario = styled.form`
 
   @media (max-width: 1024px) and (min-width: 769px) {
     width: 230px;
+    
     input{
       width: 150px;
     }
   }
   @media (max-width: 768px)  {
     width: 230px;
+    
     input{
       width: 100px;
     }

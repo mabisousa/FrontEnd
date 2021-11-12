@@ -6,7 +6,7 @@ type Response<T> = [
 ];
 
 function usePersistedState<T>(key: string, initialState: any): Response<T> {
-  const [ state, setState ] = useState(() => {
+  const [ estado, setEstado ] = useState(() => {
     const storageValue = localStorage.getItem(key);
     
     if(storageValue){
@@ -17,10 +17,10 @@ function usePersistedState<T>(key: string, initialState: any): Response<T> {
   });
 
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(state));
-  }, [key, state])
+    localStorage.setItem(key, JSON.stringify(estado));
+  }, [key, estado])
 
-  return [state, setState];
+  return [estado, setEstado];
 }
 
 export default usePersistedState;

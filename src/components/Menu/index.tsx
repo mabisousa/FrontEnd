@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 import { Container } from './style'
 
-import folder from '../../assets/folder.svg';
-import clock from '../../assets/clock.svg';
-import group from '../../assets/group.svg';
+import pasta from '../../assets/pasta.svg';
+import relogio from '../../assets/relogio.svg';
+import grupo from '../../assets/grupo.svg';
 
 import { i18n } from "../../translate/i18n";
 
@@ -13,7 +13,7 @@ const Menu: React.FC = () => (
   <Container>
     <Link to="home">
       <div>
-        <img src={ folder } alt=""/>
+        <img src={ pasta } alt=""/>
         <h1>
           {i18n.t('menu.projetos')}
         </h1>
@@ -21,7 +21,7 @@ const Menu: React.FC = () => (
     </Link>
     <Link to="aprovacao">
       <div>
-        <img src={ clock } alt=""/>
+        <img src={ relogio } alt=""/>
         <h1>
           {i18n.t('menu.aprovacao')}
         </h1>
@@ -29,7 +29,7 @@ const Menu: React.FC = () => (
     </Link>
     <Link to="consultores">
       <div>
-        <img src={ group } alt=""/>
+        <img src={ grupo } alt=""/>
         <h1>
           {i18n.t('menu.consultores')}
         </h1>

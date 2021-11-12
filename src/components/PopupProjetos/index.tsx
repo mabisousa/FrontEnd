@@ -1,7 +1,7 @@
 import React, {useState, useCallback, useEffect} from "react";
 
 import { TituloPopUp, InfosPopup, InfosGerais, Objetivo, Horas, HorasApontadas, 
-  Skills, Tabela, ConsultoresAlocados, DetalhesPopup, Container } from "./style";
+         Skills, Tabela, ConsultoresAlocados, DetalhesPopup, Container } from "./style";
 
 import { Chart } from "react-google-charts";
 import { BsX } from 'react-icons/bs';
@@ -10,6 +10,7 @@ import api from "../../services/api";
 import Grid from '../Grade';
 
 import { i18n } from "../../translate/i18n";
+
 interface Projetos {
   id: number,
   secao: {
