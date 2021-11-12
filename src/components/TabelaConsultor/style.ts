@@ -75,12 +75,14 @@ export const Container = styled.div<propriedadesTabela>`
     }
 
     @media (max-width: 768px)  {
-      tbody {
-        height:45vh;
-        width: 75vw;
-      }
+      table{
+        font-size: .9em;
+        tbody {
+          height:45vh;
+          width: 75vw;
+        }
 
-      tr{
+        tr{
           td{
             width: 11vw;
           }
@@ -89,6 +91,7 @@ export const Container = styled.div<propriedadesTabela>`
             width: 31vw;
           }
         }
+      }
     }
  
 `;

@@ -41,19 +41,10 @@ export const Container = styled.a<propriedadesCard>`
     }
     
     @media (max-width: 768px){
-      max-width: 40%;
+      width: 75vw;
       margin: 1rem .6rem 1rem 1.6rem;
     }
     `}
-
-  @media (max-width: 425px){
-    width: 90%;
-  }
-
-  @media (max-width: 768px){
-    width: 43%;
-    margin: 1rem .6rem 1rem 1rem;
-  }
 `;
 
 export const TituloSecao = styled.p<propriedadesCard>`
@@ -66,16 +57,10 @@ export const TituloSecao = styled.p<propriedadesCard>`
     font-size: .81em;
   }
   
-  @media (max-width: 425px){
-    font-size: 80%;
+  @media (max-width: 768px){
+    font-size: 1em;
   }
 
-  ${(props) => props.mostrar ? 
-    css` 
-      font-size: .9em;
-    `: css`
-      font-size: .75em;
-  `}
 `;
 
 export const TituloProjeto = styled.p<propriedadesCard>`
@@ -87,14 +72,11 @@ export const TituloProjeto = styled.p<propriedadesCard>`
     width: 350px;
   }
   
-  @media (max-width: 768px) and (min-width: 426px) {
-    font-size: .75em;
+  @media (max-width: 768px) {
+    font-size: .9em;
     width: 245px; 
   }
 
-  @media (max-width: 425px){
-    font-size: 100%;
-  }
 
   ${(props) => props.mostrar ? 
     css` 
@@ -107,7 +89,7 @@ export const TituloProjeto = styled.p<propriedadesCard>`
       margin-top: 0;
 
     @media (max-width: 768px){
-      width: 200px;
+      width: 60vw;
       margin-top: 5px;
     }
 

@@ -51,10 +51,9 @@ export const Filtros = styled.div`
   }
 
   @media (max-width: 768px)  {
+    flex-wrap: wrap;
     width: 70vw;
-    label{
-      font-size: 0.9em;
-    }
+    margin: 7rem 0rem 0rem 6rem;
   }
 `;
 
@@ -115,15 +114,16 @@ export const Filtro = styled.div`
   }
 
   @media (max-width: 768px)  {
+    margin-left: 1rem;
     input{
-      width: 100px;    
+      width: 130px;    
     }
     label{
       font-size: 1em;
       margin-left: 10px;
     }
     svg{
-      margin-left: 3px;
+      margin-left: 10px;
     }
   }
 `;

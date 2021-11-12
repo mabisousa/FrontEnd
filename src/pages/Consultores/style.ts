@@ -54,9 +54,7 @@ export const Filtros = styled.div`
 
   @media (max-width: 768px)  {
     width: 70vw;
-    label{
-      font-size: 0.9em;
-    }
+    
   }
 `;
 
@@ -92,8 +90,8 @@ export const Filtro = styled.div`
 
   @media (max-width: 768px)  {
     width:55vw;
-    p{
-      font-size: 0.9em;
+    label{
+      font-size: 1em;
     }
   }
 `;
@@ -113,7 +111,7 @@ export const Titulo = styled.h1`
 
     @media (max-width: 768px)  {
       width: 150px;
-      font-size: 0.9em;
+      font-size: 1em;
     }
 `;
 
