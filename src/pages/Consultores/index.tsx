@@ -2,10 +2,10 @@ import React, { useState, useCallback } from 'react';
 
 import { Container, Filtros, Titulo, Formulario, Filtro } from './style';
 
-import Table from "../../components/TabelaConsultor"
+import TabelaConsultor from "../../components/TabelaConsultor"
 import Dropdown from "../../components/Dropdown";
-import Profile from "../../components/Perfil";
-import Header from "../../components/Cabecalho";
+import Perfil from "../../components/Perfil";
+import Cabecalho from "../../components/Cabecalho";
 import Menu from "../../components/Menu";
 
 import { i18n } from '../../translate/i18n';
@@ -28,12 +28,12 @@ const Consultor: React.FC<tema> = ({alternarTema}) => {
   return (
     <>  
       <Container>
-        <Header alternarTema={alternarTema}>
+        <Cabecalho alternarTema={alternarTema}>
           <p>
             {i18n.t('consultores.titulo')}
           </p>
-        </Header>
-        <Profile/>
+        </Cabecalho>
+        <Perfil/>
         <Menu/>
         <Filtros>
           <Titulo>
@@ -70,7 +70,7 @@ const Consultor: React.FC<tema> = ({alternarTema}) => {
             </div>
           </Filtro>
         </Filtros>
-        <Table status={status}/>
+        <TabelaConsultor status={status}/>
       </Container>
     </>
   )

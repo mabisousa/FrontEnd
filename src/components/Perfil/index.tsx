@@ -11,11 +11,11 @@ type ProfileProps  = HTMLAttributes<HTMLDivElement>;
 
 const Perfil: React.FC<ProfileProps> = (props) => {
 
-  let value = localStorage.getItem("@WEGusers:responsavel")
+  let valor = localStorage.getItem("@WEGusers:responsavel")
   let responsavel!: { idResponsavel: number; responsavelNome: string };
 
-  if(value) {
-    responsavel = JSON.parse(value);
+  if(valor) {
+    responsavel = JSON.parse(valor);
   }
 
   return(

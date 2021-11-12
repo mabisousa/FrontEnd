@@ -8,10 +8,10 @@ interface ToastMessage {
   style: object;
 }
 
-const icons = {
+const icones = {
   info: <FiInfo size={24}/>,
-  error: <FiXCircle size={24}/>,
-  success: <FiCheckCircle size={24}/>
+  erro: <FiXCircle size={24}/>,
+  sucesso: <FiCheckCircle size={24}/>
 }
 
 const Toast: React.FC<ToastMessage> = ({messagem, style}) => {
@@ -19,21 +19,21 @@ const Toast: React.FC<ToastMessage> = ({messagem, style}) => {
   const { handleRemoverToast } = useToast();
 
   useEffect(() => {
-    const handleTimer = setTimeout(() => {
+    const handleTempo = setTimeout(() => {
       handleRemoverToast(messagem.id);
     }, 3000)
 
     return () => {
-      clearTimeout(handleTimer);
+      clearTimeout(handleTempo);
     }
   }, [ handleRemoverToast, messagem.id])
 
   return (
-    <Container type={messagem.type} hasDescription={!!messagem.description} style={style}>
-      {icons[messagem.type || "info"]}
+    <Container tipo={messagem.tipo} descricao={!!messagem.descricao} style={style}>
+      {icones[messagem.tipo || "info"]}
       <div>
-        <strong>{messagem.title}</strong>
-        {messagem.description && <p>{messagem.description}</p>}
+        <strong>{messagem.titulo}</strong>
+        {messagem.descricao && <p>{messagem.descricao}</p>}
       </div>
 
       <button onClick={() => handleRemoverToast(messagem.id)}>

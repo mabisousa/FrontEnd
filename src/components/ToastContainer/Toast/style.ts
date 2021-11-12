@@ -2,12 +2,12 @@ import styled, { css } from "styled-components";
 import { animated } from "react-spring";
 
 interface ToastProps {
-  type?: "success" | "error" | "info";
-  hasDescription: boolean;
+  tipo?: "sucesso" | "erro" | "info";
+  descricao: boolean;
 }
 
 const toastTypeVariantions = {
-  success: css`
+  sucesso: css`
     background: ${() =>
       localStorage.getItem('tema') === 
       '{"titulo":"escuro","cor":{"fundo":"#1F262B","fundoEscuro":"#1B2126","titulo":"#fff","undeline":"#57B7DC","corDoIcone":"#fff","andamentoStatus":"#695522","concluidoStatus":"#355062","atrasadoStatus":"#502015","fundoCard":"#11181D","secaoTitulo":"#96CBE2","data":"#D2D2D2","bordaPerfil":"#90C0E3","bordaPerfilAfter":"#90C0E3","projetoMenu":"#0B2E4A","aprovacaoMenu":"#0B3A52","consultoresMenu":"#183A4D","thead":"#0B2E4A","bordaTabela":"#fff","inativoStatus":"#C5715F","habilidadeBotao":"#1B5562","botaoReprovar":"#7D7F80","passo":"#C5C3C3","passoAtivo":"#26435C"}}' 
@@ -29,7 +29,7 @@ const toastTypeVariantions = {
     border: 1px solid  #3172b7;
     box-shadow: 0 0 50px 10px #00000020;
   `,
-  error: css`
+  erro: css`
     background: ${() =>
       localStorage.getItem('tema') === 
       '{"titulo":"escuro","cor":{"fundo":"#1F262B","fundoEscuro":"#1B2126","titulo":"#fff","undeline":"#57B7DC","corDoIcone":"#fff","andamentoStatus":"#695522","concluidoStatus":"#355062","atrasadoStatus":"#502015","fundoCard":"#11181D","secaoTitulo":"#96CBE2","data":"#D2D2D2","bordaPerfil":"#90C0E3","bordaPerfilAfter":"#90C0E3","projetoMenu":"#0B2E4A","aprovacaoMenu":"#0B3A52","consultoresMenu":"#183A4D","thead":"#0B2E4A","bordaTabela":"#fff","inativoStatus":"#C5715F","habilidadeBotao":"#1B5562","botaoReprovar":"#7D7F80","passo":"#C5C3C3","passoAtivo":"#26435C"}}' 
@@ -57,7 +57,7 @@ export const Container = styled(animated.div)<ToastProps>`
     margin-top: 8px;
   }
 
-  ${(props) => toastTypeVariantions[props.type || 'info']}
+  ${(props) => toastTypeVariantions[props.tipo || 'info']}
 
   > svg {
     margin-top: 4px 12px 0 0;
@@ -85,7 +85,7 @@ export const Container = styled(animated.div)<ToastProps>`
     color: inherit;
   }
 
-  ${props => !props.hasDescription && css`
+  ${props => !props.descricao && css`
     align-items: center;   
 
     svg {

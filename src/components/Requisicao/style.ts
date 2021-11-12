@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-
-interface RequestProps {
-  send: boolean,
+interface RequisicaoProps {
+  enviar: boolean,
 }
-export const Background = styled.div`
+
+export const Fundo = styled.div`
   position: fixed;
   top: 0;
   z-index: 9999999;
@@ -14,7 +14,8 @@ export const Background = styled.div`
   background-color: rgb(0,0,0,0.7);
   visibility:visible;
 `;
-export const Container = styled.main<RequestProps>`
+
+export const Container = styled.main<RequisicaoProps>`
   width: 600px;
   height: 400px;
   padding: 1.5%;
@@ -29,34 +30,36 @@ export const Container = styled.main<RequestProps>`
   transform: translate(-50%, -50%);
   z-index: 99999;
 
-    svg {
-      height: 30px;
-      width: 30px;
-      display: block;
-      position: absolute;
-      left: 7%;
-      top: 7%;
-      cursor: pointer;
-    }
-    p {
-      font-size: 18px;
-    }
-    ${props => !props.send ? css`
+  svg {
+    height: 30px;
+    width: 30px;
+    display: block;
+    position: absolute;
+    left: 7%;
+    top: 7%;
+    cursor: pointer;
+  }
 
+  p {
+    font-size: 18px;
+  }
+
+  ${props => !props.enviar ? css`
     textarea {
       width: 100%;
       resize: none;
       height: 200px;
       padding: 10px;
     }
+
     button {
       border: none;
       color: #fff;
       padding: 2% 5%;
       background-color:  ${props => props.theme.cor.habilidadeBotao};
     }
-    ` : css`
 
+  ` : css`
     width: 450px;
     height: 250px;
 
@@ -67,9 +70,9 @@ export const Container = styled.main<RequestProps>`
       height: auto;
 
       button {
-      border: none;
-      color: #fff;
-      padding: 4% 8%;
+        border: none;
+        color: #fff;
+        padding: 4% 8%;
 
         :nth-child(1) {
           background-color: ${props => props.theme.cor.botaoReprovar};
@@ -78,12 +81,8 @@ export const Container = styled.main<RequestProps>`
         background-color:  ${props => props.theme.cor.habilidadeBotao};
         }
       }
-      /* :nth-child(2) {
-        justify-content: flex-start;
-      } */
     }
-    
-    `}
+  `}
 
   @media (max-width: 768px)  {
     width: 450px;
@@ -95,7 +94,6 @@ export const Container = styled.main<RequestProps>`
       height: 200px;
       padding: 10px;
     }
-    
   } 
 `;
 

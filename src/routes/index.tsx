@@ -10,13 +10,11 @@ import escuro from '../styles/themes/escuro';
 import claro from '../styles/themes/claro';
 import usePersistedState from '../utils/usePersistedState';
 
-//alternarTema={alternarTema}
 const Routes: React.FC = () => {
   const [tema, setTema] = usePersistedState<DefaultTheme>('tema', claro);
 
   const alternarTema = () => {
     setTema(tema.titulo === 'claro' ? escuro : claro);
-    console.log(tema.titulo)
     if(tema.titulo === 'escuro'){
       document.body.style.background = "#fff"
     } else{

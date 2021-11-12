@@ -3,17 +3,17 @@ import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web";
 import { format } from "date-fns";
 
-import { Infos, Container, Count, Apontamentos, ProgressBar, Title, Consultores, 
-    Step, Descriptions, Tr, Info } from "./style";
+import { Infos, Container, Conta, Apontamentos, BarraDeProgressao, Titulo, Consultores, 
+    Passo, Descricoes, Tr, Info } from "./style";
 
 import { VscChromeClose } from 'react-icons/vsc';
 import { GoChevronDown } from 'react-icons/go';
 import { FiCheck } from 'react-icons/fi';
 import { BsX } from "react-icons/bs";
 
-import Request from "../../components/Requisicao";
-import Profile from "../../components/Perfil";
-import Header from "../../components/Cabecalho";
+import Requisicao from "../../components/Requisicao";
+import Perfil from "../../components/Perfil";
+import Cabecalho from "../../components/Cabecalho";
 import Menu from "../../components/Menu";
 
 import api from "../../services/api";
@@ -44,15 +44,15 @@ interface Consultor{
 }
 
 interface Apontamento {
-    idApontamento: number,
-    horasTrabalhadas: number,
-    apontamentoData: Date,
-    apontamentoDescricao: string,
-    apontamentoSituacao: string,
+  idApontamento: number,
+  horasTrabalhadas: number,
+  apontamentoData: Date,
+  apontamentoDescricao: string,
+  apontamentoSituacao: string,
 }
 
 interface Selecionados {
-      idApontamento: number,
+  idApontamento: number,
 }
 
 interface tema{
@@ -65,7 +65,7 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
   const [consultores, setConsultores] = useState<Consultor[]>([]);
   const [consultor, setConsultor] = useState<Consultor>();
   const [descricao, setDescricao] = useState<Apontamento>();
-  const [popup, setPopupState] = useState(false);
+  const [popup, setEstadoPopup] = useState(false);
   const [popupDescricao, setPopupDescricao] = useState(false);
   const [apontamentoSelecionado, setApontamentoSelecionado] = useState(false)
   const [mostrarRequisicao, setMostrarRequisicao] = useState(false);
@@ -78,11 +78,11 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
     })
   })
 
-  let value = localStorage.getItem("@WEGusers:responsavel")
+  let valor = localStorage.getItem("@WEGusers:responsavel")
   let responsavel!: { idResponsavel: number; responsavelNome: string };
 
-  if(value) {
-    responsavel = JSON.parse(value);
+  if(valor) {
+    responsavel = JSON.parse(valor);
   }
   
   const aprovacao = {
@@ -105,9 +105,7 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
       setConsultor(response.data);
       setFinalizado(false)
     })
-
-    setPopupState(false);
-
+    setEstadoPopup(false);
   },[setConsultor])
 
   const selecionarApontamento = useCallback(async (id: number, horas: number) => {
@@ -115,7 +113,6 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
     if(selecionados.find(selecionado => selecionado.idApontamento  === id)) {
       setSelecionados(selecionados.filter(apontamento => apontamento.idApontamento !== id))
       setApontamentoSelecionado(false);
-
     } else {
       selecionados.push({idApontamento: id})
       setSelecionados(selecionados)
@@ -124,7 +121,6 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
   },[apontamentoSelecionado])
 
   const exibirDescricao = useCallback((apontamento: Apontamento) => {
-
     if(!descricao) {
       setPopupDescricao(!popupDescricao)
     }
@@ -134,8 +130,8 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
     setDescricao(apontamento)
   },[descricao, popupDescricao])
 
-  let alocacoesfiltradas = consultor?.consultorAlocacoes.map(alocacao => 
-    alocacao.apontamentos.filter(apontamento => apontamento.apontamentoSituacao === "ESPERA"))
+  let alocacoesfiltradas = consultor?.consultorAlocacoes
+      .map(alocacao => alocacao.apontamentos.filter(apontamento => apontamento.apontamentoSituacao === "ESPERA"))
   
   const enviarAprovacao = useCallback(async () => {
     if(consultor) {
@@ -181,27 +177,27 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
   return (
     <>
       {mostrarRequisicao && consultor && 
-        <Request selecionados={selecionados} responsavel={responsavel} 
+        <Requisicao selecionados={selecionados} responsavel={responsavel} 
           consultor={consultor} mostrarRequisicao={mostrarPopupRequisicao}/> 
       }
-      <Profile/>
+      <Perfil/>
       <Menu />
-      <Header alternarTema={alternarTema}>
+      <Cabecalho alternarTema={alternarTema}>
         <p>
           {i18n.t('aprovacao.titulo')}
         </p>
-      </Header>
-      <Title>
+      </Cabecalho>
+      <Titulo>
         {i18n.t('aprovacao.titulo')}
-      </Title>
+      </Titulo>
       <Container>
         <Infos>
           <Form ref={formRef} id="aprovar" onSubmit={ enviarAprovacao }>
             <h1>
               {i18n.t('aprovacao.consultorInfo')}
             </h1>
-            <div className="information">
-              <div className="holding">
+            <div className="informacao">
+              <div className="segurando">
                 <Info>
                   {consultor ? consultor.idConsultor : i18n.t('aprovacao.cadastro')}
                 </Info>
@@ -213,8 +209,8 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
             <h1>
               {i18n.t('aprovacao.aprovacaoInfo')}
             </h1>
-            <div className="information">
-              <div className="holding">
+            <div className="informacao">
+              <div className="segurando">
                 <Info>
                   {responsavel ? responsavel.idResponsavel :  "ID"}
                 </Info>
@@ -225,11 +221,11 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
             </div>
           </Form>
         </Infos>
-        <Count id="count">
+        <Conta>
           <h1> {i18n.t('aprovacao.aprovacoes')}</h1>
           <div>
-            <div className="hold">
-              <div className="numbers">
+            <div className="segura">
+              <div className="numeros">
                 <p>
                   {apontamentosconsultor}
                 </p>
@@ -238,8 +234,8 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
                 {i18n.t('aprovacao.apontamentos')}
               </p>
             </div>
-            <div className="hold">
-              <div className="numbers">
+            <div className="segura">
+              <div className="numeros">
                 <p>
                   {apontamentosaprovados}
                 </p>
@@ -248,8 +244,8 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
                 {i18n.t('aprovacao.aprovado')}
               </p>
             </div>
-            <div className="hold">
-              <div className="numbers">
+            <div className="segura">
+              <div className="numeros">
                 <p>
                   {apontamentosreprovados}
                 </p>
@@ -259,10 +255,10 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
               </p>
             </div>
           </div>
-          <button id="visualizar" onClick={() => setPopupState(true) }>
+          <button onClick={() => setEstadoPopup(true) }>
               {i18n.t('aprovacao.consultor')}
           </button>
-        </Count>
+        </Conta>
         <Apontamentos>
           <table>
             <thead>
@@ -284,7 +280,8 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
                 alocacao.map(apontamento => 
                   <tr key={apontamento.idApontamento}>
                     <td>
-                      <input type="checkbox" value={apontamento.idApontamento} onClick={() => selecionarApontamento(apontamento.idApontamento, apontamento.horasTrabalhadas)}/>
+                      <input type="checkbox" value={apontamento.idApontamento} 
+                        onClick={() => selecionarApontamento(apontamento.idApontamento, apontamento.horasTrabalhadas)}/>
                     </td>
                     <td>
                       {apontamento.apontamentoData}
@@ -297,7 +294,7 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
                         <GoChevronDown/>
                       </button>
                     </td>
-                    <Descriptions open={!!popupDescricao}>
+                    <Descricoes open={!!popupDescricao}>
                       <header>
                         { i18n.t('aprovacao.descricao')}
                       </header>
@@ -306,15 +303,15 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
                           {descricao && descricao.apontamentoDescricao}
                         </p>
                       </div>
-                    </Descriptions>
+                    </Descricoes>
                   </tr> 
                 )
               )}   
             </tbody>
           </table>
         </Apontamentos>
-        <ProgressBar>
-          <div className="headers">
+        <BarraDeProgressao>
+          <div className="cabecalhos">
             <p>
               {i18n.t('aprovacao.registroEfetuado')}
             </p>
@@ -328,31 +325,31 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
               {i18n.t('aprovacao.requisicao')}
             </p>
           </div>
-          <div className="steps">
-            <Step isActive={true}>
+          <div className="passos">
+            <Passo ativo={true}>
               <FiCheck/>
-            </Step>
-            <Step isActive={!!finalizado} >
+            </Passo>
+            <Passo ativo={!!finalizado} >
               { !!finalizado ? <FiCheck/> : <VscChromeClose/> }
-            </Step>
-            <Step isActive={false}>
+            </Passo>
+            <Passo ativo={false}>
               <VscChromeClose/>
-            </Step>
-            <Step isActive={false}>
+            </Passo>
+            <Passo ativo={false}>
               <VscChromeClose/>
-            </Step>
+            </Passo>
           </div>
-        </ProgressBar>
+        </BarraDeProgressao>
         {!!apontamentoSelecionado &&
-          <button className="buttons" id="reprovar" onClick={() => setMostrarRequisicao(!mostrarRequisicao)}>
+          <button className="botoes" id="reprovar" onClick={() => setMostrarRequisicao(!mostrarRequisicao)}>
             {i18n.t('aprovacao.reprovar')}
           </button>
         }
-        <button form="aprovar" className="buttons" type="submit">{i18n.t('aprovacao.finalizar')}</button>
+        <button form="aprovar" className="botoes" type="submit">{i18n.t('aprovacao.finalizar')}</button>
       </Container>
       {popup &&
-        <Consultores show={popup}>
-          <div id="hold">
+        <Consultores mostrar={popup}>
+          <div id="segura">
             <table>
               <thead>
                 <tr>
@@ -384,7 +381,7 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
                 )}
               </tbody>
             </table>
-            <button onClick={() => setPopupState(false)}>
+            <button onClick={() => setEstadoPopup(false)}>
               <BsX/>
             </button>
           </div>

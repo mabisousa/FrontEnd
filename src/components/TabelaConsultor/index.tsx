@@ -87,21 +87,21 @@ const TabelaConsultor: React.FC<Consultor> = ({status}) => {
               </tr>
             </thead>
             <tbody>
-              {consultor.map((consultant) => (
-                <Tr color={consultant.consultorStatus}>
+              {consultor.map((consultor) => (
+                <Tr color={consultor.consultorStatus}>
                   <td>
-                    {consultant.idConsultor}
+                    {consultor.idConsultor}
                   </td>
                   <td>
-                    {consultant.consultorNome}
+                    {consultor.consultorNome}
                   </td>
                   <td>
-                    {consultant.consultorStatus}
+                    {consultor.consultorStatus}
                   </td> 
                   <td>
-                    {consultant.consultorAlocacoes.length}
+                    {consultor.consultorAlocacoes.length}
                   </td>
-                  <button onClick={() => handleAbrirPopup(consultant.idConsultor)} key={consultant.idConsultor}>
+                  <button onClick={() => handleAbrirPopup(consultor.idConsultor)} key={consultor.idConsultor}>
                     <td> + </td>
                   </button>
                 </Tr>

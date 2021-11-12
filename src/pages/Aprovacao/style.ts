@@ -15,7 +15,7 @@ export const Container = styled.div`
     margin:10px 0;
   }
 
-  .buttons {
+  .botoes {
     height: 50px;
     padding: 10px;
     color: #fff;
@@ -48,7 +48,7 @@ export const Infos = styled.div`
     display: flex;
     flex-direction: column;
 
-    .information {
+    .informacao {
       margin: 3% 0;
       width: 100%;
       height: 100%;
@@ -58,7 +58,7 @@ export const Infos = styled.div`
         width: auto;
       }
 
-      .holding {
+      .segurando {
         display: flex;
         align-items: center;
         margin-bottom: 3%;
@@ -73,7 +73,7 @@ export const Infos = styled.div`
         }
       }
 
-      .holding:nth-child(2) {
+      .segurando:nth-child(2) {
         display: flex;
         justify-content: space-between;
           
@@ -98,7 +98,7 @@ export const Infos = styled.div`
       width: 80px;
     }
 
-    .holding {
+    .segurando {
       div:nth-child(1) {
         width: 33%;
         margin-right: 5%;
@@ -109,7 +109,8 @@ export const Infos = styled.div`
   @media (max-width: 768px)  {
     width: 40vw;
     margin: 0 0 10px 35px;
-    .holding {
+
+    .segurando {
       div:nth-child(1) {
         width: 43%;
         margin-right: 5%;
@@ -118,7 +119,7 @@ export const Infos = styled.div`
   }
 `;
 
-export const Count = styled.div`
+export const Conta = styled.div`
   height: 40vh;
   width: 27vw;
   position: relative;
@@ -128,13 +129,13 @@ export const Count = styled.div`
   transition: 1s;
 
   div {
-    .hold {
+    .segura {
       display: flex;
       flex-direction: row;
       align-items:center;
       margin:10px 0;
 
-      .numbers {
+      .numeros {
         margin: 0 20px 0px 0px;
         width: 40px;
         height: 40px;
@@ -149,8 +150,8 @@ export const Count = styled.div`
       }
     }
 
-    .hold:nth-child(1) {
-      .numbers {
+    .segura:nth-child(1) {
+      .numeros {
         p {
           font-size: 1.12em;
           color: #7E7E7E90;
@@ -158,8 +159,8 @@ export const Count = styled.div`
       }
     }
 
-    .hold:nth-child(2) {
-      .numbers {
+    .segura:nth-child(2) {
+      .numeros {
         p {
           font-size: 1.12em;
           color: #13B77C;
@@ -167,8 +168,8 @@ export const Count = styled.div`
       }
     }
 
-    .hold:nth-child(3) {
-      .numbers {
+    .segura:nth-child(3) {
+      .numeros {
         p {
           font-size: 1.2em;
           color: #AC341A;
@@ -187,9 +188,11 @@ export const Count = styled.div`
     transition: 1s;
     position: relative;
   }
+
   @media (max-width: 1024px) and (min-width: 769px) {
     width:21vw;
   }
+
   @media (max-width: 768px)  {
     width: 32vw;
   }
@@ -269,9 +272,11 @@ export const Apontamentos = styled.div`
       width: 40px;
     }
   }
+
   @media (max-width: 1024px) and (min-width: 769px) {
     width: 27vw;   
   }
+
   @media (max-width: 768px)  {
     margin: 10px 0 10px 35px;
     width: 73vw;
@@ -285,7 +290,7 @@ export const Apontamentos = styled.div`
   }
 `;
 
-export const Title = styled.h1`
+export const Titulo = styled.h1`
   font-weight:normal;
   font-size: 1.25em;
   text-decoration: underline ${props => props.theme.cor.undeline};
@@ -296,11 +301,11 @@ export const Title = styled.h1`
   color: ${props => props.theme.cor.titulo};
 `;
 
-export const ProgressBar = styled.div`
+export const BarraDeProgressao = styled.div`
   height:120px;
   width:55vw;
   
-  .headers {
+  .cabecalhos {
     height: 50px;
     display: flex;
     justify-content: space-between;
@@ -313,10 +318,9 @@ export const ProgressBar = styled.div`
       font-weight: bold;
       color: #00579D;
     }
-
   }
 
-  .steps {
+  .passos {
     position: relative;
     display:flex;
     justify-content: space-evenly;
@@ -329,6 +333,7 @@ export const ProgressBar = styled.div`
       font-size: 0.9em;
     }     
   }
+
   @media (max-width: 768px)  {
     width:68vw;
     margin: 10px 0 0 20px;
@@ -338,11 +343,11 @@ export const ProgressBar = styled.div`
   }
 `;
 
-interface StepActive {
-  isActive: boolean;
+interface PassoProps {
+  ativo: boolean;
 }
 
-export const Step = styled.div<StepActive>`
+export const Passo = styled.div<PassoProps>`
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -366,7 +371,7 @@ export const Step = styled.div<StepActive>`
     width: 20px;
   }
 
-  ${(props) => props.isActive ?
+  ${(props) => props.ativo ?
     css`
       background: ${props => props.theme.cor.passoAtivo};
       transition: 1s;
@@ -396,13 +401,13 @@ export const Step = styled.div<StepActive>`
   `}
 `;
 
-interface PopUp {
-  show: boolean;
+interface PopupProps {
+  mostrar: boolean;
 }
     
-export const Consultores = styled.div<PopUp>`
+export const Consultores = styled.div<PopupProps>`
     
-  ${(props) => !!props.show && css`
+  ${(props) => !!props.mostrar && css`
     transition: 200ms ease-in-out;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.7);
@@ -415,7 +420,7 @@ export const Consultores = styled.div<PopUp>`
     top: 0px;
     color: ${props => props.theme.cor.titulo};
     
-    #hold{
+    #segura{
       height: 600px;
       width: 75%;
       background-color: ${props => props.theme.cor.fundo};
@@ -482,7 +487,7 @@ export const Consultores = styled.div<PopUp>`
   `}
 
   @media (max-width: 1024px) and (min-width: 769px) {
-    #hold{
+    #segura{
       height: 90vh;
       width: 90vw;
     }
@@ -491,10 +496,10 @@ export const Consultores = styled.div<PopUp>`
       right: 70px;
       top: 48px;
     }
-    
   }
+
   @media (max-width: 768px)  {
-    #hold{
+    #segura{
       height: 90vh;
       width: 90vw;
     }
@@ -506,12 +511,12 @@ export const Consultores = styled.div<PopUp>`
 
     table{
       tbody {
-      width: 74vw;
-    }
+        width: 74vw;
+      }
 
-    thead tr{
-      width: 74vw;
-    }
+      thead tr{
+        width: 74vw;
+      }
     }
   }
 `;
@@ -569,7 +574,7 @@ interface Description {
   open: boolean;
 }
 
-export const Descriptions = styled.div<Description>`
+export const Descricoes = styled.div<Description>`
   width:0;
   right: 100%;
   height: 270px;
@@ -642,7 +647,6 @@ export const Descriptions = styled.div<Description>`
         background: #0075B1;
         color: #fff;
       }
-   
     ` : css`
       
     `}

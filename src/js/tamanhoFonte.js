@@ -1,21 +1,21 @@
-const tamanhoFonte = (prarameterSize) => {
+const tamanhoFonte = (tamanho) => {
 
-  if( prarameterSize === "pequeno"){
+  if( tamanho === "pequeno"){
     document.body.style.fontSize="14px";
     localStorage.setItem("Fontsize", "14px")
   }
   
-  if( prarameterSize === "medio"){
+  if( tamanho === "medio"){
     document.body.style.fontSize="16px";
     localStorage.setItem("Fontsize", "16px")
   }
 
-  if( prarameterSize === "grande"){
+  if( tamanho === "grande"){
     document.body.style.fontSize="19px";
     localStorage.setItem("Fontsize", "19px")
   }
   
-  console.log(prarameterSize)
+  console.log(tamanho)
   
 }
 

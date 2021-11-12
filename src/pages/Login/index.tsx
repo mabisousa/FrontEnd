@@ -6,7 +6,7 @@ import * as Yup from "yup";
 
 import logo from "../../assets/logo.svg";
 
-import { Container, Inputs,  FormButton, ImgLogo, HoldButton } from './style';
+import { Container, Inputs, BotaoForm, ImgLogo, SeguraBotao } from './style';
 
 import getValidationErrors from '../../utils/getValidationErrors';
 import { AuthContext } from '../../hooks/Auth';
@@ -24,7 +24,7 @@ const Login: React.FC = () => {
   
   const formRef = useRef<FormHandles>(null);
   const { signIn } = useContext(AuthContext);
-  const { handleAddToast } = useToast();
+  const { handleAdicionarToast } = useToast();
   const history = useHistory();
 
   const handleSubmit = useCallback(async (data: SignInData) => {
@@ -57,13 +57,13 @@ const Login: React.FC = () => {
         return
       }
 
-      handleAddToast({
-        type: 'error',
-        title: i18n.t('login.titulo'),
-        description: i18n.t('login.descricao'),
+      handleAdicionarToast({
+        tipo: 'erro',
+        titulo: i18n.t('login.titulo'),
+        descricao: i18n.t('login.descricao'),
       })
     }      
-  },[ signIn, handleAddToast, history ]);
+  },[ signIn, handleAdicionarToast, history ]);
 
   return (
     <>
@@ -77,14 +77,14 @@ const Login: React.FC = () => {
             <Input name="senha" type="password" placeholder=" ">
               {i18n.t('login.senha')}
             </Input>
-            <HoldButton>
+            <SeguraBotao>
               <button>
                 {i18n.t('login.esqueceuSenha')}
               </button>
-            </HoldButton>
-            <FormButton type="submit">
+            </SeguraBotao>
+            <BotaoForm type="submit">
               {i18n.t('login.entrar')}
-            </FormButton>
+            </BotaoForm>
           </Form>
         </Inputs>
       </Container>
