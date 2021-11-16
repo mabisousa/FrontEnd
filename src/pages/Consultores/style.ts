@@ -40,6 +40,7 @@ export const Filtros = styled.div`
     padding-left: 10px;
     background: transparent;
     border: 1px solid ${props => props.theme.cor.corDoIcone};
+    color: ${props => props.theme.cor.corDoIcone};
     
     &::placeholder{
       color: ${props => props.theme.cor.corDoIcone};

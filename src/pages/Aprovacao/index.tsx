@@ -60,7 +60,7 @@ interface tema{
   alternarTema(): void
 }
 
-const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
+const Aprovacao: React.FC<tema> = ({alternarTema}) => {
 
   const formRef = useRef<FormHandles>(null);
   const [consultores, setConsultores] = useState<Consultor[]>([]);
@@ -72,6 +72,7 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
   const [mostrarRequisicao, setMostrarRequisicao] = useState(false);
   const [finalizado, setFinalizado] = useState(false);
   const [selecionados,setSelecionados] = useState<Selecionados[]>([]);
+  const [pesquisa, setPesquisa] = useState('');
 
   useEffect(()=> {
     api.get(`consultores`).then((response)=> {
@@ -156,6 +157,8 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
   const mostrarPopupRequisicao = useCallback((state: boolean) => {
     setMostrarRequisicao(state)
   },[setMostrarRequisicao]);
+
+  const filtrados = consultores.filter((consultor) => consultor.consultorNome.toLowerCase().includes(pesquisa.toLowerCase()));  
   
   let horasTotais = 0;
   let apontamentosconsultor = 0;
@@ -352,6 +355,18 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
       {popup &&
         <Consultores mostrar={popup}>
           <div id="segura">
+            <div id="header">
+              <div id="filtro">
+                <label>
+                  {i18n.t('consultores.nome')}
+                </label>
+                <input type="text" placeholder={i18n.t('consultores.placeHolder')} 
+                  value={pesquisa} onChange={(ev) => setPesquisa(ev.target.value)}/>
+              </div>
+              <button onClick={() => setEstadoPopup(false)}>
+                <BsX/>
+              </button>
+            </div>
             <table>
               <thead>
                 <tr>
@@ -367,7 +382,7 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
                 </tr>
               </thead>
               <tbody>
-                {consultores.map(consultor => 
+                {filtrados.map(consultor => 
                   <Tr key={consultor.idConsultor} color={"ATIVO"}
                     onClick={() => selecionarConsultor(consultor.idConsultor)}>
                     <td>
@@ -383,9 +398,6 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
                 )}
               </tbody>
             </table>
-            <button onClick={() => setEstadoPopup(false)}>
-              <BsX/>
-            </button>
           </div>
         </Consultores>
       }
@@ -393,4 +405,4 @@ const AprovacaoTest: React.FC<tema> = ({alternarTema}) => {
   )
 }
 
-export default AprovacaoTest;
+export default Aprovacao;

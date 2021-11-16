@@ -9,7 +9,6 @@ interface SignInCredentials {
 interface AuthState {
   jwt: string,
   usuario: object,
-  responsavel: object
 }
 
 interface ContextData {
@@ -28,14 +27,13 @@ export const AuthProvider: React.FC = ({ children }) => {
 
     const jwt = localStorage.getItem("@WEGusers:token");
     const usuario = localStorage.getItem("@WEGusers:usuario");
-    const responsavel = localStorage.getItem("@WEGusers:responsavel");
 
     if(localStorage.getItem("Fontsize")){
       document.body.style.fontSize=`${localStorage.getItem("Fontsize")}`;
     }
 
-    if(jwt && usuario && responsavel) {
-      return { jwt, usuario: JSON.parse(usuario), responsavel: JSON.parse(responsavel)};
+    if(jwt && usuario) {
+      return { jwt, usuario: JSON.parse(usuario)};
     }
 
     return {} as AuthState;
@@ -48,20 +46,18 @@ export const AuthProvider: React.FC = ({ children }) => {
       senha,
     });
       
-    const { jwt, usuario, responsavel } = resposta.data;
+    const { jwt, usuario } = resposta.data;
 
     localStorage.setItem("@WEGusers:token", jwt);
     localStorage.setItem("@WEGusers:usuario", JSON.stringify(usuario));
-    localStorage.setItem("@WEGusers:responsavel", JSON.stringify(responsavel));
     
-    setDado({jwt, usuario, responsavel});
+    setDado({jwt, usuario});
 
   }, []);
 
   const signOut = useCallback(() => {
     localStorage.removeItem("@WEGusers: token");
     localStorage.removeItem("@WEGusers: usuario");
-    localStorage.removeItem("@WEGusers: responsavel");
 
     setDado({} as AuthState);
   }, []);
