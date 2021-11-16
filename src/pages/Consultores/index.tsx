@@ -18,8 +18,6 @@ const Consultor: React.FC<tema> = ({alternarTema}) => {
   const [pesquisa, setPesquisa] = useState('');
   const [status, setStatus] = useState('Todos');
 
-  window.localStorage.getItem('Theme:darkMode')
-
   const handleFiltrarStatus = useCallback((status: string) => {
     setStatus(status);
     console.log(status)

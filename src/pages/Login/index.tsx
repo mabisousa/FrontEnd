@@ -20,7 +20,11 @@ interface SignInData {
   senha: string,
 }
 
-const Login: React.FC = () => {
+interface tema{
+  alternarTema(): void
+}
+
+const Login: React.FC<tema> = ({alternarTema}) => {
   
   const formRef = useRef<FormHandles>(null);
   const { signIn } = useContext(AuthContext);
