@@ -427,16 +427,50 @@ export const Consultores = styled.div<PopupProps>`
       display: flex;
       justify-content: center;
       align-items: center;
-    }
+      flex-direction: column;
 
-    button{
-      color: ${props => props.theme.cor.titulo};
-      font-size: 1.9em;
-      background-color: transparent;
-      border: 0;
-      position: absolute;
-      right: 200px;
-      bottom: 567px;
+      #header{
+        width: 57em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: -50px;
+        margin-bottom: 50px;
+
+        #filtro{
+          label{
+            font-size: 1.25em;
+            color: ${props => props.theme.cor.corDoIcone};
+          }
+
+          input{
+            width: 20em;
+            background: transparent;
+            border: 1px solid ${props => props.theme.cor.corDoIcone};
+            min-height: 20px;
+            font-size: 1em;
+            color: ${props => props.theme.cor.corDoIcone};
+            padding-left: 10px;
+            margin-left: 10px;
+            
+            &::placeholder{
+              color: ${props => props.theme.cor.corDoIcone};
+            }
+          }
+        }
+
+        button{
+          float: right;
+          color: black;
+          font-size: 1.9em;
+          background-color: transparent;
+          border: 0;
+
+          svg{
+            color: ${props => props.theme.cor.titulo};
+          }
+        }
+      }
     }
 
     table{

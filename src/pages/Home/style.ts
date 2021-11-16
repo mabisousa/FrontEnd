@@ -38,6 +38,7 @@ export const Filtros = styled.div`
     border: 1px solid ${props => props.theme.cor.corDoIcone};
     min-height: 20px;
     font-size: 1em;
+    color: ${props => props.theme.cor.corDoIcone};
     
     &::placeholder{
       color: ${props => props.theme.cor.corDoIcone};
