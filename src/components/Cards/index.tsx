@@ -7,6 +7,8 @@ import Popup from "../PopupProjetos";
 
 import { i18n } from '../../translate/i18n';
 
+import { format, parseISO } from "date-fns";
+
 interface Projetos {
   id: number,
   secao: {
@@ -16,8 +18,8 @@ interface Projetos {
   projetoNome: string,
   projetoDescricao: string,
   projetoStatus: string,
-  projetoDateInicio: Date,
-  projetoDateFim: Date,
+  projetoDateInicio: string,
+  projetoDateFim: string,
   projetoHorasTotais: number,
   projetoHorasTrabalhadas: number,
   projetoConsultores: [
@@ -50,12 +52,13 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
     api.get(`/projetos/${id}`).then((response) => {
       setProjeto(response.data)
     })
+
   }, [id]);
 
   const handleMostrarPopup = (showPop: boolean) => {
     setMostrarPopup(showPop);
   }
-
+  
   return (
     <>
       { projeto &&
@@ -95,15 +98,15 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
           </Status>
           <Data mostrar={!!mostrar}>
             <p>
-              {i18n.t('card.de')} {projeto.projetoDateInicio}
+              {i18n.t('card.de')} {format(parseISO(projeto.projetoDateInicio), "dd'/'MM'/'yyyy")}
             </p>
             { projeto.projetoDateFim ?
               <p>
-                {i18n.t('card.ate')} {projeto.projetoDateFim}
+                {i18n.t('card.ate')} {format(parseISO(projeto.projetoDateFim), "dd'/'MM'/'yyyy") }
               </p>
             :
               <p>
-                {i18n.t('card.ate')} 00-00-00
+                {i18n.t('card.ate')} 00/00/00
               </p>
             }
           </Data>
