@@ -15,6 +15,7 @@ import { IoGrid } from "react-icons/io5";
 
 import { i18n } from "../../translate/i18n";
 
+
 interface Projetos {
   id: number,
   secao: {
@@ -178,7 +179,9 @@ const Home: React.FC<tema> = ({alternarTema}) => {
         <Cards> 
           { filtrados.map((projeto) => (
             <Card id={projeto.id} key={projeto.id} mostrar={mostrarCard}/> 
-          ))}
+            
+          )
+          )}
         </Cards>
       </Container>
       

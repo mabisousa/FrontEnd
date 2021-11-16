@@ -1,7 +1,6 @@
 import React, { useCallback, useRef, useState, useEffect } from "react";
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web";
-import { format } from "date-fns";
 
 import { Infos, Container, Conta, Apontamentos, BarraDeProgressao, Titulo, Consultores, 
     Passo, Descricoes, Tr, Info } from "./style";
@@ -20,6 +19,8 @@ import api from "../../services/api";
 
 import { i18n } from "../../translate/i18n";
 
+import { format, parseISO } from "date-fns"
+
 interface Consultor{
   idConsultor: number,
   consultorNome: string,
@@ -33,7 +34,7 @@ interface Consultor{
       apontamentos: [{
         idApontamento: number,
         horasTrabalhadas: number,
-        apontamentoData: Date,
+        apontamentoData: string,
         apontamentoDescricao: string,
         apontamentoSituacao: string
       }],
@@ -46,7 +47,7 @@ interface Consultor{
 interface Apontamento {
   idApontamento: number,
   horasTrabalhadas: number,
-  apontamentoData: Date,
+  apontamentoData: string,
   apontamentoDescricao: string,
   apontamentoSituacao: string,
 }
@@ -119,7 +120,7 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
       setSelecionados(selecionados)
       setApontamentoSelecionado(true);
     }
-  },[apontamentoSelecionado])
+  },[selecionados])
 
   const exibirDescricao = useCallback((apontamento: Apontamento) => {
     if(!descricao) {
@@ -151,7 +152,7 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
         console.log(e)
       }
     }
-  },[aprovacao, consultor, responsavel.idResponsavel])
+  },[aprovacao, consultor, responsavel.idResponsavel, selecionados])
 
   const mostrarPopupRequisicao = useCallback((state: boolean) => {
     setMostrarRequisicao(state)
@@ -163,6 +164,7 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
   let apontamentosconsultor = 0;
   let apontamentosaprovados = 0;
   let apontamentosreprovados = 0;
+  let formatted, formatteddata: {} | null | undefined;
 
   consultor?.consultorAlocacoes.map(alocacao => {
     horasTotais += alocacao.horasTotais
@@ -287,7 +289,7 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
                         onClick={() => selecionarApontamento(apontamento.idApontamento, apontamento.horasTrabalhadas)}/>
                     </td>
                     <td>
-                      {apontamento.apontamentoData}
+                      {format(parseISO(apontamento.apontamentoData), "dd'/'MM'/'yyyy")}
                     </td>
                     <td>
                       {apontamento.horasTrabalhadas}
