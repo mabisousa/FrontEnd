@@ -1,10 +1,13 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
 import Route from './Route';
+
+import Home from '../pages/Home';
 import Login from '../pages/Login';
+import Listagem from '../pages/Listagem';
 import Aprovacao from '../pages/Aprovacao';
 import Consultores from '../pages/Consultores';
-import Home from '../pages/Home/index';
+
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import escuro from '../styles/themes/escuro';
 import claro from '../styles/themes/claro';
@@ -26,10 +29,11 @@ const Routes: React.FC = () => {
   return(
     <ThemeProvider theme={tema}>
       <Switch>
-        <Route path="/" exact component={Login}/>
+        <Route path="/" exact component={(props) => <Login alternarTema={alternarTema} />}/>
         <Route path="/home" exact component={(props) => <Home alternarTema={alternarTema} />} isPrivate/>
         <Route path="/aprovacao" exact component={(props) => <Aprovacao alternarTema={alternarTema} />} isPrivate/>
         <Route path="/consultores" exact component={(props) => <Consultores alternarTema={alternarTema} />} isPrivate/>
+        <Route path="/listagem" exact component={(props) => <Listagem alternarTema={alternarTema} />} isPrivate/>
       </Switch>
     </ThemeProvider>
   )
