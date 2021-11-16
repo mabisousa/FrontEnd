@@ -30,21 +30,30 @@ export const Container = styled.a<propriedadesCard>`
 
   ${(props) => props.mostrar ? 
     css` 
-      width: 30%;
+      width: 27vw;
       min-height : 200px;
+      
+      @media (max-width: 1024px) and (min-width: 769px) {
+        width: 35vw;
+      }
+      
+      @media (max-width: 768px){
+        width: 36vw;
+      }
+
     `: css`
-      width:45%; 
+      width:40vw; 
       min-height: 150px;
 
-    @media (max-width: 1024px) and (min-width: 769px) {
-      margin: .6rem;
-    }
-    
-    @media (max-width: 768px){
-      width: 75vw;
-      margin: 1rem .6rem 1rem 1.6rem;
-    }
-    `}
+      @media (max-width: 1024px) and (min-width: 769px) {
+        width: 39.5vw;
+        min-height : 150px;
+      }
+
+      @media (max-width: 768px){
+        width: 72vw;
+      }
+  `}
 `;
 
 export const TituloSecao = styled.p<propriedadesCard>`
@@ -53,87 +62,77 @@ export const TituloSecao = styled.p<propriedadesCard>`
   margin-left: 2rem;
   color: ${props => props.theme.cor.secaoTitulo};
 
-  @media (max-width: 1024px) and (min-width: 426px) {
-    font-size: .81em;
-  }
-  
-  @media (max-width: 768px){
-    font-size: 1em;
-  }
+  ${(props) => props.mostrar ? 
+    css` 
+      @media (max-width: 768px){
+        width: 215px;
+        font-size: .9em;
+      }
+    `: css`
 
+  `}
+
+  
 `;
 
 export const TituloProjeto = styled.p<propriedadesCard>`
   margin-left: 2rem;
   color: ${props => props.theme.cor.titulo};
 
-  @media (max-width: 1024px) and (min-width: 769px) {
-    font-size: .94em;
-    width: 350px;
-  }
-  
-  @media (max-width: 768px) {
-    font-size: .9em;
-    width: 245px; 
-  }
-
-
   ${(props) => props.mostrar ? 
     css` 
       width: 315px;
       font-size: 1em;
       margin-top: 1rem; 
+
+      @media (max-width: 1024px) and (min-width: 769px) {
+        width: 300px;
+      }
+      @media (max-width: 768px){
+        width: 215px;
+        font-size: .9em;
+      }
+      
     `: css`
       width: 500px;
       font-size: 1.15em;
       margin-top: 0;
 
-    @media (max-width: 768px){
-      width: 60vw;
-      margin-top: 5px;
-    }
-
-    @media (max-width: 1024px) and (min-width: 769px) {
-      width: 220px;
-      font-size: .9em;
-      margin-top: 10px;
-    }
+      @media (max-width: 1024px) and (min-width: 769px) {
+        width: 340px;
+      }
   `}
 `;
 
 export const SeguraHoras = styled.div<propriedadesCard>`
   width:200px;
-  min-height:40px;
+  height:40px;
   float: left;
   color: ${props => props.theme.cor.titulo};
-
-  @media (max-width: 425px){
-    margin-left: 2rem;
-    width: 150px;
-  }
-
-  @media (max-width: 768px){
-    margin-left: 1rem;
-    width: 130px;
-  }
 
   ${(props) => props.mostrar ? 
     css` 
       margin-left: 7px;
       margin-top: 1rem; 
+
+      @media (max-width: 1024px) and (min-width: 769px) {
+        height: 35px;
+      }
+
+      @media (max-width: 768px){
+        p{
+          font-size: .9em;
+        }
+      }
+
     `: css`
       margin-left: 2rem;
       margin-top: 7px;
-        
-    @media (max-width: 1024px) and (min-width: 769px){
-      margin-left: 1rem;
-      width: 140px;
-      margin-top: 10px;
-    }
 
-    @media (max-width: 768px){
-      width: 130px;
-    }
+      @media (max-width: 1024px) and (min-width: 769px) {
+        max-width: 240px;
+      }
+  
   `}
 `;
 
@@ -147,31 +146,15 @@ export const Hora = styled.div<propriedadesCard>`
   ${(props) => props.mostrar ? 
     css` 
       width: 155px;
-      font-size:.7em; 
+   
+      
     `: css`
       width:200px;
-      font-size: .75em;
-          
-    @media (max-width: 1024px) and (min-width: 769px){
-      width: 100px;
-        p{
-          font-size: .75em;
-        } 
-    }
+
+      @media (max-width: 1024px) and (min-width: 769px) {
+        max-width: 155px;
+      }
   `}
-
-  @media (max-width: 768px){
-    margin-left: 1rem;
-    width: 100px;
-      p{
-        font-size: .75em;
-      } 
-  }
-
-  @media (max-width: 1024px) and (min-width: 769px){
-    margin-left: 1rem;
-    width: 150px;
-  }
 `;
 
 export const Status = styled.div<propriedadesCard>`
@@ -184,7 +167,6 @@ export const Status = styled.div<propriedadesCard>`
   p:nth-child(1){
     font-weight: regular;
     font-size: .95em;
-    
   }
 
   p:nth-child(2){
@@ -196,7 +178,7 @@ export const Status = styled.div<propriedadesCard>`
     css` 
       margin-top: 17px;
       margin-right: 16px;
-      min-height:60px;
+      height:60px;
       
       p:nth-child(1){
         font-size: .9em;
@@ -205,10 +187,19 @@ export const Status = styled.div<propriedadesCard>`
       p:nth-child(2){
         font-size: 1em;
       }
+
+      @media (max-width: 1024px) and (min-width: 769px) {
+        height: 50px;
+      }
+
+      @media (max-width: 768px){
+        height: 50px;
+      }
+      
     `: css`
       margin-top: 7px;
       margin-right: 32px;
-      min-height:60px;
+      height:60px;
 
       p:nth-child(1){
         font-size: .95em;
@@ -217,58 +208,9 @@ export const Status = styled.div<propriedadesCard>`
       p:nth-child(2){
         font-size: 1.1em;
       }
-        
-    @media (max-width: 768px) {
-      margin: 5px 0 5px 0;  
-    }
-
-    @media (max-width: 1024px) and (min-width: 769px) {
-      margin: 5px 0 0 0;
     }
   `}
 
-  @media (max-width: 1024px) and (min-width: 769px) {
-    margin-right: 25px;
-    min-height: 45px;
-    
-    p:nth-child(1){
-      font-weight: regular;
-      font-size: .8em;
-    }
-
-    p:nth-child(2){
-      font-weight: bold;
-      font-size: .95em;
-    }
-  }
-
-  @media (max-width: 768px) and (min-width: 426px) {
-    margin-right: 15px;
-    min-height:60px;
-
-    p:nth-child(1){
-      font-weight: regular;
-      font-size: .8em;
-    }
-
-    p:nth-child(2){
-      font-weight: bold;
-      font-size: .95em;
-    }
-  }
-
-  @media (max-width: 425px){
-    margin-right: 5px;
-    p:nth-child(1){
-      font-weight: regular;
-      font-size: 70%;
-    }
-
-    p:nth-child(2){
-      font-weight: bold;
-      font-size: 75%;
-    }
-  }
 `;
 
 export const Data = styled.div<propriedadesCard>`
@@ -287,20 +229,27 @@ export const Data = styled.div<propriedadesCard>`
     css` 
       width: 300px;
 
-      @media (max-width: 1024px){
-        width: 250px;
-        margin-top: 5px;
+      @media (max-width: 1024px) and (min-width: 769px) {
+       height: 30px;
+       width: 285px;  
       }
+
+      @media (max-width: 768px){
+        width: 205px;
+        height: 25px;
+      }
+
     `: css`
-        width: 465px;
+      width: 465px;
 
-      @media (max-width: 1024px){
-        width: 200px;
-        margin-top: 5px;
+      @media (max-width: 1024px) and (min-width: 769px) {
+        max-width: 335px;
       }
-  `}
 
-  @media (max-width: 768px) and (min-width: 426px) {
-    width: 215px;
-  }
+      @media (max-width: 768px){
+        width: 470px;  
+      }
+
+  `}
+ 
 `;

@@ -7,7 +7,7 @@ interface dropdownProps {
 }
 
 export const Container = styled.div<dropdownProps>`
-  width: 100%;
+  width: 100vw;
   height: 12vh;
   display: flex;
   flex-direction: row;

@@ -138,7 +138,7 @@ export const Formulario = styled.form`
     width: 230px;
     
     input{
-      width: 100px;
+      width: 130px;
     }
   }
 `;
