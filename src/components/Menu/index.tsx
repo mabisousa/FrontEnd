@@ -6,7 +6,7 @@ import { Container } from './style'
 import pasta from '../../assets/pasta.svg';
 import relogio from '../../assets/relogio.svg';
 import grupo from '../../assets/grupo.svg';
-import { BsList } from "react-icons/io";
+import { BsList } from "react-icons/bs";
 
 import { i18n } from "../../translate/i18n";
 
