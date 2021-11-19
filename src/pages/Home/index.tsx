@@ -53,9 +53,86 @@ interface Secoes {
 interface tema{
   alternarTema(): void
 }
+interface Responsavel {
+  idResponsavel: number,
+  fornecedor: {
+    idFornecedor: number,
+    fornecedorNome: string, 
+  },
+  responsavelNome: string,
+  fornecedorAlocacoes: [
+    {
+      projeto: {
+      id: number,
+      secao: {
+        idSecao: number,
+        secaoNome: string,
+      },
+      projetoNome: string,
+      projetoDescricao: string,
+      projetoStatus: string,
+      projetoDateInicio: Date,
+      projetoDateFim: Date,
+      projetoHorasTotais: number,
+      projetoHorasTrabalhadas: number,
+      projetoConsultores: [
+          {
+            id: number,
+            consultorNome: string,
+            consultorStatus: string
+          }
+        ]
+      }
+    }
+  ]
+}
+interface Consultor {
+  idConsultor: number,
+  consultorNome: string,
+  consultorStatus: string,
+  consultorValorHora: number,
+  consultorAlocacoes: [
+    {
+      projeto: {
+        id: number,
+        secao: {
+          idSecao: number,
+          secaoNome: string,
+        },
+        projetoNome: string,
+        projetoDescricao: string,
+        projetoStatus: string,
+        projetoDateInicio: Date,
+        projetoDateFim: Date,
+        projetoHorasTotais: number,
+        projetoHorasTrabalhadas: number,
+      }
+    }
+  ]
+}
 
 const Home: React.FC<tema> = ({alternarTema}) => {
+  const [responsavel,setResponsavel] = useState<Responsavel>();
+  const [consultor,setConsultor] = useState<Consultor>();
 
+  let infos = localStorage.getItem("@WEGusers:usuario")
+  let user!: { email: string, roles: [{ roleNome: string }] };
+
+  if(infos) {
+    user = JSON.parse(infos);
+    
+    user.roles.map(role => {
+      if(role.roleNome === "ROLE_FORNECEDOR") {
+        api.get(`/responsaveis/${user.email}`).then((response) => {
+          setResponsavel(response.data);
+        })
+      } else if(role.roleNome === "ROLE_CONSULTOR") {
+        api.get(`consultores/email/${user.email}`).then((response) => {
+         setConsultor(response.data);
+        })
+      }
+    })
+  }
   const [filtrados, setFiltrados] = useState<Projetos[]>([]);
   const [projetos, setProjetos] = useState<Projetos[]>([]);
   const [secoes, setSecoes] = useState<Secoes[]>([]);
@@ -87,9 +164,11 @@ const Home: React.FC<tema> = ({alternarTema}) => {
     })
   }, [projetos, setProjetos, secao, status]);
   
-  useEffect(() => {
-    setFiltrados(projetos);
-  }, [projetos]);
+  // useEffect(() => {
+  //   responsavel?.fornecedorAlocacoes.map(projeto => {
+  //     setFiltereds(projects.filter(project => project === projeto));
+  //   })
+  // }, [projects]);
 
   const handleFiltrarNome = useCallback((ev: string) => {
     setPesquisa(ev)
@@ -112,6 +191,10 @@ const Home: React.FC<tema> = ({alternarTema}) => {
     }
   }, [mostrarCard, setMostrarCard]);
 
+    responsavel?.fornecedorAlocacoes.map((alocacao) => {
+    })
+    projetos.map((projeto) => {
+    })
   return (
     <>
       <Container>
@@ -176,13 +259,18 @@ const Home: React.FC<tema> = ({alternarTema}) => {
             </button>
           </Filtro>
         </Filtros>
-        <Cards> 
-          { filtrados.map((projeto) => (
-            <Card id={projeto.id} key={projeto.id} mostrar={mostrarCard}/> 
-            
-          )
-          )}
-        </Cards>
+      <Cards> 
+        { responsavel && responsavel.fornecedorAlocacoes.length > 0 ? 
+        responsavel.fornecedorAlocacoes.map((alocacao) => (
+          <Card id={alocacao.projeto.id} key={alocacao.projeto.id} mostrar={mostrarCard}/> 
+        ))
+        : consultor && consultor.consultorAlocacoes.length > 0? 
+        consultor.consultorAlocacoes.map((alocacao) => (
+          <Card id={alocacao.projeto.id} key={alocacao.projeto.id} mostrar={mostrarCard}/> 
+        ))
+        : <h1>Não há projetos alocados.</h1>
+      }
+      </Cards>
       </Container>
       
     </>          

@@ -59,12 +59,20 @@ interface Selecionados {
 interface tema{
   alternarTema(): void
 }
-
+interface Responsavel {
+    idResponsavel: number,
+  fornecedor: {
+    idFornecedor: number,
+    fornecedorNome: string, 
+  },
+  responsavelNome: string,
+}
 const Aprovacao: React.FC<tema> = ({alternarTema}) => {
 
   const formRef = useRef<FormHandles>(null);
   const [consultores, setConsultores] = useState<Consultor[]>([]);
   const [consultor, setConsultor] = useState<Consultor>();
+  const [responsavel, setResponsavel] = useState<Responsavel>();
   const [descricao, setDescricao] = useState<Apontamento>();
   const [popup, setEstadoPopup] = useState(false);
   const [popupDescricao, setPopupDescricao] = useState(false);
@@ -74,19 +82,25 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
   const [selecionados,setSelecionados] = useState<Selecionados[]>([]);
   const [pesquisa, setPesquisa] = useState('');
 
+  let infos = localStorage.getItem("@WEGusers:usuario")
+  let resp!: { email: string; };
+  
+  if(infos) {
+     resp = JSON.parse(infos);
+  }
+  
   useEffect(()=> {
     api.get(`consultores`).then((response)=> {
       setConsultores(response.data);
     })
   })
-
-  let valor = localStorage.getItem("@WEGusers:responsavel")
-  let responsavel!: { idResponsavel: number; responsavelNome: string };
-
-  if(valor) {
-    responsavel = JSON.parse(valor);
-  }
+  useEffect(()=> {
+    api.get(`fornecedores/responsaveis/${resp.email}`).then((response)=> {
+      setResponsavel(response.data);
+    })
+  },[])
   
+
   const aprovacao = {
     consultor: {
       idConsultor: 0
@@ -110,7 +124,7 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
     setEstadoPopup(false);
   },[setConsultor])
 
-  const selecionarApontamento = useCallback(async (id: number, horas: number) => {
+  const selecionarApontamento = useCallback(async (id: number) => {
   
     if(selecionados.find(selecionado => selecionado.idApontamento  === id)) {
       setSelecionados(selecionados.filter(apontamento => apontamento.idApontamento !== id))
@@ -136,7 +150,7 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
       .map(alocacao => alocacao.apontamentos.filter(apontamento => apontamento.apontamentoSituacao === "ESPERA"))
   
   const enviarAprovacao = useCallback(async () => {
-    if(consultor) {
+    if(consultor && responsavel) {
       try {
         aprovacao.consultor.idConsultor = consultor.idConsultor;
         aprovacao.valorHora = consultor.consultorValorHora;
@@ -152,7 +166,7 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
         console.log(e)
       }
     }
-  },[aprovacao, consultor, responsavel.idResponsavel, selecionados])
+  },[aprovacao, consultor, responsavel])
 
   const mostrarPopupRequisicao = useCallback((state: boolean) => {
     setMostrarRequisicao(state)
@@ -160,14 +174,11 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
 
   const filtrados = consultores.filter((consultor) => consultor.consultorNome.toLowerCase().includes(pesquisa.toLowerCase()));  
   
-  let horasTotais = 0;
   let apontamentosconsultor = 0;
   let apontamentosaprovados = 0;
   let apontamentosreprovados = 0;
-  let formatted, formatteddata: {} | null | undefined;
 
   consultor?.consultorAlocacoes.map(alocacao => {
-    horasTotais += alocacao.horasTotais
     apontamentosconsultor += alocacao.apontamentos.length;
 
     alocacao.apontamentos.map(apontamento => {
@@ -181,7 +192,7 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
 
   return (
     <>
-      {mostrarRequisicao && consultor && 
+      {mostrarRequisicao && consultor && responsavel &&
         <Requisicao selecionados={selecionados} responsavel={responsavel} 
           consultor={consultor} mostrarRequisicao={mostrarPopupRequisicao}/> 
       }
@@ -285,8 +296,7 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
                 alocacao.map(apontamento => 
                   <tr key={apontamento.idApontamento}>
                     <td>
-                      <input type="checkbox" value={apontamento.idApontamento} 
-                        onClick={() => selecionarApontamento(apontamento.idApontamento, apontamento.horasTrabalhadas)}/>
+                      <input type="checkbox" value={apontamento.idApontamento} onClick={() => selecionarApontamento(apontamento.idApontamento)}/>
                     </td>
                     <td>
                       {format(parseISO(apontamento.apontamentoData), "dd'/'MM'/'yyyy")}
