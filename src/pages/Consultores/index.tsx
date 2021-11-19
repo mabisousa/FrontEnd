@@ -20,7 +20,6 @@ const Consultor: React.FC<tema> = ({alternarTema}) => {
 
   const handleFiltrarStatus = useCallback((status: string) => {
     setStatus(status);
-    console.log(status)
   },[]);  
   
   return (
