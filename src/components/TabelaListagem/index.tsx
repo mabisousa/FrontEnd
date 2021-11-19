@@ -26,15 +26,30 @@ const TabelaConsultor: React.FC = () => {
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1bh-content"
               id="panel1bh-header">
-              <Typography sx={{ width: '33%', flexShrink: 0 }}>
-                0001 - ISAC FREIRE BEZERRA
+              <Typography sx={{ width: '33%', flexShrink: 0 }} className="header">
+                <p>0001</p>
+                <p>ISAC FREIRE BEZERRA</p>
+                <p>20/20/2020</p>
+                <p>60/70</p>
               </Typography>
-              <Typography sx={{ color: 'text.secondary' }}>20/20/20</Typography>
-              <Typography sx={{ color: 'text.secondary' }}></Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography sx={{fontSize: '12'}}>
+                <p>
                 0001 - ISAC FREIRE BEZERRA
+                </p>
+                <table>
+                  <thead>
+                    abgnbt
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>2</td>
+                      <td>3</td>
+                    </tr>
+                  </tbody>
+                </table>
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -44,11 +59,12 @@ const TabelaConsultor: React.FC = () => {
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1bh-content"
               id="panel1bh-header">
-              <Typography sx={{ width: '33%', flexShrink: 0 }}>
-                0002 - JEAN HENRIQUE REIGUEL
+              <Typography sx={{ width: '33%', flexShrink: 0 }} className="header">
+                <p>0002</p>
+                <p>JEAN HENRIQUE REIGUEL</p>
+                <p>20/20/2020</p>
+                <p>60/70</p>
               </Typography>
-              <Typography sx={{ color: 'text.secondary' }}>20/20/20</Typography>
-              <Typography sx={{ color: 'text.secondary' }}></Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography sx={{fontSize: '12'}}>
@@ -62,11 +78,12 @@ const TabelaConsultor: React.FC = () => {
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1bh-content"
               id="panel1bh-header">
-              <Typography sx={{ width: '33%', flexShrink: 0 }}>
-                0003 - MARIA GABRIELA DE SOUSA CRUZ
+              <Typography sx={{ width: '33%', flexShrink: 0 }} className="header">
+                <p>0002</p>
+                <p>MARIA GABRIELA DE SOUSA CRUZ</p>
+                <p>20/20/2020</p>
+                <p>60/70</p>
               </Typography>
-              <Typography sx={{ color: 'text.secondary' }}>20/20/20</Typography>
-              <Typography sx={{ color: 'text.secondary' }}></Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography sx={{fontSize: '12'}}>

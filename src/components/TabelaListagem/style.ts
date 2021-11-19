@@ -59,4 +59,15 @@ export const Container = styled.div`
       width: 150px;
     }
   } 
+
+  .header{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    p:nth-child(2){
+      width: 300px;
+    }
+  }
 `;
