@@ -18,6 +18,7 @@ export default {
     projetoMenu: '#00579D',
     aprovacaoMenu: '#0075B1',
     consultoresMenu: '#2382BA',
+    listagemMenu: '#0090C5',
     thead: '#0075B1',
     bordaTabela: '#8B8787',
     inativoStatus: '#AC341A',

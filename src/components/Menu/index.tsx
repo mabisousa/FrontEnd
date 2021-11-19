@@ -38,7 +38,7 @@ const Menu: React.FC = () => (
     </Link>
     <Link to="listagem">
       <div>
-        <BsList/>
+        <BsList size={35}/>
         <h1>
           Listagem
         </h1>
