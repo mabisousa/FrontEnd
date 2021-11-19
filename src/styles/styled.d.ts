@@ -22,6 +22,7 @@ declare module 'styled-components' {
       aprovacaoMenu: string;
       consultoresMenu: string;
       listagemMenu: string;
+      requisicaoMenu: string;
       thead: string;
       bordaTabela: string;
       inativoStatus: string;
