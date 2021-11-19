@@ -148,5 +148,9 @@ export const Cards = styled.div`
   margin-left: 89.6px;
   margin-top: 48px;
 
-
+  h1 {
+    font-size: 20px;
+    color: #020202;
+    text-align: center;
+  }
 `;
