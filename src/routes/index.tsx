@@ -5,12 +5,14 @@ import Route from './Route';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Listagem from '../pages/Listagem';
+import Requisicao from '../pages/Requisicao';
 import Aprovacao from '../pages/Aprovacao';
 import Consultores from '../pages/Consultores';
 
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import escuro from '../styles/themes/escuro';
 import claro from '../styles/themes/claro';
+
 import usePersistedState from '../utils/usePersistedState';
 
 const Routes: React.FC = () => {
@@ -34,6 +36,7 @@ const Routes: React.FC = () => {
         <Route path="/aprovacao" exact component={(props) => <Aprovacao alternarTema={alternarTema} />} isPrivate/>
         <Route path="/consultores" exact component={(props) => <Consultores alternarTema={alternarTema} />} isPrivate/>
         <Route path="/listagem" exact component={(props) => <Listagem alternarTema={alternarTema} />} isPrivate/>
+        <Route path="/requisicao" exact component={(props) => <Requisicao alternarTema={alternarTema} />} isPrivate/>
       </Switch>
     </ThemeProvider>
   )
