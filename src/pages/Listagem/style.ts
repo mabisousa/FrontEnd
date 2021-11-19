@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
-  width: 100vw;
-  height: 100vw;
-  position: fixed;
+  width: 99vw;
+  height: auto;
+  position: absolute;
 `;
 
 export const Filtros = styled.div`

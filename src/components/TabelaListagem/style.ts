@@ -4,39 +4,23 @@ export const Container = styled.div`
   margin-left: 130px;
   margin-top: 50px;
   margin-bottom: 40px;
-  height: 350px;
 
   table{
     border-collapse: collapse;
-    width: 90%;
   }
 
   thead{
     text-transform: uppercase;
     font-size: .9em;
-  }
-
-  thead tr{
-    color: #fff;
-
-    td{
-      text-align: center;
-      margin: auto;
-      width: 100%;
-      height: 56px;
-
-      :nth-child(1){
-        background: ${props => props.theme.cor.thead};
-      }
-
-      :nth-child(2){
-        background: ${props => props.theme.cor.habilidadeBotao};
-      }
+    background: ${props => props.theme.cor.thead};
+    
+    tr{
+      color: #fff;
     }
   }
 
   tbody {
-    height: 350px;
+    height: 150px;
     overflow-y: scroll;
     overflow-x: hidden;
     display: block;
@@ -48,7 +32,6 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
-    border-top: 0;
     height: 56px;
     color: rgba(0, 0, 0, 0.87);
     text-transform: uppercase;
@@ -60,7 +43,7 @@ export const Container = styled.div`
     }
   } 
 
-  .header{
+  .cabecalho{
     width: 70%;
     display: flex;
     flex-direction: row;
@@ -69,5 +52,35 @@ export const Container = styled.div`
     p:nth-child(2){
       width: 300px;
     }
+  }
+
+  .cabecalhoDetalhe{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .detalhe{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  #informacoes{
+    padding-left: 50px;
+  }
+
+  #apontamentos{
+    padding-right: 50px;
+  }
+
+  #responsavel, #valorAprovado, #valorHora, #horasAprovadas, #totalAprovados{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 25vw;
+    padding: .3em;
   }
 `;
