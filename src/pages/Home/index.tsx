@@ -10,8 +10,8 @@ import Menu from "../../components/Menu";
 
 import api from "../../services/api";
 
-import { FaThList } from "react-icons/fa";
 import { IoGrid } from "react-icons/io5";
+import { FaThList } from "react-icons/fa";
 
 import { i18n } from "../../translate/i18n";
 
