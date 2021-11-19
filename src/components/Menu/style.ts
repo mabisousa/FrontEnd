@@ -5,8 +5,8 @@ export const Container = styled.div`
   flex-direction: column;
   position : fixed;
   right:0px;
-  top: 290px;
-  height: 190px;
+  top: 215px;
+  height: 305px;
   width: 150px;
   margin: 0px;
   z-index: 9;
@@ -40,6 +40,14 @@ export const Container = styled.div`
 
     div {
       background: ${props => props.theme.cor.listagemMenu};
+    }
+  }
+
+  a:nth-child(5) {
+    top:240px;
+
+    div {
+      background: ${props => props.theme.cor.requisicaoMenu};
     }
   }
 
