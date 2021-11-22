@@ -10,7 +10,8 @@ const messages = {
         andamento: "Progress",
         atrasado:"Late",
         concluido: "Concluded",
-        todos: "All"
+        todos: "All",
+        projetosAlocados: "There are no projects allocated."
       },
       aprovacao: {
         titulo: "APPROVAL",
@@ -18,13 +19,10 @@ const messages = {
         cadastro: "Register",
         nome: "Name",
         aprovacaoInfo: "RESPONSIBLE INFORMATION",
-        dataAprovacao: "Date",
         responsavel: "Responsible",
-        horasTotais: "TOTAL HOURS:",
         valorHora: "VALUE PER HOUR:",
         aprovacoes: "APPROVALS",
-        apontamento: "APPOINTMENTS",
-        aprovado: "APPROVED",
+        apontamentos: "APPOINTMENTS",
         reprovado: "DISAPPROVE",
         consultor:"SEE CONSULTANTS",
         aprovar: "APPROVE",
@@ -105,16 +103,17 @@ const messages = {
       },
       listagem: {
         titulo: "LISTING",
-        responsavel: "RESPONSÁVEL:",
-        infos: "INFORMAÇÕES:",
-        valorApro: "VALOR APROVADO:",
-        horasAprovadas: "HORAS APROVADAS:",
-        apontamento: "APONTAMENTOS:",
-        descricao: "DESCRIÇÃO"
+        responsavel: "RESPONSIBLE:",
+        infos: "INFORMATION:",
+        valorApro: "APPROVED VALUE:",
+        horasAprovadas: "APPROVED HOURS:",
+        apontamento: "APPOINTMENTS:",
+        totalAprovados: "TOTAL APPROVED:",
+        descricao: "DESCRIPTION"
       },
       requisicoes: {
         titulo: "REQUESTS",
-        solicitadas: "SOLICITADAS:"
+        solicitadas: "REQUESTED:"
       }
     }
   }

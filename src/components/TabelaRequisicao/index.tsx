@@ -47,7 +47,7 @@ const TabelaRequisicao: React.FC = () => {
                   <table>
                     <thead>
                       <h1>
-                        {i18n.t('requisicoes.titulo')}
+                        {i18n.t('requisicoes.titulo')}: 
                       </h1>
                     </thead>
                     <tbody>
@@ -110,7 +110,7 @@ const TabelaRequisicao: React.FC = () => {
                   <table>
                     <thead>
                       <h1>
-                        {i18n.t('requisicoes.titulo')}
+                        {i18n.t('requisicoes.titulo')}:
                       </h1>
                     </thead>
                     <tbody>

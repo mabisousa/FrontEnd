@@ -59,7 +59,7 @@ const TabelaConsultor: React.FC = () => {
                     <p>300H</p>
                   </div>
                   <div id="totalAprovados">
-                    <p>TOTAL DE APROVADOS:</p>
+                    <p>{i18n.t('listagem.totalAprovados')}</p>
                     <p>60</p>
                   </div>
                 </div>

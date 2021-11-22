@@ -150,7 +150,7 @@ export const Cards = styled.div`
 
   h1 {
     font-size: 20px;
-    color: #020202;
+    color: ${props => props.theme.cor.titulo};
     text-align: center;
   }
 `;

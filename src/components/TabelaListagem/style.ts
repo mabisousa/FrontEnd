@@ -18,6 +18,7 @@ export const Container = styled.div`
     font-size: .9em;
     background: ${props => props.theme.cor.thead};
     border: 1px solid ${props => props.theme.cor.bordaTabela};
+    border-bottom: none;
     
     tr{
       color: #fff;
@@ -30,6 +31,7 @@ export const Container = styled.div`
     overflow-x: hidden;
     display: block;
     border: 1px solid ${props => props.theme.cor.bordaTabela};
+    border-top: none;
   }
 
   tr{
