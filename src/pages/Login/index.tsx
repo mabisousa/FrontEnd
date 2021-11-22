@@ -9,6 +9,8 @@ import logo from "../../assets/logo.svg";
 import { Container, Inputs, BotaoForm, ImgLogo, SeguraBotao } from './style';
 
 import getValidationErrors from '../../utils/getValidationErrors';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../hooks/Auth';
 import { useToast } from '../../hooks/toast';
 import Input from '../../components/Input';
@@ -61,11 +63,21 @@ const Login: React.FC<tema> = ({alternarTema}) => {
         return
       }
 
-      handleAdicionarToast({
+      /*handleAdicionarToast({
         tipo: 'erro',
         titulo: i18n.t('login.titulo'),
         descricao: i18n.t('login.descricao'),
-      })
+      })*/
+
+      toast.error(i18n.t('login.titulo'), {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
     }      
   },[ signIn, handleAdicionarToast, history ]);
 
@@ -89,6 +101,7 @@ const Login: React.FC<tema> = ({alternarTema}) => {
             <BotaoForm type="submit">
               {i18n.t('login.entrar')}
             </BotaoForm>
+            <ToastContainer />
           </Form>
         </Inputs>
       </Container>
