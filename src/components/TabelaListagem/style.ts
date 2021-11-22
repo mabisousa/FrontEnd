@@ -5,6 +5,10 @@ export const Container = styled.div`
   margin-top: 50px;
   margin-bottom: 40px;
 
+  svg{
+    color: ${props => props.theme.cor.titulo};
+  }
+
   table{
     border-collapse: collapse;
   }
@@ -13,6 +17,7 @@ export const Container = styled.div`
     text-transform: uppercase;
     font-size: .9em;
     background: ${props => props.theme.cor.thead};
+    border: 1px solid ${props => props.theme.cor.bordaTabela};
     
     tr{
       color: #fff;
@@ -36,12 +41,18 @@ export const Container = styled.div`
     color: rgba(0, 0, 0, 0.87);
     text-transform: uppercase;
     font-size: .9em;
+    color: ${props => props.theme.cor.titulo};
     border-bottom: 1px solid ${props => props.theme.cor.bordaTabela};
 
     td{
       width: 150px;
     }
   } 
+
+  .accordion{
+    background: ${props => props.theme.cor.fundoCard };
+    color: ${props => props.theme.cor.titulo};
+  }
 
   .cabecalho{
     width: 70%;

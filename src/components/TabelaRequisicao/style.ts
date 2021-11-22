@@ -16,6 +16,15 @@ export const Container = styled.div`
       width: 300px;
     }
   }
+
+  .accordion{
+    background: ${props => props.theme.cor.fundoCard };
+    color: ${props => props.theme.cor.titulo};
+  }
+
+  svg{
+    color: ${props => props.theme.cor.titulo};
+  }
 `;
 
 export const Infos = styled.div`
@@ -29,7 +38,6 @@ export const Responsavel = styled.div`
   width: 20vw;
   margin-bottom: 20px;
   height: 30px;
-
 `;
 
 export const Tabela = styled.div`
@@ -80,6 +88,7 @@ export const Tabela = styled.div`
     text-transform: uppercase;
     font-size: .9em;
     width: 21vw;
+    color: ${props => props.theme.cor.titulo};
     border-bottom: 1px solid ${props => props.theme.cor.bordaTabela};
 
     td{
@@ -92,7 +101,6 @@ export const Tabela = styled.div`
       width: 20px;
     }
   } 
-
 `;
 
 export const Descricao = styled.div` 
@@ -101,13 +109,12 @@ export const Descricao = styled.div`
   width: 28vw;
 
   p {
-      width: 25vw;
-      height: 170px;
-      font-size: 1em;
-      overflow-y: scroll;
-      border: 1px solid ${props => props.theme.cor.bordaTabela};
-    }
-
+    width: 25vw;
+    height: 170px;
+    font-size: 1em;
+    overflow-y: scroll;
+    border: 1px solid ${props => props.theme.cor.bordaTabela};
+  }
 `;
 
 export const Apontamento = styled.div` 
@@ -116,11 +123,10 @@ export const Apontamento = styled.div`
   width: 25vw;
 
   p {
-      width: 25vw;
-      height: 170px;
-      font-size: 1em;
-      overflow-y: scroll;
-      border: 1px solid ${props => props.theme.cor.bordaTabela};
-    }
-
+    width: 25vw;
+    height: 170px;
+    font-size: 1em;
+    overflow-y: scroll;
+    border: 1px solid ${props => props.theme.cor.bordaTabela};
+  }
 `;

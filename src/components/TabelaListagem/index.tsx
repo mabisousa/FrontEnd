@@ -22,7 +22,7 @@ const TabelaConsultor: React.FC = () => {
     <> 
       <Container>
         <div>
-          <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} sx={{ width: '90%'}}>
+          <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} sx={{ width: '90%'}} className="accordion">
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1bh-content"
