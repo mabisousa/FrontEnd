@@ -83,6 +83,7 @@ export const Container = styled.div`
 
   #informacoes{
     padding-left: 50px;
+    
   }
 
   #apontamentos{
@@ -95,5 +96,14 @@ export const Container = styled.div`
     justify-content: space-between;
     width: 25vw;
     padding: .3em;
+    font-size: .9em;
+  }
+
+  p, h1{
+    font-size: 1em;
+  }
+
+  h1{
+    margin-bottom: 10px;
   }
 `;

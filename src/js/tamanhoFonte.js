@@ -11,8 +11,8 @@ const tamanhoFonte = (tamanho) => {
   }
 
   if( tamanho === "grande"){
-    document.body.style.fontSize="19px";
-    localStorage.setItem("Fontsize", "19px")
+    document.body.style.fontSize="18px";
+    localStorage.setItem("Fontsize", "18px")
   }
   
   console.log(tamanho)

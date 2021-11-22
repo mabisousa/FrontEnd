@@ -25,6 +25,16 @@ export const Container = styled.div`
   svg{
     color: ${props => props.theme.cor.titulo};
   }
+
+  section{
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  p, h1{
+    font-size: 1em;
+  }
 `;
 
 export const Infos = styled.div`

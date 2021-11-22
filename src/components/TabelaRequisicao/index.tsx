@@ -31,16 +31,30 @@ const TabelaRequisicao: React.FC = () => {
               aria-controls="panel1bh-content"
               id="panel1bh-header">
               <Typography sx={{ width: '33%', flexShrink: 0 }} className="header">
-                <p>0001</p>
-                <p>ISAC FREIRE BEZERRA</p>
-                <p>{i18n.t('requisicoes.solicitadas')} 10</p>
+                <p>
+                  0001
+                </p>
+                <p>
+                  ISAC FREIRE BEZERRA
+                </p>
+                <section>
+                  <p>
+                    {i18n.t('requisicoes.solicitadas')} 
+                  </p>
+                  <p>
+                    10
+                  </p> 
+                </section>
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Responsavel>
-                <span>
-                  {i18n.t('listagem.responsavel')} Jorge Matheus 
-                </span>
+                <p>
+                  {i18n.t('listagem.responsavel')} 
+                </p>
+                <p>
+                  Jorge Matheus 
+                </p>
               </Responsavel>
               <Infos>
                 <Tabela>
@@ -53,19 +67,19 @@ const TabelaRequisicao: React.FC = () => {
                     <tbody>
                       <tr>
                         <td>20/20/2020</td>
-                        <RiArrowRightSLine />
+                        <RiArrowRightSLine/>
                       </tr>
                       <tr>
                         <td>20/20/2020</td>
-                        <RiArrowRightSLine />
+                        <RiArrowRightSLine/>
                       </tr>
                       <tr>
                         <td>20/20/2020</td>
-                        <RiArrowRightSLine />
+                        <RiArrowRightSLine/>
                       </tr>
                       <tr>
                         <td>20/20/2020</td>
-                        <RiArrowRightSLine  />
+                        <RiArrowRightSLine/>
                       </tr>
                     </tbody>
                   </table>
@@ -87,70 +101,6 @@ const TabelaRequisicao: React.FC = () => {
               </Infos>
             </AccordionDetails>
           </Accordion>
-
-          <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')} sx={{ width: '90%'}} className="accordion">
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1bh-content"
-              id="panel1bh-header">
-              <Typography sx={{ width: '33%', flexShrink: 0 }} className="header">
-                <p>0001</p>
-                <p>ISAC FREIRE BEZERRA</p>
-                <p>{i18n.t('requisicoes.solicitadas')} 10</p>
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Responsavel>
-                <span>
-                  {i18n.t('listagem.responsavel')} Jorge Matheus 
-                </span>
-              </Responsavel>
-              <Infos>
-                <Tabela>
-                  <table>
-                    <thead>
-                      <h1>
-                        {i18n.t('requisicoes.titulo')}:
-                      </h1>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>20/20/2020</td>
-                        <RiArrowRightSLine />
-                      </tr>
-                      <tr>
-                        <td>20/20/2020</td>
-                        <RiArrowRightSLine />
-                      </tr>
-                      <tr>
-                        <td>20/20/2020</td>
-                        <RiArrowRightSLine />
-                      </tr>
-                      <tr>
-                        <td>20/20/2020</td>
-                        <RiArrowRightSLine  />
-                      </tr>
-                    </tbody>
-                  </table>
-                </Tabela>
-                <Descricao>
-                  <h1>
-                    {i18n.t('listagem.descricao')}:
-                  </h1>
-                  <p>
-                  </p>
-                </Descricao>
-                <Apontamento>
-                  <h1>
-                    {i18n.t('listagem.apontamento')}
-                  </h1>
-                  <p>
-                  </p>
-                </Apontamento>
-              </Infos>
-            </AccordionDetails>
-          </Accordion>
-          
         </div>
       </Container>
     </>
