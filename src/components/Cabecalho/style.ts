@@ -100,6 +100,7 @@ export const Container = styled.div<dropdownProps>`
       background-color: transparent;
       color: ${props => props.theme.cor.corDoIcone};
       border-bottom: solid 1px ${props => props.theme.cor.corDoIcone};
+      font-size: 1em;
 
         p{
           min-height: 20px;
