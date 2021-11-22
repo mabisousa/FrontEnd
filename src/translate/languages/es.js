@@ -91,6 +91,12 @@ const messages = {
         confirmar: "¿Está seguro de que desea enviar una solicitud para estas notas?",
         nao:"No",
         sim: "Sí"
+      },
+      listagem: {
+        titulo: "LISTADO"
+      },
+      requisicoes: {
+        titulo: "PETICIONES"
       }
     }
   }

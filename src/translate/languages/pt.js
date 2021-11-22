@@ -110,6 +110,19 @@ const messages = {
         nao:"Não",
         sim: "Sim"
       },
+      listagem: {
+        titulo: "LISTAGEM",
+        responsavel: "RESPONSÁVEL:",
+        infos: "INFORMAÇÕES:",
+        valorApro: "VALOR APROVADO:",
+        horasAprovadas: "HORAS APROVADAS:",
+        apontamento: "APONTAMENTOS:",
+        descricao: "DESCRIÇÃO"
+      },
+      requisicoes: {
+        titulo: "REQUISIÇÕES",
+        solicitadas: "SOLICITADAS:"
+      }
     }
   }
 }

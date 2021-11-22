@@ -102,6 +102,19 @@ const messages = {
         confirmar: "Are you sure you want to send a request for the notes:",
         nao:"No",
         sim: "Yes"
+      },
+      listagem: {
+        titulo: "LISTING",
+        responsavel: "RESPONSÁVEL:",
+        infos: "INFORMAÇÕES:",
+        valorApro: "VALOR APROVADO:",
+        horasAprovadas: "HORAS APROVADAS:",
+        apontamento: "APONTAMENTOS:",
+        descricao: "DESCRIÇÃO"
+      },
+      requisicoes: {
+        titulo: "REQUESTS",
+        solicitadas: "SOLICITADAS:"
       }
     }
   }
