@@ -21,14 +21,14 @@ const Requisicao: React.FC<tema> = ({alternarTema}) => {
       <Container>
         <Cabecalho alternarTema={alternarTema}>
           <p>
-            REQUISIÇÃO
+            {i18n.t('requisicoes.titulo')}
           </p>
         </Cabecalho>
         <Perfil/>
         <Menu/>
         <Filtros>
           <Titulo>
-            REQUISIÇÃO
+            {i18n.t('requisicoes.titulo')}
           </Titulo>
           <Filtro>
             <Formulario>

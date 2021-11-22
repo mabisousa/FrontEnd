@@ -10,6 +10,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 
 import { RiArrowRightSLine } from 'react-icons/ri';
 
+import { i18n } from '../../translate/i18n';
+
 const TabelaRequisicao: React.FC = () => {
 
   const [expanded, setExpanded] = React.useState<string | false>(false);
@@ -31,13 +33,13 @@ const TabelaRequisicao: React.FC = () => {
               <Typography sx={{ width: '33%', flexShrink: 0 }} className="header">
                 <p>0001</p>
                 <p>ISAC FREIRE BEZERRA</p>
-                <p>SOLICITADAS: 10</p>
+                <p>{i18n.t('requisicoes.solicitadas')} 10</p>
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Responsavel>
                 <span>
-                  RESPONSÁVEL: Jorge Matheus 
+                  {i18n.t('listagem.responsavel')} Jorge Matheus 
                 </span>
               </Responsavel>
               <Infos>
@@ -45,7 +47,7 @@ const TabelaRequisicao: React.FC = () => {
                   <table>
                     <thead>
                       <h1>
-                        REQUISIÇÕES
+                        {i18n.t('requisicoes.titulo')}
                       </h1>
                     </thead>
                     <tbody>
@@ -70,14 +72,14 @@ const TabelaRequisicao: React.FC = () => {
                 </Tabela>
                 <Descricao>
                   <h1>
-                    DESCRIÇÃO:
+                    {i18n.t('listagem.descricao')}:
                   </h1>
                   <p>
                   </p>
                 </Descricao>
                 <Apontamento>
                   <h1>
-                    APONTAMENTO:
+                    {i18n.t('listagem.apontamento')}
                   </h1>
                   <p>
                   </p>
@@ -92,35 +94,63 @@ const TabelaRequisicao: React.FC = () => {
               aria-controls="panel1bh-content"
               id="panel1bh-header">
               <Typography sx={{ width: '33%', flexShrink: 0 }} className="header">
-                <p>0002</p>
-                <p>JEAN HENRIQUE REIGUEL</p>
-                <p>SOLICITADAS: 10</p>
+                <p>0001</p>
+                <p>ISAC FREIRE BEZERRA</p>
+                <p>{i18n.t('requisicoes.solicitadas')} 10</p>
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography sx={{fontSize: '12'}}>
-                0002 - JEAN HENRIQUE REIGUEL
-              </Typography>
+              <Responsavel>
+                <span>
+                  {i18n.t('listagem.responsavel')} Jorge Matheus 
+                </span>
+              </Responsavel>
+              <Infos>
+                <Tabela>
+                  <table>
+                    <thead>
+                      <h1>
+                        {i18n.t('requisicoes.titulo')}
+                      </h1>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>20/20/2020</td>
+                        <RiArrowRightSLine />
+                      </tr>
+                      <tr>
+                        <td>20/20/2020</td>
+                        <RiArrowRightSLine />
+                      </tr>
+                      <tr>
+                        <td>20/20/2020</td>
+                        <RiArrowRightSLine />
+                      </tr>
+                      <tr>
+                        <td>20/20/2020</td>
+                        <RiArrowRightSLine  />
+                      </tr>
+                    </tbody>
+                  </table>
+                </Tabela>
+                <Descricao>
+                  <h1>
+                    {i18n.t('listagem.descricao')}:
+                  </h1>
+                  <p>
+                  </p>
+                </Descricao>
+                <Apontamento>
+                  <h1>
+                    {i18n.t('listagem.apontamento')}
+                  </h1>
+                  <p>
+                  </p>
+                </Apontamento>
+              </Infos>
             </AccordionDetails>
           </Accordion>
-
-          <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')} sx={{ width: '90%'}}>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1bh-content"
-              id="panel1bh-header">
-              <Typography sx={{ width: '33%', flexShrink: 0 }} className="header">
-                <p>0003</p>
-                <p>MARIA GABRIELA DE SOUSA CRUZ</p>
-                <p>SOLICITADAS: 10</p>
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography sx={{fontSize: '12'}}>
-                0003 - MARIA GABRIELA DE SOUSA CRUZ
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
+          
         </div>
       </Container>
     </>

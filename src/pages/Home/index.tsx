@@ -123,7 +123,7 @@ const Home: React.FC<tema> = ({alternarTema}) => {
     
     user.roles.map(role => {
       if(role.roleNome === "ROLE_FORNECEDOR") {
-        api.get(`/responsaveis/${user.email}`).then((response) => {
+        api.get(`/fornecedores/responsaveis/${user.email}`).then((response) => {
           setResponsavel(response.data);
         })
       } else if(role.roleNome === "ROLE_CONSULTOR") {
@@ -132,6 +132,7 @@ const Home: React.FC<tema> = ({alternarTema}) => {
         })
       }
     })
+    console.log(setResponsavel)
   }
   const [filtrados, setFiltrados] = useState<Projetos[]>([]);
   const [projetos, setProjetos] = useState<Projetos[]>([]);
@@ -261,15 +262,15 @@ const Home: React.FC<tema> = ({alternarTema}) => {
         </Filtros>
       <Cards> 
         { responsavel && responsavel.fornecedorAlocacoes.length > 0 ? 
-        responsavel.fornecedorAlocacoes.map((alocacao) => (
-          <Card id={alocacao.projeto.id} key={alocacao.projeto.id} mostrar={mostrarCard}/> 
-        ))
-        : consultor && consultor.consultorAlocacoes.length > 0? 
-        consultor.consultorAlocacoes.map((alocacao) => (
-          <Card id={alocacao.projeto.id} key={alocacao.projeto.id} mostrar={mostrarCard}/> 
-        ))
-        : <h1>Não há projetos alocados.</h1>
-      }
+          responsavel.fornecedorAlocacoes.map((alocacao) => (
+            <Card id={alocacao.projeto.id} key={alocacao.projeto.id} mostrar={mostrarCard}/> 
+          ))
+          : consultor && consultor.consultorAlocacoes.length > 0? 
+          consultor.consultorAlocacoes.map((alocacao) => (
+            <Card id={alocacao.projeto.id} key={alocacao.projeto.id} mostrar={mostrarCard}/> 
+          ))
+          : <h1>Não há projetos alocados.</h1>
+        }
       </Cards>
       </Container>
       

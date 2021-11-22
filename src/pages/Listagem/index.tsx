@@ -21,14 +21,14 @@ const Listagem: React.FC<tema> = ({alternarTema}) => {
       <Container>
         <Cabecalho alternarTema={alternarTema}>
           <p>
-            LISTAGEM
+            {i18n.t('listagem.titulo')}
           </p>
         </Cabecalho>
         <Perfil/>
         <Menu/>
         <Filtros>
           <Titulo>
-            LISTAGEM
+            {i18n.t('listagem.titulo')}
           </Titulo>
           <Filtro>
             <Formulario>
