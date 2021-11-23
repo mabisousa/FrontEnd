@@ -22,12 +22,12 @@ const TabelaConsultor: React.FC = () => {
     <> 
       <Container>
         <div>
-          <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} sx={{ width: '90%'}} className="accordion">
+          <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} sx={{ width: '81vw'}} className="accordion">
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1bh-content"
               id="panel1bh-header">
-              <Typography sx={{ width: '33%', flexShrink: 0 }} className="cabecalho">
+              <Typography sx={{ flexShrink: 0 }} className="cabecalho">
                 <p>0001</p>
                 <p>ISAC FREIRE BEZERRA</p>
                 <p>20/20/2020</p>

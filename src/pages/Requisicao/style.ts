@@ -60,7 +60,7 @@ export const Filtros = styled.div`
 `;
 
 export const Filtro = styled.div`
-  width:90%;
+  width:76vw;
   height: 60px;
   display: flex;
   flex-direction: row;
