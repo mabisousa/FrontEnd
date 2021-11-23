@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   margin-left: 130px;
@@ -11,6 +11,15 @@ export const Container = styled.div`
 
   table{
     border-collapse: collapse;
+
+    button{
+      background: transparent;
+      border: 0;
+      font-size: 1.25em;
+      svg{
+        color: ${props => props.theme.cor.titulo};
+      }
+    }
   }
 
   thead{
@@ -105,5 +114,90 @@ export const Container = styled.div`
 
   h1{
     margin-bottom: 10px;
+  }
+`;
+
+interface Description {
+  open: boolean;
+}
+
+export const Descricoes = styled.div<Description>`
+  width:0;
+  right: 48%;
+  height: 206px;
+  background: transparent;
+  position: absolute;
+  top: 38.7%;
+  z-index: 99999;
+  border: 1px solid ${props => props.theme.cor.bordaTabela};
+
+  ${(props) => !!props.open ?
+    css`
+      width: 330px;
+      visibility: visible;
+      background: #fff;
+      transition: 1.5s;
+      color: ${props => props.theme.cor.titulo};
+
+      header {
+        width: 100%;
+        height: 55px;
+        border-bottom: 1px solid ${props => props.theme.cor.bordaTabela};
+        padding-left: 15px;
+        display: flex;
+        align-items: center;
+        font-size: 1em;
+        background: ${props => props.theme.cor.thead};
+
+        p {
+          transition: 0.5s;
+          transition-delay: 1.5s;
+        }
+      }
+
+      div {
+        width: 100%;
+        height: 151px;
+        padding: 10px;
+        background: ${props => props.theme.cor.fundoCard};
+        border-bottom: 1px solid ${props => props.theme.cor.bordaTabela};
+
+        p {
+          transition: 0.5s;
+          transition-delay: 1.5s;
+        }
+      }
+   
+    ` : css`
+        visibility: hidden;
+        width: 0px;
+
+        header p, span{
+          display: none;
+        }
+
+        div {
+          display: none;
+        }
+    `}
+    
+  @media (max-width: 768px)  {
+    right: 0;
+    height: 0;
+    top: 46vh;
+    border: 1px solid #8B8787;
+    width: 561px;
+
+    ${(props) => !!props.open ?
+    css`
+      height: 150px;
+
+      header {
+        background: #0075B1;
+        color: #fff;
+      }
+    ` : css`
+      
+    `}
   }
 `;

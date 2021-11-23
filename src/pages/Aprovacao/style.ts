@@ -245,7 +245,8 @@ export const Apontamentos = styled.div`
       overflow-y: scroll;
       overflow-x: hidden;
       display: block;
-      border: 1px solid #8B8787;
+      border: 1px solid ${props => props.theme.cor.bordaTabela};
+      border-top: none;
 
       span {
         position: relative;
@@ -258,7 +259,7 @@ export const Apontamentos = styled.div`
       display: flex;
       justify-content: space-evenly;
       align-items: center;
-      border-bottom: 1px solid #8B8787;
+      border-bottom: 1px solid ${props => props.theme.cor.bordaTabela};
       height: 56px;
     }
 
@@ -622,19 +623,18 @@ export const Descricoes = styled.div<Description>`
       width: 330px;
       visibility: visible;
       background: #fff;
-      border-left: 1px solid #8B8787;
-      border-top: 1px solid #8B8787;
-      border-bottom: 1px solid #8B8787;
       transition: 1.5s;
+      color: ${props => props.theme.cor.titulo};
 
       header {
         width: 100%;
         height: 55px;
-        border-bottom: 1px solid #8B8787;
-        padding:15px 0px 15px 15px;
+        border-bottom: 1px solid ${props => props.theme.cor.bordaTabela};
+        padding-left: 15px;
         display: flex;
         align-items: center;
         font-size: 1em;
+        background: ${props => props.theme.cor.thead};
 
         p {
           transition: 0.5s;
@@ -644,8 +644,11 @@ export const Descricoes = styled.div<Description>`
 
       div {
         width: 100%;
-        height: 100%;
+        height: 215px;
         padding: 10px;
+        background: ${props => props.theme.cor.fundoCard};
+        border: 1px solid ${props => props.theme.cor.bordaTabela};
+        border-top: none;
 
         p {
           transition: 0.5s;
