@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin-left: 130px;
-  margin-top: 50px;
-  margin-bottom: 40px;
-  height: 350px;
+  margin: 8vh 0 7vh 10vw;
+  height: 58vh;
 
   .cabecalho{
     width: 61vw;
@@ -13,7 +11,7 @@ export const Container = styled.div`
     justify-content: space-between;
     
     p:nth-child(2){
-      width: 300px;
+      width: 22vw;
     }
   }
 
@@ -27,7 +25,7 @@ export const Container = styled.div`
   }
 
   section{
-    width: 200px;
+    width: 16vw;
     display: flex;
     flex-direction: row;
   }
@@ -46,8 +44,8 @@ export const Responsavel = styled.div`
   display: flex;
   justify-content: space-between;
   width: 20vw;
-  margin-bottom: 20px;
-  height: 30px;
+  margin-bottom: 3vh;
+  height: 4vh;
 `;
 
 export const Tabela = styled.div`
@@ -59,7 +57,7 @@ export const Tabela = styled.div`
 
   thead{
     text-transform: uppercase;
-    font-size: .9em;
+    font-size: 1em;
   }
 
   thead tr{
@@ -78,12 +76,12 @@ export const Tabela = styled.div`
   }
 
   tbody {
-    height: 170px;
+    height: 26vh;
     overflow-y: scroll;
     overflow-x: hidden;
     display: block;
     border: 1px solid ${props => props.theme.cor.bordaTabela};
-    width: 290px;
+    width: 21vw;
   }
 
   tr{
@@ -92,22 +90,22 @@ export const Tabela = styled.div`
     align-items: center;
     text-align: center;
     border-top: 0;
-    height: 45px;
+    height: 7vh;
     color: rgba(0, 0, 0, 0.87);
     text-transform: uppercase;
-    font-size: .9em;
     width: 21vw;
     color: ${props => props.theme.cor.titulo};
     border-bottom: 1px solid ${props => props.theme.cor.bordaTabela};
 
     td{
-      width: 155px;
+      width: 12vw;
+      font-size: .9em;
     }
     
     svg{
-      margin-right: 20px;
-      height: 20px;
-      width: 20px;
+      margin-right: 2vw;
+      height: 3vh;
+      width: 2vw;
     }
   } 
 `;
@@ -119,7 +117,7 @@ export const Descricao = styled.div`
 
   p {
     width: 25vw;
-    height: 170px;
+    height: 26vh;
     font-size: 1em;
     overflow-y: scroll;
     border: 1px solid ${props => props.theme.cor.bordaTabela};
@@ -133,7 +131,7 @@ export const Apontamento = styled.div`
 
   p {
     width: 25vw;
-    height: 170px;
+    height: 26vh;
     font-size: 1em;
     overflow-y: scroll;
     border: 1px solid ${props => props.theme.cor.bordaTabela};
