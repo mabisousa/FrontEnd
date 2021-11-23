@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState, useEffect } from "react";
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web";
-
+import * as Yup from "yup"
 import { Infos, Container, Conta, Apontamentos, BarraDeProgressao, Titulo, Consultores, 
     Passo, Descricoes, Tr, Info } from "./style";
 
@@ -95,10 +95,10 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
     })
   })
   useEffect(()=> {
-    api.get(`fornecedores/responsaveis/${resp.email}`).then((response)=> {
+    api.get(`responsaveis/${resp.email}`).then((response)=> {
       setResponsavel(response.data);
     })
-  },[])
+  },[resp.email])
   
 
   const aprovacao = {
@@ -150,7 +150,17 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
       .map(alocacao => alocacao.apontamentos.filter(apontamento => apontamento.apontamentoSituacao === "ESPERA"))
   
   const enviarAprovacao = useCallback(async () => {
+    
     if(consultor && responsavel) {
+
+      formRef.current?.setErrors({});
+
+      const schema = Yup.object().shape({
+        idConsultor: Yup.number().required("Consultor obrigatório").positive(),
+        responsavel: Yup.number().required("Responsável obrigatório").positive(),
+      }
+
+      )
       try {
         aprovacao.consultor.idConsultor = consultor.idConsultor;
         aprovacao.valorHora = consultor.consultorValorHora;
@@ -163,10 +173,9 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
           })
         })
       } catch(e) {
-        console.log(e)
       }
     }
-  },[aprovacao, consultor, responsavel])
+  },[aprovacao, consultor, responsavel, selecionados])
 
   const mostrarPopupRequisicao = useCallback((state: boolean) => {
     setMostrarRequisicao(state)

@@ -118,22 +118,7 @@ const Home: React.FC<tema> = ({alternarTema}) => {
   let infos = localStorage.getItem("@WEGusers:usuario")
   let user!: { email: string, roles: [{ roleNome: string }] };
 
-  if(infos) {
-    user = JSON.parse(infos);
-    
-    user.roles.map(role => {
-      if(role.roleNome === "ROLE_FORNECEDOR") {
-        api.get(`/fornecedores/responsaveis/${user.email}`).then((response) => {
-          setResponsavel(response.data);
-        })
-      } else if(role.roleNome === "ROLE_CONSULTOR") {
-        api.get(`consultores/email/${user.email}`).then((response) => {
-         setConsultor(response.data);
-        })
-      }
-    })
-    console.log(setResponsavel)
-  }
+  
   const [filtrados, setFiltrados] = useState<Projetos[]>([]);
   const [projetos, setProjetos] = useState<Projetos[]>([]);
   const [secoes, setSecoes] = useState<Secoes[]>([]);
@@ -163,6 +148,21 @@ const Home: React.FC<tema> = ({alternarTema}) => {
     api.get("/secoes").then((response) => {
       setSecoes(response.data)
     })
+    if(infos) {
+      user = JSON.parse(infos);
+      
+      user.roles.map(role => {
+        if(role.roleNome === "ROLE_FORNECEDOR") {
+          api.get(`responsaveis/${user.email}`).then((response) => {
+            setResponsavel(response.data);
+          })
+        } else if(role.roleNome === "ROLE_CONSULTOR") {
+          api.get(`consultores/email/${user.email}`).then((response) => {
+           setConsultor(response.data);
+          })
+        }
+      })
+    }
   }, [projetos, setProjetos, secao, status]);
   
   // useEffect(() => {
@@ -192,10 +192,11 @@ const Home: React.FC<tema> = ({alternarTema}) => {
     }
   }, [mostrarCard, setMostrarCard]);
 
-    responsavel?.fornecedorAlocacoes.map((alocacao) => {
-    })
-    projetos.map((projeto) => {
-    })
+    // Filtrar
+    //responsavel?.fornecedorAlocacoes.map((alocacao) => {
+    // })
+    // projetos.map((projeto) => {
+    // })
   return (
     <>
       <Container>

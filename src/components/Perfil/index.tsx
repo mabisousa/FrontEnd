@@ -30,7 +30,7 @@ const Perfil: React.FC<ProfileProps> = (props) => {
   useEffect(()=> {
     user.roles.map(role => {
       if(role.roleNome === "ROLE_FORNECEDOR") {
-        api.get(`fornecedores/responsaveis/${user.email}`).then((response) => {
+        api.get(`responsaveis/${user.email}`).then((response) => {
           setResponsavel(response.data);
         })
       } else if(role.roleNome === "ROLE_CONSULTOR") {
