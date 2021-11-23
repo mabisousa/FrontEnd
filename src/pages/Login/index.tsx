@@ -79,7 +79,7 @@ const Login: React.FC<tema> = ({alternarTema}) => {
         progress: undefined,
         });
     }      
-  },[ signIn, handleAdicionarToast, history ]);
+  },[signIn, history]);
 
   return (
     <>
