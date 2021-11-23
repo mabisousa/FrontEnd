@@ -61,7 +61,7 @@ const Requisicao: React.FC<MostrarRequest> = ({ selecionados, consultor, respons
       console.log(e)
     }
     mostrarRequisicao(false)
-  }, [consultor.idConsultor, conteudo, mostrarRequisicao, requisicao, responsavel.idResponsavel]);
+  }, [consultor.idConsultor, conteudo, mostrarRequisicao, requisicao, responsavel.idResponsavel, selecionados]);
 
   return (
     <>
@@ -90,13 +90,6 @@ const Requisicao: React.FC<MostrarRequest> = ({ selecionados, consultor, respons
                   {i18n.t('requisicao.confirmar')}
                 </p>
               </div>
-              {/* <div>
-              {selecionados && selecionados.map((selecionado) => 
-                    <Selecionado>
-                      {selecionado.idApontamento}
-                    </Selecionado>
-                )}
-              </div> */}
               <div>
                 <button onClick={() => setRevisao(false)}>
                   {i18n.t('requisicao.nao')}
