@@ -57,7 +57,7 @@ export const Container = styled.div`
   }
 
   .cabecalho{
-    width: 70%;
+    width: 61vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

@@ -6,8 +6,8 @@ export const Container = styled.div`
   margin-bottom: 40px;
   height: 350px;
 
-  .header{
-    width: 79%;
+  .cabecalho{
+    width: 61vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -55,7 +55,6 @@ export const Tabela = styled.div`
 
   table{
     border-collapse: collapse;
-    width: 90%;
   }
 
   thead{
