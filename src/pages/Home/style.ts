@@ -13,7 +13,7 @@ export const Filtros = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 6rem 0rem 0rem 5rem;
+  margin: 15vh 0 0 6vw;
 
   div{
     display: flex;
@@ -33,10 +33,10 @@ export const Filtros = styled.div`
   }
 
   input{
-    padding-left: 2px;
+    padding-left: 1vw;
     background: transparent;
     border: 1px solid ${props => props.theme.cor.corDoIcone};
-    min-height: 20px;
+    min-height: 3.5vh;
     font-size: 1em;
     color: ${props => props.theme.cor.corDoIcone};
     
@@ -45,22 +45,16 @@ export const Filtros = styled.div`
     }
   }
 
-  @media (max-width: 1024px) and (min-width: 769px) {
-    label{
-      font-size: 1em;
-    }
-  }
-
   @media (max-width: 768px)  {
     flex-wrap: wrap;
     width: 70vw;
-    margin: 7rem 0rem 0rem 6rem;
+    margin: 19vh 0 0 13vw;
   }
 `;
 
 export const Filtro = styled.div`
-  width:90%;
-  height: 60px;
+  width:85vw;
+  height: 9vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -82,58 +76,46 @@ export const Filtro = styled.div`
   label{
     font-size: 1.25em;
     text-align: center;
-    margin-left: 5px;
+    margin-left: 1vw;
   }
 
   .secao{
-    margin-right: 10px;
-    margin-left: 15px;
+    margin-right: 1vw;
+    margin-left: 1vw;
   }
 
   .status{
-    margin-right: 10px;
+    margin-right: 1vw;
   }
 
   input{
-    padding-left: 10px;
-    margin-left: 10px;
-    max-width: 80%;
+    padding-left: 1vw;
+    margin-left: 1vw;
+    max-width: 16vw;
   }
 
   svg{
-    margin-left: 10px;
-    border-left: 10px;
+    margin-left: 1vw;
+    border-left: 1vw;
     height: 1.12em;
     width: 1.12em;
     color: ${props => props.theme.cor.corDoIcone};
   }
 
-  @media (max-width: 1024px) and (min-width: 769px)  {
-    input{
-      width: 130px;    
-    }
-  }
-
   @media (max-width: 768px)  {
-    margin-left: 1rem;
-    input{
-      width: 130px;    
-    }
+    margin-left: 2vw;
     label{
       font-size: 1em;
-      margin-left: 10px;
     }
-    svg{
-      margin-left: 10px;
-    }
+    
   }
 `;
 
 export const Titulo = styled.h1`
   font-weight:normal;
   font-size: 1.25em;
-  margin-left: 50px;
-  width: 300px;
+  margin-left: 4vw;
+  width: 29vw;
   color: ${props => props.theme.cor.titulo};
   text-decoration: underline ${props => props.theme.cor.undeline};
 
@@ -145,11 +127,11 @@ export const Titulo = styled.h1`
 
 export const Cards = styled.div`
   width: 90vw;
-  margin-left: 89.6px;
-  margin-top: 48px;
+  margin-left: 7vw;
+  margin-top: 6vh;
 
   h1 {
-    font-size: 20px;
+    font-size: 1.25em;
     color: ${props => props.theme.cor.titulo};
     text-align: center;
   }

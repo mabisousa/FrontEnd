@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
-  margin-left: 130px;
-  margin-top: 50px;
-  margin-bottom: 40px;
+  margin: 8vh 0 7vh 10vw;
+  height: 58vh;
 
   svg{
     color: ${props => props.theme.cor.titulo};
