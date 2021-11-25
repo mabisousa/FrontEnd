@@ -12,7 +12,6 @@ import getValidationErrors from '../../utils/getValidationErrors';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../hooks/Auth';
-import { useToast } from '../../hooks/toast';
 import Input from '../../components/Input';
 
 import { i18n } from '../../translate/i18n';
@@ -30,7 +29,6 @@ const Login: React.FC<tema> = ({alternarTema}) => {
   
   const formRef = useRef<FormHandles>(null);
   const { signIn } = useContext(AuthContext);
-  const { handleAdicionarToast } = useToast();
   const history = useHistory();
 
   const handleSubmit = useCallback(async (data: SignInData) => {
