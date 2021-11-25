@@ -11,8 +11,9 @@ import { i18n } from '../../translate/i18n';
 import api from '../../services/api';
 import { format, parseISO } from 'date-fns';
 import { GoChevronDown } from 'react-icons/go';
+import { HorasApontadas } from '../PopupProjetos/style';
 
-interface Listagen{
+interface Listagem{
   consultor: {
     consultorNome: string,
   },
@@ -57,7 +58,7 @@ interface Selecionados {
 const TabelaConsultor: React.FC = () => {
 
   const [expanded, setExpanded] = React.useState<string | false>(false);
-  const [aprovacoes, setAprovacoes] = useState<Listagen[]>([]);
+  const [aprovacoes, setAprovacoes] = useState<Listagem[]>([]);
   const [descricao, setDescricao] = useState<Apontamento>();
   const [popupDescricao, setPopupDescricao] = useState(false);
 
@@ -65,9 +66,8 @@ const TabelaConsultor: React.FC = () => {
     api.get(`/aprovacoes`).then((response) => {
       setAprovacoes(response.data)
     })
-
-  }, []);
-
+    console.log(aprovacoes)
+  });
   const exibirDescricao = useCallback((apontamento: Apontamento) => {
     if(!descricao) {
       setPopupDescricao(!popupDescricao)
@@ -83,7 +83,7 @@ const TabelaConsultor: React.FC = () => {
       setExpanded(isExpanded ? panel : false);
     };
   
-    console.log(aprovacoes.map((aprovacao) => (aprovacao.apontamentos.map((apontamentos) => apontamentos.apontamentoSituacao === "APROVADO"))))
+    //console.log(aprovacoes.map((aprovacao) => (aprovacao.apontamentos.map((apontamentos) => apontamentos.apontamentoSituacao === "APROVADO"))))
   return (
     <> 
       <Container>
@@ -131,7 +131,7 @@ const TabelaConsultor: React.FC = () => {
                     </div>
                     <div id="valorAprovado">
                       <p>{i18n.t('listagem.valorApro')}</p>
-                      <p>R$5,000,00</p>
+                      <p>{aprovacao.valorHora * aprovacao.horasAprovadas}</p>
                     </div>
                     <div id="valorHora">
                       <p>{i18n.t('aprovacao.valorHora')}</p>
