@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Container, Responsavel,Tabela, Infos, Apontamento, Descricao } from './style';
 
@@ -11,9 +11,41 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import { RiArrowRightSLine } from 'react-icons/ri';
 
 import { i18n } from '../../translate/i18n';
+import api from '../../services/api';
+import { format, parseISO } from 'date-fns';
+
+interface Requisicao {
+    requisicaoConsultor: {
+      consultorNome: string
+    },
+    requisicaoResponsavel: {
+      responsavelNome: string,
+      fornecedor: {
+        fornecedorNome: string
+      }
+    },
+    requisicaoDescricao: string,
+    requisicaoData: string,
+    apontamentos: [
+      {
+        idApontamento: number,
+        horasTrabalhadas: number,
+        apontamentoData: Date,
+        apontamentoDescricao: string,
+        apontamentoSituacao: string
+      }
+    ]
+}
 
 const TabelaRequisicao: React.FC = () => {
 
+  const [requisicoes, setRequisicoes] = useState<Requisicao[]>([]);
+
+  useEffect(() => {
+    api.get(`requisicoes`).then((response) => {
+      setRequisicoes(response.data)
+    })
+  })
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
   const handleChange =
@@ -32,10 +64,10 @@ const TabelaRequisicao: React.FC = () => {
               id="panel1bh-header">
               <Typography sx={{flexShrink: 0 }} className="cabecalho">
                 <p>
-                  0001
+                    0001
                 </p>
                 <p>
-                  ISAC FREIRE BEZERRA
+                  1
                 </p>
                 <section>
                   <p>
@@ -45,9 +77,11 @@ const TabelaRequisicao: React.FC = () => {
                     10
                   </p> 
                 </section>
+
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
+
               <Responsavel>
                 <p>
                   {i18n.t('listagem.responsavel')} 
@@ -65,22 +99,12 @@ const TabelaRequisicao: React.FC = () => {
                       </h1>
                     </thead>
                     <tbody>
+                    {requisicoes && requisicoes.map(requisicao => (
                       <tr>
-                        <td>20/20/2020</td>
+                        <td>{format(parseISO(requisicao.requisicaoData), "dd'/'MM'/'yyyy")}</td>
                         <RiArrowRightSLine/>
                       </tr>
-                      <tr>
-                        <td>20/20/2020</td>
-                        <RiArrowRightSLine/>
-                      </tr>
-                      <tr>
-                        <td>20/20/2020</td>
-                        <RiArrowRightSLine/>
-                      </tr>
-                      <tr>
-                        <td>20/20/2020</td>
-                        <RiArrowRightSLine/>
-                      </tr>
+                    ))}
                     </tbody>
                   </table>
                 </Tabela>
