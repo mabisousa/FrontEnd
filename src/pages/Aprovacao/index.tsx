@@ -20,6 +20,8 @@ import api from "../../services/api";
 import { i18n } from "../../translate/i18n";
 
 import { format, parseISO } from "date-fns"
+import Input from "../../components/Input";
+import { toast, ToastContainer } from "react-toastify";
 
 interface Consultor{
   idConsultor: number,
@@ -157,7 +159,9 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
 
       const schema = Yup.object().shape({
         idConsultor: Yup.number().required("Consultor obrigatório").positive(),
-        responsavel: Yup.number().required("Responsável obrigatório").positive(),
+        consultorNome: Yup.number().required("Responsável obrigatório").positive(),
+        idResponsavel: Yup.number().required("Responsável obrigatório").positive(),
+        responsavelNome: Yup.number().required("Responsável obrigatório").positive(),
       }
 
       )
@@ -165,14 +169,49 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
         aprovacao.consultor.idConsultor = consultor.idConsultor;
         aprovacao.valorHora = consultor.consultorValorHora;
         aprovacao.responsavel.idResponsavel = responsavel.idResponsavel;
-        aprovacao.apontamentos = selecionados;
+        if(selecionados.length > 0) {
+          aprovacao.apontamentos = selecionados;
+        } else {
+          toast.error("Selecione apontamentos para aprovar." , {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+
+          return
+        }
+        console.log(selecionados)
         api.post(`aprovacoes/inserir`,aprovacao).then(() => {
           api.get(`consultores/${consultor.idConsultor}`).then((response)=> {
             setConsultor(response.data);
             setFinalizado(true);
           })
+          toast.success("Aprovação enviada com sucesso.", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         })
+       
       } catch(e) {
+
+        toast.error("Erro ao enviar aprovação." , {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     }
   },[aprovacao, consultor, responsavel, selecionados])
@@ -207,6 +246,7 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
       }
       <Perfil/>
       <Menu />
+      <ToastContainer/>
       <Cabecalho alternarTema={alternarTema}>
         <p>
           {i18n.t('aprovacao.titulo')}
@@ -223,12 +263,8 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
             </h1>
             <div className="informacao">
               <div className="segurando">
-                <Info>
-                  {consultor ? consultor.idConsultor : i18n.t('aprovacao.cadastro')}
-                </Info>
-                <Info>
-                  {consultor ? consultor.consultorNome : i18n.t('aprovacao.nome')}
-                </Info>
+                <Input value={consultor && consultor.idConsultor} name={"idConsultor"}></Input>
+                <Input value={consultor && consultor.consultorNome} name={"consultorNome"}></Input>
               </div>
             </div>
             <h1>
@@ -236,12 +272,8 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
             </h1>
             <div className="informacao">
               <div className="segurando">
-                <Info>
-                  {responsavel ? responsavel.idResponsavel :  "ID"}
-                </Info>
-                <Info>
-                  {responsavel ? responsavel.responsavelNome :  i18n.t('aprovacao.responsavel')}
-                </Info>
+                  <Input value={responsavel ? responsavel.idResponsavel : "ID"} name={"idResponsavel"}></Input>
+                  <Input value={responsavel ? responsavel.responsavelNome :  "nome"} name={"responsavelNome"}></Input>
               </div>
             </div>
           </Form>
