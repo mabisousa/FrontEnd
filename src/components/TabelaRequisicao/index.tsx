@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { Container, Responsavel,Tabela, Infos, Apontamento, Descricao } from './style';
 
@@ -14,38 +14,43 @@ import { i18n } from '../../translate/i18n';
 import api from '../../services/api';
 import { format, parseISO } from 'date-fns';
 
-interface Requisicao {
-    requisicaoConsultor: {
-      consultorNome: string
-    },
-    requisicaoResponsavel: {
-      responsavelNome: string,
-      fornecedor: {
-        fornecedorNome: string
-      }
-    },
-    requisicaoDescricao: string,
-    requisicaoData: string,
-    apontamentos: [
-      {
-        idApontamento: number,
-        horasTrabalhadas: number,
-        apontamentoData: Date,
-        apontamentoDescricao: string,
-        apontamentoSituacao: string
-      }
-    ]
+interface Consultor{
+  idConsultor: number,
+  consultorNome: string,
+  consultorStatus: string,
+  consultorValorHora: number,
+  requisicoes: Array<Requisicao>
 }
 
+interface Requisicao {
+      requisicaoResponsavel: string,
+      requisicaoDescricao: string,
+      requisicaoData: string,
+      apontamentos: [
+        {
+          idApontamento: number,
+          horasTrabalhadas: number,
+          apontamentoData: string,
+          apontamentoDescricao: string,
+          apontamentoSituacao: string
+        }
+      ]
+}
 const TabelaRequisicao: React.FC = () => {
 
-  const [requisicoes, setRequisicoes] = useState<Requisicao[]>([]);
+  const [consultores, setConsultores] = useState<Consultor[]>([]);
+  const [requisicaoSelecionada, setRequisicao] = useState<Requisicao>();
+
+  const selecionarRequisicao = useCallback((requisicao: Requisicao) => {
+    setRequisicao(requisicao);
+  },[]);
 
   useEffect(() => {
-    api.get(`requisicoes`).then((response) => {
-      setRequisicoes(response.data)
-    })
-  })
+      api.get(`/consultores`).then((response) => {
+        setConsultores(response.data)
+      })
+  });
+
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
   const handleChange =
@@ -57,6 +62,8 @@ const TabelaRequisicao: React.FC = () => {
     <> 
       <Container>
         <div>
+        {consultores && consultores.map(consultor => (
+
           <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} sx={{ width: '81vw'}} className="accordion">
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -64,24 +71,23 @@ const TabelaRequisicao: React.FC = () => {
               id="panel1bh-header">
               <Typography sx={{flexShrink: 0 }} className="cabecalho">
                 <p>
-                    0001
+                    {consultor.idConsultor}
                 </p>
                 <p>
-                  1
+                    {consultor.consultorNome}
                 </p>
                 <section>
                   <p>
                     {i18n.t('requisicoes.solicitadas')} 
                   </p>
                   <p>
-                    10
+                    {consultor.requisicoes.length}
                   </p> 
                 </section>
 
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-
               <Responsavel>
                 <p>
                   {i18n.t('listagem.responsavel')} 
@@ -99,8 +105,8 @@ const TabelaRequisicao: React.FC = () => {
                       </h1>
                     </thead>
                     <tbody>
-                    {requisicoes && requisicoes.map(requisicao => (
-                      <tr>
+                    {consultor.requisicoes.map(requisicao => (
+                      <tr onClick={() => selecionarRequisicao(requisicao)}>
                         <td>{format(parseISO(requisicao.requisicaoData), "dd'/'MM'/'yyyy")}</td>
                         <RiArrowRightSLine/>
                       </tr>
@@ -108,6 +114,13 @@ const TabelaRequisicao: React.FC = () => {
                     </tbody>
                   </table>
                 </Tabela>
+                <Apontamento>
+                    <h1>
+                      {i18n.t('listagem.apontamento')}
+                    </h1>
+                  <p>
+                  </p>
+                </Apontamento>
                 <Descricao>
                   <h1>
                     {i18n.t('listagem.descricao')}:
@@ -115,16 +128,11 @@ const TabelaRequisicao: React.FC = () => {
                   <p>
                   </p>
                 </Descricao>
-                <Apontamento>
-                  <h1>
-                    {i18n.t('listagem.apontamento')}
-                  </h1>
-                  <p>
-                  </p>
-                </Apontamento>
               </Infos>
             </AccordionDetails>
           </Accordion>
+          ))} 
+
         </div>
       </Container>
     </>
