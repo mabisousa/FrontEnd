@@ -13,7 +13,7 @@ export const Filtros = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 6rem 0rem 0rem 5rem;
+  margin: 15vh 0 0 6vw;
 
   div{
     display: flex;

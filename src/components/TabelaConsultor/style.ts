@@ -5,14 +5,12 @@ interface propriedadesTabela{
 }
 
 export const Container = styled.div<propriedadesTabela>`
-  margin-left: 130px;
-  margin-top: 50px;
-  margin-bottom: 40px;
-  height: 350px;
+  margin: 8vh 0 7vh 10vw;
+  height: 62vh;
 
   table{
     border-collapse: collapse;
-    width: 90%;
+    width: 81vw;
   }
 
   thead{
@@ -26,7 +24,7 @@ export const Container = styled.div<propriedadesTabela>`
   }
 
   tbody {
-    height: 350px;
+    height: 54vh;
     overflow-y: scroll;
     overflow-x: hidden;
     display: block;
@@ -39,18 +37,18 @@ export const Container = styled.div<propriedadesTabela>`
     align-items: center;
     text-align: center;
     border-top: 0;
-    height: 56px;
+    height: 9vh;
     color: rgba(0, 0, 0, 0.87);
     text-transform: uppercase;
     font-size: .9em;
     border-bottom: 1px solid ${props => props.theme.cor.bordaTabela};
 
     td{
-      width: 150px;
+      width: 11vw;
     }
     
     td:nth-child(2){
-      width: 450px;
+      width: 33vw;
       text-align: start;
     }
   } 
@@ -111,18 +109,18 @@ export const Tr = styled.div<propriedadesTabela>`
   align-items: center;
   text-align: center;
   border-top: 0;
-  height: 56px;
+  height: 9vh;
   color: rgba(0, 0, 0, 0.87);
   text-transform: uppercase;
   font-size: .9em;
 
   td{
-    width: 150px;
+    width: 11vw;
     color: ${props => props.theme.cor.titulo};
   }
   
   td:nth-child(2){
-    width: 450px;
+    width: 31vw;
     text-align: start;
   }  
 
