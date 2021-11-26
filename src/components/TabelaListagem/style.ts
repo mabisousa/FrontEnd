@@ -123,7 +123,7 @@ interface Description {
 
 export const Descricoes = styled.div<Description>`
   width:0;
-  right: 48%;
+  right: 30%;
   height: 206px;
   background: transparent;
   position: absolute;
@@ -133,7 +133,7 @@ export const Descricoes = styled.div<Description>`
 
   ${(props) => !!props.open ?
     css`
-      width: 330px;
+      width: 380px;
       visibility: visible;
       background: #fff;
       transition: 1.5s;
