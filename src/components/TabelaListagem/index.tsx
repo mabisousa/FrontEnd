@@ -26,11 +26,6 @@ interface Listagem{
   apontamentos: [
     {
       idApontamento: number,
-      alocacao: {
-        skill: {
-          skillNome: string,
-        }
-      },
       apontamentoData: string,
       apontamentoDescricao: string,
       horasTrabalhadas: number,
@@ -44,16 +39,11 @@ interface Listagem{
 
 interface Apontamento {
   idApontamento: number,
-  horasTrabalhadas: number,
   apontamentoData: string,
   apontamentoDescricao: string,
+  horasTrabalhadas: number,
   apontamentoSituacao: string,
 }
-
-interface Selecionados {
-  idApontamento: number,
-}
-
 
 const TabelaConsultor: React.FC = () => {
 
@@ -66,16 +56,19 @@ const TabelaConsultor: React.FC = () => {
     api.get(`/aprovacoes`).then((response) => {
       setAprovacoes(response.data)
     })
-    console.log(aprovacoes)
   });
   const exibirDescricao = useCallback((apontamento: Apontamento) => {
     if(!descricao) {
       setPopupDescricao(!popupDescricao)
-    }
-    if(apontamento === descricao) {
+
+    } else if(apontamento = descricao) {
       setPopupDescricao(!popupDescricao)
-    } 
+
+    } else if (apontamento != descricao) {
+      setDescricao(apontamento)
+    }
     setDescricao(apontamento)
+
   },[descricao, popupDescricao])
 
   const handleChange =
@@ -95,7 +88,7 @@ const TabelaConsultor: React.FC = () => {
                 aria-controls="panel1bh-content"
                 id="panel1bh-header">
                 <Typography sx={{ width: '33%', flexShrink: 0 }} className="cabecalho">
-                  <p>0001</p>
+                  <p>{1}</p>
                   <p>{aprovacao.consultor.consultorNome}</p>
                   <p>{format(parseISO(aprovacao.data), "dd'/'MM'/'yyyy")}</p>
                   { /*responsavel && responsavel.fornecedorAlocacoes.length > 0 ? 
