@@ -83,6 +83,8 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
   const [finalizado, setFinalizado] = useState(false);
   const [selecionados,setSelecionados] = useState<Selecionados[]>([]);
   const [pesquisa, setPesquisa] = useState('');
+  const [pesquisaAprovacao, setPesquisaAprovacao] = useState('');
+  const [pesquisaAprovacaoID, setPesquisaAprovacaoID] = useState(0);
 
   let infos = localStorage.getItem("@WEGusers:usuario")
   let resp!: { email: string; };
@@ -123,8 +125,13 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
       setConsultor(response.data);
       setFinalizado(false)
     })
+    if(consultor) {
+      setPesquisaAprovacao(consultor.consultorNome)
+      setPesquisaAprovacaoID(consultor.idConsultor)
+    }
+
     setEstadoPopup(false);
-  },[setConsultor])
+  },[])
 
   const selecionarApontamento = useCallback(async (id: number) => {
   
@@ -157,13 +164,12 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
 
       formRef.current?.setErrors({});
 
-      const schema = Yup.object().shape({
-        idConsultor: Yup.number().required("Consultor obrigatório").positive(),
-        consultorNome: Yup.number().required("Responsável obrigatório").positive(),
-        idResponsavel: Yup.number().required("Responsável obrigatório").positive(),
-        responsavelNome: Yup.number().required("Responsável obrigatório").positive(),
-      }
-
+        const schema = Yup.object().shape({
+          idConsultor: Yup.number().required("Consultor obrigatório").positive(),
+          consultorNome: Yup.number().required("Responsável obrigatório").positive(),
+          idResponsavel: Yup.number().required("Responsável obrigatório").positive(),
+          responsavelNome: Yup.number().required("Responsável obrigatório").positive(),
+        }
       )
       try {
         aprovacao.consultor.idConsultor = consultor.idConsultor;
@@ -237,6 +243,20 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
       }
     })
   })
+  const pesquisarAprovacao = useCallback((ev) => {
+    setPesquisaAprovacaoID(ev)
+
+    if(ev !== '') {
+      api.get(`consultores/${ev}`).then((response) => {
+        setConsultor(response.data)
+        
+      }).catch(() => {
+        setConsultor(undefined)
+      })
+    } else {
+      setConsultor(undefined)
+    }
+  },[])
 
   return (
     <>
@@ -263,8 +283,12 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
             </h1>
             <div className="informacao">
               <div className="segurando">
-                <Input value={consultor && consultor.idConsultor} name={"idConsultor"}></Input>
-                <Input value={consultor && consultor.consultorNome} name={"consultorNome"}></Input>
+                <Input value={consultor && pesquisaAprovacao === consultor.consultorNome ? consultor.idConsultor : pesquisaAprovacaoID}
+                onChange={(ev) => pesquisarAprovacao(ev.target.value)}
+                name={"idConsultor"}></Input>
+                <Input value={consultor && pesquisaAprovacaoID == consultor.idConsultor ? consultor.consultorNome : pesquisaAprovacao}
+                onChange={(ev) => setPesquisaAprovacao(ev.target.value)} 
+                name={"consultorNome"}></Input>
               </div>
             </div>
             <h1>
