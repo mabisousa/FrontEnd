@@ -54,7 +54,7 @@ export const Filtros = styled.div`
 `;
 
 export const Filtro = styled.div`
-  width:76vw;
+  width:85vw;
   height: 9vh;
   display: flex;
   flex-direction: row;
@@ -83,7 +83,7 @@ export const Titulo = styled.h1`
   font-weight:normal;
   font-size: 1.25em;
   margin-left: 4vw;
-  width: 28vw;
+  width: 29vw;
   color: ${props => props.theme.cor.titulo};
   text-decoration: underline ${props => props.theme.cor.undeline};
 
@@ -98,7 +98,7 @@ export const Titulo = styled.h1`
 `;
 
 export const Formulario = styled.form`
-  width: 21vw;
+  width: 22vw;
   display: flex;
   align-items: center;
 
