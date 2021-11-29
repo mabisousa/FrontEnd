@@ -122,7 +122,7 @@ interface Description {
 
 export const Descricoes = styled.div<Description>`
   width:0;
-  right: 30%;
+  right: 50%;
   height: 206px;
   background: transparent;
   position: absolute;
