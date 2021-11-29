@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { Container, Responsavel,Tabela, Infos, Apontamento, Descricao } from './style';
+import { Container, Responsavel,Tabela, Infos, Descricao } from './style';
 
 import Accordion from '@mui/material/Accordion';
 import Typography from '@mui/material/Typography';
@@ -13,6 +13,7 @@ import { RiArrowRightSLine } from 'react-icons/ri';
 import { i18n } from '../../translate/i18n';
 import api from '../../services/api';
 import { format, parseISO } from 'date-fns';
+import Requisicao from '../Requisicao';
 
 interface Consultor{
   idConsultor: number,
@@ -57,7 +58,6 @@ const TabelaRequisicao: React.FC = () => {
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
-  
   return (
     <> 
       <Container>
@@ -89,12 +89,6 @@ const TabelaRequisicao: React.FC = () => {
             </AccordionSummary>
             <AccordionDetails>
               <Responsavel>
-                <p>
-                  {i18n.t('listagem.responsavel')} 
-                </p>
-                <p>
-                  Jorge Matheus 
-                </p>
               </Responsavel>
               <Infos>
                 <Tabela>
@@ -114,20 +108,36 @@ const TabelaRequisicao: React.FC = () => {
                     </tbody>
                   </table>
                 </Tabela>
-                <Apontamento>
-                    <h1>
-                      {i18n.t('listagem.apontamento')}
-                    </h1>
-                  <p>
-                  </p>
-                </Apontamento>
+                {requisicaoSelecionada &&
+                <>
+                <Tabela>
+                  <table>
+                    <thead>
+                      <h1>
+                        {i18n.t('listagem.apontamento')} 
+                      </h1>
+                    </thead>
+                    <tbody>
+                    {requisicaoSelecionada.apontamentos.map(apontamento => (
+                      <tr>
+                        <td>{format(parseISO(apontamento.apontamentoData), "dd'/'MM'/'yyyy")}</td>
+                        <td>{apontamento.horasTrabalhadas}h</td>
+                      </tr>
+                    ))}
+                    </tbody>
+                  </table>
+                </Tabela>
                 <Descricao>
                   <h1>
                     {i18n.t('listagem.descricao')}:
                   </h1>
                   <p>
+                    {requisicaoSelecionada.requisicaoDescricao}
                   </p>
                 </Descricao>
+                </>
+                }
+                
               </Infos>
             </AccordionDetails>
           </Accordion>
