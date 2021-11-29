@@ -36,7 +36,6 @@ export const Filtros = styled.div`
     padding-left: 1vw;
     background: transparent;
     border: 1px solid ${props => props.theme.cor.corDoIcone};
-    min-height: 3.5vh;
     font-size: 1em;
     color: ${props => props.theme.cor.corDoIcone};
     
@@ -81,17 +80,10 @@ export const Filtro = styled.div`
 
   .secao{
     margin-right: 1vw;
-    margin-left: 1vw;
   }
 
   .status{
     margin-right: 1vw;
-  }
-
-  input{
-    padding-left: 1vw;
-    margin-left: 1vw;
-    max-width: 16vw;
   }
 
   svg{
@@ -120,8 +112,29 @@ export const Titulo = styled.h1`
   text-decoration: underline ${props => props.theme.cor.undeline};
 
   @media (max-width:768px) {
-    margin-left: 25px;
+    margin-left: 3vw;
     font-size: 1.1em;
+  }
+`;
+
+export const Formulario = styled.form`
+  width: 22vw;
+  height: 5vw;
+  display: flex;
+  align-items: center;
+
+  input{
+    padding-left: 1vw;
+    margin-left: 1vw;
+    max-width: 16vw;
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    width: 25vw;
+  }
+
+  @media (max-width: 768px)  {
+    width: 25vw;
   }
 `;
 
@@ -136,3 +149,4 @@ export const Cards = styled.div`
     text-align: center;
   }
 `;
+

@@ -10,7 +10,6 @@ export const Container = styled.a<propriedadesCard>`
   box-shadow: 5px 5px 5px rgb(0 0 0 / 0.2);
   margin: 1rem;
   float: left;
-  min-height: 150px;
   background: ${props => props.theme.cor.fundoCard}; 
 
   ${(props) => props.cor === "ANDAMENTO" &&
@@ -31,7 +30,7 @@ export const Container = styled.a<propriedadesCard>`
   ${(props) => props.mostrar ? 
     css` 
       width: 27vw;
-      min-height : 200px;
+      min-height : 31vh;
       
       @media (max-width: 1024px) and (min-width: 769px) {
         width: 35vw;
@@ -43,126 +42,100 @@ export const Container = styled.a<propriedadesCard>`
 
     `: css`
       width:40vw; 
-      min-height: 150px;
-
-      @media (max-width: 1024px) and (min-width: 769px) {
-        width: 39.5vw;
-        min-height : 150px;
-      }
-
+      min-height: 23vh;
+      
       @media (max-width: 768px){
         width: 72vw;
       }
   `}
+
+  @media (max-width: 768px){
+    margin-left: 5vw;
+  }
 `;
 
 export const TituloSecao = styled.p<propriedadesCard>`
-  width: 200px;
-  margin-top: 1rem;
-  margin-left: 2rem;
+  width: 18vw;
+  margin-top: 2vh;
+  margin-left: 2vw;
   color: ${props => props.theme.cor.secaoTitulo};
-
-  ${(props) => props.mostrar ? 
-    css` 
-      @media (max-width: 768px){
-        width: 215px;
-        font-size: .9em;
-      }
-    `: css`
-
-  `}
-
-  
 `;
 
 export const TituloProjeto = styled.p<propriedadesCard>`
-  margin-left: 2rem;
+  margin-left: 2vw;
   color: ${props => props.theme.cor.titulo};
 
   ${(props) => props.mostrar ? 
     css` 
-      width: 315px;
+      width: 23vw;
       font-size: 1em;
-      margin-top: 1rem; 
 
       @media (max-width: 1024px) and (min-width: 769px) {
-        width: 300px;
+        width: 30vw;
       }
       @media (max-width: 768px){
-        width: 215px;
-        font-size: .9em;
+        width: 28vw;
       }
       
     `: css`
-      width: 500px;
+      width: 35vw;
       font-size: 1.15em;
-      margin-top: 0;
 
-      @media (max-width: 1024px) and (min-width: 769px) {
-        width: 340px;
+      @media (max-width: 768px){
+        width: 64vw;
       }
   `}
 `;
 
 export const SeguraHoras = styled.div<propriedadesCard>`
-  width:200px;
-  height:40px;
+  width: 20vw;
+  height:6vh;
   float: left;
   color: ${props => props.theme.cor.titulo};
 
   ${(props) => props.mostrar ? 
     css` 
-      margin-left: 7px;
-      margin-top: 1rem; 
+      margin-left: 1vw;
+      margin-top: 2vh; 
 
       @media (max-width: 1024px) and (min-width: 769px) {
-        height: 35px;
+        width: 23vw;
       }
 
       @media (max-width: 768px){
+        width: 24vw;
         p{
           font-size: .9em;
         }
       }
 
     `: css`
-      margin-left: 2rem;
-      margin-top: 7px;
-
-      @media (max-width: 1024px) and (min-width: 769px) {
-        max-width: 240px;
-      }
-  
+      margin-left: 2vw;
+      margin-top: 1vh;
   `}
 `;
 
 export const Hora = styled.div<propriedadesCard>`
-  min-height:20px;
-  margin-left: 15%;
+  min-height:3vh;
+  margin-left: 3vw;
   display: flex;
   justify-content: space-between;
-  margin-top: 2px;
+  margin-top: .3vw;
   
   ${(props) => props.mostrar ? 
     css` 
-      width: 155px;
-   
-      
+      width: 12vw;
     `: css`
-      width:200px;
-
-      @media (max-width: 1024px) and (min-width: 769px) {
-        max-width: 155px;
-      }
+      width:15vw;
   `}
 `;
 
 export const Status = styled.div<propriedadesCard>`
-  width:7.7em;
-  max-width: 10em;
+  width:9vw;
   float:right;
   text-align: center;
   color: ${props => props.theme.cor.titulo};
+  height:9vh;
 
   p:nth-child(1){
     font-weight: regular;
@@ -176,9 +149,9 @@ export const Status = styled.div<propriedadesCard>`
 
   ${(props) => props.mostrar ? 
     css` 
-      margin-top: 17px;
-      margin-right: 16px;
-      height:60px;
+      margin-top: 2vh;
+      margin-right: 1vw;
+      
       
       p:nth-child(1){
         font-size: .9em;
@@ -187,19 +160,9 @@ export const Status = styled.div<propriedadesCard>`
       p:nth-child(2){
         font-size: 1em;
       }
-
-      @media (max-width: 1024px) and (min-width: 769px) {
-        height: 50px;
-      }
-
-      @media (max-width: 768px){
-        height: 50px;
-      }
-      
     `: css`
-      margin-top: 7px;
-      margin-right: 32px;
-      height:60px;
+      margin-top: 1vh;
+      margin-right: 2vw;
 
       p:nth-child(1){
         font-size: .95em;
@@ -210,14 +173,21 @@ export const Status = styled.div<propriedadesCard>`
       }
     }
   `}
+  @media (max-width: 1024px) and (min-width: 769px) {
+    width: 12vw;
+  }
+
+  @media (max-width: 768px){
+    width: 15vw;
+  }
 
 `;
 
 export const Data = styled.div<propriedadesCard>`
-  min-height:15px;
+  min-height:2vw;
   display: flex;
   justify-content: space-between;
-  margin-left: 2rem;
+  margin-left: 2vw;
   color: ${props => props.theme.cor.data};
   
   p {
@@ -227,27 +197,17 @@ export const Data = styled.div<propriedadesCard>`
 
   ${(props) => props.mostrar ? 
     css` 
-      width: 300px;
+      width: 22vw;
 
-      @media (max-width: 1024px) and (min-width: 769px) {
-       height: 30px;
-       width: 285px;  
-      }
-
-      @media (max-width: 768px){
-        width: 205px;
-        height: 25px;
+      @media (max-width: 1024px) and (min-width: 569px) {
+       width: 30vw;  
       }
 
     `: css`
-      width: 465px;
-
-      @media (max-width: 1024px) and (min-width: 769px) {
-        max-width: 335px;
-      }
+      width: 34vw;
 
       @media (max-width: 768px){
-        width: 470px;  
+        width: 64vw;   
       }
 
   `}
