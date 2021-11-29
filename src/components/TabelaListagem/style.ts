@@ -62,6 +62,9 @@ export const Container = styled.div`
   .accordion{
     background: ${props => props.theme.cor.fundoCard };
     color: ${props => props.theme.cor.titulo};
+    margin-bottom: 5px;
+    border: 1px solid ${props => props.theme.cor.bordaTabela};
+    box-shadow: none;
   }
 
   .cabecalho{
@@ -71,40 +74,8 @@ export const Container = styled.div`
     justify-content: space-between;
     
     p:nth-child(2){
-      width: 300px;
+      width: 22vw;
     }
-  }
-
-  .cabecalhoDetalhe{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px;
-  }
-
-  .detalhe{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px;
-  }
-
-  #informacoes{
-    padding-left: 50px;
-    
-  }
-
-  #apontamentos{
-    padding-right: 50px;
-  }
-
-  #responsavel, #valorAprovado, #valorHora, #horasAprovadas, #totalAprovados{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 25vw;
-    padding: .3em;
-    font-size: .9em;
   }
 
   p, h1{
@@ -199,4 +170,35 @@ export const Descricoes = styled.div<Description>`
       
     `}
   }
+`;
+
+export const CabecalhoDetalhes = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+`;
+
+export const Detalhes = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+`;
+
+export const Informacoes = styled.div`
+  padding-left: 50px;
+`;
+
+export const Dados = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 25vw;
+  padding: .3em;
+  font-size: .9em;  
+`;
+
+export const Apontamentos = styled.div`
+  padding-right: 50px;
 `;

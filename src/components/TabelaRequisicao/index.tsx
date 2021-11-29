@@ -63,8 +63,7 @@ const TabelaRequisicao: React.FC = () => {
       <Container>
         <div>
         {consultores && consultores.map(consultor => (
-
-          <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} sx={{ width: '81vw'}} className="accordion">
+          <Accordion sx={{ width: '81vw'}} className="accordion">
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1bh-content"
@@ -84,7 +83,6 @@ const TabelaRequisicao: React.FC = () => {
                     {consultor.requisicoes.length}
                   </p> 
                 </section>
-
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -142,7 +140,6 @@ const TabelaRequisicao: React.FC = () => {
             </AccordionDetails>
           </Accordion>
           ))} 
-
         </div>
       </Container>
     </>

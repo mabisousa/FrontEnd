@@ -18,6 +18,9 @@ export const Container = styled.div`
   .accordion{
     background: ${props => props.theme.cor.fundoCard };
     color: ${props => props.theme.cor.titulo};
+    margin-bottom: 5px;
+    border: 1px solid ${props => props.theme.cor.bordaTabela};
+    box-shadow: none;
   }
 
   svg{

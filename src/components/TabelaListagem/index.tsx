@@ -6,7 +6,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 
-import { Container, Descricoes } from './style';
+import { Apontamentos, CabecalhoDetalhes, Container, Dados, Descricoes, Detalhes, Informacoes } from './style';
 import { i18n } from '../../translate/i18n';
 import api from '../../services/api';
 import { format, parseISO } from 'date-fns';
@@ -47,7 +47,6 @@ interface Apontamento {
 
 const TabelaConsultor: React.FC = () => {
 
-  const [expanded, setExpanded] = React.useState<string | false>(false);
   const [aprovacoes, setAprovacoes] = useState<Listagem[]>([]);
   const [descricao, setDescricao] = useState<Apontamento>();
   const [popupDescricao, setPopupDescricao] = useState(false);
@@ -70,19 +69,13 @@ const TabelaConsultor: React.FC = () => {
     setDescricao(apontamento)
 
   },[descricao, popupDescricao])
-
-  const handleChange =
-    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panel : false);
-    };
   
-    //console.log(aprovacoes.map((aprovacao) => (aprovacao.apontamentos.map((apontamentos) => apontamentos.apontamentoSituacao === "APROVADO"))))
   return (
     <> 
       <Container>
         {aprovacoes.map((aprovacao) => (
           <div>
-            <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} sx={{ width: '90%'}} className="accordion">
+            <Accordion sx={{ width: '81vw' }} className="accordion">
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1bh-content"
@@ -91,19 +84,6 @@ const TabelaConsultor: React.FC = () => {
                   <p>{1}</p>
                   <p>{aprovacao.consultor.consultorNome}</p>
                   <p>{format(parseISO(aprovacao.data), "dd'/'MM'/'yyyy")}</p>
-                  { /*responsavel && responsavel.fornecedorAlocacoes.length > 0 ? 
-                    responsavel.fornecedorAlocacoes.map((alocacao) => (
-                      <Card id={alocacao.projeto.id} key={alocacao.projeto.id} mostrar={mostrarCard}/> 
-                    ))
-                    : consultor && consultor.consultorAlocacoes.length > 0? 
-                    consultor.consultorAlocacoes.map((alocacao) => (
-                      <Card id={alocacao.projeto.id} key={alocacao.projeto.id} mostrar={mostrarCard}/> 
-                    ))
-                    : <h1>
-                        {i18n.t('projetos.projetosAlocados')}
-                        
-                      </h1>
-                    */}
                   <p>{aprovacao.apontamentos.map((apontamentos) => apontamentos.apontamentoSituacao === "APROVADO").length}
                   /
                     {aprovacao.apontamentos.length}
@@ -111,35 +91,35 @@ const TabelaConsultor: React.FC = () => {
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <div className="cabecalhoDetalhe">
+                <CabecalhoDetalhes>
                   <p>{aprovacao.consultor.consultorNome}</p>
                   <p>{format(parseISO(aprovacao.data), "dd'/'MM'/'yyyy")}</p>
-                </div>
-                <div className="detalhe">
-                  <div id="informacoes">
+                </CabecalhoDetalhes>
+                <Detalhes>
+                  <Informacoes>
                     <h1>{i18n.t('listagem.infos')}</h1>
-                    <div id="responsavel">
+                    <Dados>
                       <p>{i18n.t('listagem.responsavel')} </p>
                       <p>{aprovacao.responsavel.responsavelNome}</p>
-                    </div>
-                    <div id="valorAprovado">
+                    </Dados>
+                    <Dados>
                       <p>{i18n.t('listagem.valorApro')}</p>
                       <p>{aprovacao.valorHora * aprovacao.horasAprovadas}</p>
-                    </div>
-                    <div id="valorHora">
+                    </Dados>
+                    <Dados>
                       <p>{i18n.t('aprovacao.valorHora')}</p>
-                      <p>R${aprovacao.valorHora}</p>
-                    </div>
-                    <div id="horasAprovadas">
+                      <p>R$ {aprovacao.valorHora}</p>
+                    </Dados>
+                    <Dados>
                       <p>{i18n.t('listagem.horasAprovadas')}</p>
                       <p>{aprovacao.horasAprovadas}</p>
-                    </div>
-                    <div id="totalAprovados">
+                    </Dados>
+                    <Dados>
                       <p>{i18n.t('listagem.totalAprovados')}</p>
                       <p>{aprovacao.apontamentos.length}</p>
-                    </div>
-                  </div>
-                  <div id="apontamentos">
+                    </Dados>
+                  </Informacoes>
+                  <Apontamentos>
                     <h1>
                       {i18n.t('listagem.apontamento')}
                     </h1>
@@ -175,8 +155,8 @@ const TabelaConsultor: React.FC = () => {
                       ))}
                       </tbody>
                     </table>
-                  </div>
-                </div>
+                  </Apontamentos>
+                </Detalhes>
               </AccordionDetails>
             </Accordion>
           </div>
