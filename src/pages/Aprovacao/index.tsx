@@ -243,13 +243,26 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
       }
     })
   })
+  const pesquisarAprovacaoNome = useCallback((ev) => {
+    setPesquisaAprovacao(ev)
+
+    if(ev !== '') {
+      api.get(`consultores/nome/${ev}`).then((response) => {
+        setConsultor(response.data)
+
+      }).catch(() => {
+        setConsultor(undefined)
+      })
+    } else {
+      setConsultor(undefined)
+    }
+  },[])
   const pesquisarAprovacao = useCallback((ev) => {
     setPesquisaAprovacaoID(ev)
 
     if(ev !== '') {
       api.get(`consultores/${ev}`).then((response) => {
         setConsultor(response.data)
-        
       }).catch(() => {
         setConsultor(undefined)
       })
@@ -283,11 +296,11 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
             </h1>
             <div className="informacao">
               <div className="segurando">
-                <Input value={consultor && pesquisaAprovacao === consultor.consultorNome ? consultor.idConsultor : pesquisaAprovacaoID}
+                <Input value={pesquisaAprovacaoID == consultor?.idConsultor ||  pesquisaAprovacao == consultor?.consultorNome ? consultor?.idConsultor : pesquisaAprovacaoID}
                 onChange={(ev) => pesquisarAprovacao(ev.target.value)}
                 name={"idConsultor"}></Input>
-                <Input value={consultor && pesquisaAprovacaoID == consultor.idConsultor ? consultor.consultorNome : pesquisaAprovacao}
-                onChange={(ev) => setPesquisaAprovacao(ev.target.value)} 
+                <Input value={pesquisaAprovacaoID == consultor?.idConsultor || pesquisaAprovacao == consultor?.consultorNome ? consultor?.consultorNome : pesquisaAprovacao}
+                onChange={(ev) => pesquisarAprovacaoNome(ev.target.value)} 
                 name={"consultorNome"}></Input>
               </div>
             </div>
