@@ -53,38 +53,17 @@ export const Container = styled.div<propriedadesTabela>`
     }
   } 
 
-
-    @media (max-width: 1024px) and (min-width: 769px) {
-      
-      tbody {
-        height:45vh;
-        width: 79vw;
-      }
-
-      tr{
-          td{
-            width: 11vw;
-          }
-          
-          td:nth-child(2){
-            width: 34vw;
-          }
-        }
-    }
-
     @media (max-width: 768px)  {
       table{
+        width: 75vw;
         font-size: .9em;
+        margin-left: 3vw;
         tbody {
           height:45vh;
           width: 75vw;
         }
 
         tr{
-          td{
-            width: 11vw;
-          }
-          
           td:nth-child(2){
             width: 31vw;
           }

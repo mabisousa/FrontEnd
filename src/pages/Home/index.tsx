@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { Container, Filtros, Titulo, Cards, Filtro } from './style';
+import { Container, Filtros, Titulo, Cards, Filtro, Formulario } from './style';
 
 import Dropdown from "../../components/Dropdown";
 import Perfil from "../../components/Perfil";
@@ -69,6 +69,7 @@ interface Responsavel {
         secaoNome: string,
       },
       projetoNome: string,
+      projetoResponsavel: string,
       projetoDescricao: string,
       projetoStatus: string,
       projetoDateInicio: Date,
@@ -100,6 +101,7 @@ interface Consultor {
           secaoNome: string,
         },
         projetoNome: string,
+        projetoResponsavel: string,
         projetoDescricao: string,
         projetoStatus: string,
         projetoDateInicio: Date,
@@ -212,9 +214,13 @@ const Home: React.FC<tema> = ({alternarTema}) => {
             {i18n.t('projetos.tituloPagina')}
           </Titulo>
           <Filtro>
-            <label>{i18n.t('projetos.projeto')}</label>
-            <input type="text" placeholder={i18n.t('projetos.placeHolder')} 
-              value={pesquisa} onChange={(ev) => handleFiltrarNome(ev.target.value)}/>
+            <Formulario>
+              <label>
+                {i18n.t('projetos.projeto')}
+              </label>
+              <input type="text" placeholder={i18n.t('projetos.placeHolder')} 
+                value={pesquisa} onChange={(ev) => handleFiltrarNome(ev.target.value)}/>
+            </Formulario>
             <div>
               <label className="secao">{i18n.t('projetos.secao')}</label>
               <Dropdown>

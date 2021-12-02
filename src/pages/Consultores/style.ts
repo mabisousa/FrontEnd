@@ -48,12 +48,12 @@ export const Filtros = styled.div`
   }
 
   @media (max-width: 768px)  {
-    width: 70vw;    
+    width: 82vw;    
   }
 `;
 
 export const Filtro = styled.div`
-  width:77vw;
+  width:85vw;
   height: 60px;
   display: flex;
   flex-direction: row;
@@ -97,19 +97,26 @@ export const Titulo = styled.h1`
  
   @media (max-width: 768px)  {
     font-size: 1em;
+    margin-left: 7vw;
   }
 `;
 
 export const Formulario = styled.form`
-  width: 21vw;
+  width: 22vw;
   height: 5vw;
   display: flex;
   align-items: center;
 
   input{
     padding-left: 1vw;
-    margin-left: 1vw;
     max-width: 16vw;
   }
 
+  @media (max-width: 1024px) and (min-width: 769px) {
+    width: 25vw;
+  }
+
+  @media (max-width: 768px)  {
+    width: 29vw;
+  }
 `;

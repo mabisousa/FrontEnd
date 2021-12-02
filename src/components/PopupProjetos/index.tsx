@@ -18,6 +18,7 @@ interface Projetos {
     secaoNome: string,
   },
   projetoNome: string,
+  projetoResponsavel: string,
   projetoDescricao: string,
   projetoStatus: string,
   projetoDateInicio: Date,
@@ -99,10 +100,8 @@ const PopupProjetos: React.FC<Projeto> = ({id, mostrarPopup}) => {
                 </h1>
                 <div>
                   <p>
-                    {i18n.t('projetoPopup.gestor')} ?
-                  </p>
-                  <p>
-                    {i18n.t('projetoPopup.fornecedor')} ?
+                    {i18n.t('projetoPopup.gestor')} 
+                    {projeto.projetoResponsavel}
                   </p>
                 </div>
               </InfosGerais>
