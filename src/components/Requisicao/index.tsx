@@ -6,6 +6,7 @@ import { Fundo, Container } from './style';
 
 import { i18n } from '../../translate/i18n';
 import api from '../../services/api';
+import { toast } from 'react-toastify';
 
 interface Selecionados {
   idApontamento: number,
@@ -52,12 +53,47 @@ const Requisicao: React.FC<MostrarRequest> = ({ selecionados, consultor, respons
       requisicao.requisicaoDescricao = conteudo
       requisicao.consultor.idConsultor = consultor.idConsultor
       requisicao.responsavel.idResponsavel = responsavel.idResponsavel
-      requisicao.apontamentos = selecionados
+
+      // if(selecionados.length > 0) {
+         requisicao.apontamentos = selecionados
+      // } else {
+
+      //   toast.error("Selecione apontamentos para reprovar." , {
+      //     position: "top-right",
+      //     autoClose: 5000,
+      //     hideProgressBar: false,
+      //     closeOnClick: true,
+      //     pauseOnHover: true,
+      //     draggable: true,
+      //     progress: undefined,
+      //   });
+
+      //   return
+      // }
+      
 
       api.post(`requisicoes/inserir`,requisicao).then((response) => {
-        console.log(response.data)
+
+        toast.success("Requisição enviada com sucesso." , {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       })
     } catch(e) {
+      toast.error("Erro ao enviar requisição." , {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       console.log(e)
     }
     mostrarRequisicao(false)
