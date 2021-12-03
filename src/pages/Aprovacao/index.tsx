@@ -161,17 +161,9 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
   const enviarAprovacao = useCallback(async () => {
     
     if(consultor && responsavel) {
+      
+      try {          
 
-      formRef.current?.setErrors({});
-
-        const schema = Yup.object().shape({
-          idConsultor: Yup.number().required("Consultor obrigatório").positive(),
-          consultorNome: Yup.number().required("Responsável obrigatório").positive(),
-          idResponsavel: Yup.number().required("Responsável obrigatório").positive(),
-          responsavelNome: Yup.number().required("Responsável obrigatório").positive(),
-        }
-      )
-      try {
         aprovacao.consultor.idConsultor = consultor.idConsultor;
         aprovacao.valorHora = consultor.consultorValorHora;
         aprovacao.responsavel.idResponsavel = responsavel.idResponsavel;
@@ -190,7 +182,6 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
 
           return
         }
-        console.log(selecionados)
         api.post(`aprovacoes/inserir`,aprovacao).then(() => {
           api.get(`consultores/${consultor.idConsultor}`).then((response)=> {
             setConsultor(response.data);
@@ -219,6 +210,16 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
           progress: undefined,
         });
       }
+    } else {
+          toast.info("Consultor não selecionado." , {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
     }
   },[aprovacao, consultor, responsavel, selecionados])
 
@@ -296,10 +297,10 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
             </h1>
             <div className="informacao">
               <div className="segurando">
-                <Input value={pesquisaAprovacaoID == consultor?.idConsultor ||  pesquisaAprovacao == consultor?.consultorNome ? consultor?.idConsultor : pesquisaAprovacaoID}
+                <Input value={consultor ? consultor?.idConsultor : pesquisaAprovacaoID}
                 onChange={(ev) => pesquisarAprovacao(ev.target.value)}
                 name={"idConsultor"}></Input>
-                <Input value={pesquisaAprovacaoID == consultor?.idConsultor || pesquisaAprovacao == consultor?.consultorNome ? consultor?.consultorNome : pesquisaAprovacao}
+                <Input value={consultor ? consultor?.consultorNome : pesquisaAprovacao}
                 onChange={(ev) => pesquisarAprovacaoNome(ev.target.value)} 
                 name={"consultorNome"}></Input>
               </div>
