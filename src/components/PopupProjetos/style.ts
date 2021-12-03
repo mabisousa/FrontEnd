@@ -9,11 +9,12 @@ export const Container = styled.div<PopUp>`
   ${(props) => props.aberto ? 
     css`
       #segura{
-        width:1160px; 
+        width:84vw; 
       }
+
     `: css`
       #segura{
-        width: 960px; 
+        width: 75vw; 
       }
   `}
 
@@ -43,19 +44,17 @@ export const Container = styled.div<PopUp>`
     top: 4vh;
     right: 3.5vw;
     font-size: 1.9em;
-    height: 30px;
-    width: 30px;
     border: 0;
     background: none;
   }
 
   #segura{
     position: relative;
-    height: 560px;
+    height: 90vh;
     background: ${props => props.theme.cor.fundo};
     display: flex;
     flex-direction: column;
-    padding: 35px;
+    padding: 3vw;
 
     button{
       svg{
@@ -66,18 +65,14 @@ export const Container = styled.div<PopUp>`
 
   @media (max-width: 1024px) and (min-width: 769px)  {
     #segura{
-      width: 910px;
-      height: 495px;
+      width: 95vw;
     }
   }
 
   @media (max-width: 768px)  {
-    width: 102vw;
-    height: 102vh;
-
     #segura{
-      width: 685px;
-      height: 480px;
+      width: 90vw;
+      height: 87vh;
     }
   }
 `;
@@ -85,7 +80,7 @@ export const Container = styled.div<PopUp>`
 export const TituloPopUp = styled.div`
   width: 52vw;
   height: 11vh;
-  padding: 10px;
+  padding: 1vw;
   font-weight: 500;
 
   h2 {
@@ -99,8 +94,6 @@ export const TituloPopUp = styled.div`
   }
 
   @media (max-width: 768px)  {
-    width: 70vw;
-
     h2 {
       font-size: 1em;
     }
@@ -140,10 +133,11 @@ export const InfosGerais = styled.div<ContainerProps>`
 
   p {
     font-size: .75em;
-    margin: 5px;
+    margin: 1vh;
   }
+
   div:nth-child(2) {
-    padding: 20px;
+    padding: 3vh;
   }
 
   h1{
@@ -173,10 +167,10 @@ export const Objetivo = styled.div<ContainerProps>`
   height: 28vh;
   display: flex;
   flex-direction: column;
-  margin-top: 34px;
+  margin-top: 5vh;
 
   h1 {
-    margin-bottom: 17px;
+    margin-bottom: 3vh;
   }
   
   p {
@@ -186,44 +180,11 @@ export const Objetivo = styled.div<ContainerProps>`
     align-self: center;
     overflow-y: scroll;
   }
-
-  @media (max-width: 1024px) and (min-width: 769px)  {
-    ${(props) => props.aberto ? 
-    css`
-      width: 28vw;
-
-      p {
-        width: 27vw;
-      }
-      
-    `: css`
-      width: 45vw;
-
-      p {
-        width: 40vw;
-      }
-    `}  
-  }
   
   @media (max-width: 768px)  {
-    ${(props) => props.aberto ? 
-    css`
-      width: 23vw;
-
-      p {
-        width: 22vw;
-        font-size: .85em;
-      }
-
-    `: css`
-      width: 40vw;
-
-      p {
-        width: 35vw;
-        font-size: .85em;
-      }
-    `}  
-
+    p {
+      font-size: .85em;
+    } 
     h1{
       font-size: .85em;
     }
@@ -259,13 +220,6 @@ export const Objetivo = styled.div<ContainerProps>`
   }
 
   @media (max-width: 768px)  {
-    ${(props) => props.aberto ? 
-    css`
-      width: 30vw;
-    `: css`
-      width: 40vw;
-    `}
-
     h1{
       font-size: .85em;
     }
@@ -297,7 +251,6 @@ export const Objetivo = styled.div<ContainerProps>`
       }
     }
     @media (max-width: 768px)  {
-      width: 11vw;
       p{
         font-size: .65em;
       }
@@ -323,37 +276,14 @@ export const Skills = styled.div<ContainerProps>`
   button:nth-child(2) {
     border: 0;
     width: 28.1vw;
-    height: 40px;
+    height: 6vh;
     font-size: .9em;
     color: #fff;
     background: ${props => props.theme.cor.habilidadeBotao};
   }
 
-  @media (max-width: 1024px) and (min-width: 769px)  {
-
-    ${(props) => props.aberto ? 
-    css`
-      width: 29vw;
-    `: css`
-      width: 28vw;
-      
-    `}
-    
-    button:nth-child(2) {
-      margin-top: 2px;
-    }
-  }
-
   @media (max-width: 768px)  {
-    ${(props) => props.aberto ? 
-    css`
-      width: 29vw;
-    `: css`
-      width: 31vw;
-    `}
-    
     button:nth-child(2) {
-      margin-top: 2px;
       font-size: .75em;
     }
   }
@@ -374,15 +304,15 @@ export const Tabela = styled.div`
       background: ${props => props.theme.cor.aprovacaoMenu};
       color: #fff;
       width: 28vw;
-      height: 40px;
+      height: 6vh;
       font-size: .9em;
       align-items: center;
     }
 
     tbody {
-      margin-top: 10px;
+      margin-top: 2vh;
       display: block;
-      height: 60px;
+      height: 10vh;
       overflow-y: scroll;
       border:1px solid #e2e2e280;
 
@@ -392,8 +322,8 @@ export const Tabela = styled.div`
     }
 
     td {
-      width: 250px;
-      padding: 10px;
+      width: 17vw;
+      padding: 1vw;
     }
   }
 
@@ -436,18 +366,18 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
 
       thead {
         background: ${props => props.theme.cor.aprovacaoMenu};
-        height: 40px;
+        height: 6vh;
         display: inline-flex;
         width: 20vw;
         text-transform: uppercase;
         font-size: .9em;
-        margin-bottom: 15px;
+        margin-bottom: 2vh;
 
         tr {
           font-size: .9em;
-          height: 40px;
+          height: 6vh;
           width:20vw;
-          padding:12px;
+          padding:2vh;
         }
 
         td:nth-child(1) {
@@ -462,7 +392,7 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
       }
         
       tbody {
-        height: 297px;
+        height: 45vh;
         overflow-y: auto;
         display: block;
         border: 1px solid #e2e2e280;
@@ -474,7 +404,7 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
         }
 
         td:nth-child(1) {
-          padding: 15px;
+          padding: 1vw;
           width: 7vw;
           border-right: 1px solid #e2e2e280;
         }
@@ -519,18 +449,10 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
       }
     }
 
-    @media (max-width: 768px)  {
-      ${(props) => props.aberto ? 
-      css`
-      width: 21vw;
-      `: css`
-      width: 0;
-    `}
-      
+    @media (max-width: 768px)  { 
       table{
         font-size: .75em;
         thead{
-          width: 22vw;
           td:nth-child(1) {
             width: 7vw;
           }
@@ -539,12 +461,8 @@ export const ConsultoresAlocados = styled.div<ContainerProps>`
           }
         }
         tbody{
-          height: 257px;
           td:nth-child(1) {
             width: 9.5vw;
-          }
-          td:nth-child(2) {
-            width: 14vw;
           }
         }
       }
@@ -565,7 +483,7 @@ export const DetalhesPopup = styled.div<ContainerProps>`
       width: 64vw;
     `}
 
-  ${(props) => props.color === "ANDAMENTO" &&
+  ${(props) => props.cor === "ANDAMENTO" && 
     css`
       h1{
         color: ${props => props.theme.cor.andamentoStatus};
@@ -592,10 +510,10 @@ export const DetalhesPopup = styled.div<ContainerProps>`
   }
 
   @media (max-width: 1024px) and (min-width: 769px)  {
-      width: 81.5vw;
+      width: 88vw;
   }
 
   @media (max-width: 768px)  {
-    width: 80.5vw;
+    width: 82vw;
   }
 `;
