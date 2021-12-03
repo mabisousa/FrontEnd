@@ -28,17 +28,17 @@ export const Container = styled.div<propriedadesPopup>`
   #segura{
     position: relative;
     background-color: ${props => props.theme.cor.fundo};
-    width: 960px;
-    height: 570px;
-    padding: 10px;
+    width: 72vw;
+    height: 90vh;
+    padding: 1vw;
   }
 
   button{
     float: right;
     color: black;
-    margin-right: 20px;
+    margin-right: 2vw;
     font-size: 1.9em;
-    margin-top: 20px;
+    margin-top: 3vh;
     background-color: transparent;
     border: 0;
 
@@ -48,28 +48,19 @@ export const Container = styled.div<propriedadesPopup>`
   }
 
   #grade{
-    margin-left: 30px;
+    margin-left: 2vw;
   }
-
-  @media (max-width: 1024px) and (min-width: 769px)  {
-    #segura{
-      width: 910px;
-      height: 495px;
-    }
-  }
-
   
   @media (max-width: 768px)  {
     #segura{
-      width: 685px;
-      height: 480px;
+      width: 89vw;
     }
   }
 `;
 
 export const InfoPopUp = styled.div`
-  margin-top: 50px;
-  margin-left: 35px;
+  margin-top: 8vh;
+  margin-left: 2vw;
 
   header{
     display: flex;
@@ -78,13 +69,13 @@ export const InfoPopUp = styled.div`
 
   svg{
     color: ${props => props.theme.cor.corDoIcone};
-    width: 100px;
-    height: 100px;
-    margin-left: 35px;
+    width: 8vw;
+    height: 16vh;
+    margin-left: 2vw;
   }
 
   div{
-    margin-left: 40px;
+    margin-left: 3vw;
   }
 
   h1{
@@ -96,24 +87,11 @@ export const InfoPopUp = styled.div`
   p{
     font-size: 1.15em;
     font-weight: lighter;
-    margin-top: 4px;
-  }
-
-  @media (max-width: 1024px) and (min-width: 769px)  {
-    svg{
-      width: 85px;
-      height: 85px;
-    }
-    h1,p{
-      font-size: 1.1em;
-    }
+    margin-top: .6vh;
   }
 
   @media (max-width: 768px)  {
-    svg{
-      width: 70px;
-      height: 70px;
-    }
+    
     h1,p{
       font-size: .9em;
     }
@@ -122,34 +100,24 @@ export const InfoPopUp = styled.div`
 
 export const Conteudo = styled.div`
   display: flex;
-  margin-top: 25px;
-  margin-bottom: 60px;
-  width: 100%;
-  height: 260px;
+  margin-top: 4vh;
+  margin-bottom: 9vh;
+  width: 70vw;
+  height: 40vh;
   justify-content: space-between;
 
-  @media (max-width: 1024px) and (min-width: 769px)  {
-    margin-bottom: 10px;
-  }
-
   @media (max-width: 768px)  {
-    margin-bottom: 10px;
+    width: 78vw;
   }
 `;
 
 export const Habilidades = styled.div`
-  width: 40%;
-  margin-left: 30px;
+  width: 28vw;
+  margin-left: 2vw;
 
   h5{
-    margin-bottom: 35px;
-    margin-top: 5px;
-  }
-
-  @media (max-width: 1024px) and (min-width: 769px)  {
-    h5{
-      font-size: .95em;
-    }
+    margin-bottom: 5vh;
+    margin-top: 1vh;
   }
 
   @media (max-width: 768px)  {
@@ -164,46 +132,44 @@ export const SeguraConteudo = styled.div`
   height: 36vh;
   overflow-y: scroll;
   overflow-x: hidden;
-  padding: 10px;
+  padding: 1vw;
   display: flex;
   flex-direction: column;
 
   p{
-    padding-top: 5px;
+    padding-top: 1vh;
   }
 
-  @media (max-width: 1024px) and (min-width: 769px)  {
-    height: 35vh;
-  }
+  
   @media (max-width: 768px)  {
-    height: 35vh;
     font-size: .9em;
+    width: 35vw;
   }
 `;
 
 export const TabelaPopUp = styled.div`
-  width: 50%;
-  height: 100%;
-  margin-right: 30px;
+  width: 35vw;
+  height: 40vh;
+  margin-right: 2vw;
 
   table{
     border-collapse: collapse;
-    width: 100%;
+    width: 35vw;
     text-align: center;
   }
 
   thead{
     background: ${props => props.theme.cor.thead};
-    height: 40px;
+    height: 6vh;
     display: inline-flex;
-    width:100%;
+    width:35vw;
     text-transform: uppercase;
     font-size: .9em;
-    margin-bottom: 15px;
+    margin-bottom: 2vh;
   }
 
   thead tr{
-    margin-top: 5px;
+    margin-top: 1vh;
     color: #fff;  
     border: none;
   }
@@ -219,27 +185,28 @@ export const TabelaPopUp = styled.div`
   tr {
     font-size: .9em;
     letter-spacing: 0.01071em;
-    height: 17px;
-    margin:15px;
+    height: 2vh;
+    margin: 2vh;
     border-bottom: 1px solid #8B8787;
   }
 
   td {
-    padding: 5px;
-    width: 484px;
+    padding: 1vh;
+    width: 12vw;
   }
 
-  @media (max-width: 1024px) and (min-width: 769px)  {
-    tbody{
-      height: 35.5vh;
-    }
-  }
   @media (max-width: 768px)  {
-    tbody{
-      height: 35.2vh;
+    table{
+      width: 41vw;
+      thead{
+        width: 41vw;
+      }
+
+      td {
+        font-size: .9em;
+        width: 15vw;
+      }
     }
-    td {
-      font-size: .9em;
-    }
+    
   }
 `;

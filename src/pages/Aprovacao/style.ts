@@ -4,15 +4,15 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  width:100%;
+  width:100vw;
   height:75vh;
-  padding: 1% 8% 1% 8%;
+  padding:2vh 8vw 2vh 8vw;
   color: ${props => props.theme.cor.titulo};
 
   h1 {
     font-size: 1em;
     font-weight:500;
-    margin:10px 0;
+    margin:1vh 0;
   }
 
   .botoes {

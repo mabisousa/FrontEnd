@@ -296,10 +296,10 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
             </h1>
             <div className="informacao">
               <div className="segurando">
-                <Input value={pesquisaAprovacaoID == consultor?.idConsultor ||  pesquisaAprovacao == consultor?.consultorNome ? consultor?.idConsultor : pesquisaAprovacaoID}
+                <Input value={pesquisaAprovacaoID == consultor?.idConsultor ||  pesquisaAprovacao == consultor?.consultorNome || consultor ? consultor?.idConsultor : pesquisaAprovacaoID}
                 onChange={(ev) => pesquisarAprovacao(ev.target.value)}
                 name={"idConsultor"}></Input>
-                <Input value={pesquisaAprovacaoID == consultor?.idConsultor || pesquisaAprovacao == consultor?.consultorNome ? consultor?.consultorNome : pesquisaAprovacao}
+                <Input value={pesquisaAprovacaoID == consultor?.idConsultor || pesquisaAprovacao == consultor?.consultorNome || consultor ? consultor?.consultorNome : pesquisaAprovacao}
                 onChange={(ev) => pesquisarAprovacaoNome(ev.target.value)} 
                 name={"consultorNome"}></Input>
               </div>
