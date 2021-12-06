@@ -147,6 +147,6 @@ export const Cards = styled.div`
     font-size: 1.25em;
     color: ${props => props.theme.cor.titulo};
     text-align: center;
-  }
+  } 
 `;
 

@@ -11,7 +11,6 @@ import { i18n } from '../../translate/i18n';
 import api from '../../services/api';
 import { format, parseISO } from 'date-fns';
 import { GoChevronDown } from 'react-icons/go';
-import { HorasApontadas } from '../PopupProjetos/style';
 
 interface Listagem{
   consultor: {

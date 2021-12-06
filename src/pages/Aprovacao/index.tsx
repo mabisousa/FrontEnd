@@ -1,9 +1,8 @@
 import React, { useCallback, useRef, useState, useEffect } from "react";
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web";
-import * as Yup from "yup"
 import { Infos, Container, Conta, Apontamentos, BarraDeProgressao, Titulo, Consultores, 
-    Passo, Descricoes, Tr, Info } from "./style";
+    Passo, Descricoes, Tr } from "./style";
 
 import { VscChromeClose } from 'react-icons/vsc';
 import { GoChevronDown } from 'react-icons/go';
@@ -68,11 +67,18 @@ interface Responsavel {
     fornecedorNome: string, 
   },
   responsavelNome: string,
+  fornecedorConsultores: [
+    {
+      id: 1,
+      consultorNome: string,
+      consultorStatus: string,
+      valorHora: number
+    }
+  ]
 }
 const Aprovacao: React.FC<tema> = ({alternarTema}) => {
 
   const formRef = useRef<FormHandles>(null);
-  const [consultores, setConsultores] = useState<Consultor[]>([]);
   const [consultor, setConsultor] = useState<Consultor>();
   const [responsavel, setResponsavel] = useState<Responsavel>();
   const [descricao, setDescricao] = useState<Apontamento>();
@@ -94,16 +100,12 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
   }
   
   useEffect(()=> {
-    api.get(`consultores`).then((response)=> {
-      setConsultores(response.data);
-    })
-  })
-  useEffect(()=> {
     api.get(`responsaveis/${resp.email}`).then((response)=> {
       setResponsavel(response.data);
     })
-  },[resp.email])
-  
+  },[])
+
+  console.log(responsavel)
 
   const aprovacao = {
     consultor: {
@@ -161,12 +163,12 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
   const enviarAprovacao = useCallback(async () => {
     
     if(consultor && responsavel) {
-      
       try {          
 
         aprovacao.consultor.idConsultor = consultor.idConsultor;
         aprovacao.valorHora = consultor.consultorValorHora;
         aprovacao.responsavel.idResponsavel = responsavel.idResponsavel;
+        
         if(selecionados.length > 0) {
           aprovacao.apontamentos = selecionados;
         } else {
@@ -211,15 +213,16 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
         });
       }
     } else {
-          toast.info("Consultor não selecionado." , {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+
+      toast.error("Consultor não selecionado ou inexistente." , {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   },[aprovacao, consultor, responsavel, selecionados])
 
@@ -227,7 +230,7 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
     setMostrarRequisicao(state)
   },[setMostrarRequisicao]);
 
-  const filtrados = consultores.filter((consultor) => consultor.consultorNome.toLowerCase().includes(pesquisa.toLowerCase()));  
+  const filtrados = responsavel?.fornecedorConsultores.filter((consultor) => consultor.consultorNome.toLowerCase().includes(pesquisa.toLowerCase()));  
   
   let apontamentosconsultor = 0;
   let apontamentosaprovados = 0;
@@ -471,11 +474,11 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
                 </tr>
               </thead>
               <tbody>
-                {filtrados.map(consultor => 
-                  <Tr key={consultor.idConsultor} color={"ATIVO"}
-                    onClick={() => selecionarConsultor(consultor.idConsultor)}>
+                {filtrados!.map(consultor => 
+                  <Tr key={consultor.id} color={"ATIVO"}
+                    onClick={() => selecionarConsultor(consultor.id)}>
                     <td>
-                      {consultor.idConsultor}
+                      {consultor.id}
                     </td>
                     <td>
                       {consultor.consultorNome}
