@@ -65,6 +65,12 @@ export const Container = styled.div<dropdownProps>`
       color: ${props => props.theme.cor.titulo};
       border-left: 1.5px solid ${props => props.theme.cor.titulo};
     }
+
+    @media (max-width: 768px)  {
+      svg{
+        width: 2vw;
+      }
+    }
   }
 
   #dropdown{
@@ -108,7 +114,6 @@ export const Container = styled.div<dropdownProps>`
         }
 
         span{
-          min-height: 20px;
           font-size: .9em;
         }
     }
