@@ -281,9 +281,8 @@ const Home: React.FC<tema> = ({alternarTema}) => {
           consultor.consultorAlocacoes.map((alocacao) => (
             <Card id={alocacao.projeto.id} key={alocacao.projeto.id} mostrar={mostrarCard}/> 
           ))
-          : <h1>
+          : <h1 className="mensagem">
               {i18n.t('projetos.projetosAlocados')}
-              
             </h1>
         }
       </Cards>

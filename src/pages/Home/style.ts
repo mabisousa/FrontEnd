@@ -143,7 +143,7 @@ export const Cards = styled.div`
   margin-left: 7vw;
   margin-top: 6vh;
 
-  h1 {
+  .mensagem {
     font-size: 1.25em;
     color: ${props => props.theme.cor.titulo};
     text-align: center;

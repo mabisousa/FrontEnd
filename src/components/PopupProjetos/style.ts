@@ -64,9 +64,17 @@ export const Container = styled.div<PopUp>`
   }
 
   @media (max-width: 1024px) and (min-width: 769px)  {
-    #segura{
-      width: 95vw;
-    }
+    
+    ${(props) => !props.aberto ? 
+      css`
+        #segura{
+          width: 71vw;
+        }
+      `: css`
+        #segura{
+          width: 90vw;
+        }
+    `}
   }
 
   @media (max-width: 768px)  {
@@ -182,13 +190,22 @@ export const Objetivo = styled.div<ContainerProps>`
   }
   
   @media (max-width: 768px)  {
-    p {
-      font-size: .85em;
-    } 
-    h1{
+
+    ${(props) => props.aberto ? 
+    css`
+      width: 29vw;
+      transition: 1s;
+    `: css`
+      width:40vw; 
+      p {
+        width: 37vw;
+      }     
+    `}
+    h1, p{
       font-size: .85em;
     }
   }
+  
 `;
 
  export const Horas = styled.div<ContainerProps>`
@@ -251,7 +268,7 @@ export const Objetivo = styled.div<ContainerProps>`
       }
     }
     @media (max-width: 768px)  {
-      p{
+      p{     
         font-size: .65em;
       }
     }
@@ -283,8 +300,11 @@ export const Skills = styled.div<ContainerProps>`
   }
 
   @media (max-width: 768px)  {
+    width: 26vw;
     button:nth-child(2) {
       font-size: .75em;
+       width: 30.1vw;
+       margin-left: 2vw;
     }
   }
 `;
@@ -333,7 +353,14 @@ export const Tabela = styled.div`
 
   @media (max-width: 768px)  {
     table{
+      width: 30vw;
       font-size: .75em;
+      thead{
+        width: 30vw;
+      }
+      td{
+        width: 18vw;
+      }
     }
   }
 `;
@@ -510,7 +537,12 @@ export const DetalhesPopup = styled.div<ContainerProps>`
   }
 
   @media (max-width: 1024px) and (min-width: 769px)  {
-      width: 88vw;
+    ${(props) => props.aberto ? 
+    css`
+      width: 84vw;
+    `: css`
+      width: 62.5vw;
+    `}
   }
 
   @media (max-width: 768px)  {
