@@ -61,7 +61,7 @@ interface tema{
   alternarTema(): void
 }
 interface Responsavel {
-    idResponsavel: number,
+  idResponsavel: number,
   fornecedor: {
     idFornecedor: number,
     fornecedorNome: string, 
@@ -69,7 +69,7 @@ interface Responsavel {
   responsavelNome: string,
   fornecedorConsultores: [
     {
-      id: 1,
+      id: number
       consultorNome: string,
       consultorStatus: string,
       valorHora: number
@@ -231,7 +231,7 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
   },[setMostrarRequisicao]);
 
   const filtrados = responsavel?.fornecedorConsultores.filter((consultor) => consultor.consultorNome.toLowerCase().includes(pesquisa.toLowerCase()));  
-  
+  console.log(filtrados)
   let apontamentosconsultor = 0;
   let apontamentosaprovados = 0;
   let apontamentosreprovados = 0;

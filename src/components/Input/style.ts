@@ -6,7 +6,7 @@ interface ContainerProps {
 
 export const Container = styled.div`
   position: relative;
-  height: 48px;
+  height: 7vh;
   margin-bottom: 1.5rem; 
 `;
 

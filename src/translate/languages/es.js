@@ -73,7 +73,9 @@ const messages = {
       },
       menu: {
         projetos: "Proyectos",
-        aprovacao: "Aprobación"
+        aprovacao: "Aprobación",
+        listagem: "Aprobaciones",
+        requisicoes: "Peticiones"
       },
       projetoPopup: {
         info: "INFORMACIONES GENERALES:",
@@ -91,7 +93,8 @@ const messages = {
         sim: "Sí"
       },
       listagem: {
-        titulo: "LISTADO",
+        tituloPag: "APROBACIONES",
+        titulo: "LISTA DE APROBACIONES",
         responsavel: "RESPONSABLE:",
         infos: "INFORMACIÓN:",
         valorApro: "VALOR APROBADO:",
@@ -101,7 +104,8 @@ const messages = {
         descricao: "DESCRIPCIÓN"
       },
       requisicoes: {
-        titulo: "PETICIONES",
+        tituloPag: "PETICIONES",
+        titulo: "LISTA DE PETICIONES",
         solicitadas: "SOLICITADO:"
       }
     }

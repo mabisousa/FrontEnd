@@ -43,7 +43,7 @@ const Menu: React.FC = () => (
       <div>
         <BsList size={35}/>
         <h1>
-          Listagem
+          {i18n.t('menu.listagem')}
         </h1>
       </div>
     </Link>
@@ -51,7 +51,7 @@ const Menu: React.FC = () => (
       <div>
         <AiOutlinePullRequest size={35}/>
         <h1>
-          Requisição
+          {i18n.t('menu.requisicoes')}
         </h1>
       </div>
     </Link>
