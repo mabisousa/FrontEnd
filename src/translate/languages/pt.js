@@ -88,7 +88,9 @@ const messages = {
       menu: {
         projetos: "Projetos",
         aprovacao: "Aprovação",
-        consultores: "Consultores"
+        consultores: "Consultores",
+        listagem: "Aprovações",
+        requisicoes: "Requisições"
       },
       projetoPopup: {
         info: "INFORMAÇÕES GERAIS:",
@@ -109,7 +111,8 @@ const messages = {
         sim: "Sim"
       },
       listagem: {
-        titulo: "LISTAGEM",
+        tituloPag: "APROVAÇÕES",
+        titulo: "LISTAGEM DE APROVAÇÕES",
         responsavel: "RESPONSÁVEL:",
         infos: "INFORMAÇÕES:",
         valorApro: "VALOR APROVADO:",
@@ -119,7 +122,8 @@ const messages = {
         descricao: "DESCRIÇÃO"
       },
       requisicoes: {
-        titulo: "REQUISIÇÕES",
+        tituloPag: "REQUISIÇÕES",
+        titulo: "LISTAGEM DE REQUISIÇÕES",
         solicitadas: "SOLICITADAS:"
       }
     }

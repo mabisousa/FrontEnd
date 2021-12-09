@@ -20,13 +20,13 @@ export const Container = styled.div<dropdownProps>`
   background: ${props => props.theme.cor.fundoEscuro};
 
   #nome{
-    width:220px;
+    width:16vw;
     display: flex;
     align-items: center;
     
     img{
-      margin:0 30px;
-      height: 70px;
+      margin:0 2vw;
+      height: 5vw;
       cursor: pointer;
     }
     
@@ -39,40 +39,46 @@ export const Container = styled.div<dropdownProps>`
   }
 
   #sair{
-    width: 60px;
-    height: 30px;
-    margin: 5px 20px 5px 5px;
+    width: 5vw;
+    height: 2vw;
+    margin: 1vh 1.5vw 1vh .5vw;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
   
     svg{
-      height: 20px;
-      width: 20px;
+      height: 3vh;
+      width: 1.5vw;
       cursor: pointer;
-      margin-right: 7px;
-      margin-top: 10px;
+      margin-right: .5vw;
+      margin-top: 1.5vh;
       color: ${props => props.theme.cor.corDoIcone};
     }
 
     p {
       font-size: .9em;
-      width: 40px;
+      width: 4vw;
       cursor: pointer;
       text-align: center;
-      margin-top: 7px;
+      margin-top: 1vh;
       color: ${props => props.theme.cor.titulo};
       border-left: 1.5px solid ${props => props.theme.cor.titulo};
+    }
+
+    @media (max-width: 768px)  {
+      svg{
+        width: 2vw;
+      }
     }
   }
 
   #dropdown{
     position: absolute;
-    right: 62px;
-    top: 35px;
+    right: 5vw;
+    top: 5vh;
     cursor: pointer;
-    min-width: 180px;
+    min-width: 13vw;
     height: auto;
     border: solid 1px ${props => props.theme.cor.corDoIcone};
     border-bottom: none;
@@ -86,16 +92,16 @@ export const Container = styled.div<dropdownProps>`
       `}
 
     svg{
-      height: 27px;
-      width: 27px;
-      margin: 4px 8px 4px 8px;
+      height: 4vh;
+      width: 2vw;
+      margin: .6vh .6vw .6vh .6vw;
     }
 
     button{ 
-      width: 100%;
+      width: 13vw;
       border: none;
       display: flex;
-      min-height: 35px;
+      min-height: 5vh;
       align-items: center;
       background-color: transparent;
       color: ${props => props.theme.cor.corDoIcone};
@@ -103,25 +109,17 @@ export const Container = styled.div<dropdownProps>`
       font-size: 1em;
 
         p{
-          min-height: 20px;
+          min-height: 3vh;
           font-size: 1em;
         }
 
-        img{
-          height: 30px;
-          width: 30px;
-          margin-left: 8px;
-          margin-right: 8px;
-        }
-
         span{
-          min-height: 20px;
           font-size: .9em;
         }
     }
       
     #idiomas{
-      height: 105px;
+      height: 15vh;
 
       ${(props) => props.mostrarIdiomas ?
       css`
@@ -131,25 +129,33 @@ export const Container = styled.div<dropdownProps>`
       `}  
 
       img{
-        height: 25px;
-        width: 25px;
-        cursor: pointer;
-        margin-left: 16px;
-        margin-right: 8px;
+        height: 4vh;
+        width: 1.8vw;
+        margin-left: 1vw;
+        margin-right: .8vw;
       }  
     }
 
     #fontes{
-      min-height: 70px;
+      height: 16vh;
 
       svg{
-        height: 25px;
-        width: 25px;
-        cursor: pointer;
-        margin-left: 16px;
-        margin-right: 8px;
-      }  
-        
+        height: 3vh;
+        width: 1.8vw;
+        margin-left: 1vw;
+        margin-right: .8vw;
+      }
+
+      .pequeno{
+        height: 2vh;
+        width: 1.8vw;
+      }
+
+      .grande{
+        height: 3.7vh;
+        width: 2vw;
+      }
+      
       ${(props) => props.mostrarFonte ?
       css`
         display: none;

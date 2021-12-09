@@ -13,7 +13,6 @@ import { RiArrowRightSLine } from 'react-icons/ri';
 import { i18n } from '../../translate/i18n';
 import api from '../../services/api';
 import { format, parseISO } from 'date-fns';
-import Requisicao from '../Requisicao';
 
 interface Consultor{
   idConsultor: number,
@@ -52,12 +51,7 @@ const TabelaRequisicao: React.FC = () => {
       })
   });
 
-  const [expanded, setExpanded] = React.useState<string | false>(false);
 
-  const handleChange =
-    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panel : false);
-    };
   return (
     <> 
       <Container>

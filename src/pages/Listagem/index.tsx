@@ -21,7 +21,7 @@ const Listagem: React.FC<tema> = ({alternarTema}) => {
       <Container>
         <Cabecalho alternarTema={alternarTema}>
           <p>
-            {i18n.t('listagem.titulo')}
+            {i18n.t('listagem.tituloPag')}
           </p>
         </Cabecalho>
         <Perfil/>

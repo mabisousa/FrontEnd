@@ -1,7 +1,6 @@
 import React, { useCallback, useRef, useState, useEffect } from "react";
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web";
-import * as Yup from "yup"
 import { Infos, Container, Conta, Apontamentos, BarraDeProgressao, Titulo, Consultores, 
     Passo, Descricoes, Tr } from "./style";
 
@@ -62,17 +61,24 @@ interface tema{
   alternarTema(): void
 }
 interface Responsavel {
-    idResponsavel: number,
+  idResponsavel: number,
   fornecedor: {
     idFornecedor: number,
     fornecedorNome: string, 
   },
   responsavelNome: string,
+  fornecedorConsultores: [
+    {
+      id: number
+      consultorNome: string,
+      consultorStatus: string,
+      valorHora: number
+    }
+  ]
 }
 const Aprovacao: React.FC<tema> = ({alternarTema}) => {
 
   const formRef = useRef<FormHandles>(null);
-  const [consultores, setConsultores] = useState<Consultor[]>([]);
   const [consultor, setConsultor] = useState<Consultor>();
   const [responsavel, setResponsavel] = useState<Responsavel>();
   const [descricao, setDescricao] = useState<Apontamento>();
@@ -94,16 +100,12 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
   }
   
   useEffect(()=> {
-    api.get(`consultores`).then((response)=> {
-      setConsultores(response.data);
-    })
-  })
-  useEffect(()=> {
     api.get(`responsaveis/${resp.email}`).then((response)=> {
       setResponsavel(response.data);
     })
-  },[resp.email])
-  
+  },[])
+
+  console.log(responsavel)
 
   const aprovacao = {
     consultor: {
@@ -161,20 +163,12 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
   const enviarAprovacao = useCallback(async () => {
     
     if(consultor && responsavel) {
+      try {          
 
-      formRef.current?.setErrors({});
-
-        const schema = Yup.object().shape({
-          idConsultor: Yup.number().required("Consultor obrigatório").positive(),
-          consultorNome: Yup.number().required("Responsável obrigatório").positive(),
-          idResponsavel: Yup.number().required("Responsável obrigatório").positive(),
-          responsavelNome: Yup.number().required("Responsável obrigatório").positive(),
-        }
-      )
-      try {
         aprovacao.consultor.idConsultor = consultor.idConsultor;
         aprovacao.valorHora = consultor.consultorValorHora;
         aprovacao.responsavel.idResponsavel = responsavel.idResponsavel;
+        
         if(selecionados.length > 0) {
           aprovacao.apontamentos = selecionados;
         } else {
@@ -190,7 +184,6 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
 
           return
         }
-        console.log(selecionados)
         api.post(`aprovacoes/inserir`,aprovacao).then(() => {
           api.get(`consultores/${consultor.idConsultor}`).then((response)=> {
             setConsultor(response.data);
@@ -219,6 +212,17 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
           progress: undefined,
         });
       }
+    } else {
+
+      toast.error("Consultor não selecionado ou inexistente." , {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   },[aprovacao, consultor, responsavel, selecionados])
 
@@ -226,8 +230,8 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
     setMostrarRequisicao(state)
   },[setMostrarRequisicao]);
 
-  const filtrados = consultores.filter((consultor) => consultor.consultorNome.toLowerCase().includes(pesquisa.toLowerCase()));  
-  
+  const filtrados = responsavel?.fornecedorConsultores.filter((consultor) => consultor.consultorNome.toLowerCase().includes(pesquisa.toLowerCase()));  
+  console.log(filtrados)
   let apontamentosconsultor = 0;
   let apontamentosaprovados = 0;
   let apontamentosreprovados = 0;
@@ -243,13 +247,26 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
       }
     })
   })
+  const pesquisarAprovacaoNome = useCallback((ev) => {
+    setPesquisaAprovacao(ev)
+
+    if(ev !== '') {
+      api.get(`consultores/nome/${ev}`).then((response) => {
+        setConsultor(response.data)
+
+      }).catch(() => {
+        setConsultor(undefined)
+      })
+    } else {
+      setConsultor(undefined)
+    }
+  },[])
   const pesquisarAprovacao = useCallback((ev) => {
     setPesquisaAprovacaoID(ev)
 
     if(ev !== '') {
       api.get(`consultores/${ev}`).then((response) => {
         setConsultor(response.data)
-        
       }).catch(() => {
         setConsultor(undefined)
       })
@@ -283,11 +300,11 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
             </h1>
             <div className="informacao">
               <div className="segurando">
-                <Input value={consultor && pesquisaAprovacao === consultor.consultorNome ? consultor.idConsultor : pesquisaAprovacaoID}
+                <Input value={consultor ? consultor?.idConsultor : pesquisaAprovacaoID}
                 onChange={(ev) => pesquisarAprovacao(ev.target.value)}
                 name={"idConsultor"}></Input>
-                <Input value={consultor && pesquisaAprovacaoID == consultor.idConsultor ? consultor.consultorNome : pesquisaAprovacao}
-                onChange={(ev) => setPesquisaAprovacao(ev.target.value)} 
+                <Input value={consultor ? consultor?.consultorNome : pesquisaAprovacao}
+                onChange={(ev) => pesquisarAprovacaoNome(ev.target.value)} 
                 name={"consultorNome"}></Input>
               </div>
             </div>
@@ -457,11 +474,11 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
                 </tr>
               </thead>
               <tbody>
-                {filtrados.map(consultor => 
-                  <Tr key={consultor.idConsultor} color={"ATIVO"}
-                    onClick={() => selecionarConsultor(consultor.idConsultor)}>
+                {filtrados!.map(consultor => 
+                  <Tr key={consultor.id} color={"ATIVO"}
+                    onClick={() => selecionarConsultor(consultor.id)}>
                     <td>
-                      {consultor.idConsultor}
+                      {consultor.id}
                     </td>
                     <td>
                       {consultor.consultorNome}

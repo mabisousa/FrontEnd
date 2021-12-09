@@ -5,9 +5,9 @@ export const Container = styled.div`
   flex-direction: row;
 
   .caixa{
-    width: 50px;
-    height: 35px;
-    margin: 0 5px 5px 0;
+    width: 3.6vw;
+    height: 5.4vh;
+    margin: 0 .5vw 1vh 0;
   }
 
   .um{
@@ -32,9 +32,9 @@ export const Container = styled.div`
 
   @media (max-width: 768px)  {
     .caixa{
-      width: 40px;
-      height: 25px;
-      margin: 5px 5px 5px 0;
+      width: 5.2vw;
+      height: 4.5vh;
+      margin: 1vh .5vw 1vh 0;
     }
   }
 `;

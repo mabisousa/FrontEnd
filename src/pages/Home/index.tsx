@@ -23,6 +23,7 @@ interface Projetos {
     secaoNome: string,
   },
   projetoNome: string,
+  projetoResponsavel: string,
   projetoDescricao: string,
   projetoStatus: string,
   projetoDateInicio: Date,
@@ -84,6 +85,9 @@ interface Responsavel {
           }
         ]
       }
+      valorTotal: number,
+      horasTotais: number,
+      horasTrabalhadas: number
     }
   ]
 }
@@ -121,6 +125,21 @@ const Home: React.FC<tema> = ({alternarTema}) => {
   let user!: { email: string, roles: [{ roleNome: string }] };
 
   
+  if(infos) {
+    user = JSON.parse(infos);
+    
+    user.roles.map(role => {
+      if(role.roleNome === "ROLE_FORNECEDOR") {
+        api.get(`responsaveis/${user.email}`).then((response) => {
+          setResponsavel(response.data);
+        })
+      } else if(role.roleNome === "ROLE_CONSULTOR") {
+        api.get(`consultores/email/${user.email}`).then((response) => {
+         setConsultor(response.data);
+        })
+      }
+    })
+  }
   const [filtrados, setFiltrados] = useState<Projetos[]>([]);
   const [projetos, setProjetos] = useState<Projetos[]>([]);
   const [secoes, setSecoes] = useState<Secoes[]>([]);
@@ -150,21 +169,7 @@ const Home: React.FC<tema> = ({alternarTema}) => {
     api.get("/secoes").then((response) => {
       setSecoes(response.data)
     })
-    if(infos) {
-      user = JSON.parse(infos);
-      
-      user.roles.map(role => {
-        if(role.roleNome === "ROLE_FORNECEDOR") {
-          api.get(`responsaveis/${user.email}`).then((response) => {
-            setResponsavel(response.data);
-          })
-        } else if(role.roleNome === "ROLE_CONSULTOR") {
-          api.get(`consultores/email/${user.email}`).then((response) => {
-           setConsultor(response.data);
-          })
-        }
-      })
-    }
+    
   }, [projetos, setProjetos, secao, status]);
   
   // useEffect(() => {
@@ -276,9 +281,8 @@ const Home: React.FC<tema> = ({alternarTema}) => {
           consultor.consultorAlocacoes.map((alocacao) => (
             <Card id={alocacao.projeto.id} key={alocacao.projeto.id} mostrar={mostrarCard}/> 
           ))
-          : <h1>
+          : <h1 className="mensagem">
               {i18n.t('projetos.projetosAlocados')}
-              
             </h1>
         }
       </Cards>

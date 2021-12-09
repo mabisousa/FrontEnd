@@ -124,7 +124,7 @@ const Cabecalho: React.FC<tema> = ({alternarTema, children,...props}) => {
         </button>
         <div id="fontes">
           <button onClick={() => tamanhoFonte("pequeno")}>
-            <Type/>
+            <Type className="pequeno"/>
             <span>
               {i18n.t('cabecalho.pequeno')}
             </span> 
@@ -136,7 +136,7 @@ const Cabecalho: React.FC<tema> = ({alternarTema, children,...props}) => {
             </span> 
           </button>
           <button onClick={() => tamanhoFonte("grande")}>
-            <Type/>
+            <Type className="grande"/>
             <span>
               {i18n.t('cabecalho.grande')}
             </span> 

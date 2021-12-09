@@ -47,12 +47,6 @@ export const Filtros = styled.div`
     }
   }
 
-  @media (max-width: 1024px) and (min-width: 769px) {
-    label{
-      font-size: 1em;
-    }
-  }
-
   @media (max-width: 768px)  {
     width: 70vw;
     
@@ -71,13 +65,6 @@ export const Filtro = styled.div`
     color: ${props => props.theme.cor.corDoIcone};
     text-align: center;
     margin-right: 1vw;
-  } 
-
-  @media (max-width: 1024px) and (min-width: 769px) {
-    width:70vw;
-    p{
-      font-size: 1em;
-    }
   }
 
   @media (max-width: 768px)  {
@@ -97,12 +84,10 @@ export const Titulo = styled.h1`
   text-decoration: underline ${props => props.theme.cor.undeline};
 
   @media (max-width: 1024px) and (min-width: 769px) {
-    width: 150px;
-    font-size: 1em;
+    width: 22vw;
   }
 
   @media (max-width: 768px)  {
-    width: 150px;
     font-size: 1em;
   }
 `;
@@ -116,20 +101,5 @@ export const Formulario = styled.form`
   input{
     padding-left: 1vw;
     max-width: 16vw;
-  }
-
-  @media (max-width: 1024px) and (min-width: 769px) {
-    width: 230px;
-    
-    input{
-      width: 150px;
-    }
-  }
-  @media (max-width: 768px)  {
-    width: 230px;
-    
-    input{
-      width: 100px;
-    }
   }
 `;

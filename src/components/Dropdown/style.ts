@@ -7,8 +7,8 @@ interface propriedadesDropdown {
 
 export const Container = styled.div<propriedadesDropdown>`
   #dropdown{
-    width: 150px;
-    height: 20px;
+    width: 10vw;
+    height: 3vh;
     border: solid 1px ${props => props.theme.cor.corDoIcone};
     color: ${props => props.theme.cor.corDoIcone};
     font-size: .9em;
@@ -18,18 +18,19 @@ export const Container = styled.div<propriedadesDropdown>`
 
     span{
       font-size: .91em;
+      margin-left: 1.5vw;
     }
 
     div{
-      width: 150px;
+      width: 10vw;
       position:relative;
-      left: -1px;
-      top: 2px;
+      left: -0.1vw;
+      top: 0.2vh;
       border: solid 1px  ${props => props.theme.cor.corDoIcone};
       color: ${props => props.theme.cor.corDoIcone};
       background: transparent;
       overflow-y: scroll;
-      height: 50px;
+      height: 8vh;
 
 
       ${(props) => props.mostrarDropdown ?
@@ -43,9 +44,8 @@ export const Container = styled.div<propriedadesDropdown>`
         font-size: .91em;
         border-bottom: solid 1px  ${props => props.theme.cor.corDoIcone};
         color: ${props => props.theme.cor.corDoIcone};
-        height: 20px;
-        padding-top:1%;
-        width: 100%;
+        height: 3vh;
+        width: 9.5vw;
       }  
     }
     
@@ -80,26 +80,25 @@ export const Container = styled.div<propriedadesDropdown>`
 
   @media (max-width: 1024px) and (min-width: 769px) {
     #dropdown{
-      width: 105px;
-
       div{
-        width: 105px;
-      }
-      span{
-        font-size: .80em;
+        top: 0vh;
       }
     }
-    
   }
 
   @media (max-width: 768px)  {
     #dropdown{
-      width: 100px;
-
+      width: 16vw;
       div{
-        width:100px;
+        width: 16vw;
+        top: 0vh;
+        left: -0.2vw;
+        
+        button{
+          width: 15vw;
+        }
       }
-      span{
+      span, p{
         font-size: .75em;
       }
     }
