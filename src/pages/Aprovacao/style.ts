@@ -4,22 +4,22 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  width:100%;
+  width:100vw;
   height:75vh;
-  padding: 1% 8% 1% 8%;
+  padding: 1vw 8vw 1vw 8vw;
   color: ${props => props.theme.cor.titulo};
 
   h1 {
     font-size: 1em;
     font-weight:500;
-    margin:10px 0;
+    margin:2vh 0;
   }
 
   .botoes {
-    height: 50px;
-    padding: 10px;
+    height: 9vh;
+    padding: 1vw;
     color: #fff;
-    margin-top: 60px;
+    margin-top: 9vh;
     border: none;
     background: ${props => props.theme.cor.habilidadeBotao};
   }
@@ -37,21 +37,21 @@ export const Container = styled.div`
 
 export const Infos = styled.div`
   height: 40vh;
-  width: 30vw;
+  width: 34vw;
   display:flex;
   flex-direction: column;
   justify-content: space-evenly;
 
   form {
-    margin-top: 3px;
-    height: 100%;
+    margin-top:.5vh;
+    height: 40vh;
     display: flex;
     flex-direction: column;
 
     .informacao {
-      margin: 3% 0;
-      width: 100%;
-      height: 100%;
+      margin: 2vh 0;
+      width: 30vw;
+      height: 13vh;
       
       p {
         font-size: 0.75em;
@@ -61,29 +61,22 @@ export const Infos = styled.div`
       .segurando {
         display: flex;
         align-items: center;
-        margin-bottom: 3%;
+        margin-bottom: 1.5vh;
         
         div:nth-child(1) {
-          width: 25%;
-          margin-right: 5%;
+          width: 7vw;
+          margin-right: 2vw;
         }
 
         div:nth-child(2) {
-          width: 70%;
+          width: 21vw;
         }
       }
 
       .segurando:nth-child(2) {
         display: flex;
         justify-content: space-between;
-          
-        p:nth-child(1) {
-          width: 40px;
-        }
 
-        div {
-          width: auto;
-        }
       }
     }
   }  
@@ -133,12 +126,12 @@ export const Conta = styled.div`
       display: flex;
       flex-direction: row;
       align-items:center;
-      margin:10px 0;
+      margin: 2vh 0;
 
       .numeros {
-        margin: 0 20px 0px 0px;
-        width: 40px;
-        height: 40px;
+        margin-right: 2vw;
+        width: 3vw;
+        height: 3vw;
         border: 1px solid #8B8787;
         display: flex;
         justify-content: center;
@@ -180,8 +173,8 @@ export const Conta = styled.div`
   
   button {
     border: 0;
-    width: 80%;
-    height: 50px;
+    width: 21vw;
+    height: 10vh;
     font-size: .9em;
     color: #fff;
     background: ${props => props.theme.cor.habilidadeBotao};
@@ -198,32 +191,14 @@ export const Conta = styled.div`
   }
 `;
 
-export const Info = styled.div`
-  height: 50px;
-  max-width: 250px;
-  border: 1px solid #a2a2a2;
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  color: #a2a2a2;
-
-  @media (max-width: 1024px) and (min-width: 769px) {
-    font-size: 0.9em;
-  }
-
-  @media (max-width: 768px)  {
-    font-size: .8em;
-  }
-`;
-
 export const Apontamentos = styled.div`
   width: 22vw;
-  height: 300px;
+  height: 46vh;
   position: relative;
 
   table{
     border-collapse: collapse;
-    width: 100%;
+    width: 22vw;
     font-size: .9em;       
     
     button{
@@ -241,18 +216,13 @@ export const Apontamentos = styled.div`
     }
             
     tbody {
-      height: 300px;
+      height: 22vw;
       overflow-y: scroll;
       overflow-x: hidden;
       display: block;
       border: 1px solid ${props => props.theme.cor.bordaTabela};
       border-top: none;
 
-      span {
-        position: relative;
-        top: 120px;
-        left: 40px;
-      }
     }
 
     tr{
@@ -260,17 +230,17 @@ export const Apontamentos = styled.div`
       justify-content: space-evenly;
       align-items: center;
       border-bottom: 1px solid ${props => props.theme.cor.bordaTabela};
-      height: 56px;
+      height: 4vw;
     }
 
     td{
       display: flex;
       justify-content: space-evenly;
-      width: 60px;
+      width: 4vw;
     }
       
     td:nth-child(1){
-      width: 40px;
+      width: 3vw;
     }
   }
 
@@ -292,30 +262,30 @@ export const Apontamentos = styled.div`
 `;
 
 export const Titulo = styled.h1`
-  font-weight:normal;
+  font-weight:normal; 
   font-size: 1.25em;
   text-decoration: underline ${props => props.theme.cor.undeline};
-  height: 60px;
+  height: 9vh;
   display: flex;
   align-items: center;
-  margin: 6rem 0rem 0rem 7rem;
+  margin: 15vh 0 0 10vw;
   color: ${props => props.theme.cor.titulo};
 `;
 
 export const BarraDeProgressao = styled.div`
-  height:120px;
-  width:55vw;
+  height: 18vh;
+  width: 58vw;
   
   .cabecalhos {
-    height: 50px;
+    height: 8vh;
     display: flex;
     justify-content: space-between;
     text-align: center; 
-    padding: 0px 11%;
+    padding: 0 7vw;
 
     p {
-      width:100px;
-      height: 50px;
+      width:7vw;
+      height: 8vh;
       font-weight: bold;
       color: #00579D;
     }
@@ -325,7 +295,6 @@ export const BarraDeProgressao = styled.div`
     position: relative;
     display:flex;
     justify-content: space-evenly;
-    margin-top: 2px;
     color: #fff; 
   }
 
@@ -349,8 +318,8 @@ interface PassoProps {
 }
 
 export const Passo = styled.div<PassoProps>`
-  width: 60px;
-  height: 60px;
+  width: 4.6vw;
+  height: 10vh;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -361,15 +330,15 @@ export const Passo = styled.div<PassoProps>`
     z-index: -2;
     content: ' ';
     position: absolute;
-    top: 45%;
-    width:25%;
-    height: 5px;
+    top: 4.5vh;
+    width: 13.5vw;
+    height: 1vh;
     background: ${props => props.theme.cor.passo};
   }
 
-  img {
-    height: 20px;
-    width: 20px;
+  svg {
+    height: 3.5vh;
+    width: 3vw;
   }
 
   ${(props) => props.ativo ?
@@ -381,9 +350,9 @@ export const Passo = styled.div<PassoProps>`
         z-index: -2;
         content: ' ';
         position: absolute;
-        top: 45%;
-        width:25%;
-        height: 5px;
+        top: 4.5vh;
+        width: 13.5vw;
+        height: 1vh;
         background: ${props => props.theme.cor.passoAtivo};
         transition: 1s;
       }
@@ -394,9 +363,9 @@ export const Passo = styled.div<PassoProps>`
         z-index: -2;
         content: ' ';
         position: absolute;
-        top: 45%;
-        width:25%;
-        height: 5px;
+        top: 4.5vh;
+        width: 13.5vw;
+        height: 1vh;
         background: ${props => props.theme.cor.passo};
       }
   `}
@@ -412,8 +381,8 @@ export const Consultores = styled.div<PopupProps>`
     transition: 200ms ease-in-out;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.7);
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 101vh;
     z-index: 9999;
     display: flex;
     justify-content: center;
@@ -422,8 +391,8 @@ export const Consultores = styled.div<PopupProps>`
     color: ${props => props.theme.cor.titulo};
     
     #segura{
-      height: 600px;
-      width: 75%;
+      height: 91vh;
+      width: 75vw;
       background-color: ${props => props.theme.cor.fundo};
       display: flex;
       justify-content: center;
@@ -431,7 +400,7 @@ export const Consultores = styled.div<PopupProps>`
       flex-direction: column;
 
       #header{
-        width: 57em;
+        width: 67vw;
         display: flex;
         justify-content: space-between;
         align-items: center;

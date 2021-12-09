@@ -3,7 +3,7 @@ import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web";
 import * as Yup from "yup"
 import { Infos, Container, Conta, Apontamentos, BarraDeProgressao, Titulo, Consultores, 
-    Passo, Descricoes, Tr, Info } from "./style";
+    Passo, Descricoes, Tr } from "./style";
 
 import { VscChromeClose } from 'react-icons/vsc';
 import { GoChevronDown } from 'react-icons/go';
