@@ -48,26 +48,6 @@ const Cards: React.FC<Projeto> = ({id, mostrar}) => {
 
   const [mostrarPopup, setMostrarPopup] = useState(false);
   const [projeto, setProjeto] = useState<Projetos>();
-
-  // let infos = localStorage.getItem("@WEGusers:usuario")
-  // let user!: { email: string, roles: [{ roleNome: string }] };
-
-  
-  // if(infos) {
-  //   user = JSON.parse(infos);
-    
-  //   user.roles.map(role => {
-  //     if(role.roleNome === "ROLE_FORNECEDOR") {
-  //       api.get(`responsaveis/${user.email}`).then((response) => {
-  //         setResponsavel(response.data);
-  //       })
-  //     } else if(role.roleNome === "ROLE_CONSULTOR") {
-  //       api.get(`consultores/email/${user.email}`).then((response) => {
-  //        setConsultor(response.data);
-  //       })
-  //     }
-  //   })
-  // }
   
   useEffect(() => {
     api.get(`/projetos/${id}`).then((response) => {

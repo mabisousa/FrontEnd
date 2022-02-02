@@ -60,27 +60,12 @@ interface Selecionados {
 interface tema{
   alternarTema(): void
 }
-interface Responsavel {
-  idResponsavel: number,
-  fornecedor: {
-    idFornecedor: number,
-    fornecedorNome: string, 
-  },
-  responsavelNome: string,
-  fornecedorConsultores: [
-    {
-      id: number
-      consultorNome: string,
-      consultorStatus: string,
-      valorHora: number
-    }
-  ]
-}
+
 const Aprovacao: React.FC<tema> = ({alternarTema}) => {
 
   const formRef = useRef<FormHandles>(null);
   const [consultor, setConsultor] = useState<Consultor>();
-  const [responsavel, setResponsavel] = useState<Responsavel>();
+  const [consultores, setConsultores] = useState<Consultor[]>([]);
   const [descricao, setDescricao] = useState<Apontamento>();
   const [popup, setEstadoPopup] = useState(false);
   const [popupDescricao, setPopupDescricao] = useState(false);
@@ -91,21 +76,6 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
   const [pesquisa, setPesquisa] = useState('');
   const [pesquisaAprovacao, setPesquisaAprovacao] = useState('');
   const [pesquisaAprovacaoID, setPesquisaAprovacaoID] = useState(0);
-
-  let infos = localStorage.getItem("@WEGusers:usuario")
-  let resp!: { email: string; };
-  
-  if(infos) {
-     resp = JSON.parse(infos);
-  }
-  
-  useEffect(()=> {
-    api.get(`responsaveis/${resp.email}`).then((response)=> {
-      setResponsavel(response.data);
-    })
-  },[])
-
-  console.log(responsavel)
 
   const aprovacao = {
     consultor: {
@@ -121,7 +91,11 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
     ],
     valorHora: 0
   }
-
+  useEffect(() => {
+    api.get(`consultores`).then((response)=> {
+      setConsultores(response.data);
+    })
+  },[])
   const selecionarConsultor = useCallback((idConsultor: number) => {
     api.get(`consultores/${idConsultor}`).then((response)=> {
       setConsultor(response.data);
@@ -162,12 +136,11 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
   
   const enviarAprovacao = useCallback(async () => {
     
-    if(consultor && responsavel) {
+    if(consultor) {
       try {          
-
         aprovacao.consultor.idConsultor = consultor.idConsultor;
         aprovacao.valorHora = consultor.consultorValorHora;
-        aprovacao.responsavel.idResponsavel = responsavel.idResponsavel;
+        aprovacao.responsavel.idResponsavel = 1;
         
         if(selecionados.length > 0) {
           aprovacao.apontamentos = selecionados;
@@ -224,14 +197,12 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
         progress: undefined,
       });
     }
-  },[aprovacao, consultor, responsavel, selecionados])
+  },[aprovacao, consultor, 1, selecionados])
 
   const mostrarPopupRequisicao = useCallback((state: boolean) => {
     setMostrarRequisicao(state)
   },[setMostrarRequisicao]);
 
-  const filtrados = responsavel?.fornecedorConsultores.filter((consultor) => consultor.consultorNome.toLowerCase().includes(pesquisa.toLowerCase()));  
-  console.log(filtrados)
   let apontamentosconsultor = 0;
   let apontamentosaprovados = 0;
   let apontamentosreprovados = 0;
@@ -277,8 +248,8 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
 
   return (
     <>
-      {mostrarRequisicao && consultor && responsavel &&
-        <Requisicao selecionados={selecionados} responsavel={responsavel} 
+      {mostrarRequisicao && consultor &&
+        <Requisicao selecionados={selecionados} responsavel={{idResponsavel: 1}} 
           consultor={consultor} mostrarRequisicao={mostrarPopupRequisicao}/> 
       }
       <Perfil/>
@@ -313,8 +284,8 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
             </h1>
             <div className="informacao">
               <div className="segurando">
-                  <Input value={responsavel ? responsavel.idResponsavel : "ID"} name={"idResponsavel"}></Input>
-                  <Input value={responsavel ? responsavel.responsavelNome :  "nome"} name={"responsavelNome"}></Input>
+                  <Input value={ "ID"} name={"idResponsavel"}></Input>
+                  <Input value={  "nome"} name={"responsavelNome"}></Input>
               </div>
             </div>
           </Form>
@@ -474,11 +445,11 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
                 </tr>
               </thead>
               <tbody>
-                {filtrados!.map(consultor => 
-                  <Tr key={consultor.id} color={"ATIVO"}
-                    onClick={() => selecionarConsultor(consultor.id)}>
+                {consultores!.map(consultor => 
+                  <Tr key={consultor.idConsultor} color={"ATIVO"}
+                    onClick={() => selecionarConsultor(consultor.idConsultor)}>
                     <td>
-                      {consultor.id}
+                      {consultor.idConsultor}
                     </td>
                     <td>
                       {consultor.consultorNome}
