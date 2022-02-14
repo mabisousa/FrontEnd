@@ -91,11 +91,6 @@ const Login: React.FC<tema> = ({alternarTema}) => {
             <Input name="senha" type="password" placeholder=" ">
               {i18n.t('login.senha')}
             </Input>
-            <SeguraBotao>
-              <button>
-                {i18n.t('login.esqueceuSenha')}
-              </button>
-            </SeguraBotao>
             <BotaoForm type="submit">
               {i18n.t('login.entrar')}
             </BotaoForm>
