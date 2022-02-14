@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Container, Filtros, Titulo, Cards, Filtro, Formulario } from './style';
 
 import Dropdown from "../../components/Dropdown";
-import Perfil from "../../components/Perfil";
 import Cabecalho from "../../components/Cabecalho";
 import Card from "../../components/Cards";
 import Menu from "../../components/Menu";
@@ -152,7 +151,6 @@ const Home: React.FC<tema> = ({alternarTema}) => {
             {i18n.t('projetos.titulo')}
           </p>
         </Cabecalho>
-        <Perfil/>
         <Menu/>
         <Filtros>
           <Titulo>

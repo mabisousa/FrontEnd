@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Container, Filtros, Titulo, Formulario, Filtro } from './style';
 
 import Menu from "../../components/Menu";
-import Perfil from "../../components/Perfil";
 import Cabecalho from "../../components/Cabecalho";
 import TabelaRequisicao from "../../components/TabelaRequisicao";
 
@@ -24,7 +23,6 @@ const Requisicao: React.FC<tema> = ({alternarTema}) => {
             {i18n.t('requisicoes.tituloPag')}
           </p>
         </Cabecalho>
-        <Perfil/>
         <Menu/>
         <Filtros>
           <Titulo>
