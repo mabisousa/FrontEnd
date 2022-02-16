@@ -15,16 +15,7 @@ export const Container = styled.div`
     margin:2vh 0;
   }
 
-  .botoes {
-    height: 9vh;
-    padding: 1vw;
-    color: #fff;
-    margin-top: 9vh;
-    border: none;
-    background: ${props => props.theme.cor.habilidadeBotao};
-  }
-
-  #reprovar {
+  .reprovar{
     background: ${props => props.theme.cor.botaoReprovar};
   }
   
@@ -33,6 +24,18 @@ export const Container = styled.div`
       font-size: 0.9em;
     }     
   }
+`;
+
+
+export const Botoes = styled.button`
+
+  height: 9vh;
+  padding: 1vw;
+  color: #fff;
+  margin-top: 9vh;
+  border: none;
+  background: ${props => props.theme.cor.habilidadeBotao};
+  
 `;
 
 export const Infos = styled.div`
@@ -48,37 +51,7 @@ export const Infos = styled.div`
     display: flex;
     flex-direction: column;
 
-    .informacao {
-      margin: 2vh 0;
-      width: 30vw;
-      height: 13vh;
-      
-      p {
-        font-size: 0.75em;
-        width: auto;
-      }
-
-      .segurando {
-        display: flex;
-        align-items: center;
-        margin-bottom: 1.5vh;
-        
-        div:nth-child(1) {
-          width: 7vw;
-          margin-right: 2vw;
-        }
-
-        div:nth-child(2) {
-          width: 21vw;
-        }
-      }
-
-      .segurando:nth-child(2) {
-        display: flex;
-        justify-content: space-between;
-
-      }
-    }
+    
   }  
 
   @media (max-width: 1024px) and (min-width: 769px) {
@@ -91,25 +64,60 @@ export const Infos = styled.div`
       width: 80px;
     }
 
-    .segurando {
-      div:nth-child(1) {
-        width: 33%;
-        margin-right: 5%;
-      }
-    }
   }
 
   @media (max-width: 768px)  {
     width: 40vw;
     margin: 0 0 10px 35px;
 
-    .segurando {
-      div:nth-child(1) {
-        width: 43%;
-        margin-right: 5%;
-      }
+  }
+`;
+
+
+export const Informacao = styled.div`
+
+  margin: 2vh 0;
+  width: 30vw;
+  height: 13vh;
+  
+  p {
+    font-size: 0.75em;
+    width: auto;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5vh;
+    
+    div:nth-child(1) {
+      width: 7vw;
+      margin-right: 2vw;
+    }
+
+    div:nth-child(2) {
+      width: 21vw;
     }
   }
+
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+
+    div:nth-child(1) {
+      width: 33%;
+      margin-right: 5%;
+    }
+    
+  }
+
+  @media (max-width: 768px)  {
+    
+    div:nth-child(1) {
+      width: 43%;
+      margin-right: 5%;
+    }
+  }
+  
 `;
 
 export const Conta = styled.div`
@@ -120,56 +128,6 @@ export const Conta = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   transition: 1s;
-
-  div {
-    .segura {
-      display: flex;
-      flex-direction: row;
-      align-items:center;
-      margin: 2vh 0;
-
-      .numeros {
-        margin-right: 2vw;
-        width: 3vw;
-        height: 3vw;
-        border: 1px solid #8B8787;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      p {
-        font-size: .9em;
-      }
-    }
-
-    .segura:nth-child(1) {
-      .numeros {
-        p {
-          font-size: 1.12em;
-          color: #7E7E7E90;
-        }
-      }
-    }
-
-    .segura:nth-child(2) {
-      .numeros {
-        p {
-          font-size: 1.12em;
-          color: #13B77C;
-        }
-      }
-    }
-
-    .segura:nth-child(3) {
-      .numeros {
-        p {
-          font-size: 1.2em;
-          color: #AC341A;
-        }
-      }
-    }
-  }
   
   button {
     border: 0;
@@ -189,6 +147,46 @@ export const Conta = styled.div`
   @media (max-width: 768px)  {
     width: 32vw;
   }
+`;
+
+
+export const Segura = styled.div`
+  
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    margin: 2vh 0;
+
+    div {
+      margin-right: 2vw;
+      width: 3vw;
+      height: 3vw;
+      border: 1px solid #8B8787;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    p {
+      font-size: .9em;
+    }
+
+  .apontamentos {
+    font-size: 1.12em;
+    color: #7E7E7E90;
+  }
+
+  .aprovados {
+    font-size: 1.12em;
+    color: #13B77C;
+  }
+
+  .reprovados {
+    font-size: 1.2em;
+    color: #AC341A;
+  }
+  
+  
 `;
 
 export const Apontamentos = styled.div`
@@ -276,7 +274,7 @@ export const BarraDeProgressao = styled.div`
   height: 18vh;
   width: 58vw;
   
-  .cabecalhos {
+  div:nth-child(1) {
     height: 8vh;
     display: flex;
     justify-content: space-between;
@@ -291,7 +289,7 @@ export const BarraDeProgressao = styled.div`
     }
   }
 
-  .passos {
+  div:nth-child(2) {
     position: relative;
     display:flex;
     justify-content: space-evenly;
@@ -317,7 +315,7 @@ interface PassoProps {
   ativo: boolean;
 }
 
-export const Passo = styled.div<PassoProps>`
+export const Passo = styled.section<PassoProps>`
   width: 4.6vw;
   height: 10vh;
   border-radius: 50%;
@@ -390,7 +388,7 @@ export const Consultores = styled.div<PopupProps>`
     top: 0px;
     color: ${props => props.theme.cor.titulo};
     
-    #segura{
+    .segura{
       height: 91vh;
       width: 75vw;
       background-color: ${props => props.theme.cor.fundo};
@@ -399,7 +397,7 @@ export const Consultores = styled.div<PopupProps>`
       align-items: center;
       flex-direction: column;
 
-      #header{
+      .header{
         width: 67vw;
         display: flex;
         justify-content: space-between;
@@ -407,7 +405,7 @@ export const Consultores = styled.div<PopupProps>`
         margin-top: -50px;
         margin-bottom: 50px;
 
-        #filtro{
+        .filtro{
           label{
             font-size: 1.25em;
             color: ${props => props.theme.cor.corDoIcone};
@@ -524,6 +522,8 @@ export const Consultores = styled.div<PopupProps>`
     }
   }
 `;
+
+
   
 
 interface colorConsultores{

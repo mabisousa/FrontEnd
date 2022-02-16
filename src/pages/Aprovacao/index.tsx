@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useState, useEffect } from "react";
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web";
 import { Infos, Container, Conta, Apontamentos, BarraDeProgressao, Titulo, Consultores, 
-    Passo, Descricoes, Tr } from "./style";
+    Passo, Descricoes, Tr, Informacao, Segura, Botoes } from "./style";
 
 import { VscChromeClose } from 'react-icons/vsc';
 import { GoChevronDown } from 'react-icons/go';
@@ -269,8 +269,8 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
             <h1>
               {i18n.t('aprovacao.consultorInfo')}
             </h1>
-            <div className="informacao">
-              <div className="segurando">
+            <Informacao>
+              <div>
                 <Input value={consultor ? consultor?.idConsultor : pesquisaAprovacaoID}
                 onChange={(ev) => pesquisarAprovacao(ev.target.value)}
                 name={"idConsultor"}></Input>
@@ -278,51 +278,51 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
                 onChange={(ev) => pesquisarAprovacaoNome(ev.target.value)} 
                 name={"consultorNome"}></Input>
               </div>
-            </div>
+            </Informacao>
             <h1>
               {i18n.t('aprovacao.aprovacaoInfo')}
             </h1>
-            <div className="informacao">
-              <div className="segurando">
+            <Informacao>
+              <div>
                   <Input value={ "ID"} name={"idResponsavel"}></Input>
                   <Input value={  "nome"} name={"responsavelNome"}></Input>
               </div>
-            </div>
+            </Informacao>
           </Form>
         </Infos>
         <Conta>
           <h1> {i18n.t('aprovacao.aprovacoes')}</h1>
           <div>
-            <div className="segura">
-              <div className="numeros">
-                <p>
+            <Segura>
+              <div>
+                <p className="apontamentos">
                   {apontamentosconsultor}
                 </p>
               </div>
               <p>
                 {i18n.t('aprovacao.apontamentos')}
               </p>
-            </div>
-            <div className="segura">
-              <div className="numeros">
-                <p>
+            </Segura>
+            <Segura>
+              <div>
+                <p className="aprovados">
                   {apontamentosaprovados}
                 </p>
               </div>
               <p>
                 {i18n.t('aprovacao.aprovado')}
               </p>
-            </div>
-            <div className="segura">
-              <div className="numeros">
-                <p>
+            </Segura>
+            <Segura>
+              <div>
+                <p className="reprovados">
                   {apontamentosreprovados}
                 </p>
               </div>
               <p>
                 {i18n.t('aprovacao.reprovado')}
               </p>
-            </div>
+            </Segura>
           </div>
           <button onClick={() => setEstadoPopup(true) }>
               {i18n.t('aprovacao.consultor')}
@@ -349,7 +349,8 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
                 alocacao.map(apontamento => 
                   <tr key={apontamento.idApontamento}>
                     <td>
-                      <input type="checkbox" value={apontamento.idApontamento} onClick={() => selecionarApontamento(apontamento.idApontamento)}/>
+                      <input type="checkbox" value={apontamento.idApontamento} 
+                        onClick={() => selecionarApontamento(apontamento.idApontamento)}/>
                     </td>
                     <td>
                       {format(parseISO(apontamento.apontamentoData), "dd'/'MM'/'yyyy")}
@@ -379,7 +380,7 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
           </table>
         </Apontamentos>
         <BarraDeProgressao>
-          <div className="cabecalhos">
+          <div>
             <p>
               {i18n.t('aprovacao.registroEfetuado')}
             </p>
@@ -393,7 +394,7 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
               {i18n.t('aprovacao.requisicao')}
             </p>
           </div>
-          <div className="passos">
+          <div>
             <Passo ativo={true}>
               <FiCheck/>
             </Passo>
@@ -409,17 +410,19 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
           </div>
         </BarraDeProgressao>
         {!!apontamentoSelecionado &&
-          <button className="botoes" id="reprovar" onClick={() => setMostrarRequisicao(!mostrarRequisicao)}>
+          <Botoes className="reprovar" onClick={() => setMostrarRequisicao(!mostrarRequisicao)}>
             {i18n.t('aprovacao.reprovar')}
-          </button>
+          </Botoes>
         }
-        <button form="aprovar" className="botoes" type="submit">{i18n.t('aprovacao.finalizar')}</button>
+        <Botoes form="aprovar" type="submit">
+          {i18n.t('aprovacao.finalizar')}
+        </Botoes>
       </Container>
       {popup &&
         <Consultores mostrar={popup}>
-          <div id="segura">
-            <div id="header">
-              <div id="filtro">
+          <div className="segura">
+            <div className="header">
+              <div className="filtro">
                 <label>
                   {i18n.t('consultores.nome')}
                 </label>
