@@ -4,7 +4,6 @@ import { Container, Filtros, Titulo, Formulario, Filtro } from './style';
 
 import TabelaConsultor from "../../components/TabelaConsultor"
 import Dropdown from "../../components/Dropdown";
-import Perfil from "../../components/Perfil";
 import Cabecalho from "../../components/Cabecalho";
 import Menu from "../../components/Menu";
 
@@ -30,7 +29,6 @@ const Consultor: React.FC<tema> = ({alternarTema}) => {
             {i18n.t('consultores.titulo')}
           </p>
         </Cabecalho>
-        <Perfil/>
         <Menu/>
         <Filtros>
           <Titulo>

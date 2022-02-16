@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import { Container, Filtros, Titulo, Formulario, Filtro } from './style';
 
-import Perfil from "../../components/Perfil";
 import Cabecalho from "../../components/Cabecalho";
 import Menu from "../../components/Menu";
 import TabelaListagem from "../../components/TabelaListagem";
@@ -24,7 +23,6 @@ const Listagem: React.FC<tema> = ({alternarTema}) => {
             {i18n.t('listagem.tituloPag')}
           </p>
         </Cabecalho>
-        <Perfil/>
         <Menu/>
         <Filtros>
           <Titulo>

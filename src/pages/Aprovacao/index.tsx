@@ -10,7 +10,6 @@ import { FiCheck } from 'react-icons/fi';
 import { BsX } from "react-icons/bs";
 
 import Requisicao from "../../components/Requisicao";
-import Perfil from "../../components/Perfil";
 import Cabecalho from "../../components/Cabecalho";
 import Menu from "../../components/Menu";
 
@@ -252,7 +251,6 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
         <Requisicao selecionados={selecionados} responsavel={{idResponsavel: 1}} 
           consultor={consultor} mostrarRequisicao={mostrarPopupRequisicao}/> 
       }
-      <Perfil/>
       <Menu />
       <ToastContainer/>
       <Cabecalho alternarTema={alternarTema}>
