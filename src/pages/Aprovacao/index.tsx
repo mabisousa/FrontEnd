@@ -446,20 +446,37 @@ const Aprovacao: React.FC<tema> = ({alternarTema}) => {
                 </tr>
               </thead>
               <tbody>
-                {consultores!.map(consultor => 
-                  <Tr key={consultor.idConsultor} color={"ATIVO"}
-                    onClick={() => selecionarConsultor(consultor.idConsultor)}>
-                    <td>
-                      {consultor.idConsultor}
-                    </td>
-                    <td>
-                      {consultor.consultorNome}
-                    </td>
-                    <td>
-                      {consultor.consultorStatus}
-                    </td> 
-                  </Tr>
-                )}
+                {pesquisa ?
+                  consultores.filter(consultor => consultor.consultorNome.toLowerCase().includes(pesquisa.toLowerCase())).map(consultor => 
+                    <Tr key={consultor.idConsultor} color={"ATIVO"}
+                      onClick={() => selecionarConsultor(consultor.idConsultor)}>
+                      <td>
+                        {consultor.idConsultor}
+                      </td>
+                      <td>
+                        {consultor.consultorNome}
+                      </td>
+                      <td>
+                        {consultor.consultorStatus}
+                      </td> 
+                    </Tr>                  
+                  )
+                :
+                  consultores.map(consultor => 
+                    <Tr key={consultor.idConsultor} color={"ATIVO"}
+                      onClick={() => selecionarConsultor(consultor.idConsultor)}>
+                      <td>
+                        {consultor.idConsultor}
+                      </td>
+                      <td>
+                        {consultor.consultorNome}
+                      </td>
+                      <td>
+                        {consultor.consultorStatus}
+                      </td> 
+                    </Tr>                  
+                  )
+                }
               </tbody>
             </table>
           </div>

@@ -32,10 +32,11 @@ interface Consultores{
 }
 
 interface Consultor {
-  status: string
+  status: string,
+  pesquisa: string,
 }
 
-const TabelaConsultor: React.FC<Consultor> = ({status}) => {
+const TabelaConsultor: React.FC<Consultor> = ({status, pesquisa}) => {
   const [mostrarPopup, setMostrarPopup] = useState(false);
   const [consultor, setConsultor] = useState<Consultores[]>([]);
   const [consulta, setConsulta] = useState<Consultores>();
@@ -43,7 +44,6 @@ const TabelaConsultor: React.FC<Consultor> = ({status}) => {
   const handleMostrarPopup = (mostrarPop: boolean) => {
     setMostrarPopup(mostrarPop);
   }
-
   const handleAbrirPopup = useCallback((id: number) => {
     setMostrarPopup(!mostrarPopup);
     setConsulta(consultor[id-1]);
@@ -87,25 +87,47 @@ const TabelaConsultor: React.FC<Consultor> = ({status}) => {
               </tr>
             </thead>
             <tbody>
-              {consultor.map((consultor) => (
-                <Tr color={consultor.consultorStatus}>
-                  <td>
-                    {consultor.idConsultor}
-                  </td>
-                  <td>
-                    {consultor.consultorNome}
-                  </td>
-                  <td>
-                    {consultor.consultorStatus}
-                  </td> 
-                  <td>
-                    {consultor.consultorAlocacoes.length}
-                  </td>
-                  <button onClick={() => handleAbrirPopup(consultor.idConsultor)} key={consultor.idConsultor}>
-                    <td> + </td>
-                  </button>
-                </Tr>
-              ))}
+              {pesquisa ? 
+                consultor.filter((consultor) => consultor.consultorNome.toLowerCase().includes(pesquisa.toLowerCase())).map(consultor => (
+                  <Tr color={consultor.consultorStatus}>
+                    <td>
+                      {consultor.idConsultor}
+                    </td>
+                    <td>
+                      {consultor.consultorNome}
+                    </td>
+                    <td>
+                      {consultor.consultorStatus}
+                    </td> 
+                    <td>
+                      {consultor.consultorAlocacoes.length}
+                    </td>
+                    <button onClick={() => handleAbrirPopup(consultor.idConsultor)} key={consultor.idConsultor}>
+                      <td> + </td>
+                    </button>
+                  </Tr>
+                ))
+              :
+                consultor.map((consultor) => (
+                  <Tr color={consultor.consultorStatus}>
+                    <td>
+                      {consultor.idConsultor}
+                    </td>
+                    <td>
+                      {consultor.consultorNome}
+                    </td>
+                    <td>
+                      {consultor.consultorStatus}
+                    </td> 
+                    <td>
+                      {consultor.consultorAlocacoes.length}
+                    </td>
+                    <button onClick={() => handleAbrirPopup(consultor.idConsultor)} key={consultor.idConsultor}>
+                      <td> + </td>
+                    </button>
+                  </Tr>
+                ))
+              }
             </tbody>
           </table>
         </Container>

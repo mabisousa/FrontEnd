@@ -89,8 +89,6 @@ interface Consultor {
 
 const Home: React.FC<tema> = ({alternarTema}) => {
 
-  const [consultor,setConsultor] = useState<Consultor>();
-  const [filtrados, setFiltrados] = useState<Projetos[]>([]);
   const [projetos, setProjetos] = useState<Projetos[]>([]);
   const [secoes, setSecoes] = useState<Secoes[]>([]);
   const [mostrarCard, setMostrarCard] = useState(false);
@@ -120,12 +118,7 @@ const Home: React.FC<tema> = ({alternarTema}) => {
       setSecoes(response.data)
     })
     
-  }, [projetos, setProjetos, secao, status]);
-  
-  const handleFiltrarNome = useCallback((ev: string) => {
-    setPesquisa(ev)
-    setFiltrados(projetos.filter((projetos) => projetos.projetoNome.toLowerCase().includes(pesquisa.toLowerCase())));
-  },[projetos, setPesquisa, pesquisa]);  
+  }, [projetos, setProjetos, secao, status, pesquisa]);  
 
   const handleFiltrarStatus = useCallback((status: string) => {
     setStatus(status);
@@ -162,7 +155,7 @@ const Home: React.FC<tema> = ({alternarTema}) => {
                 {i18n.t('projetos.projeto')}
               </label>
               <input type="text" placeholder={i18n.t('projetos.placeHolder')} 
-                value={pesquisa} onChange={(ev) => handleFiltrarNome(ev.target.value)}/>
+                value={pesquisa} onChange={(ev) => setPesquisa(ev.target.value)}/>
             </Formulario>
             <div>
               <label className="secao">{i18n.t('projetos.secao')}</label>
@@ -212,13 +205,18 @@ const Home: React.FC<tema> = ({alternarTema}) => {
         </Filtros>
       <Cards> 
         { 
-          projetos && projetos.length > 0 ? 
-          projetos.map((projeto) => (
-            <Card id={projeto.id} key={projeto.id} mostrar={mostrarCard}/> 
-          ))
-          : <h1 className="mensagem">
+          projetos && projetos.length > 0 ? pesquisa ?
+            projetos.filter((projeto) => projeto.projetoNome.toLowerCase().includes(pesquisa.toLowerCase())).map((projeto) =>
+              <Card id={projeto.id} key={projeto.id} mostrar={mostrarCard}/> 
+            )
+            :
+            projetos.map((projeto) => (
+              <Card id={projeto.id} key={projeto.id} mostrar={mostrarCard}/> 
+            ))
+          :
+          <h1 className="mensagem">
               {i18n.t('projetos.projetosAlocados')}
-            </h1>
+          </h1>
         }
       </Cards>
       </Container>

@@ -65,7 +65,7 @@ const Consultor: React.FC<tema> = ({alternarTema}) => {
             </div>
           </Filtro>
         </Filtros>
-        <TabelaConsultor status={status}/>
+        <TabelaConsultor status={status} pesquisa={pesquisa}/>
       </Container>
     </>
   )

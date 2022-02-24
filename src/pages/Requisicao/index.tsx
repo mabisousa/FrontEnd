@@ -38,7 +38,7 @@ const Requisicao: React.FC<tema> = ({alternarTema}) => {
             </Formulario>
           </Filtro>
         </Filtros>
-        <TabelaRequisicao/>
+        <TabelaRequisicao pesquisa={pesquisa}/>
       </Container>
     </>
   )
